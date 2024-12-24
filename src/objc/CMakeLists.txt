@@ -1,4 +1,4 @@
-set(NAME "objc")
+set(NAME "fuse-objc")
 
 add_library(${NAME}
     x86_64/objc_msgSend.s

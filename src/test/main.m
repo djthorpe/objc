@@ -17,8 +17,15 @@
     printf("[Test classMethod]\n");
 }
 
+- (id) init {
+    printf("[Test init]\n");
+    return self;
+}
+
 - (void) run {
     [self setPropertyValue:42];
+
+    printf("[test run]\n");
 
     // insert code here...
     printf("Hello, World!\n");
@@ -27,9 +34,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        printf("[[Test alloc] init]\n");
         Test *test = [[Test alloc] init];
-        printf("[test run]\n");
         [test run];
     }
     return 0;

@@ -120,7 +120,7 @@ void objc_class_load(objc_class* cls) {
 
 id objc_msgSend_impl(id receiver, SEL selector) {
     //Class cls = receiver->isa;
-    printf("receiver=%p selector=%p \n",receiver, selector);
+    printf("objc_msgSend selector %s\n", selector);
 
     // Return nil for now
     return nil;
