@@ -7,14 +7,37 @@ These are some references for future work:
 * <https://github.com/mhjacobson/avr-objc>
 * <https://github.com/charlieMonroe/libobjc-kern>
 
-Build:
+Build testing on Linux/ARM64:
 
 ```bash
 git clone git@github.com:djthorpe/objc.git
 cd objc
 mkdir build
 cmake -B build
-lldb build/src/test/fuse
+lldb build/src/test/test
 ```
 
-Seg faults on fprintf, but does get to obj_msgSend, so that's something.
+```text
+objc: objc_init
+objc_class_load: Test
+  Test is a meta class
+  Test superclass => 
+objc_class_load: Object
+  Object is a meta class
+  Object is a root class
+  Object superclass => 
+objc_class_load: Object
+  Object is a root class
+  Method: -[Object init]
+00 00 00 00 D1 '#' 'U' 00 00 00 00 00 08 '%' 'U' 00 '(' '%' 'U' 00 00 00 00 00 00 00 00 00 00 00 00 00 '`' 00 00 00 'H' '%' 'U' 00 00 00 00 00 00 00 00 00 '=' '#' 'U' 00 C6 '#' 'U' 00 90 '#' 'U' 00 8C '#' 'U' 00   Object protocol: <(null)> 
+  Object ivar: <isa>
+  Object superclass <= 
+  Method: +[Object alloc]
+00 00 00 00 D1 '#' 'U' 00 00 00 00 00 08 '%' 'U' 00 '(' '%' 'U' 00 00 00 00 00 00 00 00 00 00 00 00 00 '`' 00 00 00 'H' '%' 'U' 00 00 00 00 00 00 00 00 00 '=' '#' 'U' 00 C6 '#' 'U' 00 90 '#' 'U' 00 8C '#' 'U' 00   Object protocol: <(null)> 
+  Test superclass <= 
+  Method: +[Test classMethod]
+00 00 00 00 83 '#' 'U' 00 00 00 00 00 'p' '%' 'U' 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 '`' 00 00 00 90 '%' 'U' 00 00 00 00 00 00 00 00 00 C0 '%' 'U' 00 00 00 00 00 FA '%' 'U' 00 00 00 00 00   Test protocol: <(null)> 
+objc_msgSend selector alloc
+```
+
+We are getting segfault, probably because we are not actually calling the alloc method yet...
