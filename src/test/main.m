@@ -2,9 +2,18 @@
 #include <objc/runtime.h>
 #include <objc/Object.h>
 
-@interface Test : Object
+@protocol Runnable
+- (void) run;
+@end
+
+@interface Test : Object<Runnable> {
+    int propertyValue;
+}
 
 @property (nonatomic, assign) int propertyValue;
+
+// A class method
++ (void) classMethod;
 
 // Run the test
 - (void) run;
@@ -12,14 +21,15 @@
 @end
 
 @implementation Test
-
-+ (void) classMethod {
-    printf("[Test classMethod]\n");
-}
+@synthesize propertyValue;
 
 - (id) init {
     printf("[Test init]\n");
     return self;
+}
+
++ (void) classMethod {
+    printf("[Test classMethod]\n");
 }
 
 - (void) run {
@@ -33,9 +43,9 @@
 @end
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+//    @autoreleasepool {
         Test *test = [[Test alloc] init];
         [test run];
-    }
+//    }
     return 0;
 }

@@ -46,7 +46,7 @@ typedef struct objc_protocol {
 
 struct objc_protocol_list {
     uint64_t count;
-    struct objc_protocol* protocols[];
+    struct objc_protocol *protocols[];
 };
 
 // Method

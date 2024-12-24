@@ -63,7 +63,9 @@ void objc_class_load(objc_class* cls) {
 
     // Load the super class
     if (cls->superclass) {
+        printf("  %s superclass => \n", cls->rodata->name);
         objc_class_load(cls->superclass);
+        printf("  %s superclass <= \n", cls->rodata->name);
     }
 
     // Load the methods
@@ -78,8 +80,8 @@ void objc_class_load(objc_class* cls) {
     if(cls->rodata->protocols && cls->rodata->protocols->count > 0) {
         for (uint64_t i = 0; i < cls->rodata->protocols->count; i++) {
             struct objc_protocol* protocol = cls->rodata->protocols->protocols[i];
-            printf("  %s protocol: <%s> ", cls->rodata->name,protocol->name);
             hexdump(protocol,sizeof(struct objc_protocol));            
+            printf("  %s protocol: <%s> ", cls->rodata->name,protocol->name);
             printf("\n");
         }        
     }
@@ -119,7 +121,13 @@ void objc_class_load(objc_class* cls) {
 #pragma mark Messages
 
 id objc_msgSend_impl(id receiver, SEL selector) {
-    //Class cls = receiver->isa;
+    Class cls = receiver->isa;
+
+    // TODO: This is a fudge until we can work out how to load classes earlier    
+    if (!(cls->flags & CLASS_LOADED)) {
+        objc_class_load(cls);
+    }
+
     printf("objc_msgSend selector %s\n", selector);
 
     // Return nil for now

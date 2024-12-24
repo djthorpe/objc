@@ -7,10 +7,10 @@ void hexdump(void* ptr,size_t size) {
     unsigned char* p = (unsigned char*)ptr;
     for (int i = 0; i < size; i++, p++) {
         if(p[i] < ' ' || p[i] > '~') {
-            sprintf(buf,"%02X",p[i]);
+            sprintf(buf,"%02X ",p[i]);
             printf("%s",buf);
         } else {
-            printf("'%c'",p[i]);
+            printf("'%c' ",p[i]);
         }
     }
 }
