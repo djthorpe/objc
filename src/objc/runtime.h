@@ -30,6 +30,7 @@ struct objc_class_ro {
     struct objc_ivar_list* ivars;
     uint8_t* weakIvarLayout;
     struct objc_property_list* properties;
+    uint32_t reserved;     
 };
 
 // Protocol
@@ -46,7 +47,7 @@ typedef struct objc_protocol {
 
 struct objc_protocol_list {
     uint64_t count;
-    struct objc_protocol *protocols[];
+    struct objc_protocol *protocols[1];
 };
 
 // Method

@@ -60,6 +60,12 @@ void objc_class_load(objc_class* cls) {
         return;
     }
     printf("objc_class_load: %s\n", cls->rodata->name);
+    if (cls->rodata->flags & CLASS_RO_META) {
+        printf("  %s is a meta class\n", cls->rodata->name);
+    }
+    if (cls->rodata->flags & CLASS_RO_ROOT) {
+        printf("  %s is a root class\n", cls->rodata->name);
+    }
 
     // Load the super class
     if (cls->superclass) {
@@ -72,7 +78,7 @@ void objc_class_load(objc_class* cls) {
     if(cls->rodata->methods && cls->rodata->methods->element_count > 0) {
         for (uint64_t i = 0; i < cls->rodata->methods->element_count; i++) {
             struct objc_method* method = &cls->rodata->methods->methods[i];
-            printf("  %s method: -[%s %s]\n", cls->rodata->name,cls->rodata->name, method->name);
+            printf("  Method: %c[%s %s]\n",cls->rodata->flags & CLASS_RO_META ? '+' : '-', cls->rodata->name, method->name);
         }
     }
 
@@ -141,3 +147,5 @@ __attribute__((constructor)) static void objc_init(void) {
     printf("objc: objc_init\n");
     objc_class_init();
 }
+
+
