@@ -4,13 +4,22 @@
 
 @interface Test : Object
 
+@property (nonatomic, assign) int propertyValue;
+
 // Run the test
 - (void) run;
 
 @end
 
 @implementation Test
+
++ (void) classMethod {
+    printf("[Test classMethod]\n");
+}
+
 - (void) run {
+    [self setPropertyValue:42];
+
     // insert code here...
     printf("Hello, World!\n");
 }

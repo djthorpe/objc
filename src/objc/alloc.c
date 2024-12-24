@@ -6,6 +6,7 @@
 // Allocate and initialize an object.
 id objc_alloc_init(Class cls) {
     printf("objc_alloc_init\n");
+    objc_class_load(cls);
 
     // TODO: Allocate 100 bytes
     id o = malloc(100);

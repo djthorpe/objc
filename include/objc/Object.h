@@ -1,13 +1,15 @@
 #pragma once
 
-@interface Object {
+@protocol Object
++ (id) alloc;
+- (id) init;
+@end
+
+NS_ROOT_CLASS
+@interface Object <Object> {
+@private
     Class isa;
 }
-
-// Allocates memory for an object
-+ (id)alloc;
-
-// Initializes an object
-- (id)init;
-
++ (id) alloc;
+- (id) init;
 @end
