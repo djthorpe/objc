@@ -17,4 +17,9 @@
     return self;
 }
 
+- (id)init2 {
+    printf("[Object init2]\n");
+    return self;
+}
+
 @end

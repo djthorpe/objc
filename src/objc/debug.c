@@ -2,15 +2,39 @@
 #include <stdio.h>
 #include "debug.h"
 
-void hexdump(void* ptr,size_t size) {
-    static char buf[5];
-    unsigned char* p = (unsigned char*)ptr;
-    for (int i = 0; i < size; i++, p++) {
-        if(p[i] < ' ' || p[i] > '~') {
-            sprintf(buf,"%02X ",p[i]);
-            printf("%s",buf);
-        } else {
-            printf("'%c' ",p[i]);
+// hexdump function to print memory in hexadecimal format, with ascii representation
+void hexdump(void* ptr, size_t size) {
+    unsigned char* buf = (unsigned char*)ptr;
+    size_t i, j;
+    
+    // Process the buffer 16 bytes at a time
+    for (i = 0; i < size; i += 16) {
+        // Print the address
+        printf("%p  ", (void*)(buf + i));
+        
+        // Print hex values
+        for (j = 0; j < 16; j++) {
+            if (i + j < size)
+                printf("%02x ", buf[i + j]);
+            else
+                printf("   "); // Padding for incomplete lines
+            
+            // Extra space after 8 bytes for readability
+            if (j == 7)
+                printf(" ");
         }
+        
+        // Print ASCII representation
+        printf(" |");
+        for (j = 0; j < 16; j++) {
+            if (i + j < size) {
+                // Print printable characters, or '.' for non-printable
+                char c = buf[i + j];
+                printf("%c", isprint(c) ? c : '.');
+            } else {
+                printf(" "); // Padding for incomplete lines
+            }
+        }
+        printf("|\n");
     }
 }

@@ -57,10 +57,11 @@ struct objc_method {
     IMP imp;
 };
 
+// Method list structure that matches macOS Objective-C runtime
 struct objc_method_list {
-    unsigned int element_size;
-    unsigned int element_count;
-    struct objc_method methods[];
+    uint32_t method_size;
+    uint32_t method_count;               // Number of methods in this list
+    struct objc_method methods[1];      // Variable-length array of method structures
 };
 
 // IVars

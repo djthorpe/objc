@@ -44,8 +44,8 @@
 
 int main(int argc, const char * argv[]) {
 //    @autoreleasepool {
-        Test *test = [[Test alloc] init];
-        [test run];
+        Test *test = [Test alloc];
+//        [test run];
 //    }
     return 0;
 }

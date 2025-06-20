@@ -1,11 +1,11 @@
    .text
-    .globl objc_msgSend
-    .globl objc_msgSend_impl
+    .globl _objc_msgSend
+    .globl _objc_msgSend_impl
 
-objc_msgSend:
+_objc_msgSend:
     // Prologue
     stp     x29, x30, [sp, #-16]!    // Save frame pointer and link register
-    mov     x29, sp                 // Set up frame pointer
+    mov     x29, sp                  // Set up frame pointer
 
     // Save callee-saved registers
     stp     x19, x20, [sp, #-16]!    // Save x19 and x20
@@ -20,7 +20,7 @@ objc_msgSend:
     // TODO: Handle other arguments
 
     // Call objc_msgSend_impl
-    bl      objc_msgSend_impl
+    bl      _objc_msgSend_impl
 
     // Restore callee-saved registers
     ldp     x27, x28, [sp], #16     // Restore x27 and x28

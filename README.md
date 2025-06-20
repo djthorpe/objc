@@ -13,7 +13,8 @@ Build testing on Linux/ARM64:
 git clone git@github.com:djthorpe/objc.git
 cd objc
 mkdir build
-cmake -B build
+cmake -DCMAKE_C_COMPILER=/opt/homebrew/Cellar/llvm@14/14.0.6/bin/clang  -B build
+cmake --build build
 lldb build/src/test/test
 ```
 
