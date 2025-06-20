@@ -45,7 +45,7 @@
 int main(int argc, const char * argv[]) {
 //    @autoreleasepool {
         Test *test = [Test alloc];
-//        [test run];
+        [test run];
 //    }
     return 0;
 }
