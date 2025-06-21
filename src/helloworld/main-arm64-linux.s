@@ -2,10 +2,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 .text // Code section
-.global _start
+.global main
 .align 4
 
-_start: 
+main: 
   // Print hello world
   mov	  X0, #1	            // 1 = stdout
   adr	  X1, helloworld      // string to print
