@@ -1,4 +1,4 @@
-set(NAME "test")
+set(NAME "test2")
 
 add_executable(${NAME}
     main.m
