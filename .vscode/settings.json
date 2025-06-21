@@ -1,14 +1,6 @@
 {
     "files.associations": {
         "*.hcl": "terraform",
-        "runtime.h": "c",
-        "stdint.h": "c",
-        "typeinfo": "c",
-        "chrono": "c",
-        "text_encoding": "c",
-        "unordered_map": "c",
-        "bitset": "c",
-        "format": "c",
-        "random": "c"
+        "stdlib.h": "c"
     }
 }

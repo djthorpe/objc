@@ -1,11 +1,10 @@
-set(NAME "test")
 
+# Compile pico version of helloworld
+set(NAME "helloworld-armv6m-pico")
 add_executable(${NAME}
-    main.m
+    main.c
 )
-
-target_include_directories(${NAME} PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../include
-)
-
-target_link_libraries(${NAME} fuse-objc)
+target_link_libraries(${NAME} pico_stdlib)
+pico_add_extra_outputs(${NAME})
+pico_enable_stdio_usb(${NAME} 1)
+pico_enable_stdio_uart(${NAME} 0)

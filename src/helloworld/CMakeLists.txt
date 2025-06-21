@@ -1,49 +1,10 @@
-# Compile helloworld for different architectures
 
-###########################################
-
-set(NAME "helloworld-arm64-linux")
-add_executable(${NAME}
-    main-arm64-linux.s
-)
-target_compile_options(${NAME} PUBLIC
-    -target arm64-linux-gnu
-)
-target_link_options(${NAME} PUBLIC
-    -fuse-ld=lld
-    -nostdlib
-    -target arm64-linux-gnu
-)
-
-###########################################
-
-set(NAME "helloworld-arm64-darwin")
-add_executable(${NAME}
-    main-arm64-darwin.s
-)
-target_compile_options(${NAME} PUBLIC
-    -target arm64-apple-darwin
-)
-target_link_options(${NAME} PUBLIC
-    -fuse-ld=lld
-    -nostdlib
-    -target arm64-apple-darwin
-)
-
-###########################################
-
-
+# Compile pico version of helloworld
 set(NAME "helloworld-armv6m-pico")
 add_executable(${NAME}
     main-armv6m-pico.s
 )
-# clang --target=arm64-apple-darwin src/helloworld/main-arm64-darwin.s -fuse-ld=lld -nostdlib -o helloworld
-target_compile_options(${NAME} PUBLIC
-    -target armv6m-none-eabi
-)
-target_link_options(${NAME} PUBLIC
-    -fuse-ld=lld
-    -nostdlib
-    -target armv6m-none-eabi
-    -mfloat-abi=soft
-)
+target_link_libraries(${NAME} pico_stdlib)
+pico_add_extra_outputs(${NAME})
+pico_enable_stdio_usb(${NAME} 1)
+pico_enable_stdio_uart(${NAME} 0)
