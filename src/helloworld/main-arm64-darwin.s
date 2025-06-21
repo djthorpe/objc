@@ -1,11 +1,11 @@
 // Assembler program to print "Hello World!"
 // to stdout.
 
-.global _start                 // Provide program starting address to linker
+.global _main
 .align 4
 
 // Print hello world
-_start: 
+_main: 
   mov	  X0, #1	            // 1 = stdout
   adr	  X1, helloworld      // string to print
   mov	  X2, #13	            // length of our string
