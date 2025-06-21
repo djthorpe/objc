@@ -1,7 +1,7 @@
 // Assembler program to print "Hello World!"
 // to stdout.
 
-.global _start                 // Provide program starting address to linker
+.global _start
 .align 4
 
 // Print hello world
