@@ -1,12 +1,14 @@
 #include <stdbool.h>
-#include <stdio.h>
+#include <pico/stdlib.h>
+#include "Test.h"
+
 
 int main() {
-    // Print a message to the UART or USB
-    printf("Hello, World!\n");
+    stdio_init_all();
+
+    [Test run];
 
     // Main loop
     while (true) {}
-
     return 0;
 }
