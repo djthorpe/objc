@@ -1,11 +1,10 @@
 // Assembler program to print "Hello World!" to stdout.
 ///////////////////////////////////////////////////////////////////////////////
 
-.text // Code section
-.global main
+.global _start
 .align 4
 
-main: 
+_start: 
   // Print hello world
   mov	  X0, #1	            // 1 = stdout
   adr	  X1, helloworld      // string to print
