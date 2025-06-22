@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13...3.27)
 set(PICO_COMPILER "pico_arm_clang")
 set(PICO_TOOLCHAIN_PATH "/Applications/LLVM-ET-Arm-19.1.5-Darwin-universal/bin")
-set(PICOTOOL_FETCH_FROM_GIT_PATH "third_party/picotool")
+#set(PICOTOOL_FETCH_FROM_GIT_PATH "${CMAKE_CURRENT_LIST_DIR}/third_party")
 include(third_party/pico-sdk/pico_sdk_init.cmake)
 
 # Define project
