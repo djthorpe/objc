@@ -6,7 +6,7 @@ test: submodule
 	@echo make test
 	@cmake -B ${BUILD_DIR}
 	@cmake --build ${BUILD_DIR}
-	@echo "\nRun:\n  picotool load ${BUILD_DIR}/src/test2/test2.uf\n"
+	@echo "\nRun:\n  picotool load -x ${BUILD_DIR}/src/test/test.uf2\n"
 
 .PHONY: picotool
 picotool: submodule

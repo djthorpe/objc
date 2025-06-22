@@ -2,7 +2,7 @@
 
 // Opaque types
 typedef struct objc_object* id;
-typedef const char* SEL;
+typedef struct objc_selector_t* SEL;
 typedef struct objc_class* Class;
 typedef id (*IMP)(id, SEL, ...);
 typedef struct objc_method* Method;
