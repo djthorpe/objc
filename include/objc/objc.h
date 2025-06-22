@@ -1,5 +1,4 @@
 #pragma once
-
 #include "runtime.h"
 
 #if __OBJC__
