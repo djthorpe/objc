@@ -1,5 +1,5 @@
 #pragma once
-#include "Object.h"
+#include <objc/Object.h>
 
 @interface Test : Object {
 }

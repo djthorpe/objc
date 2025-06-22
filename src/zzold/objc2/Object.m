@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include "Object.h"
+
+#include <objc/runtime.h>
+#include <objc/Object.h>
 
 @implementation Object
 

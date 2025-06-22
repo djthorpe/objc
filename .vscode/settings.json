@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "*.hcl": "terraform",
-        "stdlib.h": "c"
+        "*.h": "objective-c",
     }
 }

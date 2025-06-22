@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-#include <objc/runtime.h>
 #include <objc/Object.h>
 
 @implementation Object
@@ -14,11 +12,6 @@
 
 - (id)init {
     printf("[Object init]\n");
-    return self;
-}
-
-- (id)init2 {
-    printf("[Object init2]\n");
     return self;
 }
 

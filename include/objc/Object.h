@@ -1,4 +1,5 @@
 #pragma once
+#include "runtime.h"
 
 @protocol Object
 + (id) alloc;
