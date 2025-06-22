@@ -3,8 +3,8 @@ set(NAME "objc")
 add_library(${NAME} STATIC
     class.c
     init.c
-    panicf.c
     Object.m
+    panicf.c
 )
 target_compile_options(${NAME} PRIVATE
     -fobjc-runtime=gcc
