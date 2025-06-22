@@ -6,7 +6,7 @@ PICO_BOARD ?= pico
 test: submodule
 	@echo make test
 	@cmake -B ${BUILD_DIR} -D PICO_BOARD=${PICO_BOARD} -D LLVM_TOOLCHAIN_PATH=${LLVM_TOOLCHAIN_PATH}
-	@cmake --build ${BUILD_DIR} -v
+	@cmake --build ${BUILD_DIR}
 	@echo "\nRun:\n  picotool load -x ${BUILD_DIR}/src/test/test.uf2\n"
 
 .PHONY: picotool
