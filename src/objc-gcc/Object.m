@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <objc/Object.h>
+#include <objc-gcc/Object.h>
 
 @implementation Object
 

@@ -12,7 +12,9 @@ void panicf(const char *fmt, ...) {
     vprintf(fmt, args);
     va_end(args);
     puts("\n");
+#ifdef PICO_PLATFORM
     while (true) {
-        sleep_ms(1000);
+       sleep_ms(1000);
     }
+#endif
 }

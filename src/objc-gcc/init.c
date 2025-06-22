@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <objc/objc.h>
+#include <objc-gcc/objc.h>
 #include "api.h"
 
 // This list contains all modules currently loaded into the runtime.

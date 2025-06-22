@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <objc/objc.h>
+#include <objc-gcc/objc.h>
 #include "api.h"
 
 #define CLASS_TABLE_SIZE 1024
