@@ -1,4 +1,4 @@
-# objc
+# objc on Raspberry Pi and Pico boards
 
 Objective C experiments. Motivation is to see if a very minimal Objective C runtime can be created for ARM and 
 x86, for embedded systems. Would be good to minimally support autorelease pools.
