@@ -28,6 +28,8 @@ LLVM_TOOLCHAIN_PATH=/opt/llvm_toolchain_path PICO_BOARD=pico make # Pico (or oth
 picotool load -x build/src/test/test.uf2 # Load the test program onto the Pico
 ```
 
+Please see list of possible boards [here](https://github.com/raspberrypi/pico-sdk/tree/master/src/boards/include/boards)
+
 2. Raspberry Pi target (or other ARM64 Linux target)
 
 ```bash
