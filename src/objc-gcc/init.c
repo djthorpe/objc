@@ -49,6 +49,7 @@ void __objc_module_register(struct objc_module_t *module) {
     }
     for (int i = 0; i < module->symtab->category_count; i++) {
         struct objc_category_t *cat = (struct objc_category_t *)module->symtab->defs[j++];
+        // TODO
         printf("   Category %s\n", cat->name);
     }
     do {

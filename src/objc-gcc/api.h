@@ -26,7 +26,7 @@ struct objc_class_t {
   struct objc_class_t* superclass; // Pointer to the superclass. NULL for the root class
   const char* name;               // Name of the class
   long version;                   // Version of the class (unused)
-  unsigned long info;             // Bitmask containing class-specific flags
+  unsigned long info;             // Bitmask containing class-specific objc_class_flags
   unsigned long size;             // Total size of the class, including all superclasses
   struct objc_ivar_list_t* ivars; // List of instance variables defined in this class
   struct objc_method_list_t* methods; // List of instance methods defined in this class
@@ -35,6 +35,12 @@ struct objc_class_t {
   struct objc_class_t* sibling_cls; // Pointer to sibling classes
   struct objc_protocol_list* protocols; // List of protocols adopted by this class
   void* extra_data;               // Additional data associated with this class
+};
+
+enum objc_class_flags {
+  objc_class_flag_meta = 0x02,        // This class structure represents a metaclass
+  objc_class_flag_initialized = 0x04, // Indicates the class has received the +initialize message
+  objc_class_flag_resolved = 0x08,    // Indicates the class has been initialized by the runtime
 };
 
 struct objc_category_t {
@@ -68,4 +74,3 @@ struct objc_ivar_list_t {
   int count;                      // Number of instance variables in this list
   struct objc_ivar_t ivars[1];    // Array of instance variable metadata
 };
-
