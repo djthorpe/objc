@@ -47,10 +47,12 @@ void __objc_class_resolve(struct objc_class_t *p) {
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list_t *ml = p->methods; ml != NULL; ml = ml->next) {
         printf("  __objc_class_resolve %s num_methods=%d\n", p->name, ml->count);
-        for (int i = 0; i < ml->count; i++) {
-            struct objc_method_t *method = &ml->methods[i];
-            printf("    method: %p\n", method);
-        }
+        /*
+            for (int i = 0; i < ml->count; i++) {
+                struct objc_method_t *method = &ml->methods[i];
+                printf("    method: %p\n", method);
+            }
+        */
     }
 }
 

@@ -17,15 +17,15 @@ else()
         message(FATAL_ERROR "LLVM_TOOLCHAIN_PATH is not set or is invalid. Please set it to the path of your LLVM toolchain.")
     endif()
 
-    # Use clang
+    # clang toolchain
     set(PICO_COMPILER "pico_arm_clang")
     set(PICO_TOOLCHAIN_PATH "${LLVM_TOOLCHAIN_PATH}")
-    #set(PICOTOOL_FETCH_FROM_GIT_PATH "${CMAKE_CURRENT_LIST_DIR}/third_party")
+    set(PICOTOOL_FETCH_FROM_GIT_PATH "${CMAKE_CURRENT_LIST_DIR}/third_party")
     include(third_party/pico-sdk/pico_sdk_init.cmake)
 endif()
 
 # Define project
-project(fuse-objc C ASM)
+project(fuse-objc C ASM CXX)
 
 # Pico support
 if (DEFINED PICO_SDK_PATH)
