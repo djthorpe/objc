@@ -3,9 +3,9 @@ LLVM_TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Linux-x86_64
 PICO_BOARD ?= pico
 
 .PHONY: test
-test: submodule
+test: submodule picotool
 	@echo make test
-	@cmake -B ${BUILD_DIR} -D PICO_BOARD=${PICO_BOARD} -D LLVM_TOOLCHAIN_PATH=${LLVM_TOOLCHAIN_PATH}
+	@cmake -B ${BUILD_DIR} -D PICO_BOARD=${PICO_BOARD} -D LLVM_TOOLCHAIN_PATH=${LLVM_TOOLCHAIN_PATH} -Dpicotool_DIR=${BUILD_DIR}/third_party/picotool
 	@cmake --build ${BUILD_DIR} -v
 	@echo "\nRun:\n  picotool load -x ${BUILD_DIR}/src/test/test.uf2\n"
 
