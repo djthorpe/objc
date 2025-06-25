@@ -66,7 +66,6 @@ struct objc_ivar_t {
 struct objc_method_list_t {
   struct objc_method_list_t* next; // Pointer to the next method list in the chain
   int count;                       // Number of methods in this list
-  size_t size;                     // Size of the method list structure
   struct objc_method_t methods[1]; // Array of methods in this list
 };
 
