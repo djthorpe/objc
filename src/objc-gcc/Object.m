@@ -3,16 +3,12 @@
 
 @implementation Object
 
-// Allocate memory for an instance of the class
-+ (id)alloc
-{
-    printf("[Object alloc]\n");
-    return 0;
+-(Class) class {
+  return object_getClass(self);
 }
 
-- (id)init {
-    printf("[Object init]\n");
-    return self;
+-(BOOL) isEqual:(id)anObject {
+  return self == anObject;
 }
 
 @end

@@ -1,5 +1,9 @@
 #pragma once
 #include <stddef.h>
+#include <objc-gcc/objc.h>
+
+// This is the current API version for the Objective-C runtime.
+#define OBJC_ABI_VERSION 8
 
 struct objc_selector_t {
   void* id;                      // Unique identifier for the selector
@@ -19,6 +23,10 @@ struct objc_module_t {
   unsigned long size;             // Size of this structure in bytes
   const char* name;               // Name of the file where this module was generated
   struct objc_symtab_t* symtab;   // Pointer to the symbol table for this module
+};
+
+struct objc_object_t {   
+  struct objc_class_t* isa; // Pointer to the class of this object
 };
 
 struct objc_class_t {     

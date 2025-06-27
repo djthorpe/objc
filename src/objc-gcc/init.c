@@ -3,7 +3,6 @@
 #include "api.h"
 
 // This list contains all modules currently loaded into the runtime.
-#define OBJC_MODULES_VERSION 8
 #define OBJC_MAX_MODULES 100
 const int max_modules = OBJC_MAX_MODULES;
 static struct objc_module_t* modules[OBJC_MAX_MODULES];
@@ -38,8 +37,8 @@ void objc_init() {
 }
 
 void __objc_module_register(struct objc_module_t *module) {
-    if (module == NULL || module->version != OBJC_MODULES_VERSION) {
-        panicf("Invalid module version: %lu", module ? module->version : 0);
+    if (module == NULL || module->version != OBJC_ABI_VERSION) {
+        panicf("Invalid abi version: %lu", module ? module->version : 0);
     }
 
     int j = 0;
@@ -49,8 +48,7 @@ void __objc_module_register(struct objc_module_t *module) {
     }
     for (int i = 0; i < module->symtab->category_count; i++) {
         struct objc_category_t *cat = (struct objc_category_t *)module->symtab->defs[j++];
-        // TODO
-        printf("   Category %s\n", cat->name);
+        __objc_class_category_register(cat);
     }
     do {
         // This is a static class instance

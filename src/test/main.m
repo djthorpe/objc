@@ -14,9 +14,9 @@ int main() {
 
     // Initialize the classes
     objc_init();
-
+    
     // Run the test
-    [Test run];
+    [Test run:@"Hello, World!"];
 
     printf("Ended test\n");
 #ifdef PICO_PLATFORM

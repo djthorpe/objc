@@ -5,7 +5,6 @@
 }
 
 // Run the test
-+(void) run;
++(void) run:(id)str;
 
 @end
-

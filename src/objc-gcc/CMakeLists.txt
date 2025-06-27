@@ -3,7 +3,7 @@ set(NAME "objc-gcc")
 add_library(${NAME} STATIC
     class.c
     init.c
-    message.c
+    hexdump.c
     method.c
     Object.m
     panicf.c

@@ -9,7 +9,7 @@
 
 @implementation Test
 
-+ (void)run {
++(void)run:(id)str {
     printf("+[Test run]\n");
 }
 

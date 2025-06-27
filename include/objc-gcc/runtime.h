@@ -17,5 +17,12 @@ typedef bool BOOL;
 #define YES true
 #define NO false
 
-// Class and Function attributes
-#define NS_ROOT_CLASS __attribute__((objc_root_class))
+// Define the root class attribute
+#if __has_attribute(objc_root_class)
+#define OBJC_ROOT_CLASS __attribute__((objc_root_class))
+#else
+#define OBJC_ROOT_CLASS
+#endif
+
+// Objects
+Class object_getClass (id object);
