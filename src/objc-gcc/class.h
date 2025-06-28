@@ -21,6 +21,11 @@ void __objc_class_init();
 void __objc_class_register(objc_class_t* cls);
 
 /*
+ * Register a class category in the Objective-C runtime.
+ */
+void __objc_class_category_register(struct objc_category *cat);
+
+/*
  * Lookup a class by name in the Objective-C runtime.
  * Returns Nil if the class is not found.
  */
