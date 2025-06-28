@@ -10,7 +10,7 @@
 @implementation Test
 
 +(void)run:(id)str {
-    printf("+[Test run]\n");
+    printf("CALLED +[Test run]\n");
 }
 
 @end

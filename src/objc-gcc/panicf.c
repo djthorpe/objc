@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
+#ifdef PICO_PLATFORM
 void sleep_ms(unsigned int ms);
+#endif
 
 // Define the panic function
 void panicf(const char *fmt, ...) {
@@ -16,5 +19,7 @@ void panicf(const char *fmt, ...) {
     while (true) {
        sleep_ms(1000);
     }
+#else
+    abort(); // Use abort to terminate the program
 #endif
 }

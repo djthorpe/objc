@@ -12,9 +12,6 @@ int main() {
 #endif
     printf("\n\ntest\n");
 
-    // Initialize the classes
-    objc_init();
-    
     // Run the test
     [Test run:@"Hello, World!"];
 
@@ -27,3 +24,4 @@ int main() {
 #endif
     return 0;
 }
+
