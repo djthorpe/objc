@@ -2,7 +2,10 @@
 
 @implementation NXConstantString
 
--(const char *)cStr {
++(void) test {
+}
+
+-(const char *) cStr {
     return self->data;
 }
 

@@ -5,6 +5,7 @@
 #include "api.h"
 #include "class.h"
 #include "hash.h"
+#include "statics.h"
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE+1];
@@ -76,7 +77,6 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
     }
 }
 
-
 /*
  * Resolve methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
@@ -99,6 +99,7 @@ void __objc_class_category_register(struct objc_category *cat) {
 ///////////////////////////////////////////////////////////////////////////////
 
 Class objc_lookup_class(const char *name) {
+    // Lookup the class by name
     objc_class_t *cls = __objc_lookup_class(name);
     if (cls == Nil) {
         return Nil;
@@ -156,12 +157,14 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         return NULL;
     }
 
+    // First load the static instances if not already done
+    static BOOL statics_init = NO;
+    if (statics_init == NO) {
+        statics_init = __objc_statics_load();
+    }
+
     // Get the class of the receiver
     objc_class_t* cls = receiver->isa;
-    // HACK
-    if (cls == Nil) {
-        cls = objc_lookup_class("NXConstantString");
-    }
     if (cls == Nil) {
         panicf("objc_msg_lookup: receiver is nil or class not found");
         return NULL;
