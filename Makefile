@@ -26,6 +26,7 @@ tests: dep-cc dep-cmake
 		-D CMAKE_SYSTEM_NAME=${OS} \
 		-D CMAKE_SYSTEM_VERSION=1
 	@cmake --build ${BUILD_DIR} -v
+	@cmake --build ${BUILD_DIR} --target test
 
 .PHONY: test
 test: submodule
