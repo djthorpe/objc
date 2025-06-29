@@ -6,9 +6,10 @@ OBJC_ROOT_CLASS
     Class isa;
 }
 
++(id) alloc;
+-(id) init;
 -(Class) class;
 -(BOOL) isEqual:(id)anObject;
-+(id) alloc;
 -(void) free;
 
 @end

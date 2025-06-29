@@ -1,19 +1,31 @@
 BUILD_DIR ?= build
 TOOLCHAIN_PATH ?= /usr
 ARCH ?= $(shell arch | tr A-Z a-z | sed 's/x86_64/amd64/' | sed 's/i386/amd64/' | sed 's/armv7l/arm/' | sed 's/aarch64/arm64/')
-OS ?= $(shell uname | tr A-Z a-z)
+OS ?= $(shell uname -s)
 PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
 TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CC ?= clang
 CMAKE ?= $(shell which cmake 2>/dev/null)
+
+# check for RELEASE=1
+ifdef RELEASE
+	CMAKE_BUILD_TYPE := Release
+else
+	CMAKE_BUILD_TYPE := Debug
+endif
 
 all: tests
 
 .PHONY: tests
 tests: dep-cc dep-cmake
 	@echo make tests
-	@cmake -B ${BUILD_DIR} -Wno-dev
-	@cmake --build ${BUILD_DIR}
+	cmake -B ${BUILD_DIR} -Wno-dev \
+		-D CMAKE_C_COMPILER=${TOOLCHAIN_PATH}/bin/${CC} \
+		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+		-D CMAKE_SYSTEM_PROCESSOR=${ARCH} \
+		-D CMAKE_SYSTEM_NAME=${OS} \
+		-D CMAKE_SYSTEM_VERSION=1
+	@cmake --build ${BUILD_DIR} -v
 
 .PHONY: test
 test: submodule

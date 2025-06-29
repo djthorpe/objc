@@ -26,7 +26,7 @@ void __objc_class_register(objc_class_t *p) {
     if (p == NULL || p->name == NULL) {
         return;
     }
-    printf("__objc_class_register %c[%s] @%p size=%d\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+    printf("__objc_class_register %c[%s] @%p size=%zu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
     for(int i = 0; i < CLASS_TABLE_SIZE; i++) {
         if (class_table[i] == p || class_table[i] == NULL) {
             class_table[i] = p;
@@ -80,7 +80,7 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
  * Resolve methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
 void __objc_class_resolve(objc_class_t *p) {
-    printf("  __objc_class_resolve %c[%s] @%p size=%d\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+    printf("  __objc_class_resolve %c[%s] @%p size=%zu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
@@ -135,6 +135,15 @@ Class objc_lookup_class(const char *name) {
     return (Class)cls;
 }
 
+Class objc_get_class(const char* name) {
+    Class cls = objc_lookup_class(name);
+    if (cls == Nil) {
+        panicf("objc_get_class: class %s not found", name);
+        return Nil;
+    }
+    return cls;
+}
+
 IMP objc_msg_lookup(id receiver, SEL selector) {
     if (receiver == NULL) {
         return NULL;
@@ -150,10 +159,10 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     // Get the implementation pointer for the method
     struct objc_hashitem* item = __objc_hash_lookup(cls, selector->id, selector->types);
     if (item == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, selector->id, selector->types);
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->id, selector->types);
         return NULL; // Method not found
     } else {
-        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, selector->id, item->imp);
+        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char *)selector->id, item->imp);
         return item->imp; // Return the implementation pointer
     }
 }
@@ -162,7 +171,7 @@ IMP objc_msg_lookup_super(id receiver, SEL selector) {
     if (receiver == NULL) {
         return NULL;
     }
-    printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, selector->id, selector->types);
+    printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, (const char* )selector->id, selector->types);
     return NULL;
 }
 

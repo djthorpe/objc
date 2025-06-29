@@ -1,16 +1,18 @@
-set(NAME "object_01")
+set(NAME "test")
+
 add_executable(${NAME}
     main.m
+    Test.m
 )
 target_compile_options(${NAME} PRIVATE
     -fobjc-runtime=gcc
     -Wno-unused-command-line-argument
 )
-target_include_directories(${NAME} PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../../include
-)
 target_link_options(${NAME} PRIVATE
     -fobjc-runtime=gcc
+)
+target_include_directories(${NAME} PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 target_link_libraries(${NAME} PRIVATE
     objc-gcc

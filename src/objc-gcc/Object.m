@@ -13,6 +13,11 @@
   return obj;
 }
 
+-(id) init {
+  printf("-[%s init] @%p\n", object_getClassName(self), self);
+  return self;
+}
+
 -(void) free {
   printf("-[%s free] @%p\n", object_getClassName(self), self);
   free(self);
