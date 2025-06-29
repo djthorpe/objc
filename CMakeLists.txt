@@ -35,5 +35,5 @@ endif()
 # Build objc runtime
 add_subdirectory(src/objc-gcc)
 
-# Build test application
-add_subdirectory(src/test)
+# Add tests
+add_subdirectory(tests)

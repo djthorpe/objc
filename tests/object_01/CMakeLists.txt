@@ -1,8 +1,6 @@
-set(NAME "test")
-
+set(NAME "object_01")
 add_executable(${NAME}
-    main.m
-    Test.m
+    ${NAME}/main.m
 )
 target_compile_options(${NAME} PRIVATE
     -fobjc-runtime=gcc
