@@ -5,6 +5,7 @@ add_library(${NAME} STATIC
     hash.c
     module.c
     Object.m
+    NXConstantString.m
     panicf.c
 )
 target_include_directories(${NAME} PRIVATE
