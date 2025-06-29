@@ -26,6 +26,7 @@ void __objc_class_register(objc_class_t *p) {
     if (p == NULL || p->name == NULL) {
         return;
     }
+    printf("__objc_class_register %c[%s] @%p size=%d\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
     for(int i = 0; i < CLASS_TABLE_SIZE; i++) {
         if (class_table[i] == p || class_table[i] == NULL) {
             class_table[i] = p;
@@ -58,7 +59,6 @@ objc_class_t* __objc_lookup_class(const char *name) {
  * This function registers all methods in the method list.
  */
 void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_list *ml) {
-    printf("  __objc_method_list_register_class\n");
     if (ml == NULL) {
         return; // Nothing to register
     }
@@ -67,6 +67,7 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
         if (method == NULL || method->name == NULL || method->imp == NULL) {
             continue; // Skip invalid methods
         }
+        printf("      %c[%s %s] types=%s imp=%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, method->name, method->types, method->imp);
         struct objc_hashitem* item = __objc_hash_register(cls, method->name, method->types, method->imp);
         if (item == NULL) {
             printf("TODO: Failed to register method %s in class %s\n", method->name, cls->name);
@@ -79,7 +80,7 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
  * Resolve methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
 void __objc_class_resolve(objc_class_t *p) {
-    printf("  __objc_class_resolve %c[%s] @%p\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p);
+    printf("  __objc_class_resolve %c[%s] @%p size=%d\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
@@ -152,6 +153,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, selector->id, selector->types);
         return NULL; // Method not found
     } else {
+        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, selector->id, item->imp);
         return item->imp; // Return the implementation pointer
     }
 }
@@ -166,6 +168,52 @@ IMP objc_msg_lookup_super(id receiver, SEL selector) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Looks up the class with the specified name. Returns Nil if the class is not found.
+ */
+Class objc_lookupClass(const char* name) {
+    return name ? objc_lookup_class(name) : Nil;
+}
+
+/**
+ * Returns the name of the class, or NULL if the class is Nil.
+ */
+const char *class_getName(Class cls) {
+    return cls ? cls->name : NULL;
+}
+
+/**
+ * Returns the name of the class of the object, or NULL if the object is nil.
+ */
+const char *object_getClassName(id obj) {
+    return obj ? obj->isa->name : NULL;
+}
+
+/**
+ * Returns the class of the object. Returns Nil if the object is nil.
+ */
 Class object_getClass (id object) {
     return object ? object->isa : Nil;
+}
+
+/**
+  * Sets the class of the object to the specified class.
+  */
+void object_setClass(id object, Class cls) {
+    if (object == NULL || cls == NULL) {
+        panicf("object_setClass: object or class is NULL");
+        return;
+    }
+    if (cls->info & objc_class_flag_meta) {
+        panicf("object_setClass: cannot set class to a metaclass");
+        return;
+    }
+    object->isa = cls; // Set the class of the object
+}
+
+/**
+ * Returns the size of an instance of the named class, in bytes. Returns 0 if the class is Nil
+ */
+size_t class_getInstanceSize(Class cls) {
+    return cls ? cls->size : 0;
 }

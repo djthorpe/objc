@@ -8,5 +8,7 @@ OBJC_ROOT_CLASS
 
 -(Class) class;
 -(BOOL) isEqual:(id)anObject;
++(id) alloc;
+-(void) free;
 
 @end

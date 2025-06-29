@@ -32,8 +32,6 @@ if (DEFINED PICO_SDK_PATH)
     pico_sdk_init()
 endif()
 
-# Build objc runtime
+# objc runtime and tests
 add_subdirectory(src/objc-gcc)
-
-# Add tests
 add_subdirectory(tests)

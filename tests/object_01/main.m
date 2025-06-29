@@ -1,27 +1,36 @@
 #include <stdio.h>
+#include <string.h>
+
 #ifdef PICO_RP2040
 #include <pico/stdlib.h>
 #endif
 #include <objc-gcc/objc.h>
-#include "Test.h"
 
 int main() {
-#ifdef PICO_RP2040
-    stdio_init_all();
-    sleep_ms(1000);
-#endif
-    printf("\n\ntest\n");
+    printf("\n\n=> object_01 test...\n\n");
 
-    // Run the test
-    [Test run:@"Hello, World!"];
+    Object* obj = [Object alloc];
+    assert(obj != NULL);
 
-    printf("Ended test\n");
-#ifdef PICO_RP2040
-    while (true) {
-        sleep_ms(1000);
-        printf(".");
-    }
-#endif
+    const char *className = object_getClassName(obj);
+    assert(className != NULL);
+    assert(strcmp(className, "Object") == 0);
+
+    Class cls = object_getClass(obj);
+    assert(cls != NULL);
+
+    const char *clsName = class_getName(cls);
+    assert(clsName != NULL);
+    assert(strcmp(clsName, "Object") == 0);
+
+    // Check class
+    assert(cls == [obj class]);
+    assert([obj isEqual:obj] == YES);
+
+    // Dispose of the object
+    [obj free];
+
+    printf("\n\n<= object_01 test...\n\n");
+
     return 0;
 }
-
