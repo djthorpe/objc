@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <objc-gcc/objc.h>
+#include <objc/objc.h>
 
 @implementation Object
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include <objc-gcc/objc.h>
+
+#include <objc/objc.h>
 #include "hash.h"
 
 #define HASH_TABLE_SIZE 512

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <objc-gcc/objc.h>
+#include <objc/objc.h>
 #include "Test.h"
 
 int main() {

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <objc-gcc/objc.h>
+#include <objc/objc.h>
 
 int main() {
     printf("\n\n=> object_01 test...\n\n");

@@ -1,4 +1,4 @@
-#include <objc-gcc/objc.h>
+#include <objc/objc.h>
 
 @implementation NXConstantString
 

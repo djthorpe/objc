@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <objc-gcc/objc.h>
+
+#include <objc/objc.h>
 #include "api.h"
 #include "hash.h"
 #include "class.h"

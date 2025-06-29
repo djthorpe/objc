@@ -1,6 +1,6 @@
 
 # add include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../include/runtime-gcc)
 
 # add test cases
 add_subdirectory(init_01)
