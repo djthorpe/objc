@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <objc/objc.h>
 #include "api.h"
 #include "hash.h"
+#include "hexdump.h"
 #include "class.h"
 
 // Private function declarations
@@ -22,21 +24,29 @@ static void __objc_module_register(struct objc_module* module) {
         return;
     }
 
-    int j = 0;
-    for (int i = 0; i < module->symtab->class_count; i++) {
+    // Replace referenced selectors from names to SEL's
+    struct objc_selector* refs = module->symtab->refs; 
+    if (refs != NULL && module->symtab->sel_ref_cnt > 0) {
+        printf("   TODO: Replace selectors @%p (sel_ref_cnt=%ld)\n", refs, module->symtab->sel_ref_cnt);
+        // TODO: Implement actual selector replacement
+        // This should iterate through refs and replace sel_id strings with unique SEL pointers
+    }
+
+    unsigned short j = 0;
+    for (unsigned short i = 0; i < module->symtab->cls_def_cnt; i++) {
         objc_class_t *cls = (objc_class_t *)module->symtab->defs[j++];
+        printf("Register class %s @%p\n", cls->name, cls);
         __objc_class_register(cls);
     }
-    for (int i = 0; i < module->symtab->category_count; i++) {
+    for (unsigned short i = 0; i < module->symtab->cat_def_cnt; i++) {
         struct objc_category *cat = (struct objc_category *)module->symtab->defs[j++];
+        printf("Register category %s @%p\n", cat->name, cat);
         __objc_class_category_register(cat);
     }
-    do {
-        // This is a static class instance
-        id inst = (id)module->symtab->defs[j++];
-        if (inst == NULL) {
-            break; // No more static instances
-        }
-        printf("   Static instance %p\n", inst);
-    } while(true);
+    
+    // Process static instances - each entry points to an objc_static_instances struct
+    while(module->symtab->defs[j] != NULL) {
+        struct objc_static_instances_list* list = (struct objc_static_instances_list* )module->symtab->defs[j++];
+        printf("Register static instances @%p\n", list);
+    }
 }

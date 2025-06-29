@@ -15,10 +15,10 @@ struct objc_selector {
 };
 
 struct objc_symtab {
-    unsigned long selector_count; // Total number of selectors in this module
-    SEL selectors;                // Array of selectors used in this module
-    unsigned short class_count;   // Number of classes defined in this module
-    unsigned short category_count;// Number of categories defined in this module
+    unsigned long sel_ref_cnt;    // Number of selectors referenced in this module
+    struct objc_selector* refs;   // Array of selectors referenced in this module
+    unsigned short cls_def_cnt;   // Number of classes defined in this module
+    unsigned short cat_def_cnt;   // Number of categories defined in this module
     void* defs[1];                // Definitions of classes, categories, and static object instances
 };
 
@@ -26,7 +26,7 @@ struct objc_module {
   unsigned long version;          // Compiler version used to generate this module
   unsigned long size;             // Size of this structure in bytes
   const char* name;               // Name of the file where this module was generated
-  struct objc_symtab* symtab;   // Pointer to the symbol table for this module
+  struct objc_symtab* symtab;     // Pointer to the symbol table for this module
 };
 
 struct objc_object {   
@@ -85,6 +85,11 @@ struct objc_method_list {
 };
 
 struct objc_ivar_list {
-  int count;                      // Number of instance variables in this list
+  int count;                    // Number of instance variables in this list
   struct objc_ivar ivars[1];    // Array of instance variable metadata
+};
+
+struct objc_static_instances_list {
+  const char* class_name;
+  id instances[0];  // Flexible array member
 };

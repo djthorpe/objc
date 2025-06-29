@@ -3,6 +3,7 @@ set(NAME "objc-runtime")
 add_library(${NAME} STATIC
     class.c
     hash.c
+    hexdump.c
     module.c
     Object.m
     NXConstantString.m

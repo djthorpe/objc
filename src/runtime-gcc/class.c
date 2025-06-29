@@ -130,6 +130,12 @@ Class objc_lookup_class(const char *name) {
         __objc_class_resolve(superclass);
         cls->superclass = superclass; // Update the superclass pointer
         superclass->info |= objc_class_flag_resolved; // Mark as resolved
+
+        // Now do the metaclass of the superclass
+        if (superclass->metaclass != NULL) {
+            __objc_class_resolve(superclass->metaclass);
+            superclass->metaclass->info |= objc_class_flag_resolved; // Mark as resolved
+        }
     }
 
     // Return the class pointer
@@ -152,20 +158,29 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
 
     // Get the class of the receiver
     objc_class_t* cls = receiver->isa;
+    // HACK
     if (cls == Nil) {
-        panicf("objc_msg_lookup: receiver has no class");
+        cls = objc_lookup_class("NXConstantString");
+    }
+    if (cls == Nil) {
+        panicf("objc_msg_lookup: receiver is nil or class not found");
         return NULL;
     }
 
-    // Get the implementation pointer for the method
-    struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
-    if (item == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
-        return NULL; // Method not found
-    } else {
-        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char *)selector->sel_id, item->imp);
-        return item->imp; // Return the implementation pointer
+    // Descend through the classes looking for the method
+    // TODO: Also look at the categories of the class
+    while(cls != Nil) {
+        printf("objc_msg_lookup: class=%c[%s] selector->id=%s selector->types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+        struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
+        if (item != NULL) {
+            return item->imp; // Return the implementation pointer
+        }
+        cls = cls->superclass;
+        printf("  superclass=@%s\n",cls);
     }
+
+    panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
+    return NULL; // Method not found
 }
 
 IMP objc_msg_lookup_super(id receiver, SEL selector) {
