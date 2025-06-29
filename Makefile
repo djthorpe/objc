@@ -1,6 +1,19 @@
 BUILD_DIR ?= build
-LLVM_TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Linux-x86_64
-PICO_BOARD ?= pico
+TOOLCHAIN_PATH ?= /usr
+ARCH ?= $(shell arch | tr A-Z a-z | sed 's/x86_64/amd64/' | sed 's/i386/amd64/' | sed 's/armv7l/arm/' | sed 's/aarch64/arm64/')
+OS ?= $(shell uname | tr A-Z a-z)
+PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
+TARGET ?= ${ARCH}-${OS}-${PLATFORM}
+CC ?= clang
+CMAKE ?= $(shell which cmake 2>/dev/null)
+
+all: tests
+
+.PHONY: tests
+tests: dep-cc dep-cmake
+	@echo make tests
+	@cmake -B ${BUILD_DIR} -Wno-dev
+	@cmake --build ${BUILD_DIR}
 
 .PHONY: test
 test: submodule
@@ -25,3 +38,11 @@ submodule:
 clean:
 	@echo "Cleaning build directory"
 	@rm -rf ${BUILD_DIR}
+
+.PHONY: dep-cc
+dep-cc:
+	@test -f "${TOOLCHAIN_PATH}/bin/${CC}" && test -x "${TOOLCHAIN_PATH}/bin/${CC}" || (echo "Missing CC: ${TOOLCHAIN_PATH}/bin/${CC}" && exit 1)
+
+.PHONY: dep-cmake
+dep-cmake:
+	@test -f "${CMAKE}" && test -x "${CMAKE}" || (echo "Missing CMAKE: ${CMAKE}" && exit 1)

@@ -1,18 +1,29 @@
 #include <stdio.h>
-#include <objc-gcc/Object.h>
+#include <stdlib.h>
+#include <objc-gcc/objc.h>
 
 @implementation Object
 
-// Allocate memory for an instance of the class
-+ (id)alloc
-{
-    printf("[Object alloc]\n");
-    return 0;
++(id) alloc {
+  id obj = (id)malloc(class_getInstanceSize(self));
+  printf("+[%s alloc] size=%zu => @%p\n",class_getName(self), class_getInstanceSize(self), obj);
+  if (obj) {
+    object_setClass(obj, self);
+  }
+  return obj;
 }
 
-- (id)init {
-    printf("[Object init]\n");
-    return self;
+-(void) free {
+  printf("-[%s free] @%p\n", object_getClassName(self), self);
+  free(self);
+}
+
+-(Class) class {
+  return object_getClass(self);
+}
+
+-(BOOL) isEqual:(id)anObject {
+  return self == anObject;
 }
 
 @end

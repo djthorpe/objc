@@ -1,25 +1,22 @@
 #include <stdio.h>
-#ifdef PICO_PLATFORM
+#ifdef PICO_RP2040
 #include <pico/stdlib.h>
 #endif
 #include <objc-gcc/objc.h>
 #include "Test.h"
 
 int main() {
-#ifdef PICO_PLATFORM
+#ifdef PICO_RP2040
     stdio_init_all();
     sleep_ms(1000);
 #endif
     printf("\n\ntest\n");
 
-    // Initialize the classes
-    objc_init();
-
     // Run the test
-    [Test run];
+    [Test run:@"Hello, World!"];
 
     printf("Ended test\n");
-#ifdef PICO_PLATFORM
+#ifdef PICO_RP2040
     while (true) {
         sleep_ms(1000);
         printf(".");
@@ -27,3 +24,4 @@ int main() {
 #endif
     return 0;
 }
+

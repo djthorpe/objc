@@ -1,2 +1,4 @@
 build
 ._*
+third_party/picotool-*
+.DS_Store

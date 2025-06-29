@@ -1,16 +1,14 @@
 #pragma once
 #include "runtime.h"
 
-@protocol Object
-+ (id) alloc;
-- (id) init;
-@end
-
-NS_ROOT_CLASS
-@interface Object <Object> {
-@private
+OBJC_ROOT_CLASS
+@interface Object {
     Class isa;
 }
-+ (id) alloc;
-- (id) init;
+
+-(Class) class;
+-(BOOL) isEqual:(id)anObject;
++(id) alloc;
+-(void) free;
+
 @end

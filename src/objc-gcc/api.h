@@ -1,46 +1,89 @@
 #pragma once
 #include <stddef.h>
+#include <objc-gcc/objc.h>
 
-struct objc_selector_t {
-  void* id;
-  const char* types;
+///////////////////////////////////////////////////////////////////////////////////////////
+// Objective-C ABI
+
+// This is the current API version for the Objective-C runtime.
+#define OBJC_ABI_VERSION 8
+
+struct objc_selector {
+  void* id;                      // Unique identifier for the selector
+  const char* types;             // Type encoding for the selector
 };
 
-struct objc_symtab_t {
-    unsigned long selector_count;     // Unused
-    SEL selectors;                    // Unused
-    unsigned short class_count;       // Class count
-    unsigned short category_count;    // Category count
-    void* defs[1];               // Definitions of classes, categories, and static instances
+struct objc_symtab {
+    unsigned long selector_count; // Total number of selectors in this module
+    SEL selectors;                // Array of selectors used in this module
+    unsigned short class_count;   // Number of classes defined in this module
+    unsigned short category_count;// Number of categories defined in this module
+    void* defs[1];                // Definitions of classes, categories, and static object instances
 };
 
-struct objc_module_t {
-  unsigned long version;              // Compiler revision
-  unsigned long size;                 // sizeof(struct objc_module_t )
-  const char* name;                   // Name of the file where the module was generated
-  struct objc_symtab_t* symtab;       // Symbol table
+struct objc_module {
+  unsigned long version;          // Compiler version used to generate this module
+  unsigned long size;             // Size of this structure in bytes
+  const char* name;               // Name of the file where this module was generated
+  struct objc_symtab* symtab;   // Pointer to the symbol table for this module
 };
 
-struct objc_class_t {     
-  struct objc_class_t* metaclass;     // Pointer to the class's meta class.
-  struct objc_class*  superclass;     // Pointer to the super class. NULL for class Object.
-  const char*  name;                  // Name of the class.
-  long version;                       // Unknown. 
-  unsigned long info;                 // Bit mask. See class masks defined above.
-  unsigned long size;                 // Size in bytes of the class. The sum of the class definition and all super class definitions.
-  struct objc_ivar_list* ivars;       // Pointer to a structure that describes the instance variables in the class definition.  NULL indicates no instance variables.
-  struct objc_method_list*  methods;  // Linked list of instance methods defined for the class.
-  struct sarray* dtable;              // Pointer to instance method dispatch table.
-  struct objc_class_t* subclass_list; // Subclasses
-  struct objc_class_t* sibling_cls;
-  struct objc_protocol_list* protocols; // Protocols conformed to
-  void* gc_object_type;
+struct objc_object {   
+  struct objc_class* isa; // Pointer to the class of this object
 };
 
-struct objc_category_t {
-  const char*   name;                /* Name of the category.  Name contained in the () of the  category definition. */
-  const char*   class_name;                   /* Name of the class to which the category belongs. */
-  struct objc_method_list_t* instance_methods;             /* Linked list of instance methods defined in the category. NULL indicates no instance methods defined. */
-  struct objc_method_list_t*   class_methods;                /* Linked list of factory  methods defined in the category.  NULL indicates no class methods defined. */
-  struct objc_protocol_list *protocols;	      /* List of Protocols conformed to */
+struct objc_class {     
+  struct objc_class* metaclass; // Pointer to the metaclass for this class
+  struct objc_class* superclass; // Pointer to the superclass. NULL for the root class
+  const char* name;               // Name of the class
+  long version;                   // Version of the class (unused)
+  unsigned long info;             // Bitmask containing class-specific objc_class_flags
+  unsigned long size;             // Total size of the class, including all superclasses
+  struct objc_ivar_list* ivars; // List of instance variables defined in this class
+  struct objc_method_list* methods; // List of instance methods defined in this class
+  struct sarray* dtable;          // Dispatch table for instance methods
+  struct objc_class* subclass_list; // Pointer to the first subclass of this class
+  struct objc_class* sibling_cls; // Pointer to sibling classes
+  struct objc_protocol_list* protocols; // List of protocols adopted by this class
+  void* extra_data;               // Additional data associated with this class
+};
+
+enum objc_class_flags {
+  objc_class_flag_meta = 0x02,        // This class structure represents a metaclass
+  objc_class_flag_initialized = 0x04, // Indicates the class has received the +initialize message
+  objc_class_flag_resolved = 0x08,    // Indicates the class has been initialized by the runtime
+};
+
+struct objc_category {
+  const char* name;               // Name of the category
+  const char* class_name;         // Name of the class to which this category belongs
+  struct objc_method_list* instance_methods; // List of instance methods defined in this category
+  struct objc_method_list* class_methods; // List of class methods defined in this category
+  struct objc_protocol_list* protocols; // List of protocols adopted by this category
+};
+
+struct objc_method {
+  union {
+    const char* name;             // Name of the method (selector)
+    SEL selector;                 // Selector for this method
+  };
+  const char* types;              // Type encoding for this method
+  IMP imp;                        // Pointer to the function implementing this method
+};
+
+struct objc_ivar {
+  const char* name;               // Name of the instance variable
+  const char* type;               // Type encoding for the instance variable
+  int offset;                     // Offset of the instance variable from the start of the object
+};
+
+struct objc_method_list {
+  struct objc_method_list* next; // Pointer to the next method list in the chain
+  int count;                       // Number of methods in this list
+  struct objc_method methods[1]; // Array of methods in this list
+};
+
+struct objc_ivar_list {
+  int count;                      // Number of instance variables in this list
+  struct objc_ivar ivars[1];    // Array of instance variable metadata
 };

@@ -2,7 +2,8 @@ set(NAME "objc-gcc")
 
 add_library(${NAME} STATIC
     class.c
-    init.c
+    hash.c
+    module.c
     Object.m
     panicf.c
 )

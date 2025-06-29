@@ -1,11 +1,10 @@
 #pragma once
-#include <objc-gcc/Object.h>
+#include <objc-gcc/objc.h>
 
 @interface Test : Object {
 }
 
 // Run the test
-+(void) run;
++(void) run:(id)str;
 
 @end
-
