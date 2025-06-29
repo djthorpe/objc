@@ -4,6 +4,6 @@ add_executable(${NAME}
     Test.m
 )
 target_link_libraries(${NAME} PRIVATE
-    objc-gcc
+    objc-runtime
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

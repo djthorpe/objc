@@ -1,8 +1,9 @@
 #pragma once
+#include <stddef.h>
 
 // Opaque types
 typedef struct objc_object* id;
-typedef const struct objc_selector* SEL;
+typedef const struct objc_selector *SEL;
 typedef struct objc_class* Class;
 typedef id (*IMP)(id, SEL, ...);
 typedef struct objc_method* Method;

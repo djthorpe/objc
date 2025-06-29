@@ -24,7 +24,8 @@ tests: dep-cc dep-cmake
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D CMAKE_SYSTEM_PROCESSOR=${ARCH} \
 		-D CMAKE_SYSTEM_NAME=${OS} \
-		-D CMAKE_SYSTEM_VERSION=1
+		-D CMAKE_SYSTEM_VERSION=1 \
+		-D RUNTIME=gcc
 	@cmake --build ${BUILD_DIR} -v
 	@cmake --build ${BUILD_DIR} --target test
 

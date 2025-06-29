@@ -158,12 +158,12 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     }
 
     // Get the implementation pointer for the method
-    struct objc_hashitem* item = __objc_hash_lookup(cls, selector->id, selector->types);
+    struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
     if (item == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->id, selector->types);
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
         return NULL; // Method not found
     } else {
-        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char *)selector->id, item->imp);
+        printf("objc_msg_lookup: method=%c[%s %s] => @%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char *)selector->sel_id, item->imp);
         return item->imp; // Return the implementation pointer
     }
 }
@@ -172,7 +172,7 @@ IMP objc_msg_lookup_super(id receiver, SEL selector) {
     if (receiver == NULL) {
         return NULL;
     }
-    printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, (const char* )selector->id, selector->types);
+    printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, (const char* )selector->sel_id, selector->sel_type);
     return NULL;
 }
 

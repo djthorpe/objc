@@ -10,8 +10,8 @@
 #define OBJC_ABI_VERSION 8
 
 struct objc_selector {
-  void* id;                      // Unique identifier for the selector
-  const char* types;             // Type encoding for the selector
+  void* sel_id;                      // Unique identifier for the selector
+  char* sel_type;             // Type encoding for the selector
 };
 
 struct objc_symtab {
