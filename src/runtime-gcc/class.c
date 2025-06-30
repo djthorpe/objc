@@ -75,7 +75,7 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
             continue; // Skip invalid methods
         }
 #ifdef DEBUG
-        printf("      %c[%s %s] types=%s imp=%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, method->name, method->types, method->imp);
+        printf("    %c[%s %s] types=%s imp=%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, method->name, method->types, method->imp);
 #endif
         struct objc_hashitem* item = __objc_hash_register(cls, method->name, method->types, method->imp);
         if (item == NULL) {
