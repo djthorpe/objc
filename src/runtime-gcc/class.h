@@ -30,4 +30,4 @@ void __objc_class_category_register(struct objc_category *cat);
  * Lookup a class by name in the Objective-C runtime.
  * Returns Nil if the class is not found.
  */
-objc_class_t* __objc_lookup_class(const char *name);
+Class objc_lookup_class(const char *name);

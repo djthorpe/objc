@@ -91,7 +91,7 @@ void __objc_class_register_methods(objc_class_t *p) {
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
-        __objc_method_list_register_class(p,ml);
+        __objc_method_list_register_class(p, ml);
     }
 
     // Assume the superclass is not yet resolved

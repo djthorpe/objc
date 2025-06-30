@@ -57,8 +57,8 @@ BOOL __objc_statics_load() {
 }
 
 static void __objc_statics_load_list(struct objc_static_instances_list *list) {
-    // Lookup the class by name
-    objc_class_t* cls = __objc_lookup_class(list->class_name);
+    // Lookup the class by name - this will resolve the class if it exists
+    objc_class_t* cls = objc_lookup_class(list->class_name);
     if (cls == NULL) {
         panicf("Static instances class '%s' not found", list->class_name);
         return;
