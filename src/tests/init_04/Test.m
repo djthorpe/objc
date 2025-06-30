@@ -5,17 +5,19 @@
 
 #pragma mark - Lifecycle
 -(id) initWithValue:(int)value {
-    self->value = value; // Set the instance variable
+    self->_value = value; // Set the instance variable
     return self; // Return the initialized object
 }
 
 #pragma mark - Properties
 -(int)value {
-    return value; // Return the instance variable
+    return self->_value; // Return the instance variable
 }
 
 -(void)setValue:(int)value {
-    self->value = value; // Set the instance variable
+    //@synchronized(self) { 
+        self->_value = value; // Update the instance variable
+    //}
 }
 
 @end

@@ -17,6 +17,7 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
     REQUIRED
 )
 add_compile_options(-fobjc-runtime=gcc)
+add_compile_options(-fobjc-exceptions)
 add_compile_options(--target=armv6m-none-eabi)
 add_compile_options(-mfloat-abi=soft)
 add_compile_options(-march=armv6m)

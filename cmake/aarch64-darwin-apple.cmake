@@ -16,3 +16,5 @@ find_program(CMAKE_OBJC_COMPILER NAMES "gcc-15"
     REQUIRED
 )
 add_compile_options(-fgnu-runtime)
+add_compile_options(-fobjc-exceptions)
+

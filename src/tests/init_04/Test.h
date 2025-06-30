@@ -2,7 +2,7 @@
 #include <objc/objc.h>
 
 @interface Test : Object {
-    int value; // Instance variable to hold the value
+    int _value; // Instance variable to hold the value
 }
 
 // Lifecycle
