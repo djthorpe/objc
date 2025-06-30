@@ -1,4 +1,4 @@
-set(NAME "objc-runtime")
+set(NAME "objc-gcc")
 
 add_library(${NAME} STATIC
     class.c

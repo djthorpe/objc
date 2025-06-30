@@ -28,7 +28,9 @@ void __objc_class_register(objc_class_t *p) {
     if (p == NULL || p->name == NULL) {
         return;
     }
-    printf("__objc_class_register %c[%s] @%p size=%zu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+#ifdef DEBUG
+    printf("__objc_class_register %c[%s] @%p size=%lu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+#endif
     for(int i = 0; i < CLASS_TABLE_SIZE; i++) {
         if (class_table[i] == p || class_table[i] == NULL) {
             class_table[i] = p;
@@ -69,7 +71,9 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
         if (method == NULL || method->name == NULL || method->imp == NULL) {
             continue; // Skip invalid methods
         }
+#ifdef DEBUG
         printf("      %c[%s %s] types=%s imp=%p\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, method->name, method->types, method->imp);
+#endif
         struct objc_hashitem* item = __objc_hash_register(cls, method->name, method->types, method->imp);
         if (item == NULL) {
             printf("TODO: Failed to register method %s in class %s\n", method->name, cls->name);
@@ -81,7 +85,9 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
  * Resolve methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
 void __objc_class_resolve(objc_class_t *p) {
-    printf("  __objc_class_resolve %c[%s] @%p size=%zu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+#ifdef DEBUG
+    printf("  __objc_class_resolve %c[%s] @%p size=%lu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+#endif
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
@@ -93,7 +99,9 @@ void __objc_class_category_register(struct objc_category *cat) {
     if (cat == NULL || cat->name == NULL || cat->class_name == NULL) {
         return;
     }
-    printf("__objc_class_category_register +[%s+%s]\n", cat->name, cat->class_name);
+#ifdef DEBUG
+    printf("TODO: __objc_class_category_register +[%s+%s]\n", cat->name, cat->class_name);
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -104,9 +112,11 @@ Class objc_lookup_class(const char *name) {
     if (cls == Nil) {
         return Nil;
     }
+#ifdef DEBUG
     printf("objc_lookup_class %c[%s] @%p\n",cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
+#endif
 
-    // Resolve the class
+// Resolve the class
     if (!(cls->info & objc_class_flag_resolved)) {
         __objc_class_resolve(cls);
         cls->info |= objc_class_flag_resolved; // Mark as resolved
@@ -122,7 +132,9 @@ Class objc_lookup_class(const char *name) {
 
     // Resolve the superclass
     if (cls->superclass != NULL) {
+#ifdef DEBUG
         printf("objc_lookup_class super=\"%s\" @%p\n",(const char* )cls->superclass,cls->superclass);
+#endif        
         Class superclass = __objc_lookup_class((const char* )cls->superclass);
         if (superclass == Nil) {
             panicf("Superclass %s not found for class %s", cls->superclass, cls->name);
@@ -173,13 +185,19 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     // Descend through the classes looking for the method
     // TODO: Also look at the categories of the class
     while(cls != Nil) {
+#ifdef DEBUG    
         printf("objc_msg_lookup: class=%c[%s] selector->id=%s selector->types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+#endif
         struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
         if (item != NULL) {
             return item->imp; // Return the implementation pointer
         }
         cls = cls->superclass;
-        printf("  superclass=@%s\n",cls);
+#ifdef DEBUG    
+        if (cls != NULL) {
+            printf("  superclass=@%s\n",(const char* )cls);
+        }
+#endif
     }
 
     panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
@@ -190,7 +208,9 @@ IMP objc_msg_lookup_super(id receiver, SEL selector) {
     if (receiver == NULL) {
         return NULL;
     }
+#ifdef DEBUG    
     printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, (const char* )selector->sel_id, selector->sel_type);
+#endif
     return NULL;
 }
 

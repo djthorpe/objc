@@ -2,13 +2,12 @@
 #include <objc/objc.h>
 
 int main() {
-    [NXConstantString test];
-    
-    
+    [NXConstantString test];   
     NXConstantString *str = @"tests";
-    NSLog(@"object_03 %s...", [str cStr]);
     assert([str length] == 5);
     assert(strcmp([str cStr], "tests") == 0);
+    
+    NSLog(@"object_03 %s...", [str cStr]);
 
     // Return success
     return 0;

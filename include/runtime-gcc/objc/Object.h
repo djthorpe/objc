@@ -1,5 +1,4 @@
 #pragma once
-#include "runtime.h"
 
 OBJC_ROOT_CLASS
 @interface Object {

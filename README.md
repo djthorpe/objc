@@ -1,25 +1,45 @@
-# objc on Raspberry Pi and Pico boards
+# objc runtime
 
-Objective C experiments. Motivation is to see if a very minimal Objective C runtime can be created for ARM and 
-x86, for embedded systems. Would be good to minimally support autorelease pools.
+Objective C experiments. Motivation is to see if a very minimal Objective C runtime can be created for ARM and
+x86, mostly for embedded systems. Would be good to minimally support autorelease pools.
 
 These are some references for future work:
 
 * <https://github.com/mhjacobson/avr-objc>
 * <https://github.com/charlieMonroe/libobjc-kern>
 
-Get the ARM LLVM toolchain for Pico:\
+For embedded systems, get the ARM LLVM toolchain:\
 <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>
 
-Install this to the `/opt` directory. Checkout all the code and submodules with:
+Install this to the `/opt` directory.
 
 ```bash
 git clone git@github.com:djthorpe/objc.git
 cd objc
-make submodule
 ```
 
-Then you have three options for compiling:
+the idea is this will work with both the `clang` and `gcc` compilers. To compile for MacOS, you'll need the `gcc` 
+compiler rather than `clang`,
+
+```bash
+# Compile with GCC 15 for MacOS and run tests
+brew install gcc@15
+TOOLCHAIN_PATH=/opt/homebrew CC=gcc-15 make test
+```
+
+You can create a static library for the Objective C runtime - say for Pico:
+
+```bash
+# Compile for the RP2040 Pico board
+CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
+```
+
+## Older stuff below here
+
+Then you have three options for compiling and running the tests:
+
+```bash
+# Use this for Darwin
 
 1. Pico target
 
