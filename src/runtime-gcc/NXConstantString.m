@@ -2,9 +2,6 @@
 
 @implementation NXConstantString
 
-+(void) test {
-}
-
 -(const char *) cStr {
     return self->data;
 }

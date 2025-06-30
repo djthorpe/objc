@@ -5,7 +5,6 @@
     unsigned int length;
 }
 
-+(void) test;
 -(const char*) cStr;
 -(unsigned int) length;
 

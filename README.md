@@ -34,76 +34,65 @@ You can create a static library for the Objective C runtime - say for Pico:
 CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
 ```
 
+## Object
+
+The `Object` class is the root class of the Objective C runtime:
+
+```objc
+@interface Object {
+    Class isa;
+}
+
++(id) alloc; // Allocate an instance of the class
+-(void) dealloc; // Dispose of the instance
+-(id) init; // Initialize the instance
+-(Class) class; // Returns the class of the instance
+-(BOOL) isEqual:(id)anObject; // Returns YES if the instance is equal to another object
+@end
+```
+
+## NXConstantString
+
+The `NXConstantString` class is used to represent constant strings in Objective C. It is a subclass of `Object` and provides methods for creating and comparing strings.
+
+```objc
+@interface NXConstantString : Object {
+    const char* data;
+    unsigned int length;
+}
+
+-(const char*) cStr;
+-(unsigned int) length;
+@end
+```
+
+## NSLog
+
+The `NSLog` function is used to log messages to the console. Any message is terminated with a newline character, and formatting is currently identical to `printf`.
+
+```objc
+void main() {
+   NSLog(@"Hello, %s", "Objective C!");
+}
+```
+
 ## Current status
 
 * [X] Registering classes
 * [X] Simple message calling
 * [X] `NXConstantString` support
 * [X] Resolving super classes and meta classes for message lookup
-* [ ] Calling methods in super classes
+* [ ] Calling methods in super classes - implement `[super init]` for example
 * [ ] Calling methods in categories
+* [ ] `respondsToSelector:`
 * [ ] More efficient method implementation lookup
-* [ ] Memory management - alloc, dealloc, memory arenas
-* [ ] Memory management - retain, release
-* [ ] Autorelease pools
-* [ ] Pico toolchain
-* [ ] Protocols
+* [ ] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXMemoryZone`
+* [ ] Memory management - retain, release - reference counting for objects
+* [ ] String - `NXString` - mutable and immutable strings
+* [ ] Array and Map - `NXArray` and `NXMap` - mutable and immutable arrays and maps
+* [ ] Application and Runloops - `NXApplication` and `NXRunLoop` 
+* [ ] Pico toolchain - integrate with Pico SDK
+* [ ] Protocols and `conformsToProtocol:`
 * [ ] Threading support
 * [ ] `@synchronized` support
 * [ ] Exception handling?
-
-## Object
-
-
-
-## Older stuff below here
-
-Then you have three options for compiling and running the tests:
-
-```bash
-# Use this for Darwin
-
-1. Pico target
-
-```bash
-LLVM_TOOLCHAIN_PATH=/opt/llvm_toolchain_path PICO_BOARD=pico make # Pico (or other board)
-picotool load -x build/src/test/test.uf2 # Load the test program onto the Pico
-```
-
-Please see list of possible boards [here](https://github.com/raspberrypi/pico-sdk/tree/master/src/boards/include/boards)
-
-2. Raspberry Pi target (or other ARM64 Linux target)
-
-```bash
-PICO_BOARD=arm64-linux-gnu make 
-./build/src/test/test
-```
-
-3. Intel Linux target
-
-```bash
-PICO_BOARD=amd64-linux-gnu make
-./build/src/test/test
-```
-
-In each case, the output is currently as follows:
-
-```text
-test
-__objc_class_init
-   Category AnotherHack
-__objc_class_register Test
-   Category AnotherHack
-__objc_class_register Object
-   Category AnotherHack
-objc_lookup_class Test
-objc_msg_lookup: 0x5567ac02a8 0x5567ac0108
-Segmentation fault
-```
-
-The segmentation fault is because the `objc_msg_lookup` function is not implemented yet (it's calling `[Test run]`).
-Next steps:
-
-* Correctly implement the `objc_lookup_class` and `objc_msg_lookup` so it uses a sparse array in both cases.
-
-That's as far as I got so far, more soon!

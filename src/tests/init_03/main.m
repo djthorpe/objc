@@ -2,8 +2,6 @@
 #include <objc/objc.h>
 
 int main() {
-    [NXConstantString test];   
-
     NXConstantString* str = @"tests";
     assert([str length] == 5);
     assert(strcmp([str cStr], "tests") == 0);
