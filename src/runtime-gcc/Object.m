@@ -23,6 +23,10 @@
   return object_getClass(self);
 }
 
++(Class) class {
+  return self;
+}
+
 -(BOOL) isEqual:(id)anObject {
   return self == anObject;
 }

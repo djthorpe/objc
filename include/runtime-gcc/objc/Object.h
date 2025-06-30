@@ -34,6 +34,11 @@ OBJC_ROOT_CLASS
 -(Class) class;
 
 /*
+ * Returns the class (itself).
+ */
++(Class) class;
+
+/*
  * Returns true if one object is equal to another. When comparing two objects,
  * this method should be overridden to compare the contents of the objects.
  */

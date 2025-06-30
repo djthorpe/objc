@@ -14,6 +14,11 @@ struct objc_selector {
   char* sel_type;             // Type encoding for the selector
 };
 
+struct objc_super {
+  id    receiver;                // The receiver of the message
+  struct objc_class* superclass; // The superclass of the receiver
+};
+
 struct objc_symtab {
     unsigned long sel_ref_cnt;    // Number of selectors referenced in this module
     struct objc_selector* refs;   // Array of selectors referenced in this module

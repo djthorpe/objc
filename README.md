@@ -129,7 +129,7 @@ Represents a mutable string in Objective C.
 * [X] Simple message calling
 * [X] `NXConstantString` support
 * [X] Resolving super classes and meta classes for message lookup
-* [ ] Calling methods in super classes - implement `[super init]` for example
+* [X] Calling methods in super classes - implement `[super init]` for example
 * [ ] Calling methods in categories
 * [ ] `respondsToSelector:` and `+[Class load]`
 * [ ] More efficient method implementation lookup

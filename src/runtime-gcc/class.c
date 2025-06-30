@@ -10,6 +10,9 @@
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE+1];
 
+// Forward declaration of the static lookup function
+static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector, id receiver);
+
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_class_init() {
@@ -158,26 +161,13 @@ Class objc_get_class(const char* name) {
     return cls;
 }
 
-IMP objc_msg_lookup(id receiver, SEL selector) {
-    if (receiver == NULL) {
-        return NULL;
-    }
-
-    // First load the static instances if not already done
-    static BOOL statics_init = NO;
-    if (statics_init == NO) {
-        statics_init = __objc_statics_load();
-    }
-
-    // Get the class of the receiver
-    objc_class_t* cls = receiver->isa;
-    if (cls == Nil) {
-        panicf("objc_msg_lookup: receiver is nil or class not found");
-        return NULL;
+static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector, id receiver) {
+    if (cls == Nil || selector == NULL || receiver == NULL) {
+        return NULL; // Invalid parameters
     }
 
 #ifdef DEBUG    
-        printf("objc_msg_lookup: %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id);
+    printf("objc_msg_lookup: %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id);
 #endif
 
     // Descend through the classes looking for the method
@@ -197,14 +187,31 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     return NULL; // Method not found
 }
 
-IMP objc_msg_lookup_super(id receiver, SEL selector) {
+IMP objc_msg_lookup(id receiver, SEL selector) {
     if (receiver == NULL) {
         return NULL;
     }
-#ifdef DEBUG    
-    printf("objc_msg_lookup_super: receiver=%p selector->id=%s selector->types=%s\n", receiver, (const char* )selector->sel_id, selector->sel_type);
-#endif
-    return NULL;
+
+    // First load the static instances if not already done
+    static BOOL statics_init = NO;
+    if (statics_init == NO) {
+        statics_init = __objc_statics_load();
+    }
+
+    // Get the class of the receiver
+    objc_class_t* cls = receiver->isa;
+    if (cls == Nil) {
+        panicf("objc_msg_lookup: receiver is nil or class not found");
+        return NULL;
+    }
+    return __objc_msg_lookup(cls, selector, receiver);
+}
+
+IMP objc_msg_lookup_super(struct objc_super *super, SEL selector) {
+    if (super == NULL || super->receiver == nil) {
+        return NULL;
+    }
+    return __objc_msg_lookup(super->superclass, selector, super->receiver);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
