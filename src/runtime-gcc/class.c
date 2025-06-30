@@ -176,22 +176,21 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         return NULL;
     }
 
+#ifdef DEBUG    
+        printf("objc_msg_lookup: %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id);
+#endif
+
     // Descend through the classes looking for the method
     // TODO: Also look at the categories of the class
     while(cls != Nil) {
 #ifdef DEBUG    
-        printf("objc_msg_lookup: class=%c[%s] selector->id=%s selector->types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+        printf("  %c[%s %s:%s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
 #endif
         struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
         if (item != NULL) {
             return item->imp; // Return the implementation pointer
         }
         cls = cls->superclass;
-#ifdef DEBUG    
-        if (cls != Nil) {
-            printf("  superclass=@%p\n",(const char* )cls);
-        }
-#endif
     }
 
     panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
