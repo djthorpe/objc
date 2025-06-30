@@ -82,16 +82,31 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
 }
 
 /*
- * Resolve methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
+ * Register methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
-void __objc_class_resolve(objc_class_t *p) {
+void __objc_class_register_methods(objc_class_t *p) {
 #ifdef DEBUG
-    printf("  __objc_class_resolve %c[%s] @%p size=%lu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+    printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
         __objc_method_list_register_class(p,ml);
+    }
+
+    // Assume the superclass is not yet resolved
+    if (p->superclass != NULL) {        
+        Class superclass = __objc_lookup_class((const char* )p->superclass);
+        if (superclass == Nil) {
+            panicf("Superclass %s not found for class %s", p->superclass, p->name);
+            return;
+        }
+        if (p->info & objc_class_flag_meta) {
+            superclass = superclass->metaclass; // Use the metaclass if this is a metaclass
+        }
+        __objc_class_register_methods(superclass);
+        p->superclass = superclass; // Update the superclass pointer
+        superclass->info |= objc_class_flag_resolved; // Mark as resolved
     }
 }
 
@@ -116,9 +131,9 @@ Class objc_lookup_class(const char *name) {
     printf("objc_lookup_class %c[%s] @%p\n",cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
 #endif
 
-// Resolve the class
+    // Resolve the class
     if (!(cls->info & objc_class_flag_resolved)) {
-        __objc_class_resolve(cls);
+        __objc_class_register_methods(cls);
         cls->info |= objc_class_flag_resolved; // Mark as resolved
     } else {
         return (Class)cls; // Already resolved
@@ -126,29 +141,8 @@ Class objc_lookup_class(const char *name) {
     
     // Resolve the metaclass
     if (cls->metaclass != NULL) {
-        __objc_class_resolve(cls->metaclass);
+        __objc_class_register_methods(cls->metaclass);
         cls->metaclass->info |= objc_class_flag_resolved; // Mark as resolved
-    }
-
-    // Resolve the superclass
-    if (cls->superclass != NULL) {
-#ifdef DEBUG
-        printf("objc_lookup_class super=\"%s\" @%p\n",(const char* )cls->superclass,cls->superclass);
-#endif        
-        Class superclass = __objc_lookup_class((const char* )cls->superclass);
-        if (superclass == Nil) {
-            panicf("Superclass %s not found for class %s", cls->superclass, cls->name);
-            return Nil;
-        }
-        __objc_class_resolve(superclass);
-        cls->superclass = superclass; // Update the superclass pointer
-        superclass->info |= objc_class_flag_resolved; // Mark as resolved
-
-        // Now do the metaclass of the superclass
-        if (superclass->metaclass != NULL) {
-            __objc_class_resolve(superclass->metaclass);
-            superclass->metaclass->info |= objc_class_flag_resolved; // Mark as resolved
-        }
     }
 
     // Return the class pointer
@@ -194,8 +188,8 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         }
         cls = cls->superclass;
 #ifdef DEBUG    
-        if (cls != NULL) {
-            printf("  superclass=@%s\n",(const char* )cls);
+        if (cls != Nil) {
+            printf("  superclass=@%p\n",(const char* )cls);
         }
 #endif
     }
