@@ -2,12 +2,22 @@
 #include <objc/objc.h>
 
 int main() {
-    NXConstantString* str = @"tests";
-    assert([str length] == 5);
-    assert(strcmp([str cStr], "tests") == 0);
+    NXConstantString* str1 = @"tests";
+    assert([str1 length] == 5);
+    assert(strcmp([str1 cStr], "tests") == 0);
 
-    // Log the string    
-    NSLog(@"object_03 %s...", [str cStr]);
+    NXConstantString* str2 = @"tests";
+    assert([str2 length] == 5);
+    assert(strcmp([str2 cStr], "tests") == 0);
+
+    NXConstantString* str3 = @"tests3";
+    assert([str3 length] == 6);
+    assert(strcmp([str3 cStr], "tests3") == 0);
+
+    // isEqual
+    assert([str1 isEqual:str2]);
+    assert(![str1 isEqual:str3]);
+    assert(![str2 isEqual:str3]);
 
     // Return success
     return 0;
