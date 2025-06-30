@@ -9,3 +9,8 @@
 -(unsigned int) length;
 
 @end
+
+#ifdef __clang__
+// Compatibility alias for Clang
+@compatibility_alias NSString NXConstantString;
+#endif

@@ -1,8 +1,7 @@
-# RP2040 target toolchain file
+# ARM/Darwin target toolchain file
 
-set(CMAKE_SYSTEM_NAME "PICO")
-set(CMAKE_SYSTEM_PROCESSOR "cortex-m0plus")
-set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+set(CMAKE_SYSTEM_NAME "Linux")
+set(CMAKE_SYSTEM_PROCESSOR "x86-64")
 
 find_program(CMAKE_C_COMPILER NAMES "clang"
     PATHS ENV TOOLCHAIN_PATH
@@ -19,6 +18,6 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
 
 add_compile_options(-fobjc-runtime=gcc)
 add_compile_options(-fobjc-exceptions)
-add_compile_options(--target=armv6m-none-eabi)
-add_compile_options(-mfloat-abi=soft)
-add_compile_options(-march=armv6m)
+add_compile_options(--target=x86_64-linux-gnu)
+add_compile_options(-march=x86-64)
+

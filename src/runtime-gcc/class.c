@@ -79,7 +79,8 @@ void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_lis
 #endif
         struct objc_hashitem* item = __objc_hash_register(cls, method->name, method->types, method->imp);
         if (item == NULL) {
-            printf("TODO: Failed to register method %s in class %s\n", method->name, cls->name);
+            panicf("TODO: Failed to register method %s in class %s\n", method->name, cls->name);
+            return;
         }
     }
 }
@@ -123,7 +124,7 @@ void __objc_class_category_register(struct objc_category *cat) {
     // Lookup the class by name
     objc_class_t *cls = __objc_lookup_class(cat->class_name);
     if (cls == Nil) {
-        panicf("Class %s not found for category %s", cat->class_name, cat->name);
+        // panicf("Class %s not found for category %s", cat->class_name, cat->name);
         return;
     }
     if (cat->instance_methods != NULL) {

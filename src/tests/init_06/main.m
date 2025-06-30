@@ -1,5 +1,6 @@
 #include <objc/objc.h>
 #include "Test.h"
+#include "Test+Description.h"
 
 int main() {
     // Allocate a test object with a value

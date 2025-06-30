@@ -1,6 +1,6 @@
 BUILD_DIR ?= build
 TOOLCHAIN_PATH ?= /usr
-ARCH ?= $(shell arch | tr A-Z a-z | sed 's/x86_64/amd64/' | sed 's/i386/amd64/' | sed 's/armv7l/arm/' | sed 's/arm64/aarch64/')
+ARCH ?= $(shell arch | tr A-Z a-z | sed 's/amd64/x86_64/' | sed 's/armv7l/arm/' | sed 's/arm64/aarch64/')
 OS ?= $(shell uname -s | tr A-Z a-z)
 PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
 TARGET ?= ${ARCH}-${OS}-${PLATFORM}
