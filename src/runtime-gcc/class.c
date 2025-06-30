@@ -118,8 +118,26 @@ void __objc_class_category_register(struct objc_category *cat) {
         return;
     }
 #ifdef DEBUG
-    printf("TODO: __objc_class_category_register +[%s+%s]\n", cat->name, cat->class_name);
+    printf("  __objc_class_category_register [%s+%s]\n", cat->class_name, cat->name);
 #endif
+    // Lookup the class by name
+    objc_class_t *cls = __objc_lookup_class(cat->class_name);
+    if (cls == Nil) {
+        panicf("Class %s not found for category %s", cat->class_name, cat->name);
+        return;
+    }
+    if (cat->instance_methods != NULL) {
+        // Register instance methods from the category
+        for (struct objc_method_list *ml = cat->instance_methods; ml != NULL; ml = ml->next) {
+            __objc_method_list_register_class(cls, ml);
+        }
+    }
+    if (cat->class_methods != NULL && cls->metaclass != NULL) {
+        // Register class methods from the category
+        for (struct objc_method_list *ml = cat->class_methods; ml != NULL; ml = ml->next) {
+            __objc_method_list_register_class(cls->metaclass, ml);
+        }
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
