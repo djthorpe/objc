@@ -25,7 +25,9 @@ void __objc_statics_register(struct objc_static_instances_list *statics) {
     if (statics == NULL  || statics->class_name == NULL ) {
         return;
     }
+#ifdef DEBUG
     printf("__objc_statics_register [%s]\n", statics->class_name);
+#endif
     for(int i = 0; i < STATICS_TABLE_SIZE; i++) {
         if (statics_table[i] == statics || statics_table[i] == NULL) {
             statics_table[i] = statics;
