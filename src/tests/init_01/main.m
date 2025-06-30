@@ -1,10 +1,7 @@
-#include <stdio.h>
 #include <string.h>
 #include <objc/objc.h>
 
 int main() {
-    printf("\n\n=> object_01 test...\n\n");
-
     Object* obj = [[Object alloc] init];
     assert(obj != NULL);
 
@@ -25,8 +22,6 @@ int main() {
 
     // Dispose of the object
     [obj free];
-
-    printf("\n\n<= object_01 test...\n\n");
 
     return 0;
 }

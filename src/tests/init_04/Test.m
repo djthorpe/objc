@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "Test.h"
 
 @implementation Test
@@ -15,9 +14,7 @@
 }
 
 -(void)setValue:(int)value {
-    //@synchronized(self) { 
-        self->_value = value; // Update the instance variable
-    //}
+    self->_value = value; // Update the instance variable
 }
 
 @end
