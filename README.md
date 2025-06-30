@@ -34,6 +34,24 @@ You can create a static library for the Objective C runtime - say for Pico:
 CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
 ```
 
+## Current status
+
+* [X] Registering classes
+* [X] Simple message calling
+* [X] `NXConstantString` support
+* [ ] Resolving super classes and meta classes for message lookup
+* [ ] Calling methods in super classes
+* [ ] Calling methods in categories
+* [ ] More efficient method implementation lookup
+* [ ] Memory management - alloc, dealloc, memory arenas
+* [ ] Memory management - retain, release
+* [ ] Autorelease pools
+* [ ] Pico toolchain
+* [ ] Protocols
+* [ ] Threading support
+* [ ] `@synchronized` support
+* [ ] Exception handling?
+
 ## Older stuff below here
 
 Then you have three options for compiling and running the tests:
