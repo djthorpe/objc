@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <objc/objc.h>
 
@@ -6,7 +5,6 @@
 
 +(id) alloc {
   id obj = (id)malloc(class_getInstanceSize(self));
-  printf("+[%s alloc] size=%zu => @%p\n",class_getName(self), class_getInstanceSize(self), obj);
   if (obj) {
     object_setClass(obj, self);
   }
@@ -14,12 +12,10 @@
 }
 
 -(id) init {
-  printf("-[%s init] @%p\n", object_getClassName(self), self);
   return self;
 }
 
--(void) free {
-  printf("-[%s free] @%p\n", object_getClassName(self), self);
+-(void) dealloc {
   free(self);
 }
 

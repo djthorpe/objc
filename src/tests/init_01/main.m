@@ -21,7 +21,7 @@ int main() {
     assert([obj isEqual:obj] == YES);
 
     // Dispose of the object
-    [obj free];
+    [obj dealloc];
 
     return 0;
 }

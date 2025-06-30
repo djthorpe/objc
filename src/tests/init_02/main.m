@@ -22,7 +22,7 @@ int main() {
     assert([test isEqual:test] == YES);
 
     // Dispose of the object
-    [test free];
+    [test dealloc];
 
     return 0;
 }

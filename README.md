@@ -39,7 +39,7 @@ CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-u
 * [X] Registering classes
 * [X] Simple message calling
 * [X] `NXConstantString` support
-* [ ] Resolving super classes and meta classes for message lookup
+* [X] Resolving super classes and meta classes for message lookup
 * [ ] Calling methods in super classes
 * [ ] Calling methods in categories
 * [ ] More efficient method implementation lookup
@@ -51,6 +51,10 @@ CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-u
 * [ ] Threading support
 * [ ] `@synchronized` support
 * [ ] Exception handling?
+
+## Object
+
+
 
 ## Older stuff below here
 

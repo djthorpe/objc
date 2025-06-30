@@ -21,6 +21,8 @@ int main() {
     [test setValue2:102];
     assert([test value2] == 102);
 
+    [test dealloc]; // Dispose of the object
+
     // Return success
     return 0;
 }
