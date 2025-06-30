@@ -3,7 +3,7 @@
 @implementation NXObject
 
 -(id) init {
-    NSLog(@"NXObject init called");
+    NXLog(@"NXObject init called");
     self = [super init];
     if (!self) {
         [self dealloc];
