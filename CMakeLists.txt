@@ -5,10 +5,10 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_MODULE_PATH}/${TARGET}.cmake")
 # Define project
 project(objc-runtime 
     LANGUAGES C OBJC 
-    DESCRIPTION "Objective C runtime"
+    DESCRIPTION "Objective C runtime and libraries"
 )
 
-# if runtime is gcc, include runtime-gcc
+# Runtime
 if(RUNTIME STREQUAL "gcc")
     message(STATUS "objc runtime is gcc")    
     if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
@@ -20,8 +20,13 @@ else()
     message(FATAL_ERROR "Unsupported runtime: ${RUNTIME}")
 endif()
 
-include(CTest)
 add_compile_options(-Wall -Wextra)
 add_compile_options("$<$<CONFIG:DEBUG>:-DDEBUG>")
-add_subdirectory(src/runtime-gcc)        
-add_subdirectory(src/tests)
+
+# Libraries
+add_subdirectory("src/runtime-${RUNTIME}")        
+add_subdirectory("src/NXFoundation")
+
+# Tests
+include(CTest)
+add_subdirectory("src/tests")
