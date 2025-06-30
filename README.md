@@ -47,6 +47,7 @@ The `Object` class is the root class of the Objective C runtime:
 -(void) dealloc; // Dispose of the instance
 -(id) init; // Initialize the instance
 -(Class) class; // Returns the class of the instance
++(Class) class; // Returns the class (itself)
 -(BOOL) isEqual:(id)anObject; // Returns YES if the instance is equal to another object
 @end
 ```
