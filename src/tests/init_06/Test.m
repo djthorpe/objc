@@ -4,10 +4,11 @@
 
 #pragma mark - Lifecycle
 -(id) initWithString:(NXConstantString* )value {
-    if (self = [super init]) { // Call the superclass initializer
-        _value = value; // Set the instance variable
+    self = [super init];
+    if(self != nil) {
+        _value = value;
     }
-    return self; // Return the initialized object
+    return self; 
 }
 
 @end

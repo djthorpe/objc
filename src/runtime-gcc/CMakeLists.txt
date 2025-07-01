@@ -1,6 +1,7 @@
 set(NAME "objc-gcc")
 
 add_library(${NAME} STATIC
+    category.c
     class.c
     hash.c
     hexdump.c

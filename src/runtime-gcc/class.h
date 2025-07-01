@@ -31,3 +31,10 @@ void __objc_class_category_register(struct objc_category *cat);
  * Returns Nil if the class is not found.
  */
 Class objc_lookup_class(const char *name);
+
+
+/**
+ * Register a list of methods for a class.
+ * This function registers all methods in the method list, for the named class.
+ */
+void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_list *ml);

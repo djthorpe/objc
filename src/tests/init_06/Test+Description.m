@@ -3,7 +3,7 @@
 @implementation Test (Description)
 
 -(NXConstantString* ) description {
-    return @"hello world";
+    return self->_value;
 }
 
 @end
