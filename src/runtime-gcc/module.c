@@ -21,7 +21,9 @@ static void __objc_module_register(struct objc_module* module) {
     // Replace referenced selectors from names to SEL's
     struct objc_selector* refs = module->symtab->refs; 
     if (refs != NULL && module->symtab->sel_ref_cnt > 0) {
+#ifdef DEBUG
         printf("TODO: Replace selectors @%p (sel_ref_cnt=%ld)\n", refs, module->symtab->sel_ref_cnt);
+#endif        
         // TODO: Implement actual selector replacement
         // This should iterate through refs and replace sel_id strings with unique SEL pointers
     }
