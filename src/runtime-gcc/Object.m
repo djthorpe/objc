@@ -27,6 +27,26 @@
   return self;
 }
 
+-(Class) superclass {
+  return object_getSuperclass(self);
+}
+
++(Class) superclass {
+  return class_getSuperclass(self);
+}
+
+-(const char* )name
+{
+  return object_getClassName(self);
+}
+
+
++(const char* )name
+{
+  return class_getName(self);
+}
+
+
 -(BOOL) isEqual:(id)anObject {
   return self == anObject;
 }

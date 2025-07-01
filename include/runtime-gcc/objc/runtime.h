@@ -51,6 +51,16 @@ Class object_getClass (id object);
 void object_setClass(id object, Class cls);
 
 /**
+ * Returns the superclass of an instance, or Nil if it is a root class
+ */
+Class object_getSuperclass(id obj);
+
+/**
+ * Returns the superclass of a class, or Nil if it is a root class
+ */
+Class class_getSuperclass(Class cls);
+
+/**
  * Returns the size of an instance of the named class, in bytes. Returns 0 if the class is Nil
  */
 size_t class_getInstanceSize(Class cls);

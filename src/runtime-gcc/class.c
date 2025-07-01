@@ -214,3 +214,17 @@ void object_setClass(id object, Class cls) {
 size_t class_getInstanceSize(Class cls) {
     return cls ? cls->size : 0;
 }
+
+/**
+ * Returns the superclass of an instance, or Nil if it is a root class
+ */
+Class object_getSuperclass(id obj) {
+    return obj ? obj->isa->superclass : Nil;
+}
+
+/**
+ * Returns the superclass of a class, or Nil if it is a root class
+ */
+Class class_getSuperclass(Class cls) {
+    return cls ? cls->superclass : Nil;
+}

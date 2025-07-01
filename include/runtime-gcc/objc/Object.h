@@ -39,6 +39,26 @@ OBJC_ROOT_CLASS
 +(Class) class;
 
 /*
+ * Returns the superclass of the instance.
+ */
+-(Class) superclass;
+
+/*
+ * Returns the superclass of the class.
+ */
++(Class) superclass;
+
+/*
+ * Returns the name of the instance class.
+ */
+-(const char* ) name;
+
+/*
+ * Returns the name of the class.
+ */
++(const char* ) name;
+
+/*
  * Returns true if one object is equal to another. When comparing two objects,
  * this method should be overridden to compare the contents of the objects.
  */

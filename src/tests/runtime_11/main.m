@@ -22,7 +22,7 @@ OBJC_ROOT_CLASS
 
 + (Class) superclass 
 {
-  return Nil; // TODO: No superclass for RootClass
+  return class_getSuperclass(self);
 }
 @end
 
@@ -31,7 +31,9 @@ int main (void) {
   test_assert(class != Nil);
   test_assert([class class] == class);
 
-  // TODO: Test superclass
+  // Test superclass
+  Class superclass = [class superclass];
+  test_assert(superclass == Nil);
 
   return 0;
 }
