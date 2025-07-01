@@ -9,7 +9,6 @@
 
 #define STATICS_TABLE_SIZE 32
 static struct objc_static_instances_list *statics_table[STATICS_TABLE_SIZE+1];
-static void __objc_statics_load_list(struct objc_static_instances_list *list);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -40,6 +39,20 @@ void __objc_statics_register(struct objc_static_instances_list *statics) {
     panicf("Static instances table is full, cannot register class: %s", statics->class_name);
 }
 
+static void __objc_statics_load_list(struct objc_static_instances_list *list) {
+    // Lookup the class by name - this will resolve the class if it exists
+    objc_class_t* cls = objc_lookup_class(list->class_name);
+    if (cls == NULL) {
+        panicf("Static instances class '%s' not found", list->class_name);
+        return;
+    }
+
+    // Register each static instance
+    for (id *instance=list->instances ; *instance != nil ; instance++) {
+		(*instance)->isa = cls;
+	}
+}
+
 BOOL __objc_statics_load() {
     static BOOL init;
     if (init) {
@@ -57,18 +70,4 @@ BOOL __objc_statics_load() {
     }
 
     return YES;
-}
-
-static void __objc_statics_load_list(struct objc_static_instances_list *list) {
-    // Lookup the class by name - this will resolve the class if it exists
-    objc_class_t* cls = objc_lookup_class(list->class_name);
-    if (cls == NULL) {
-        panicf("Static instances class '%s' not found", list->class_name);
-        return;
-    }
-
-    // Register each static instance
-    for (id *instance=list->instances ; *instance != nil ; instance++) {
-		(*instance)->isa = cls;
-	}
 }
