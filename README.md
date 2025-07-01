@@ -115,7 +115,7 @@ Represents a mutable string in Objective C.
 }
 
 // Lifecycle
-+(id) withCopy:(NXString* )string;
++(id) copy:(NXString* )string;
 
 // Methods
 -(NXStringCompare) compare:(NXString* )other;
@@ -131,7 +131,7 @@ Represents a mutable string in Objective C.
 * [X] `NXConstantString` support
 * [X] Resolving super classes and meta classes for message lookup
 * [X] Calling methods in super classes - implement `[super init]` for example
-* [ ] Calling methods in categories
+* [X] Calling methods in categories
 * [ ] `respondsToSelector:` and `+[Class load]`
 * [ ] More efficient method implementation lookup
 * [ ] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`

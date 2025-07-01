@@ -12,6 +12,7 @@ add_subdirectory(init_03)
 add_subdirectory(init_04)
 add_subdirectory(init_05)
 add_subdirectory(init_06)
+add_subdirectory(init_07)
 
 # add test cases - NXFoundation
 add_subdirectory(NXFoundation_01)

@@ -1,11 +1,15 @@
 #pragma once
 
 @interface NXConstantString : Object {
-    const char* data;
-    unsigned int length;
+    const char* _data;
+    unsigned int _length;
 }
 
--(const char*) cStr;
+// Lifecycle
++(id) withCString:(const char* )cStr;
+
+// Properties
+-(const char* ) cStr;
 -(unsigned int) length;
 
 @end
