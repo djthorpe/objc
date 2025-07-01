@@ -27,7 +27,7 @@ OBJC_ROOT_CLASS
 @end
 
 int main (void) {
-  Class class = objc_lookupClass("RootClass");;
+  Class class = objc_lookupClass("RootClass");
   test_assert(class != Nil);
   test_assert([class class] == class);
 
