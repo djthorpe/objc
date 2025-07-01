@@ -52,14 +52,14 @@ static void __objc_category_load_category(struct objc_category *category) {
     // Register instance methods from the category
     if (category->instance_methods != NULL) {
         for (struct objc_method_list *ml = category->instance_methods; ml != NULL; ml = ml->next) {
-            __objc_method_list_register_class(cls, ml);
+            __objc_class_register_method_list(cls, ml);
         }
     }
 
     // Register class methods from the category
     if (category->class_methods != NULL && cls->metaclass != NULL) {
         for (struct objc_method_list *ml = category->class_methods; ml != NULL; ml = ml->next) {
-            __objc_method_list_register_class(cls->metaclass, ml);
+            __objc_class_register_method_list(cls->metaclass, ml);
         }
     }
 }

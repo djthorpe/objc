@@ -1,6 +1,9 @@
+#ifdef DEBUG
 #include <stdio.h>
+#endif
 #include <string.h>
 #include <objc/objc.h>
+
 #include "api.h"
 #include "class.h"
 

@@ -4,7 +4,7 @@ add_library(${NAME} STATIC
     category.c
     class.c
     hash.c
-    hexdump.c
+    message.c
     module.c
     Object.m
     NXConstantString.m

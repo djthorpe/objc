@@ -1,12 +1,12 @@
+#ifdef DEBUG
 #include <stdio.h>
+#endif
 #include <string.h>
 
 #include <objc/objc.h>
 #include "api.h"
 #include "class.h"
 #include "hash.h"
-#include "statics.h"
-#include "category.h"
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE+1];
@@ -67,7 +67,7 @@ objc_class_t* __objc_lookup_class(const char *name) {
  * Register a list of methods for a class.
  * This function registers all methods in the method list, for the named class.
  */
-void __objc_method_list_register_class(objc_class_t* cls, struct objc_method_list *ml) {
+void __objc_class_register_method_list(objc_class_t* cls, struct objc_method_list *ml) {
     if (ml == NULL) {
         return; // Nothing to register
     }
@@ -97,7 +97,7 @@ void __objc_class_register_methods(objc_class_t *p) {
 
     // Enumerate the class's methods and resolve them
     for (struct objc_method_list *ml = p->methods; ml != NULL; ml = ml->next) {
-        __objc_method_list_register_class(p, ml);
+        __objc_class_register_method_list(p, ml);
     }
 
     // Assume the superclass is not yet resolved
@@ -151,30 +151,7 @@ Class objc_lookup_class(const char *name) {
     return (Class)cls;
 }
 
-static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector, id receiver) {
-    if (cls == Nil || selector == NULL || receiver == NULL) {
-        return NULL; // Invalid parameters
-    }
-#ifdef DEBUG    
-    printf("objc_msg_lookup: %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id);
-#endif
-
-    // Descend through the classes looking for the method
-    // TODO: Also look at the categories of the class
-    while(cls != Nil) {
-#ifdef DEBUG    
-        printf("  %c[%s %s:%s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
-#endif
-        struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
-        if (item != NULL) {
-            return item->imp; // Return the implementation pointer
-        }
-        cls = cls->superclass;
-    }
-
-    panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
-    return NULL; // Method not found
-}
+///////////////////////////////////////////////////////////////////////////////
 
 /**
  * Class lookup function. Panics if the class is not found.
@@ -187,46 +164,6 @@ Class objc_get_class(const char* name) {
     }
     return cls;
 }
-
-/**
- * Message dispatch function. Returns the implementation pointer for 
- * the specified selector. Returns nil if the receive is nil, and panics if 
- * the selector is not found.
- */
-IMP objc_msg_lookup(id receiver, SEL selector) {
-    if (receiver == NULL) {
-        return NULL;
-    }
-
-    // First load the static instances and categories
-    static BOOL init = NO;
-    if (init == NO) {
-        __objc_statics_load();
-        __objc_category_load();
-    }
-
-    // Get the class of the receiver
-    objc_class_t* cls = receiver->isa;
-    if (cls == Nil) {
-        panicf("objc_msg_lookup: receiver is nil or class not found");
-        return NULL;
-    }
-    return __objc_msg_lookup(cls, selector, receiver);
-}
-
-/**
- * Message superclass dispatch function. Returns the implementation pointer for 
- * the specified selector, for the receiver superclass. Returns nil if the 
- * receiver is nil.
- */
-IMP objc_msg_lookup_super(struct objc_super *super, SEL selector) {
-    if (super == NULL || super->receiver == nil) {
-        return NULL;
-    }
-    return __objc_msg_lookup(super->superclass, selector, super->receiver);
-}
-
-///////////////////////////////////////////////////////////////////////////////
 
 /**
  * Looks up the class with the specified name. Returns Nil if the class is not found.

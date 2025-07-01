@@ -1,4 +1,6 @@
+#ifdef DEBUG
 #include <stdio.h>
+#endif
 #include <stdlib.h>
 
 #include <objc/objc.h>
