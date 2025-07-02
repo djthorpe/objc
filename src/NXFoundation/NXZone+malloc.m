@@ -10,6 +10,7 @@ void __zone_free(void* ptr) {
 }
 
 void* objc_malloc(size_t size) {
+    NXLog(@"Allocating memory with size: %zu", size);
     return [[NXZone defaultZone] alloc:size];
 }
 

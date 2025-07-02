@@ -55,7 +55,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     // Get the class of the receiver
     objc_class_t* cls = receiver->isa;
     if (cls == Nil) {
-        panicf("objc_msg_lookup: receiver is nil or class not found");
+        panicf("objc_msg_lookup: receiver @%p class is Nil (selector=%s)", receiver, (const char* )selector->sel_id);
         return NULL;
     }
     IMP imp = __objc_msg_lookup(cls, selector);
