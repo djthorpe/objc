@@ -67,13 +67,13 @@ static id defaultZone = nil;
 
 -(void *) alloc:(size_t)size {
     // Allocate memory and return a pointer
-    NXLog(@"Allocating memory with size: %zu", size);
+    // TODO: Use a more sophisticated memory allocation strategy
     return __zone_malloc(size);
 }
 
 -(void) free:(void* )ptr {
     // Deallocate the zone pointed to by ptr
-    NXLog(@"TODO: Free zone with @%p", ptr);
+    // TODO: Use a more sophisticated memory release strategy
     __zone_free(ptr);
 }
 

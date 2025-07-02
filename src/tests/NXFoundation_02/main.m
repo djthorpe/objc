@@ -12,6 +12,9 @@ int main() {
     test_assert(object != nil);
     test_assert([object class] == [NXObject class]);
 
+    // Free the object
+    [object dealloc];
+
     // Free the zone
     [zone dealloc];
     test_assert([NXZone defaultZone] == nil);

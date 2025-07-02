@@ -10,10 +10,16 @@ void __zone_free(void* ptr) {
 }
 
 void* objc_malloc(size_t size) {
-    NXLog(@"Allocating memory with size: %zu", size);
-    return [[NXZone defaultZone] alloc:size];
+    void* ptr = [[NXZone defaultZone] alloc:size];
+#ifdef DEBUG
+    NXLog(@"objc_malloc: size=%zu => @%p", size, ptr);
+#endif
+    return ptr;
 }
 
 void objc_free(void* ptr) {
+#ifdef DEBUG
+    NXLog(@"objc_free: @%p", ptr);
+#endif
     [[NXZone defaultZone] free:ptr];
 }
