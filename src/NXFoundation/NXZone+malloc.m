@@ -14,5 +14,5 @@ void* objc_malloc(size_t size) {
 }
 
 void objc_free(void* ptr) {
-    [[NXZone defaultZone] dealloc:ptr];
+    [[NXZone defaultZone] free:ptr];
 }
