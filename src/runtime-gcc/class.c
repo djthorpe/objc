@@ -91,6 +91,11 @@ void __objc_class_register_method_list(objc_class_t* cls, struct objc_method_lis
  * Register methods in the class for lookup objc_msg_lookup and objc_msg_lookup_super.
  */
 void __objc_class_register_methods(objc_class_t *p) {
+    // Check if the class is already resolved
+    if (p->info & objc_class_flag_resolved) {
+        return; // Already resolved
+    }
+
 #ifdef DEBUG
     printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n", p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
@@ -101,7 +106,7 @@ void __objc_class_register_methods(objc_class_t *p) {
     }
 
     // Assume the superclass is not yet resolved
-    if (p->superclass != NULL) {        
+    if (p->superclass != NULL) {
         Class superclass = __objc_lookup_class((const char* )p->superclass);
         if (superclass == Nil) {
             panicf("Superclass %s not found for class %s", p->superclass, p->name);
