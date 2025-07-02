@@ -23,3 +23,4 @@ add_subdirectory(runtime_14)
 
 # Test cases - NXFoundation
 add_subdirectory(NXFoundation_01)
+add_subdirectory(NXFoundation_02)

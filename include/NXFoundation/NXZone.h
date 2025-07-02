@@ -5,11 +5,12 @@
  */
 @interface NXZone : NXObject {
     size_t _size; // Size of the zone, or 0 if the size is not limited
+    void* _data; // Pointer to the allocated memory block
 }
 
 // Lifecycle
 +(id) defaultZone; // Returns the default zone
--(id) initWithSize:(size_t)size; // Creates a new zone with the specified size
++(id) zoneWithSize:(size_t)size; // Creates a new zone with the specified size
 -(void) dealloc; // Deallocates the zone
 
 // Methods
