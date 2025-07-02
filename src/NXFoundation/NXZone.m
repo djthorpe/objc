@@ -12,11 +12,11 @@ static id defaultZone = nil;
  ** Cannot use [[alloc] init] with NXZone.
  ** These methods are marked as unavailable to prevent misuse.
  */
-+(id) alloc __attribute__((unavailable("Use +zoneWithSize: instead of +alloc."))) {
++(id) alloc {
     return nil;
 }
 
--(id) init __attribute__((unavailable("Use +zoneWithSize: instead of -init."))) {
+-(id) init {
     return nil;
 }
 
@@ -28,6 +28,9 @@ static id defaultZone = nil;
     // Create a new zone with the size of the zone instance, plus the size of the data block
     NXZone* zone = (NXZone* )__zone_malloc(class_getInstanceSize(self) + size);
     if (zone) {
+        // Since we don't call [super init], set the class
+        object_setClass(zone, self);
+
         // Set the class of the allocated memory to NXZone        
         zone->_data = size ? (void* )zone + class_getInstanceSize(self) : NULL;
         zone->_size = size;
@@ -63,12 +66,12 @@ static id defaultZone = nil;
 #pragma mark - Methods
 
 -(void *) alloc:(size_t)size {
-    // Allocate memory for the instance and return a pointer
-    NXLog(@"Allocating memory for instance with size: %zu", size);
+    // Allocate memory and return a pointer
+    NXLog(@"Allocating memory with size: %zu", size);
     return __zone_malloc(size);
 }
 
-+(id) free:(void* )ptr {
+-(void) free:(void* )ptr {
     // Deallocate the zone pointed to by ptr
     NXLog(@"TODO: Free zone with @%p", ptr);
     __zone_free(ptr);

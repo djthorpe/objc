@@ -16,7 +16,7 @@
 // Methods
 -(void* ) alloc:(size_t)size; // Allocates memory of the specified size
 -(void) free:(void* )ptr; // Frees the allocated memory
--(void* ) realloc:(void* )ptr size:(size_t)size; // Reallocates memory to the specified size and returns the new pointer, or NULL if the reallocation fails
--(void) reset; // Resets the zone, freeing all allocated memory
+//-(void* ) realloc:(void* )ptr size:(size_t)size; // Reallocates memory to the specified size and returns the new pointer, or NULL if the reallocation fails
+//-(void) reset; // Resets the zone, freeing all allocated memory
 
 @end
