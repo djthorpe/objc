@@ -1,5 +1,7 @@
 #pragma once
 #include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 // Opaque types
 typedef struct objc_object* id;
@@ -13,7 +15,6 @@ typedef struct objc_method* Method;
 #define Nil ((Class)0)
 
 // Booleans
-#include <stdbool.h>
 typedef bool BOOL;
 #define YES true
 #define NO false

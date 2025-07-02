@@ -32,7 +32,7 @@ static id defaultZone = nil;
         object_setClass(zone, self);
 
         // Set the class of the allocated memory to NXZone        
-        zone->_data = size ? (void* )zone + class_getInstanceSize(self) : NULL;
+        zone->_data = size ? (uint8_t* )zone + class_getInstanceSize(self) : NULL;
         zone->_size = size;
     } else {
         return nil;
