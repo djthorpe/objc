@@ -9,16 +9,14 @@ static id defaultZone = nil;
 #pragma mark - Lifecycle
 
 /*
- ** Cannot use [[alloc] init] with NXZone
+ ** Cannot use [[alloc] init] with NXZone.
+ ** These methods are marked as unavailable to prevent misuse.
  */
-+(id) alloc {
++(id) alloc __attribute__((unavailable("Use +zoneWithSize: instead of +alloc."))) {
     return nil;
 }
 
-/*
- ** Cannot use [[alloc] init] with NXZone
- */
--(id) init {
+-(id) init __attribute__((unavailable("Use +zoneWithSize: instead of -init."))) {
     return nil;
 }
 
