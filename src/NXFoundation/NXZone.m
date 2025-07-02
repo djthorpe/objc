@@ -62,9 +62,9 @@ static id defaultZone = nil;
 
 #pragma mark - Methods
 
-+(id) alloc:(size_t)size {
-    // Allocate a new zone with the specified size
-    NXLog(@"TODO: Allocating zone with size: %zu", size);
+-(void *)alloc:(size_t)size {
+    // Allocate memory for the instance and return a pointer
+    NXLog(@"Allocating memory for instance with size: %zu", size);
     return __zone_malloc(size);
 }
 
