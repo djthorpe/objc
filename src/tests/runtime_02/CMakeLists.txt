@@ -1,10 +1,10 @@
-set(NAME "init_05")
+set(NAME "runtime_02")
 add_executable(${NAME}
     main.m
-    Test1.m
-    Test2.m
+    Test.m
 )
 target_link_libraries(${NAME} PRIVATE
     objc-gcc
+    malloc
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

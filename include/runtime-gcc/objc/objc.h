@@ -1,6 +1,7 @@
 #pragma once
 
 #include "runtime.h"
+#include "malloc.h"
 #include "assert.h"
 #include "panicf.h"
 

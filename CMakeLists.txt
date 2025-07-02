@@ -24,7 +24,8 @@ add_compile_options(-Wall -Wextra)
 add_compile_options("$<$<CONFIG:DEBUG>:-DDEBUG>")
 
 # Libraries
-add_subdirectory("src/runtime-${RUNTIME}")        
+add_subdirectory("src/runtime-${RUNTIME}")
+add_subdirectory("src/malloc")
 add_subdirectory("src/NXFoundation")
 
 # Tests

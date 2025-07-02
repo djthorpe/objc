@@ -4,7 +4,7 @@
 @implementation Object
 
 +(id) alloc {
-  id obj = (id)malloc(class_getInstanceSize(self));
+  id obj = (id)objc_malloc(class_getInstanceSize(self));
   if (obj) {
     object_setClass(obj, self);
   }
@@ -16,7 +16,7 @@
 }
 
 -(void) dealloc {
-  free(self);
+  objc_free(self);
 }
 
 -(Class) class {
