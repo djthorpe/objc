@@ -51,6 +51,14 @@ struct objc_hashitem* __objc_hash_register(objc_class_t* cls, const char* method
     return item;
 }
 
+/*
+ * Return YES if the hash item matches the class, method, and types
+ */
+inline static BOOL __objc_hash_match(struct objc_hashitem* item, objc_class_t* cls, const char* method, const char* types) {
+    return item->cls == cls &&
+           item->method != NULL && method != NULL && strcmp(item->method, method) == 0 &&
+           item->types != NULL && types != NULL && strcmp(item->types, types) == 0;
+}
 
 /*
  * Lookup an implementation for a method in the hash table
@@ -60,12 +68,9 @@ struct objc_hashitem* __objc_hash_lookup(objc_class_t* cls, const char* method, 
     size_t index = hash;
     while (hash_table[hash].cls != NULL) {
         // Check if the class, method, and types match
-        if (hash_table[hash].cls == cls &&
-            hash_table[hash].method != NULL &&
-            strcmp(hash_table[hash].method, method) == 0 &&
-            hash_table[hash].types != NULL &&
-            strcmp(hash_table[hash].types, types) == 0) {
-            break;
+        if (__objc_hash_match(&hash_table[hash], cls, method, types)) {
+            // Found a match
+            return &hash_table[hash];
         }
         // Increment the hash to check the next item
         hash = (hash + 1) % HASH_TABLE_SIZE;
@@ -86,11 +91,15 @@ static size_t __objc_hash_compute(objc_class_t* cls, const char* method, const c
     if(cls->info & objc_class_flag_meta) {
         hash += 0x10000; // Meta class flag
     }
-    for (const char *p = method; *p; p++) {
-        hash = (hash * 31) + *p;
+    if (method != NULL) {
+        for (const char *p = method; *p; p++) {
+            hash = (hash * 31) + *p;
+        }
     }
-    for (const char *p = types; *p; p++) {
-        hash = (hash * 31) + *p;
+    if (types != NULL) {
+        for (const char *p = types; *p; p++) {
+            hash = (hash * 31) + *p;
+        }
     }
     return hash % HASH_TABLE_SIZE;
 }

@@ -64,4 +64,14 @@ OBJC_ROOT_CLASS
  */
 -(BOOL) isEqual:(id)anObject;
 
+/*
+ * Returns true if the instance responds to the specified selector.
+ */
+//-(BOOL) respondsTo:(SEL)aSel;
+
+/*
+ * Returns true if the class responds to the specified selector.
+ */
+//+(BOOL) respondsTo:(SEL)aSel;
+
 @end

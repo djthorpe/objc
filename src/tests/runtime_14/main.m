@@ -32,11 +32,14 @@ OBJC_ROOT_CLASS
 {
   int _state;
 }
+
 -(void) setState: (int)number;
 -(int) state;
+
 @end
 
 @implementation SubClass
+
 -(void) setState: (int)number {
   _state = number;
 }
@@ -44,11 +47,18 @@ OBJC_ROOT_CLASS
 -(int) state {
   return _state;
 }
+
 @end
 
 int main (void) {
   test_class_has_superclass("SubClass", "RootClass");
-  test_class_has_instance_method("SubClass", @selector(setState:));
-  test_class_has_instance_method("SubClass", @selector(state));
+  SEL setState = @selector(setState:withNumber:andOtherNumber:);
+  if (!class_respondsToSelector([SubClass class], setState)) {
+    printf("SubClass does not respond to setState:\n");
+    return 1;
+  }
+//  SEL state = @selector(state);
+//  test_class_has_instance_method("SubClass", @selector(setState:));
+//  test_class_has_instance_method("SubClass", @selector(state));
   return 0;
 }

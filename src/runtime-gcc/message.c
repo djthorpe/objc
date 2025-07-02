@@ -11,19 +11,19 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector, id receiver) {
-    if (cls == Nil || selector == NULL || receiver == NULL) {
+static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector) {
+    if (cls == Nil || selector == NULL) {
         return NULL; // Invalid parameters
     }
 #ifdef DEBUG    
-    printf("objc_msg_lookup: %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id);
+    printf("__objc_msg_lookup\n");
 #endif
 
     // Descend through the classes looking for the method
     // TODO: Also look at the categories of the class
     while(cls != Nil) {
 #ifdef DEBUG    
-        printf("  %c[%s %s:%s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+        printf("  %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
 #endif
         struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
         if (item != NULL) {
@@ -32,7 +32,6 @@ static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector, id receiver) {
         cls = cls->superclass;
     }
 
-    panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
     return NULL; // Method not found
 }
 
@@ -59,7 +58,11 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         panicf("objc_msg_lookup: receiver is nil or class not found");
         return NULL;
     }
-    return __objc_msg_lookup(cls, selector, receiver);
+    IMP imp = __objc_msg_lookup(cls, selector);
+    if (imp == NULL) {
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
+    }
+    return imp;
 }
 
 /**
@@ -71,5 +74,35 @@ IMP objc_msg_lookup_super(struct objc_super *super, SEL selector) {
     if (super == NULL || super->receiver == nil) {
         return NULL;
     }
-    return __objc_msg_lookup(super->superclass, selector, super->receiver);
+    IMP imp = __objc_msg_lookup(super->superclass, selector);
+    if (imp == NULL) {
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", super->receiver->isa->info & objc_class_flag_meta ? '+' : '-', super->receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
+    }
+    return imp;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+BOOL class_respondsToSelector(Class cls, SEL selector) {
+    if (cls == Nil) {
+        return NO;
+    }
+    if (selector == NULL) {
+        panicf("class_respondsToSelector: SEL is NULL");
+        return NO;
+    }
+#ifdef DEBUG    
+        printf("class_respondsToSelector %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+#endif
+    return __objc_msg_lookup(cls, selector) == NULL ? NO : YES; // Check if the class responds to the selector
+}
+
+BOOL class_metaclassRespondsToSelector(Class cls, SEL selector) {
+    if (cls == Nil) {
+        return NULL;
+    }
+    if (!(cls->info & objc_class_flag_meta)) {
+        cls = cls->metaclass; // Use the metaclass for class methods
+    }
+    return class_respondsToSelector(cls, selector); // Check if the class responds to the selector
 }

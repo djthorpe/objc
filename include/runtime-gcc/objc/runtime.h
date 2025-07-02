@@ -64,3 +64,13 @@ Class class_getSuperclass(Class cls);
  * Returns the size of an instance of the named class, in bytes. Returns 0 if the class is Nil
  */
 size_t class_getInstanceSize(Class cls);
+
+/**
+ * Returns YES if the class responds to the specified selector, NO otherwise.
+ */
+BOOL class_metaclassRespondsToSelector(Class cls, SEL sel);
+
+/**
+ * Returns YES if the class instance responds to the specified selector, NO otherwise.
+ */
+BOOL class_respondsToSelector(Class cls, SEL sel);
