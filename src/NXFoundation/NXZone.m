@@ -70,7 +70,7 @@ static id defaultZone = nil;
 
 +(id) free:(void* )ptr {
     // Deallocate the zone pointed to by ptr
-    NXLog(@"TOOD: Freee zone with @%p", ptr);
+    NXLog(@"TODO: Free zone with @%p", ptr);
     __zone_free(ptr);
 }
 
