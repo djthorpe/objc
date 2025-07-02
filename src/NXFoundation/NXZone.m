@@ -60,4 +60,18 @@ static id defaultZone = nil;
     return defaultZone;
 }
 
+#pragma mark - Methods
+
++(id) alloc:(size_t)size {
+    // Allocate a new zone with the specified size
+    NXLog(@"TODO: Allocating zone with size: %zu", size);
+    return __zone_malloc(size);
+}
+
++(id) free:(void* )ptr {
+    // Deallocate the zone pointed to by ptr
+    NXLog(@"TOOD: Freee zone with @%p", ptr);
+    __zone_free(ptr);
+}
+
 @end
