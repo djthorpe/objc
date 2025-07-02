@@ -65,7 +65,7 @@ static id defaultZone = nil;
 
 #pragma mark - Methods
 
--(void *) alloc:(size_t)size {
+-(void *) allocWithSize:(size_t)size {
     // Allocate memory and return a pointer
     // TODO: Use a more sophisticated memory allocation strategy
     return __zone_malloc(size);
