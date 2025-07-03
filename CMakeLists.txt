@@ -11,17 +11,17 @@ project(objc-runtime
 # Runtime
 if(RUNTIME STREQUAL "gcc")
     message(STATUS "objc runtime is gcc")    
-    if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-        add_compile_options(-fgnu-runtime)
-    elseif(CMAKE_C_COMPILER_ID STREQUAL "Clang" OR CMAKE_C_COMPILER_ID STREQUAL "AppleClang")
-        add_compile_options(-fobjc-runtime=gcc)
-    endif()
 else()
     message(FATAL_ERROR "Unsupported runtime: ${RUNTIME}")
 endif()
 
-add_compile_options(-Wall -Wextra)
-add_compile_options("$<$<CONFIG:DEBUG>:-DDEBUG>")
+# Compile options
+add_compile_options(
+    "-Wall"
+    "-Wextra"
+    "$<$<CONFIG:DEBUG>:-DDEBUG>"
+    "$<$<CONFIG:RELEASE>:-O3>"
+)
 
 # Libraries
 add_subdirectory("src/runtime-${RUNTIME}")

@@ -2,6 +2,8 @@ set(NAME "NXFoundation")
 
 add_library(${NAME} STATIC
     NXObject.m
+    NXZone.m
+    NXZone+malloc.m
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../include/runtime-${RUNTIME}

@@ -16,16 +16,18 @@ endif
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
 libobjc-gcc: dep-cc dep-cmake
+	@echo
 	@echo make libobjc-gcc
 	cmake -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		-D TARGET=${TARGET}
-	@cmake --build ${BUILD_DIR} --target objc-gcc -v
+	@cmake --build ${BUILD_DIR} --target objc-gcc
 
 # Test the libobjc-gcc runtime library
 .PHONY: test
 test: libobjc-gcc
+	@echo
 	@echo make tests
 	@cmake --build ${BUILD_DIR}/src/tests
 	@cmake --build ${BUILD_DIR} --target test

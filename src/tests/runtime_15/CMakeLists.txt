@@ -1,8 +1,9 @@
-set(NAME "NXFoundation_01")
+set(NAME "runtime_15")
 add_executable(${NAME}
     main.m
 )
 target_link_libraries(${NAME} PRIVATE
-    NXFoundation
+    objc-gcc
+    malloc
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

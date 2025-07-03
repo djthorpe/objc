@@ -1,5 +1,7 @@
 #pragma once
 #include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 // Opaque types
 typedef struct objc_object* id;
@@ -13,7 +15,6 @@ typedef struct objc_method* Method;
 #define Nil ((Class)0)
 
 // Booleans
-#include <stdbool.h>
 typedef bool BOOL;
 #define YES true
 #define NO false
@@ -74,3 +75,8 @@ BOOL class_metaclassRespondsToSelector(Class cls, SEL sel);
  * Returns YES if the class instance responds to the specified selector, NO otherwise.
  */
 BOOL class_respondsToSelector(Class cls, SEL sel);
+
+/**
+ * Returns selector name as a C string.
+ */
+const char* sel_getName(SEL sel);

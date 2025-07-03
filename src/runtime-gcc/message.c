@@ -23,7 +23,7 @@ static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector) {
     // TODO: Also look at the categories of the class
     while(cls != Nil) {
 #ifdef DEBUG    
-        printf("  %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+        printf("  %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, sel_getName(selector), selector->sel_type);
 #endif
         struct objc_hashitem* item = __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
         if (item != NULL) {
@@ -55,12 +55,12 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     // Get the class of the receiver
     objc_class_t* cls = receiver->isa;
     if (cls == Nil) {
-        panicf("objc_msg_lookup: receiver is nil or class not found");
+        panicf("objc_msg_lookup: receiver @%p class is Nil (selector=%s)", receiver, sel_getName(selector));
         return NULL;
     }
     IMP imp = __objc_msg_lookup(cls, selector);
     if (imp == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, sel_getName(selector), selector->sel_type);
     }
     return imp;
 }
@@ -76,7 +76,7 @@ IMP objc_msg_lookup_super(struct objc_super *super, SEL selector) {
     }
     IMP imp = __objc_msg_lookup(super->superclass, selector);
     if (imp == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", super->receiver->isa->info & objc_class_flag_meta ? '+' : '-', super->receiver->isa->name, (const char* )selector->sel_id, selector->sel_type);
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", super->receiver->isa->info & objc_class_flag_meta ? '+' : '-', super->receiver->isa->name, sel_getName(selector), selector->sel_type);
     }
     return imp;
 }
@@ -92,7 +92,7 @@ BOOL class_respondsToSelector(Class cls, SEL selector) {
         return NO;
     }
 #ifdef DEBUG    
-        printf("class_respondsToSelector %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, (const char* )selector->sel_id, selector->sel_type);
+        printf("class_respondsToSelector %c[%s %s] types=%s\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, sel_getName(selector), selector->sel_type);
 #endif
     return __objc_msg_lookup(cls, selector) == NULL ? NO : YES; // Check if the class responds to the selector
 }
@@ -105,4 +105,11 @@ BOOL class_metaclassRespondsToSelector(Class cls, SEL selector) {
         cls = cls->metaclass; // Use the metaclass for class methods
     }
     return class_respondsToSelector(cls, selector); // Check if the class responds to the selector
+}
+
+const char* sel_getName(SEL sel) {
+    if (sel == NULL) {
+        return NULL;
+    }
+    return sel->sel_id; // Return the selector name
 }
