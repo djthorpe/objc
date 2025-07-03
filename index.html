@@ -69,7 +69,8 @@ $(function() {
 <h2>Building the runtime</h2>
 <p>Download the source code from GitHub:</p>
 <div class="fragment"><div class="line">git clone git@github.com:djthorpe/objc.git</div><div class="line">cd objc</div></div><!-- fragment --><p>The <code>TOOLCHAIN_PATH</code> environment variable should point to the directory where the toolchain is installed. For example,</p>
-<div class="fragment"><div class="line"># Compile with GCC 15 for MacOS and run tests</div><div class="line">brew install gcc@15</div><div class="line">TOOLCHAIN_PATH=/opt/homebrew CC=gcc-15 make test</div></div><!-- fragment --><p>For the RP2040 Pico board, you can use the <code>clang</code> compiler with the ARM toolchain. The <code>TARGET</code> environment variable should be set to the target architecture, such as <code>armv6m-none-eabi</code> for the RP2040 Pico board:</p>
+<div class="fragment"><div class="line"># Compile with GCC 15 for MacOS</div><div class="line">brew install gcc@15</div><div class="line">TOOLCHAIN_PATH=/opt/homebrew CC=gcc-15 make</div></div><!-- fragment --><p>Use the <code>make tests</code> target to run the unit .tests</p>
+<p>For the RP2040 Pico board, you can use the <code>clang</code> compiler with the ARM toolchain. The <code>TARGET</code> environment variable should be set to the target architecture, such as <code>armv6m-none-eabi</code> for the RP2040 Pico board:</p>
 <div class="fragment"><div class="line"># Compile for the RP2040 Pico board</div><div class="line">CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make </div></div><!-- fragment --><h2>Current status</h2>
 <ul>
 <li>[X] Registering classes</li>
