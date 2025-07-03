@@ -12,6 +12,13 @@
  */
 OBJC_ROOT_CLASS
 @interface Object {
+    /**
+     * @var isa
+     * @brief A pointer to the object's class structure.
+     * @details This instance variable holds a reference to the class to which the
+     * object belongs. It is a fundamental part of the Objective-C object model,
+     * enabling dynamic dispatch and introspection.
+     */
     Class isa;
 }
 

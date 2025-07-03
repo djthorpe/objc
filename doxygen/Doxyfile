@@ -1,10 +1,12 @@
+# Doxyfile 1.9.1
+
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "objc"
 PROJECT_BRIEF          = "Objective-C runtime and foundation library"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = /data/docs
 INPUT                  = /data/README.md /data/include/runtime-gcc /data/include/NXFoundation
-#USE_MDFILE_AS_MAINPAGE =
+USE_MDFILE_AS_MAINPAGE = /data/README.md
 STRIP_FROM_PATH        = /data
 FILE_PATTERNS          = *.h *.m *.c *.md
 RECURSIVE              = YES
@@ -19,6 +21,9 @@ GENERATE_HTML          = YES
 HTML_OUTPUT            = .
 HTML_FOOTER            =
 HAVE_DOT               = YES
+HTML_STYLESHEET        = /data/doxygen/custom.css
+HTML_HEADER            = /data/doxygen/header.html
+HTML_FOOTER            = /data/doxygen/footer.html
 GENERATE_LATEX         = NO
 GENERATE_MAN           = NO
 GENERATE_RTF           = NO

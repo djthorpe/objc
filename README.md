@@ -1,17 +1,22 @@
-\mainpage Objective-C Runtime
-
 # objc runtime
 
 This is a minimal Objective C runtime written in C, designed to be portable across different platforms,
 including ARM and x86 architectures, mostly targeting embedded systems. It uses the "gcc" ABI for the
-moment, as that is the most portable across different platforms. You will minimally need the
-following tools to build the runtime:
+moment, as that is the most portable across different platforms.
 
-* `make` and `cmake` - for the build system
-* `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). If you want
+- [View the list of all classes](annotated.html)
+- [View the list of all files](files.html)
+- [View the list of all functions](globals_func.html)
+
+## Requirements
+
+You will minimally need the following tools to build the runtime:
+
+- `make` and `cmake` - for the build system
+- `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). If you want
   to cross-compile for ARM, you will need the ARM LLVM toolchain (see below).
 
-## ARM Toolchain
+### ARM Toolchain
 
 For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain:\
 <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>
@@ -41,19 +46,6 @@ For the RP2040 Pico board, you can use the `clang` compiler with the ARM toolcha
 # Compile for the RP2040 Pico board
 CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
 ```
-
-## Classes
-
-\allclasses
-
-## Files
-
-\files
-
-## Public Functions
-
-\fn
-\relatedalso
 
 ## Current status
 
