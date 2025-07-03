@@ -27,8 +27,7 @@ OBJC_ROOT_CLASS
 
 @end
 
-int main (void)
-{
+int main (void) {
   test_assert([TestClass classVariable] == 1);
   return 0;
 }
