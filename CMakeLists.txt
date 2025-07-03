@@ -12,7 +12,7 @@ project(objc-runtime
 if(RUNTIME STREQUAL "gcc")
     message(STATUS "objc runtime is gcc")    
 else()
-    message(FATAL_ERROR "Unsupported runtime: ")
+    message(FATAL_ERROR "Unsupported runtime: ${RUNTIME}")
 endif()
 
 # Compile options
