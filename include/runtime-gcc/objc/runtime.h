@@ -75,3 +75,8 @@ BOOL class_metaclassRespondsToSelector(Class cls, SEL sel);
  * Returns YES if the class instance responds to the specified selector, NO otherwise.
  */
 BOOL class_respondsToSelector(Class cls, SEL sel);
+
+/**
+ * Returns selector name as a C string.
+ */
+const char* sel_getName(SEL sel);

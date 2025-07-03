@@ -72,15 +72,19 @@ static id defaultZone = nil;
 #pragma mark - Methods
 
 -(void *) allocWithSize:(size_t)size {
-    // Allocate memory and return a pointer
-    // TODO: Use a more sophisticated memory allocation strategy
-    return __zone_malloc(size);
+    if (_data == NULL) {
+        // No arena - call malloc directly
+        return __zone_malloc(size);
+    }
+    return NULL;
 }
 
 -(void) free:(void* )ptr {
-    // Deallocate the zone pointed to by ptr
-    // TODO: Use a more sophisticated memory release strategy
-    __zone_free(ptr);
+    if (_data == NULL) {
+        // No arena - call free directly
+        __zone_free(ptr);
+        return;
+    }
 }
 
 @end

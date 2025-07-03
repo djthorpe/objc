@@ -106,3 +106,10 @@ BOOL class_metaclassRespondsToSelector(Class cls, SEL selector) {
     }
     return class_respondsToSelector(cls, selector); // Check if the class responds to the selector
 }
+
+const char* sel_getName(SEL sel) {
+    if (sel == NULL) {
+        return NULL;
+    }
+    return sel->sel_id; // Return the selector name
+}
