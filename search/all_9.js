@@ -9,6 +9,8 @@ var searchData=
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
   ['nxobject',['NXObject',['../interfaceNXObject.html',1,'']]],
   ['nxobject_2eh',['NXObject.h',['../NXObject_8h.html',1,'']]],
+  ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
+  ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
   ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]
 ];
