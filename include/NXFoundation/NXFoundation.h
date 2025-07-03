@@ -9,6 +9,7 @@
 // Includes
 #include "NXLog.h"
 #include "NXObject.h"
+#include "NXString.h"
 #include "NXZone.h"
 
 #endif // __OBJC__
