@@ -164,3 +164,4 @@ Here are some references that may be useful for understanding the Objective C ru
 
 * <https://github.com/mhjacobson/avr-objc>
 * <https://github.com/charlieMonroe/libobjc-kern>
+* <https://github.com/gnustep/libobjc>
