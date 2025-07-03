@@ -19,5 +19,7 @@
  * C-string representation is retrieved using the `cStr` method.
  */
 #define NXLog(format, ...) \
-    fprintf(stderr, (const char* )[format cStr], ##__VA_ARGS__); \
-    fprintf(stderr, "\n")
+    do { \
+        fprintf(stderr, (const char* )[format cStr], ##__VA_ARGS__); \
+        fprintf(stderr, "\n"); \
+    } while (0)
