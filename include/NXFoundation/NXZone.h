@@ -19,7 +19,7 @@
      * @brief The size of the zone in bytes.
      * @details If the size is 0, the zone is not limited in size and will grow as needed.
      */
-    size_t _size; // Size of the zone, or 0 if the size is not limited
+    size_t _size;
     /**
      * @var _data
      * @brief A pointer to the memory block managed by the zone.
