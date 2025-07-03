@@ -1,3 +1,5 @@
+\mainpage Objective-C Runtime
+
 # objc runtime
 
 This is a minimal Objective C runtime written in C, designed to be portable across different platforms,
@@ -40,102 +42,18 @@ For the RP2040 Pico board, you can use the `clang` compiler with the ARM toolcha
 CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
 ```
 
-## Class and Method Reference
+## Classes
 
-### Object
+\allclasses
 
-The `Object` class is the root class of the Objective C runtime:
+## Files
 
-```objc
-@interface Object {
-    Class isa;
-}
+\files
 
-+(id) alloc; // Allocate an instance of the class
--(void) dealloc; // Dispose of the instance
--(id) init; // Initialize the instance
--(Class) class; // Returns the class of the instance
-+(Class) class; // Returns the class (itself)
--(BOOL) isEqual:(id)anObject; // Returns YES if the instance is equal to another object
-@end
-```
+## Public Functions
 
-### NXConstantString
-
-The `NXConstantString` class is used to represent constant strings in Objective C. It is a subclass of `Object` and provides methods for creating and comparing strings.
-
-```objc
-@interface NXConstantString : Object {
-    // ...
-}
-
-// Lifecycle
-+(id) withCString:(const char* )cStr;
-
-// Methods
--(const char*) cStr;
--(unsigned int) length;
-@end
-```
-
-### NXLog
-
-The `NXLog` function is used to log messages to the console. Any message is terminated with a newline character, and formatting is currently identical to `printf`.
-
-```objc
-void main() {
-   NXLog(@"Hello, %s", "Objective C!");
-}
-```
-
-### NXZone (TODO)
-
-Represents a memory arena for allocating and deallocating objects. It is used to manage memory for
-Objective C objects.
-
-```objc
-@interface NXZone : NXObject {
-    // ...
-}
-
-// Lifecycle
-+(id) defaultZone; // Returns the default zone for the application
--(id) initWithSize:(size_t)size; // Creates a new zone with the specified size
--(void) dealloc; // Deallocates the zone
-
-// Methods
--(void* ) alloc:(size_t)size; // Allocates memory of the specified size
--(void) free:(void* )ptr; // Frees the allocated memory
--(void* ) realloc:(void* )ptr size:(size_t)size; // Reallocates memory to the specified size and returns the new pointer, or NULL if the reallocation fails
--(void) reset; // Resets the zone, freeing all allocated memory
-
-@end
-```
-
-### NXString (TODO)
-
-Represents a mutable string in Objective C.
-
-```objc
-@interface NXString : NXConstantString {
-    // ...
-}
-
-// Lifecycle
-+(id) copy:(NXString* )string;
-
-// Methods
--(NXStringCompare) compare:(NXString* )other;
--(unsigned int) hash; // Returns a non-zero hash value for the string
-
-@end
-```
-
-### NXNumber (TODO)
-
-### NXArray (TODO)
-
-### NXDictionary (TODO)
+\fn
+\relatedalso
 
 ## Current status
 
