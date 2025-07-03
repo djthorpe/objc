@@ -4,7 +4,7 @@
 /* function-message-1 */
 
 @interface Foo : Object
-+ bar;
++(id) bar;
 @end
 
 int foocalled = 0;
@@ -18,14 +18,17 @@ id foo() {
 
 @implementation Foo
 
-+ bar {
++(id) bar {
   test_assert(barcalled == 0);
   barcalled = 1;
   return self;
 }
+
 @end
 
 int main(void) {
-    [foo() bar];
+    Class f = [foo() bar];
+    test_assert(f != Nil);
+    test_assert(f == [Foo class]);
     return 0;
 }
