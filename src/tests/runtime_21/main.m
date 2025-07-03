@@ -3,7 +3,7 @@
 
 // informal_protocol
 
-int stop_called = 0;
+static int stop_called = 0;
 
 @interface Object (StopProtocol)
 - (void) stop;
