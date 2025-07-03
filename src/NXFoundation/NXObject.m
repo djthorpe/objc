@@ -21,7 +21,7 @@
     id instance = [zone allocWithSize:class_getInstanceSize(self)];
     if (instance) {
         object_setClass(instance, self);
-        _zone = zone; // Store the zone in the instance
+        ((NXObject* )instance)->_zone = zone; // Set the zone for the instance
     }
     return instance;
 }
@@ -30,9 +30,10 @@
   * Deallocate the object, freeing its memory.
   */
 -(void) dealloc {
-    if (_zone) {
-        [_zone free:self]; // Free the memory in the zone        
+    if (!_zone) {
+        panicf("Object dealloc called without a zone");
     }
+    [_zone free:self]; // Free the memory in the zone        
 }
 
 @end

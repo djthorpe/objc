@@ -9,6 +9,8 @@
 }
 
 // Lifecycle
++(id) alloc __attribute__((unavailable("Use +zoneWithSize: instead")));
+-(id) init __attribute__((unavailable("Use +zoneWithSize: instead")));
 +(id) defaultZone; // Returns the default zone
 +(id) zoneWithSize:(size_t)size; // Creates a new zone with the specified size
 -(void) dealloc; // Deallocates the zone

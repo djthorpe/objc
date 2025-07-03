@@ -2,15 +2,22 @@
 #include <stdlib.h>
 
 void* __zone_malloc(size_t size) {
-    return malloc(size);
+    void* ptr = malloc(size);
+#ifdef DEBUG
+    NXLog(@"  __zone_malloc: size=%zu => @%p", size, ptr);
+#endif
+    return ptr;
 }
 
 void __zone_free(void* ptr) {
+#ifdef DEBUG
+    NXLog(@"  __zone_free => @%p",ptr);
+#endif
     free(ptr);
 }
 
 void* objc_malloc(size_t size) {
-    void* ptr = [[NXZone defaultZone] alloc:size];
+    void* ptr = [(NXZone* )[NXZone defaultZone] allocWithSize:size];
 #ifdef DEBUG
     NXLog(@"objc_malloc: size=%zu => @%p", size, ptr);
 #endif

@@ -1,5 +1,6 @@
 #include <NXFoundation/NXFoundation.h>
 #include "NXZone+malloc.h"
+#include <string.h>
 
 // Define the first zone allocated as the default zone
 static id defaultZone = nil;
@@ -25,25 +26,30 @@ static id defaultZone = nil;
  ** default zone if it's not yet been set.
  */
 +(id) zoneWithSize:(size_t)size {
-    // Create a new zone with the size of the zone instance, plus the size of the data block
-    NXZone* zone = (NXZone* )__zone_malloc(class_getInstanceSize(self) + size);
-    if (zone) {
-        // Since we don't call [super init], set the class
-        object_setClass(zone, self);
-
-        // Set the class of the allocated memory to NXZone        
-        zone->_data = size ? (uint8_t* )zone + class_getInstanceSize(self) : NULL;
-        zone->_size = size;
-    } else {
+    // Calculate aligned size for the object
+    size_t alignedObjectSize = (class_getInstanceSize(self) + 7) & ~7; // 8-byte alignment
+    
+    // Allocate memory for object + data block
+    void* memory = __zone_malloc(alignedObjectSize + size);
+    if (!memory) {
         return nil;
+    } else {
+        memset(memory, 0, alignedObjectSize + size);
     }
+    
+    // Initialize the object properly
+    NXZone* zone = (NXZone* )memory;
+    object_setClass(zone, self);    
+    
+    // Set up instance variables
+    zone->_size = size;
+    zone->_data = size ? (uint8_t*)memory + alignedObjectSize : NULL;
 
     // Set the default zone if it hasn't been set yet
     if (!defaultZone) {
         defaultZone = zone;
     }
 
-    // Return the new zone instance
     return zone;
 }
 
