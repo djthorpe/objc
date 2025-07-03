@@ -10,7 +10,7 @@
  * NXString provides functionality for creating and working with text strings.
  * It supports both mutable and immutable string representations.
  *
- * \headerfile NXString.h NXFou
+ * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
 @interface NXString : NXObject {
 @private
