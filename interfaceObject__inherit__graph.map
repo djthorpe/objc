@@ -1,0 +1,6 @@
+<map id="Object" name="Object">
+<area shape="rect" id="node2" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="5,80,141,107"/>
+<area shape="rect" id="node3" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="165,80,248,107"/>
+<area shape="rect" id="node5" href="$interfaceProtocol.html" title="Protocol" alt="" coords="272,80,347,107"/>
+<area shape="rect" id="node4" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="169,155,244,181"/>
+</map>
