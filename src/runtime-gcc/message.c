@@ -97,7 +97,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     objc_class_t* meta_cls = cls->info & objc_class_flag_meta ? cls : cls->metaclass;
     if (!(meta_cls->info & objc_class_flag_initialized)) {
 #ifdef DEBUG    
-        printf("  +[%s initialise] \n", cls->name);
+        printf("  +[%s initialize] \n", cls->name);
 #endif
         // Call the class's initialize method
         __objc_send_initialize(meta_cls);
