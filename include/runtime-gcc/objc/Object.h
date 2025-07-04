@@ -1,13 +1,15 @@
 /**
  * @file Object.h
  * @brief The root class of all Objective-C classes.
- * @details This class provides basic memory management and introspection capabilities.
+ *
+ * This class provides basic memory management and introspection capabilities.
  */
 #pragma once
 
 /**
  * @brief The root class of all Objective-C classes.
- * @details This class is the base class for all objects in Objective-C.
+ *
+ * This class is the base class for all objects in Objective-C.
  * It provides basic memory management and introspection capabilities.
  * 
  * \headerfile Object.h objc/objc.h
@@ -17,12 +19,25 @@ OBJC_ROOT_CLASS
     /**
      * @var isa
      * @brief A pointer to the object's class structure.
-     * @details This instance variable holds a reference to the class to which the
+     *
+     * This instance variable holds a reference to the class to which the
      * object belongs. It is a fundamental part of the Objective-C object model,
      * enabling dynamic dispatch and introspection.
      */
     Class isa;
 }
+
+/**
+ * @brief Performs one-time initialization for the class.
+ *
+ * This method is called automatically by the Objective-C runtime before the class 
+ * receives messages. 
+ *
+ * Subclasses may override this method to perform initialization tasks like setting
+ * up class variables or initializing static data structures. If subclasses implement
+ * this method, they are called first, and may be called multiple times.
+ */
++(void) initialize;
 
 /**
  * @brief Allocate a new class instance.
@@ -37,9 +52,10 @@ OBJC_ROOT_CLASS
 
 /**
  * @brief Initialize the instance, after allocation.
- * @details Subclasses should override this method to perform custom
- * initialization, and free resources if the initialization fails.
  * @return The initialized object.
+ *
+ * Subclasses should override this method to perform custom
+ * initialization, and free resources if the initialization fails.
  */
 -(id) init;
 
@@ -57,19 +73,19 @@ OBJC_ROOT_CLASS
 
 /**
  * @brief Returns the superclass of the instance.
- * @return The superclass of the receiver.
+ * @return The superclass of the receiver, or Nil if it is a root class.
  */
 -(Class) superclass;
 
 /**
  * @brief Returns the superclass of the class.
- * @return The superclass of the receiver.
+ * @return The superclass of the receiver, or Nil if it is a root class.
  */
 +(Class) superclass;
 
 /**
  * @brief Returns the name of the class.
- * @return A C-string containing the name of the receiver.
+ * @return A C-string containing the name of the class.
  */
 +(const char* ) name;
 
@@ -77,7 +93,8 @@ OBJC_ROOT_CLASS
  * @brief Compares the receiver to another object for equality.
  * @param anObject The object to compare with the receiver.
  * @return YES if the objects are equal, otherwise NO.
- * @details When comparing two objects, this method should be overridden to
+ *
+ * When comparing two objects, this method should be overridden to
  * compare the contents of the objects.
  */
 -(BOOL) isEqual:(id)anObject;
