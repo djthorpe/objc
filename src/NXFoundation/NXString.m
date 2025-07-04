@@ -21,7 +21,7 @@
         } else if ([other isKindOfClass:[NXString class]]) {
             _value = [other retain];
         } else {
-            [self dealloc];
+            [self release];
             return nil;
         }
     }
