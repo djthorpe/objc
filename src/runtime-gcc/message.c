@@ -60,7 +60,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
     }
     IMP imp = __objc_msg_lookup(cls, selector);
     if (imp == NULL) {
-        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s not found\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, sel_getName(selector), selector->sel_type);
+        panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s cannot send message\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, sel_getName(selector), selector->sel_type);
     }
     return imp;
 }

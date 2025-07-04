@@ -5,7 +5,7 @@
 #pragma mark - Lifecycle
 
 /**
- * Allocates a new instance of object in a specific zone.
+ * Allocates a new instance of object in the default memory zone.
  */
 +(id) alloc {
     return [self allocWithZone:nil];
@@ -34,6 +34,23 @@
         panicf("Object dealloc called without a zone");
     }
     [_zone free:self]; // Free the memory in the zone        
+}
+
+#pragma mark - Retain and Release methods
+
+/**
+ * @brief Increases the retain count of the receiver.
+ */
+-(id) retain {
+    NXLog(@"TODO: Retaining object of class %s", object_getClassName(self));
+    return self;
+}
+
+/**
+ * @brief Decreases the retain count of the receiver.
+ */
+-(void) release {
+    NXLog(@"TODO: Releasing object of class %s", object_getClassName(self));
 }
 
 @end

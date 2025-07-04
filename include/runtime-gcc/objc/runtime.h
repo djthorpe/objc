@@ -99,6 +99,14 @@ Class object_getSuperclass(id obj);
 Class class_getSuperclass(Class cls);
 
 /**
+ * @brief Checks if an instance class matches, or subclass of another class.
+ * @param object The object to inspect.
+ * @param cls The class to compare against.
+ * @return `YES` if `object` class matches or is a subclass of `cls`, `NO` otherwise.
+ */
+BOOL object_isKindOfClass(id object, Class cls);
+
+/**
  * @brief Returns the size of an instance of a class.
  * @param cls The class to inspect.
  * @return The size of an instance of the class in bytes, or 0 if the class is `Nil`.

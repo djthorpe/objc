@@ -214,6 +214,27 @@ void object_setClass(id object, Class cls) {
 }
 
 /**
+ * Checks if an instance class matches, or subclass of another class.
+ */
+BOOL object_isKindOfClass(id object, Class cls) {
+    if (object == nil) {
+        return NO;
+    }
+    if (cls == Nil) {
+        panicf("object_isKindOfClass: class is Nil");
+        return NO;
+    }    
+    Class objClass = object->isa; // Get the class of the object
+    while (objClass != Nil) {
+        if (objClass == cls) {
+            return YES; // Found a match
+        }
+        objClass = objClass->superclass; // Move up the superclass chain
+    }
+    return NO; // No match found
+}
+
+/**
  * Returns the size of an instance of the named class, in bytes. Returns 0 if the class is Nil
  */
 size_t class_getInstanceSize(Class cls) {
