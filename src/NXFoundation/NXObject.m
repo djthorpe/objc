@@ -50,7 +50,7 @@
  * @brief Decreases the retain count of the receiver.
  */
 -(void) release {
-    NXLog(@"TODO: Retaining object of class %s", object_getClassName(self));
+    NXLog(@"TODO: Releasing object of class %s", object_getClassName(self));
 }
 
 @end
