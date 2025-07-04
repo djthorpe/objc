@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['withcstring_3a',['withCString:',['../interfaceNXConstantString.html#a14abb6a5d38785fbdd86091968be85e7',1,'NXConstantString']]]
+  ['sel_5fgetname',['sel_getName',['../runtime_8h.html#a359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
+  ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]]
 ];

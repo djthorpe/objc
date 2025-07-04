@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object::name()'],['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object::name()']]],
-  ['nil',['Nil',['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
+  ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object']]],
+  ['nil',['nil',['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h'],['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h']]],
   ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
