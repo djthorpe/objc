@@ -12,6 +12,8 @@
  *          used to create memory pools of a fixed size, from which objects can be
  *          allocated. This can be useful for improving performance and reducing
  *          memory fragmentation in applications that create and destroy many objects.
+ *
+ * \headerfile NXZone.h NXFoundation/NXFoundation.h
  */
 @interface NXZone : NXObject {
     /**

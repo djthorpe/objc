@@ -1,6 +1,7 @@
 /**
  * @file NXString.h
  * @brief Defines the NXString class, which provides string manipulation functionality.
+ * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
 #pragma once
 
@@ -9,12 +10,10 @@
  *
  * NXString provides functionality for creating and working with text strings.
  * It supports both mutable and immutable string representations.
- *
- * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
 @interface NXString : NXObject {
 @private
-    id _other; ///< Internal storage for the string content, retained by this instance.
+    id _value; ///< Internal storage for the string content, retained by this instance.
 }
 
 /**
@@ -35,5 +34,21 @@
  * @return An initialized NXString object.
  */
 -(id) initWithFormat:(id)other, ...;
+
+/**
+ * @brief Returns the C-string representation of the string.
+ * @return A pointer to a null-terminated C-string representing the string content.
+ * @details This method retrieves the C-string representation of the string, which can be used
+ *          in C-style string operations.
+ */
+- (const char* )cStr;
+
+/**
+ * @brief Returns the length of the string.
+ * @return The number of bytes in the string.
+ * @details This method returns the length of the string, in bytes, excluding
+ *          the null terminator.
+ */
+- (unsigned int) length;
 
 @end

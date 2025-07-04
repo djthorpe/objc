@@ -2,6 +2,7 @@ set(NAME "NXFoundation")
 
 add_library(${NAME} STATIC
     NXObject.m
+    NXString.m
     NXZone.m
     NXZone+malloc.m
 )

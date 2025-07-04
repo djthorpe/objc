@@ -35,20 +35,17 @@
   return class_getSuperclass(self);
 }
 
--(const char* )name
-{
-  return object_getClassName(self);
-}
-
-
 +(const char* )name
 {
   return class_getName(self);
 }
 
-
 -(BOOL) isEqual:(id)anObject {
   return self == anObject;
+}
+
+-(BOOL) isKindOfClass:(Class)cls {
+  return object_isKindOfClass(self, cls);
 }
 
 @end

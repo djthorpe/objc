@@ -3,6 +3,8 @@
  * @brief Defines the NXObject class, the base class for the NXFoundation framework.
  * @details This file provides the definition for NXObject, which extends the root
  *          Object class with zone-based memory management capabilities.
+ * 
+ * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
 #pragma once
 
@@ -18,7 +20,7 @@
      * @var _zone
      * @brief The memory zone where the object is allocated.
      */
-    id _zone; // The zone this object is allocated in
+    id _zone;
 }
 
 /**
@@ -27,5 +29,21 @@
  * @return A new instance of the receiving class, or nil if the allocation failed.
  */
 +(id) allocWithZone:(NXZone* )zone;
+
+/**
+ * @brief Increases the retain count of the receiver.
+ * @details This method is part of the reference counting memory management system.
+ *          Sending a retain message to an object increases its retain count by one.
+ * @return The receiver, with its retain count incremented.
+ */
+- (id) retain;
+
+/**
+ * @brief Decreases the retain count of the receiver.
+ * @details This method is part of the reference counting memory management system.
+ *          Sending a release message to an object decreases its retain count by one.
+ *          If the retain count becomes zero, the object is deallocated.
+ */
+- (void) release;
 
 @end

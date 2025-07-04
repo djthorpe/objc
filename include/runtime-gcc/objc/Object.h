@@ -66,12 +66,6 @@ OBJC_ROOT_CLASS
 +(Class) superclass;
 
 /**
- * @brief Returns the name of the instance's class.
- * @return A C-string containing the name of the receiver's class.
- */
--(const char* ) name;
-
-/**
  * @brief Returns the name of the class.
  * @return A C-string containing the name of the receiver.
  */
@@ -87,19 +81,10 @@ OBJC_ROOT_CLASS
 -(BOOL) isEqual:(id)anObject;
 
 /**
- * @brief Returns a Boolean value that indicates whether the receiver implements
- * or inherits a method that can respond to a specified message.
- * @param aSel A selector that identifies a message.
- * @return YES if the receiver responds to the aSel message, otherwise NO.
+ * @brief Returns a Boolean value that indicates whether the receiver is an instance of a given class.
+ * @param cls A class object.
+ * @return YES if the receiver is an instance of cls or an instance of any class that inherits from cls, otherwise NO.
  */
-//-(BOOL) respondsTo:(SEL)aSel;
-
-/**
- * @brief Returns a Boolean value that indicates whether the class can respond
- * to a specified message.
- * @param aSel A selector that identifies a message.
- * @return YES if the class responds to the aSel message, otherwise NO.
- */
-//+(BOOL) respondsTo:(SEL)aSel;
+-(BOOL) isKindOfClass:(Class)cls;
 
 @end
