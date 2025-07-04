@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <objc/objc.h>
 #include <tests/tests.h>
 
@@ -9,19 +10,20 @@ OBJC_ROOT_CLASS
 @interface Test {
   Class isa;
 }
-+ (void) initialize;
-+ (int) classVariable;
++(void) initialize;
++(int) classVariable;
 @end
 
 @implementation Test
-+ (void) initialize
-{
++(void) initialize {
+  printf("\n\nTest class initialized\n\n");
   class_variable++;
 }
-+ (int) classVariable
-{
+
++(int) classVariable {
   return class_variable;
 }
+
 @end
 
 @interface TestSubClass : Test

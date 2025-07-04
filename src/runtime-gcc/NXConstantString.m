@@ -12,7 +12,6 @@
     }
     instance->_data = cStr;
     instance->_length = (unsigned int)strlen(cStr);
-    // TODO: Return [instance autorelease]
     return instance;
 }
 
