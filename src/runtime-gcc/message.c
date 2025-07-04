@@ -35,6 +35,35 @@ static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector) {
     return NULL; // Method not found
 }
 
+static void __objc_send_initialize (objc_class_t* cls) {
+    if (cls == Nil) {
+        return;
+    }
+
+    // If the superclass has an initialize method, call it first
+    if (cls->superclass) {
+        __objc_send_initialize(cls->superclass);
+    }
+
+    // Don't call initialize on the same class twice
+    if (cls->info & objc_class_flag_initialized) {
+        return;
+    }
+
+    // Find and call the initialize method
+    static struct objc_selector initialize = {
+        .sel_id = "initialize", // The selector for the initialize method
+        .sel_type = "v16@0:8" // The type encoding for the initialize method
+    };
+    IMP imp = __objc_msg_lookup(cls, &initialize); // Lookup the initialize method
+    if (imp != NULL) {
+        ((void (*)(id, SEL))imp)((id)cls, &initialize); // Call the initialize method on the class
+    }
+
+    // Mark the class as initialized
+    cls->info |= objc_class_flag_initialized;
+}
+
 /**
  * Message dispatch function. Returns the implementation pointer for 
  * the specified selector. Returns nil if the receive is nil, and panics if 
@@ -58,10 +87,22 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         panicf("objc_msg_lookup: receiver @%p class is Nil (selector=%s)", receiver, sel_getName(selector));
         return NULL;
     }
+
     IMP imp = __objc_msg_lookup(cls, selector);
     if (imp == NULL) {
         panicf("objc_msg_lookup: class=%c[%s %s] selector->types=%s cannot send message\n", receiver->isa->info & objc_class_flag_meta ? '+' : '-', receiver->isa->name, sel_getName(selector), selector->sel_type);
     }
+
+    // If the class has of the receiver not been initialized, then this is the time to do it
+    objc_class_t* meta_cls = cls->info & objc_class_flag_meta ? cls : cls->metaclass;
+    if (!(meta_cls->info & objc_class_flag_initialized)) {
+#ifdef DEBUG    
+        printf("  +[%s initialize] \n", cls->name);
+#endif
+        // Call the class's initialize method
+        __objc_send_initialize(meta_cls);
+    }
+
     return imp;
 }
 
