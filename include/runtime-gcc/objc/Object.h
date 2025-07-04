@@ -9,6 +9,8 @@
  * @brief The root class of all Objective-C classes.
  * @details This class is the base class for all objects in Objective-C.
  * It provides basic memory management and introspection capabilities.
+ * 
+ * \headerfile Object.h objc/objc.h
  */
 OBJC_ROOT_CLASS
 @interface Object {

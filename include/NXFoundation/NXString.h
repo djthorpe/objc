@@ -1,7 +1,6 @@
 /**
  * @file NXString.h
  * @brief Defines the NXString class, which provides string manipulation functionality.
- * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
 #pragma once
 
@@ -10,6 +9,8 @@
  *
  * NXString provides functionality for creating and working with text strings.
  * It supports both mutable and immutable string representations.
+ *
+ * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
 @interface NXString : NXObject {
 @private

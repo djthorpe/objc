@@ -11,7 +11,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// Opaque types
 /** @brief A pointer to an instance of a class. */
 typedef struct objc_object* id;
 /** @brief A pointer to a method selector. */

@@ -3,8 +3,6 @@
  * @brief Defines the NXObject class, the base class for the NXFoundation framework.
  * @details This file provides the definition for NXObject, which extends the root
  *          Object class with zone-based memory management capabilities.
- * 
- * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
 #pragma once
 
@@ -13,6 +11,8 @@
  * @details NXObject extends the functionality of the root Object class by adding
  *          support for memory zones. All objects that are part of the NXFoundation
  *          framework should inherit from this class.
+ * 
+ * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
 @interface NXObject : Object {
 @private
