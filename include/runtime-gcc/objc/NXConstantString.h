@@ -1,16 +1,20 @@
 /**
  * @file NXConstantString.h
  * @brief Defines the NXConstantString class for constant strings.
- * @details This class provides an immutable string object. It is a lightweight
+ *
+ * This class provides an immutable string object. It is a lightweight
  * alternative to more complex string classes.
  */
 #pragma once
 
 /**
  * @brief A constant string class.
- * @details This class is used to represent immutable strings. It stores a pointer
+ *
+ * This class is used to represent immutable strings. It stores a pointer
  * to a C-string and its length. For compatibility with modern Objective-C code,
  * it is aliased to `NSString` when compiling with Clang.
+ * 
+ * \headerfile NXConstantString.h objc/objc.h
  */
 @interface NXConstantString : Object {
     const char* _data; ///< Pointer to the null-terminated C-string.
@@ -41,7 +45,8 @@
 #ifdef __clang__
 /**
  * @brief Provides a compatibility alias for `NSString`.
- * @details When compiling with Clang, `NXConstantString` is aliased to `NSString`
+ *
+ * When compiling with Clang, `NXConstantString` is aliased to `NSString`
  * to allow for greater compatibility with modern Objective-C code and frameworks.
  */
 @compatibility_alias NSString NXConstantString;
