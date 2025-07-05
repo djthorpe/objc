@@ -1,16 +1,18 @@
 /**
  * @file NXObject.h
  * @brief Defines the NXObject class, the base class for the NXFoundation framework.
- * @details This file provides the definition for NXObject, which extends the root
- *          Object class with zone-based memory management capabilities.
+ *
+ * This file provides the definition for NXObject, which extends the root
+ * Object class with zone-based memory management capabilities.
  */
 #pragma once
 
 /**
  * @brief The base class for objects in the NXFoundation framework.
- * @details NXObject extends the functionality of the root Object class by adding
- *          support for memory zones. All objects that are part of the NXFoundation
- *          framework should inherit from this class.
+ *
+ * NXObject extends the functionality of the root Object class by adding
+ * support for memory zones, object retention and releasing. All objects
+ * that are part of the NXFoundation framework inherit from this class.
  * 
  * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
@@ -21,6 +23,12 @@
      * @brief The memory zone where the object is allocated.
      */
     id _zone;
+
+    /**
+     * @var _retain
+     * @brief The retain count of the object.
+     */
+    unsigned short _retain;
 }
 
 /**
@@ -32,17 +40,19 @@
 
 /**
  * @brief Increases the retain count of the receiver.
- * @details This method is part of the reference counting memory management system.
- *          Sending a retain message to an object increases its retain count by one.
+ *
+ * This method is part of the reference counting memory management system.
+ * Sending a retain message to an object increases its retain count by one.
  * @return The receiver, with its retain count incremented.
  */
 - (id) retain;
 
 /**
  * @brief Decreases the retain count of the receiver.
- * @details This method is part of the reference counting memory management system.
- *          Sending a release message to an object decreases its retain count by one.
- *          If the retain count becomes zero, the object is deallocated.
+ *
+ * This method is part of the reference counting memory management system.
+ * Sending a release message to an object decreases its retain count by one.
+ * If the retain count becomes zero, the object is deallocated.
  */
 - (void) release;
 

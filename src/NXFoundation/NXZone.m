@@ -71,7 +71,7 @@ static id defaultZone = nil;
 
 #pragma mark - Methods
 
--(void *) allocWithSize:(size_t)size {
+-(void* ) allocWithSize:(size_t)size {
     if (_data == NULL) {
         // No arena - call malloc directly
         return __zone_malloc(size);

@@ -22,6 +22,7 @@
     if (instance) {
         object_setClass(instance, self);
         ((NXObject* )instance)->_zone = zone; // Set the zone for the instance
+        ((NXObject* )instance)->_retain = 1; // Retain the instance
     }
     return instance;
 }
@@ -33,6 +34,9 @@
     if (!_zone) {
         panicf("Object dealloc called without a zone");
     }
+    if(_retain != 0) {
+        panicf("[NXObject dealloc] called with retain count %d", _retain);
+    }
     [_zone free:self]; // Free the memory in the zone        
 }
 
@@ -42,7 +46,8 @@
  * @brief Increases the retain count of the receiver.
  */
 -(id) retain {
-    NXLog(@"TODO: Retaining object of class %s", object_getClassName(self));
+    // TODO: Implement mutex
+    _retain++;
     return self;
 }
 
@@ -50,7 +55,11 @@
  * @brief Decreases the retain count of the receiver.
  */
 -(void) release {
-    NXLog(@"TODO: Releasing object of class %s", object_getClassName(self));
+    // TODO: Implement mutex
+    _retain--;
+    if (_retain == 0) {
+        [self dealloc];
+    }
 }
 
 @end
