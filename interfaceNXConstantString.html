@@ -49,7 +49,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Instance Methods</a> &#124;
-<a href="#pub-static-methods">Class Methods</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">NXConstantString Class Reference</div>  </div>
@@ -79,6 +78,9 @@ Collaboration diagram for NXConstantString:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
+<tr class="memitem:a51c44893747a8d5a3298a7f9eda3b25d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXConstantString.html#a51c44893747a8d5a3298a7f9eda3b25d">initWithCString:</a></td></tr>
+<tr class="memdesc:a51c44893747a8d5a3298a7f9eda3b25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new constant string from a C-string.  <a href="#a51c44893747a8d5a3298a7f9eda3b25d">More...</a><br /></td></tr>
+<tr class="separator:a51c44893747a8d5a3298a7f9eda3b25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa9baafd0d75b90d3c3aa3299b446bf8"><td class="memItemLeft" align="right" valign="top">(const char *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXConstantString.html#afa9baafd0d75b90d3c3aa3299b446bf8">cStr</a></td></tr>
 <tr class="memdesc:afa9baafd0d75b90d3c3aa3299b446bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the C-string representation of the constant string.  <a href="#afa9baafd0d75b90d3c3aa3299b446bf8">More...</a><br /></td></tr>
 <tr class="separator:afa9baafd0d75b90d3c3aa3299b446bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,12 +107,27 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c">isKindOfClass:</a></td></tr>
 <tr class="memdesc:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Boolean value that indicates whether the receiver is an instance of a given class.  <a href="interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c">More...</a><br /></td></tr>
 <tr class="separator:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXString.html">NXString</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceObject.html#a31b0b86efda6f3ea6c0c16bc5ead7885">description</a></td></tr>
+<tr class="memdesc:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string that represents the contents of the receiver.  <a href="interfaceObject.html#a31b0b86efda6f3ea6c0c16bc5ead7885">More...</a><br /></td></tr>
+<tr class="separator:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Class Methods</h2></td></tr>
-<tr class="memitem:a14abb6a5d38785fbdd86091968be85e7"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceNXConstantString.html#a14abb6a5d38785fbdd86091968be85e7">withCString:</a></td></tr>
-<tr class="memdesc:a14abb6a5d38785fbdd86091968be85e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new constant string from a C-string.  <a href="#a14abb6a5d38785fbdd86091968be85e7">More...</a><br /></td></tr>
-<tr class="separator:a14abb6a5d38785fbdd86091968be85e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a57071c103b1366564bc665bcfb5b916e"><td class="memItemLeft" align="right" valign="top"><a id="a57071c103b1366564bc665bcfb5b916e"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXConstantString.html#a57071c103b1366564bc665bcfb5b916e">_data</a></td></tr>
+<tr class="memdesc:a57071c103b1366564bc665bcfb5b916e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the null-terminated C-string. <br /></td></tr>
+<tr class="separator:a57071c103b1366564bc665bcfb5b916e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="memItemLeft" align="right" valign="top"><a id="a3d7dc863ae14bd9afeeeef4a39e8fa5c"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXConstantString.html#a3d7dc863ae14bd9afeeeef4a39e8fa5c">_length</a></td></tr>
+<tr class="memdesc:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of the string in bytes, not including the null terminator. <br /></td></tr>
+<tr class="separator:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_interfaceObject"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_interfaceObject')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="interfaceObject.html">Object</a></td></tr>
+<tr class="memitem:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceObject.html#ac697e8f00653acf23f4e018f382e3641">isa</a></td></tr>
+<tr class="memdesc:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the object's class structure.  <a href="interfaceObject.html#ac697e8f00653acf23f4e018f382e3641">More...</a><br /></td></tr>
+<tr class="separator:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_interfaceObject"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_interfaceObject')"><img src="closed.png" alt="-"/>&#160;Class Methods inherited from <a class="el" href="interfaceObject.html">Object</a></td></tr>
 <tr class="memitem:a0c86d32a270331881ebd5785d4c6f3f5 inherit pub_static_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5">initialize</a></td></tr>
 <tr class="memdesc:a0c86d32a270331881ebd5785d4c6f3f5 inherit pub_static_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs one-time initialization for the class.  <a href="interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5">More...</a><br /></td></tr>
@@ -127,21 +144,6 @@ Class Methods</h2></td></tr>
 <tr class="memitem:a753f22340aa8c0ed1021b96fb2e56c21 inherit pub_static_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(const char *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21">name</a></td></tr>
 <tr class="memdesc:a753f22340aa8c0ed1021b96fb2e56c21 inherit pub_static_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the class.  <a href="interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21">More...</a><br /></td></tr>
 <tr class="separator:a753f22340aa8c0ed1021b96fb2e56c21 inherit pub_static_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a57071c103b1366564bc665bcfb5b916e"><td class="memItemLeft" align="right" valign="top"><a id="a57071c103b1366564bc665bcfb5b916e"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXConstantString.html#a57071c103b1366564bc665bcfb5b916e">_data</a></td></tr>
-<tr class="memdesc:a57071c103b1366564bc665bcfb5b916e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the null-terminated C-string. <br /></td></tr>
-<tr class="separator:a57071c103b1366564bc665bcfb5b916e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="memItemLeft" align="right" valign="top"><a id="a3d7dc863ae14bd9afeeeef4a39e8fa5c"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXConstantString.html#a3d7dc863ae14bd9afeeeef4a39e8fa5c">_length</a></td></tr>
-<tr class="memdesc:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of the string in bytes, not including the null terminator. <br /></td></tr>
-<tr class="separator:a3d7dc863ae14bd9afeeeef4a39e8fa5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_interfaceObject"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_interfaceObject')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="interfaceObject.html">Object</a></td></tr>
-<tr class="memitem:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceObject.html#ac697e8f00653acf23f4e018f382e3641">isa</a></td></tr>
-<tr class="memdesc:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the object's class structure.  <a href="interfaceObject.html#ac697e8f00653acf23f4e018f382e3641">More...</a><br /></td></tr>
-<tr class="separator:ac697e8f00653acf23f4e018f382e3641 inherit pro_attribs_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A constant string class. </p>
@@ -169,6 +171,33 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a id="a51c44893747a8d5a3298a7f9eda3b25d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c44893747a8d5a3298a7f9eda3b25d">&#9670;&nbsp;</a></span>initWithCString:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>) initWithCString: </td>
+          <td></td>
+          <td class="paramtype">(const char *)&#160;</td>
+          <td class="paramname"><em>cStr</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new constant string from a C-string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cStr</td><td>A null-terminated C-string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXConstantString.html" title="A constant string class. ">NXConstantString</a> instance. </dd></dl>
+
+</div>
+</div>
 <a id="ac008e5f6fa7b441d551761de3c0ac14e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac008e5f6fa7b441d551761de3c0ac14e">&#9670;&nbsp;</a></span>length()</h2>
 
@@ -186,33 +215,6 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Returns the length of the constant string. </p>
 <dl class="section return"><dt>Returns</dt><dd>The length of the string in bytes, not including the null terminator. </dd></dl>
-
-</div>
-</div>
-<a id="a14abb6a5d38785fbdd86091968be85e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14abb6a5d38785fbdd86091968be85e7">&#9670;&nbsp;</a></span>withCString:()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>) withCString: </td>
-          <td></td>
-          <td class="paramtype">(const char *)&#160;</td>
-          <td class="paramname"><em>cStr</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a new constant string from a C-string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cStr</td><td>A null-terminated C-string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXConstantString.html" title="A constant string class. ">NXConstantString</a> instance. </dd></dl>
 
 </div>
 </div>

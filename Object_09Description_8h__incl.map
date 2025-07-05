@@ -1,0 +1,8 @@
+<map id="include/NXFoundation/Object+Description.h" name="include/NXFoundation/Object+Description.h">
+<area shape="rect" id="node2" href="$NXFoundation_8h_source.html" title="NXFoundation/NXFoundation.h" alt="" coords="93,95,313,121"/>
+<area shape="rect" id="node3" href="$objc_8h_source.html" title="objc/objc.h" alt="" coords="157,169,249,196"/>
+<area shape="rect" id="node4" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="109,244,194,271"/>
+<area shape="rect" id="node8" href="$malloc_8h.html" title="Defines external memory management functions. " alt="" coords="5,244,84,271"/>
+<area shape="rect" id="node9" href="$assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="218,244,293,271"/>
+<area shape="rect" id="node10" href="$panicf_8h.html" title="Defines the panic function for handling fatal errors. " alt="" coords="317,244,391,271"/>
+</map>

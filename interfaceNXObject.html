@@ -86,6 +86,10 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:abccce59171d368454f3d1743ddfd805e"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#abccce59171d368454f3d1743ddfd805e">release</a></td></tr>
 <tr class="memdesc:abccce59171d368454f3d1743ddfd805e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decreases the retain count of the receiver.  <a href="#abccce59171d368454f3d1743ddfd805e">More...</a><br /></td></tr>
 <tr class="separator:abccce59171d368454f3d1743ddfd805e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a343832a14602dc015c936ff00922cead"><td class="memItemLeft" align="right" valign="top"><a id="a343832a14602dc015c936ff00922cead"></a>
+(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#a343832a14602dc015c936ff00922cead">autorelease</a></td></tr>
+<tr class="memdesc:a343832a14602dc015c936ff00922cead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the receiver to the autorelease pool. <br /></td></tr>
+<tr class="separator:a343832a14602dc015c936ff00922cead"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfaceObject')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interfaceObject.html">Object</a></td></tr>
 <tr class="memitem:adf3fa5ae7a69cf4caf37a8377a0a24b1 inherit pub_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top"><a id="adf3fa5ae7a69cf4caf37a8377a0a24b1"></a>
 (void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceObject.html#adf3fa5ae7a69cf4caf37a8377a0a24b1">dealloc</a></td></tr>
@@ -106,6 +110,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c">isKindOfClass:</a></td></tr>
 <tr class="memdesc:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Boolean value that indicates whether the receiver is an instance of a given class.  <a href="interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c">More...</a><br /></td></tr>
 <tr class="separator:a50e8930b119217c2f0b9fca710bd3a8c inherit pub_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXString.html">NXString</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceObject.html#a31b0b86efda6f3ea6c0c16bc5ead7885">description</a></td></tr>
+<tr class="memdesc:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string that represents the contents of the receiver.  <a href="interfaceObject.html#a31b0b86efda6f3ea6c0c16bc5ead7885">More...</a><br /></td></tr>
+<tr class="separator:a31b0b86efda6f3ea6c0c16bc5ead7885 inherit pub_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
@@ -205,7 +212,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Increases the retain count of the receiver. </p>
-<p>This method is part of the reference counting memory management system. Sending a retain message to an object increases its retain count by one. </p><dl class="section return"><dt>Returns</dt><dd>The receiver, with its retain count incremented. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The receiver, with its retain count incremented.</dd></dl>
+<p>This method is part of the reference counting memory management system. Sending a retain message to an object increases its retain count by one. </p>
 
 </div>
 </div>

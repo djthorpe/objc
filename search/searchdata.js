@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdfilmnoprswyz",
+  0: "_abcdfilmnoprsyz",
   1: "nop",
   2: "amnopr",
-  3: "_acdfilnoprswz",
+  3: "_acdfilnoprsz",
   4: "_i",
   5: "bcims",
   6: "anoy",

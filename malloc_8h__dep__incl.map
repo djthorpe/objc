@@ -1,4 +1,5 @@
 <map id="include/runtime&#45;gcc/objc/malloc.h" name="include/runtime&#45;gcc/objc/malloc.h">
-<area shape="rect" id="node2" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,95,163,136"/>
-<area shape="rect" id="node3" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,184,169,225"/>
+<area shape="rect" id="node2" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="13,95,163,136"/>
+<area shape="rect" id="node3" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="6,184,170,225"/>
+<area shape="rect" id="node4" href="$Object_09Description_8h.html" title="Adds a description method to the root Object class. " alt="" coords="5,273,171,315"/>
 </map>

@@ -77,8 +77,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="runtime_8h__dep__incl.png" border="0" usemap="#include_2runtime-gcc_2objc_2runtime_8hdep" alt=""/></div>
 <map name="include_2runtime-gcc_2objc_2runtime_8hdep" id="include_2runtime-gcc_2objc_2runtime_8hdep">
-<area shape="rect" id="node2" href="objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,95,163,136"/>
-<area shape="rect" id="node3" href="NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,184,169,225"/>
+<area shape="rect" id="node2" href="objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="13,95,163,136"/>
+<area shape="rect" id="node3" href="NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="6,184,170,225"/>
+<area shape="rect" id="node4" href="Object_09Description_8h.html" title="Adds a description method to the root Object class. " alt="" coords="5,273,171,315"/>
 </map>
 </div>
 </div>
@@ -101,6 +102,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a1636d49f54f5501c0bb5ce698de32eee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a1636d49f54f5501c0bb5ce698de32eee">OBJC_ROOT_CLASS</a></td></tr>
 <tr class="memdesc:a1636d49f54f5501c0bb5ce698de32eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro to declare a class as a root class.  <a href="#a1636d49f54f5501c0bb5ce698de32eee">More...</a><br /></td></tr>
 <tr class="separator:a1636d49f54f5501c0bb5ce698de32eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e5ab70591b8c9424a23877a448e4a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#ad2e5ab70591b8c9424a23877a448e4a4">OBJC_UNUSED</a></td></tr>
+<tr class="memdesc:ad2e5ab70591b8c9424a23877a448e4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro to declare a method parameter is unused.  <a href="#ad2e5ab70591b8c9424a23877a448e4a4">More...</a><br /></td></tr>
+<tr class="separator:ad2e5ab70591b8c9424a23877a448e4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -237,7 +241,26 @@ Functions</h2></td></tr>
 <p>A macro to declare a class as a root class. </p>
 <p>This macro uses the <code>objc_root_class</code> attribute if it is available, which allows a class to be defined without a superclass. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00048">48</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00049">49</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+
+</div>
+</div>
+<a id="ad2e5ab70591b8c9424a23877a448e4a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e5ab70591b8c9424a23877a448e4a4">&#9670;&nbsp;</a></span>OBJC_UNUSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OBJC_UNUSED</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A macro to declare a method parameter is unused. </p>
+<p>This macro uses the <code>unused</code> attribute if it is available, which allows a method parameter to be marked as unused. </p>
+
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00062">62</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
