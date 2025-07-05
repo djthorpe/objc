@@ -13,9 +13,10 @@ int main() {
     test_assert([object class] == [NXObject class]);
 
     // Free the object
-    [object dealloc];
+    [object release];
 
     // Free the zone
+    // TODO: Use an autorelease pool to ensure proper memory management
     [zone dealloc];
     test_assert([NXZone defaultZone] == nil);
 

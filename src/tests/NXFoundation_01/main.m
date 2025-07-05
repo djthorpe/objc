@@ -8,6 +8,7 @@ int main() {
     test_assert([NXZone defaultZone] == zone);
 
     // Free the zone
+    // TODO: Use an autorelease pool to ensure proper memory management
     [zone dealloc];
     test_assert([NXZone defaultZone] == nil);
 

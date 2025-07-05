@@ -35,8 +35,10 @@ int main() {
     test_assert([otherStr length] == 13);
 
     // Deallocate the strings
-    [str dealloc];
-    [otherStr dealloc];
+    [null release];
+    [null2 release];
+    [str release];
+    [otherStr release];
 
     // Free the zone
     [zone dealloc];

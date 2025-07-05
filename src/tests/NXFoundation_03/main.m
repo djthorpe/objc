@@ -29,7 +29,7 @@ int main() {
     test_assert([object isKindOfClass:[TestB class]] == NO);
     test_assert([object isKindOfClass:[NXObject class]]);
     test_assert([object isKindOfClass:[Object class]]);
-    [object dealloc];
+    [object release];
 
     // TestA
     TestA* testa = [[TestA alloc] init];
@@ -40,7 +40,7 @@ int main() {
     test_assert([object isKindOfClass:[TestB class]] == NO);
     test_assert([testa isKindOfClass:[NXObject class]]);
     test_assert([testa isKindOfClass:[Object class]]);
-    [testa dealloc];
+    [testa release];
 
 
     // TestB
@@ -52,9 +52,10 @@ int main() {
     test_assert([testb isKindOfClass:[TestA class]]);
     test_assert([testb isKindOfClass:[NXObject class]]);
     test_assert([testb isKindOfClass:[Object class]]);
-    [testb dealloc];
+    [testb release];
 
     // Free the zone
+    // TODO: Use an autorelease pool to ensure proper memory management
     [zone dealloc];
     test_assert([NXZone defaultZone] == nil);
 
