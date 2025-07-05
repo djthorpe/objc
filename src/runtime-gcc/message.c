@@ -11,12 +11,17 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// This function is called when a message is sent to a nil object.
+static id __objc_nil_method (id receiver, SEL selector OBJC_UNUSED) {
+  return receiver;
+}
+
 static IMP __objc_msg_lookup(objc_class_t* cls, SEL selector) {
     if (cls == Nil || selector == NULL) {
         return NULL; // Invalid parameters
     }
 #ifdef DEBUG    
-    printf("__objc_msg_lookup\n");
+    printf("objc_msg_lookup %c[%s %s]\n", cls->info & objc_class_flag_meta ? '+' : '-', cls->name, sel_getName(selector));
 #endif
 
     // Descend through the classes looking for the method
@@ -66,12 +71,12 @@ static void __objc_send_initialize (objc_class_t* cls) {
 
 /**
  * Message dispatch function. Returns the implementation pointer for 
- * the specified selector. Returns nil if the receive is nil, and panics if 
- * the selector is not found.
+ * the specified selector. Returns the nil_method if the receiver is nil, 
+ * and panics if the selector is not found.
  */
 IMP objc_msg_lookup(id receiver, SEL selector) {
     if (receiver == NULL) {
-        return NULL;
+        return (IMP)__objc_nil_method;
     }
 
     // First load the static instances and categories

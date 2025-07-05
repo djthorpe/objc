@@ -56,13 +56,23 @@
  */
 -(void) release {
     // TODO: Implement mutex
-    _retain--;
-    if (_retain < 0) {
-        panicf("[NXObject release] called with retain count below zero");
+    if (_retain == 0) {
+        panicf("[NXObject release] called with retain count of zero");
     }
+    _retain--;
     if (_retain == 0) {
         [self dealloc];
     }
+}
+
+/**
+ * @brief Adds the receiver to the autorelease pool.
+ */
+-(id) autorelease {
+#ifdef DEBUG
+    NXLog(@"[NXObject autorelease] called on %s", [[self description] cStr]);
+#endif
+    return self;
 }
 
 @end

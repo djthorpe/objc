@@ -39,13 +39,27 @@ typedef bool BOOL;
 /**
  * @def OBJC_ROOT_CLASS
  * @brief A macro to declare a class as a root class.
- * @details This macro uses the `objc_root_class` attribute if it is available,
+ *
+ * This macro uses the `objc_root_class` attribute if it is available,
  * which allows a class to be defined without a superclass.
  */
 #if __has_attribute(objc_root_class)
 #define OBJC_ROOT_CLASS __attribute__((objc_root_class))
 #else
 #define OBJC_ROOT_CLASS
+#endif
+
+/**
+ * @def OBJC_UNUSED
+ * @brief A macro to declare a method parameter is unused.
+ *
+ * This macro uses the `unused` attribute if it is available,
+ * which allows a method parameter to be marked as unused.
+ */
+#if __has_attribute(unused)
+#define OBJC_UNUSED __attribute__((unused))
+#else
+#define OBJC_UNUSED
 #endif
 
 /**
