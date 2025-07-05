@@ -3,6 +3,10 @@
 
 @implementation Object
 
++(void) initialize {
+  // No-op
+}
+
 +(id) alloc {
   id obj = (id)objc_malloc(class_getInstanceSize(self));
   if (obj) {

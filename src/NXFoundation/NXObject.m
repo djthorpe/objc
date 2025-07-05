@@ -56,10 +56,10 @@
  */
 -(void) release {
     // TODO: Implement mutex
-    _retain--;
-    if (_retain < 0) {
-        panicf("[NXObject release] called with retain count below zero");
+    if (_retain == 0) {
+        panicf("[NXObject release] called with retain count of zero");
     }
+    _retain--;
     if (_retain == 0) {
         [self dealloc];
     }

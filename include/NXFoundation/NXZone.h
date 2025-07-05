@@ -22,6 +22,7 @@
      * @details If the size is 0, the zone is not limited in size and will grow as needed.
      */
     size_t _size;
+
     /**
      * @var _data
      * @brief A pointer to the memory block managed by the zone.

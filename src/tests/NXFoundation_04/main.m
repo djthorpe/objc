@@ -35,6 +35,7 @@ int main() {
     test_assert([otherStr length] == 13);
 
     // Deallocate the strings
+    NXLog(@"\n\nReleasing 1 strings %p", null);
     [null release];
     [null2 release];
     [str release];
