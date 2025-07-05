@@ -15,3 +15,9 @@
         test_assert(_test_actual_super == _test_supercls); \
     } while(0)
 
+
+#define test_stringsequal(str1, str2) \
+    do { \
+        test_assert((str1) != NULL && (str2) != NULL); \
+        test_assert(strcmp([str1 cStr], [str2 cStr]) == 0); \
+    } while(0)
