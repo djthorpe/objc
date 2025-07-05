@@ -71,7 +71,7 @@ static void __objc_send_initialize (objc_class_t* cls) {
 
 /**
  * Message dispatch function. Returns the implementation pointer for 
- * the specified selector. Returns the nil_method if the receive is nil, 
+ * the specified selector. Returns the nil_method if the receiver is nil, 
  * and panics if the selector is not found.
  */
 IMP objc_msg_lookup(id receiver, SEL selector) {
