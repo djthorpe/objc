@@ -34,8 +34,6 @@
  * @param ... A comma-separated list of arguments to be substituted into the format string.
  * @return An initialized NXString object.
  */
-//-(id) initWithFormat:(id)other, ...;
-
 /**
  * @brief Returns the C-string representation of the string.
  * @return A pointer to a null-terminated C-string representing the string content.
