@@ -16,8 +16,11 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
     REQUIRED
 )
 
-add_compile_options(-fobjc-runtime=gcc)
-add_compile_options(-fobjc-exceptions)
-add_compile_options(--target=x86_64-linux-gnu)
-add_compile_options(-march=x86-64)
 
+# Compile options for Objective-C GCC
+add_compile_options(
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-runtime=gcc>
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-exceptions>    
+    --target=x86_64-linux-gnu
+    -march=x86-64
+)
