@@ -39,8 +39,7 @@
   return class_getSuperclass(self);
 }
 
-+(const char* )name
-{
++(const char* ) name {
   return class_getName(self);
 }
 

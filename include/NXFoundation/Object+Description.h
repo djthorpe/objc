@@ -4,8 +4,6 @@
  *
  * This file defines a category on the Object class to provide a
  * method for obtaining a string representation of an object.
- *
- * \headerfile Object+Description.h NXFoundation/NXFoundation.h
  */
 #include <NXFoundation/NXFoundation.h>
 
@@ -16,6 +14,8 @@
  * This category provides a standardized way to get a string
  * representation of any object, which is useful for debugging
  * and logging purposes.
+ *
+ * \headerfile Object+Description.h NXFoundation/NXFoundation.h
  */
 @interface Object (Description)
 
