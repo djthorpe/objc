@@ -2,11 +2,8 @@
 
 @implementation Object (Description)
 
-- (NXString*) description {
-    if (self == nil) {
-        return @"<nil>";
-    }
-    return object_getClassName(self);
+-(NXString* ) description {
+    return [[[NXString alloc] initWithCString:object_getClassName(self)] autorelease];
 }
 
 @end

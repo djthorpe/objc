@@ -22,11 +22,11 @@
 }
 
 /**
- * @brief Creates a new constant string from a C-string.
+ * @brief Initializes a new constant string from a C-string.
  * @param cStr A null-terminated C-string.
  * @return A new NXConstantString instance.
  */
-+(id) withCString:(const char* )cStr;
+-(id) initWithCString:(const char* )cStr;
 
 /**
  * @brief Returns the C-string representation of the constant string.

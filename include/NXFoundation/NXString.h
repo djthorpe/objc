@@ -15,6 +15,7 @@
 @interface NXString : NXObject {
 @private
     id _value; ///< Internal storage for the string content, retained by this instance.
+    BOOL _alloc; ///< Indicates whether the value was allocated.
 }
 
 /**
@@ -29,25 +30,28 @@
 -(id) initWithString:(id)other;
 
 /**
- * @brief Initializes a new string with a given format string and arguments.
- * @param other A format string (either NXConstantString or NXString).
- * @param ... A comma-separated list of arguments to be substituted into the format string.
- * @return An initialized NXString object.
+ * @brief Initializes a new string by referencing a constant c-string.
+ * @param cStr A null-terminated C-string to create the string from.
+ * @return A new NXString instance containing the C-string content.
  */
+-(id) initWithCString:(const char* )cStr;
+
 /**
  * @brief Returns the C-string representation of the string.
  * @return A pointer to a null-terminated C-string representing the string content.
- * @details This method retrieves the C-string representation of the string, which can be used
- *          in C-style string operations.
+ *
+ * This method retrieves the C-string representation of the string, which can be used
+ * in C-style string operations.
  */
-- (const char* )cStr;
+-(const char* ) cStr;
 
 /**
  * @brief Returns the length of the string.
  * @return The number of bytes in the string.
- * @details This method returns the length of the string, in bytes, excluding
- *          the null terminator.
+ *
+ * This method returns the length of the string, in bytes, excluding
+ * the null terminator.
  */
-- (unsigned int) length;
+-(unsigned int) length;
 
 @end

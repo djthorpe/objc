@@ -5,14 +5,13 @@
 
 #pragma mark - Lifecycle
 
-+(id) withCString:(const char* )cStr {
-    NXConstantString* instance = [NXConstantString alloc];
-    if (instance == nil) {
-        return nil;
+-(id) initWithCString:(const char* )cStr {
+    self = [super init];
+    if (self != nil) {
+        _data = cStr;
+        _length = (unsigned int)strlen(cStr);
     }
-    instance->_data = cStr;
-    instance->_length = (unsigned int)strlen(cStr);
-    return instance;
+    return self;
 }
 
 #pragma mark - Properties

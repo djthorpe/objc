@@ -65,4 +65,14 @@
     }
 }
 
+/**
+ * @brief Adds the receiver to the autorelease pool.
+ */
+-(id) autorelease {
+#ifdef DEBUG
+    NXLog(@"[NXObject autorelease] called on %s", [[self description] cStr]);
+#endif
+    return self;
+}
+
 @end

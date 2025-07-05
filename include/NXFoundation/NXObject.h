@@ -40,10 +40,10 @@
 
 /**
  * @brief Increases the retain count of the receiver.
+ * @return The receiver, with its retain count incremented.
  *
  * This method is part of the reference counting memory management system.
  * Sending a retain message to an object increases its retain count by one.
- * @return The receiver, with its retain count incremented.
  */
 - (id) retain;
 
@@ -55,5 +55,10 @@
  * If the retain count becomes zero, the object is deallocated.
  */
 - (void) release;
+
+/**
+ * @brief Adds the receiver to the autorelease pool.
+ */
+-(id) autorelease;
 
 @end
