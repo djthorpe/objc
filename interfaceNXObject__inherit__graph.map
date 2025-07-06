@@ -1,5 +1,6 @@
 <map id="NXObject" name="NXObject">
-<area shape="rect" id="node3" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="5,155,84,181"/>
-<area shape="rect" id="node4" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="109,155,183,181"/>
-<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="63,5,127,32"/>
+<area shape="rect" id="node3" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node4" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="177,155,255,181"/>
+<area shape="rect" id="node5" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="280,155,355,181"/>
+<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="184,5,248,32"/>
 </map>

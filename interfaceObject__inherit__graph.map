@@ -1,7 +1,8 @@
 <map id="Object" name="Object">
-<area shape="rect" id="node2" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="5,80,141,107"/>
-<area shape="rect" id="node3" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="165,80,248,107"/>
-<area shape="rect" id="node6" href="$interfaceProtocol.html" title="Protocol" alt="" coords="272,80,347,107"/>
-<area shape="rect" id="node4" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="117,155,195,181"/>
-<area shape="rect" id="node5" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="220,155,295,181"/>
+<area shape="rect" id="node2" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="15,80,151,107"/>
+<area shape="rect" id="node3" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="175,80,257,107"/>
+<area shape="rect" id="node7" href="$interfaceProtocol.html" title="Protocol" alt="" coords="281,80,356,107"/>
+<area shape="rect" id="node4" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node5" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="177,155,255,181"/>
+<area shape="rect" id="node6" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="280,155,355,181"/>
 </map>

@@ -108,7 +108,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div><div class="line">        fprintf(stderr, (<span class="keyword">const</span> <span class="keywordtype">char</span>* )[format cStr], ##__VA_ARGS__); \</div><div class="line">        fprintf(stderr, <span class="stringliteral">&quot;\n&quot;</span>); \</div><div class="line">    } <span class="keywordflow">while</span> (0)</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                                         \</div><div class="line">    fprintf(stderr, (<span class="keyword">const</span> <span class="keywordtype">char</span> *)[format cStr], ##__VA_ARGS__);               \</div><div class="line">    fprintf(stderr, <span class="stringliteral">&quot;\n&quot;</span>);                                                     \</div><div class="line">  } <span class="keywordflow">while</span> (0)</div></div><!-- fragment -->
 <p>Logs a formatted string to the standard error stream. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -119,7 +119,7 @@ Macros</h2></td></tr>
 </dl>
 <p>This macro takes a format string and a variable number of arguments, formats them, and prints the result to <code>stderr</code>, followed by a newline character. </p>
 
-<p class="definition">Definition at line <a class="el" href="NXLog_8h_source.html#l00021">21</a> of file <a class="el" href="NXLog_8h_source.html">NXLog.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NXLog_8h_source.html#l00023">23</a> of file <a class="el" href="NXLog_8h_source.html">NXLog.h</a>.</p>
 
 </div>
 </div>
