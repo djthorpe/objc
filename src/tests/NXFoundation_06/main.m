@@ -18,7 +18,7 @@ int main() {
     // Free the pool and the zone
     [pool release];
     test_assert([NXAutoreleasePool currentPool] == nil);
-    [zone dealloc];
+    [zone release];
     test_assert([NXZone defaultZone] == nil);
 
     // Return success
