@@ -50,7 +50,7 @@ OBJC_ROOT_CLASS
 {
   return 4;
 }
-+ initialize { return self; }
++ (id) initialize { return self; }
 @end
 
 

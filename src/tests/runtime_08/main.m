@@ -2,21 +2,22 @@
 #include <tests/tests.h>
 
 @interface Foo : Object
-+ foo;
-+ bar;
++ (id)foo;
++ (id)bar;
 @end
 
 int foocalled = 0;
 int barcalled = 0;
 
 @implementation Foo
-+ foo
++ (id)foo
 {
     test_assert(!foocalled);
     foocalled = 1;
     return self;
 }
-+ bar
+
++ (id)bar
 {
     test_assert(!barcalled);
     barcalled = 1;
