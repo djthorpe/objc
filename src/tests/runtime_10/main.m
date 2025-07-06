@@ -33,7 +33,7 @@ OBJC_ROOT_CLASS
   
   return u;
 }
-+ initialize { return self; }
++ (id) initialize { return self; }
 @end
 
 /* The second class */
@@ -52,7 +52,7 @@ OBJC_ROOT_CLASS
   test_assert([(Class)self method].a == 5);
 }
 
-+ initialize { return self; }
++(id) initialize { return self; }
 @end
 
 

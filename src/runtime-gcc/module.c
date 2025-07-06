@@ -55,3 +55,8 @@ void __objc_exec_class(struct objc_module *module) {
     __objc_category_init();
     __objc_module_register(module);
 }
+
+void __objc_force_linking (void) {
+  extern void __objc_linking (void);
+  __objc_linking();
+}
