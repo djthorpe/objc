@@ -2,7 +2,7 @@
 #include <tests/tests.h>
 
 @interface Foo : Object
-+ (id)foo;
++ (id) foo;
 + (id)bar;
 @end
 
