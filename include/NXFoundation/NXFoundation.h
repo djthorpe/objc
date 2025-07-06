@@ -5,9 +5,13 @@
 #if __OBJC__
 
 // Forward declaration of classes
+@class NXAutoreleasePool;
+@class NXObject;
+@class NXString;
 @class NXZone;
 
 // Includes
+#include "NXAutoreleasePool.h"
 #include "NXLog.h"
 #include "NXObject.h"
 #include "NXString.h"

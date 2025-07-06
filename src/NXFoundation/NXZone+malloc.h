@@ -1,4 +1,5 @@
 #pragma once
+#include <stddef.h>
 
 /*
  * Implementation of memory allocation for NXZone.

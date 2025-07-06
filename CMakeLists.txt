@@ -17,6 +17,7 @@ endif()
 
 # Compile options
 add_compile_options(
+    "-std=c99"
     "-Wall"
     "-Wextra"
     "$<$<CONFIG:DEBUG>:-DDEBUG>"

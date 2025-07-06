@@ -23,6 +23,6 @@
  * @brief Returns a string that represents the contents of the receiver.
  * @return A string that describes the receiver.
  */
--(NXString* ) description;
+- (NXString *)description;
 
 @end

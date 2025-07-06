@@ -13,10 +13,12 @@ else
 	CMAKE_BUILD_TYPE := Debug
 endif
 
+.PHONY: all
+all: NXFoundation
+
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
 libobjc-gcc: dep-cc dep-cmake
-	@echo
 	@echo make libobjc-gcc
 	cmake -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
@@ -24,9 +26,16 @@ libobjc-gcc: dep-cc dep-cmake
 		-D TARGET=${TARGET}
 	@cmake --build ${BUILD_DIR} --target objc-gcc
 
+
+# Create the libobjc-gcc runtime library
+.PHONY: NXFoundation
+NXFoundation: libobjc-gcc
+	@echo make NXFoundation
+	@cmake --build ${BUILD_DIR} --target NXFoundation
+
 # Test the libobjc-gcc runtime library
-.PHONY: test
-test: libobjc-gcc
+.PHONY: tests
+tests: NXFoundation
 	@echo
 	@echo make tests
 	@cmake --build ${BUILD_DIR}/src/tests
