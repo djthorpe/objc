@@ -65,6 +65,7 @@ static id defaultPool = nil;
   id _head = _tail;
   while (_head != nil) {
     NXLog(@"Autoreleasing object: %@", _head);
+    [((NXObject* )_head) release]; // Release the current object
     _head = ((NXObject* )_head)->_next; // Next autoreleased object
   }
 }
