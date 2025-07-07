@@ -36,6 +36,8 @@
  *
  * @warning Values exceeding the 32-bit range will overflow. Always validate
  *          duration calculations in applications requiring extended time ranges.
+ *
+ * \headerfile NXTimeInterval.h NXFoundation/NXFoundation.h
  */
 typedef int32_t NXTimeInterval;
 
