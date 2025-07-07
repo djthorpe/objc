@@ -15,8 +15,8 @@
 #include "NXAutoreleasePool.h"
 #include "NXLog.h"
 #include "NXString.h"
-#include "NXThread.h"
 #include "NXTimeInterval.h"
+#include "NXThread.h"
 #include "NXZone.h"
 #include "Object+Description.h"
 

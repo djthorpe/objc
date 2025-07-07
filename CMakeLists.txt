@@ -27,6 +27,7 @@ add_compile_options(
 # Libraries
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/malloc")
+add_subdirectory("src/sys")
 add_subdirectory("src/NXFoundation")
 
 # Tests
