@@ -61,12 +61,12 @@ static id defaultPool = nil;
 }
 
 - (void)drain {
-  // Release all objects in the current pool
-  id _head = _tail;
-  while (_head != nil) {
-    NXLog(@"Autoreleasing object: %@", _head);
-    [((NXObject* )_head) release]; // Release the current object
-    _head = ((NXObject* )_head)->_next; // Next autoreleased object
+  // Release all objects in the current pool, from tail to head
+  id _cur = _tail;
+  while (_cur != nil) {
+    NXLog(@"Autoreleasing object: %@", _cur);
+    [((NXObject* )_cur) release]; // Release the current object
+    _cur = ((NXObject* )_cur)->_next; // Next autoreleased object
   }
 }
 
