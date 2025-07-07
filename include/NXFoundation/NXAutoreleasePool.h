@@ -6,7 +6,6 @@
  * to manage objects that are to be released at a later time.
  */
 #pragma once
-#include "NXObject.h"
 
 /**
  * @brief A class for managing autorelease pools.

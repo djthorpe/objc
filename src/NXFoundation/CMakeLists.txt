@@ -4,6 +4,7 @@ add_library(${NAME} STATIC
     NXAutoreleasePool.m
     NXObject.m
     NXString.m
+    NXThread.m
     NXZone.m
     NXZone+malloc.m
     Object+Description.m
