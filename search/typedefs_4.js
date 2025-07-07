@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sel',['SEL',['../runtime_8h.html#acc50f82530a982adeb5979def1ca71fa',1,'runtime.h']]]
+  ['nxtimeinterval',['NXTimeInterval',['../NXTimeInterval_8h.html#a81360f73bf2e81c6addb8630b5b5f1a4',1,'NXTimeInterval.h']]]
 ];

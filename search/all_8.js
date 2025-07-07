@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['malloc_2eh',['malloc.h',['../malloc_8h.html',1,'']]],
-  ['method',['Method',['../runtime_8h.html#a167b310fc29ca0d888a72600171b968a',1,'runtime.h']]]
+  ['length',['length',['../interfaceNXConstantString.html#ac008e5f6fa7b441d551761de3c0ac14e',1,'NXConstantString::length()'],['../interfaceNXString.html#ab1ec72b601d56d58f0d2f2d73ab42c57',1,'NXString::length()']]]
 ];
