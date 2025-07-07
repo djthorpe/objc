@@ -5,6 +5,7 @@ var searchData=
   ['objc_5flookupclass',['objc_lookupClass',['../runtime_8h.html#ad60fc60359e0c7b9a6751f835f5537a2',1,'runtime.h']]],
   ['objc_5fmalloc',['objc_malloc',['../malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7',1,'malloc.h']]],
   ['objc_5froot_5fclass',['OBJC_ROOT_CLASS',['../runtime_8h.html#a1636d49f54f5501c0bb5ce698de32eee',1,'runtime.h']]],
+  ['objc_5fsleep',['objc_sleep',['../sleep_8h.html#ac9a4d2d7ca245e40e7873fc213a6c77c',1,'sleep.h']]],
   ['objc_5funused',['OBJC_UNUSED',['../runtime_8h.html#ad2e5ab70591b8c9424a23877a448e4a4',1,'runtime.h']]],
   ['object',['Object',['../interfaceObject.html',1,'']]],
   ['object_28description_29',['Object(Description)',['../categoryObject_07Description_08.html',1,'']]],
