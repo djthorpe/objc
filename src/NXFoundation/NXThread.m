@@ -9,12 +9,9 @@
         panicf("sleepForTimeInterval called with negative interval: %f", interval);
         return;
     }
-    
-    // Convert seconds to milliseconds
-    unsigned int milliseconds = (unsigned int)(interval * 1000.0);
-    
+
     // Use the system sleep function
-    objc_sleep(milliseconds);
+    objc_sleep(interval * Millisecond);
 }
 
 @end

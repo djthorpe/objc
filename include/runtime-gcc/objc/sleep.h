@@ -7,9 +7,10 @@
  * \headerfile sleep.h objc/objc.h
  */
 #pragma once
+#include <stdint.h>
 
 /**
  * @brief Pauses the execution of the current thread for a specified time.
  * @param milliseconds The number of milliseconds to sleep.
  */
-void objc_sleep(unsigned int milliseconds);
+void objc_sleep(int32_t msec);
