@@ -11,6 +11,6 @@
 
 /**
  * @brief Pauses the execution of the current thread for a specified time.
- * @param milliseconds The number of milliseconds to sleep.
+ * @param msec The number of milliseconds to sleep.
  */
 void objc_sleep(int32_t msec);
