@@ -5,7 +5,7 @@
 /**
  * Sleeps the current thread for a specified number of milliseconds.
  */
-void objc_sleep(int32_t msec) {
+void sys_sleep(int32_t msec) {
   if (msec <= 0) {
     return;
   }

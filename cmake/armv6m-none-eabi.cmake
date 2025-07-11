@@ -1,6 +1,6 @@
 # RP2040 target toolchain file
 
-set(CMAKE_SYSTEM_NAME "PICO")
+set(CMAKE_SYSTEM_NAME "pico")
 set(CMAKE_SYSTEM_PROCESSOR "cortex-m0plus")
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 

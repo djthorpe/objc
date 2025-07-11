@@ -1,7 +1,5 @@
 {
     "files.associations": {
-        "*.hcl": "terraform",
-        "*.h": "objective-c",
-        "__locale": "c"
+        "*.h": "objective-c"
     }
 }

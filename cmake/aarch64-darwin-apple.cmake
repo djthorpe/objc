@@ -1,6 +1,6 @@
 # ARM/Darwin target toolchain file
 
-set(CMAKE_SYSTEM_NAME "Darwin")
+set(CMAKE_SYSTEM_NAME "darwin")
 set(CMAKE_SYSTEM_PROCESSOR "arm64")
 
 find_program(CMAKE_C_COMPILER NAMES "gcc-15"

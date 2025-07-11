@@ -1,4 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
+#include <sys/sys.h>
 
 @implementation NXThread
 
@@ -11,7 +12,7 @@
     }
 
     // Use the system sleep function
-    objc_sleep(interval * Millisecond);
+    sys_sleep(interval * Millisecond);
 }
 
 @end
