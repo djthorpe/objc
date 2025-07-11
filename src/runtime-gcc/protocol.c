@@ -49,7 +49,7 @@ void __objc_protocol_list_register(struct objc_protocol_list *list) {
   }
   for (size_t i = 0; i < list->count; i++) {
     objc_protocol_t *protocol = list->protocols[i];
-    if (protocol != NULL && protocol->name == NULL) {
+    if (protocol != NULL && protocol->name != NULL) {
       __objc_protocol_register(protocol);
     }
   }
