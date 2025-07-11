@@ -45,6 +45,7 @@ static id defaultZone = nil;
   // Set up instance variables
   zone->_size = size;
   zone->_data = size ? (uint8_t *)memory + alignedObjectSize : NULL;
+  zone->_count = 0;
 
   // Set the default zone if it hasn't been set yet
   if (!defaultZone) {
@@ -58,6 +59,11 @@ static id defaultZone = nil;
  * Deallocate the zone, freeing the allocated memory.
  */
 - (void)dealloc {
+#ifdef DEBUG
+  if (_count != 0) {
+    panicf("[NXZone dealloc] called with %zu active allocations", _count);
+  }
+#endif
   if (defaultZone == self) {
     defaultZone = nil; // Clear the default zone if this is it
   }
@@ -73,18 +79,28 @@ static id defaultZone = nil;
 #pragma mark - Instance methods
 
 - (void *)allocWithSize:(size_t)size {
+  void *ptr = NULL;
   if (_data == NULL) {
     // No arena - call malloc directly
-    return __zone_malloc(size);
+    ptr = __zone_malloc(size);
   }
-  return NULL;
+  @synchronized(self) {
+    if (ptr != NULL) {
+      _count++;
+    }
+  }
+  return ptr;
 }
 
 - (void)free:(void *)ptr {
+  @synchronized(self) {
+    if (ptr != NULL) {
+      _count--;
+    }
+  }
   if (_data == NULL) {
     // No arena - call free directly
     __zone_free(ptr);
-    return;
   }
 }
 

@@ -33,6 +33,12 @@
    * @brief A pointer to the memory block managed by the zone.
    */
   void *_data; // Pointer to the allocated memory block
+
+  /**
+   * @var _count
+   * @brief The number of active allocations.
+   */
+  size_t _count;
 }
 
 // Lifecycle
