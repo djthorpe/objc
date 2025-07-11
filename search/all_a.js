@@ -10,6 +10,8 @@ var searchData=
   ['nxlog',['NXLog',['../NXLog_8h.html#a6af05e6dd8b6052f740e7384539d45ab',1,'NXLog.h']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
   ['nxobject',['NXObject',['../interfaceNXObject.html',1,'']]],
+  ['nxobject_28description_29',['NXObject(Description)',['../categoryNXObject_07Description_08.html',1,'']]],
+  ['nxobject_2bdescription_2eh',['NXObject+Description.h',['../NXObject_09Description_8h.html',1,'']]],
   ['nxobject_2eh',['NXObject.h',['../NXObject_8h.html',1,'']]],
   ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],

@@ -58,7 +58,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Defines external memory management functions.  
+<p>Memory allocation functions for the Objective-C runtime.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -73,9 +73,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="malloc_8h__dep__incl.png" border="0" usemap="#include_2runtime-gcc_2objc_2malloc_8hdep" alt=""/></div>
 <map name="include_2runtime-gcc_2objc_2malloc_8hdep" id="include_2runtime-gcc_2objc_2malloc_8hdep">
-<area shape="rect" id="node2" href="objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="13,95,163,136"/>
-<area shape="rect" id="node3" href="NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="6,184,170,225"/>
-<area shape="rect" id="node4" href="Object_09Description_8h.html" title="Adds a description method to the root Object class. " alt="" coords="5,273,171,315"/>
+<area shape="rect" id="node2" href="objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,95,163,136"/>
+<area shape="rect" id="node3" href="NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,184,169,225"/>
 </map>
 </div>
 </div>
@@ -84,15 +83,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a12b32d3d80a37f14adc2bc963eb0bde7"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7">objc_malloc</a> (size_t size)</td></tr>
-<tr class="memdesc:a12b32d3d80a37f14adc2bc963eb0bde7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates a block of memory.  <a href="#a12b32d3d80a37f14adc2bc963eb0bde7">More...</a><br /></td></tr>
+<tr class="memdesc:a12b32d3d80a37f14adc2bc963eb0bde7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for use by the Objective-C runtime.  <a href="#a12b32d3d80a37f14adc2bc963eb0bde7">More...</a><br /></td></tr>
 <tr class="separator:a12b32d3d80a37f14adc2bc963eb0bde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f8e2ee1df5b130d4c96555fff909fdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="malloc_8h.html#a8f8e2ee1df5b130d4c96555fff909fdd">objc_free</a> (void *ptr)</td></tr>
-<tr class="memdesc:a8f8e2ee1df5b130d4c96555fff909fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees a block of memory.  <a href="#a8f8e2ee1df5b130d4c96555fff909fdd">More...</a><br /></td></tr>
+<tr class="memdesc:a8f8e2ee1df5b130d4c96555fff909fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory previously allocated by <a class="el" href="malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7" title="Allocate memory for use by the Objective-C runtime. ">objc_malloc()</a>.  <a href="#a8f8e2ee1df5b130d4c96555fff909fdd">More...</a><br /></td></tr>
 <tr class="separator:a8f8e2ee1df5b130d4c96555fff909fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines external memory management functions. </p>
-<p>This file declares the <code>objc_malloc</code> and <code>objc_free</code> functions, which are used for memory allocation and deallocation within the Objective-C runtime. </p>
+<div class="textblock"><p>Memory allocation functions for the Objective-C runtime. </p>
 
 <p class="definition">Definition in file <a class="el" href="malloc_8h_source.html">malloc.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -112,7 +110,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Frees a block of memory. </p>
+<p>Free memory previously allocated by <a class="el" href="malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7" title="Allocate memory for use by the Objective-C runtime. ">objc_malloc()</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr</td><td>A pointer to the memory block to be deallocated. </td></tr>
@@ -138,14 +136,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Allocates a block of memory. </p>
+<p>Allocate memory for use by the Objective-C runtime. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>The number of bytes to allocate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the allocated memory, or <code>NULL</code> if the allocation fails. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the allocated memory block, or NULL if allocation fails. </dd></dl>
 
 </div>
 </div>
