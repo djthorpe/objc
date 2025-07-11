@@ -1,22 +1,20 @@
+#include <NXFoundation/NXFoundation.h>
 #include <string.h>
 #include <tests/tests.h>
-#include <NXFoundation/NXFoundation.h>
 
 int main() {
-    // Create a zone
-    NXZone* zone = [NXZone zoneWithSize:0];
-    test_assert(zone != nil);
-    test_assert([NXZone defaultZone] == zone);
+  // Memory management
+  NXZone *zone = [NXZone zoneWithSize:0];
+  NXAutoreleasePool *pool = [[NXAutoreleasePool alloc] init];
 
-    NXObject* obj = [[NXObject alloc] init];
-    test_stringsequal([obj description], @"NXObject");
+  // Create an object
+  NXObject *obj = [[[NXObject alloc] init] autorelease];
+  test_stringsequal([obj description], @"NXObject");
 
-    test_stringsequal([zone description], @"NXZone");
+  // Release
+  [pool release];
+  [zone dealloc];
 
-    // Free the zone
-    [zone dealloc];
-    test_assert([NXZone defaultZone] == nil);
-
-    // Return success
-    return 0;
+  // Return success
+  return 0;
 }

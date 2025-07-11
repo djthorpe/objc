@@ -11,13 +11,13 @@
 @class NXZone;
 
 // Includes
-#include "NXObject.h"
 #include "NXAutoreleasePool.h"
 #include "NXLog.h"
+#include "NXObject+Description.h"
+#include "NXObject.h"
 #include "NXString.h"
-#include "NXTimeInterval.h"
 #include "NXThread.h"
+#include "NXTimeInterval.h"
 #include "NXZone.h"
-#include "Object+Description.h"
 
 #endif // __OBJC__

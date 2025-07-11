@@ -106,6 +106,10 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
            "message\n",
            receiver->isa->info & objc_class_flag_meta ? '+' : '-',
            receiver->isa->name, sel_getName(selector), selector->sel_type);
+  } else {
+#ifdef DEBUG
+    printf("    => IMP @%p\n", imp);
+#endif
   }
 
   // If the class has of the receiver not been initialized, then this is the

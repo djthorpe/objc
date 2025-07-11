@@ -112,7 +112,7 @@ struct objc_static_instances_list {
 
 struct objc_protocol {
   struct objc_class *class;
-  const char *protocol_name;
+  const char *name;
   struct objc_protocol_list *protocol_list;
   struct objc_method_list *instance_methods;
   struct objc_method_list *class_methods;

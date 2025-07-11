@@ -7,6 +7,7 @@
  */
 
 #pragma once
+#include "NXTimeInterval.h"
 
 /**
  * @brief A class for managing and interacting with threads.
