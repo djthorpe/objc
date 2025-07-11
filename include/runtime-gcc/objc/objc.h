@@ -1,12 +1,11 @@
 #pragma once
 
-#include "runtime.h"
-#include "malloc.h"
 #include "assert.h"
+#include "malloc.h"
 #include "panicf.h"
+#include "runtime.h"
 
 #if __OBJC__
-#include "Object.h"
-#include "Protocol.h"
 #include "NXConstantString.h"
+#include "Object.h"
 #endif // __OBJC__
