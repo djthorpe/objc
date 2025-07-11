@@ -142,14 +142,14 @@ Class objc_lookup_class(const char *name) {
 #endif
 
     // Resolve the class
-    if (!(cls->info & objc_class_flag_resolved)) {
-        __objc_class_register_methods(cls);
-    } else {
-        return (Class)cls; // Already resolved
+    if (cls->info & objc_class_flag_resolved) {
+        return (Class)cls;
     }
-    
 
-    // Resolve the metaclass
+    // Resolve the class methods (including superclass methods)
+    __objc_class_register_methods(cls);
+    
+    // Resolve the metaclass methods
     if (cls->metaclass != NULL) {     
         __objc_class_register_methods(cls->metaclass);
 
