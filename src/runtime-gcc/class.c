@@ -105,7 +105,7 @@ void __objc_class_register_methods(objc_class_t *p) {
         __objc_class_register_method_list(p, ml);
     }
 
-    // Assume the superclass is not yet resolved
+    // Resolve the superclass
     if (p->superclass != NULL) {
         Class superclass = __objc_lookup_class((const char* )p->superclass);
         if (superclass == Nil) {
@@ -120,16 +120,8 @@ void __objc_class_register_methods(objc_class_t *p) {
         superclass->info |= objc_class_flag_resolved; // Mark as resolved
     }
 
-        // Resolve the metaclass
-    if (p->metaclass != NULL) {     
-        __objc_class_register_methods(p->metaclass);
-        // Set the metaclass superclass
-        if (p->superclass != NULL) {
-            p->metaclass->superclass = p->superclass->metaclass;
-        }
-        p->metaclass->info |= objc_class_flag_resolved; // Mark as resolved
-    }
-
+    // Mark the class as resolved
+    p->info |= objc_class_flag_resolved;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -152,16 +144,20 @@ Class objc_lookup_class(const char *name) {
     // Resolve the class
     if (!(cls->info & objc_class_flag_resolved)) {
         __objc_class_register_methods(cls);
-        cls->info |= objc_class_flag_resolved; // Mark as resolved
     } else {
         return (Class)cls; // Already resolved
     }
     
+
     // Resolve the metaclass
-    //if (cls->metaclass != NULL) {        
-    //    __objc_class_register_methods(cls->metaclass);
-    //    cls->metaclass->info |= objc_class_flag_resolved; // Mark as resolved
-    //}
+    if (cls->metaclass != NULL) {     
+        __objc_class_register_methods(cls->metaclass);
+
+        // Set the metaclass superclass
+        if (cls->superclass != NULL) {
+            cls->metaclass->superclass = cls->superclass->metaclass;
+        }
+    }
 
     // Return the class pointer
     return (Class)cls;
