@@ -4,6 +4,7 @@
 #if __OBJC__
 
 // Forward declaration of classes
+@class NXApplication;
 @class NXAutoreleasePool;
 @class NXObject;
 @class NXString;
@@ -11,6 +12,7 @@
 @class NXZone;
 
 // Includes
+#include "NXApplication.h"
 #include "NXAutoreleasePool.h"
 #include "NXLog.h"
 #include "NXObject+Description.h"
