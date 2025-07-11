@@ -1,6 +1,6 @@
 # ARM/Darwin target toolchain file
 
-set(CMAKE_SYSTEM_NAME "Linux")
+set(CMAKE_SYSTEM_NAME "linux")
 set(CMAKE_SYSTEM_PROCESSOR "x86-64")
 
 find_program(CMAKE_C_COMPILER NAMES "clang"
@@ -15,7 +15,6 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
     NO_DEFAULT_PATH
     REQUIRED
 )
-
 
 # Compile options for Objective-C GCC
 add_compile_options(

@@ -7,9 +7,10 @@ add_library(${NAME} STATIC
     init.m
     message.c
     module.c
-    Object.m
     NXConstantString.m
+    Object.m
     panicf.c
+    protocol.c
     statics.c
 )
 target_include_directories(${NAME} PRIVATE

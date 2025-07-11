@@ -1,10 +1,9 @@
-set(NAME "runtime_01")
+set(NAME "runtime_24")
 add_executable(${NAME}
     main.m
 )
 target_link_libraries(${NAME} PRIVATE
     objc-gcc
     malloc
-    sys
 )
 add_test(NAME ${NAME} COMMAND ${NAME})
