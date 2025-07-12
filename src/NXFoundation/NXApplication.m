@@ -27,6 +27,24 @@ static id sharedApplication = nil;
   [super release]; // Call superclass release
 }
 
+#pragma mark - Instance Methods
+
+- (int)run {
+  // Start the main run loop
+  while (YES) {
+    NXLog(@"NXApplication is running...");
+    // Process events and maintain application state
+    // This is a placeholder for actual event processing logic
+    // In a real application, this would handle user input, timers, etc.
+
+    // For now, we just break to avoid an infinite loop in this example
+    break;
+  }
+
+  // Return success
+  return 0;
+}
+
 #pragma mark - Class Methods
 
 + (id)sharedApplication {
@@ -77,24 +95,6 @@ static id sharedApplication = nil;
 
   // Return the result of the run method
   return returnValue;
-}
-
-#pragma mark - Instance Methods
-
-- (int)run {
-  // Start the main run loop
-  while (YES) {
-    NXLog(@"NXApplication is running...");
-    // Process events and maintain application state
-    // This is a placeholder for actual event processing logic
-    // In a real application, this would handle user input, timers, etc.
-
-    // For now, we just break to avoid an infinite loop in this example
-    break;
-  }
-
-  // Return success
-  return 0;
 }
 
 @end
