@@ -4,7 +4,6 @@
  * @details This file declares the `panicf` function, which is used to report
  * fatal errors and terminate the program.
  */
-
 #pragma once
 
 /**

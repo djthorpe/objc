@@ -67,10 +67,10 @@ static id sharedApplication = nil;
   }
 
   // Call the run method on the shared application instance
-  int returnValue = [sharedApplication run];
+  int returnValue = [app run];
 
-  // Release the shared application instance
-  [sharedApplication release];
+  // Release the application instance
+  [app release];
 
   // Release the zone
   [zone release];

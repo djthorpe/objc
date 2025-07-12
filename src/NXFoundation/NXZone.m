@@ -84,6 +84,8 @@ static id defaultZone = nil;
   if (_data == NULL) {
     // No arena - call malloc directly
     ptr = __zone_malloc(size);
+  } else {
+    panicf("Allocating memory in a zone with an arena is not supported");
   }
   @synchronized(self) {
     if (ptr != NULL) {
