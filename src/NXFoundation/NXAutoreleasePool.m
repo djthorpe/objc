@@ -13,14 +13,16 @@ static id defaultPool = nil;
     return nil;
   }
 
-  // Set the previous pool to the current default pool
-  _prev = defaultPool;
+  @synchronized([self class]) {
+    // Set the previous pool to the current default pool
+    _prev = defaultPool;
 
-  // Initialize the tail to nil
-  _tail = nil;
+    // Initialize the tail to nil
+    _tail = nil;
 
-  // Set the current pool as the new default pool
-  defaultPool = self;
+    // Set the current pool as the new default pool
+    defaultPool = self;
+  }
 
   // Return success
   return self;
@@ -30,8 +32,10 @@ static id defaultPool = nil;
   // Drain the pool before deallocating
   [self drain];
 
-  // Reset the default pool to the previous one
-  defaultPool = _prev;
+  @synchronized([self class]) {
+    // Reset the default pool to the previous one
+    defaultPool = _prev;
+  }
 
   // Call superclass dealloc
   [super dealloc];
@@ -40,8 +44,10 @@ static id defaultPool = nil;
 #pragma mark - Class Methods
 
 + (id)currentPool {
-  // Return the current autorelease pool
-  return defaultPool;
+  @synchronized(self) {
+    // Return the current autorelease pool
+    return defaultPool;
+  }
 }
 
 #pragma mark - Instance Methods
@@ -56,17 +62,38 @@ static id defaultPool = nil;
         object_getClassName(object));
     return;
   }
-  ((NXObject* )object)->_next = _tail; // Link the new object to the current tail
-  _tail = object;        // Update the tail to the new object
+
+  @synchronized(self) {
+    // If object already added to a pool, panic
+    if (((NXObject *)object)->_next != nil) {
+      panicf("Object already added to an autorelease pool: %s",
+             object_getClassName(object));
+      return;
+    }
+
+    ((NXObject *)object)->_next =
+        _tail;      // Link the new object to the current tail
+    _tail = object; // Update the tail to the new object
+  }
 }
 
 - (void)drain {
-  // Release all objects in the current pool, from tail to head
-  id _cur = _tail;
-  while (_cur != nil) {
-    NXLog(@"Autoreleasing object: %@", _cur);
-    [((NXObject* )_cur) release]; // Release the current object
-    _cur = ((NXObject* )_cur)->_next; // Next autoreleased object
+  @synchronized(self) {
+    // Release all objects in the current pool, from tail to head
+    id _cur = _tail;
+    while (_cur != nil) {
+      id _next = ((NXObject *)_cur)->_next; // Save next pointer before release
+      NXLog(@"Autoreleasing object: @%p", _cur);
+
+      // Clear the _next pointer before releasing
+      ((NXObject *)_cur)->_next = nil;
+      [((NXObject *)_cur) release]; // Release the current object
+
+      _cur = _next; // Move to the next object
+    }
+
+    // Clear the tail pointer
+    _tail = nil;
   }
 }
 

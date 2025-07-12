@@ -34,17 +34,6 @@
  * This method typically blocks the calling thread and should be called from the
  * main thread after all application initialization is complete.
  */
-- (void)run;
++ (int)run;
 
 @end
-
-/**
- * @brief Main entry point for NXFoundation applications with custom application
- * class.
- * @param app The Class object representing the NXApplication subclass to
- * instantiate. This class must inherit from NXApplication. If nil is passed,
- * the default NXApplication class will be used.
- * @return The application's exit status code. Typically 0 for success,
- *         or a non-zero value to indicate an error condition.
- */
-extern int NXApplicationMain(Class app);

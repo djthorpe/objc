@@ -46,9 +46,10 @@ static id defaultZone = nil;
   zone->_size = size;
   zone->_data = size ? (uint8_t *)memory + alignedObjectSize : NULL;
   zone->_count = 0;
+  zone->_retain = 1; // Initial retain count
 
   // Set the default zone if it hasn't been set yet
-  if (!defaultZone) {
+  if (defaultZone == nil) {
     defaultZone = zone;
   }
 

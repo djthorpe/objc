@@ -32,16 +32,56 @@ static id sharedApplication = nil;
 + (id)sharedApplication {
   @synchronized(self) {
     // Check if the shared application instance already exists
+    if (sharedApplication != nil) {
+      return sharedApplication; // Return existing instance
+    }
+
+    // Create the shared application instance
+    sharedApplication = [[self alloc] init];
     if (sharedApplication == nil) {
-      sharedApplication = [[self alloc] init];
+      panicf("Failed to create shared application instance");
+      return nil;
+    }
+
+    // Return the shared application instance
+    return sharedApplication;
+  }
+}
+
++ (int)run {
+  // If there is no default zone, create one
+  NXZone *zone = [NXZone defaultZone];
+  if (zone == nil) {
+    zone = [NXZone zoneWithSize:0];
+    if (zone == nil) {
+      panicf("Failed to create default zone for NXApplication");
+      return -1;
     }
   }
-  return sharedApplication;
+
+  // Get the shared application instance
+  NXApplication *app = [self sharedApplication];
+  if (app == nil) {
+    panicf("No shared application instance available");
+    return -1;
+  }
+
+  // Call the run method on the shared application instance
+  int returnValue = [sharedApplication run];
+
+  // Release the shared application instance
+  [sharedApplication release];
+
+  // Release the zone
+  [zone release];
+
+  // Return the result of the run method
+  return returnValue;
 }
 
 #pragma mark - Instance Methods
 
-- (void)run {
+- (int)run {
   // Start the main run loop
   while (YES) {
     NXLog(@"NXApplication is running...");
@@ -52,50 +92,9 @@ static id sharedApplication = nil;
     // For now, we just break to avoid an infinite loop in this example
     break;
   }
-}
-
-@end
-
-int NXApplicationMain(Class app) {
-  // Check if the application class is valid
-  if (app == nil) {
-    app = [NXApplication class];
-  }
-
-  // Create a default zone
-  NXZone *zone = [NXZone zoneWithSize:0];
-  if (zone == nil) {
-    panicf("Failed to create default zone for NXApplication");
-    return -1;
-  }
-
-  // Create an autorelease pool
-  NXAutoreleasePool *pool = [[NXAutoreleasePool allocWithZone:zone] init];
-  if (pool == nil) {
-    panicf("Failed to create autorelease pool for NXApplication");
-    return -1;
-  }
-
-  // Create the shared application instance
-  NXApplication *application = [app sharedApplication];
-  if (application == nil) {
-    panicf("Failed to create shared application instance");
-    return -1;
-  } else if (![application isKindOfClass:[NXApplication class]]) {
-    panicf("Shared application instance is not of type NXApplication");
-    return -1;
-  }
-
-  // Run the application
-  [application run];
-
-  // Release the application instance
-  [application release];
-
-  // Release the autorelease pool first, then the zone
-  [pool release];
-  [zone release];
 
   // Return success
   return 0;
 }
+
+@end

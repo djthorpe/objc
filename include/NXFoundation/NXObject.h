@@ -25,13 +25,13 @@
    */
   id _zone;
 
+@protected
   /**
    * @var _retain
    * @brief The retain count of the object.
    */
   unsigned short _retain;
 
-@protected
   /**
    * @var _next
    * @brief The next object in an autorelease pool.
