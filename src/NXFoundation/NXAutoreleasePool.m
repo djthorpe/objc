@@ -80,16 +80,16 @@ static id defaultPool = nil;
 - (void)drain {
   @synchronized(self) {
     // Release all objects in the current pool, from tail to head
-    id _cur = _tail;
-    while (_cur != nil) {
-      id _next = ((NXObject *)_cur)->_next; // Save next pointer before release
-      NXLog(@"Autoreleasing object: @%p", _cur);
+    id cur = _tail;
+    while (cur != nil) {
+      id next = ((NXObject *)cur)->_next; // Save next pointer before release
+      NXLog(@"Autoreleasing object: @%p", cur);
 
       // Clear the _next pointer before releasing
-      ((NXObject *)_cur)->_next = nil;
-      [((NXObject *)_cur) release]; // Release the current object
+      ((NXObject *)cur)->_next = nil;
+      [((NXObject *)cur) release]; // Release the current object
 
-      _cur = _next; // Move to the next object
+      cur = next; // Move to the next object
     }
 
     // Clear the tail pointer

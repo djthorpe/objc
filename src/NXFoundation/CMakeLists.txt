@@ -6,6 +6,7 @@ add_library(${NAME} STATIC
     NXObject.m
     NXObject+Description.m
     NXString.m
+    NXString+format.c
     NXTimeInterval.m
     NXThread.m
     NXZone.m
