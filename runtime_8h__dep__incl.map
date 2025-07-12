@@ -1,4 +1,5 @@
 <map id="include/runtime&#45;gcc/objc/runtime.h" name="include/runtime&#45;gcc/objc/runtime.h">
-<area shape="rect" id="node2" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,95,163,136"/>
-<area shape="rect" id="node3" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,184,169,225"/>
+<area shape="rect" id="node2" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="5,95,156,136"/>
+<area shape="rect" id="node3" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="61,184,212,225"/>
+<area shape="rect" id="node4" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="55,273,219,315"/>
 </map>
