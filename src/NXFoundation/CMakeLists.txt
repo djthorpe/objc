@@ -1,10 +1,12 @@
 set(NAME "NXFoundation")
 
 add_library(${NAME} STATIC
+    NXApplication.m
     NXAutoreleasePool.m
     NXObject.m
     NXObject+Description.m
     NXString.m
+    NXString+format.c
     NXTimeInterval.m
     NXThread.m
     NXZone.m

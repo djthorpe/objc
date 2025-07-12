@@ -46,8 +46,9 @@
  * @brief Increases the retain count of the receiver.
  */
 - (id)retain {
-  // TODO: Implement mutex
-  _retain++;
+  @synchronized(self) {
+    _retain++;
+  }
   return self;
 }
 
@@ -55,13 +56,14 @@
  * @brief Decreases the retain count of the receiver.
  */
 - (void)release {
-  // TODO: Implement mutex
-  if (_retain == 0) {
-    panicf("[NXObject release] called with retain count of zero");
-  }
-  _retain--;
-  if (_retain == 0) {
-    [self dealloc];
+  @synchronized(self) {
+    if (_retain == 0) {
+      panicf("[NXObject release] called with retain count of zero");
+    }
+    _retain--;
+    if (_retain == 0) {
+      [self dealloc];
+    }
   }
 }
 
@@ -76,19 +78,6 @@
   }
   [pool addObject:self]; // Add the object to the current autorelease pool
   return self;
-}
-
-@end
-
-@implementation NXObject (Description)
-
-- (NXString *)description {
-  return [[[NXString alloc] initWithCString:object_getClassName(self)]
-      autorelease];
-}
-
-+ (NXString *)description {
-  return [[[NXString alloc] initWithCString:class_getName(self)] autorelease];
 }
 
 @end

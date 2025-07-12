@@ -39,3 +39,8 @@ add_subdirectory(NXFoundation_04)
 add_subdirectory(NXFoundation_05)
 add_subdirectory(NXFoundation_06)
 add_subdirectory(NXFoundation_07)
+add_subdirectory(NXFoundation_08)
+add_subdirectory(NXFoundation_09)
+
+
+

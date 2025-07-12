@@ -1,32 +1,32 @@
 #include <NXFoundation/NXFoundation.h>
-#include <stdlib.h>
+#include <sys/sys.h>
 
-void* __zone_malloc(size_t size) {
-    void* ptr = malloc(size);
+void *__zone_malloc(size_t size) {
+  void *ptr = sys_malloc(size);
 #ifdef DEBUG
-    NXLog(@"  __zone_malloc: size=%zu => @%p", size, ptr);
+  NXLog(@"  __zone_malloc: size=%zu => @%p", size, ptr);
 #endif
-    return ptr;
+  return ptr;
 }
 
-void __zone_free(void* ptr) {
+void __zone_free(void *ptr) {
 #ifdef DEBUG
-    NXLog(@"  __zone_free => @%p",ptr);
+  NXLog(@"  __zone_free => @%p", ptr);
 #endif
-    free(ptr);
+  sys_free(ptr);
 }
 
-void* objc_malloc(size_t size) {
-    void* ptr = [(NXZone* )[NXZone defaultZone] allocWithSize:size];
+void *objc_malloc(size_t size) {
+  void *ptr = [(NXZone *)[NXZone defaultZone] allocWithSize:size];
 #ifdef DEBUG
-    NXLog(@"objc_malloc: size=%zu => @%p", size, ptr);
+  NXLog(@"objc_malloc: size=%zu => @%p", size, ptr);
 #endif
-    return ptr;
+  return ptr;
 }
 
-void objc_free(void* ptr) {
+void objc_free(void *ptr) {
 #ifdef DEBUG
-    NXLog(@"objc_free: @%p", ptr);
+  NXLog(@"objc_free: @%p", ptr);
 #endif
-    [[NXZone defaultZone] free:ptr];
+  [[NXZone defaultZone] free:ptr];
 }
