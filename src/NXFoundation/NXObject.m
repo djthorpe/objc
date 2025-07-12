@@ -49,7 +49,6 @@
   @synchronized(self) {
     _retain++;
   }
-  // TODO: Implement mutex
   return self;
 }
 
