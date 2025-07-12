@@ -61,9 +61,9 @@
       panicf("[NXObject release] called with retain count of zero");
     }
     _retain--;
-  }
-  if (_retain == 0) {
-    [self dealloc];
+    if (_retain == 0) {
+      [self dealloc];
+    }
   }
 }
 
