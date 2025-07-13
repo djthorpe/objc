@@ -12,7 +12,8 @@ enum _objc_printf_flags {
   OBJC_PRINTF_LONG = 1 << 0,
   OBJC_PRINTF_HEX = 1 << 1,
   OBJC_PRINTF_BIN = 1 << 2,
-  OBJC_PRINTF_UPPER = 1 << 3
+  OBJC_PRINTF_UPPER = 1 << 3,
+  OBJC_PRINTF_NEG = 1 << 4
 };
 
 static const char *_objc_printf_nil = "<nil>";
@@ -53,13 +54,43 @@ static inline size_t _objc_printf_strtostr(char *buf, size_t sz, size_t i,
   return i;
 }
 
+/* @brief Return digit for a given value
+ */
+static inline char _objc_printf_digit(unsigned long value, int base,
+                                      bool upper) {
+  char c = (char)(value % base);
+  return (c < 10) ? c + '0' : c - 10 + (upper ? 'A' : 'a');
+}
+
 /**
  * @brief Convert an unsigned integer to string representation
  */
 static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
                                      unsigned long value,
                                      enum _objc_printf_flags flags) {
-  return _objc_printf_strtostr(buf, sz, i, "TODO (unsigned)");
+  // Zero-value shortcut
+  if (value == 0) {
+    return _objc_printf_chtostr(buf, sz, i, '0');
+  }
+
+  // output the number, but in reverse order
+  int base = 10;
+  int len = 0;
+  size_t j = i;
+  while (value > 0) {
+    j = _objc_printf_chtostr(
+        buf, sz, j, _objc_printf_digit(value, base, flags & OBJC_PRINTF_UPPER));
+    value /= base;
+  }
+
+  // append the negative sign
+  if (flags & OBJC_PRINTF_NEG) {
+    j = _objc_printf_chtostr(buf, sz, j, '-');
+  }
+
+  // TODO: pad with spaces if needed
+  // TODO: Reverse the number
+  return j;
 }
 
 /**
@@ -67,12 +98,11 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
  */
 static size_t _objc_printf_inttostr(char *buf, size_t sz, size_t i, long value,
                                     enum _objc_printf_flags flags) {
-  // Print a minus sign for negative values
   if (value < 0) {
-    i = _objc_printf_chtostr(buf, sz, i, '-');
-    value = -value;
+    return _objc_printf_uinttostr(buf, sz, i, -value, flags | OBJC_PRINTF_NEG);
+  } else {
+    return _objc_printf_uinttostr(buf, sz, i, value, flags);
   }
-  return _objc_printf_uinttostr(buf, sz, i, value, flags);
 }
 
 /**
@@ -91,8 +121,8 @@ static size_t _objc_printf_objtostr(char *buf, size_t sz, size_t i, id object) {
  * formatting directives with a string representation of the
  * provided arguments.
  */
-static size_t _objc_printf(char *buf, size_t sz, const char *format,
-                           va_list va) {
+static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
+                             va_list va) {
   assert(format);
   assert(buf == NULL || sz > 0);
 
@@ -184,7 +214,11 @@ static size_t _objc_printf(char *buf, size_t sz, const char *format,
       format++;
       break;
     default:
-      assert(*format == 0);
+      // Invalid format specifier, output % and the character
+      i = _objc_printf_chtostr(buf, sz, i, '%');
+      i = _objc_printf_chtostr(buf, sz, i, *format);
+      format++;
+      break;
     }
   }
 
@@ -204,7 +238,7 @@ static size_t _objc_printf(char *buf, size_t sz, const char *format,
 size_t objc_sprintf(char *buf, size_t sz, const char *format, ...) {
   va_list va;
   va_start(va, format);
-  size_t result = _objc_printf(buf, sz, format, va);
+  size_t result = _objc_vsprintf(buf, sz, format, va);
   va_end(va);
   return result;
 }
@@ -213,14 +247,14 @@ size_t objc_sprintf(char *buf, size_t sz, const char *format, ...) {
  * @brief Public function to format a string with variable arguments
  */
 size_t objc_vsprintf(char *buf, size_t sz, const char *format, va_list va) {
-  return _objc_printf(buf, sz, format, va);
+  return _objc_vsprintf(buf, sz, format, va);
 }
 
 /**
  * @brief Public function to print a formatted string with variable arguments
  */
 size_t objc_vprintf(const char *format, va_list va) {
-  size_t sz = objc_printf(_objc_printf_buf, OBJC_PRINTF_BUF, format, va);
+  size_t sz = objc_vsprintf(_objc_printf_buf, OBJC_PRINTF_BUF, format, va);
   if (sz < OBJC_PRINTF_BUF) {
     sys_puts(_objc_printf_buf);
     return sz;
@@ -238,7 +272,7 @@ size_t objc_vprintf(const char *format, va_list va) {
   objc_vsprintf(buf, sz + 1, format, va);
   sys_puts(buf);
 
-  // Free the allocated buffer
+  // Free the allocated buffer, return the size
   sys_free(buf);
   return sz;
 }
