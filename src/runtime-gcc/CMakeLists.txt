@@ -10,6 +10,7 @@ add_library(${NAME} STATIC
     NXConstantString.m
     Object.m
     panicf.c
+    printf.c
     protocol.c
     statics.c
 )

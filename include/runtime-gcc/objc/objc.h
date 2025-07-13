@@ -4,6 +4,7 @@
 #include "malloc.h"
 #include "mutex.h"
 #include "panicf.h"
+#include "printf.h"
 #include "runtime.h"
 
 #if __OBJC__

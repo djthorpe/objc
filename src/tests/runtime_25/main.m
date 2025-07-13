@@ -1,9 +1,9 @@
-#include <NXFoundation/NXFoundation.h>
+#include <objc/objc.h>
 #include <string.h>
 #include <tests/tests.h>
 
 int main() {
-  const char *str1 = "Running NXFoundation tests...\n";
+  const char *str1 = "Running printf tests...\n";
   const char *str2 = "%";
   const char *str3 = "%s%";
   const char *str4 = "%s%%";

@@ -1,4 +1,4 @@
-set(NAME "NXFoundation_09")
+set(NAME "runtime_25")
 add_executable(${NAME}
     main.m
 )
