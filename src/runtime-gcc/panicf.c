@@ -1,14 +1,13 @@
-#include <stdio.h>
+#include <objc/objc.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include <sys/sys.h>
 
-// Define the panic function
 void panicf(const char *fmt, ...) {
-    va_list args;
-    va_start(args, fmt);
-    puts("PANIC:");
-    vprintf(fmt, args);
-    va_end(args);
-    puts("\n");
-    abort(); // Use abort to terminate the program
+  va_list args;
+  va_start(args, fmt);
+  sys_puts("PANIC: ");
+  objc_vprintf(fmt, args);
+  va_end(args);
+  sys_puts("\n");
+  sys_abort();
 }

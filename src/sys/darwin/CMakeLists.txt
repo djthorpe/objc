@@ -1,6 +1,7 @@
 set(NAME "sys")
 
 add_library(${NAME} STATIC
+    abort.c
     exception.c
     malloc.c
     mutex.c

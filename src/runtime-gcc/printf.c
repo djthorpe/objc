@@ -1,6 +1,7 @@
 #include <objc/objc.h>
 #include <stdarg.h>
 #include <stddef.h>
+#include <sys/sys.h>
 
 #ifndef MIN_
 #define MIN_(a, b) ((a) < (b) ? (a) : (b))
@@ -15,6 +16,9 @@ enum _objc_printf_flags {
 };
 
 static const char *_objc_printf_nil = "<nil>";
+
+#define OBJC_PRINTF_BUF 256
+static char _objc_printf_buf[OBJC_PRINTF_BUF];
 
 /**
  * @brief Append a character into the buffer
@@ -210,4 +214,42 @@ size_t objc_sprintf(char *buf, size_t sz, const char *format, ...) {
  */
 size_t objc_vsprintf(char *buf, size_t sz, const char *format, va_list va) {
   return _objc_printf(buf, sz, format, va);
+}
+
+/**
+ * @brief Public function to print a formatted string with variable arguments
+ */
+size_t objc_vprintf(const char *format, va_list va) {
+  size_t sz = objc_printf(_objc_printf_buf, OBJC_PRINTF_BUF, format, va);
+  if (sz < OBJC_PRINTF_BUF) {
+    sys_puts(_objc_printf_buf);
+    return sz;
+  }
+
+  // Buffer was too small, allocate memory and do it again
+  char *buf = sys_malloc(sz + 1);
+  if (buf == NULL) {
+    // Out of memory, fallback to static buffer
+    sys_puts(_objc_printf_buf);
+    return sz;
+  }
+
+  // Format the string into the allocated buffer
+  objc_vsprintf(buf, sz + 1, format, va);
+  sys_puts(buf);
+
+  // Free the allocated buffer
+  sys_free(buf);
+  return sz;
+}
+
+/**
+ * @brief Public function to print a formatted string with variable arguments
+ */
+size_t objc_printf(const char *format, ...) {
+  va_list va;
+  va_start(va, format);
+  size_t result = objc_vprintf(format, va);
+  va_end(va);
+  return result;
 }

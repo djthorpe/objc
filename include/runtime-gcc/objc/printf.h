@@ -7,6 +7,22 @@
 #include <stddef.h>
 
 /**
+ * @brief Print a formatted string to standard output
+ *
+ * This function formats and prints a string directly to standard output,
+ * similar to printf(). Supports the same format specifiers as objc_sprintf().
+ *
+ * @param format The format string containing directives to be replaced.
+ * @param ... Variable arguments containing the values to be formatted.
+ * @return The number of characters written to standard output.
+ * @see objc_sprintf()
+ *
+ * \headerfile printf.h objc/objc.h
+ *
+ */
+size_t objc_printf(const char *format, ...);
+
+/**
  * @brief Format a string with variable arguments
  *
  * Supports all standard format specifiers plus Objective-C extensions:
@@ -27,6 +43,9 @@
  * @return The number of bytes that would be written (excluding the null
  *         terminator), regardless of the buffer size. If this value is greater
  *         than or equal to sz, the output was truncated.
+ *
+ * \headerfile printf.h objc/objc.h
+ *
  */
 size_t objc_sprintf(char *buf, size_t sz, const char *format, ...);
 
@@ -46,5 +65,24 @@ size_t objc_sprintf(char *buf, size_t sz, const char *format, ...);
  *         terminator), regardless of the buffer size. If this value is greater
  *         than or equal to sz, the output was truncated.
  * @see objc_sprintf()
+ *
+ * \headerfile printf.h objc/objc.h
+ *
  */
 size_t objc_vsprintf(char *buf, size_t sz, const char *format, va_list va);
+
+/**
+ * @brief Print a formatted string to standard output with a va_list argument
+ *
+ * This function formats and prints a string directly to standard output,
+ * similar to vprintf(). Supports the same format specifiers as objc_sprintf().
+ *
+ * @param format The format string containing directives to be replaced.
+ * @param va A va_list containing the arguments for the format specifiers.
+ * @return The number of characters written to standard output.
+ * @see objc_sprintf()
+ *
+ * \headerfile printf.h objc/objc.h
+ *
+ */
+size_t objc_vprintf(const char *format, va_list va);

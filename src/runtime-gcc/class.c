@@ -1,13 +1,10 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
+#include <objc/objc.h>
 #include <string.h>
 
 #include "api.h"
 #include "class.h"
 #include "hash.h"
 #include "protocol.h"
-#include <objc/objc.h>
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE + 1];
@@ -31,8 +28,8 @@ void __objc_class_register(objc_class_t *p) {
     return;
   }
 #ifdef DEBUG
-  printf("__objc_class_register %c[%s] @%p size=%lu\n",
-         p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+  objc_printf("__objc_class_register %c[%s] @%p size=%lu\n",
+              p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
   for (int i = 0; i < CLASS_TABLE_SIZE; i++) {
     if (class_table[i] == p || class_table[i] == NULL) {
@@ -87,9 +84,9 @@ void __objc_class_register_method_list(objc_class_t *cls,
       continue; // Skip invalid methods
     }
 #ifdef DEBUG
-    printf("    %c[%s %s] types=%s imp=%p\n",
-           cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
-           method->name, method->types, method->imp);
+    objc_printf("    %c[%s %s] types=%s imp=%p\n",
+                cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
+                method->name, method->types, method->imp);
 #endif
     struct objc_hashitem *item =
         __objc_hash_register(cls, method->name, method->types, method->imp);
@@ -112,8 +109,8 @@ void __objc_class_register_methods(objc_class_t *p) {
   }
 
 #ifdef DEBUG
-  printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
-         p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+  objc_printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
+              p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
 
   // Enumerate the class's methods and resolve them
@@ -155,8 +152,8 @@ Class objc_lookup_class(const char *name) {
     return Nil;
   }
 #ifdef DEBUG
-  printf("objc_lookup_class %c[%s] @%p\n",
-         cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
+  objc_printf("objc_lookup_class %c[%s] @%p\n",
+              cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
 #endif
 
   // Resolve the class
