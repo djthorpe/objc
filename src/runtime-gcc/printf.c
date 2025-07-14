@@ -75,6 +75,11 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
 
   // output the number, but in reverse order
   int base = 10;
+  if (flags & OBJC_PRINTF_HEX) {
+    base = 16;
+  } else if (flags & OBJC_PRINTF_BIN) {
+    base = 2;
+  }
   int len = 0;
   size_t j = i;
   while (value > 0) {
