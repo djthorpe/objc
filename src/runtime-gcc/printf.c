@@ -1,6 +1,7 @@
 #include <objc/objc.h>
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <sys/sys.h>
 
 #ifndef MIN_
@@ -16,10 +17,9 @@ enum _objc_printf_flags {
   OBJC_PRINTF_NEG = 1 << 4
 };
 
-static const char *_objc_printf_nil = "<nil>";
-
 #define OBJC_PRINTF_BUF 256
 static char _objc_printf_buf[OBJC_PRINTF_BUF];
+static const char *_objc_printf_nil = "<nil>";
 
 /**
  * @brief Append a character into the buffer
@@ -38,16 +38,12 @@ static inline size_t _objc_printf_chtostr(char *buf, size_t sz, size_t i,
  */
 static inline size_t _objc_printf_strtostr(char *buf, size_t sz, size_t i,
                                            const char *str) {
-  assert(buf == NULL || sz > 0);
   if (str == NULL) {
     str = _objc_printf_nil;
   }
   while (*str) {
-    if (buf && i < (sz - 1)) {
-      buf[i] = *str;
-    }
-    str++;
-    i++;
+    printf("str=%s, i=%zu, sz=%zu\n", str, i, sz);
+    i = _objc_printf_chtostr(buf, sz, i, *str++);
   }
 
   // Return next index
@@ -95,15 +91,17 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
 
   // TODO: pad with spaces if needed
 
-  // Reverse the number
-  size_t start = i;
-  size_t end = j - 1;
-  while (start < end) {
-    char temp = buf[start];
-    buf[start] = buf[end];
-    buf[end] = temp;
-    start++;
-    end--;
+  // Reverse the number (only if we have a buffer)
+  if (buf != NULL) {
+    size_t start = i;
+    size_t end = j - 1;
+    while (start < end) {
+      char temp = buf[start];
+      buf[start] = buf[end];
+      buf[end] = temp;
+      start++;
+      end--;
+    }
   }
   return j;
 }
@@ -143,36 +141,30 @@ static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
 
   size_t i = 0;
   while (*format) {
-    if (*format != '%') {
-      i = _objc_printf_chtostr(buf, sz, i, *format);
-      format++;
+    char ch = *format++;
+    if (ch != '%') {
+      i = _objc_printf_chtostr(buf, sz, i, ch);
       continue;
-    } else {
-      format++;
-      if (*format == '\0') {
-        i = _objc_printf_chtostr(buf, sz, i, '%');
-        continue;
-      }
     }
 
-    // evaluate flags
+    // evaluate modifier flags (currently only 'l' is supported)
     enum _objc_printf_flags flags = OBJC_PRINTF_NONE;
-    switch (*format) {
+    ch = *format;
+    switch (ch) {
     case 'l':
       flags |= OBJC_PRINTF_LONG;
-      if (*++format == '\0') {
-        i = _objc_printf_strtostr(buf, sz, i, "%l");
-        continue;
-      }
-      break;
+      format++;
+    case '\0':
+      i = _objc_printf_chtostr(buf, sz, i, '%');
+      continue;
     }
 
     // evaluate specifier
-    switch (*format) {
+    ch = *format++;
+    switch (ch) {
     case 's':
       // cstring
       i = _objc_printf_strtostr(buf, sz, i, va_arg(va, const char *));
-      format++;
       break;
     case 'd':
       // signed integer
@@ -181,7 +173,6 @@ static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
       } else {
         i = _objc_printf_inttostr(buf, sz, i, va_arg(va, int), flags);
       }
-      format++;
       break;
     case 'u':
       // unsigned integer
@@ -191,12 +182,11 @@ static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
       } else {
         i = _objc_printf_uinttostr(buf, sz, i, va_arg(va, unsigned int), flags);
       }
-      format++;
       break;
     case 'X':
       // upper case unsigned hexadecimal value
       flags |= OBJC_PRINTF_UPPER;
-      [[fallthrough]];
+      // fall through
     case 'x':
       // unsigned hexadecimal value
       if (flags & OBJC_PRINTF_LONG) {
@@ -206,7 +196,6 @@ static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
         i = _objc_printf_uinttostr(buf, sz, i, va_arg(va, unsigned int),
                                    flags | OBJC_PRINTF_HEX);
       }
-      format++;
       break;
     case 'b':
       // unsigned binary value
@@ -217,22 +206,18 @@ static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
         i = _objc_printf_uinttostr(buf, sz, i, va_arg(va, unsigned int),
                                    flags | OBJC_PRINTF_BIN);
       }
-      format++;
       break;
     case '@':
       i = _objc_printf_objtostr(buf, sz, i, va_arg(va, id));
-      format++;
       break;
     case '%':
-      // quote a %
       i = _objc_printf_chtostr(buf, sz, i, '%');
-      format++;
+      break;
+    case '\0':
+      i = _objc_printf_chtostr(buf, sz, i, '%');
       break;
     default:
-      // Invalid format specifier, output % and the character
       i = _objc_printf_chtostr(buf, sz, i, '%');
-      i = _objc_printf_chtostr(buf, sz, i, *format);
-      format++;
       break;
     }
   }
