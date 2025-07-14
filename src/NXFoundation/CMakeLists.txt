@@ -4,12 +4,12 @@ add_library(${NAME} STATIC
     NXApplication.m
     NXAutoreleasePool.m
     NXObject.m
-    NXObject+Description.m
     NXString.m
     NXTimeInterval.m
     NXThread.m
     NXZone.m
     NXZone+malloc.m
+    Object+Description.m
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../include/runtime-${RUNTIME}
