@@ -13,26 +13,32 @@
 
 /** @brief A pointer to an instance of a class. */
 typedef struct objc_object *id;
+
 /** @brief A pointer to a method selector. */
 typedef const struct objc_selector *SEL;
+
 /** @brief A pointer to a class definition. */
 typedef struct objc_class *Class;
+
 /** @brief A pointer to a method implementation. */
 typedef id (*IMP)(id, SEL, ...);
+
 /** @brief A pointer to a method. */
 typedef struct objc_method *Method;
-// typedef struct objc_property* Property;
 
 /** @brief A null object pointer. */
 #define nil ((id)0)
+
 /** @brief A null class pointer. */
 #define Nil ((Class)0)
 
 // Booleans
 /** @brief A Boolean value. */
 typedef bool BOOL;
+
 /** @brief The Boolean value `true`. */
 #define YES true
+
 /** @brief The Boolean value `false`. */
 #define NO false
 
@@ -50,16 +56,18 @@ typedef bool BOOL;
 #endif
 
 /**
- * @def OBJC_UNUSED
+ * @def OBJC_UNUSED_ARG
  * @brief A macro to declare a method parameter is unused.
  *
  * This macro uses the `unused` attribute if it is available,
- * which allows a method parameter to be marked as unused.
+ * which allows a method parameter to be marked as unused. It
+ * should be placed before the parameter name in the function
+ * signature.
  */
 #if __has_attribute(unused)
-#define OBJC_UNUSED __attribute__((unused))
+#define OBJC_UNUSED_ARG __attribute__((unused))
 #else
-#define OBJC_UNUSED
+#define OBJC_UNUSED_ARG
 #endif
 
 /**

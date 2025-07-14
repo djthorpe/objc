@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // This function is called when a message is sent to a nil object.
-static id __objc_nil_method(id receiver, SEL selector OBJC_UNUSED) {
+static id __objc_nil_method(id receiver, OBJC_UNUSED_ARG SEL selector) {
   return receiver;
 }
 

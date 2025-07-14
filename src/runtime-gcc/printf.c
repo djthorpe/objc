@@ -80,7 +80,7 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
   } else if (flags & OBJC_PRINTF_BIN) {
     base = 2;
   }
-  int len = 0;
+
   size_t j = i;
   while (value > 0) {
     j = _objc_printf_chtostr(
@@ -94,6 +94,7 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
   }
 
   // TODO: pad with spaces if needed
+
   // Reverse the number
   size_t start = i;
   size_t end = j - 1;
