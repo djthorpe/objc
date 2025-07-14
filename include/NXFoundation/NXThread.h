@@ -5,7 +5,6 @@
  * This file provides the definition for the NXThread class, which offers
  * basic threading capabilities such as pausing thread execution.
  */
-
 #pragma once
 #include "NXTimeInterval.h"
 

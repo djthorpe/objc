@@ -6,11 +6,10 @@
  * from the Foundation framework.
  */
 #pragma once
-#include <stdio.h>
 
 /**
  * @def NXLog(format, ...)
- * @brief Logs a formatted string to the standard error stream.
+ * @brief Logs a formatted string to the console.
  * @param format An `NXConstantString` object that contains a C-style format
  * string.
  * @param ... A comma-separated list of arguments to be printed.
@@ -22,6 +21,6 @@
  */
 #define NXLog(format, ...)                                                     \
   do {                                                                         \
-    fprintf(stderr, (const char *)[format cStr], ##__VA_ARGS__);               \
-    fprintf(stderr, "\n");                                                     \
+    objc_printf((const char *)[format cStr], ##__VA_ARGS__);                   \
+    objc_printf("\n");                                                         \
   } while (0)
