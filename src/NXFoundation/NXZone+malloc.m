@@ -1,7 +1,7 @@
 #include <NXFoundation/NXFoundation.h>
 #include <sys/sys.h>
 
-inline void *__zone_malloc(size_t size) {
+static inline void *__zone_malloc(size_t size) {
   void *ptr = sys_malloc(size);
 #ifdef DEBUG
   NXLog(@"  __zone_malloc: size=%zu => @%p", size, ptr);
