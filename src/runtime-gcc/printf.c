@@ -94,7 +94,16 @@ static size_t _objc_printf_uinttostr(char *buf, size_t sz, size_t i,
   }
 
   // TODO: pad with spaces if needed
-  // TODO: Reverse the number
+  // Reverse the number
+  size_t start = i;
+  size_t end = j - 1;
+  while (start < end) {
+    char temp = buf[start];
+    buf[start] = buf[end];
+    buf[end] = temp;
+    start++;
+    end--;
+  }
   return j;
 }
 
