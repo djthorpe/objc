@@ -10,7 +10,8 @@ enum _objc_sprintf_flags {
   OBJC_PRINTF_BIN = 1 << 2,
   OBJC_PRINTF_UPPER = 1 << 3,
   OBJC_PRINTF_NEG = 1 << 4,
-  OBJC_PRINTF_DONE = 1 << 5
+  OBJC_PRINTF_FORMAT = 1 << 5,
+  OBJC_PRINTF_DONE = 1 << 6
 };
 
 struct _objc_sprintf_state {
@@ -38,12 +39,31 @@ static inline void _objc_printf_chtostr(struct _objc_sprintf_state *state,
 }
 
 /**
+ * @brief Determine format flags
+ * @param state The state of the sprintf operation
+ * @param ch The character to check
+ */
+static BOOL _objc_vsprintf_arg(struct _objc_sprintf_state *state,
+                               const char ch) {
+  objc_assert(state);
+  switch (ch) {
+  case 's':
+    // TODO
+    break;
+  default:
+    printf("Processing format specifier: %c\n", ch);
+    return YES;
+  }
+}
+
+/**
  * @brief Format a string into the output buffer, replacing
  * formatting directives with a string representation of the
  * provided arguments.
  */
 static size_t _objc_vsprintf_new(struct _objc_sprintf_state *state,
-                                 const char *format, va_list va) {
+                                 const char *format,
+                                 OBJC_UNUSED_ARG va_list args) {
   objc_assert(format);
   objc_assert(state);
   objc_assert(state->buf == NULL || state->sz > 1);
@@ -56,8 +76,23 @@ static size_t _objc_vsprintf_new(struct _objc_sprintf_state *state,
     case '\0':
       state->flags |= OBJC_PRINTF_DONE;
       break;
+    case '%':
+      if (state->flags & OBJC_PRINTF_FORMAT) {
+        _objc_printf_chtostr(state, ch);
+        state->flags ^= OBJC_PRINTF_FORMAT;
+      } else {
+        state->flags |= OBJC_PRINTF_FORMAT;
+      }
+      break;
     default:
-      _objc_printf_chtostr(state, ch);
+      // If we have a format specifier, handle it
+      if (state->flags & OBJC_PRINTF_FORMAT) {
+        if (_objc_vsprintf_arg(state, ch)) {
+          state->flags ^= OBJC_PRINTF_FORMAT;
+        }
+      } else {
+        _objc_printf_chtostr(state, ch);
+      }
     }
   }
 
@@ -86,11 +121,11 @@ size_t objc_printf(const char *format, ...) {
                                       .in = 0,
                                       .out = 0,
                                       .len = 0,
-                                      .done = NO};
+                                      .flags = 0};
   do {
-    size_t sz = _objc_vsprintf_new(&state, format, args);
+    _objc_vsprintf_new(&state, format, args);
     sys_puts(_objc_printf_buf);
-  } while (!state.done);
+  } while ((state.flags & OBJC_PRINTF_DONE) == 0);
   va_end(args);
   return state.len;
 }

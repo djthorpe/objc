@@ -3,13 +3,17 @@
 #include <tests/tests.h>
 
 int main() {
-  const char *str1 = "Running printf tests...\n";
-  const char *str2 = "%";
-  const char *str3 = "%s%";
-  const char *str4 = "%s%%";
-  const char *str5 = "%%%s%%";
+  const char *str1 = "str1=[Running printf tests...]\n";
+  const char *str2 = "str2=%\n";
+  const char *str3 = "str3=%%\n";
+  const char *str4 = "str4=[%%%s]\n";
+  //  const char *str4 = "%s%%";
+  //  const char *str5 = "%%%s%%";
 
   objc_printf(str1);
+  objc_printf(str2);
+  objc_printf(str3);
+  objc_printf(str4, str1);
 
   /*
     do {
