@@ -12,6 +12,7 @@ add_library(${NAME} STATIC
     panicf.c
     printf.c
     protocol.c
+    sprintf.c
     statics.c
 )
 target_include_directories(${NAME} PRIVATE

@@ -280,7 +280,7 @@ size_t objc_vprintf(const char *format, va_list va) {
 /**
  * @brief Public function to print a formatted string with variable arguments
  */
-size_t objc_printf(const char *format, ...) {
+size_t objc_printf_old(const char *format, ...) {
   va_list va;
   va_start(va, format);
   size_t result = objc_vprintf(format, va);

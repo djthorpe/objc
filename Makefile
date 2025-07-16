@@ -41,6 +41,15 @@ tests: NXFoundation
 	@cmake --build ${BUILD_DIR}/src/tests
 	@cmake --build ${BUILD_DIR} --target test
 
+
+# Test the libobjc-gcc runtime library
+.PHONY: test25
+test25: libobjc-gcc
+	@echo
+	@echo make test25
+	@cmake --build ${BUILD_DIR} --target runtime_25
+
+
 #.PHONY: test
 #test: submodule
 #	@echo make test
