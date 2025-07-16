@@ -26,7 +26,7 @@ static const char *_objc_printf_nil = "<nil>";
  */
 static inline size_t _objc_printf_chtostr(char *buf, size_t sz, size_t i,
                                           const char ch) {
-  assert(buf == NULL || sz > 0);
+  objc_assert(buf == NULL || sz > 0);
   if (buf && i < (sz - 1)) {
     buf[i] = ch;
   }
@@ -136,8 +136,8 @@ static size_t _objc_printf_objtostr(char *buf, size_t sz, size_t i, id object) {
  */
 static size_t _objc_vsprintf(char *buf, size_t sz, const char *format,
                              va_list va) {
-  assert(format);
-  assert(buf == NULL || sz > 0);
+  objc_assert(format);
+  objc_assert(buf == NULL || sz > 0);
 
   size_t i = 0;
   while (*format) {
