@@ -133,6 +133,12 @@ void __objc_class_register_methods(objc_class_t *p) {
           superclass->metaclass; // Use the metaclass if this is a metaclass
     }
     __objc_class_register_methods(superclass);
+    
+    // Also ensure the superclass metaclass is resolved
+    if (!(p->info & objc_class_flag_meta) && superclass->metaclass != NULL) {
+      __objc_class_register_methods(superclass->metaclass);
+    }
+    
     p->superclass = superclass; // Update the superclass pointer
     superclass->info |= objc_class_flag_resolved; // Mark as resolved
   }
@@ -167,14 +173,14 @@ Class objc_lookup_class(const char *name) {
   // Resolve the class methods (including superclass methods)
   __objc_class_register_methods(cls);
 
-  // Resolve the metaclass methods
+  // Set up the metaclass superclass BEFORE registering metaclass methods
+  if (cls->metaclass != NULL && cls->superclass != NULL) {
+    cls->metaclass->superclass = cls->superclass->metaclass;
+  }
+
+  // Resolve the metaclass methods (now that superclass is set)
   if (cls->metaclass != NULL) {
     __objc_class_register_methods(cls->metaclass);
-
-    // Set the metaclass superclass
-    if (cls->superclass != NULL) {
-      cls->metaclass->superclass = cls->superclass->metaclass;
-    }
   }
 
   // Return the class pointer

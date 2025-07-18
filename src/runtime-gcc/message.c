@@ -88,6 +88,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
   // First load the static instances and categories
   static BOOL init = NO;
   if (init == NO) {
+    init = YES; // Set init to YES to prevent multiple initializations
     __objc_statics_load();
     __objc_category_load();
   }

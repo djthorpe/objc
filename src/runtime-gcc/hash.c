@@ -96,8 +96,8 @@ struct objc_hashitem *__objc_hash_lookup(objc_class_t *cls, const char *method,
     }
   }
 
-  // Return the hash item
-  return hash_table[hash].cls == NULL ? NULL : &hash_table[hash];
+  // If we exited the loop because we found an empty slot, method not found
+  return NULL;
 }
 
 static size_t __objc_hash_compute(objc_class_t *cls, const char *method,
