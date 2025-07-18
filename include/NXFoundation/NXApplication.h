@@ -14,6 +14,8 @@
  * instance that manages the application lifecycle, coordinates event
  * processing, and maintains the main run loop. This class is typically
  * subclassed to provide application-specific behavior and initialization.
+ *
+ * \headerfile NXApplication.h NXFoundation/NXFoundation.h
  */
 @interface NXApplication : NXObject {
 }

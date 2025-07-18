@@ -19,7 +19,6 @@
  * @note The maximum representable duration is approximately 596 hours (24.8
  * days).
  */
-
 #pragma once
 #include <stdint.h>
 

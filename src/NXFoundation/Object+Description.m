@@ -1,6 +1,6 @@
 #include <NXFoundation/NXFoundation.h>
 
-@implementation NXObject (Description)
+@implementation Object (Description)
 
 - (NXString *)description {
   return [[[NXString alloc] initWithCString:object_getClassName(self)]

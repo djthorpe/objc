@@ -36,3 +36,11 @@ extern void sys_sleep(int32_t msec);
  * @param str A pointer to a null-terminated string to be output.
  */
 extern void sys_puts(const char *str);
+
+/**
+ * @brief Aborts the current process.
+ * @details This function terminates the current process immediately, without
+ * performing any cleanup or resource deallocation. It is typically used in
+ * response to unrecoverable errors or critical failures.
+ */
+extern void sys_abort(void);

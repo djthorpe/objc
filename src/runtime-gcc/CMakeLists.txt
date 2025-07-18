@@ -10,9 +10,15 @@ add_library(${NAME} STATIC
     NXConstantString.m
     Object.m
     panicf.c
+    printf.c
     protocol.c
+    sprintf.c
     statics.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../include/runtime-gcc
+    ${CMAKE_CURRENT_LIST_DIR}/../../include
+)
+target_link_libraries(${NAME} PRIVATE
+    sys
 )

@@ -1,6 +1,6 @@
 #pragma once
-
 #include <objc/objc.h>
+
 #include "api.h"
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -19,7 +19,7 @@ void __objc_class_init();
 /*
  * Register a class in the Objective-C runtime.
  */
-void __objc_class_register(objc_class_t* cls);
+void __objc_class_register(objc_class_t *cls);
 
 /*
  * Register a class category in the Objective-C runtime.
@@ -32,9 +32,9 @@ void __objc_class_category_register(struct objc_category *cat);
  */
 Class objc_lookup_class(const char *name);
 
-
 /**
  * Register a list of methods for a class.
  * This function registers all methods in the method list, for the named class.
  */
-void __objc_class_register_method_list(objc_class_t* cls, struct objc_method_list *ml);
+void __objc_class_register_method_list(objc_class_t *cls,
+                                       struct objc_method_list *ml);

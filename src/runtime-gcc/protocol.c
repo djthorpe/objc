@@ -1,11 +1,8 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
+#include <objc/objc.h>
 #include <string.h>
 
 #include "api.h"
 #include "protocol.h"
-#include <objc/objc.h>
 
 #define PROTOCOL_TABLE_SIZE 32
 objc_protocol_t *protocol_table[PROTOCOL_TABLE_SIZE + 1];
@@ -29,7 +26,7 @@ void __objc_protocol_register(objc_protocol_t *p) {
     return;
   }
 #ifdef DEBUG
-  printf("__objc_protocol_register <%s>\n", p->name);
+  objc_printf("__objc_protocol_register <%s>\n", p->name);
 #endif
   for (int i = 0; i < PROTOCOL_TABLE_SIZE; i++) {
     if (protocol_table[i] == p || protocol_table[i] == NULL) {
