@@ -19,7 +19,7 @@ find_program(CMAKE_OBJC_COMPILER NAMES "gcc-15"
 # Compile options for Objective-C GCC
 add_compile_options(
     $<$<CONFIG:DEBUG>:-g>
-    $<$<COMPILE_LANGUAGE:OBJC>:-fgnu-runtime>
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-runtime=gcc>
     $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-exceptions>    
 )
 
