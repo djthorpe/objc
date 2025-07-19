@@ -61,8 +61,6 @@ int main(void) {
   test_assert(strcmp("^v", @encode(void *)) == 0);
 
   // Debug what we're actually getting for long types
-  printf("@encode(long) = '%s'\n", @encode(long));
-  printf("@encode(unsigned long) = '%s'\n", @encode(unsigned long));
 
   // On 64-bit systems, long might be 'q' (long long) instead of 'l'
   // Let's check both possibilities
