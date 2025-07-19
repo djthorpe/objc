@@ -50,6 +50,7 @@ static id defaultZone = nil;
 
   // Set up instance variables
   zone->_data = arena;
+  zone->_size = alignedObjectSize + size; // Update _size to reflect arena size
   zone->_count = 0;
   zone->_retain = 1; // Initial retain count
 
