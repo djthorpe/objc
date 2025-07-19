@@ -37,7 +37,9 @@
   if (_retain != 0) {
     panicf("[NXObject dealloc] called with retain count %d", _retain);
   }
-  [_zone free:self]; // Free the memory in the zone
+  if (self != _zone) {
+    [_zone free:self]; // Free the memory in the zone
+  }
 }
 
 #pragma mark - Instance methods

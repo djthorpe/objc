@@ -1,4 +1,4 @@
-#include "NXZone+malloc.h"
+#include "NXZone+arena.h"
 #include <NXFoundation/NXFoundation.h>
 #include <string.h>
 
@@ -26,25 +26,31 @@ static id defaultZone = nil;
  * default zone if it's not yet been set.
  */
 + (id)zoneWithSize:(size_t)size {
-  // Calculate aligned size for the object
+  objc_assert(size > 0);
+
+  // Calculate aligned size for the NXZone object
   size_t alignedObjectSize =
       (class_getInstanceSize(self) + 7) & ~7; // 8-byte alignment
 
-  // Allocate memory for object + data block
-  void *memory = __zone_malloc(alignedObjectSize + size);
-  if (!memory) {
+  // Allocate an arena
+  objc_arena_t *arena = objc_arena_new(NULL, alignedObjectSize + size);
+  if (!arena) {
     return nil;
-  } else {
-    memset(memory, 0, alignedObjectSize + size);
+  }
+
+  // Allocate memory for the zone object
+  NXZone *zone = objc_arena_alloc_inner(arena, alignedObjectSize);
+  if (zone == NULL) {
+    objc_arena_delete(arena);
+    return nil;
   }
 
   // Initialize the object properly
-  NXZone *zone = (NXZone *)memory;
   object_setClass(zone, self);
 
   // Set up instance variables
-  zone->_size = size;
-  zone->_data = size ? (uint8_t *)memory + alignedObjectSize : NULL;
+  zone->_data = arena;
+  zone->_size = alignedObjectSize + size; // Update _size to reflect arena size
   zone->_count = 0;
   zone->_retain = 1; // Initial retain count
 
@@ -65,10 +71,16 @@ static id defaultZone = nil;
     panicf("[NXZone dealloc] called with %zu active allocations", _count);
   }
 #endif
+  // Clear the default zone if this is it
   if (defaultZone == self) {
-    defaultZone = nil; // Clear the default zone if this is it
+    defaultZone = nil;
   }
-  __zone_free(self); // Free the allocated memory block
+
+  // Free the arena associated with this zone
+  objc_arena_delete((objc_arena_t *)_data);
+
+  // Call superclass dealloc
+  [super dealloc];
 }
 
 #pragma mark - Class methods
@@ -81,13 +93,13 @@ static id defaultZone = nil;
 
 - (void *)allocWithSize:(size_t)size {
   void *ptr = NULL;
-  if (_data == NULL) {
-    // No arena - call malloc directly
-    ptr = __zone_malloc(size);
-  } else {
-    panicf("Allocating memory in a zone with an arena is not supported");
-  }
   @synchronized(self) {
+    // Allocate memory from the arena
+    ptr = objc_arena_alloc_inner((objc_arena_t *)_data, size);
+#ifdef DEBUG
+    NXLog(@"  allocWithSize: size=%zu => @%p", size, ptr);
+#endif
+    // Increment the allocation count
     if (ptr != NULL) {
       _count++;
     }
@@ -100,10 +112,11 @@ static id defaultZone = nil;
     if (ptr != NULL) {
       _count--;
     }
-  }
-  if (_data == NULL) {
-    // No arena - call free directly
-    __zone_free(ptr);
+#ifdef DEBUG
+    NXLog(@"  free: @%p", ptr);
+#endif
+    // Free the memory back to the arena
+    objc_arena_free_inner((objc_arena_t *)_data, ptr);
   }
 }
 

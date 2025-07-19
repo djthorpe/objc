@@ -8,12 +8,8 @@
 
 #pragma once
 
-#ifdef assert
-#undef assert
-#endif
-
 /**
- * @def assert(condition)
+ * @def objc_assert(condition)
  * @brief Asserts that a condition is true.
  * @param condition The condition to check.
  * @details If the `DEBUG` macro is defined, this macro will check the given
@@ -22,11 +18,11 @@
  * `DEBUG` is not defined, this macro does nothing.
  */
 #ifdef DEBUG
-#define assert(condition)                                                      \
+#define objc_assert(condition)                                                 \
   if (!(condition)) {                                                          \
     panicf("Assertion failed: %s, file %s, line %d", #condition, __FILE__,     \
            __LINE__);                                                          \
   }
 #else
-#define assert(condition)
+#define objc_assert(condition)
 #endif

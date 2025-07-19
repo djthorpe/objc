@@ -19,26 +19,10 @@
  * \headerfile NXZone.h NXFoundation/NXFoundation.h
  */
 @interface NXZone : NXObject {
-  /**
-   * @var _size
-   * @brief The size of the zone in bytes.
-   *
-   * If the size is 0, the zone is not limited in size and will grow as
-   * needed.
-   */
-  size_t _size;
-
-  /**
-   * @var _data
-   * @brief A pointer to the memory block managed by the zone.
-   */
-  void *_data; // Pointer to the allocated memory block
-
-  /**
-   * @var _count
-   * @brief The number of active allocations.
-   */
-  size_t _count;
+@private
+  size_t _size;  //< Size of the memory zone in bytes
+  void *_data;   //< Arena data pointer
+  size_t _count; //< Number of allocations in the zone
 }
 
 // Lifecycle
