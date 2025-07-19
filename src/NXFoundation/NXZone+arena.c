@@ -166,8 +166,8 @@ static void *objc_arena_find_free_space(struct objc_arena *arena, size_t size) {
   uintptr_t search_end = arena_end - needed;
   uintptr_t aligned_search_end = (search_end / alignment) * alignment;
 
-  for (uintptr_t pos = aligned_search_end; pos >= arena_start;
-       pos -= alignment) {
+  for (intptr_t pos = (intptr_t)aligned_search_end; pos >= (intptr_t)arena_start;
+       pos -= (intptr_t)alignment) {
 
     // Check if this position would collide with any existing allocation
     if (objc_arena_check_collision(arena, (void *)pos, needed) == NO) {
