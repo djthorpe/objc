@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['nil',['nil',['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h'],['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h']]],
-  ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
-  ['nxlog',['NXLog',['../NXLog_8h.html#a6af05e6dd8b6052f740e7384539d45ab',1,'NXLog.h']]]
+  ['objc_5fassert',['objc_assert',['../assert_8h.html#a3aeb8450dfbaacf0eb908d9f386d5db9',1,'assert.h']]],
+  ['objc_5froot_5fclass',['OBJC_ROOT_CLASS',['../runtime_8h.html#a1636d49f54f5501c0bb5ce698de32eee',1,'runtime.h']]],
+  ['objc_5funused',['OBJC_UNUSED',['../runtime_8h.html#ad2e5ab70591b8c9424a23877a448e4a4',1,'runtime.h']]]
 ];
