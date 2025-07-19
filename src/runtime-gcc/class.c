@@ -63,7 +63,7 @@ objc_class_t *__objc_lookup_class(const char *name) {
   }
   for (int i = 0; i < CLASS_TABLE_SIZE; i++) {
     if (class_table[i] == NULL || class_table[i]->name == NULL) {
-      return Nil; // No class found
+      continue; // Skip empty slots and continue searching
     }
     if (strcmp(class_table[i]->name, name) == 0) {
       return class_table[i];
@@ -111,6 +111,9 @@ void __objc_class_register_methods(objc_class_t *p) {
     return; // Already resolved
   }
 
+  // Mark the class as being resolved to prevent circular resolution
+  p->info |= objc_class_flag_resolved;
+
 #ifdef DEBUG
   printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
          p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
@@ -123,20 +126,21 @@ void __objc_class_register_methods(objc_class_t *p) {
 
   // Resolve the superclass
   if (p->superclass != NULL) {
-    Class superclass = objc_lookup_class((const char *)p->superclass);
-    if (superclass == Nil) {
-      panicf("Superclass %s not found for class %s", p->superclass, p->name);
-      return;
-    }
+    // Check if superclass is already a resolved class pointer vs a string
+    // If it's a metaclass and superclass looks like a class pointer, skip string resolution
     if (p->info & objc_class_flag_meta) {
-      superclass =
-          superclass->metaclass; // Use the metaclass if this is a metaclass
+      // For metaclasses, superclass should already be set by objc_lookup_class
+      // Skip string-based resolution
+    } else {
+      // For instance classes, resolve the string-based superclass
+      Class superclass = objc_lookup_class((const char *)p->superclass);
+      if (superclass == Nil) {
+        panicf("Superclass %s not found for class %s", (const char *)p->superclass, p->name);
+        return;
+      }
+      p->superclass = superclass; // Update the superclass pointer
     }
-    p->superclass = superclass; // Update the superclass pointer
   }
-
-  // Mark the class as resolved
-  p->info |= objc_class_flag_resolved;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
