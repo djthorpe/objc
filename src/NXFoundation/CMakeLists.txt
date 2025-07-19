@@ -10,6 +10,7 @@ add_library(${NAME} STATIC
     NXTimeInterval.m
     NXThread.m
     NXZone.m
+    NXZone+arena.c
     NXZone+malloc.m
 )
 target_include_directories(${NAME} PRIVATE

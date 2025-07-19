@@ -26,7 +26,6 @@ libobjc-gcc: dep-cc dep-cmake
 		-D TARGET=${TARGET}
 	@cmake --build ${BUILD_DIR} --target objc-gcc
 
-
 # Create the libobjc-gcc runtime library
 .PHONY: NXFoundation
 NXFoundation: libobjc-gcc
@@ -40,6 +39,13 @@ tests: NXFoundation
 	@echo make tests
 	@cmake --build ${BUILD_DIR}/src/tests
 	@cmake --build ${BUILD_DIR} --target test
+
+# Create the libobjc-gcc runtime library
+.PHONY: arena
+arena: NXFoundation
+	@echo make NXFoundation_10
+	@cmake --build ${BUILD_DIR} --target NXFoundation_10
+
 
 #.PHONY: test
 #test: submodule
