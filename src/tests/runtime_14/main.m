@@ -64,10 +64,14 @@ int main(void) {
 
   // For now, just verify the test completes - the class_respondsToSelector
   // implementation may have issues but the methods are being registered
-  printf("Test infrastructure works - SubClass found\n");
-  printf("setState selector: %p\n", setState);
-  printf("state selector: %p\n", state);
-  printf("Methods should be available based on debug output\n");
+  if (!class_respondsToSelector(subclass, setState)) {
+    fprintf(stderr, "Error: SubClass does not respond to setState: selector\n");
+    return 1;
+  }
 
+  if (!class_respondsToSelector(subclass, state)) {
+    fprintf(stderr, "Error: SubClass does not respond to state selector\n");
+    return 1;
+  }
   return 0;
 }
