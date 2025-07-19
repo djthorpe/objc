@@ -1,6 +1,6 @@
 # x86_64/Linux target toolchain file
 
-set(CMAKE_SYSTEM_NAME "linux")
+set(CMAKE_SYSTEM_NAME "Linux")
 set(CMAKE_SYSTEM_PROCESSOR "x86-64")
 
 # Use CC environment variable if set, otherwise default to gcc then clang

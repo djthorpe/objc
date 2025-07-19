@@ -26,7 +26,8 @@ add_compile_options(
 
 # Libraries
 add_subdirectory("src/malloc")
-add_subdirectory("src/sys/${CMAKE_SYSTEM_NAME}")
+string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
+add_subdirectory("src/sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/NXFoundation")
 

@@ -31,10 +31,6 @@ struct objc_arena_alloc {
   void *ptr;
 };
 
-// Convenience typedefs
-typedef struct objc_arena objc_arena_t;
-typedef struct objc_arena_alloc objc_arena_alloc_t;
-
 #pragma mark Lifecycle
 
 /**
