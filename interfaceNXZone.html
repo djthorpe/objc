@@ -93,12 +93,15 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:ac50e848e08510c5309b4bcda0e38495e"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e">dump</a></td></tr>
 <tr class="memdesc:ac50e848e08510c5309b4bcda0e38495e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Walks through the zone and outputs information about allocations.  <a href="#ac50e848e08510c5309b4bcda0e38495e">More...</a><br /></td></tr>
 <tr class="separator:ac50e848e08510c5309b4bcda0e38495e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48c5a7e8f79091632c3d6082f7da98ab"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#a48c5a7e8f79091632c3d6082f7da98ab">size</a></td></tr>
-<tr class="memdesc:a48c5a7e8f79091632c3d6082f7da98ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total size of the memory zone.  <a href="#a48c5a7e8f79091632c3d6082f7da98ab">More...</a><br /></td></tr>
-<tr class="separator:a48c5a7e8f79091632c3d6082f7da98ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab415a02a94ca35c4d75404d25d8f9a8"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#aab415a02a94ca35c4d75404d25d8f9a8">used</a></td></tr>
-<tr class="memdesc:aab415a02a94ca35c4d75404d25d8f9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the amount of memory in bytes currently allocated from the zone.  <a href="#aab415a02a94ca35c4d75404d25d8f9a8">More...</a><br /></td></tr>
-<tr class="separator:aab415a02a94ca35c4d75404d25d8f9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47539252f6f96845d6c38c0a319db82"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#ae47539252f6f96845d6c38c0a319db82">bytesTotal</a></td></tr>
+<tr class="memdesc:ae47539252f6f96845d6c38c0a319db82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total size of the memory zone.  <a href="#ae47539252f6f96845d6c38c0a319db82">More...</a><br /></td></tr>
+<tr class="separator:ae47539252f6f96845d6c38c0a319db82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b72d68fb1f91683c8825cb4db6bae1a"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#a0b72d68fb1f91683c8825cb4db6bae1a">bytesUsed</a></td></tr>
+<tr class="memdesc:a0b72d68fb1f91683c8825cb4db6bae1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the used size of the memory zone.  <a href="#a0b72d68fb1f91683c8825cb4db6bae1a">More...</a><br /></td></tr>
+<tr class="separator:a0b72d68fb1f91683c8825cb4db6bae1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960a9feaacf84515efae6c2f855421a4"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXZone.html#a960a9feaacf84515efae6c2f855421a4">bytesFree</a></td></tr>
+<tr class="memdesc:a960a9feaacf84515efae6c2f855421a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the free size of the memory zone.  <a href="#a960a9feaacf84515efae6c2f855421a4">More...</a><br /></td></tr>
+<tr class="separator:a960a9feaacf84515efae6c2f855421a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceNXObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfaceNXObject')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interfaceNXObject.html">NXObject</a></td></tr>
 <tr class="memitem:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">retain</a></td></tr>
 <tr class="memdesc:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increases the retain count of the receiver.  <a href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">More...</a><br /></td></tr>
@@ -217,6 +220,69 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
+<a id="a960a9feaacf84515efae6c2f855421a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960a9feaacf84515efae6c2f855421a4">&#9670;&nbsp;</a></span>bytesFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (size_t) bytesFree </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the free size of the memory zone. </p>
+<dl class="section return"><dt>Returns</dt><dd>The free size of the zone in bytes.</dd></dl>
+<p>This method returns the number of free bytes in the memory zone. </p>
+
+</div>
+</div>
+<a id="ae47539252f6f96845d6c38c0a319db82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47539252f6f96845d6c38c0a319db82">&#9670;&nbsp;</a></span>bytesTotal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (size_t) bytesTotal </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the total size of the memory zone. </p>
+<dl class="section return"><dt>Returns</dt><dd>The total size of the zone in bytes.</dd></dl>
+<p>This method returns the total capacity of the memory zone in bytes. Note that this includes both used and free memory, plus the size of the <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a> object itself. </p>
+
+</div>
+</div>
+<a id="a0b72d68fb1f91683c8825cb4db6bae1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b72d68fb1f91683c8825cb4db6bae1a">&#9670;&nbsp;</a></span>bytesUsed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (size_t) bytesUsed </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the used size of the memory zone. </p>
+<dl class="section return"><dt>Returns</dt><dd>The used size of the zone in bytes.</dd></dl>
+<p>This method returns the number of used bytes in the memory zone. </p>
+
+</div>
+</div>
 <a id="a2c314408f20b40ae9e8f7225c0719463"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c314408f20b40ae9e8f7225c0719463">&#9670;&nbsp;</a></span>dealloc()</h2>
 
@@ -302,48 +368,6 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a48c5a7e8f79091632c3d6082f7da98ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48c5a7e8f79091632c3d6082f7da98ab">&#9670;&nbsp;</a></span>size()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (size_t) size </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the total size of the memory zone. </p>
-<dl class="section return"><dt>Returns</dt><dd>The total size of the zone in bytes.</dd></dl>
-<p>This method returns the total capacity of the memory zone in bytes. </p>
-
-</div>
-</div>
-<a id="aab415a02a94ca35c4d75404d25d8f9a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab415a02a94ca35c4d75404d25d8f9a8">&#9670;&nbsp;</a></span>used()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (size_t) used </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the amount of memory in bytes currently allocated from the zone. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of bytes currently allocated from the zone.</dd></dl>
-<p>This method returns the number of bytes currently allocated and in use within the memory zone. </p>
 
 </div>
 </div>
