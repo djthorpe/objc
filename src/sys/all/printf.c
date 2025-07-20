@@ -129,8 +129,9 @@ size_t _sys_printf_putch(struct sys_printf_state *state, char ch) {
 }
 
 size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
-  if (state->buffer && state->pos < state->size - 1) {
-    state->buffer[state->pos] = ch;
+  static size_t local_pos = 0; // Local position counter for sprintf
+  if (state->buffer && local_pos < state->size - 1) {
+    state->buffer[local_pos++] = ch;
     return 1;
   }
   return 0;
