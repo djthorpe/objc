@@ -5,6 +5,9 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../include/runtime-${RUNTIME}
 )
 
+# Test cases - system functions
+add_subdirectory(sys_01)
+
 # Test cases - runtime
 add_subdirectory(runtime_01)
 add_subdirectory(runtime_02)
@@ -40,7 +43,6 @@ add_subdirectory(NXFoundation_05)
 add_subdirectory(NXFoundation_06)
 add_subdirectory(NXFoundation_07)
 add_subdirectory(NXFoundation_08)
-add_subdirectory(NXFoundation_09)
 add_subdirectory(NXFoundation_10)
 add_subdirectory(NXFoundation_11)
 add_subdirectory(NXFoundation_12)

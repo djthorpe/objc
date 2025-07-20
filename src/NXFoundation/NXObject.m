@@ -1,4 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
+#include <sys/sys.h>
 
 @implementation NXObject
 
@@ -33,8 +34,10 @@
  * @warning This method intentionally does NOT call [super dealloc] to prevent
  * double-free.
  */
+#ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
+#endif
 - (void)dealloc {
   // If this is an NXZone class, then we simply return, since the zone will
   // handle deallocation.
@@ -42,16 +45,18 @@
     return;
   }
   if (!_zone) {
-    panicf("Object dealloc called without a zone");
+    sys_panicf("Object dealloc called without a zone");
   }
   if (_retain != 0) {
-    panicf("[NXObject dealloc] called with retain count %d", _retain);
+    sys_panicf("[NXObject dealloc] called with retain count %d", _retain);
   }
   if (self != _zone) {
     [_zone free:self]; // Free the memory in the zone
   }
 }
+#ifdef __clang__
 #pragma clang diagnostic pop
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // INSTANCE METHODS
@@ -72,7 +77,7 @@
 - (void)release {
   @synchronized(self) {
     if (_retain == 0) {
-      panicf("[NXObject release] called with retain count of zero");
+      sys_panicf("[NXObject release] called with retain count of zero");
     }
     _retain--;
     if (_retain == 0) {
@@ -87,7 +92,8 @@
 - (id)autorelease {
   NXAutoreleasePool *pool = [NXAutoreleasePool currentPool];
   if (pool == nil) {
-    panicf("[NXObject autorelease] called without an active autorelease pool");
+    sys_panicf(
+        "[NXObject autorelease] called without an active autorelease pool");
     return nil;
   }
   [pool addObject:self]; // Add the object to the current autorelease pool

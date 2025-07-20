@@ -6,7 +6,7 @@
  * from the Foundation framework.
  */
 #pragma once
-#include <stdio.h>
+#include <sys/sys.h>
 
 /**
  * @def NXLog(format, ...)
@@ -22,6 +22,6 @@
  */
 #define NXLog(format, ...)                                                     \
   do {                                                                         \
-    fprintf(stderr, (const char *)[format cStr], ##__VA_ARGS__);               \
-    fprintf(stderr, "\n");                                                     \
+    sys_printf((const char *)[format cStr], ##__VA_ARGS__);                    \
+    sys_puts("\n");                                                            \
   } while (0)

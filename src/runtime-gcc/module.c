@@ -1,21 +1,18 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-#include <objc/objc.h>
-#include <stdlib.h>
-
 #include "api.h"
 #include "category.h"
 #include "class.h"
 #include "hash.h"
 #include "protocol.h"
 #include "statics.h"
+#include <objc/objc.h>
+#include <stdlib.h>
+#include <sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 
 static void __objc_module_register(struct objc_module *module) {
   if (module == NULL || module->version != OBJC_ABI_VERSION) {
-    panicf("Invalid abi version: %lu", module ? module->version : 0);
+    sys_panicf("Invalid abi version: %lu", module ? module->version : 0);
     return;
   }
 
@@ -23,8 +20,8 @@ static void __objc_module_register(struct objc_module *module) {
   struct objc_selector *refs = module->symtab->refs;
   if (refs != NULL && module->symtab->sel_ref_cnt > 0) {
 #ifdef DEBUG
-    printf("TODO: Replace selectors @%p (sel_ref_cnt=%ld)\n", refs,
-           module->symtab->sel_ref_cnt);
+    sys_printf("TODO: Replace selectors @%p (sel_ref_cnt=%ld)\n", refs,
+               module->symtab->sel_ref_cnt);
 #endif
     // TODO: Implement actual selector replacement
     // This should iterate through refs and replace sel_id strings with unique
@@ -32,9 +29,9 @@ static void __objc_module_register(struct objc_module *module) {
   }
 
 #ifdef DEBUG
-  printf("__objc_module_register %s cls_def_cnt=%d cat_def_cnt=%d\n",
-         module->name, module->symtab->cls_def_cnt,
-         module->symtab->cat_def_cnt);
+  sys_printf("__objc_module_register %s cls_def_cnt=%d cat_def_cnt=%d\n",
+             module->name, module->symtab->cls_def_cnt,
+             module->symtab->cat_def_cnt);
 #endif
 
   // Defer processing of classes

@@ -1,4 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
+#include <sys/sys.h>
 
 // Define the shared application instance
 static id sharedApplication = nil;
@@ -57,7 +58,7 @@ static id sharedApplication = nil;
     // Create the shared application instance
     sharedApplication = [[self alloc] init];
     if (sharedApplication == nil) {
-      panicf("Failed to create shared application instance");
+      sys_panicf("Failed to create shared application instance");
       return nil;
     }
 
@@ -73,7 +74,7 @@ static id sharedApplication = nil;
     // Default zone size is set to 64KB
     zone = [NXZone zoneWithSize:64 * 1024];
     if (zone == nil) {
-      panicf("Failed to create default zone for NXApplication");
+      sys_panicf("Failed to create default zone for NXApplication");
       return -1;
     }
   }
@@ -81,7 +82,7 @@ static id sharedApplication = nil;
   // Get the shared application instance
   NXApplication *app = [self sharedApplication];
   if (app == nil) {
-    panicf("No shared application instance available");
+    sys_panicf("No shared application instance available");
     return -1;
   }
 

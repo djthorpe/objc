@@ -1,8 +1,8 @@
-set(NAME "NXFoundation_09")
+set(NAME "sys_01")
 add_executable(${NAME}
-    main.m
+    main.c
 )
 target_link_libraries(${NAME} PRIVATE
-    NXFoundation
+    sys
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

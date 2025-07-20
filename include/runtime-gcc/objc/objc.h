@@ -3,7 +3,6 @@
 #include "assert.h"
 #include "malloc.h"
 #include "mutex.h"
-#include "panicf.h"
 #include "runtime.h"
 
 #if __OBJC__

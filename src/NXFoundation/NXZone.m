@@ -1,6 +1,7 @@
 #include "NXZone+arena.h"
 #include <NXFoundation/NXFoundation.h>
 #include <string.h>
+#include <sys/sys.h>
 
 // Define the first zone allocated as the default zone
 static id defaultZone = nil;
@@ -68,7 +69,7 @@ static id defaultZone = nil;
 - (void)dealloc {
 #ifdef DEBUG
   if (_count != 0) {
-    panicf("[NXZone dealloc] called with %zu active allocations", _count);
+    sys_panicf("[NXZone dealloc] called with %zu active allocations", _count);
   }
 #endif
   // Clear the default zone if this is it
@@ -131,7 +132,7 @@ static id defaultZone = nil;
     if (success) {
       _count--;
     } else {
-      panicf("[NXZone free] failed to free memory @%p", ptr);
+      sys_panicf("[NXZone free] failed to free memory @%p", ptr);
     }
   }
 }

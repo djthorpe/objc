@@ -8,7 +8,8 @@
 
 + (void)sleepForTimeInterval:(NXTimeInterval)interval {
   if (interval < 0) {
-    panicf("sleepForTimeInterval called with negative interval: %f", interval);
+    sys_panicf("sleepForTimeInterval called with negative interval: %ld",
+               interval);
     return;
   }
   if (interval == 0) {
