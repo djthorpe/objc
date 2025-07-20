@@ -13,7 +13,7 @@ static struct objc_static_instances_list *statics_table[STATICS_TABLE_SIZE+1];
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_statics_init() {
-    static BOOL init;
+    static BOOL init = NO;
     if (init) {
         return; // Already initialized
     }
@@ -31,7 +31,12 @@ void __objc_statics_register(struct objc_static_instances_list *statics) {
     printf("__objc_statics_register [%s]\n", statics->class_name);
 #endif
     for(int i = 0; i < STATICS_TABLE_SIZE; i++) {
-        if (statics_table[i] == statics || statics_table[i] == NULL) {
+        if (statics_table[i] == statics) {
+            // Static list is already registered, nothing to do
+            return;
+        }
+        if (statics_table[i] == NULL) {
+            // Found empty slot, register the static list
             statics_table[i] = statics;
             return;
         }
@@ -54,7 +59,7 @@ static void __objc_statics_load_list(struct objc_static_instances_list *list) {
 }
 
 BOOL __objc_statics_load() {
-    static BOOL init;
+    static BOOL init = NO;
     if (init) {
         return NO; // Already initialized
     }

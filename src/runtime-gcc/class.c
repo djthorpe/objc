@@ -15,7 +15,7 @@ objc_class_t *class_table[CLASS_TABLE_SIZE + 1];
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_class_init() {
-  static BOOL init;
+  static BOOL init = NO;
   if (init) {
     return; // Already initialized
   }
@@ -35,7 +35,12 @@ void __objc_class_register(objc_class_t *p) {
          p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
   for (int i = 0; i < CLASS_TABLE_SIZE; i++) {
-    if (class_table[i] == p || class_table[i] == NULL) {
+    if (class_table[i] == p) {
+      // Class is already registered, nothing to do
+      return;
+    }
+    if (class_table[i] == NULL) {
+      // Found empty slot, register the class
       class_table[i] = p;
 
       // Register protocols for the class

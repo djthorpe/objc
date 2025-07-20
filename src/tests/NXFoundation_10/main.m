@@ -32,6 +32,15 @@ int main() {
   [zone dump];
 
   // Free all allocated memory
+  for (int i = 0; i < 1000; i++) {
+    if (ptrs[i] != NULL) {
+      NXLog(@"Freeing @%p", ptrs[i]);
+      [zone free:ptrs[i]];
+      ptrs[i] = NULL; // Mark as freed
+    }
+  }
+
+  // Free all allocated memory
   [zone release];
   test_assert([NXZone defaultZone] == nil);
 

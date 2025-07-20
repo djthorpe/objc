@@ -13,7 +13,7 @@ objc_protocol_t *protocol_table[PROTOCOL_TABLE_SIZE + 1];
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_protocol_init() {
-  static BOOL init;
+  static BOOL init = NO;
   if (init) {
     return; // Already initialized
   }
