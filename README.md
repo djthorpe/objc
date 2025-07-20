@@ -62,17 +62,18 @@ enable optimizations and disable debug symbols.
 - [X] Calling methods in categories
 - [X] clang compatibility
 - [X] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`
-- [ ] Memory management - retain, release - reference counting for objects through NXZone
-- [ ] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
-- [ ] Calling `+[initialise]` for categories
-- [ ] `respondsToSelector:` and `+[Class load]`
-- [ ] More efficient method implementation lookup
+- [X] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
+- [X] Memory management - retain, release - reference counting for objects through NXZone
+- [ ] `NXLog` and `NXString stringWithFormat:` support - `%@` format specifier for logging objects and `[Object description]`
 - [ ] String - `NXString` - mutable strings
 - [ ] Number - `NXNumber` - immutable numbers
 - [ ] Array and Map - `NXArray` and `NXDictionary`
 - [ ] Date and Time - `NXDate` - mutable date and time
-- [ ] `NXApplication` and `NXRunLoop`
 - [ ] JSON - `NXCoder` - JSON / Binary marshalling and unmarshalling
+- [ ] `respondsToSelector:` and `+[Class load]`
+- [ ] Calling `+[initialise]` for categories
+- [ ] More efficient method implementation lookup
+- [ ] `NXApplication` and `NXRunLoop`
 - [ ] Pico toolchain - integrate with Pico SDK
 - [ ] Protocols and `conformsToProtocol:`
 - [ ] Threading & `@synchronized` support

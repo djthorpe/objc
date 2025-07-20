@@ -218,10 +218,13 @@ int main(void) {
   do {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "null%cend", 0);
-    test_assert(
-        len == 8); // "null\0end" includes all 8 characters, even though the null character at position 4 terminates the C string.
-    // Note: sys_sprintf counts all characters written to the buffer, including those after the null character, in its return value.
-    // The buffer will appear as "null" when treated as a C string, but the length returned by sys_sprintf reflects all characters.
+    test_assert(len ==
+                8); // "null\0end" includes all 8 characters, even though the
+                    // null character at position 4 terminates the C string.
+    // Note: sys_sprintf counts all characters written to the buffer, including
+    // those after the null character, in its return value. The buffer will
+    // appear as "null" when treated as a C string, but the length returned by
+    // sys_sprintf reflects all characters.
   } while (0);
 
   // Test long integers
@@ -754,9 +757,11 @@ int main(void) {
 
     int dummy_var = 0; // Local variable to obtain a valid memory address
     size_t len = sys_sprintf(buffer, 10, "%p", (void *)&dummy_var);
-    test_assert(len == 18);                   // "0x" + 16 hex digits = 18 chars
-    test_assert(buffer[9] == '\0');           // Should null-terminate
-    test_cstrings_equal(buffer, "0x1234567"); // Should truncate hex digits
+    test_assert(len == 18);         // "0x" + 16 hex digits = 18 chars
+    test_assert(buffer[9] == '\0'); // Should null-terminate
+    // Should start with "0x" and be exactly 9 chars (including null terminator)
+    test_assert(buffer[0] == '0' && buffer[1] == 'x');
+    test_assert(buffer[2] >= '0' && buffer[2] <= 'f'); // Valid hex digit
   } while (0);
 
   // Test 10: Multiple format specifiers with small buffer
