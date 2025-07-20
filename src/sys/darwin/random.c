@@ -24,6 +24,6 @@ uint32_t sys_random_uint32(void) {
     return ((uint32_t)rand() & 0xFFFF) << 16 | ((uint32_t)rand() & 0xFFFF);
   }
 
-  panicf("sys_random_uint: RAND_MAX is %d, too small (minimum 32767 required)",
+  panicf("sys_random_uint32: RAND_MAX is %d, too small (minimum 32767 required)",
          RAND_MAX);
 }
