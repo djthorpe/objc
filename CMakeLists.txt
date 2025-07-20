@@ -24,9 +24,11 @@ add_compile_options(
     "$<$<CONFIG:RELEASE>:-O3>"
 )
 
+# Lowercase system name for directory structure
+string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
+
 # Libraries
 add_subdirectory("src/malloc")
-string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 add_subdirectory("src/sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/NXFoundation")

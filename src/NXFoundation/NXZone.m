@@ -168,9 +168,11 @@ static id defaultZone = nil;
  * @brief Returns the total size of the memory zone.
  * @return The total size of the zone in bytes.
  *
- * This method returns the total capacity of the memory zone in bytes.
+ * This method returns the total capacity of the memory zone in bytes. Note that
+ * this includes both used and free memory, plus the size of the NXZone
+ * object itself.
  */
-- (size_t)size {
+- (size_t)bytesTotal {
   objc_arena_t *cur = (objc_arena_t *)_root;
   size_t size = 0;
   while (cur != NULL) {
@@ -178,6 +180,38 @@ static id defaultZone = nil;
     cur = objc_arena_next(cur); // Move to the next arena
   }
   return size;
+}
+
+/**
+ * @brief Returns the used size of the memory zone.
+ * @return The used size of the zone in bytes.
+ *
+ * This method returns the number of used bytes in the memory zone.
+ */
+- (size_t)bytesUsed {
+  objc_arena_t *cur = (objc_arena_t *)_root;
+  size_t used = 0;
+  while (cur != NULL) {
+    used += objc_arena_stats_used(cur);
+    cur = objc_arena_next(cur); // Move to the next arena
+  }
+  return used;
+}
+
+/**
+ * @brief Returns the free size of the memory zone.
+ * @return The free size of the zone in bytes.
+ *
+ * This method returns the number of free bytes in the memory zone.
+ */
+- (size_t)bytesFree {
+  objc_arena_t *cur = (objc_arena_t *)_root;
+  size_t free = 0;
+  while (cur != NULL) {
+    free += objc_arena_stats_free(cur);
+    cur = objc_arena_next(cur); // Move to the next arena
+  }
+  return free;
 }
 
 @end

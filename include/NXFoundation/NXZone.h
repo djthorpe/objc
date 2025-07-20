@@ -76,18 +76,26 @@
  * @brief Returns the total size of the memory zone.
  * @return The total size of the zone in bytes.
  *
- * This method returns the total capacity of the memory zone in bytes.
+ * This method returns the total capacity of the memory zone in bytes. Note that
+ * this includes both used and free memory, plus the size of the NXZone
+ * object itself.
  */
-- (size_t)size;
+- (size_t)bytesTotal;
 
 /**
- * @brief Returns the amount of memory in bytes currently allocated from the
- * zone.
- * @return The number of bytes currently allocated from the zone.
+ * @brief Returns the used size of the memory zone.
+ * @return The used size of the zone in bytes.
  *
- * This method returns the number of bytes currently allocated and in
- * use within the memory zone.
+ * This method returns the number of used bytes in the memory zone.
  */
-- (size_t)used;
+- (size_t)bytesUsed;
+
+/**
+ * @brief Returns the free size of the memory zone.
+ * @return The free size of the zone in bytes.
+ *
+ * This method returns the number of free bytes in the memory zone.
+ */
+- (size_t)bytesFree;
 
 @end
