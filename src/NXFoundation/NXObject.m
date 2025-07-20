@@ -31,6 +31,10 @@
  * @brief Deallocate the object, freeing its memory.
  */
 - (void)dealloc {
+  // If this is an NXZone class, then we simply return
+  if (object_getClass(self) == [NXZone class]) {
+    return;
+  }
   if (!_zone) {
     panicf("Object dealloc called without a zone");
   }

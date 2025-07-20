@@ -4,6 +4,8 @@ add_library(${NAME} STATIC
     NXApplication.m
     NXArch.m
     NXAutoreleasePool.m
+    NXNumberInt.m
+    NXNumberUnsignedInt.m
     NXObject.m
     NXString.m
     NXTimeInterval.m
