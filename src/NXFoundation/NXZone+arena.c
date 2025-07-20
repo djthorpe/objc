@@ -256,8 +256,7 @@ size_t objc_arena_stats_free(objc_arena_t *arena) {
 // PRIVATE METHODS
 
 /**
- * @brief Find free space in the arena that can accommodate the requested
- * size.
+ * @brief Find free space in the arena that can accommodate the requested size.
  */
 static void *objc_arena_find_free_space(struct objc_arena *arena, size_t size) {
   objc_assert(arena);
