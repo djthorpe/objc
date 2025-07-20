@@ -15,9 +15,9 @@ static NXNumberUnsignedInt *falseNumber;
 
 + (void)initialize {
   // Initialize the static instances of NXNumberUnsignedInt
-  trueNumber = [NXNumberUnsignedInt numberWithBool:YES];
+  trueNumber = [[NXNumberUnsignedInt numberWithBool:YES] retain];
   objc_assert(trueNumber);
-  falseNumber = [NXNumberUnsignedInt numberWithBool:NO];
+  falseNumber = [[NXNumberUnsignedInt numberWithBool:NO] retain];
   objc_assert(falseNumber);
 }
 
