@@ -17,8 +17,14 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
     REQUIRED
 )
 
-add_compile_options(-fobjc-runtime=gcc)
-add_compile_options(-fobjc-exceptions)
-add_compile_options(--target=armv6m-none-eabi)
-add_compile_options(-mfloat-abi=soft)
-add_compile_options(-march=armv6m)
+
+# Compile options for Objective-C
+add_compile_options(
+    # Use appropriate runtime flags based on compiler
+    $<$<AND:$<COMPILE_LANGUAGE:OBJC>,$<C_COMPILER_ID:Clang>>:-fobjc-runtime=gcc>
+    $<$<AND:$<COMPILE_LANGUAGE:OBJC>,$<C_COMPILER_ID:GNU>>:-fgnu-runtime>
+    $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-exceptions>
+    # Use appropriate target flags based on compiler
+    $<$<C_COMPILER_ID:Clang>:--target=armv6m-none-eabi>
+    $<$<C_COMPILER_ID:GNU>:-march=armv6m>
+)
