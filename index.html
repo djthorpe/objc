@@ -81,17 +81,19 @@ $(function() {
 <li>[X] Calling methods in super classes - implement <code>[super init]</code> for example</li>
 <li>[X] Calling methods in categories</li>
 <li>[X] clang compatibility</li>
-<li>[ ] Calling <code>+[initialise]</code> for categories</li>
-<li>[ ] <code>respondsToSelector:</code> and <code>+[Class load]</code></li>
-<li>[ ] More efficient method implementation lookup</li>
-<li>[ ] Memory management - alloc, dealloc, memory arenas - require malloc in an <code><a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></code></li>
-<li>[ ] Memory management - retain, release - reference counting for objects through <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></li>
+<li>[X] Memory management - alloc, dealloc, memory arenas - require malloc in an <code><a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></code></li>
+<li>[X] Printf support - <code>vsprintf</code> - printf-like function which can be used by NXLog, <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> and sys_panicf</li>
+<li>[X] Memory management - retain, release - reference counting for objects through <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></li>
+<li>[ ] <code>NXLog</code> and <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> stringWithFormat:</code> support - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[ ] String - <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings</li>
 <li>[ ] Number - <code>NXNumber</code> - immutable numbers</li>
 <li>[ ] Array and Map - <code>NXArray</code> and <code>NXDictionary</code></li>
 <li>[ ] Date and Time - <code>NXDate</code> - mutable date and time</li>
-<li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
 <li>[ ] JSON - <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
+<li>[ ] <code>respondsToSelector:</code> and <code>+[Class load]</code></li>
+<li>[ ] Calling <code>+[initialise]</code> for categories</li>
+<li>[ ] More efficient method implementation lookup</li>
+<li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
 <li>[ ] Pico toolchain - integrate with Pico SDK</li>
 <li>[ ] Protocols and <code>conformsToProtocol:</code></li>
 <li>[ ] Threading &amp; <code>@synchronized</code> support</li>

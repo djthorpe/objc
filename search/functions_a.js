@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['release',['release',['../interfaceNXObject.html#abccce59171d368454f3d1743ddfd805e',1,'NXObject']]],
-  ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject']]],
-  ['run',['run',['../interfaceNXApplication.html#ae843bb8728032b71f97006a5c9048c4b',1,'NXApplication']]]
+  ['sel_5fgetname',['sel_getName',['../runtime_8h.html#a359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
+  ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
+  ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
+  ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]]
 ];
