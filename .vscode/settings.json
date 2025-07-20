@@ -17,6 +17,7 @@
         "string_view": "c",
         "unordered_map": "c",
         "valarray": "c",
-        "vector": "c"
+        "vector": "c",
+        "locale": "c"
     }
 }

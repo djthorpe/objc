@@ -1,4 +1,5 @@
 #pragma once
+#include <string.h>
 
 #define test_assert(condition)                                                 \
   if (!(condition)) {                                                          \
@@ -20,4 +21,10 @@
   do {                                                                         \
     test_assert((str1) != NULL && (str2) != NULL);                             \
     test_assert(strcmp([str1 cStr], [str2 cStr]) == 0);                        \
+  } while (0)
+
+#define test_cstrings_equal(str1, str2)                                        \
+  do {                                                                         \
+    test_assert((str1) != NULL && (str2) != NULL);                             \
+    test_assert(strcmp(str1, str2) == 0);                                      \
   } while (0)
