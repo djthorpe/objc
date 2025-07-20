@@ -50,14 +50,17 @@ static void __objc_send_initialize(objc_class_t *cls) {
     return;
   }
 
-  // If the superclass has an initialize method, call it first
-  if (cls->superclass) {
-    __objc_send_initialize(cls->superclass);
-  }
-
   // Don't call initialize on the same class twice
   if (cls->info & objc_class_flag_initialized) {
     return;
+  }
+
+  // Mark the class as initialized early to prevent recursion
+  cls->info |= objc_class_flag_initialized;
+
+  // If the superclass has an initialize method, call it first
+  if (cls->superclass) {
+    __objc_send_initialize(cls->superclass);
   }
 
   // Find and call the initialize method
@@ -76,9 +79,6 @@ static void __objc_send_initialize(objc_class_t *cls) {
         (id)cls, &initialize); // Call the initialize method on the class
 #pragma GCC diagnostic pop
   }
-
-  // Mark the class as initialized
-  cls->info |= objc_class_flag_initialized;
 }
 
 /**
@@ -175,7 +175,7 @@ BOOL class_respondsToSelector(Class cls, SEL selector) {
 
 BOOL class_metaclassRespondsToSelector(Class cls, SEL selector) {
   if (cls == Nil) {
-    return NULL;
+    return NO;
   }
   if (!(cls->info & objc_class_flag_meta)) {
     cls = cls->metaclass; // Use the metaclass for class methods

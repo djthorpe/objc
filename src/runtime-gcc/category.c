@@ -32,7 +32,12 @@ void __objc_category_register(struct objc_category *category) {
          category->name);
 #endif
   for (int i = 0; i < CATEGORY_TABLE_SIZE; i++) {
-    if (category_table[i] == category || category_table[i] == NULL) {
+    if (category_table[i] == category) {
+      // Category is already registered, nothing to do
+      return;
+    }
+    if (category_table[i] == NULL) {
+      // Found empty slot, register the category
       category_table[i] = category;
       return;
     }
@@ -81,7 +86,7 @@ BOOL __objc_category_load() {
   for (int i = 0; i < CATEGORY_TABLE_SIZE; i++) {
     struct objc_category *category = category_table[i];
     if (category == NULL) {
-      break;
+      continue; // Skip empty slots and continue searching
     }
     __objc_category_load_category(category);
   }
