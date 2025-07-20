@@ -107,8 +107,9 @@ size_t _sys_printf_putch(struct sys_printf_state *state, char ch) {
 size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
   if (state->buffer && state->pos < state->size - 1) {
     state->buffer[state->pos] = ch;
+    return 1;
   }
-  return 1;
+  return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
