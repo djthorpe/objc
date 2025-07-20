@@ -49,7 +49,7 @@ static id defaultZone = nil;
   object_setClass(zone, self);
 
   // Set up instance variables
-  zone->_data = arena;
+  zone->_root = zone->_cur = arena;
   zone->_size = alignedObjectSize + size; // Update _size to reflect arena size
   zone->_count = 0;
   zone->_retain = 1; // Initial retain count
@@ -76,8 +76,8 @@ static id defaultZone = nil;
     defaultZone = nil;
   }
 
-  // Free the arena associated with this zone
-  objc_arena_delete((objc_arena_t *)_data);
+  // Free the linked list of arenas associated with this zone
+  objc_arena_delete((objc_arena_t *)_root);
 
   // Call superclass dealloc
   [super dealloc];
@@ -96,8 +96,17 @@ static id defaultZone = nil;
 - (void *)allocWithSize:(size_t)size {
   void *ptr = NULL;
   @synchronized(self) {
-    // Allocate memory from the arena
-    ptr = objc_arena_alloc_inner((objc_arena_t *)_data, size);
+    // Allocate memory from the current arena
+    ptr = objc_arena_alloc_inner((objc_arena_t *)_cur, size);
+    if (ptr == NULL) {
+      // If allocation fails, attempt to create a new arena
+      objc_arena_t *new =
+          objc_arena_new((objc_arena_t *)_cur, size > _size ? size : _size);
+      if (new) {
+        _cur = new; // Update current arena to the new one
+        ptr = objc_arena_alloc_inner(new, size);
+      }
+    }
 #ifdef DEBUG
     NXLog(@"  allocWithSize: size=%zu => @%p", size, ptr);
 #endif
@@ -110,26 +119,65 @@ static id defaultZone = nil;
 }
 
 - (void)free:(void *)ptr {
+  if (ptr == NULL) {
+    return;
+  }
   @synchronized(self) {
-    if (ptr != NULL) {
-      _count--;
-    }
 #ifdef DEBUG
     NXLog(@"  free: @%p", ptr);
 #endif
     // Free the memory back to the arena
-    objc_arena_free_inner((objc_arena_t *)_data, ptr);
+    BOOL success = objc_arena_free((objc_arena_t *)_root, ptr);
+    if (success) {
+      _count--;
+    } else {
+      panicf("[NXZone free] failed to free memory @%p", ptr);
+    }
   }
 }
 
 - (void)dump {
+  objc_arena_t *cur = (objc_arena_t *)_root;
   objc_arena_alloc_t *alloc = NULL;
-  do {
-    objc_arena_walk_inner((objc_arena_t *)_data, &alloc);
-    if (alloc != NULL) {
-      NXLog(@"  Alloc: @%p", alloc);
-    }
-  } while (alloc != NULL);
+  void *ptr = NULL;
+  NXLog(@"Zone dump for -[NXZone] @%p:", self);
+  size_t size = 0;
+  size_t used = 0;
+  size_t free = 0;
+  while (cur != NULL) {
+    size += objc_arena_stats_size(cur);
+    used += objc_arena_stats_used(cur);
+    free += objc_arena_stats_free(cur);
+    NXLog(@"  arena @%p size=%zu used=%zu free=%zu:", cur,
+          objc_arena_stats_size(cur), objc_arena_stats_used(cur),
+          objc_arena_stats_free(cur));
+    do {
+      objc_arena_walk_inner(cur, &alloc);
+      if (alloc != NULL) {
+        size_t size = objc_arena_alloc_size(alloc, &ptr);
+        NXLog(@"    alloc: @%p, size=%zu", ptr, size);
+      }
+    } while (alloc != NULL);
+    cur = objc_arena_next(cur); // Move to the next arena
+  }
+  NXLog(@"Total size: %zu bytes, used: %zu bytes, free: %zu bytes", size, used,
+        free);
+}
+
+/**
+ * @brief Returns the total size of the memory zone.
+ * @return The total size of the zone in bytes.
+ *
+ * This method returns the total capacity of the memory zone in bytes.
+ */
+- (size_t)size {
+  objc_arena_t *cur = (objc_arena_t *)_root;
+  size_t size = 0;
+  while (cur != NULL) {
+    size += objc_arena_stats_size(cur);
+    cur = objc_arena_next(cur); // Move to the next arena
+  }
+  return size;
 }
 
 @end

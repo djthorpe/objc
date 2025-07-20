@@ -6,21 +6,34 @@ int main() {
   printf("Running NXFoundation_10 arena allocator tests...\n");
 
   // Allocate a zone
-  NXZone *zone = [NXZone zoneWithSize:1024 * 64];
+  NXZone *zone = [NXZone zoneWithSize:1024];
   test_assert(zone != nil);
 
   // Allocate some memory in the zone
-  void *ptrs[10];
-  for (int i = 0; i < 10; i++) {
-    ptrs[i] = [zone allocWithSize:64];
-    test_assert(ptrs[i] != NULL);
-    printf("Allocated %d bytes at %p\n", 64, ptrs[i]);
+  void *ptrs[1000];
+  for (int i = 0; i < 1000; i++) {
+    size_t size =
+        64 + NXRandUnsignedInt() % 128; // Random size between 64 and 191 bytes
+    ptrs[i] = [zone allocWithSize:size];
+    if (ptrs[i] == NULL) {
+      // Free a random existing allocation
+      size_t freeIndex = NXRandUnsignedInt() % i;
+      if (ptrs[freeIndex] != NULL) {
+        NXLog(@"Free @%p", ptrs[freeIndex]);
+        [zone free:ptrs[freeIndex]];
+        ptrs[freeIndex] = NULL; // Mark as freed
+      }
+    } else {
+      NXLog(@"Allocated %zu bytes @%p", size, ptrs[i]);
+    }
   }
 
   // Dump the zone to see allocations
   [zone dump];
 
-  printf("Test completed successfully!\n");
+  // Free all allocated memory
+  [zone release];
+  test_assert([NXZone defaultZone] == nil);
 
   return 0;
 }

@@ -39,9 +39,14 @@ struct objc_arena_alloc {
 /**
  * @brief Create a new arena with the specified size.
  */
-objc_arena_t *objc_arena_new(objc_arena_t *prev, size_t size) {
+objc_arena_t *objc_arena_new(objc_arena_t *root, size_t size) {
   objc_assert(size > 0);
-  objc_assert(prev == NULL || prev->next == NULL);
+
+  // Go to the end of the arena chain
+  objc_arena_t *prev = root;
+  while (prev && prev->next) {
+    prev = prev->next;
+  }
 
   size_t total_size = sizeof(struct objc_arena) + size;
   objc_arena_t *arena = __zone_malloc(total_size);
@@ -149,6 +154,24 @@ BOOL objc_arena_free_inner(objc_arena_t *arena, void *ptr) {
 }
 
 /**
+ * @brief Deallocate memory from arenas
+ */
+BOOL objc_arena_free(objc_arena_t *arena, void *ptr) {
+  objc_assert(arena);
+  if (ptr == NULL) {
+    return NO; // Nothing to free
+  }
+  while (arena != NULL) {
+    // Try to free in the current arena
+    if (objc_arena_free_inner(arena, ptr)) {
+      return YES; // Successfully freed
+    }
+    arena = arena->next; // Move to the next arena
+  }
+  return NO; // Pointer not found in any arena
+}
+
+/**
  * @brief Walk through an arena and perform an action on each allocation.
  */
 void objc_arena_walk_inner(objc_arena_t *arena, objc_arena_alloc_t **alloc) {
@@ -167,6 +190,66 @@ void objc_arena_walk_inner(objc_arena_t *arena, objc_arena_alloc_t **alloc) {
   } else {
     *alloc = (*alloc)->next;
   }
+}
+
+/**
+ * @brief Get the size of an allocation.
+ */
+size_t objc_arena_alloc_size(objc_arena_alloc_t *alloc, void **ptr) {
+  // Where alloc is NULL, return 0 and set ptr to NULL
+  if (alloc == NULL) {
+    if (ptr != NULL) {
+      *ptr = NULL;
+    }
+    return 0;
+  }
+  // Get the size from the allocation structure
+  if (ptr != NULL) {
+    *ptr = alloc->ptr;
+  }
+  return alloc->size;
+}
+
+objc_arena_t *objc_arena_next(objc_arena_t *arena) {
+  objc_assert(arena);
+  return arena->next; // Return the next arena in the linked list
+}
+
+/**
+ * @brief Get the total size of an arena.
+ */
+size_t objc_arena_stats_size(objc_arena_t *arena) {
+  objc_assert(arena);
+  return sizeof(struct objc_arena) +
+         arena->size; // Return the size, including the header
+}
+
+/**
+ * @brief Get the amount of used space in an arena.
+ */
+size_t objc_arena_stats_used(objc_arena_t *arena) {
+  objc_assert(arena);
+
+  // Calculate used space by walking through active allocations
+  size_t used = 0;
+  struct objc_arena_alloc *current = arena->head;
+  while (current) {
+    used += sizeof(struct objc_arena_alloc) + current->size;
+    current = current->next;
+  }
+
+  return used;
+}
+
+/**
+ * @brief Get the amount of free space remaining in an arena.
+ */
+size_t objc_arena_stats_free(objc_arena_t *arena) {
+  objc_assert(arena);
+
+  // Return remaining space, accounting for potential fragmentation
+  size_t used = objc_arena_stats_used(arena);
+  return (arena->size > used) ? (arena->size - used) : 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
