@@ -752,7 +752,8 @@ int main(void) {
     for (int i = 0; i < 10; i++)
       buffer[i] = 'X'; // Initialize
 
-    size_t len = sys_sprintf(buffer, 10, "%p", (void *)0x123456789ABCDEF0UL);
+    int dummy_var = 0; // Local variable to obtain a valid memory address
+    size_t len = sys_sprintf(buffer, 10, "%p", (void *)&dummy_var);
     test_assert(len == 18);                   // "0x" + 16 hex digits = 18 chars
     test_assert(buffer[9] == '\0');           // Should null-terminate
     test_cstrings_equal(buffer, "0x1234567"); // Should truncate hex digits
