@@ -4,6 +4,7 @@ add_library(${NAME} STATIC
     NXApplication.m
     NXArch.m
     NXAutoreleasePool.m
+    NXNumber.m
     NXNumberInt.m
     NXNumberUnsignedInt.m
     NXObject.m
@@ -23,3 +24,4 @@ target_link_libraries(${NAME} PRIVATE
     objc-gcc
     sys
 )
+

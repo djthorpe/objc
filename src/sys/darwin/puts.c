@@ -11,3 +11,8 @@ void sys_puts(const char *str) {
   // Flush the output to ensure it appears immediately
   fflush(stdout);
 }
+
+void sys_putch(const char ch) {
+  // Output the character to standard output
+  fputc(ch, stdout);
+}

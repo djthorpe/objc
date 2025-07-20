@@ -31,8 +31,25 @@ extern void sys_sleep(int32_t msec);
 /**
  * @brief Outputs a string to the system console or standard output.
  * @details This function writes the specified null-terminated string to the
- * system's standard output stream. It provides a low-level interface for
- * text output that can be used by higher-level logging and display functions.
+ * system's standard output stream, and flushes the output buffer.
  * @param str A pointer to a null-terminated string to be output.
  */
 extern void sys_puts(const char *str);
+
+/**
+ * @brief Outputs a character to the system console or standard output.
+ * @details This function writes the specified character to the
+ * system's standard output stream, but does not flush the output buffer.
+ * @param ch The character to be output.
+ */
+extern void sys_putch(const char ch);
+
+/**
+ * @brief Returns a random number as a 32-bit unsigned integer.
+ */
+extern uint32_t sys_random_uint32(void);
+
+/**
+ * @brief Aborts the current process.
+ */
+extern void sys_abort(void);

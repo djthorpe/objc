@@ -72,4 +72,9 @@
  */
 - (void)free:(void *)ptr;
 
+/**
+ * @brief Walks through the zone and performs an action on each allocation.
+ */
+- (void)dump;
+
 @end
