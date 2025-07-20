@@ -6,6 +6,7 @@ add_library(${NAME} STATIC
     malloc.c
     mutex.c
     puts.c
+    random.c
     sleep.c
 )
 target_include_directories(${NAME} PRIVATE
