@@ -643,8 +643,7 @@ int main(void) {
     char buffer[100];
     int dummy_var = 0;
     void *test_ptr = (void *)&dummy_var;
-    size_t len =
-        sys_sprintf(buffer, sizeof(buffer), "addr: %p", test_ptr);
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "addr: %p", test_ptr);
     test_assert(len >= 10); // "addr: 0x" + at least some hex digits
   } while (0);
 
@@ -652,6 +651,147 @@ int main(void) {
   do {
     size_t len = sys_printf("ptr: %p\n", (void *)0x1000);
     test_assert(len == 24); // "ptr: 0x" + 16 hex digits + "\n" = 24 characters
+  } while (0);
+
+  // === BUFFER OVERFLOW TESTS ===
+
+  // Test 1: Exact buffer size (no null terminator space)
+  do {
+    char buffer[5];
+    buffer[0] = 'X'; // Initialize to detect overwrites
+    buffer[1] = 'X';
+    buffer[2] = 'X';
+    buffer[3] = 'X';
+    buffer[4] = 'X';
+
+    size_t len = sys_sprintf(buffer, 5, "Hello");
+    test_assert(len == 5);          // Should return actual length needed
+    test_assert(buffer[4] == '\0'); // Should null-terminate at last position
+    test_cstrings_equal(buffer, "Hell"); // Should truncate to fit
+  } while (0);
+
+  // Test 2: Buffer too small for string
+  do {
+    char buffer[3];
+    buffer[0] = 'X';
+    buffer[1] = 'X';
+    buffer[2] = 'X';
+
+    size_t len = sys_sprintf(buffer, 3, "Hello World");
+    test_assert(len == 11); // Should return full length that would be written
+    test_assert(buffer[2] == '\0');    // Should null-terminate at last position
+    test_cstrings_equal(buffer, "He"); // Should truncate to fit
+  } while (0);
+
+  // Test 3: Single character buffer
+  do {
+    char buffer[1];
+    buffer[0] = 'X';
+
+    size_t len = sys_sprintf(buffer, 1, "Hello");
+    test_assert(len == 5);          // Should return full length
+    test_assert(buffer[0] == '\0'); // Should only contain null terminator
+  } while (0);
+
+  // Test 4: Zero-sized buffer
+  do {
+    char buffer[1];
+    buffer[0] = 'X'; // Should remain unchanged
+
+    size_t len = sys_sprintf(buffer, 0, "Hello");
+    test_assert(len == 5);         // Should return full length
+    test_assert(buffer[0] == 'X'); // Buffer should be unchanged when size=0
+  } while (0);
+
+  // Test 5: NULL buffer with zero size (should not crash)
+  do {
+    size_t len = sys_sprintf(NULL, 0, "Hello World");
+    test_assert(len == 11); // Should return full length
+  } while (0);
+
+  // Test 6: Buffer overflow with format specifiers
+  do {
+    char buffer[10];
+    for (int i = 0; i < 10; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len =
+        sys_sprintf(buffer, 10, "Number: %d, String: %s", 12345, "Hello");
+    test_assert(len == 28);         // "Number: 12345, String: Hello" = 28 chars
+    test_assert(buffer[9] == '\0'); // Should null-terminate at last position
+    test_cstrings_equal(buffer, "Number: 1"); // Should truncate
+  } while (0);
+
+  // Test 7: Width specifier overflow
+  do {
+    char buffer[8];
+    for (int i = 0; i < 8; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 8, "%20s", "Hi");
+    test_assert(len == 20);                 // Should return full padded length
+    test_assert(buffer[7] == '\0');         // Should null-terminate
+    test_cstrings_equal(buffer, "       "); // Should contain spaces (truncated)
+  } while (0);
+
+  // Test 8: Zero-padded number overflow
+  do {
+    char buffer[5];
+    for (int i = 0; i < 5; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 5, "%08d", 42);
+    test_assert(len == 8);               // "00000042" = 8 chars
+    test_assert(buffer[4] == '\0');      // Should null-terminate
+    test_cstrings_equal(buffer, "0000"); // Should truncate
+  } while (0);
+
+  // Test 9: Pointer formatting overflow
+  do {
+    char buffer[10];
+    for (int i = 0; i < 10; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 10, "%p", (void *)0x123456789ABCDEF0UL);
+    test_assert(len == 18);                   // "0x" + 16 hex digits = 18 chars
+    test_assert(buffer[9] == '\0');           // Should null-terminate
+    test_cstrings_equal(buffer, "0x1234567"); // Should truncate hex digits
+  } while (0);
+
+  // Test 10: Multiple format specifiers with small buffer
+  do {
+    char buffer[6];
+    for (int i = 0; i < 6; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 6, "%d+%d=%d", 123, 456, 579);
+    test_assert(len == 11);               // "123+456=579" = 11 chars
+    test_assert(buffer[5] == '\0');       // Should null-terminate
+    test_cstrings_equal(buffer, "123+4"); // Should truncate
+  } while (0);
+
+  // Test 11: Long string with NULL
+  do {
+    char buffer[8];
+    for (int i = 0; i < 8; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 8, "Hello %s World", (char *)NULL);
+    test_assert(len == 17);                 // "Hello <nil> World" = 17 chars
+    test_assert(buffer[7] == '\0');         // Should null-terminate
+    test_cstrings_equal(buffer, "Hello <"); // Should truncate
+  } while (0);
+
+  // Test 12: Character with width overflow
+  do {
+    char buffer[4];
+    for (int i = 0; i < 4; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = sys_sprintf(buffer, 4, "%10c", 'A');
+    test_assert(len == 10);             // 9 spaces + 'A' = 10 chars
+    test_assert(buffer[3] == '\0');     // Should null-terminate
+    test_cstrings_equal(buffer, "   "); // Should be spaces (truncated)
   } while (0);
 
   sys_printf("All tests passed!\n");

@@ -391,7 +391,7 @@ size_t _sys_printf_putch(struct sys_printf_state *state, char ch) {
 
 size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
   // Write character at current position and increment immediately
-  if (state->buffer && state->pos < state->size - 1) {
+  if (state->buffer && state->size > 0 && state->pos < state->size - 1) {
     state->buffer[state->pos] = ch;
     state->pos++; // Increment position immediately after writing
     return 0;     // Return 0 so main loop doesn't double-increment
