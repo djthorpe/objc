@@ -6,27 +6,27 @@
 // TYPES
 
 typedef enum {
-  SYS_PRINTF_FLAG_SIZET = 1 << 0,  //**< Flag for size_t specifier
-  SYS_PRINTF_FLAG_LONG = 1 << 1,   //**< Flag for long integer specifier
-  SYS_PRINTF_FLAG_LEFT = 1 << 2,   //**< Flag for left alignment
-  SYS_PRINTF_FLAG_SIGN = 1 << 3,   //**< Flag to force numeric sign
-  SYS_PRINTF_FLAG_PREFIX = 1 << 4, //**< Flag to force 0, 0x or 0b prefix
-  SYS_PRINTF_FLAG_PAD = 1 << 5,    //**< Flag for zero-padding
-  SYS_PRINTF_FLAG_NEG = 1 << 6,    //**< Flag to process as negative number
-  SYS_PRINTF_FLAG_HEX = 1 << 7,    //**< Flag for hexadecimal output
-  SYS_PRINTF_FLAG_BIN = 1 << 8,    //**< Flag for binary output
-  SYS_PRINTF_FLAG_OCT = 1 << 9,    //**< Flag for octal output
-  SYS_PRINTF_FLAG_UPPER = 1 << 10  //**< Flag for uppercase hexadecimal output
+  SYS_PRINTF_FLAG_SIZET = 1 << 0,  /**< Flag for size_t specifier */
+  SYS_PRINTF_FLAG_LONG = 1 << 1,   /**< Flag for long integer specifier */
+  SYS_PRINTF_FLAG_LEFT = 1 << 2,   /**< Flag for left alignment */
+  SYS_PRINTF_FLAG_SIGN = 1 << 3,   /**< Flag to force numeric sign */
+  SYS_PRINTF_FLAG_PREFIX = 1 << 4, /**< Flag to force 0, 0x or 0b prefix */
+  SYS_PRINTF_FLAG_PAD = 1 << 5,    /**< Flag for zero-padding */
+  SYS_PRINTF_FLAG_NEG = 1 << 6,    /**< Flag to process as negative number */
+  SYS_PRINTF_FLAG_HEX = 1 << 7,    /**< Flag for hexadecimal output */
+  SYS_PRINTF_FLAG_BIN = 1 << 8,    /**< Flag for binary output */
+  SYS_PRINTF_FLAG_OCT = 1 << 9,    /**< Flag for octal output */
+  SYS_PRINTF_FLAG_UPPER = 1 << 10  /**< Flag for uppercase hexadecimal output */
 } sys_printf_flags_t;
 
 struct sys_printf_state {
-  char *buffer; //**< Buffer for formatted output
-  size_t size;  //**< Size of the buffer, including null terminator
-  size_t pos;   //**< Current position in the buffer
+  char *buffer; /**< Buffer for formatted output */
+  size_t size;  /**< Size of the buffer, including null terminator */
+  size_t pos;   /**< Current position in the buffer */
   size_t (*putch)(struct sys_printf_state *state,
-                  char ch); //**< Function to output a character
-  size_t width;             //**< Width specifier for padding
-  sys_printf_flags_t flags; //**< Current format flags
+                  char ch); /**< Function to output a character */
+  size_t width;             /**< Width specifier for padding */
+  sys_printf_flags_t flags; /**< Current format flags */
 };
 
 static const char *_nullstr = "<nil>"; // Placeholder for NULL strings
