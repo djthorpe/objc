@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['_5f_5fattribute_5f_5f',['__attribute__',['../interfaceNXZone.html#a87cfee9b3973ffa7afc201f02d284436',1,'NXZone::__attribute__()'],['../interfaceNXZone.html#a87cfee9b3973ffa7afc201f02d284436',1,'NXZone::__attribute__()']]]
+  ['addobject_3a',['addObject:',['../interfaceNXAutoreleasePool.html#a317e96662bcf86e0224fdf9f1ef5935d',1,'NXAutoreleasePool']]],
+  ['alloc',['alloc',['../interfaceObject.html#a57b94628f4a28ffa19da4cf50199cbaa',1,'Object']]],
+  ['allocwithsize_3a',['allocWithSize:',['../interfaceNXZone.html#ad790e31d4c78534b5ceff67caee2f5f1',1,'NXZone']]],
+  ['allocwithzone_3a',['allocWithZone:',['../interfaceNXObject.html#a07c1150dddd0486576a9c9af00244db5',1,'NXObject']]],
+  ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
 ];
