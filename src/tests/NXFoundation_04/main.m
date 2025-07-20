@@ -4,7 +4,7 @@
 
 int main() {
   // Create a zone
-  NXZone *zone = [NXZone zoneWithSize:0];
+  NXZone *zone = [NXZone zoneWithSize:1024];
   test_assert(zone != nil);
   test_assert([NXZone defaultZone] == zone);
 

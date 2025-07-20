@@ -70,7 +70,8 @@ static id sharedApplication = nil;
   // If there is no default zone, create one
   NXZone *zone = [NXZone defaultZone];
   if (zone == nil) {
-    zone = [NXZone zoneWithSize:0];
+    // Default zone size is set to 64KB
+    zone = [NXZone zoneWithSize:64 * 1024];
     if (zone == nil) {
       panicf("Failed to create default zone for NXApplication");
       return -1;

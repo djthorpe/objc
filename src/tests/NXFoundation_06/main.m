@@ -4,7 +4,7 @@
 
 int main() {
   // Create a zone, and autorelease pool
-  NXZone *zone = [NXZone zoneWithSize:0];
+  NXZone *zone = [NXZone zoneWithSize:1024 * 64];
   NXAutoreleasePool *pool = [[NXAutoreleasePool alloc] init];
   test_assert(pool != nil);
   test_assert([NXAutoreleasePool currentPool] == pool);

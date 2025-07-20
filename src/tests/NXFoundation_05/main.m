@@ -4,7 +4,7 @@
 
 int main() {
   // Memory management
-  NXZone *zone = [NXZone zoneWithSize:0];
+  NXZone *zone = [NXZone zoneWithSize:1024];
   NXAutoreleasePool *pool = [[NXAutoreleasePool alloc] init];
 
   // Create an object

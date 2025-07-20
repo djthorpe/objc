@@ -2,7 +2,8 @@
 
 @implementation NXObject
 
-#pragma mark - Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
 /**
  * @brief Allocates a new instance of object in the default memory zone.
@@ -29,8 +30,15 @@
 
 /**
  * @brief Deallocate the object, freeing its memory.
+ * @warning This method intentionally does NOT call [super dealloc] to prevent
+ * double-free.
  */
 - (void)dealloc {
+  // If this is an NXZone class, then we simply return, since the zone will
+  // handle deallocation.
+  if (object_isKindOfClass(self, [NXZone class])) {
+    return;
+  }
   if (!_zone) {
     panicf("Object dealloc called without a zone");
   }
@@ -42,7 +50,8 @@
   }
 }
 
-#pragma mark - Instance methods
+///////////////////////////////////////////////////////////////////////////////
+// INSTANCE METHODS
 
 /**
  * @brief Increases the retain count of the receiver.

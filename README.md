@@ -57,15 +57,18 @@ CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-u
 - [X] Resolving super classes and meta classes for message lookup
 - [X] Calling methods in super classes - implement `[super init]` for example
 - [X] Calling methods in categories
+- [X] clang compatibility
 - [ ] Calling `+[initialise]` for categories
-- [ ] clang compatibility
 - [ ] `respondsToSelector:` and `+[Class load]`
 - [ ] More efficient method implementation lookup
 - [ ] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`
 - [ ] Memory management - retain, release - reference counting for objects through NXZone
 - [ ] String - `NXString` - mutable strings
+- [ ] Number - `NXNumber` - immutable numbers
 - [ ] Array and Map - `NXArray` and `NXDictionary`
+- [ ] Date and Time - `NXDate` - mutable date and time
 - [ ] `NXApplication` and `NXRunLoop`
+- [ ] JSON - `NXCoder` - JSON / Binary marshalling and unmarshalling
 - [ ] Pico toolchain - integrate with Pico SDK
 - [ ] Protocols and `conformsToProtocol:`
 - [ ] Threading & `@synchronized` support
