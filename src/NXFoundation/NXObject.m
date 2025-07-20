@@ -33,6 +33,8 @@
  * @warning This method intentionally does NOT call [super dealloc] to prevent
  * double-free.
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
 - (void)dealloc {
   // If this is an NXZone class, then we simply return, since the zone will
   // handle deallocation.
@@ -49,6 +51,7 @@
     [_zone free:self]; // Free the memory in the zone
   }
 }
+#pragma clang diagnostic pop
 
 ///////////////////////////////////////////////////////////////////////////////
 // INSTANCE METHODS

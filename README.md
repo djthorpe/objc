@@ -49,6 +49,9 @@ For the RP2040 Pico board, you can use the `clang` compiler with the ARM toolcha
 CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
 ```
 
+You can use the environment variable `RELEASE=1` to build a release version of the runtime, which will
+enable optimizations and disable debug symbols.
+
 ## Current status
 
 - [X] Registering classes
