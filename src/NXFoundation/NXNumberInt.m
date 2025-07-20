@@ -11,7 +11,7 @@
   if (instance) {
     instance->_value = value; // Assuming _value is a private ivar of type int
   }
-  return instance;
+  return [instance autorelease];
 }
 
 /**
