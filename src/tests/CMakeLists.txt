@@ -5,6 +5,9 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../include/runtime-${RUNTIME}
 )
 
+# Test cases - system functions
+add_subdirectory(sys_01)
+
 # Test cases - runtime
 add_subdirectory(runtime_01)
 add_subdirectory(runtime_02)

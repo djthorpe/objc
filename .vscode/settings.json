@@ -1,5 +1,22 @@
 {
     "files.associations": {
-        "*.h": "objective-c"
+        "*.hcl": "terraform",
+        "*.h": "objective-c",
+        "__hash_table": "c",
+        "__split_buffer": "c",
+        "__tree": "c",
+        "array": "c",
+        "bitset": "c",
+        "deque": "c",
+        "initializer_list": "c",
+        "map": "c",
+        "queue": "c",
+        "set": "c",
+        "stack": "c",
+        "string": "c",
+        "string_view": "c",
+        "unordered_map": "c",
+        "valarray": "c",
+        "vector": "c"
     }
 }
