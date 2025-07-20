@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
-const int NXArchBits(void) {
+int NXArchBits(void) {
 #if defined(__LP64__)
   return 64;
 #else
@@ -11,7 +11,7 @@ const int NXArchBits(void) {
 #endif
 }
 
-const NXEndian NXArchEndian(void) {
+NXEndian NXArchEndian(void) {
 #if defined(__BIG_ENDIAN__)
   return NXBigEndian;
 #elif defined(__LITTLE_ENDIAN__)

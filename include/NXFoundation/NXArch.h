@@ -26,7 +26,7 @@ typedef enum {
  *
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
  */
-const int NXArchBits(void);
+int NXArchBits(void);
 
 /**
  * @brief Get the current architecture endianness.
@@ -35,4 +35,4 @@ const int NXArchBits(void);
  *
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
  */
-const NXEndian NXArchEndian(void);
+NXEndian NXArchEndian(void);
