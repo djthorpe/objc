@@ -30,7 +30,7 @@ const int NXArchBits(void);
 
 /**
  * @brief Get the current architecture endianness.
- * @return The architecture endianness, either NXEndianLittle or NXEndianBig.
+ * @return The architecture endianness, either NXLittleEndian or NXBigEndian.
  *   Returns 0 if the architecture is unknown.
  *
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
