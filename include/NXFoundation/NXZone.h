@@ -7,37 +7,26 @@
  */
 #pragma once
 
+///////////////////////////////////////////////////////////////////////////////
+// NXZone
+
 /**
  * @brief A class for managing memory zones.
  *
  * NXZone provides a mechanism for managing memory allocations. It can
- * be used to create memory pools of a fixed size, from which objects can be
- * allocated. This can be useful for improving performance and reducing
- * memory fragmentation in applications that create and destroy many
- * objects.
+ * be used to create memory arenas of a fixed size, from which objects can be
+ * allocated.
  *
  * \headerfile NXZone.h NXFoundation/NXFoundation.h
  */
 @interface NXZone : NXObject {
-@private
-  size_t _size;  //< Size of the memory zone in bytes
-  void *_data;   //< Arena data pointer
+@protected
+  size_t _size;  //< Default size of the memory zone in bytes
   size_t _count; //< Number of allocations in the zone
+@private
+  void *_root; //< Root arena data pointer
+  void *_cur;  //< Current arena data pointer
 }
-
-// Lifecycle
-/**
- * @brief This method is unavailable for NXZone.
- *
- * Please use `+zoneWithSize:` to create a new zone.
- */
-+ (id)alloc __attribute__((unavailable("Use +zoneWithSize: instead")));
-
-/**
- * @brief This method is unavailable for NXZone.
- * @details Please use `+zoneWithSize:` to create a new zone.
- */
-- (id)init __attribute__((unavailable("Use +zoneWithSize: instead")));
 
 /**
  * @brief Returns the default memory zone.
@@ -47,8 +36,12 @@
 
 /**
  * @brief Creates a new memory zone with a specified size.
- * @param size The size of the memory zone in bytes.
+ * @param size The size of the memory zone with initial capacity in bytes.
  * @return A new NXZone instance, or nil if the allocation failed.
+ *
+ * This method initializes a new memory zone with the specified capacity in
+ * bytes. The zone will be expanded as needed to accommodate additional
+ * requirements.
  */
 + (id)zoneWithSize:(size_t)size;
 
@@ -58,7 +51,6 @@
  */
 - (void)dealloc;
 
-// Methods
 /**
  * @brief Allocates a block of memory from the zone.
  * @param size The number of bytes to allocate.
@@ -73,8 +65,29 @@
 - (void)free:(void *)ptr;
 
 /**
- * @brief Walks through the zone and performs an action on each allocation.
+ * @brief Walks through the zone and outputs information about allocations.
+ *
+ * This method iterates through all allocations in the zone and
+ * prints their addresses and sizes to the log.
  */
 - (void)dump;
+
+/**
+ * @brief Returns the total size of the memory zone.
+ * @return The total size of the zone in bytes.
+ *
+ * This method returns the total capacity of the memory zone in bytes.
+ */
+- (size_t)size;
+
+/**
+ * @brief Returns the amount of memory in bytes currently allocated from the
+ * zone.
+ * @return The number of bytes currently allocated from the zone.
+ *
+ * This method returns the number of bytes currently allocated and in
+ * use within the memory zone.
+ */
+- (size_t)used;
 
 @end
