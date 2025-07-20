@@ -7,6 +7,7 @@
  */
 
 #pragma once
+#include <sys/sys.h>
 
 /**
  * @def objc_assert(condition)
@@ -20,8 +21,8 @@
 #ifdef DEBUG
 #define objc_assert(condition)                                                 \
   if (!(condition)) {                                                          \
-    panicf("Assertion failed: %s, file %s, line %d", #condition, __FILE__,     \
-           __LINE__);                                                          \
+    sys_panicf("Assertion failed: %s, file %s, line %d", #condition, __FILE__, \
+               __LINE__);                                                      \
   }
 #else
 #define objc_assert(condition)

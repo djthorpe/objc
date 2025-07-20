@@ -63,7 +63,7 @@ enable optimizations and disable debug symbols.
 - [X] clang compatibility
 - [X] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`
 - [ ] Memory management - retain, release - reference counting for objects through NXZone
-- [ ] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and panicf
+- [ ] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
 - [ ] Calling `+[initialise]` for categories
 - [ ] `respondsToSelector:` and `+[Class load]`
 - [ ] More efficient method implementation lookup

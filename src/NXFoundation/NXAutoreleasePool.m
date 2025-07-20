@@ -1,4 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
+#include <sys/sys.h>
 
 // Define the current autorelease pool class
 static id defaultPool = nil;
@@ -57,7 +58,7 @@ static id defaultPool = nil;
     return;
   }
   if (!object_isKindOfClass(object, [NXObject class])) {
-    panicf(
+    sys_panicf(
         "Attempting to add a non-NXObject instance to the autorelease pool: %s",
         object_getClassName(object));
     return;
@@ -66,8 +67,8 @@ static id defaultPool = nil;
   @synchronized(self) {
     // If object already added to a pool, panic
     if (((NXObject *)object)->_next != nil) {
-      panicf("Object already added to an autorelease pool: %s",
-             object_getClassName(object));
+      sys_panicf("Object already added to an autorelease pool: %s",
+                 object_getClassName(object));
       return;
     }
 

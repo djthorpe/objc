@@ -1,5 +1,6 @@
 #pragma once
 #include <string.h>
+#include <sys/sys.h>
 
 #define test_assert(condition)                                                 \
   if (!(condition)) {                                                          \

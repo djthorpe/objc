@@ -381,5 +381,278 @@ int main(void) {
     test_assert(len == 16);
   } while (0);
 
+  // ===== WIDTH SPECIFIER TESTS =====
+
+  // Test string width - right aligned (default)
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%10s'", "hello");
+    test_cstrings_equal("'     hello'", buffer);
+    test_assert(len == 12); // quotes + 5 spaces + 5 chars = 12
+  } while (0);
+
+  // Test string width - left aligned
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%-10s'", "hello");
+    test_cstrings_equal("'hello     '", buffer);
+    test_assert(len == 12); // quotes + 5 chars + 5 spaces = 12
+  } while (0);
+
+  // Test string width - exact fit
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%5s'", "hello");
+    test_cstrings_equal("'hello'", buffer);
+    test_assert(len == 7); // quotes + 5 chars = 7
+  } while (0);
+
+  // Test string width - smaller than string (no truncation)
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%3s'", "hello");
+    test_cstrings_equal("'hello'", buffer);
+    test_assert(len == 7); // quotes + 5 chars = 7
+  } while (0);
+
+  // Test character width - right aligned
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%5c'", 'A');
+    test_cstrings_equal("'    A'", buffer);
+    test_assert(len == 7); // quotes + 4 spaces + 1 char = 7
+  } while (0);
+
+  // Test character width - left aligned
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%-5c'", 'A');
+    test_cstrings_equal("'A    '", buffer);
+    test_assert(len == 7); // quotes + 1 char + 4 spaces = 7
+  } while (0);
+
+  // Test integer width - right aligned with spaces
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%8d'", 42);
+    test_cstrings_equal("'      42'", buffer);
+    test_assert(len == 10); // quotes + 6 spaces + 2 digits = 10
+  } while (0);
+
+  // Test integer width - left aligned
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%-8d'", 42);
+    test_cstrings_equal("'42      '", buffer);
+    test_assert(len == 10); // quotes + 2 digits + 6 spaces = 10
+  } while (0);
+
+  // Test integer width - zero padded
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%08d'", 42);
+    test_cstrings_equal("'00000042'", buffer);
+    test_assert(len == 10); // quotes + 8 digits = 10
+  } while (0);
+
+  // Test negative integer with zero padding
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%08d'", -42);
+    test_cstrings_equal("'-0000042'", buffer);
+    test_assert(len == 10); // quotes + sign + 7 digits = 10
+  } while (0);
+
+  // Test positive sign with width and zero padding
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%+08d'", 42);
+    test_cstrings_equal("'+0000042'", buffer);
+    test_assert(len == 10); // quotes + sign + 7 digits = 10
+  } while (0);
+
+  // Test hexadecimal width - space padded
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%8x'", 255);
+    test_cstrings_equal("'      ff'", buffer);
+    test_assert(len == 10); // quotes + 6 spaces + 2 hex = 10
+  } while (0);
+
+  // Test hexadecimal width - zero padded
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%08x'", 255);
+    test_cstrings_equal("'000000ff'", buffer);
+    test_assert(len == 10); // quotes + 8 hex = 10
+  } while (0);
+
+  // Test hexadecimal with prefix and width
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#10x'", 255);
+    test_cstrings_equal("'      0xff'", buffer);
+    test_assert(len == 12); // quotes + 6 spaces + 0xff = 12
+  } while (0);
+
+  // Test hexadecimal with prefix and zero padding
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#08x'", 255);
+    test_cstrings_equal("'0x0000ff'", buffer);
+    test_assert(len == 10); // quotes + 0x + 6 digits = 10
+  } while (0);
+
+  // Test uppercase hexadecimal with prefix and width
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#10X'", 255);
+    test_cstrings_equal("'      0XFF'", buffer);
+    test_assert(len == 12); // quotes + 6 spaces + 0XFF = 12
+  } while (0);
+
+  // Test binary with prefix and width
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#12b'", 15);
+    test_cstrings_equal("'      0b1111'", buffer);
+    test_assert(len == 14); // quotes + 6 spaces + 0b1111 = 14
+  } while (0);
+
+  // Test binary with zero padding
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#010b'", 15);
+    test_cstrings_equal("'0b00001111'", buffer);
+    test_assert(len == 12); // quotes + 0b + 8 binary = 12
+  } while (0);
+
+  // Test octal with prefix and width
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%#8o'", 64);
+    test_cstrings_equal("'    0100'", buffer);
+    test_assert(len == 10); // quotes + 4 spaces + 0100 = 10
+  } while (0);
+
+  // Test large width value
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%20s'", "test");
+    test_cstrings_equal("'                test'", buffer);
+    test_assert(len == 22); // quotes + 16 spaces + 4 chars = 22
+  } while (0);
+
+  // Test width with unsigned integers
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%08u'", 42U);
+    test_cstrings_equal("'00000042'", buffer);
+    test_assert(len == 10); // quotes + 8 digits = 10
+  } while (0);
+
+  // Test width with long integers
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%10ld'", 123456L);
+    test_cstrings_equal("'    123456'", buffer);
+    test_assert(len == 12); // quotes + 4 spaces + 6 digits = 12
+  } while (0);
+
+  // Test width with size_t
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%08zd'", (size_t)999);
+    test_cstrings_equal("'00000999'", buffer);
+    test_assert(len == 10); // quotes + 8 digits = 10
+  } while (0);
+
+  // Test width parsing with multiple format specifiers
+  do {
+    char buffer[100];
+    size_t len =
+        sys_sprintf(buffer, sizeof(buffer), "%5d:%3s:%-4c", 12, "hi", 'x');
+    test_cstrings_equal("   12: hi:x   ", buffer);
+    test_assert(
+        len ==
+        14); // 3 spaces + 12 + colon + space + hi + colon + x + 3 spaces = 14
+  } while (0);
+
+  // Test width with NULL string
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "'%10s'", (char *)NULL);
+    test_cstrings_equal("'     <nil>'", buffer);
+    test_assert(len == 12); // quotes + 5 spaces + <nil> = 12
+  } while (0);
+
+  // Test that width doesn't affect %% (escaped percent)
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "%%");
+    test_cstrings_equal("%", buffer);
+    test_assert(len == 1);
+  } while (0);
+
+  // Test mixed width and non-width specifiers
+  do {
+    char buffer[100];
+    size_t len =
+        sys_sprintf(buffer, sizeof(buffer), "%d:%08x:%s", 1, 255, "end");
+    test_cstrings_equal("1:000000ff:end", buffer);
+    test_assert(len == 14);
+  } while (0);
+
+  // ===== END WIDTH SPECIFIER TESTS =====
+
+  // Test pointer format specifier
+  do {
+    int var = 42;
+    int *ptr = &var;
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "%p", (void *)ptr);
+    // Pointer should start with 0x and have hex digits
+    test_assert(buffer[0] == '0' && buffer[1] == 'x');
+    test_assert(len >= 3); // At least "0x" plus some hex digits
+  } while (0);
+
+  // Test NULL pointer
+  do {
+    char buffer[100];
+    size_t len = sys_sprintf(buffer, sizeof(buffer), "null: %p", (void *)NULL);
+    test_cstrings_equal("null: 0x0000000000000000", buffer);
+    test_assert(len == 24); // "null: 0x" + 16 zeros = 24 characters
+  } while (0);
+
+  // Test pointer with other format specifiers
+  do {
+    int var = 123;
+    char buffer[100];
+    size_t len =
+        sys_sprintf(buffer, sizeof(buffer), "%d:%p:%c", var, (void *)&var, 'P');
+    // Should start with "123:0x" and end with ":P"
+    test_assert(buffer[0] == '1' && buffer[1] == '2' && buffer[2] == '3' &&
+                buffer[3] == ':');
+    test_assert(buffer[4] == '0' && buffer[5] == 'x');
+    test_assert(buffer[len - 2] == ':' && buffer[len - 1] == 'P');
+    test_assert(len == 24); // "123:0x" + 16 hex digits + ":P" = 24 characters
+  } while (0);
+
+  // Test specific pointer value
+  do {
+    char buffer[100];
+    uintptr_t test_ptr = 0x12345;
+    size_t len =
+        sys_sprintf(buffer, sizeof(buffer), "addr: %p", (void *)test_ptr);
+    test_cstrings_equal("addr: 0x0000000000012345", buffer);
+    test_assert(len == 24); // "addr: 0x" + 16 hex digits = 24 characters
+  } while (0);
+
+  // Test pointer formatting consistency
+  do {
+    size_t len = sys_printf("ptr: %p\n", (void *)0x1000);
+    test_assert(len == 24); // "ptr: 0x" + 16 hex digits + "\n" = 24 characters
+  } while (0);
+
   sys_printf("All tests passed!\n");
 }

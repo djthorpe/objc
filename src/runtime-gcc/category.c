@@ -1,10 +1,8 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-#include "api.h"
 #include "category.h"
+#include "api.h"
 #include "class.h"
 #include <objc/objc.h>
+#include <sys/sys.h>
 
 #define CATEGORY_TABLE_SIZE 32
 static struct objc_category *category_table[CATEGORY_TABLE_SIZE + 1];
@@ -28,8 +26,8 @@ void __objc_category_register(struct objc_category *category) {
     return;
   }
 #ifdef DEBUG
-  printf("__objc_category_register [%s+%s]\n", category->class_name,
-         category->name);
+  sys_printf("__objc_category_register [%s+%s]\n", category->class_name,
+             category->name);
 #endif
   for (int i = 0; i < CATEGORY_TABLE_SIZE; i++) {
     if (category_table[i] == category) {
@@ -42,8 +40,8 @@ void __objc_category_register(struct objc_category *category) {
       return;
     }
   }
-  panicf("Category table is full, cannot register category: %s",
-         category->name);
+  sys_panicf("Category table is full, cannot register category: %s",
+             category->name);
 }
 
 static void __objc_category_load_category(struct objc_category *category) {
@@ -54,8 +52,8 @@ static void __objc_category_load_category(struct objc_category *category) {
   }
 
 #ifdef DEBUG
-  printf("  __objc_category_load_category [%s+%s]\n", cls->name,
-         category->name);
+  sys_printf("  __objc_category_load_category [%s+%s]\n", cls->name,
+             category->name);
 #endif
 
   // Register instance methods from the category

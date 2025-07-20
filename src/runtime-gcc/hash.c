@@ -1,10 +1,7 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-#include <string.h>
-
 #include "hash.h"
 #include <objc/objc.h>
+#include <string.h>
+#include <sys/sys.h>
 
 #define HASH_TABLE_SIZE 512
 struct objc_hashitem hash_table[HASH_TABLE_SIZE + 1];

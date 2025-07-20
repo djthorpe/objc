@@ -2,10 +2,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <sys/sys.h>
 #include <time.h>
-
-// Forward declaration
-void panicf(const char *fmt, ...);
 
 /**
  * @brief Returns a random number as a 32-bit unsigned integer.
@@ -24,6 +22,5 @@ uint32_t sys_random_uint32(void) {
     return ((uint32_t)rand() & 0xFFFF) << 16 | ((uint32_t)rand() & 0xFFFF);
   }
 
-  panicf("sys_random_uint32: RAND_MAX is %d, too small (minimum 32767 required)",
-         RAND_MAX);
+  sys_panicf("sys_random_uint32: RAND_MAX is too small");
 }

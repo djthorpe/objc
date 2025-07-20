@@ -1,13 +1,10 @@
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-#include <string.h>
-
-#include "api.h"
 #include "class.h"
+#include "api.h"
 #include "hash.h"
 #include "protocol.h"
 #include <objc/objc.h>
+#include <string.h>
+#include <sys/sys.h>
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE + 1];
@@ -31,8 +28,8 @@ void __objc_class_register(objc_class_t *p) {
     return;
   }
 #ifdef DEBUG
-  printf("__objc_class_register %c[%s] @%p size=%lu\n",
-         p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+  sys_printf("__objc_class_register %c[%s] @%p size=%lu\n",
+             p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
   for (int i = 0; i < CLASS_TABLE_SIZE; i++) {
     if (class_table[i] == p) {
@@ -52,10 +49,10 @@ void __objc_class_register(objc_class_t *p) {
 
     // Check for duplicate class names
     if (strcmp(class_table[i]->name, p->name) == 0) {
-      panicf("Duplicate class named: %s", p->name);
+      sys_panicf("Duplicate class named: %s", p->name);
     }
   }
-  panicf("Class table is full, cannot register class: %s", p->name);
+  sys_panicf("Class table is full, cannot register class: %s", p->name);
 }
 
 /**
@@ -92,15 +89,15 @@ void __objc_class_register_method_list(objc_class_t *cls,
       continue; // Skip invalid methods
     }
 #ifdef DEBUG
-    printf("    %c[%s %s] types=%s imp=%p\n",
-           cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
-           method->name, method->types, method->imp);
+    sys_printf("    %c[%s %s] types=%s imp=%p\n",
+               cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
+               method->name, method->types, method->imp);
 #endif
     struct objc_hashitem *item =
         __objc_hash_register(cls, method->name, method->types, method->imp);
     if (item == NULL) {
-      panicf("TODO: Failed to register method %s in class %s\n", method->name,
-             cls->name);
+      sys_panicf("TODO: Failed to register method %s in class %s\n",
+                 method->name, cls->name);
       return;
     }
   }
@@ -120,8 +117,8 @@ void __objc_class_register_methods(objc_class_t *p) {
   p->info |= objc_class_flag_resolved;
 
 #ifdef DEBUG
-  printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
-         p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
+  sys_printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
+             p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
 
   // Enumerate the class's methods and resolve them
@@ -132,7 +129,8 @@ void __objc_class_register_methods(objc_class_t *p) {
   // Resolve the superclass
   if (p->superclass != NULL) {
     // Check if superclass is already a resolved class pointer vs a string
-    // If it's a metaclass and superclass looks like a class pointer, skip string resolution
+    // If it's a metaclass and superclass looks like a class pointer, skip
+    // string resolution
     if (p->info & objc_class_flag_meta) {
       // For metaclasses, superclass should already be set by objc_lookup_class
       // Skip string-based resolution
@@ -140,7 +138,8 @@ void __objc_class_register_methods(objc_class_t *p) {
       // For instance classes, resolve the string-based superclass
       Class superclass = objc_lookup_class((const char *)p->superclass);
       if (superclass == Nil) {
-        panicf("Superclass %s not found for class %s", (const char *)p->superclass, p->name);
+        sys_panicf("Superclass %s not found for class %s",
+                   (const char *)p->superclass, p->name);
         return;
       }
       p->superclass = superclass; // Update the superclass pointer
@@ -162,14 +161,15 @@ Class objc_lookup_class(const char *name) {
     return Nil;
   }
 #ifdef DEBUG
-  printf("objc_lookup_class %c[%s] @%p\n",
-         cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
+  sys_printf("objc_lookup_class %c[%s] @%p\n",
+             cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
 #endif
 
   // Resolve the class
   if (cls->info & objc_class_flag_resolved) {
     // Check if metaclass also needs to be resolved
-    if (cls->metaclass != NULL && !(cls->metaclass->info & objc_class_flag_resolved)) {
+    if (cls->metaclass != NULL &&
+        !(cls->metaclass->info & objc_class_flag_resolved)) {
       // Need to resolve the metaclass
     } else {
       return (Class)cls; // Both class and metaclass are resolved
@@ -201,7 +201,7 @@ Class objc_lookup_class(const char *name) {
 Class objc_get_class(const char *name) {
   Class cls = objc_lookup_class(name);
   if (cls == Nil) {
-    panicf("objc_get_class: class %s not found", name);
+    sys_panicf("objc_get_class: class %s not found", name);
     return Nil;
   }
   return cls;
@@ -235,11 +235,11 @@ Class object_getClass(id object) { return object ? object->isa : Nil; }
  */
 void object_setClass(id object, Class cls) {
   if (object == NULL || cls == NULL) {
-    panicf("object_setClass: object or class is NULL");
+    sys_panicf("object_setClass: object or class is NULL");
     return;
   }
   if (cls->info & objc_class_flag_meta) {
-    panicf("object_setClass: cannot set class to a metaclass");
+    sys_panicf("object_setClass: cannot set class to a metaclass");
     return;
   }
   object->isa = cls; // Set the class of the object
@@ -253,7 +253,7 @@ BOOL object_isKindOfClass(id object, Class cls) {
     return NO;
   }
   if (cls == Nil) {
-    panicf("object_isKindOfClass: class is Nil");
+    sys_panicf("object_isKindOfClass: class is Nil");
     return NO;
   }
   Class objClass = object->isa; // Get the class of the object
