@@ -1,5 +1,8 @@
 #include <NXFoundation/NXFoundation.h>
 
+///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
 /** @brief Base unit: 1 millisecond */
 const NXTimeInterval Millisecond = 1;
 

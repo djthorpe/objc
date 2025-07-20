@@ -7,11 +7,11 @@ static id defaultZone = nil;
 
 @implementation NXZone
 
-#pragma mark - Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
-/*
- ** Cannot use [[alloc] init] with NXZone.
- ** These methods are marked as unavailable to prevent misuse.
+/**
+ * @note Cannot use [[alloc] init] with NXZone.
  */
 + (id)alloc {
   return nil;
@@ -83,13 +83,15 @@ static id defaultZone = nil;
   [super dealloc];
 }
 
-#pragma mark - Class methods
+///////////////////////////////////////////////////////////////////////////////
+// CLASS METHODS
 
 + (id)defaultZone {
   return defaultZone;
 }
 
-#pragma mark - Instance methods
+///////////////////////////////////////////////////////////////////////////////
+// INSTANCE METHODS
 
 - (void *)allocWithSize:(size_t)size {
   void *ptr = NULL;

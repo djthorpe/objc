@@ -3,7 +3,8 @@
 
 @implementation NXThread
 
-#pragma mark - Class methods
+///////////////////////////////////////////////////////////////////////////////
+// CLASS METHODS
 
 + (void)sleepForTimeInterval:(NXTimeInterval)interval {
   if (interval < 0) {
