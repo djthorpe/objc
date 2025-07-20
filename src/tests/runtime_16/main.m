@@ -38,10 +38,6 @@
 #define _C_COMPLEX   'j'
 */
 
-// NOTE: Currently, ObjC encodes 'long' as 'l' (and 'unsigned long' as 'L') if
-// sizeof(long) == sizeof(int) On 64-bit targets, where sizeof(long) == 2 *
-// sizeof(int), 'long' and 'unsigned long' get encoded as 'q' and 'Q' instead.
-
 int main(void) {
   test_assert(strcmp("c", @encode(char)) == 0);
   test_assert(strcmp("C", @encode(unsigned char)) == 0);
@@ -60,19 +56,16 @@ int main(void) {
   test_assert(strcmp(":", @encode(SEL)) == 0);
   test_assert(strcmp("^v", @encode(void *)) == 0);
 
-  // Debug what we're actually getting for long types
-
-  // On 64-bit systems, long might be 'q' (long long) instead of 'l'
-  // Let's check both possibilities
-  const char *long_encoding = @encode(long);
-  const char *ulong_encoding = @encode(unsigned long);
-
-  // Accept either 'l' (32-bit) or 'q' (64-bit) for long
-  test_assert(strcmp("l", long_encoding) == 0 ||
-              strcmp("q", long_encoding) == 0);
-  // Accept either 'L' (32-bit) or 'Q' (64-bit) for unsigned long
-  test_assert(strcmp("L", ulong_encoding) == 0 ||
-              strcmp("Q", ulong_encoding) == 0);
+  // NOTE: Currently, ObjC encodes 'long' as 'l' (and 'unsigned long' as 'L') if
+  // sizeof(long) == sizeof(int) On 64-bit targets, where sizeof(long) == 2 *
+  // sizeof(int), 'long' and 'unsigned long' get encoded as 'q' and 'Q' instead.
+#ifdef __LP64__
+  test_assert(strcmp("q", @encode(long)) == 0);
+  test_assert(strcmp("Q", @encode(unsigned long)) == 0);
+#else
+  test_assert(strcmp("l", @encode(long)) == 0);
+  test_assert(strcmp("L", @encode(unsigned long)) == 0);
+#endif
 
   return 0;
 }
