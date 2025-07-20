@@ -41,7 +41,31 @@ size_t _sys_printf_handle_specifier(struct sys_printf_state *state, char spec,
   }
   case 'd': {
     int num = va_arg(va, int);
-    i += state->putch(state, (char)(num + '0')); // Simplified for single digit
+    char buffer[12]; // Enough to hold any 32-bit integer, including sign
+    char *ptr = &buffer[11];
+    *ptr = '\0';
+
+    // Handle negative numbers
+    int is_negative = (num < 0);
+    if (is_negative) {
+      num = -num;
+    }
+
+    // Convert number to string (in reverse order)
+    do {
+      *--ptr = (char)((num % 10) + '0');
+      num /= 10;
+    } while (num > 0);
+
+    // Add negative sign if needed
+    if (is_negative) {
+      *--ptr = '-';
+    }
+
+    // Output the resulting string
+    while (*ptr) {
+      i += state->putch(state, *ptr++);
+    }
     break;
   }
   // Add more cases for other specifiers as needed
