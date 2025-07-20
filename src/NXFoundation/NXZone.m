@@ -122,4 +122,14 @@ static id defaultZone = nil;
   }
 }
 
+- (void)dump {
+  objc_arena_alloc_t *alloc = NULL;
+  do {
+    objc_arena_walk_inner((objc_arena_t *)_data, &alloc);
+    if (alloc != NULL) {
+      NXLog(@"  Alloc: @%p", alloc);
+    }
+  } while (alloc != NULL);
+}
+
 @end

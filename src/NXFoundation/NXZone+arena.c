@@ -4,13 +4,15 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#pragma mark Declarations
+///////////////////////////////////////////////////////////////////////////////
+// DECLARATIONS
 
 static void *objc_arena_find_free_space(struct objc_arena *arena, size_t size);
 static BOOL objc_arena_check_collision(struct objc_arena *arena, void *start,
                                        size_t total_size);
 
-#pragma mark Types
+///////////////////////////////////////////////////////////////////////////////
+// TYPES
 
 /**
  * @brief Represents an arena for memory allocation.
@@ -31,7 +33,8 @@ struct objc_arena_alloc {
   void *ptr;
 };
 
-#pragma mark Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
 /**
  * @brief Create a new arena with the specified size.
@@ -66,7 +69,8 @@ void objc_arena_delete(objc_arena_t *arena) {
   } while (arena != NULL);
 }
 
-#pragma mark Public Functions
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
 
 /**
  * @brief Allocate memory from an arena by finding free space.
@@ -144,7 +148,29 @@ BOOL objc_arena_free_inner(objc_arena_t *arena, void *ptr) {
   return NO;
 }
 
-#pragma mark Private Functions
+/**
+ * @brief Walk through an arena and perform an action on each allocation.
+ */
+void objc_arena_walk_inner(objc_arena_t *arena, objc_arena_alloc_t **alloc) {
+  objc_assert(arena);
+  objc_assert(alloc);
+
+  // Start from the head of the arena
+  if (arena->head == NULL) {
+    *alloc = NULL; // No allocations to walk
+    return;
+  }
+
+  // If alloc is NULL, return the first allocation
+  if (*alloc == NULL) {
+    *alloc = arena->head;
+  } else {
+    *alloc = (*alloc)->next;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
 
 /**
  * @brief Find free space in the arena that can accommodate the requested size.
@@ -205,22 +231,4 @@ static BOOL objc_arena_check_collision(struct objc_arena *arena, void *start,
   }
 
   return NO; // No collision
-}
-
-void objc_arena_walk_inner(objc_arena_t *arena, objc_arena_alloc_t **alloc) {
-  objc_assert(arena);
-  objc_assert(alloc);
-
-  // Start from the head of the arena
-  if (arena->head == NULL) {
-    *alloc = NULL; // No allocations to walk
-    return;
-  }
-
-  // If alloc is NULL, return the first allocation
-  if (*alloc == NULL) {
-    *alloc = arena->head;
-  } else {
-    *alloc = (*alloc)->next;
-  }
 }
