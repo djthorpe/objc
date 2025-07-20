@@ -67,8 +67,14 @@ static void __objc_send_initialize(objc_class_t *cls) {
   };
   IMP imp = __objc_msg_lookup(cls, &initialize); // Lookup the initialize method
   if (imp != NULL) {
+    // Call the initialize method - suppress function cast warning as this is a
+    // legitimate cast from variadic IMP to non-variadic function for
+    // +initialize which takes no parameters
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcast-function-type"
     ((void (*)(id, SEL))imp)(
         (id)cls, &initialize); // Call the initialize method on the class
+#pragma GCC diagnostic pop
   }
 
   // Mark the class as initialized

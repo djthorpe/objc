@@ -5,7 +5,6 @@
  * This file defines a category on the NXObject class to provide a
  * method for obtaining a string representation of an object or class.
  */
-#include "NXObject.h"
 
 /**
  * @category NXObject(Description)
@@ -17,7 +16,7 @@
  *
  * \headerfile NXObject+Description.h NXFoundation/NXFoundation.h
  */
-@interface NXObject (Description)
+@interface Object (Description)
 
 /**
  * @brief Returns a string that represents the instance.
