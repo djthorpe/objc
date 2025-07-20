@@ -13,7 +13,7 @@ static struct objc_static_instances_list *statics_table[STATICS_TABLE_SIZE+1];
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_statics_init() {
-    static BOOL init;
+    static BOOL init = NO;
     if (init) {
         return; // Already initialized
     }
@@ -59,7 +59,7 @@ static void __objc_statics_load_list(struct objc_static_instances_list *list) {
 }
 
 BOOL __objc_statics_load() {
-    static BOOL init;
+    static BOOL init = NO;
     if (init) {
         return NO; // Already initialized
     }

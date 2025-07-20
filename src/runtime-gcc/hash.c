@@ -18,7 +18,7 @@ static BOOL __objc_hash_match(struct objc_hashitem *item, objc_class_t *cls,
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_hash_init() {
-  static BOOL init;
+  static BOOL init = NO;
   if (init) {
     return; // Already initialized
   }

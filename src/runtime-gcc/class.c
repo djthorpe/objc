@@ -15,7 +15,7 @@ objc_class_t *class_table[CLASS_TABLE_SIZE + 1];
 ///////////////////////////////////////////////////////////////////////////////
 
 void __objc_class_init() {
-  static BOOL init;
+  static BOOL init = NO;
   if (init) {
     return; // Already initialized
   }
