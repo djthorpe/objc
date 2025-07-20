@@ -219,9 +219,9 @@ int main(void) {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "null%cend", 0);
     test_assert(
-        len == 8); // "null\0end" has length 8 but null terminates at position 4
-    // Note: buffer will be "null" due to null termination, but printf counted
-    // all characters
+        len == 8); // "null\0end" includes all 8 characters, even though the null character at position 4 terminates the C string.
+    // Note: sys_sprintf counts all characters written to the buffer, including those after the null character, in its return value.
+    // The buffer will appear as "null" when treated as a C string, but the length returned by sys_sprintf reflects all characters.
   } while (0);
 
   // Test long integers
