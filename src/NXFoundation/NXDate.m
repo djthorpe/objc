@@ -23,8 +23,8 @@
   self = [self init];
   if (self) {
     // Convert milliseconds to seconds and nanoseconds
-    int64_t intervalInSeconds = interval / 1000;
-    int32_t remainingMilliseconds = interval % 1000;
+    int64_t intervalInSeconds = interval / MILLISECONDS_PER_SECOND;
+    int32_t remainingMilliseconds = interval % MILLISECONDS_PER_SECOND;
     int32_t additionalNanoseconds = remainingMilliseconds * 1000000;
 
     _time.seconds += intervalInSeconds;
