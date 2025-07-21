@@ -13,6 +13,8 @@ var searchData=
   ['nxbigendian',['NXBigEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23aeeca89ca8f48a3c0bb4150232b6a1072',1,'NXArch.h']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
+  ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
+  ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxendian',['NXEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23',1,'NXArch.h']]],
   ['nxlittleendian',['NXLittleEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23ae3ec7d49809ce50a2421b245165d5974',1,'NXArch.h']]],
   ['nxlog',['NXLog',['../NXLog_8h.html#a6af05e6dd8b6052f740e7384539d45ab',1,'NXLog.h']]],
