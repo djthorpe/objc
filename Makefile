@@ -49,7 +49,7 @@ tests: NXFoundation
 docs: dep-docker 
 	@echo
 	@echo make docs
-	@${DOCKER} run -v.:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
+	@${DOCKER} run -v .:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
 
 #.PHONY: test
 #test: submodule
