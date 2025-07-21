@@ -5,6 +5,7 @@ OS ?= $(shell uname -s | tr A-Z a-z)
 PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
 TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
+DOCKER ?= $(shell which docker 2>/dev/null)
 
 # check for RELEASE=1
 ifdef RELEASE
@@ -14,38 +15,41 @@ else
 endif
 
 .PHONY: all
-all: NXFoundation
+all: NXFoundation docs
 
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
 libobjc-gcc: dep-cc dep-cmake
+	@echo
 	@echo make libobjc-gcc
-	cmake -B ${BUILD_DIR} -Wno-dev \
+	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		-D TARGET=${TARGET}
-	@cmake --build ${BUILD_DIR} --target objc-gcc
+	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc
 
 # Create the libobjc-gcc runtime library
 .PHONY: NXFoundation
 NXFoundation: libobjc-gcc
+	@echo
 	@echo make NXFoundation
-	@cmake --build ${BUILD_DIR} --target NXFoundation
+	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
 
 # Test the libobjc-gcc runtime library
 .PHONY: tests
 tests: NXFoundation
 	@echo
 	@echo make tests
-	@cmake --build ${BUILD_DIR}/src/tests
-	@cmake --build ${BUILD_DIR} --target test
+	@${CMAKE} --build ${BUILD_DIR}/src/tests
+	@${CMAKE} --build ${BUILD_DIR} --target test
 
-# Create the libobjc-gcc runtime library
-.PHONY: arena
-arena: NXFoundation
-	@echo make NXFoundation_10
-	@cmake --build ${BUILD_DIR} --target NXFoundation_10
 
+# Generate the documentation
+.PHONY: docs
+docs: dep-docker 
+	@echo
+	@echo make docs
+	@${DOCKER} run -v.:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
 
 #.PHONY: test
 #test: submodule
@@ -78,3 +82,7 @@ dep-cc:
 .PHONY: dep-cmake
 dep-cmake:
 	@test -f "${CMAKE}" && test -x "${CMAKE}" || (echo "Missing CMAKE: ${CMAKE}" && exit 1)
+
+.PHONY: dep-docker
+dep-docker:
+	@test -f "${DOCKER}" && test -x "${DOCKER}" || (echo "Missing DOCKER: ${DOCKER}" && exit 1)
