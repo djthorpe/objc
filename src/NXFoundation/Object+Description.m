@@ -1,5 +1,6 @@
 #include <NXFoundation/NXFoundation.h>
 
+// We include this to ensure the description method is linked
 void *__object_description;
 
 @implementation Object (Description)

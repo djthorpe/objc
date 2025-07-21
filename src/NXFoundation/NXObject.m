@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <sys/sys.h>
 
-// This is a used category to ensure that the description method is linked
-// Run this at startup to ensure the category is loaded
+// Ensure that the description method is linked by defining this
+// used function.
 #include "Object+Description.h"
 __attribute__((used)) static void load_categories() {
   void *unused = __object_description;

@@ -1,3 +1,3 @@
 
-// Define a global variable to pull the category into the library
-extern void* __object_description;
+// Define a global variable to pull the category when linking
+extern void *__object_description;
