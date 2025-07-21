@@ -18,5 +18,12 @@ var searchData=
   ['sys_5fsleep',['sys_sleep',['../sys_8h.html#acb5a950a99bad2a938dee8c861e50269',1,'sys.h']]],
   ['sys_5fsprintf',['sys_sprintf',['../sys_8h.html#a340ab3d1b3e0cef587d52b580cd59d25',1,'sys.h']]],
   ['sys_5ftime',['sys_time',['../structsys__time.html',1,'']]],
+  ['sys_5ftime_5fcompare_5fns',['sys_time_compare_ns',['../time_8h.html#a4ca6ec26efbd88031d42509a07482f3d',1,'time.h']]],
+  ['sys_5ftime_5fget_5fdate_5futc',['sys_time_get_date_utc',['../time_8h.html#a34afa8ff2a90627f3119d0fe662fdb89',1,'time.h']]],
+  ['sys_5ftime_5fget_5ftime_5futc',['sys_time_get_time_utc',['../time_8h.html#a0d0c5f0bd3bcd26cd082934b4460a0d1',1,'time.h']]],
+  ['sys_5ftime_5fget_5futc',['sys_time_get_utc',['../time_8h.html#a0f593b86e80e479fff851b0b0c715da0',1,'time.h']]],
+  ['sys_5ftime_5fset_5fdate_5futc',['sys_time_set_date_utc',['../time_8h.html#aad6616ff63c8cbdbaf3fd97697bb074c',1,'time.h']]],
+  ['sys_5ftime_5fset_5ftime_5futc',['sys_time_set_time_utc',['../time_8h.html#a83b980969a62e685ec1593323f0fdcdd',1,'time.h']]],
+  ['sys_5ftime_5ft',['sys_time_t',['../time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816',1,'time.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../sys_8h.html#aac71469c45207a063e75bf7e6c2dbb5b',1,'sys.h']]]
 ];

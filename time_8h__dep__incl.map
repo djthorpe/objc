@@ -1,0 +1,7 @@
+<map id="include/sys/time.h" name="include/sys/time.h">
+<area shape="rect" id="node2" href="$sys_8h.html" title="Defines system management functions. " alt="" coords="111,80,245,107"/>
+<area shape="rect" id="node3" href="$assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="12,155,163,196"/>
+<area shape="rect" id="node6" href="$NXLog_8h.html" title="Defines a logging macro for printing formatted messages. " alt="" coords="187,155,351,196"/>
+<area shape="rect" id="node4" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,244,163,285"/>
+<area shape="rect" id="node5" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,333,169,375"/>
+</map>
