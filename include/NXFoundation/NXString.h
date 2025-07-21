@@ -16,7 +16,7 @@
 @interface NXString : NXObject {
 @private
   const char *_value;
-  const char *_data; ///< Pointer to the retained string data
+  char *_data; ///< Pointer to the retained string data
   unsigned int _length;
 }
 

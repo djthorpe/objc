@@ -3,11 +3,11 @@ set(NAME "sys")
 add_library(${NAME} STATIC
     abort.c
     exception.c
-    malloc.c
     mutex.c
-    puts.c
     random.c
-    sleep.c
+    ../posix/malloc.c
+    ../posix/puts.c
+    ../posix/sleep.c
     ../posix/time.c
     ../all/panicf.c
     ../all/printf.c

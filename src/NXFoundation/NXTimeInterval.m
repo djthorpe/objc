@@ -33,8 +33,18 @@ int32_t NXTimeIntervalMilliseconds(NXTimeInterval interval) {
 
 /**
  * @brief Converts a time interval to a string representation.
+ * @param interval The time interval to format
+ * @param truncate The minimum unit to display (e.g., Second to ignore
+ * milliseconds)
+ * @return A formatted string like "1d 2h 30m 45s 500ms" or "0s" for zero/small
+ * intervals
  */
 NXString *NXTimeIntervalDescription(NXTimeInterval interval,
                                     NXTimeInterval truncate) {
-  // TODO
+  // TODO: Implement after NXString concatenation methods are available
+  // Should format time intervals like "1d 2h 30m 45s 500ms"
+  // with truncation support for precision control
+  (void)interval; // Avoid unused parameter warning
+  (void)truncate; // Avoid unused parameter warning
+  return [[[NXString alloc] initWithCString:"TODO"] autorelease];
 }

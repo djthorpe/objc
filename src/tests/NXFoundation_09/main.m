@@ -29,8 +29,6 @@ int main() {
   NXString *desc = [currentDate description];
   test_assert(desc != nil);
   printf("✓ Current date: %s\n", [desc cStr]);
-  // desc is autoreleased, don't call release
-  // currentDate is autoreleased, don't call release
 
   // Test 2: Create date with positive time interval
   printf("\nTest 2: Creating date 5 seconds in the future...\n");
@@ -41,8 +39,6 @@ int main() {
   NXString *futureDesc = [futureDate description];
   test_assert(futureDesc != nil);
   printf("✓ Future date (+5s): %s\n", [futureDesc cStr]);
-  // futureDesc is autoreleased, don't call release
-  // futureDate is autoreleased, don't call release
 
   // Test 3: Create date with negative time interval
   printf("\nTest 3: Creating date 10 seconds in the past...\n");
@@ -53,8 +49,6 @@ int main() {
   NXString *pastDesc = [pastDate description];
   test_assert(pastDesc != nil);
   printf("✓ Past date (-10s): %s\n", [pastDesc cStr]);
-  // pastDesc is autoreleased, don't call release
-  // pastDate is autoreleased, don't call release
 
   // Test 4: Create date with large positive interval (1 hour)
   printf("\nTest 4: Creating date 1 hour in the future...\n");
@@ -64,8 +58,6 @@ int main() {
   NXString *hourDesc = [hourFuture description];
   test_assert(hourDesc != nil);
   printf("✓ Future date (+1h): %s\n", [hourDesc cStr]);
-  // hourDesc is autoreleased, don't call release
-  // hourFuture is autoreleased, don't call release
 
   // Test 5: Create date with large negative interval (1 day)
   printf("\nTest 5: Creating date 1 day in the past...\n");
@@ -75,8 +67,6 @@ int main() {
   NXString *dayDesc = [dayPast description];
   test_assert(dayDesc != nil);
   printf("✓ Past date (-1d): %s\n", [dayDesc cStr]);
-  // dayDesc is autoreleased, don't call release
-  // dayPast is autoreleased, don't call release
 
   // Test 6: Test zero time interval
   printf("\nTest 6: Creating date with zero interval...\n");
@@ -86,8 +76,6 @@ int main() {
   NXString *zeroDesc = [zeroDate description];
   test_assert(zeroDesc != nil);
   printf("✓ Zero interval date: %s\n", [zeroDesc cStr]);
-  // zeroDesc is autoreleased, don't call release
-  // zeroDate is autoreleased, don't call release
 
   // Test 7: Test multiple date objects
   printf("\nTest 7: Creating multiple date objects...\n");
@@ -99,8 +87,6 @@ int main() {
   test_assert(date1 != date2 && date2 != date3 && date1 != date3);
   printf("✓ Created 3 distinct date objects\n");
 
-  // All dates are autoreleased, don't call release
-
   // Test 8: Test edge case - very small interval
   printf("\nTest 8: Testing very small time interval (1ms)...\n");
   NXDate *millisecondDate = [NXDate dateWithTimeIntervalSinceNow:Millisecond];
@@ -109,8 +95,6 @@ int main() {
   NXString *msDesc = [millisecondDate description];
   test_assert(msDesc != nil);
   printf("✓ Millisecond precision date: %s\n", [msDesc cStr]);
-  // msDesc is autoreleased, don't call release
-  // millisecondDate is autoreleased, don't call release
 
   // Test 9: Test nanosecond overflow handling
   printf("\nTest 9: Testing nanosecond overflow (999ms)...\n");
@@ -121,8 +105,6 @@ int main() {
   NXString *overflowDesc = [overflowDate description];
   test_assert(overflowDesc != nil);
   printf("✓ Overflow handling date: %s\n", [overflowDesc cStr]);
-  // overflowDesc is autoreleased, don't call release
-  // overflowDate is autoreleased, don't call release
 
   // Test 10: Test description string persistence
   printf("\nTest 10: Testing description string stability...\n");
@@ -135,9 +117,6 @@ int main() {
   test_assert(desc1 != nil && desc2 != nil);
   test_assert(strcmp([desc1 cStr], [desc2 cStr]) == 0);
   printf("✓ Description strings are consistent\n");
-
-  // desc1 and desc2 are autoreleased, don't call release
-  // testDate is autoreleased, don't call release
 
   // Cleanup
   [pool release];

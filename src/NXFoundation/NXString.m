@@ -59,28 +59,32 @@
  */
 - (id)initWithFormat:(NXConstantString *)format, ... {
   self = [super init];
-  if (self) {
-    va_list args;
-    va_start(args, format);
-
-    // Get the length of the formatted string
-    const char *cFormat = [format cStr];
-    _length = sys_vsprintf(NULL, 0, cFormat, args);
-    if (_length > 0) {
-      // Allocate memory for the string
-      _data = [_zone allocWithSize:_length + 1];
-      if (_data == NULL) {
-        va_end(args);
-        [self release];
-        return nil;
-      }
-      // Run the formatting
-      sys_vsprintf(_data, _length + 1, cFormat, args);
-      _value = _data; // Set the value to the allocated data
-    }
-    va_end(args);
+  if (!self) {
     return self;
   }
+
+  // Use a variable argument list to handle the format string
+  va_list args;
+  va_start(args, format);
+
+  // Get the length of the formatted string
+  const char *cFormat = [format cStr];
+  _length = sys_vsprintf(NULL, 0, cFormat, args);
+  if (_length > 0) {
+    // Allocate memory for the string
+    _data = [_zone allocWithSize:_length + 1];
+    if (_data) {
+      sys_vsprintf(_data, _length + 1, cFormat,
+                   args); // Format the string into the allocated memory
+      _value = _data;     // Set the value to the allocated data
+    } else {
+      [self release];
+      self = nil; // Allocation failed, set self to nil
+    }
+  }
+
+  va_end(args);
+  return nil;
 }
 
 /**
