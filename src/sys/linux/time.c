@@ -113,6 +113,8 @@ bool sys_time_set_date_utc(sys_time_t *time, uint16_t year, uint8_t month,
   }
 
   // Check for month-specific day limits
+  // Array representing the number of days in each month (1-based index).
+  // Index 0 is unused, indices 1-12 correspond to months January to December.
   uint8_t days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
   // Handle leap year for February
