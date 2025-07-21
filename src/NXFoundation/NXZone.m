@@ -67,11 +67,11 @@ static id defaultZone = nil;
  * Deallocate the zone, freeing the allocated memory.
  */
 - (void)dealloc {
-#ifdef DEBUG
+  // Sanity check: ensure no active allocations
   if (_count != 0) {
     sys_panicf("[NXZone dealloc] called with %zu active allocations", _count);
   }
-#endif
+
   // Clear the default zone if this is it
   if (defaultZone == self) {
     defaultZone = nil;
@@ -113,7 +113,6 @@ static id defaultZone = nil;
 #endif
     // Increment the allocation count
     if (ptr != NULL) {
-      NXLog(@"  COUNT++");
       if (_count == SIZE_MAX) {
         sys_panicf("[NXZone allocWithSize] count overflow");
       } else {
@@ -136,7 +135,6 @@ static id defaultZone = nil;
     // Free the memory back to the arena
     BOOL success = objc_arena_free((objc_arena_t *)_root, ptr);
     if (success) {
-      NXLog(@"  COUNT--");
       _count--;
     } else {
       sys_panicf("[NXZone free] failed to free memory @%p", ptr);
