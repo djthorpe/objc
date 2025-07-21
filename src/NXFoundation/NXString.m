@@ -67,7 +67,7 @@
  */
 - (unsigned int)length {
   if (_value) {
-    return [_value length];
+    return _length;
   }
   return 0;
 }
