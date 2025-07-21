@@ -31,12 +31,12 @@
     _time.nanoseconds += additionalNanoseconds;
 
     // Handle nanosecond overflow
-    if (_time.nanoseconds >= 1000000000) {
+    if (_time.nanoseconds >= NANOSECONDS_PER_SECOND) {
       _time.seconds += 1;
-      _time.nanoseconds -= 1000000000;
+      _time.nanoseconds -= NANOSECONDS_PER_SECOND;
     } else if (_time.nanoseconds < 0) {
       _time.seconds -= 1;
-      _time.nanoseconds += 1000000000;
+      _time.nanoseconds += NANOSECONDS_PER_SECOND;
     }
   }
   return self;
