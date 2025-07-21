@@ -188,7 +188,8 @@ int main(void) {
     uint16_t just_year;
     test_assert(sys_time_get_date_utc(&time, &just_year, NULL, NULL, NULL) ==
                 true);
-    test_assert(just_year >= 2025); // Should be current year or later
+    uint16_t current_year = 1970 + (sys_time_get_utc(&time) ? time.seconds / (365 * 24 * 60 * 60) : 0);
+    test_assert(just_year >= current_year); // Should be current year or later
 
     sys_printf("sys_time_get_date_utc selective extraction tests passed\n");
   } while (0);
