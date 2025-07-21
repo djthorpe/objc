@@ -36,5 +36,4 @@ add_compile_options(
     $<$<COMPILE_LANGUAGE:OBJC>:-fobjc-exceptions>
     # Use appropriate target flags based on compiler
     $<$<C_COMPILER_ID:Clang>:--target=aarch64-linux-gnu>
-    $<$<C_COMPILER_ID:GNU>:-m64>
 )

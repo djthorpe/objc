@@ -1,0 +1,11 @@
+# Dockerfile to build a Debian Bookworm environment for compilation.
+# BUILD:
+#   docker buildx build -f docker/Dockerfile.bookworm --build-arg PLATFORM=arm64 --tag bookworm-builder .
+# RUN:
+#   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && make tests"
+ARG PLATFORM
+FROM --platform=$PLATFORM debian:bookworm
+
+# Install build dependencies
+RUN apt update && apt upgrade -y && \
+    apt install -y --no-install-recommends build-essential cmake git clang gobjc

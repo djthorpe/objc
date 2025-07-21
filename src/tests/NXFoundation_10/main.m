@@ -1,6 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
 #include <tests/tests.h>
-#include <time.h>
 
 int main() {
   NXLog(@"Running NXFoundation_10 arena allocator tests...\n");

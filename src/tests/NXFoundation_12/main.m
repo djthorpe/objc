@@ -3,6 +3,10 @@
 #include <tests/tests.h>
 
 int main() {
+  // Allocate a zone
+  NXZone *zone = [NXZone zoneWithSize:1024];
+  test_assert(zone != nil);
+
   for (int i = 0; i < 1000; i++) {
     int randomInt = NXRandInt();
     test_assert(randomInt >= INT_MIN && randomInt <= INT_MAX);
@@ -14,6 +18,10 @@ int main() {
     test_assert(randomUInt <= UINT_MAX);
     NXLog(@"Random Unsigned Int %d: %u", i, randomUInt);
   }
+
+  // Free the zone
+  [zone release];
+  test_assert([NXZone defaultZone] == nil);
 
   return 0;
 }

@@ -12,9 +12,9 @@ int NXArchBits(void) {
 }
 
 NXEndian NXArchEndian(void) {
-#if defined(__BIG_ENDIAN__)
+#if __BYTE_ORDER == __BIG_ENDIAN
   return NXBigEndian;
-#elif defined(__LITTLE_ENDIAN__)
+#elif __BYTE_ORDER == __LITTLE_ENDIAN
   return NXLittleEndian;
 #else
   return NXUnknownEndian;
