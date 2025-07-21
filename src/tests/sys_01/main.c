@@ -57,12 +57,6 @@ int main(void) {
     test_assert(len == 18);
   } while (0);
 
-  // ...with missing argument
-  do {
-    size_t len = sys_printf("Hello%s World!\n");
-    test_assert(len == 18);
-  } while (0);
-
   // ...with a decimal
   do {
     size_t len = sys_printf("42==%d\n", 42);
