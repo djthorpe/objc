@@ -4,3 +4,4 @@ build
 Testing
 docs
 third_party
+.cache
