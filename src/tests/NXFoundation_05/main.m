@@ -9,11 +9,18 @@ int main() {
 
   // Create an object
   NXObject *obj = [[[NXObject alloc] init] autorelease];
-  test_stringsequal([obj description], @"NXObject");
+
+  // Get the description and check it's not nil
+  id description = [obj description];
+  test_assert(description != nil);
+  test_assert([description cStr] != NULL);
+  test_assert(strcmp([description cStr], "NXObject") == 0);
+
+  NXLog(@"DEBUG: Created object: %s", [description cStr]);
 
   // Release
   [pool release];
-  [zone dealloc];
+  [zone release];
 
   // Return success
   return 0;

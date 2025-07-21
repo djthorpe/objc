@@ -67,11 +67,11 @@ static id defaultZone = nil;
  * Deallocate the zone, freeing the allocated memory.
  */
 - (void)dealloc {
-#ifdef DEBUG
+  // Sanity check: ensure no active allocations
   if (_count != 0) {
     sys_panicf("[NXZone dealloc] called with %zu active allocations", _count);
   }
-#endif
+
   // Clear the default zone if this is it
   if (defaultZone == self) {
     defaultZone = nil;
@@ -113,10 +113,15 @@ static id defaultZone = nil;
 #endif
     // Increment the allocation count
     if (ptr != NULL) {
-      _count++;
+      if (_count == SIZE_MAX) {
+        sys_panicf("[NXZone allocWithSize] count overflow");
+      } else {
+        // Increment the allocation count
+        _count++;
+      }
     }
+    return ptr;
   }
-  return ptr;
 }
 
 - (void)free:(void *)ptr {

@@ -18,7 +18,6 @@
 #include "NXLog.h"
 #include "NXNumber.h"
 #include "NXObject.h"
-#include "NXString+format.h"
 #include "NXString.h"
 #include "NXThread.h"
 #include "NXTimeInterval.h"
