@@ -60,7 +60,6 @@ enable optimizations and disable debug symbols.
 - [X] Resolving super classes and meta classes for message lookup
 - [X] Calling methods in super classes - implement `[super init]` for example
 - [X] Calling methods in categories
-- [X] clang compatibility
 - [X] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`
 - [X] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
 - [X] Memory management - retain, release - reference counting for objects through NXZone
@@ -69,10 +68,11 @@ enable optimizations and disable debug symbols.
 - [ ] Number - `NXNumber` - immutable numbers
 - [ ] Array and Map - `NXArray` and `NXDictionary`
 - [ ] Date and Time - `NXDate` - mutable date and time
-- [ ] JSON - `NXCoder` - JSON / Binary marshalling and unmarshalling
-- [ ] `respondsToSelector:` and `+[Class load]`
-- [ ] Calling `+[initialise]` for categories
+- [ ] clang compatibility (probably fix with selectors)
+- [ ] `respondsToSelector:`
 - [ ] More efficient method implementation lookup
+- [ ] JSON - `NXCoder` - JSON / Binary marshalling and unmarshalling
+- [ ] Calling `+[initialise]` for categories
 - [ ] `NXApplication` and `NXRunLoop`
 - [ ] Pico toolchain - integrate with Pico SDK
 - [ ] Protocols and `conformsToProtocol:`
