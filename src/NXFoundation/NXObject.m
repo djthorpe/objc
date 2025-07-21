@@ -4,7 +4,7 @@
 
 // This is a used category to ensure that the description method is linked
 __attribute__((used)) static void load_categories () {
-	void* unused = __object_description;
+  void* unused = __object_description;
   (void)unused; // Prevent unused variable warning
 }
 
