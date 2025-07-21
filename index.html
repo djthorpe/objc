@@ -60,9 +60,10 @@ $(function() {
 <h2>Requirements</h2>
 <p>You will minimally need the following tools to build the runtime:</p>
 <ul>
-<li><code>make</code> and <code>cmake</code> - for the build system</li>
-<li><code>clang</code> or <code>gcc</code> - for compiling the runtime (<code>clang</code> is not supported on Apple Silicon). You can use the environment variable <code>CC</code> to specify the compiler, e.g. <code>CC=clang</code> or <code>CC=gcc</code>.</li>
-<li>For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
+<li><b>Build system</b> <code>make</code> and <code>cmake</code> - for the build system</li>
+<li><b>Compiler</b> <code>clang</code> or <code>gcc</code> - for compiling the runtime (<code>clang</code> is not supported on Apple Silicon). You can use the environment variable <code>CC</code> to specify the compiler, e.g. <code>CC=clang</code> or <code>CC=gcc</code>.</li>
+<li><b>Documentation</b> <code>docker</code> is needed for generating the documentation from the source code.</li>
+<li><b>Cross-Compilation</b> For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
 </ul>
 <h2>Building the libraries</h2>
 <p>Three static libraries are currently provided:</p>
@@ -76,6 +77,21 @@ $(function() {
 <div class="fragment"><div class="line"># Compile with GCC 15 for MacOS</div><div class="line">brew install gcc@15</div><div class="line">TOOLCHAIN_PATH=/opt/homebrew RELEASE=1 CC=gcc-15 make</div></div><!-- fragment --><p>Once you've made the libraries, use the <code>make tests</code> target to run the unit tests.</p>
 <p>You can target different architectures by setting the <code>TARGET</code> environment variable. For a RP2040-based board, you can use the <code>clang</code> compiler with the ARM toolchain. The <code>TARGET</code> environment variable should be set to the target architecture, such as <code>armv6m-none-eabi</code> for the RP2040 Pico board:</p>
 <div class="fragment"><div class="line"># Compile for the RP2040 Pico board</div><div class="line">CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal RELEASE=1 make </div></div><!-- fragment --><p>See the list of supported targets in the <a href="https://github.com/djthorpe/objc/tree/main/cmake">cmake</a> directory. You can exclude the environment variable <code>RELEASE=1</code> to build debugging versions of the libraries.</p>
+<h2>Installing the libraries</h2>
+<p>TODO: the libraries should be installed under a prefix path:</p>
+<div class="fragment"><div class="line">PREFIX=/opt/objc make install</div></div><!-- fragment --><ul>
+<li>/opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a</li>
+<li>/opt/objc/lib/armv6m-none-eabi/libsys.a</li>
+<li>/opt/objc/lib/armv6m-none-eabi/libFoundation.a</li>
+<li>/opt/objc/include/objc</li>
+<li>/opt/objc/include/sys</li>
+<li>/opt/objc/include/NXFoundation</li>
+<li>/opt/objc/doc/...</li>
+</ul>
+<p>These can subsequently be used to make your executables!</p>
+<h2>Documentation</h2>
+<p>To build the API documentation, you will need to have <code>docker</code> installed. The documentation is built using <code>doxygen</code> through <code>docker</code> so you don't need to have it installed directly.</p>
+<div class="fragment"><div class="line">make docs</div><div class="line">open docs/index.html </div></div><!-- fragment --><p>The documentation is also published <a href="https://djthorpe.github.io/objc/">here</a>.</p>
 <h2>Current status</h2>
 <ul>
 <li>[X] Registering classes</li>
