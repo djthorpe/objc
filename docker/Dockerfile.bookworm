@@ -1,8 +1,10 @@
-# Dockerfile to build a Debian Bookworm environment for compilation.
-# BUILD:
+# Dockerfile to build a Debian Bookworm environment for compilation and testing.
+# BUILD DOCKER IMAGE:
 #   docker buildx build -f docker/Dockerfile.bookworm --build-arg PLATFORM=arm64 --tag bookworm-builder .
-# RUN:
-#   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && make tests"
+#   docker buildx build -f docker/Dockerfile.bookworm --build-arg PLATFORM=x86_64 --tag bookworm-builder .
+# RUN TESTS:
+#   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && CC=gcc make tests"
+#   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && CC=clang make tests"
 ARG PLATFORM
 FROM --platform=$PLATFORM debian:bookworm
 
