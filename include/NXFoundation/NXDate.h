@@ -68,10 +68,10 @@
  * @note All output parameters are optional and can be NULL if that component is
  * not needed.
  */
-- (BOOL)year:(uint16_t *)year
-       month:(uint8_t *)month
-         day:(uint8_t *)day
-     weekday:(uint8_t *)weekday;
+// - (BOOL)year:(uint16_t *)year
+//        month:(uint8_t *)month
+//          day:(uint8_t *)day
+//      weekday:(uint8_t *)weekday;
 
 /**
  * @brief Retrieves the time components from this date.
@@ -87,10 +87,10 @@
  * not needed.
  * @note Time is returned in UTC timezone.
  */
-- (BOOL)hours:(uint8_t *)hours
-        minutes:(uint8_t *)minutes
-        seconds:(uint8_t *)seconds
-    nanoseconds:(uint32_t *)nanoseconds;
+// - (BOOL)hours:(uint8_t *)hours
+//         minutes:(uint8_t *)minutes
+//         seconds:(uint8_t *)seconds
+//     nanoseconds:(uint32_t *)nanoseconds;
 
 /**
  * @brief Sets the date components for this date object.
@@ -107,10 +107,10 @@
  * @warning This method modifies the internal time representation and may affect
  *          the time components (hours, minutes, seconds, nanoseconds).
  */
-- (BOOL)setYear:(uint16_t)year
-          month:(uint8_t)month
-            day:(uint8_t)day
-        weekday:(uint8_t)weekday;
+// - (BOOL)setYear:(uint16_t)year
+//           month:(uint8_t)month
+//             day:(uint8_t)day
+//         weekday:(uint8_t)weekday;
 
 /**
  * @brief Sets the time components for this date object.
@@ -126,9 +126,9 @@
  * @warning Invalid time values will cause this method to return NO without
  *          modifying the date object.
  */
-- (BOOL)setHours:(uint8_t)hours
-         minutes:(uint8_t)minutes
-         seconds:(uint8_t)seconds
-     nanoseconds:(uint32_t)nanoseconds;
+// - (BOOL)setHours:(uint8_t)hours
+//          minutes:(uint8_t)minutes
+//          seconds:(uint8_t)seconds
+//      nanoseconds:(uint32_t)nanoseconds;
 
 @end

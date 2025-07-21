@@ -93,19 +93,15 @@ int main(void) {
     test_assert(result == true);
 
     uint8_t hours, minutes, seconds;
-    uint32_t nanoseconds;
-    bool time_result =
-        sys_time_get_time_utc(&time, &hours, &minutes, &seconds, &nanoseconds);
+    bool time_result = sys_time_get_time_utc(&time, &hours, &minutes, &seconds);
 
     test_assert(time_result == true);
     test_assert(hours < 24);
     test_assert(minutes < 60);
     test_assert(seconds < 60);
-    test_assert(nanoseconds < 1000000000);
-    test_assert(nanoseconds == (uint32_t)time.nanoseconds);
 
-    sys_printf("Time: %02u:%02u:%02u.%09u\n", hours, minutes, seconds,
-               nanoseconds);
+    sys_printf("Time: %02u:%02u:%02u (nanoseconds from time struct: %d)\n",
+               hours, minutes, seconds, time.nanoseconds);
   } while (0);
 
   // Test 8: sys_time_get_time_utc with NULL parameters (should now succeed)
@@ -115,26 +111,22 @@ int main(void) {
     test_assert(result == true);
 
     uint8_t hours, minutes, seconds;
-    uint32_t nanoseconds;
 
     // Test NULL time (should still fail - time parameter is required)
-    test_assert(sys_time_get_time_utc(NULL, &hours, &minutes, &seconds,
-                                      &nanoseconds) == false);
+    test_assert(sys_time_get_time_utc(NULL, &hours, &minutes, &seconds) ==
+                false);
 
     // Test selective extraction with NULL parameters (should succeed)
-    test_assert(sys_time_get_time_utc(&time, NULL, &minutes, &seconds,
-                                      &nanoseconds) == true); // Skip hours
-    test_assert(sys_time_get_time_utc(&time, &hours, NULL, &seconds,
-                                      &nanoseconds) == true); // Skip minutes
-    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, NULL,
-                                      &nanoseconds) == true); // Skip seconds
-    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, &seconds,
-                                      NULL) == true); // Skip nanoseconds
+    test_assert(sys_time_get_time_utc(&time, NULL, &minutes, &seconds) ==
+                true); // Skip hours
+    test_assert(sys_time_get_time_utc(&time, &hours, NULL, &seconds) ==
+                true); // Skip minutes
+    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, NULL) ==
+                true); // Skip seconds
 
     // Test extracting only specific components
     uint8_t just_hours;
-    test_assert(sys_time_get_time_utc(&time, &just_hours, NULL, NULL, NULL) ==
-                true);
+    test_assert(sys_time_get_time_utc(&time, &just_hours, NULL, NULL) == true);
     test_assert(just_hours < 24);
 
     sys_printf("sys_time_get_time_utc selective extraction tests passed\n");
@@ -188,7 +180,9 @@ int main(void) {
     uint16_t just_year;
     test_assert(sys_time_get_date_utc(&time, &just_year, NULL, NULL, NULL) ==
                 true);
-    uint16_t current_year = 1970 + (sys_time_get_utc(&time) ? time.seconds / (365 * 24 * 60 * 60) : 0);
+    uint16_t current_year =
+        1970 +
+        (sys_time_get_utc(&time) ? time.seconds / (365 * 24 * 60 * 60) : 0);
     test_assert(just_year >= current_year); // Should be current year or later
 
     sys_printf("sys_time_get_date_utc selective extraction tests passed\n");
@@ -206,19 +200,22 @@ int main(void) {
     test_assert(sys_time_get_date_utc(&time, &orig_year, &orig_month, &orig_day,
                                       &orig_weekday) == true);
 
-    // Set new time: 14:30:45.123456789
-    bool set_result = sys_time_set_time_utc(&time, 14, 30, 45, 123456789);
+    // Set new time: 14:30:45 (nanoseconds set separately)
+    bool set_result = sys_time_set_time_utc(&time, 14, 30, 45);
     test_assert(set_result == true);
+
+    // Set nanoseconds manually since it's not part of the API anymore
+    time.nanoseconds = 123456789;
 
     // Verify the time was set correctly
     uint8_t hours, minutes, seconds;
-    uint32_t nanoseconds;
-    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, &seconds,
-                                      &nanoseconds) == true);
+    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, &seconds) ==
+                true);
     test_assert(hours == 14);
     test_assert(minutes == 30);
     test_assert(seconds == 45);
-    test_assert(nanoseconds == 123456789);
+    // Note: nanoseconds are preserved in the time struct directly
+    test_assert(time.nanoseconds == 123456789);
 
     // Verify date was preserved
     uint16_t new_year;
@@ -240,17 +237,16 @@ int main(void) {
     test_assert(result == true);
 
     // Test NULL pointer
-    test_assert(sys_time_set_time_utc(NULL, 12, 0, 0, 0) == false);
+    test_assert(sys_time_set_time_utc(NULL, 12, 0, 0) == false);
 
     // Test invalid parameters
-    test_assert(sys_time_set_time_utc(&time, 24, 0, 0, 0) ==
-                false); // hours >= 24
-    test_assert(sys_time_set_time_utc(&time, 0, 60, 0, 0) ==
+    test_assert(sys_time_set_time_utc(&time, 24, 0, 0) == false); // hours >= 24
+    test_assert(sys_time_set_time_utc(&time, 0, 60, 0) ==
                 false); // minutes >= 60
-    test_assert(sys_time_set_time_utc(&time, 0, 0, 60, 0) ==
+    test_assert(sys_time_set_time_utc(&time, 0, 0, 60) ==
                 false); // seconds >= 60
-    test_assert(sys_time_set_time_utc(&time, 0, 0, 0, 1000000000) ==
-                false); // nanoseconds >= 1e9
+    // Note: nanoseconds validation must be done manually as it's not part of
+    // API
 
     sys_printf("sys_time_set_time_utc parameter validation tests passed\n");
   } while (0);
@@ -263,10 +259,9 @@ int main(void) {
 
     // Get original time for comparison
     uint8_t orig_hours, orig_minutes, orig_seconds;
-    uint32_t orig_nanoseconds;
     test_assert(sys_time_get_time_utc(&time, &orig_hours, &orig_minutes,
-                                      &orig_seconds,
-                                      &orig_nanoseconds) == true);
+                                      &orig_seconds) == true);
+    uint32_t orig_nanoseconds = time.nanoseconds;
 
     // Set new date: December 25, 2025
     bool set_result = sys_time_set_date_utc(&time, 2025, 12, 25);
@@ -284,9 +279,9 @@ int main(void) {
 
     // Verify time was preserved
     uint8_t new_hours, new_minutes, new_seconds;
-    uint32_t new_nanoseconds;
     test_assert(sys_time_get_time_utc(&time, &new_hours, &new_minutes,
-                                      &new_seconds, &new_nanoseconds) == true);
+                                      &new_seconds) == true);
+    uint32_t new_nanoseconds = time.nanoseconds;
     test_assert(new_hours == orig_hours);
     test_assert(new_minutes == orig_minutes);
     test_assert(new_seconds == orig_seconds);

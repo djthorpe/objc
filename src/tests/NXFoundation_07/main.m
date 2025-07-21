@@ -1,8 +1,8 @@
 #include <NXFoundation/NXFoundation.h>
 
 int main() {
-    [NXThread sleepForTimeInterval:2 * Second];
+  [NXThread sleepForTimeInterval:2 * Second];
 
-    // Return success
-    return 0;
+  // Return success
+  return 0;
 }

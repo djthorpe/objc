@@ -6,10 +6,10 @@
  * and resources.
  */
 #pragma once
+#include "time.h"
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
-#include "time.h"
 
 /**
  * @brief Allocates a block of memory.
@@ -109,3 +109,17 @@ extern size_t sys_vprintf(const char *format, va_list args);
  *         was sufficiently large, not counting the null terminator.
  */
 extern size_t sys_sprintf(char *buf, size_t sz, const char *format, ...);
+
+/**
+ * @brief Prints formatted output to a string buffer using a va_list argument.
+ * @param buf Pointer to the destination buffer where the formatted string
+ *            will be stored. If NULL, only the length is calculated.
+ * @param sz Size of the destination buffer in bytes, including space for
+ *           the null terminator.
+ * @param format A printf-style format string.
+ * @param args A va_list containing the arguments for the format string.
+ * @return The number of characters that would have been written if the buffer
+ *         was sufficiently large, not counting the null terminator.
+ */
+extern size_t sys_vsprintf(char *buf, size_t sz, const char *format,
+                           va_list args);

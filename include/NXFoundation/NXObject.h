@@ -18,14 +18,13 @@
  * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
 @interface NXObject : Object {
-@private
+@protected
   /**
    * @var _zone
    * @brief The memory zone where the object is allocated.
    */
   id _zone;
 
-@protected
   /**
    * @var _retain
    * @brief The retain count of the object.

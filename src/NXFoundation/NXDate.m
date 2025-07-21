@@ -22,22 +22,10 @@
 - (id)initWithTimeIntervalSinceNow:(NXTimeInterval)interval {
   self = [self init];
   if (self) {
-    // Convert milliseconds to seconds and nanoseconds
-    int64_t intervalInSeconds = interval / MILLISECONDS_PER_SECOND;
-    int32_t remainingMilliseconds = interval % MILLISECONDS_PER_SECOND;
-    int32_t additionalNanoseconds = remainingMilliseconds * NANOSECONDS_PER_MILLISECOND;
-
-    _time.seconds += intervalInSeconds;
-    _time.nanoseconds += additionalNanoseconds;
-
-    // Handle nanosecond overflow
-    if (_time.nanoseconds >= NANOSECONDS_PER_SECOND) {
-      _time.seconds += 1;
-      _time.nanoseconds -= NANOSECONDS_PER_SECOND;
-    } else if (_time.nanoseconds < 0) {
-      _time.seconds -= 1;
-      _time.nanoseconds += NANOSECONDS_PER_SECOND;
-    }
+    int64_t s = interval / Second;
+    int64_t ns = interval % Second;
+    _time.seconds += s;
+    _time.nanoseconds += ns;
   }
   return self;
 }
@@ -51,11 +39,50 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+- (BOOL)_cacheComponents {
+  if (_year == 0) {
+    if (!sys_time_get_date_utc(&_time, &_year, &_month, &_day, &_weekday)) {
+      _year = 0;
+      return NO;
+    }
+    if (!sys_time_get_time_utc(&_time, &_hours, &_minutes, &_seconds)) {
+      _year = 0;
+      return NO;
+    }
+  }
+  return YES;
+}
+
+- (BOOL)_cacheTimeComponents {
+  if (_year == 0) {
+    if (!sys_time_get_date_utc(&_time, &_year, &_month, &_day, &_weekday)) {
+      return NO;
+    }
+    if (!sys_time_get_time_utc(&_time, &_hours, &_minutes, &_seconds)) {
+      _year = 0;
+      return NO;
+    }
+  }
+  return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
 - (NXString *)description {
-  // TODO
-  return NULL; // Placeholder for now
+  // Attempt to cache time components
+  if ([self _cacheTimeComponents]) {
+    // Successfully cached time components
+    return [[[NXString alloc]
+        initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d UTC", _year, _month,
+                       _day, _hours, _minutes, _seconds] autorelease];
+  } else {
+    return [[[NXString alloc]
+        initWithFormat:@"[NXDate seconds: %ld, nanoseconds: %d]", _time.seconds,
+                       _time.nanoseconds] autorelease];
+  }
 }
 
 @end
