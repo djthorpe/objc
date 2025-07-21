@@ -26,7 +26,7 @@ libobjc-gcc: dep-cc dep-cmake
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
-		-D TARGET=${TARGET}
+		-D TARGET=${TARGET} 
 	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc
 
 # Create the libobjc-gcc runtime library

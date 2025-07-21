@@ -24,4 +24,7 @@ target_link_libraries(${NAME} PRIVATE
     objc-gcc
     sys
 )
-
+# TODO: At the moment the Object+Description.m is compiled out so we use -O0
+target_compile_options(${NAME} PRIVATE
+    $<$<CONFIG:Release>:-O0>  # Override -O3 with -O0 for Release builds
+)
