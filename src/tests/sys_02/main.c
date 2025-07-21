@@ -108,7 +108,7 @@ int main(void) {
                nanoseconds);
   } while (0);
 
-  // Test 8: sys_time_get_time_utc with NULL parameters
+  // Test 8: sys_time_get_time_utc with NULL parameters (should now succeed)
   do {
     sys_time_t time;
     bool result = sys_time_get_utc(&time);
@@ -117,23 +117,27 @@ int main(void) {
     uint8_t hours, minutes, seconds;
     uint32_t nanoseconds;
 
-    // Test NULL time
+    // Test NULL time (should still fail - time parameter is required)
     test_assert(sys_time_get_time_utc(NULL, &hours, &minutes, &seconds,
                                       &nanoseconds) == false);
-    // Test NULL hours
-    test_assert(sys_time_get_time_utc(&time, NULL, &minutes, &seconds,
-                                      &nanoseconds) == false);
-    // Test NULL minutes
-    test_assert(sys_time_get_time_utc(&time, &hours, NULL, &seconds,
-                                      &nanoseconds) == false);
-    // Test NULL seconds
-    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, NULL,
-                                      &nanoseconds) == false);
-    // Test NULL nanoseconds
-    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, &seconds,
-                                      NULL) == false);
 
-    sys_printf("sys_time_get_time_utc NULL parameter tests passed\n");
+    // Test selective extraction with NULL parameters (should succeed)
+    test_assert(sys_time_get_time_utc(&time, NULL, &minutes, &seconds,
+                                      &nanoseconds) == true); // Skip hours
+    test_assert(sys_time_get_time_utc(&time, &hours, NULL, &seconds,
+                                      &nanoseconds) == true); // Skip minutes
+    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, NULL,
+                                      &nanoseconds) == true); // Skip seconds
+    test_assert(sys_time_get_time_utc(&time, &hours, &minutes, &seconds,
+                                      NULL) == true); // Skip nanoseconds
+
+    // Test extracting only specific components
+    uint8_t just_hours;
+    test_assert(sys_time_get_time_utc(&time, &just_hours, NULL, NULL, NULL) ==
+                true);
+    test_assert(just_hours < 24);
+
+    sys_printf("sys_time_get_time_utc selective extraction tests passed\n");
   } while (0);
 
   // Test 9: sys_time_get_date_utc functionality
@@ -157,7 +161,7 @@ int main(void) {
                weekday);
   } while (0);
 
-  // Test 10: sys_time_get_date_utc with NULL parameters
+  // Test 10: sys_time_get_date_utc with NULL parameters (should now succeed)
   do {
     sys_time_t time;
     bool result = sys_time_get_utc(&time);
@@ -166,23 +170,28 @@ int main(void) {
     uint16_t year;
     uint8_t month, day, weekday;
 
-    // Test NULL time
+    // Test NULL time (should still fail - time parameter is required)
     test_assert(sys_time_get_date_utc(NULL, &year, &month, &day, &weekday) ==
                 false);
-    // Test NULL year
-    test_assert(sys_time_get_date_utc(&time, NULL, &month, &day, &weekday) ==
-                false);
-    // Test NULL month
-    test_assert(sys_time_get_date_utc(&time, &year, NULL, &day, &weekday) ==
-                false);
-    // Test NULL day
-    test_assert(sys_time_get_date_utc(&time, &year, &month, NULL, &weekday) ==
-                false);
-    // Test NULL weekday
-    test_assert(sys_time_get_date_utc(&time, &year, &month, &day, NULL) ==
-                false);
 
-    sys_printf("sys_time_get_date_utc NULL parameter tests passed\n");
+    // Test selective extraction with NULL parameters (should succeed)
+    test_assert(sys_time_get_date_utc(&time, NULL, &month, &day, &weekday) ==
+                true); // Skip year
+    test_assert(sys_time_get_date_utc(&time, &year, NULL, &day, &weekday) ==
+                true); // Skip month
+    test_assert(sys_time_get_date_utc(&time, &year, &month, NULL, &weekday) ==
+                true); // Skip day
+    test_assert(sys_time_get_date_utc(&time, &year, &month, &day, NULL) ==
+                true); // Skip weekday
+
+    // Test extracting only specific components
+    uint16_t just_year;
+    test_assert(sys_time_get_date_utc(&time, &just_year, NULL, NULL, NULL) ==
+                true);
+    uint16_t current_year = 1970 + (sys_time_get_utc(&time) ? time.seconds / (365 * 24 * 60 * 60) : 0);
+    test_assert(just_year >= current_year); // Should be current year or later
+
+    sys_printf("sys_time_get_date_utc selective extraction tests passed\n");
   } while (0);
 
   // Test 11: sys_time_set_time_utc functionality
@@ -297,13 +306,17 @@ int main(void) {
     test_assert(sys_time_set_date_utc(NULL, 2025, 1, 1) == false);
 
     // Test invalid parameters
-    test_assert(sys_time_set_date_utc(&time, 1969, 1, 1) ==
-                false); // year < 1970
     test_assert(sys_time_set_date_utc(&time, 2025, 0, 1) == false); // month < 1
     test_assert(sys_time_set_date_utc(&time, 2025, 13, 1) ==
                 false); // month > 12
     test_assert(sys_time_set_date_utc(&time, 2025, 1, 0) == false);  // day < 1
     test_assert(sys_time_set_date_utc(&time, 2025, 1, 32) == false); // day > 31
+
+    // Test pre-epoch dates (should now work)
+    test_assert(sys_time_set_date_utc(&time, 1969, 12, 25) ==
+                true); // Dec 25, 1969
+    test_assert(sys_time_set_date_utc(&time, 1900, 1, 1) ==
+                true); // Jan 1, 1900
 
     // Test month-specific day limits
     test_assert(sys_time_set_date_utc(&time, 2025, 2, 30) ==
