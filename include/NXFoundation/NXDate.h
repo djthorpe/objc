@@ -34,6 +34,6 @@
  *               Can be positive (future) or negative (past).
  * @return A NXDate instance representing the calculated date.
  */
-+ (id)dateWithTimeIntervalSinceNow:(NXTimeInterval)interval;
++ (NXDate *)dateWithTimeIntervalSinceNow:(NXTimeInterval)interval;
 
 @end
