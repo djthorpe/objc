@@ -10,9 +10,10 @@ This is a minimal Objective C runtime written in C, designed to be portable acro
 
 You will minimally need the following tools to build the runtime:
 
-- `make` and `cmake` - for the build system
-- `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). You can use the environment variable `CC` to specify the compiler, e.g. `CC=clang` or `CC=gcc`.
-- For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>. Install this to the `/opt` directory. You can use the environment variable `TOOLCHAIN_PATH` to specify the path to the toolchain, e.g. `TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal`.
+- **Build system** `make` and `cmake` - for the build system
+- **Compiler** `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). You can use the environment variable `CC` to specify the compiler, e.g. `CC=clang` or `CC=gcc`.
+- **Documentation** `docker` is needed for generating the documentation from the source code.
+- **Cross-Compilation** For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>. Install this to the `/opt` directory. You can use the environment variable `TOOLCHAIN_PATH` to specify the path to the toolchain, e.g. `TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal`.
 
 ## Building the libraries
 
@@ -49,6 +50,35 @@ CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-u
 
 See the list of supported targets in the [cmake](https://github.com/djthorpe/objc/tree/main/cmake) directory.
 You can exclude the environment variable `RELEASE=1` to build debugging versions of the libraries.
+
+## Installing the libraries
+
+TODO: the libraries should be installed under a prefix path:
+
+```bash
+PREFIX=/opt/objc make install
+```
+
+- /opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a
+- /opt/objc/lib/armv6m-none-eabi/libsys.a
+- /opt/objc/lib/armv6m-none-eabi/libFoundation.a
+- /opt/objc/include/objc
+- /opt/objc/include/sys
+- /opt/objc/include/NXFoundation
+- /opt/objc/doc/...
+
+These can subsequently be used to make your executables!
+
+## Documentation
+
+To build the API documentation, you will need to have `docker` installed. The documentation is built using `doxygen` through `docker` so you don't need to have it installed directly.
+
+```bash
+make docs
+open docs/index.html 
+```
+
+The documentation is also published [here](https://djthorpe.github.io/objc/).
 
 ## Current status
 
