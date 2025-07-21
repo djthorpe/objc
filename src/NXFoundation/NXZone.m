@@ -121,8 +121,8 @@ static id defaultZone = nil;
         _count++;
       }
     }
+    return ptr;
   }
-  return ptr;
 }
 
 - (void)free:(void *)ptr {
