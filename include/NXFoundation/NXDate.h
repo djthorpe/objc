@@ -26,7 +26,7 @@
  * @brief Creates and returns a new date set to the current date and time.
  * @return A NXDate instance representing the current date and time.
  */
-+ (id)date;
++ (NXDate *)date;
 
 /**
  * @brief Creates and returns a date object set to a given time interval from now.
