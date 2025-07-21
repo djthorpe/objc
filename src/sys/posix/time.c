@@ -112,6 +112,7 @@ bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
   }
 
   time->seconds = (int64_t)new_timestamp;
+  time->nanoseconds = 0; // Reset nanoseconds to 0 as sub-second precision is not modified
   return true;
 }
 
