@@ -1,5 +1,10 @@
+/**
+ * @file time.h
+ * @brief Defines system time management functions.
+ *
+ * This file declares various system methods for managing time and date.
+ */
 #pragma once
-
 #include <stdbool.h>
 #include <stdint.h>
 
