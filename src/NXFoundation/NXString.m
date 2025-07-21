@@ -84,7 +84,7 @@
   }
 
   va_end(args);
-  return nil;
+  return self;
 }
 
 /**
