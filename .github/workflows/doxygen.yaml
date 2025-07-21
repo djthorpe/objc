@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Generate Documentation
         run: |
-          docker run -v.:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
+          make docs
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
