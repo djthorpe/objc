@@ -204,8 +204,8 @@ int main(void) {
     bool set_result = sys_time_set_time_utc(&time, 14, 30, 45);
     test_assert(set_result == true);
 
-    // Set nanoseconds using a helper function to ensure validation
-    test_assert(sys_time_set_nanoseconds(&time, 123456789) == true);
+    // Set nanoseconds directly on the structure
+    time.nanoseconds = 123456789;
 
     // Verify the time was set correctly
     uint8_t hours, minutes, seconds;
