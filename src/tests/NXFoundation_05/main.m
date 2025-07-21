@@ -10,7 +10,7 @@ int main() {
   // Create an object
   NXObject *obj = [[[NXObject alloc] init] autorelease];
 
-  NXLog(@"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Created object: %s", [[obj description] cStr]);
+  NXLog(@"DEBUG: Created object: %s", [[obj description] cStr]);
 
   test_stringsequal([obj description], @"NXObject");
 
