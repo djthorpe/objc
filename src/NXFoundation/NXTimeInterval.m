@@ -12,7 +12,7 @@ const NXTimeInterval Millisecond = 1000000 * Nanosecond;
 /** @brief 1 second = 1000 milliseconds */
 const NXTimeInterval Second = 1000 * Millisecond;
 
-/** @brief 1 minute = 60 econds */
+/** @brief 1 minute = 60 seconds */
 const NXTimeInterval Minute = 60 * Second;
 
 /** @brief 1 hour = 60 minutes */
