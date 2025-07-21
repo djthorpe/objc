@@ -9,6 +9,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
+#include "time.h"
 
 /**
  * @brief Allocates a block of memory.
