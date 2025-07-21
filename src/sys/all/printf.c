@@ -300,7 +300,7 @@ size_t _sys_printf_put(struct sys_printf_state *state, char spec, va_list *va) {
 }
 
 size_t _sys_vprintf(struct sys_printf_state *state, const char *format,
-                    va_list va) {
+                    va_list *va) {
 
   state->pos = 0; // Set the length
   while (*format) {
@@ -372,7 +372,7 @@ size_t _sys_vprintf(struct sys_printf_state *state, const char *format,
   handle_specifier:
     if (*format) {
       char spec = *format++;
-      state->pos += _sys_printf_put(state, spec, &va);
+      state->pos += _sys_printf_put(state, spec, va);
     } else {
       // If we reach here, it means we had a '%' at the end without a
       // specifier
@@ -406,7 +406,11 @@ size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
 
 size_t sys_vprintf(const char *format, va_list args) {
   struct sys_printf_state state = {.putch = _sys_printf_putch};
-  return _sys_vprintf(&state, format, args);
+  va_list args_copy;
+  va_copy(args_copy, args);
+  size_t len = _sys_vprintf(&state, format, &args_copy);
+  va_end(args_copy);
+  return len;
 }
 
 size_t sys_printf(const char *format, ...) {
@@ -422,7 +426,10 @@ size_t sys_sprintf(char *buf, size_t sz, const char *format, ...) {
   va_start(va, format);
   struct sys_printf_state state = {
       .putch = _sys_sprintf_putch, .buffer = buf, .size = sz};
-  size_t len = _sys_vprintf(&state, format, va);
+  va_list va_copy;
+  va_copy(va_copy, va);
+  size_t len = _sys_vprintf(&state, format, &va_copy);
+  va_end(va_copy);
   va_end(va);
 
   // Null terminate the buffer
