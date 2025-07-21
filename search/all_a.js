@@ -26,7 +26,6 @@ var searchData=
   ['nxrandint',['NXRandInt',['../NXNumber_8h.html#a25c9975a1e9844346fc8a327a2d6c01a',1,'NXNumber.h']]],
   ['nxrandunsignedint',['NXRandUnsignedInt',['../NXNumber_8h.html#a56ed334c44a55dd43f891631bfad4c8b',1,'NXNumber.h']]],
   ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
-  ['nxstring_2bformat_2eh',['NXString+format.h',['../NXString_09format_8h.html',1,'']]],
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
   ['nxthread',['NXThread',['../interfaceNXThread.html',1,'']]],
   ['nxthread_2eh',['NXThread.h',['../NXThread_8h.html',1,'']]],
