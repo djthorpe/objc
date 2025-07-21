@@ -71,7 +71,9 @@ static id defaultPool = nil;
                  object_getClassName(object));
       return;
     }
-
+#ifdef DEBUG
+      NXLog(@"  autorelease retain: [%s] @%p", object_getClassName(object), object);
+#endif
     ((NXObject *)object)->_next =
         _tail;      // Link the new object to the current tail
     _tail = object; // Update the tail to the new object
@@ -84,8 +86,9 @@ static id defaultPool = nil;
     id cur = _tail;
     while (cur != nil) {
       id next = ((NXObject *)cur)->_next; // Save next pointer before release
-      NXLog(@"Autoreleasing object: @%p", cur);
-
+#ifdef DEBUG
+      NXLog(@"  autorelease release: [%s] @%p", object_getClassName(cur), cur);
+#endif
       // Clear the _next pointer before releasing
       ((NXObject *)cur)->_next = nil;
       [((NXObject *)cur) release]; // Release the current object

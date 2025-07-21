@@ -9,11 +9,14 @@ int main() {
 
   // Create an object
   NXObject *obj = [[[NXObject alloc] init] autorelease];
+
+  NXLog(@"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Created object: %s", [[obj description] cStr]);
+
   test_stringsequal([obj description], @"NXObject");
 
   // Release
   [pool release];
-  [zone dealloc];
+  [zone release];
 
   // Return success
   return 0;

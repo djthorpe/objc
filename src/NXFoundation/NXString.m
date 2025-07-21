@@ -48,13 +48,7 @@
  * @brief Releases the string's internal value.
  */
 - (void)dealloc {
-  if (_value != nil) {
-    if ([_value class] == [NXConstantString class] && _alloc) {
-      [_value release]; // Release the constant string if it was allocated
-    } else if ([_value isKindOfClass:[NXString class]]) {
-      [_value release];
-    }
-  }
+  [_value release];
   [super dealloc];
 }
 

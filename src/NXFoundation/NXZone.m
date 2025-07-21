@@ -113,7 +113,13 @@ static id defaultZone = nil;
 #endif
     // Increment the allocation count
     if (ptr != NULL) {
-      _count++;
+      NXLog(@"  COUNT++");
+      if (_count == SIZE_MAX) {
+        sys_panicf("[NXZone allocWithSize] count overflow");
+      } else {
+        // Increment the allocation count
+        _count++;
+      }
     }
   }
   return ptr;
@@ -130,6 +136,7 @@ static id defaultZone = nil;
     // Free the memory back to the arena
     BOOL success = objc_arena_free((objc_arena_t *)_root, ptr);
     if (success) {
+      NXLog(@"  COUNT--");
       _count--;
     } else {
       sys_panicf("[NXZone free] failed to free memory @%p", ptr);
