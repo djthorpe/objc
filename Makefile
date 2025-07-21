@@ -6,6 +6,7 @@ PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/appl
 TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
+GIT ?= $(shell which git 2>/dev/null)
 
 # check for RELEASE=1
 ifdef RELEASE
@@ -58,17 +59,22 @@ docs: dep-docker
 #	@cmake --build ${BUILD_DIR}
 #	@echo "\nRun:\n  picotool load -x ${BUILD_DIR}/src/test/test.uf2\n"
 
-#.PHONY: picotool
-#picotool: submodule
-#	@echo make picotool
-#	@PICO_SDK_PATH=../../../third_party/pico-sdk cmake -S third_party/picotool -B ${BUILD_DIR}/third_party/picotool -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev 
-#	@make -C ${BUILD_DIR}/third_party/picotool
-#	@echo "\nRun:\n  install -s ${BUILD_DIR}/third_party/picotool/picotool ${HOME}/bin\n"
+# Create the picotool binary
+.PHONY: picotool
+picotool: submodule dep-cmake
+	@echo
+	@echo make picotool
+	@PICO_SDK_PATH=../../../third_party/pico-sdk ${CMAKE} -S third_party/picotool -B ${BUILD_DIR}/third_party/picotool -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev 
+	@make -C ${BUILD_DIR}/third_party/picotool
+	@echo Run:
+	@echo   install -s ${BUILD_DIR}/third_party/picotool/picotool ${HOME}/bin
+	@echo
 
-#.PHONY: submodule
-#submodule:
-#	@echo "Checking out submodules"
-#	@git submodule update --init --recursive 
+.PHONY: submodule
+submodule: dep-git
+	@echo
+	@echo "checking out submodules"
+	@git submodule update --init --recursive
 
 .PHONY: clean
 clean:
@@ -86,3 +92,7 @@ dep-cmake:
 .PHONY: dep-docker
 dep-docker:
 	@test -f "${DOCKER}" && test -x "${DOCKER}" || (echo "Missing DOCKER: ${DOCKER}" && exit 1)
+
+.PHONY: dep-git
+dep-git:
+	@test -f "${GIT}" && test -x "${GIT}" || (echo "Missing GIT: ${GIT}" && exit 1)
