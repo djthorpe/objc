@@ -28,7 +28,7 @@ int main(void) {
     sys_printf("sys_time_get_utc(NULL) correctly returned false\n");
   } while (0);
 
-  // Test 4: Time consistency - two calls should be very close
+  // Test 3: Time consistency - two calls should be very close
   do {
     sys_time_t time1, time2;
     bool result1 = sys_time_get_utc(&time1);
