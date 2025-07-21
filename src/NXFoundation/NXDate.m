@@ -26,6 +26,11 @@
     int64_t ns = interval % Second;
     _time.seconds += s;
     _time.nanoseconds += ns;
+    if (_time.nanoseconds >= 1000000000) {
+      int64_t overflow = _time.nanoseconds / 1000000000;
+      _time.seconds += overflow;
+      _time.nanoseconds -= overflow * 1000000000;
+    }
   }
   return self;
 }
