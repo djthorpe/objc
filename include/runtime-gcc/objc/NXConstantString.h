@@ -18,17 +18,11 @@
  * \headerfile NXConstantString.h objc/objc.h
  */
 @interface NXConstantString : Object {
+@private
   const char *_data;    ///< Pointer to the null-terminated C-string.
   unsigned int _length; ///< Length of the string in bytes, not including the
                         ///< null terminator.
 }
-
-/**
- * @brief Initializes a new constant string from a C-string.
- * @param cStr A null-terminated C-string.
- * @return A new NXConstantString instance.
- */
-- (id)initWithCString:(const char *)cStr;
 
 /**
  * @brief Returns the C-string representation of the constant string.

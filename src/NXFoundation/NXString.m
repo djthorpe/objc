@@ -15,13 +15,15 @@
   if (self == nil || self == other) {
     return nil;
   }
-  _value = nil;
-  _alloc = NO;
+  _value = NULL;
+  _length = 0;
   if (other != nil) {
     if ([other class] == [NXConstantString class]) {
-      _value = other;
+      _value = [other cStr];
+      _length = [other length];
     } else if ([other isKindOfClass:[NXString class]]) {
-      _value = [other retain];
+      _value = [other cStr];
+      _length = [other length];
     } else {
       [self release];
       return nil;
@@ -38,9 +40,8 @@
   if (self == nil) {
     return nil;
   }
-  _value = [[NXConstantString alloc] initWithCString:cStr];
-  _alloc = YES; // We need to de-allocate the constant string when de-allocating
-                // this NXString
+  _value = cStr;
+  _length = (unsigned int)strlen(cStr);
   return self;
 }
 
@@ -48,7 +49,6 @@
  * @brief Releases the string's internal value.
  */
 - (void)dealloc {
-  [_value release];
   [super dealloc];
 }
 
@@ -59,17 +59,14 @@
  * @brief Returns the C-string representation of the string.
  */
 - (const char *)cStr {
-  if (_value != nil) {
-    return [_value cStr];
-  }
-  return NULL;
+  return _value ? _value : "";
 }
 
 /**
  * @brief Returns the length of the string.
  */
 - (unsigned int)length {
-  if (_value != nil) {
+  if (_value) {
     return [_value length];
   }
   return 0;

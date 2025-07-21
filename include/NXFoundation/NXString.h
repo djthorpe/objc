@@ -15,9 +15,8 @@
  */
 @interface NXString : NXObject {
 @private
-  id _value;   ///< Internal storage for the string content, retained by this
-               ///< instance.
-  BOOL _alloc; ///< Indicates whether the value was allocated.
+  const char* _value; 
+  unsigned int _length;
 }
 
 /**

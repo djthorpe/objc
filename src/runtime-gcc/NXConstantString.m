@@ -1,27 +1,27 @@
 #include <objc/objc.h>
 #include <string.h>
+#include <stdlib.h>
 
 @implementation NXConstantString
 
 #pragma mark - Lifecycle
 
-- (id)initWithCString:(const char *)cStr {
-  self = [super init];
-  if (self != nil) {
-    _data = cStr;
-    _length = (unsigned int)strlen(cStr);
-  }
-  return self;
++ (id)alloc {
+  return nil; // NXConstantString should not be allocated directly
+}
+
+-(void)dealloc {
+  // NXConstantString is immutable, so we do nothing
 }
 
 #pragma mark - Properties
 
 - (const char *)cStr {
-  return self->_data;
+  return _data;
 }
 
 - (unsigned int)length {
-  return self->_length;
+  return _length;
 }
 
 #pragma mark - Methods
