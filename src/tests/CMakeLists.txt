@@ -7,6 +7,7 @@ include_directories(
 
 # Test cases - system functions
 add_subdirectory(sys_01)
+add_subdirectory(sys_02)
 
 # Test cases - runtime
 add_subdirectory(runtime_01)
