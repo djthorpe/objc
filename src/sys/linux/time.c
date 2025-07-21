@@ -25,8 +25,7 @@ bool sys_time_get_utc(sys_time_t *time) {
 
 bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
                            uint8_t *seconds, uint32_t *nanoseconds) {
-  if (time == NULL || hours == NULL || minutes == NULL || seconds == NULL ||
-      nanoseconds == NULL) {
+  if (time == NULL) {
     return false;
   }
 
@@ -36,18 +35,25 @@ bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
     return false;
   }
 
-  *hours = (uint8_t)utc_tm->tm_hour;
-  *minutes = (uint8_t)utc_tm->tm_min;
-  *seconds = (uint8_t)utc_tm->tm_sec;
-  *nanoseconds = (uint32_t)time->nanoseconds;
+  if (hours != NULL) {
+    *hours = (uint8_t)utc_tm->tm_hour;
+  }
+  if (minutes != NULL) {
+    *minutes = (uint8_t)utc_tm->tm_min;
+  }
+  if (seconds != NULL) {
+    *seconds = (uint8_t)utc_tm->tm_sec;
+  }
+  if (nanoseconds != NULL) {
+    *nanoseconds = (uint32_t)time->nanoseconds;
+  }
 
   return true;
 }
 
 bool sys_time_get_date_utc(sys_time_t *time, uint16_t *year, uint8_t *month,
                            uint8_t *day, uint8_t *weekday) {
-  if (time == NULL || year == NULL || month == NULL || day == NULL ||
-      weekday == NULL) {
+  if (time == NULL) {
     return false;
   }
 
@@ -57,10 +63,18 @@ bool sys_time_get_date_utc(sys_time_t *time, uint16_t *year, uint8_t *month,
     return false;
   }
 
-  *year = (uint16_t)(utc_tm->tm_year + 1900); // tm_year is years since 1900
-  *month = (uint8_t)(utc_tm->tm_mon + 1);     // tm_mon is 0-11, we want 1-12
-  *day = (uint8_t)utc_tm->tm_mday;            // tm_mday is already 1-31
-  *weekday = (uint8_t)utc_tm->tm_wday;        // tm_wday is 0-6 (Sun=0)
+  if (year != NULL) {
+    *year = (uint16_t)(utc_tm->tm_year + 1900); // tm_year is years since 1900
+  }
+  if (month != NULL) {
+    *month = (uint8_t)(utc_tm->tm_mon + 1); // tm_mon is 0-11, we want 1-12
+  }
+  if (day != NULL) {
+    *day = (uint8_t)utc_tm->tm_mday; // tm_mday is already 1-31
+  }
+  if (weekday != NULL) {
+    *weekday = (uint8_t)utc_tm->tm_wday; // tm_wday is 0-6 (Sun=0)
+  }
 
   return true;
 }
@@ -108,7 +122,7 @@ bool sys_time_set_date_utc(sys_time_t *time, uint16_t year, uint8_t month,
   }
 
   // Validate input parameters
-  if (year < 1970 || month < 1 || month > 12 || day < 1 || day > 31) {
+  if (month < 1 || month > 12 || day < 1 || day > 31) {
     return false;
   }
 

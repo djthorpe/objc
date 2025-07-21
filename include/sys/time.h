@@ -25,10 +25,11 @@ bool sys_time_get_utc(sys_time_t *time);
 /**
  * @brief Extracts time components from a sys_time_t structure.
  * @param time Pointer to a sys_time_t structure to extract time from.
- * @param hours Pointer to store hours (0-23).
- * @param minutes Pointer to store minutes (0-59).
- * @param seconds Pointer to store seconds (0-59).
- * @param nanoseconds Pointer to store nanoseconds (0-999999999).
+ * @param hours Pointer to store hours (0-23), or NULL to skip.
+ * @param minutes Pointer to store minutes (0-59), or NULL to skip.
+ * @param seconds Pointer to store seconds (0-59), or NULL to skip.
+ * @param nanoseconds Pointer to store nanoseconds (0-999999999), or NULL to
+ * skip.
  * @return true on success, false on error.
  */
 bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
@@ -37,10 +38,11 @@ bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
 /**
  * @brief Extracts date components from a sys_time_t structure.
  * @param time Pointer to a sys_time_t structure to extract date from.
- * @param year Pointer to store year (e.g., 2025).
- * @param month Pointer to store month (1-12).
- * @param day Pointer to store day (1-31).
- * @param weekday Pointer to store weekday (0-6, where 0=Sunday).
+ * @param year Pointer to store year (e.g., 2025), or NULL to skip.
+ * @param month Pointer to store month (1-12), or NULL to skip.
+ * @param day Pointer to store day (1-31), or NULL to skip.
+ * @param weekday Pointer to store weekday (0-6, where 0=Sunday), or NULL to
+ * skip.
  * @return true on success, false on error.
  */
 bool sys_time_get_date_utc(sys_time_t *time, uint16_t *year, uint8_t *month,
@@ -61,7 +63,7 @@ bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
 /**
  * @brief Sets date components in a sys_time_t structure, preserving the time.
  * @param time Pointer to a sys_time_t structure to modify.
- * @param year Year to set (e.g., 2025).
+ * @param year Year to set (supports pre-epoch dates, e.g., 1969, 1900).
  * @param month Month to set (1-12).
  * @param day Day to set (1-31).
  * @return true on success, false on error or invalid parameters.
