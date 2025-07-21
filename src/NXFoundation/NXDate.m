@@ -25,7 +25,7 @@
     // Convert milliseconds to seconds and nanoseconds
     int64_t intervalInSeconds = interval / MILLISECONDS_PER_SECOND;
     int32_t remainingMilliseconds = interval % MILLISECONDS_PER_SECOND;
-    int32_t additionalNanoseconds = remainingMilliseconds * 1000000;
+    int32_t additionalNanoseconds = remainingMilliseconds * NANOSECONDS_PER_MILLISECOND;
 
     _time.seconds += intervalInSeconds;
     _time.nanoseconds += additionalNanoseconds;
