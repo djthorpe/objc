@@ -17,5 +17,6 @@ var searchData=
   ['sys_5frandom_5fuint32',['sys_random_uint32',['../sys_8h.html#a39c02847b060cfe7b9c568a06bc7ad74',1,'sys.h']]],
   ['sys_5fsleep',['sys_sleep',['../sys_8h.html#acb5a950a99bad2a938dee8c861e50269',1,'sys.h']]],
   ['sys_5fsprintf',['sys_sprintf',['../sys_8h.html#a340ab3d1b3e0cef587d52b580cd59d25',1,'sys.h']]],
+  ['sys_5ftime',['sys_time',['../structsys__time.html',1,'']]],
   ['sys_5fvprintf',['sys_vprintf',['../sys_8h.html#aac71469c45207a063e75bf7e6c2dbb5b',1,'sys.h']]]
 ];
