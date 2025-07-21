@@ -53,7 +53,7 @@ int main(void) {
                diff_seconds);
   } while (0);
 
-  // Test 6: Time progresses (multiple samples)
+  // Test 4: Time progresses (multiple samples)
   do {
     sys_time_t times[3];
 
