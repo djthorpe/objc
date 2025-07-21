@@ -1,29 +1,26 @@
 # objc runtime
 
-This is a minimal Objective C runtime written in C, designed to be portable across different platforms,
-including ARM and x86 architectures, mostly targeting embedded systems. It uses the "gcc" ABI for the
-moment, as that is the most portable across different platforms.
+This is a minimal Objective C runtime written in C, designed to be portable across different platforms, including ARM and x86 architectures, mostly targeting embedded systems. It uses the "gcc" ABI for the moment, as that is the most portable across different platforms.
 
-- [View the list of all classes](annotated.html)
-- [View the list of all files](files.html)
-- [View the list of all functions](globals_func.html)
+- [View the list of all classes](https://djthorpe.github.io/objc/annotated.html)
+- [View the list of all files](https://djthorpe.github.io/objc/files.html)
+- [View the list of all functions](https://djthorpe.github.io/objc/globals_func.html)
 
 ## Requirements
 
 You will minimally need the following tools to build the runtime:
 
 - `make` and `cmake` - for the build system
-- `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). If you want
-  to cross-compile for ARM, you will need the ARM LLVM toolchain (see below).
+- `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). You can use the environment variable `CC` to specify the compiler, e.g. `CC=clang` or `CC=gcc`.
+- For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>. Install this to the `/opt` directory. You can use the environment variable `TOOLCHAIN_PATH` to specify the path to the toolchain, e.g. `TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal`.
 
-### ARM Toolchain
+## Building the libraries
 
-For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain:\
-<https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>
+Three static libraries are currently provided:
 
-Install this to the `/opt` directory.
-
-## Building the runtime
+- `objc-gcc` - the Objective C runtime library using the ancient GCC ABI
+- `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
+- `sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.
 
 Download the source code from GitHub:
 
@@ -32,25 +29,26 @@ git clone git@github.com:djthorpe/objc.git
 cd objc
 ```
 
-The `TOOLCHAIN_PATH` environment variable should point to the directory where the toolchain is installed. For example,
+The `TOOLCHAIN_PATH` environment variable should point to the directory where the toolchain is installed.
+For Macintosh, you can use Homebrew to install the GCC toolchain, which is required for compiling the runtime on MacOS:
 
 ```bash
 # Compile with GCC 15 for MacOS
 brew install gcc@15
-TOOLCHAIN_PATH=/opt/homebrew CC=gcc-15 make
+TOOLCHAIN_PATH=/opt/homebrew RELEASE=1 CC=gcc-15 make
 ```
 
-Use the `make tests` target to run the unit .tests
+Once you've made the libraries, use the `make tests` target to run the unit tests.
 
-For the RP2040 Pico board, you can use the `clang` compiler with the ARM toolchain. The `TARGET` environment variable should be set to the target architecture, such as `armv6m-none-eabi` for the RP2040 Pico board:
+You can target different architectures by setting the `TARGET` environment variable. For a RP2040-based board, you can use the `clang` compiler with the ARM toolchain. The `TARGET` environment variable should be set to the target architecture, such as `armv6m-none-eabi` for the RP2040 Pico board:
 
 ```bash
 # Compile for the RP2040 Pico board
-CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make 
+CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal RELEASE=1 make 
 ```
 
-You can use the environment variable `RELEASE=1` to build a release version of the runtime, which will
-enable optimizations and disable debug symbols.
+See the list of supported targets in the [cmake](https://github.com/djthorpe/objc/tree/main/cmake) directory.
+You can exclude the environment variable `RELEASE=1` to build debugging versions of the libraries.
 
 ## Current status
 

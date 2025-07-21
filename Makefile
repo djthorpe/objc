@@ -16,7 +16,7 @@ else
 endif
 
 .PHONY: all
-all: NXFoundation docs
+all: NXFoundation
 
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
