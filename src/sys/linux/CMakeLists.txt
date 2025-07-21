@@ -8,7 +8,7 @@ add_library(${NAME} STATIC
     puts.c
     random.c
     sleep.c
-    time.c
+    ../posix/time.c
     ../all/panicf.c
     ../all/printf.c
 )

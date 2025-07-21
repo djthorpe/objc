@@ -6,6 +6,7 @@
 // Forward declaration of classes
 @class NXApplication;
 @class NXAutoreleasePool;
+@class NXDate;
 @class NXObject;
 @class NXString;
 @class NXThread;
@@ -15,6 +16,7 @@
 #include "NXApplication.h"
 #include "NXArch.h"
 #include "NXAutoreleasePool.h"
+#include "NXDate.h"
 #include "NXLog.h"
 #include "NXNumber.h"
 #include "NXObject.h"

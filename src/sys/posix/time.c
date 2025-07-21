@@ -1,6 +1,12 @@
 // Ensure POSIX time constants are available
 #define _POSIX_C_SOURCE 199309L
-#define _GNU_SOURCE // For timegm function
+#ifdef __APPLE__
+    // On macOS, timegm is available as a BSD extension
+    #define _DARWIN_C_SOURCE
+#else
+    // On Linux, use GNU extensions for timegm
+    #define _GNU_SOURCE
+#endif
 #include <sys/sys.h>
 #include <time.h>
 #define NANOSECONDS_PER_SECOND 1000000000LL
