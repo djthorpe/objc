@@ -180,7 +180,7 @@ int64_t sys_time_compare_ns(const sys_time_t *start, const sys_time_t *end) {
   int64_t nanoseconds_diff = end_time.nanoseconds - start_time.nanoseconds;
 
   // Convert seconds to nanoseconds and add the nanoseconds difference
-  int64_t total_diff_ns = (seconds_diff * 1000000000LL) + nanoseconds_diff;
+  int64_t total_diff_ns = (seconds_diff * NANOSECONDS_PER_SECOND) + nanoseconds_diff;
 
   return total_diff_ns;
 }
