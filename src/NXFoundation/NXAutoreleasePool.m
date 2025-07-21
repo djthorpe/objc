@@ -6,7 +6,8 @@ static id defaultPool = nil;
 
 @implementation NXAutoreleasePool
 
-#pragma mark - Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
 - (id)init {
   self = [super init];
@@ -42,7 +43,8 @@ static id defaultPool = nil;
   [super dealloc];
 }
 
-#pragma mark - Class Methods
+///////////////////////////////////////////////////////////////////////////////
+// CLASS METHODS
 
 + (id)currentPool {
   @synchronized(self) {
@@ -51,7 +53,8 @@ static id defaultPool = nil;
   }
 }
 
-#pragma mark - Instance Methods
+///////////////////////////////////////////////////////////////////////////////
+// INSTANCE METHODS
 
 - (void)addObject:(id)object {
   if (object == nil) {
@@ -72,7 +75,8 @@ static id defaultPool = nil;
       return;
     }
 #ifdef DEBUG
-      NXLog(@"  autorelease retain: [%s] @%p", object_getClassName(object), object);
+    NXLog(@"  autorelease retain: [%s] @%p", object_getClassName(object),
+          object);
 #endif
     ((NXObject *)object)->_next =
         _tail;      // Link the new object to the current tail

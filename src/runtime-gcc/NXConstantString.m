@@ -1,20 +1,29 @@
 #include <objc/objc.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 @implementation NXConstantString
 
-#pragma mark - Lifecycle
+////////////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
 + (id)alloc {
   return nil; // NXConstantString should not be allocated directly
 }
 
--(void)dealloc {
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-super-calls"
+#endif
+- (void)dealloc {
   // NXConstantString is immutable, so we do nothing
 }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
-#pragma mark - Properties
+////////////////////////////////////////////////////////////////////////////////////
+// PROPERTIES
 
 - (const char *)cStr {
   return _data;
@@ -24,7 +33,8 @@
   return _length;
 }
 
-#pragma mark - Methods
+////////////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
 
 - (id)retain {
   // NXConstantString is immutable, so we return self
