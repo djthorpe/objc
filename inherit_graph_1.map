@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="5,81,69,108"/>
+<area shape="rect" id="node2" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="117,56,253,83"/>
+<area shape="rect" id="node3" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="144,107,227,133"/>
+<area shape="rect" id="node4" href="$interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="317,5,432,32"/>
+<area shape="rect" id="node5" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="301,56,448,83"/>
+<area shape="rect" id="node6" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="335,107,414,133"/>
+<area shape="rect" id="node7" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="331,157,418,184"/>
+<area shape="rect" id="node8" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="337,208,412,235"/>
+</map>
