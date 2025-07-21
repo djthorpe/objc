@@ -1,6 +1,7 @@
 var searchData=
 [
   ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object']]],
+  ['nanosecond',['Nanosecond',['../NXTimeInterval_8h.html#aaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
   ['nil',['nil',['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h'],['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h']]],
   ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['nxapplication',['NXApplication',['../interfaceNXApplication.html',1,'']]],
@@ -29,8 +30,10 @@ var searchData=
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
   ['nxthread',['NXThread',['../interfaceNXThread.html',1,'']]],
   ['nxthread_2eh',['NXThread.h',['../NXThread_8h.html',1,'']]],
-  ['nxtimeinterval',['NXTimeInterval',['../NXTimeInterval_8h.html#a81360f73bf2e81c6addb8630b5b5f1a4',1,'NXTimeInterval.h']]],
+  ['nxtimeinterval',['NXTimeInterval',['../NXTimeInterval_8h.html#acb415dcba0be032b662a4d117a80d5cf',1,'NXTimeInterval.h']]],
   ['nxtimeinterval_2eh',['NXTimeInterval.h',['../NXTimeInterval_8h.html',1,'']]],
+  ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../NXTimeInterval_8h.html#a49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
+  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../NXTimeInterval_8h.html#a9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]],
   ['nxunknownendian',['NXUnknownEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]],
   ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]

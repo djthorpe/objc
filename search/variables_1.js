@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hour',['Hour',['../NXTimeInterval_8h.html#aecb078459b2e66be89717219c59fa732',1,'NXTimeInterval.h']]]
+  ['day',['Day',['../NXTimeInterval_8h.html#ab6e099b3347127ab2c726380f45aabd6',1,'NXTimeInterval.h']]]
 ];

@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object']]],
-  ['nxarchbits',['NXArchBits',['../NXArch_8h.html#a2b5f8a1a82d5c27a92c011b4da70c34c',1,'NXArch.h']]],
-  ['nxarchendian',['NXArchEndian',['../NXArch_8h.html#a1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],
-  ['nxrandint',['NXRandInt',['../NXNumber_8h.html#a25c9975a1e9844346fc8a327a2d6c01a',1,'NXNumber.h']]],
-  ['nxrandunsignedint',['NXRandUnsignedInt',['../NXNumber_8h.html#a56ed334c44a55dd43f891631bfad4c8b',1,'NXNumber.h']]]
+  ['objc_5ffree',['objc_free',['../malloc_8h.html#a8f8e2ee1df5b130d4c96555fff909fdd',1,'malloc.h']]],
+  ['objc_5flookupclass',['objc_lookupClass',['../runtime_8h.html#ad60fc60359e0c7b9a6751f835f5537a2',1,'runtime.h']]],
+  ['objc_5fmalloc',['objc_malloc',['../malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7',1,'malloc.h']]],
+  ['objc_5fsync_5fenter',['objc_sync_enter',['../mutex_8h.html#ab912f47eca33ff595b0270360079ff38',1,'mutex.h']]],
+  ['objc_5fsync_5fexit',['objc_sync_exit',['../mutex_8h.html#a9acbff2a0268bf1fece869d50ae54426',1,'mutex.h']]],
+  ['object_5fgetclass',['object_getClass',['../runtime_8h.html#a0a52026f8341ccd035d68c2fdb091491',1,'runtime.h']]],
+  ['object_5fgetclassname',['object_getClassName',['../runtime_8h.html#a17b085d44512c2db39ae4ba4e53ae748',1,'runtime.h']]],
+  ['object_5fgetsuperclass',['object_getSuperclass',['../runtime_8h.html#a45c1ac82472fb1e16043e0f03037e64b',1,'runtime.h']]],
+  ['object_5fiskindofclass',['object_isKindOfClass',['../runtime_8h.html#a435d6fc780b3f52b73013c71c9386f63',1,'runtime.h']]],
+  ['object_5fsetclass',['object_setClass',['../runtime_8h.html#ad6763d930ab4a58f5d4e89542dfedf05',1,'runtime.h']]]
 ];
