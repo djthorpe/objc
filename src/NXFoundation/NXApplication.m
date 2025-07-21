@@ -6,7 +6,8 @@ static id sharedApplication = nil;
 
 @implementation NXApplication
 
-#pragma mark - Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
 - (id)init {
   self = [super init];
@@ -28,7 +29,8 @@ static id sharedApplication = nil;
   [super release]; // Call superclass release
 }
 
-#pragma mark - Instance Methods
+///////////////////////////////////////////////////////////////////////////////
+// INSTANCE METHODS
 
 - (int)run {
   // Start the main run loop
@@ -46,7 +48,8 @@ static id sharedApplication = nil;
   return 0;
 }
 
-#pragma mark - Class Methods
+///////////////////////////////////////////////////////////////////////////////
+// CLASS METHODS
 
 + (id)sharedApplication {
   @synchronized(self) {

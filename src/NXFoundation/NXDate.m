@@ -3,14 +3,15 @@
 
 @implementation NXDate
 
-#pragma mark - Lifecycle
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
 
--(id)init {
-    self = [super init];
-    if (self) {
-        // Initialization code here
-    }
-    return self;
+- (id)init {
+  self = [super init];
+  if (self) {
+    // Initialization code here
+  }
+  return self;
 }
 
 @end
