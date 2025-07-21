@@ -15,7 +15,8 @@
  */
 @interface NXString : NXObject {
 @private
-  const char* _value; 
+  const char *_value;
+  char *_data; ///< Pointer to the retained string data
   unsigned int _length;
 }
 
@@ -37,6 +38,14 @@
  * @return A new NXString instance containing the C-string content.
  */
 - (id)initWithCString:(const char *)cStr;
+
+/**
+ * @brief Initializes a new string with a formatted string.
+ * @param format The format string to use for initialization.
+ * @param ... Variable arguments for the format string.
+ * @return A new NXString instance containing the formatted content.
+ */
+- (id)initWithFormat:(NXConstantString *)format, ...;
 
 /**
  * @brief Returns the C-string representation of the string.

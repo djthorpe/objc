@@ -413,6 +413,16 @@ size_t sys_vprintf(const char *format, va_list args) {
   return len;
 }
 
+size_t sys_vsprintf(char *buf, size_t sz, const char *format, va_list args) {
+  struct sys_printf_state state = {
+      .putch = _sys_sprintf_putch, .buffer = buf, .size = sz};
+  va_list args_copy;
+  va_copy(args_copy, args);
+  size_t len = _sys_vprintf(&state, format, &args_copy);
+  va_end(args_copy);
+  return len;
+}
+
 size_t sys_printf(const char *format, ...) {
   va_list va;
   va_start(va, format);

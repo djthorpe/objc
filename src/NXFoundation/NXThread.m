@@ -17,7 +17,7 @@
     return;
   }
   // Use the system sleep function
-  sys_sleep(interval * Millisecond);
+  sys_sleep(NXTimeIntervalMilliseconds(interval));
 }
 
 @end

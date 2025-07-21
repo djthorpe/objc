@@ -1,10 +1,10 @@
+#include "Object+Description.h"
 #include <NXFoundation/NXFoundation.h>
 #include <sys/sys.h>
-#include "Object+Description.h"
 
 // This is a used category to ensure that the description method is linked
-__attribute__((used)) static void load_categories () {
-  void* unused = __object_description;
+__attribute__((used)) static void load_categories() {
+  void *unused = __object_description;
   (void)unused; // Prevent unused variable warning
 }
 
@@ -84,7 +84,8 @@ __attribute__((used)) static void load_categories () {
 - (void)release {
   @synchronized(self) {
     if (_retain == 0) {
-      sys_panicf("[NXObject release] called with retain count of zero");
+      sys_panicf("[%s release] called with retain count of zero",
+                 object_getClassName(self));
     }
     _retain--;
     if (_retain == 0) {

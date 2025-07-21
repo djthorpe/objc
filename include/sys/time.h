@@ -33,12 +33,10 @@ bool sys_time_get_utc(sys_time_t *time);
  * @param hours Pointer to store hours (0-23), or NULL to skip.
  * @param minutes Pointer to store minutes (0-59), or NULL to skip.
  * @param seconds Pointer to store seconds (0-59), or NULL to skip.
- * @param nanoseconds Pointer to store nanoseconds (0-999999999), or NULL to
- * skip.
  * @return true on success, false on error.
  */
 bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
-                           uint8_t *seconds, uint32_t *nanoseconds);
+                           uint8_t *seconds);
 
 /**
  * @brief Extracts date components from a sys_time_t structure.
@@ -59,11 +57,10 @@ bool sys_time_get_date_utc(sys_time_t *time, uint16_t *year, uint8_t *month,
  * @param hours Hours to set (0-23).
  * @param minutes Minutes to set (0-59).
  * @param seconds Seconds to set (0-59).
- * @param nanoseconds Nanoseconds to set (0-999999999).
  * @return true on success, false on error or invalid parameters.
  */
 bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
-                           uint8_t seconds, uint32_t nanoseconds);
+                           uint8_t seconds);
 
 /**
  * @brief Sets date components in a sys_time_t structure, preserving the time.

@@ -1,6 +1,12 @@
 // Ensure POSIX time constants are available
 #define _POSIX_C_SOURCE 199309L
-#define _GNU_SOURCE // For timegm function
+#ifdef __APPLE__
+// On macOS, timegm is available as a BSD extension
+#define _DARWIN_C_SOURCE
+#else
+// On Linux, use GNU extensions for timegm
+#define _GNU_SOURCE
+#endif
 #include <sys/sys.h>
 #include <time.h>
 #define NANOSECONDS_PER_SECOND 1000000000LL
@@ -24,7 +30,7 @@ bool sys_time_get_utc(sys_time_t *time) {
 }
 
 bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
-                           uint8_t *seconds, uint32_t *nanoseconds) {
+                           uint8_t *seconds) {
   if (time == NULL) {
     return false;
   }
@@ -43,9 +49,6 @@ bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
   }
   if (seconds != NULL) {
     *seconds = (uint8_t)utc_tm->tm_sec;
-  }
-  if (nanoseconds != NULL) {
-    *nanoseconds = (uint32_t)time->nanoseconds;
   }
 
   return true;
@@ -80,14 +83,13 @@ bool sys_time_get_date_utc(sys_time_t *time, uint16_t *year, uint8_t *month,
 }
 
 bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
-                           uint8_t seconds, uint32_t nanoseconds) {
+                           uint8_t seconds) {
   if (time == NULL) {
     return false;
   }
 
   // Validate input parameters
-  if (hours >= 24 || minutes >= 60 || seconds >= 60 ||
-      nanoseconds >= 1000000000) {
+  if (hours >= 24 || minutes >= 60 || seconds >= 60) {
     return false;
   }
 
@@ -110,8 +112,7 @@ bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
   }
 
   time->seconds = (int64_t)new_timestamp;
-  time->nanoseconds = (int32_t)nanoseconds;
-
+  time->nanoseconds = 0; // Reset nanoseconds to 0 as sub-second precision is not modified
   return true;
 }
 
