@@ -104,14 +104,22 @@ $(function() {
 <li>[X] Printf support - <code>vsprintf</code> - printf-like function which can be used by NXLog, <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> and sys_panicf</li>
 <li>[X] Memory management - retain, release - reference counting for objects through <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></li>
 <li>[X] Date and Time - <code><a class="el" href="interfaceNXDate.html" title="A class for representing and manipulating dates. ">NXDate</a></code> - mutable date and time</li>
+<li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with booleans</li>
+<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt16</code> and <code>NXNumberUnsignedInt16</code></li>
+<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt32</code> and <code>NXNumberUnsignedInt32</code></li>
+<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt64</code> and <code>NXNumberUnsignedInt64</code></li>
+<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
 <li>[ ] <code>NXLog</code> and <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> stringWithFormat:</code> support - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
-<li>[ ] String - <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings</li>
-<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> - immutable numbers</li>
-<li>[ ] Array and Map - <code>NXArray</code> and <code>NXDictionary</code></li>
+<li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings - append, appendFormat, substring, split, join, etc.</li>
+<li>[ ] <code>NXNull</code> - singleton for null objects that can be inserted into collections</li>
+<li>[ ] <code>NXArray</code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
+<li>[ ] <code>NXMap</code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
+<li>[ ] <code>NXData</code> - mutable data creating hashes</li>
 <li>[ ] clang compatibility (probably fix with selectors)</li>
 <li>[ ] <code>respondsToSelector:</code></li>
 <li>[ ] More efficient method implementation lookup</li>
-<li>[ ] JSON - <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
+<li>[ ] <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
+<li>[ ] <code>NXScanner</code> - scanning and tokenizing</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
 <li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
 <li>[ ] Pico toolchain - integrate with Pico SDK</li>
