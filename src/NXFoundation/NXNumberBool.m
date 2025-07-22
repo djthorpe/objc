@@ -31,8 +31,7 @@ static NXNumberBool *falseNumber;
   @synchronized(self) {
     if (trueNumber == nil) {
       objc_assert([NXAutoreleasePool currentPool]);
-      trueNumber = [[[NXNumberBool allocWithZone:singletonZone]
-          initWithBool:YES] autorelease];
+      trueNumber = [[[NXNumberBool alloc] initWithBool:YES] autorelease];
     }
   }
   return trueNumber;
@@ -45,8 +44,7 @@ static NXNumberBool *falseNumber;
   @synchronized(self) {
     if (falseNumber == nil) {
       objc_assert([NXAutoreleasePool currentPool]);
-      falseNumber = [[[NXNumberBool allocWithZone:singletonZone]
-          initWithBool:NO] autorelease];
+      falseNumber = [[[NXNumberBool alloc] initWithBool:NO] autorelease];
     }
   }
   return falseNumber;
