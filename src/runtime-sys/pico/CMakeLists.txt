@@ -7,11 +7,19 @@ pico_sdk_init()
 
 add_library(${NAME} STATIC
     abort.c
+    puts.c
+    sys.c
+    time.c
+    thread.c
     ../all/panicf.c
     ../all/printf.c
+    ../all/time.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include/runtime-${RUNTIME}
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
 )
-target_link_libraries(${NAME} pico_stdlib)
+target_link_libraries(${NAME} 
+    pico_stdlib
+    pico_aon_timer
+)

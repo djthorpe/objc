@@ -12,6 +12,7 @@ add_library(${NAME} STATIC
     ../posix/time.c
     ../all/panicf.c
     ../all/printf.c
+    ../all/time.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

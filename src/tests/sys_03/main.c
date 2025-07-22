@@ -1,8 +1,11 @@
-#include <stdio.h>
 #include <runtime-sys/sys.h>
+#include <stdio.h>
 #include <tests/tests.h>
 
 int main(void) {
+  // Initialize the system
+  sys_init();
+
   printf("Starting sys_thread_numcores tests...\n");
 
   // Test 1: Basic functionality - should return at least 1 core
