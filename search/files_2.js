@@ -3,6 +3,7 @@ var searchData=
   ['nxapplication_2eh',['NXApplication.h',['../NXApplication_8h.html',1,'']]],
   ['nxarch_2eh',['NXArch.h',['../NXArch_8h.html',1,'']]],
   ['nxautoreleasepool_2eh',['NXAutoreleasePool.h',['../NXAutoreleasePool_8h.html',1,'']]],
+  ['nxcomparisonresult_2eh',['NXComparisonResult.h',['../NXComparisonResult_8h.html',1,'']]],
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
