@@ -31,8 +31,10 @@ static NXNumberBool *falseNumber;
  * @brief Return a true instance
  */
 + (NXNumber *)trueValue {
-  if (trueNumber == nil) {
-    trueNumber = [[NXNumberBool alloc] initWithBool:YES];
+  @synchronized(self) {
+    if (trueNumber == nil) {
+      trueNumber = [[NXNumberBool alloc] initWithBool:YES];
+    }
   }
   return trueNumber;
 }
