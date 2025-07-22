@@ -6,6 +6,7 @@ var searchData=
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
+  ['nxnull_2eh',['NXNull.h',['../NXNull_8h.html',1,'']]],
   ['nxnumber_2eh',['NXNumber.h',['../NXNumber_8h.html',1,'']]],
   ['nxobject_2eh',['NXObject.h',['../NXObject_8h.html',1,'']]],
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
