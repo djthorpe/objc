@@ -249,8 +249,8 @@
     int64_t overflow = _time.nanoseconds / Second;
     _time.seconds += overflow;
     _time.nanoseconds -= overflow * Second;
-  } else if (_time.nanoseconds < 0) {
-    int64_t underflow = (-_time.nanoseconds + (Second - 1)) / Second;
+  } else if (_time.nanoseconds < ns) { // Detect underflow
+    int64_t underflow = (ns - _time.nanoseconds + (Second - 1)) / Second;
     _time.seconds -= underflow;
     _time.nanoseconds += underflow * Second;
   }
