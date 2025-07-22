@@ -237,7 +237,7 @@ int main() {
   NXString *desc2 = NXTimeIntervalDescription(testInterval, Second);
   NXString *desc3 = NXTimeIntervalDescription(0, Second);
   NXString *desc4 = NXTimeIntervalDescription(-testInterval, Millisecond);
-  
+
   test_assert(desc1 != nil);
   test_assert(desc2 != nil);
   test_assert(desc3 != nil);
@@ -253,6 +253,7 @@ int main() {
   [zone release];
 
   printf("\n🎉 All NXTimeInterval tests passed successfully!\n");
-  printf("Tested: Constants, arithmetic, conversions, precision, edge cases, practical usage, and description function\n");
+  printf("Tested: Constants, arithmetic, conversions, precision, edge cases, "
+         "practical usage, and description function\n");
   return 0;
 }

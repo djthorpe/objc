@@ -250,7 +250,8 @@
     _time.seconds += overflow;
     _time.nanoseconds -= overflow * NANOSECONDS_PER_SECOND;
   } else if (_time.nanoseconds < 0) {
-    int64_t underflow = (-_time.nanoseconds + (NANOSECONDS_PER_SECOND - 1)) / NANOSECONDS_PER_SECOND;
+    int64_t underflow = (-_time.nanoseconds + (NANOSECONDS_PER_SECOND - 1)) /
+                        NANOSECONDS_PER_SECOND;
     _time.seconds -= underflow;
     _time.nanoseconds += underflow * NANOSECONDS_PER_SECOND;
   }
