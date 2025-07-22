@@ -5,5 +5,17 @@ var searchData=
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
-  ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]]
+  ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]],
+  ['sys_5fabort',['sys_abort',['../sys_8h.html#a51400f71e4702fdbd13394546f4182bb',1,'sys.h']]],
+  ['sys_5ffree',['sys_free',['../sys_8h.html#a0b1ddbaf824f0a7fb7292c26883fd061',1,'sys.h']]],
+  ['sys_5fmalloc',['sys_malloc',['../sys_8h.html#a6120ff4195b27fbb71b2fa7e5ddb29c3',1,'sys.h']]],
+  ['sys_5fpanicf',['sys_panicf',['../sys_8h.html#a795b667df1ea24eeb5045a9f625f8611',1,'sys.h']]],
+  ['sys_5fprintf',['sys_printf',['../sys_8h.html#ab6bda746d6b03c697ebcf468f83fdb6d',1,'sys.h']]],
+  ['sys_5fputch',['sys_putch',['../sys_8h.html#ae13dd8a6d75ee7e807c43ae84ec66dfd',1,'sys.h']]],
+  ['sys_5fputs',['sys_puts',['../sys_8h.html#a4eced11c2352451c4ea6c7386e58342b',1,'sys.h']]],
+  ['sys_5frandom_5fuint32',['sys_random_uint32',['../sys_8h.html#a39c02847b060cfe7b9c568a06bc7ad74',1,'sys.h']]],
+  ['sys_5fsleep',['sys_sleep',['../sys_8h.html#acb5a950a99bad2a938dee8c861e50269',1,'sys.h']]],
+  ['sys_5fsprintf',['sys_sprintf',['../sys_8h.html#a340ab3d1b3e0cef587d52b580cd59d25',1,'sys.h']]],
+  ['sys_5fvprintf',['sys_vprintf',['../sys_8h.html#aac71469c45207a063e75bf7e6c2dbb5b',1,'sys.h']]],
+  ['sys_5fvsprintf',['sys_vsprintf',['../sys_8h.html#a86745087b8aeeae5c0715896240ab992',1,'sys.h']]]
 ];

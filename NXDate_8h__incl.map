@@ -1,3 +1,6 @@
 <map id="include/NXFoundation/NXDate.h" name="include/NXFoundation/NXDate.h">
 <area shape="rect" id="node2" href="$NXTimeInterval_8h.html" title="Time interval type and constants for duration measurements. " alt="" coords="5,95,141,121"/>
+<area shape="rect" id="node4" href="$sys_8h.html" title="Defines system management functions. " alt="" coords="188,95,327,121"/>
+<area shape="rect" id="node5" href="$systhread_8h_source.html" title="systhread.h" alt="" coords="115,169,213,196"/>
+<area shape="rect" id="node6" href="$systime_8h_source.html" title="systime.h" alt="" coords="238,169,325,196"/>
 </map>
