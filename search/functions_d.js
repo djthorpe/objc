@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['year_3amonth_3aday_3aweekday_3a',['year:month:day:weekday:',['../interfaceNXDate.html#aa25b8e59c322dc527767a6c175852b74',1,'NXDate']]]
+  ['trimprefix_3asuffix_3a',['trimPrefix:suffix:',['../interfaceNXString.html#ab15e686adc7cae3707301e5e6b15b783',1,'NXString']]],
+  ['trimspace',['trimSpace',['../interfaceNXString.html#a95b5815ddce3f60caea863a2357bf74d',1,'NXString']]],
+  ['truevalue',['trueValue',['../interfaceNXNumber.html#a09d785a02139d2620348ef839ef88dad',1,'NXNumber']]]
 ];

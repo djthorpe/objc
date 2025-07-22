@@ -11,6 +11,7 @@ var searchData=
   ['objc_5funused',['OBJC_UNUSED',['../runtime_8h.html#ad2e5ab70591b8c9424a23877a448e4a4',1,'runtime.h']]],
   ['object',['Object',['../interfaceObject.html',1,'']]],
   ['object_28description_29',['Object(Description)',['../categoryObject_07Description_08.html',1,'']]],
+  ['object_2bdescription_2eh',['Object+Description.h',['../Object_09Description_8h.html',1,'']]],
   ['object_2eh',['Object.h',['../Object_8h.html',1,'']]],
   ['object_5fgetclass',['object_getClass',['../runtime_8h.html#a0a52026f8341ccd035d68c2fdb091491',1,'runtime.h']]],
   ['object_5fgetclassname',['object_getClassName',['../runtime_8h.html#a17b085d44512c2db39ae4ba4e53ae748',1,'runtime.h']]],

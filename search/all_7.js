@@ -6,7 +6,7 @@ var searchData=
   ['initialize',['initialize',['../interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5',1,'Object']]],
   ['initwithcstring_3a',['initWithCString:',['../interfaceNXString.html#aeb374c44599158565750c46e4927f3bb',1,'NXString']]],
   ['initwithformat_3a',['initWithFormat:',['../interfaceNXString.html#a278ddef64290c1f05cb77cff96d49373',1,'NXString']]],
-  ['initwithstring_3a',['initWithString:',['../interfaceNXString.html#aeef294233cf3d008efe5b1d286c72f8f',1,'NXString']]],
+  ['initwithstring_3a',['initWithString:',['../interfaceNXString.html#a0b00e9239b234b627e7635de6a1434b1',1,'NXString']]],
   ['isa',['isa',['../interfaceObject.html#ac697e8f00653acf23f4e018f382e3641',1,'Object']]],
   ['isearlierthan_3a',['isEarlierThan:',['../interfaceNXDate.html#aa556884cab0a5016d3d1f5ccefc94512',1,'NXDate']]],
   ['isequal_3a',['isEqual:',['../interfaceObject.html#af12644c1cd7498475dc61c4df7138133',1,'Object']]],
