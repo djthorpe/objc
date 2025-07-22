@@ -176,6 +176,6 @@ typedef enum {
  * (Ascending), Same, or later (Descending) than the other string, according
  * to lexicographical order.
  */
-- (NXComparisonResult)compare:(NXString *)other;
+- (NXComparisonResult)compare:(id<NXStringProtocol>)other;
 
 @end
