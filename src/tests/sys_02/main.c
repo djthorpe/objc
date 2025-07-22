@@ -1,5 +1,5 @@
 #include <inttypes.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
 int main(void) {

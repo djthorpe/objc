@@ -1,6 +1,6 @@
 #include "Object+Description.h"
 #include <NXFoundation/NXFoundation.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 // This is a used category to ensure that the description method is linked
 __attribute__((used)) static void load_categories() {

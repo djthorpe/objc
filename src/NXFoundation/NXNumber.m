@@ -1,6 +1,6 @@
 #include "NXNumberBool.h"
 #include <NXFoundation/NXFoundation.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS

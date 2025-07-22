@@ -4,7 +4,7 @@
 #include "protocol.h"
 #include <objc/objc.h>
 #include <string.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE + 1];

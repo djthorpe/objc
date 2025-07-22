@@ -1,7 +1,7 @@
 #include "NXZone+arena.h"
 #include <NXFoundation/NXFoundation.h>
 #include <string.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 // Define the first zone allocated as the default zone
 static id defaultZone = nil;

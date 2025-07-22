@@ -4,7 +4,7 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_MODULE_PATH}/${TARGET}.cmake")
 
 # Define project
 project(objc-runtime 
-    LANGUAGES C OBJC 
+    LANGUAGES C OBJC ASM CXX
     DESCRIPTION "Objective C runtime and libraries"
 )
 
@@ -15,9 +15,14 @@ else()
     message(FATAL_ERROR "Unsupported runtime: ${RUNTIME}")
 endif()
 
+# Set C and C++ standards properly
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_EXTENSIONS ON)  # Enable GNU extensions for Pico SDK compatibility
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # Compile options
 add_compile_options(
-    "-std=c99"
     "-Wall"
     "-Wextra"
     "$<$<CONFIG:DEBUG>:-DDEBUG>"
@@ -29,7 +34,7 @@ string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 
 # Libraries
 add_subdirectory("src/malloc")
-add_subdirectory("src/sys/${SYSTEM_NAME_LOWER}")
+add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/NXFoundation")
 

@@ -4,7 +4,7 @@
 #include "hash.h"
 #include "statics.h"
 #include <objc/objc.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 

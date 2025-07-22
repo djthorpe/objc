@@ -7,7 +7,7 @@
 // On Linux, use GNU extensions for timegm
 #define _GNU_SOURCE
 #endif
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 #include <time.h>
 #define NANOSECONDS_PER_SECOND 1000000000LL
 

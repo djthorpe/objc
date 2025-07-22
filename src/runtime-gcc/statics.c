@@ -2,7 +2,7 @@
 #include "class.h"
 #include <objc/objc.h>
 #include <string.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 #define STATICS_TABLE_SIZE 32
 static struct objc_static_instances_list *statics_table[STATICS_TABLE_SIZE + 1];

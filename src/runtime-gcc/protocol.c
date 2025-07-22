@@ -2,7 +2,7 @@
 #include "api.h"
 #include <objc/objc.h>
 #include <string.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 #define PROTOCOL_TABLE_SIZE 32
 objc_protocol_t *protocol_table[PROTOCOL_TABLE_SIZE + 1];

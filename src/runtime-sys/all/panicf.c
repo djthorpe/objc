@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 // Define the panic function
 void sys_panicf(const char *fmt, ...) {

@@ -23,6 +23,6 @@ target_include_directories(${NAME} PRIVATE
 )
 target_link_libraries(${NAME} PRIVATE
     objc-gcc
-    sys
+    runtime-sys
 )
 

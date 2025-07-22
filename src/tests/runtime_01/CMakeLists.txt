@@ -5,6 +5,5 @@ add_executable(${NAME}
 target_link_libraries(${NAME} PRIVATE
     objc-gcc
     malloc
-    sys
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

@@ -1,5 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 // Define the shared application instance
 static id sharedApplication = nil;
