@@ -6,6 +6,7 @@ var searchData=
   ['class_5fgetsuperclass',['class_getSuperclass',['../runtime_8h.html#a08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
   ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../runtime_8h.html#a1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
   ['class_5frespondstoselector',['class_respondsToSelector',['../runtime_8h.html#a2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
+  ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate']]],
   ['cstr',['cStr',['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
   ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
 ];

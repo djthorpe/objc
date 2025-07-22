@@ -8,6 +8,8 @@ var searchData=
   ['initwithformat_3a',['initWithFormat:',['../interfaceNXString.html#a278ddef64290c1f05cb77cff96d49373',1,'NXString']]],
   ['initwithstring_3a',['initWithString:',['../interfaceNXString.html#aeef294233cf3d008efe5b1d286c72f8f',1,'NXString']]],
   ['isa',['isa',['../interfaceObject.html#ac697e8f00653acf23f4e018f382e3641',1,'Object']]],
+  ['isearlierthan_3a',['isEarlierThan:',['../interfaceNXDate.html#aa556884cab0a5016d3d1f5ccefc94512',1,'NXDate']]],
   ['isequal_3a',['isEqual:',['../interfaceObject.html#af12644c1cd7498475dc61c4df7138133',1,'Object']]],
-  ['iskindofclass_3a',['isKindOfClass:',['../interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c',1,'Object']]]
+  ['iskindofclass_3a',['isKindOfClass:',['../interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c',1,'Object']]],
+  ['islaterthan_3a',['isLaterThan:',['../interfaceNXDate.html#a55994a5cbaf40808829eff955525865f',1,'NXDate']]]
 ];
