@@ -4,12 +4,10 @@
  * functionality.
  */
 #pragma once
+#include "NXString+Protocol.h"
 
-typedef enum {
-  NXComparisonAscending = -1,
-  NXComparisonSame = 0,
-  NXComparisonDescending = 1
-} NXComparisonResult;
+///////////////////////////////////////////////////////////////////////////////
+// CLASS DEFINITIONS
 
 /**
  * @brief A class for managing and manipulating string objects.
@@ -156,7 +154,8 @@ typedef enum {
 
 /**
  * @brief Counts the number of occurrences of a string.
- * @param other The NXConstantString or NXString instance to count occurrences of.
+ * @param other The NXConstantString or NXString instance to count occurrences
+ * of.
  * @return The number of times the string appears in the string.
  */
 - (uint32_t)countOccurrencesOfString:(id<NXStringProtocol>)other;

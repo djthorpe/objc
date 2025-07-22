@@ -18,6 +18,7 @@
 #include "NXApplication.h"
 #include "NXArch.h"
 #include "NXAutoreleasePool.h"
+#include "NXComparisonResult.h"
 #include "NXDate.h"
 #include "NXLog.h"
 #include "NXNull.h"
