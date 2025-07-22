@@ -197,25 +197,21 @@
   }
 
   // Compare the underlying time representations
-  NXTimeInterval diff = (_time.seconds - otherDate->_time.seconds) * Second +
-                        (_time.nanoseconds - otherDate->_time.nanoseconds);
-  return diff;
+  return sys_time_compare_ns(&otherDate->_time, &_time);
 }
 
 /**
  * @brief Determine if the date is earlier than another date
  */
 - (BOOL)isEarlierThan:(NXDate *)otherDate {
-  NXTimeInterval diff = [self compare:otherDate];
-  return diff < 0; // If this date is earlier, the difference will be negative
+  return [self compare:otherDate] < 0;
 }
 
 /**
  * @brief Determine if the date is later than another date
  */
 - (BOOL)isLaterThan:(NXDate *)otherDate {
-  NXTimeInterval diff = [self compare:otherDate];
-  return diff > 0; // If this date is later, the difference will be positive
+  return [self compare:otherDate] > 0;
 }
 
 /**
@@ -228,8 +224,7 @@
   if (other == self) {
     return YES; // Same instance
   }
-  NXTimeInterval diff = [self compare:other];
-  return diff == 0; // If the difference is zero, the dates are equal
+  return [self compare:other] == 0;
 }
 
 /**
