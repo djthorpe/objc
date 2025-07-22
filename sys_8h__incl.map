@@ -1,4 +1,6 @@
 <map id="include/runtime&#45;sys/sys.h" name="include/runtime&#45;sys/sys.h">
-<area shape="rect" id="node2" href="$systhread_8h_source.html" title="systhread.h" alt="" coords="5,95,104,121"/>
-<area shape="rect" id="node4" href="$systime_8h_source.html" title="systime.h" alt="" coords="179,95,266,121"/>
+<area shape="rect" id="node2" href="$runtime-sys_2malloc_8h_source.html" title="malloc.h" alt="" coords="5,95,84,121"/>
+<area shape="rect" id="node4" href="$printf_8h.html" title="Defines formatted print output functions. " alt="" coords="108,95,176,121"/>
+<area shape="rect" id="node6" href="$thread_8h.html" title="Defines thread management functions. " alt="" coords="200,95,276,121"/>
+<area shape="rect" id="node8" href="$time_8h.html" title="Defines system time management functions. " alt="" coords="351,95,415,121"/>
 </map>

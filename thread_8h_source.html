@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: include/runtime-gcc/objc/malloc.h Source File</title>
+<title>objc: include/runtime-sys/thread.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -47,16 +47,16 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_478a8264d73e474b0239b96b001fe77d.html">runtime-gcc</a></li><li class="navelem"><a class="el" href="dir_3a49715c23884fc7d03295c2d03011ad.html">objc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_69379cc0269e715371dd695e60051fb1.html">runtime-sys</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">malloc.h</div>  </div>
+<div class="title">thread.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="malloc_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7">objc_malloc</a>(<span class="keywordtype">size_t</span> size);</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="malloc_8h.html#a8f8e2ee1df5b130d4c96555fff909fdd">objc_free</a>(<span class="keywordtype">void</span> *ptr);</div><div class="ttc" id="malloc_8h_html_a12b32d3d80a37f14adc2bc963eb0bde7"><div class="ttname"><a href="malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7">objc_malloc</a></div><div class="ttdeci">void * objc_malloc(size_t size)</div><div class="ttdoc">Allocate memory for use by the Objective-C runtime. </div></div>
-<div class="ttc" id="malloc_8h_html_a8f8e2ee1df5b130d4c96555fff909fdd"><div class="ttname"><a href="malloc_8h.html#a8f8e2ee1df5b130d4c96555fff909fdd">objc_free</a></div><div class="ttdeci">void objc_free(void *ptr)</div><div class="ttdoc">Free memory previously allocated by objc_malloc(). </div></div>
+<a href="thread_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> uint8_t <a class="code" href="thread_8h.html#afd9cf2d40386c9cef130e39d39155293">sys_thread_numcores</a>(<span class="keywordtype">void</span>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="thread_8h.html#acb5a950a99bad2a938dee8c861e50269">sys_sleep</a>(int32_t msec);</div><div class="ttc" id="thread_8h_html_afd9cf2d40386c9cef130e39d39155293"><div class="ttname"><a href="thread_8h.html#afd9cf2d40386c9cef130e39d39155293">sys_thread_numcores</a></div><div class="ttdeci">uint8_t sys_thread_numcores(void)</div><div class="ttdoc">Returns the number of CPU cores available on the host system. </div></div>
+<div class="ttc" id="thread_8h_html_acb5a950a99bad2a938dee8c861e50269"><div class="ttname"><a href="thread_8h.html#acb5a950a99bad2a938dee8c861e50269">sys_sleep</a></div><div class="ttdeci">void sys_sleep(int32_t msec)</div><div class="ttdoc">Pauses the execution of the current thread for a specified time. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
