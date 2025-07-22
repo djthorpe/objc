@@ -191,12 +191,7 @@
  * @brief Compares the date against another date, and returns the difference.
  */
 - (NXTimeInterval)compare:(NXDate *)otherDate {
-  if (otherDate == nil) {
-    sys_panicf("Cannot compare with nil NXDate");
-    return 0;
-  }
-
-  // Compare the underlying time representations
+  objc_assert(otherDate != nil);
   return sys_time_compare_ns(&otherDate->_time, &_time);
 }
 
@@ -204,27 +199,29 @@
  * @brief Determine if the date is earlier than another date
  */
 - (BOOL)isEarlierThan:(NXDate *)otherDate {
-  return [self compare:otherDate] < 0;
+  objc_assert(otherDate != nil);
+  return sys_time_compare_ns(&otherDate->_time, &_time) < 0;
 }
 
 /**
  * @brief Determine if the date is later than another date
  */
 - (BOOL)isLaterThan:(NXDate *)otherDate {
-  return [self compare:otherDate] > 0;
+  objc_assert(otherDate != nil);
+  return sys_time_compare_ns(&otherDate->_time, &_time) > 0;
 }
 
 /**
  * @brief Determine if the date is equal to another date
  */
 - (BOOL)isEqual:(id)other {
-  if (![other isKindOfClass:[NXDate class]]) {
-    return NO;
-  }
   if (other == self) {
     return YES; // Same instance
   }
-  return [self compare:other] == 0;
+  if (other == nil || ![other isKindOfClass:[NXDate class]]) {
+    return NO; // Not equal if other is nil or not a date
+  }
+  return sys_time_compare_ns(&((NXDate *)other)->_time, &_time) == 0;
 }
 
 /**

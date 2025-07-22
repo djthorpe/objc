@@ -7,6 +7,7 @@
 @class NXApplication;
 @class NXAutoreleasePool;
 @class NXDate;
+@class NXNumber;
 @class NXObject;
 @class NXString;
 @class NXThread;
