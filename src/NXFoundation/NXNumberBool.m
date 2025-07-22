@@ -14,9 +14,7 @@ static NXNumberBool *falseNumber;
 
 @implementation NXNumberBool
 
-+ (void)initialize {
-  // Do nothing - use lazy initialization instead
-}
+// Removed the + (void)initialize method as it is redundant.
 
 /**
  * @brief Initialize an instance with a boolean value.
