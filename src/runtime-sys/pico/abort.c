@@ -1,7 +1,4 @@
-#include <stdlib.h>
+#include <pico/platform/panic.h>
 #include <runtime-sys/sys.h>
 
-void sys_abort(void) {
-  sys_puts("\nHALT");
-  abort();
-}
+void sys_abort(void) { panic("\nHALT"); }

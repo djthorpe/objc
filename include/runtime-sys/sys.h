@@ -45,6 +45,11 @@ extern void sys_putch(const char ch);
 extern uint32_t sys_random_uint32(void);
 
 /**
+ * @brief Initializes the system on startup.
+ */
+extern void sys_init(void);
+
+/**
  * @brief Aborts the current process immediately.
  * @note This function does not return to the caller.
  *

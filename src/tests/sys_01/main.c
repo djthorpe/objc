@@ -2,6 +2,9 @@
 #include <tests/tests.h>
 
 int main(void) {
+  // Initialize the system
+  sys_init();
+
   // Output a message to the console
   do {
     size_t len = sys_printf("Hello, World!\n");

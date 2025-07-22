@@ -9,7 +9,6 @@
 #endif
 #include <runtime-sys/sys.h>
 #include <time.h>
-#define NANOSECONDS_PER_SECOND 1000000000LL
 
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC FUNCTIONS
@@ -112,7 +111,8 @@ bool sys_time_set_time_utc(sys_time_t *time, uint8_t hours, uint8_t minutes,
   }
 
   time->seconds = (int64_t)new_timestamp;
-  time->nanoseconds = 0; // Reset nanoseconds to 0 as sub-second precision is not modified
+  time->nanoseconds =
+      0; // Reset nanoseconds to 0 as sub-second precision is not modified
   return true;
 }
 
@@ -169,34 +169,4 @@ bool sys_time_set_date_utc(sys_time_t *time, uint16_t year, uint8_t month,
   // Preserve nanoseconds
 
   return true;
-}
-
-int64_t sys_time_compare_ns(const sys_time_t *start, const sys_time_t *end) {
-  sys_time_t start_time = {0, 0}; // Default to epoch (0 seconds, 0 nanoseconds)
-  sys_time_t end_time;
-
-  // Handle NULL start parameter - treat as epoch
-  if (start != NULL) {
-    start_time = *start;
-  }
-
-  // Handle NULL end parameter - treat as current time
-  if (end != NULL) {
-    end_time = *end;
-  } else {
-    if (!sys_time_get_utc(&end_time)) {
-      // If we can't get current time, return 0 (no difference)
-      return 0;
-    }
-  }
-
-  // Calculate difference in seconds, then convert to nanoseconds
-  int64_t seconds_diff = end_time.seconds - start_time.seconds;
-  int64_t nanoseconds_diff = end_time.nanoseconds - start_time.nanoseconds;
-
-  // Convert seconds to nanoseconds and add the nanoseconds difference
-  int64_t total_diff_ns =
-      (seconds_diff * NANOSECONDS_PER_SECOND) + nanoseconds_diff;
-
-  return total_diff_ns;
 }

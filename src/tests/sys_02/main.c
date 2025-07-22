@@ -3,6 +3,9 @@
 #include <tests/tests.h>
 
 int main(void) {
+  // Initialize the system
+  sys_init();
+
   sys_printf("Running sys_02 time tests...\n");
 
   // Test 1: Basic sys_time_get_utc functionality
@@ -24,7 +27,6 @@ int main(void) {
   do {
     bool result = sys_time_get_utc(NULL);
     test_assert(result == false);
-
     sys_printf("sys_time_get_utc(NULL) correctly returned false\n");
   } while (0);
 
