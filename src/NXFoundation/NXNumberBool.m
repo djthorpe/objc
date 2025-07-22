@@ -1,6 +1,5 @@
 #include "NXNumberBool.h"
 #include <NXFoundation/NXFoundation.h>
-#include <stdio.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
@@ -13,8 +12,6 @@ static NXNumberBool *falseNumber;
 // LIFECYCLE
 
 @implementation NXNumberBool
-
-// Removed the + (void)initialize method as it is redundant.
 
 /**
  * @brief Initialize an instance with a boolean value.

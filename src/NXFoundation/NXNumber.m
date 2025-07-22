@@ -25,4 +25,15 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
   return [NXNumberBool falseValue];
 }
 
+/**
+ * @brief Returns the boolean value stored in this NXNumber instance.
+ */
+- (BOOL)boolValue {
+  if ([self isKindOfClass:[NXNumberBool class]]) {
+    return [(NXNumberBool *)self boolValue];
+  }
+  // If not a boolean number, return NO by default
+  return NO;
+}
+
 @end

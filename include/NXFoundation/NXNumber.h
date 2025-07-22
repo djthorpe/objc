@@ -57,4 +57,12 @@ uint32_t NXRandUnsignedInt32();
  */
 + (NXNumber *)falseValue;
 
+/**
+ * @brief Returns the boolean value stored in this NXNumber instance.
+ * @return The boolean value stored in this instance.
+ *
+ * This method returns YES if the stored value is non-zero, NO otherwise.
+ */
+- (BOOL)boolValue;
+
 @end
