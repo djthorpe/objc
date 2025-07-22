@@ -16,6 +16,7 @@ var searchData=
   ['sys_5frandom_5fuint32',['sys_random_uint32',['../sys_8h.html#a39c02847b060cfe7b9c568a06bc7ad74',1,'sys.h']]],
   ['sys_5fsleep',['sys_sleep',['../sys_8h.html#acb5a950a99bad2a938dee8c861e50269',1,'sys.h']]],
   ['sys_5fsprintf',['sys_sprintf',['../sys_8h.html#a340ab3d1b3e0cef587d52b580cd59d25',1,'sys.h']]],
+  ['sys_5fthread_5fnumcores',['sys_thread_numcores',['../thread_8h.html#afd9cf2d40386c9cef130e39d39155293',1,'thread.h']]],
   ['sys_5ftime_5fcompare_5fns',['sys_time_compare_ns',['../time_8h.html#a4ca6ec26efbd88031d42509a07482f3d',1,'time.h']]],
   ['sys_5ftime_5fget_5fdate_5futc',['sys_time_get_date_utc',['../time_8h.html#a34afa8ff2a90627f3119d0fe662fdb89',1,'time.h']]],
   ['sys_5ftime_5fget_5ftime_5futc',['sys_time_get_time_utc',['../time_8h.html#a664e2499cff45dfad7da8a16ad873dfd',1,'time.h']]],

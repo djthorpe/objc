@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['quotedstring',['quotedString',['../interfaceNXString.html#a126cf25964061c0f9572a5e7839b85c1',1,'NXString']]]
+  ['protocol',['Protocol',['../interfaceProtocol.html',1,'']]],
+  ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]]
 ];
