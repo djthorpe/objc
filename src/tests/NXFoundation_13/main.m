@@ -229,12 +229,31 @@ int main() {
 
   printf("✓ Type safety and value ranges are correct\n");
 
+  // Test 16: NXTimeIntervalDescription function (placeholder test)
+  printf("\nTest 16: Testing NXTimeIntervalDescription function...\n");
+  // Since this function currently returns "TODO", we just test it doesn't crash
+  NXTimeInterval testInterval = 5 * Second + 250 * Millisecond;
+  NXString *desc1 = NXTimeIntervalDescription(testInterval, Millisecond);
+  NXString *desc2 = NXTimeIntervalDescription(testInterval, Second);
+  NXString *desc3 = NXTimeIntervalDescription(0, Second);
+  NXString *desc4 = NXTimeIntervalDescription(-testInterval, Millisecond);
+
+  test_assert(desc1 != nil);
+  test_assert(desc2 != nil);
+  test_assert(desc3 != nil);
+  test_assert(desc4 != nil);
+  printf("✓ NXTimeIntervalDescription function calls succeed\n");
+  printf("  desc1: %s\n", [desc1 cStr]);
+  printf("  desc2: %s\n", [desc2 cStr]);
+  printf("  desc3: %s\n", [desc3 cStr]);
+  printf("  desc4: %s\n", [desc4 cStr]);
+
   // Cleanup
   [pool release];
   [zone release];
 
   printf("\n🎉 All NXTimeInterval tests passed successfully!\n");
   printf("Tested: Constants, arithmetic, conversions, precision, edge cases, "
-         "and practical usage\n");
+         "practical usage, and description function\n");
   return 0;
 }
