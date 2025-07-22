@@ -127,7 +127,13 @@ int main() {
   uint8_t month, day, weekday;
   BOOL dateSuccess = [componentDate year:&year month:&month day:&day weekday:&weekday];
   test_assert(dateSuccess);
-  test_assert(year >= 2025 && year <= 9999);
+  
+  // Dynamically determine the current year
+  time_t now = time(NULL);
+  struct tm *currentTime = localtime(&now);
+  uint16_t currentYear = currentTime->tm_year + 1900;
+  
+  test_assert(year >= currentYear && year <= 9999);
   test_assert(month >= 1 && month <= 12);
   test_assert(day >= 1 && day <= 31);
   test_assert(weekday <= 6);
