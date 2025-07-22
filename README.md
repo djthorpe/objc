@@ -92,14 +92,22 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
 - [X] Memory management - retain, release - reference counting for objects through NXZone
 - [X] Date and Time - `NXDate` - mutable date and time
+- [X] Number - `NXNumber` with booleans
+- [ ] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
+- [ ] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
+- [ ] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
+- [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] `NXLog` and `NXString stringWithFormat:` support - `%@` format specifier for logging objects and `[Object description]`
-- [ ] String - `NXString` - mutable strings
-- [ ] Number - `NXNumber` - immutable numbers
-- [ ] Array and Map - `NXArray` and `NXDictionary`
+- [ ] `NXString` - mutable strings - append, appendFormat, substring, split, join, etc.
+- [ ] `NXNull` - singleton for null objects that can be inserted into collections
+- [ ] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
+- [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
+- [ ] `NXData` - mutable data creating hashes
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:`
 - [ ] More efficient method implementation lookup
-- [ ] JSON - `NXCoder` - JSON / Binary marshalling and unmarshalling
+- [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
+- [ ] `NXScanner` - scanning and tokenizing
 - [ ] Calling `+[initialise]` for categories
 - [ ] `NXApplication` and `NXRunLoop`
 - [ ] Pico toolchain - integrate with Pico SDK
