@@ -16,4 +16,10 @@
  * This function queries the system to determine the total number of processing
  * cores available.
  */
-uint8_t sys_thread_numcores(void);
+extern uint8_t sys_thread_numcores(void);
+
+/**
+ * @brief Pauses the execution of the current thread for a specified time.
+ * @param msec The number of milliseconds to sleep.
+ */
+extern void sys_sleep(int32_t msec);
