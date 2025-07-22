@@ -113,12 +113,9 @@
       *day = _day;
     if (weekday)
       *weekday = _weekday;
-  }
-  if (_year != 0) {
     return YES; // Components successfully cached
-  } else {
-    return NO; // Failed to cache components
   }
+  return NO; // Failed to cache components
 }
 
 /**
