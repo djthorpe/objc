@@ -1,5 +1,5 @@
 /**
- * @file threads.h
+ * @file thread.h
  * @brief Defines thread management functions.
  *
  * This file declares various system methods for managing threads.
