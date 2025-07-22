@@ -53,11 +53,7 @@ var menudata={children:[
 {text:"o",url:"globals.html#index_o"},
 {text:"s",url:"globals.html#index_s"},
 {text:"y",url:"globals.html#index_y"}]},
-{text:"Functions",url:"globals_func.html",children:[
-{text:"c",url:"globals_func.html#index_c"},
-{text:"n",url:"globals_func.html#index_n"},
-{text:"o",url:"globals_func.html#index_o"},
-{text:"s",url:"globals_func.html#index_s"}]},
+{text:"Functions",url:"globals_func.html"},
 {text:"Variables",url:"globals_vars.html"},
 {text:"Typedefs",url:"globals_type.html"},
 {text:"Enumerations",url:"globals_enum.html"},

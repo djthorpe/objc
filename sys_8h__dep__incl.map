@@ -1,7 +1,0 @@
-<map id="include/sys/sys.h" name="include/sys/sys.h">
-<area shape="rect" id="node2" href="$assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="12,80,163,121"/>
-<area shape="rect" id="node5" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="187,80,351,121"/>
-<area shape="rect" id="node6" href="$NXLog_8h.html" title="Defines a logging macro for printing formatted messages. " alt="" coords="375,80,539,121"/>
-<area shape="rect" id="node3" href="$objc_8h_source.html" title="include/runtime&#45;gcc\l/objc/objc.h" alt="" coords="12,169,163,211"/>
-<area shape="rect" id="node4" href="$NXFoundation_8h_source.html" title="include/NXFoundation\l/NXFoundation.h" alt="" coords="5,259,169,300"/>
-</map>
