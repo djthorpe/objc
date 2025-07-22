@@ -55,16 +55,11 @@ int main() {
 
   // Test 6: Boolean value extraction
   printf("\nTest 6: Testing boolean value extraction...\n");
-  // Directly test boolValue method without respondsToSelector check
-  NXNumberBool *trueBool = (NXNumberBool *)trueNum;
-  NXNumberBool *falseBool = (NXNumberBool *)falseNum;
-  NXNumberBool *yesBool = (NXNumberBool *)boolYes;
-  NXNumberBool *noBool = (NXNumberBool *)boolNo;
-
-  test_assert([trueBool boolValue] == YES);
-  test_assert([falseBool boolValue] == NO);
-  test_assert([yesBool boolValue] == YES);
-  test_assert([noBool boolValue] == NO);
+  // Test boolValue method using the public NXNumber API
+  test_assert([trueNum boolValue] == YES);
+  test_assert([falseNum boolValue] == NO);
+  test_assert([boolYes boolValue] == YES);
+  test_assert([boolNo boolValue] == NO);
   printf("✓ Boolean values extracted correctly\n");
 
   // Test 7: String representation
@@ -100,8 +95,8 @@ int main() {
 
   // Test 9: Boolean expressions with values
   printf("\nTest 9: Testing boolean expressions...\n");
-  NXNumberBool *testTrue = (NXNumberBool *)[NXNumber numberWithBool:YES];
-  NXNumberBool *testFalse = (NXNumberBool *)[NXNumber numberWithBool:NO];
+  NXNumber *testTrue = [NXNumber numberWithBool:YES];
+  NXNumber *testFalse = [NXNumber numberWithBool:NO];
 
   BOOL trueResult = [testTrue boolValue];
   BOOL falseResult = [testFalse boolValue];
