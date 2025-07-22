@@ -4,6 +4,7 @@
  * functionality.
  */
 #pragma once
+#include "Object+Protocol.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // CLASS DEFINITIONS
@@ -33,7 +34,7 @@
  * retain.
  * @return The initialized string object.
  */
-- (id)initWithString:(id<NXStringProtocol>)other;
+- (id)initWithString:(id<NXStringProtocol, ObjectProtocol>)other;
 
 /**
  * @brief Initializes a new string by referencing a constant c-string.

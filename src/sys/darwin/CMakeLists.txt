@@ -5,6 +5,7 @@ add_library(${NAME} STATIC
     exception.c
     mutex.c
     random.c
+    ../posix/thread.c
     ../posix/malloc.c
     ../posix/puts.c
     ../posix/sleep.c

@@ -24,7 +24,7 @@
 /**
  * @brief Initializes a new string by referencing another string.
  */
-- (id)initWithString:(id)other {
+- (id)initWithString:(id<NXStringProtocol, ObjectProtocol>)other {
   self = [self init];
   if (self == nil || self == other || other == nil) {
     return nil;
