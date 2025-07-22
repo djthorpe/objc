@@ -19,7 +19,7 @@ typedef enum {
  *
  * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
-@interface NXString : NXObject {
+@interface NXString : NXObject <NXStringProtocol> {
 @private
   const char *_value;
   char *_data; ///< Pointer to the retained string data
@@ -36,7 +36,7 @@ typedef enum {
  * retain.
  * @return The initialized string object.
  */
-- (id)initWithString:(id)other;
+- (id)initWithString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Initializes a new string by referencing a constant c-string.
@@ -80,7 +80,7 @@ typedef enum {
  * it will currently panic, but should raise an exception in the future,
  * when exception handling is implemented.
  */
-- (void)appendString:(id)other;
+- (void)appendString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Appends a string with format and arguments to this string.
@@ -128,7 +128,8 @@ typedef enum {
  * end, or NULL to skip.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-- (BOOL)trimPrefix:(id)prefix suffix:(id)suffix;
+- (BOOL)trimPrefix:(id<NXStringProtocol>)prefix
+            suffix:(id<NXStringProtocol>)suffix;
 
 /**
  * @brief Checks if the string starts with a given prefix.
@@ -136,7 +137,7 @@ typedef enum {
  * prefix.
  * @return YES if the string starts with the specified prefix, NO otherwise.
  */
-- (BOOL)hasPrefix:(id)prefix;
+- (BOOL)hasPrefix:(id<NXStringProtocol>)prefix;
 
 /**
  * @brief Checks if the string ends with a given suffix.
@@ -144,7 +145,7 @@ typedef enum {
  * suffix.
  * @return YES if the string ends with the specified suffix, NO otherwise.
  */
-- (BOOL)hasSuffix:(id)suffix;
+- (BOOL)hasSuffix:(id<NXStringProtocol>)suffix;
 
 /**
  * @brief Counts the number of occurrences of a character.
