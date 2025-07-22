@@ -1,6 +1,6 @@
 #include <stdarg.h>
 #include <stddef.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES

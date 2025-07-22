@@ -1,7 +1,7 @@
 #include "NXZone+malloc.h"
 #include <NXFoundation/NXFoundation.h>
 #include <string.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 @implementation NXString
 

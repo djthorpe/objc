@@ -1,5 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 // Define the current autorelease pool class
 static id defaultPool = nil;

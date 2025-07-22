@@ -6,7 +6,7 @@
 #include "statics.h"
 #include <objc/objc.h>
 #include <stdlib.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 

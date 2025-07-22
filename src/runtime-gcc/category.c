@@ -2,7 +2,7 @@
 #include "api.h"
 #include "class.h"
 #include <objc/objc.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 #define CATEGORY_TABLE_SIZE 32
 static struct objc_category *category_table[CATEGORY_TABLE_SIZE + 1];

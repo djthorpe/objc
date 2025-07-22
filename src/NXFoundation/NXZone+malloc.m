@@ -1,5 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 void *__zone_malloc(size_t size) {
   void *ptr = sys_malloc(size);

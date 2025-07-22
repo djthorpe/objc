@@ -6,7 +6,7 @@
  * from the Foundation framework.
  */
 #pragma once
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 /**
  * @def NXLog(format, ...)

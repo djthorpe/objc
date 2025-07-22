@@ -1,6 +1,6 @@
 #include <NXFoundation/NXFoundation.h>
 #include <stdio.h>
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 @implementation NXDate
 

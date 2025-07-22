@@ -44,7 +44,6 @@ tests: NXFoundation
 	@${CMAKE} --build ${BUILD_DIR}/src/tests
 	@${CMAKE} --build ${BUILD_DIR} --target test
 
-
 # Generate the documentation
 .PHONY: docs
 docs: dep-docker 
@@ -52,12 +51,16 @@ docs: dep-docker
 	@echo make docs
 	@${DOCKER} run -v .:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
 
-#.PHONY: test
-#test: submodule
-#	@echo make test
-#	@cmake -B ${BUILD_DIR} -D PICO_BOARD=${PICO_BOARD} -D LLVM_TOOLCHAIN_PATH=${LLVM_TOOLCHAIN_PATH}
-#	@cmake --build ${BUILD_DIR}
-#	@echo "\nRun:\n  picotool load -x ${BUILD_DIR}/src/test/test.uf2\n"
+# Cross-compile libraries for Raspberry Pi Pico
+.PHONY: pico
+pico: submodule dep-cmake
+	@echo
+	@echo make pico cross-compilation
+	@TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal TARGET=armv6m-none-eabi ${CMAKE} -B ${BUILD_DIR} -Wno-dev \
+		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+		-D RUNTIME=gcc \
+		-D TARGET=armv6m-none-eabi
+	@TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal ${CMAKE} --build ${BUILD_DIR} --target objc-gcc
 
 # Create the picotool binary
 .PHONY: picotool

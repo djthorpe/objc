@@ -7,7 +7,7 @@
  */
 
 #pragma once
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 /**
  * @def objc_assert(condition)

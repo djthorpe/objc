@@ -1,4 +1,4 @@
-set(NAME "sys")
+set(NAME "runtime-sys")
 
 add_library(${NAME} STATIC
     abort.c

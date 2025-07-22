@@ -1,4 +1,14 @@
 
+# Set C standard for all tests to avoid C99/C11 mode issues
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_EXTENSIONS ON)
+
+# Add compile options for C11 standard in Objective-C files
+add_compile_options(
+    "$<$<COMPILE_LANGUAGE:OBJC>:-std=gnu11>"
+    "$<$<COMPILE_LANGUAGE:C>:-std=gnu11>"
+)
+
 # add include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../include

@@ -8,7 +8,7 @@
 
 #pragma once
 #include "NXTimeInterval.h"
-#include <sys/sys.h>
+#include <runtime-sys/sys.h>
 
 /**
  * @brief A class for representing and manipulating dates.
