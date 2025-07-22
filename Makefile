@@ -56,11 +56,11 @@ docs: dep-docker
 pico: submodule dep-cmake
 	@echo
 	@echo make pico cross-compilation
-	@TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal TARGET=armv6m-none-eabi ${CMAKE} -B ${BUILD_DIR} -Wno-dev \
+	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		-D TARGET=armv6m-none-eabi
-	@TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal ${CMAKE} --build ${BUILD_DIR} --target objc-gcc
+	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
 
 # Create the picotool binary
 .PHONY: picotool

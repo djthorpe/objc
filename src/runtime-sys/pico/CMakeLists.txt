@@ -16,8 +16,8 @@ add_library(${NAME} STATIC
     ../all/time.c
 )
 target_include_directories(${NAME} PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../../../include/runtime-${RUNTIME}
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
+    ${CMAKE_CURRENT_LIST_DIR}/../../../include/runtime-${RUNTIME}
 )
 target_link_libraries(${NAME} 
     pico_stdlib
