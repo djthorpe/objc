@@ -91,11 +91,11 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Memory management - alloc, dealloc, memory arenas - require malloc in an `NXZone`
 - [X] Printf support - `vsprintf` - printf-like function which can be used by NXLog, NXString and sys_panicf
 - [X] Memory management - retain, release - reference counting for objects through NXZone
+- [X] Date and Time - `NXDate` - mutable date and time
 - [ ] `NXLog` and `NXString stringWithFormat:` support - `%@` format specifier for logging objects and `[Object description]`
 - [ ] String - `NXString` - mutable strings
 - [ ] Number - `NXNumber` - immutable numbers
 - [ ] Array and Map - `NXArray` and `NXDictionary`
-- [ ] Date and Time - `NXDate` - mutable date and time
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:`
 - [ ] More efficient method implementation lookup
