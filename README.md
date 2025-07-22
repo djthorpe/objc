@@ -103,6 +103,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [ ] `NXData` - mutable data creating hashes
+- [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] Fix linking categories in static libraries (see test NXFoundation_05)
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:` (see test `runtime_14`)
