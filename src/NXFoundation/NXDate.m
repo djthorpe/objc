@@ -134,13 +134,9 @@
       *seconds = _seconds;
     if (nanoseconds)
       *nanoseconds = _time.nanoseconds;
-    return YES;
-  }
-  if (_year != 0) {
     return YES; // Components successfully cached
-  } else {
-    return NO; // Failed to cache components
   }
+  return NO; // Failed to cache components
 }
 
 /**
