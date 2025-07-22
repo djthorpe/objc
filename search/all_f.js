@@ -10,6 +10,7 @@ var searchData=
   ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]],
   ['sys_2eh',['sys.h',['../sys_8h.html',1,'']]],
   ['sys_5fabort',['sys_abort',['../sys_8h.html#a51400f71e4702fdbd13394546f4182bb',1,'sys.h']]],
+  ['sys_5finit',['sys_init',['../sys_8h.html#af411a8bc6b7ed4b0af9114e10c959448',1,'sys.h']]],
   ['sys_5fpanicf',['sys_panicf',['../sys_8h.html#a795b667df1ea24eeb5045a9f625f8611',1,'sys.h']]],
   ['sys_5fprintf',['sys_printf',['../printf_8h.html#ab6bda746d6b03c697ebcf468f83fdb6d',1,'printf.h']]],
   ['sys_5fputch',['sys_putch',['../sys_8h.html#ae13dd8a6d75ee7e807c43ae84ec66dfd',1,'sys.h']]],
