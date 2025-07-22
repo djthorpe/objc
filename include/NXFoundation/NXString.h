@@ -166,7 +166,7 @@ typedef enum {
  * containment.
  * @return YES if the string contains the specified substring, NO otherwise.
  */
-- (BOOL)containsString:(id)other;
+- (BOOL)containsString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Compares this string with another string.
