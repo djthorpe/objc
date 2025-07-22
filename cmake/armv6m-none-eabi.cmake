@@ -24,7 +24,7 @@ find_program(CMAKE_ASM_COMPILER NAMES "clang"
 
 # Set the target triple for all languages
 set(CMAKE_C_COMPILER_TARGET "armv6m-none-eabi")
-set(CMAKE_OBJC_COMPILER_TARGET "armv6m-none-eabi") 
+set(CMAKE_OBJC_COMPILER_TARGET "armv6m-none-eabi")
 set(CMAKE_ASM_COMPILER_TARGET "armv6m-none-eabi")
 
 # Compile options for Objective-C
