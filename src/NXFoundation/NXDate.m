@@ -245,14 +245,14 @@
   _time.nanoseconds += ns;
 
   // Handle nanosecond overflow
-  if (_time.nanoseconds >= 1000000000) {
-    int64_t overflow = _time.nanoseconds / 1000000000;
+  if (_time.nanoseconds >= NANOSECONDS_PER_SECOND) {
+    int64_t overflow = _time.nanoseconds / NANOSECONDS_PER_SECOND;
     _time.seconds += overflow;
-    _time.nanoseconds -= overflow * 1000000000;
+    _time.nanoseconds -= overflow * NANOSECONDS_PER_SECOND;
   } else if (_time.nanoseconds < 0) {
-    int64_t underflow = (-_time.nanoseconds + 999999999) / 1000000000;
+    int64_t underflow = (-_time.nanoseconds + (NANOSECONDS_PER_SECOND - 1)) / NANOSECONDS_PER_SECOND;
     _time.seconds -= underflow;
-    _time.nanoseconds += underflow * 1000000000;
+    _time.nanoseconds += underflow * NANOSECONDS_PER_SECOND;
   }
 
   // Mark components as uncached
