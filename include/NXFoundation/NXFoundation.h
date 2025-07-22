@@ -7,6 +7,7 @@
 @class NXApplication;
 @class NXAutoreleasePool;
 @class NXDate;
+@class NXNull;
 @class NXNumber;
 @class NXObject;
 @class NXString;
@@ -19,6 +20,7 @@
 #include "NXAutoreleasePool.h"
 #include "NXDate.h"
 #include "NXLog.h"
+#include "NXNull.h"
 #include "NXNumber.h"
 #include "NXObject.h"
 #include "NXString.h"
