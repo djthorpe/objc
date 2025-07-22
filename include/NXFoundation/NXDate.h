@@ -23,9 +23,9 @@
  */
 @interface NXDate : NXObject {
 @protected
-  sys_time_t _time;
+  sys_time_t _time; ///< Time representation
 @private
-  uint16_t _year;   ///< Cached year component
+  uint16_t _year;   ///< Cached year component (1-9999)
   uint8_t _month;   ///< Cached month component (1-12)
   uint8_t _day;     ///< Cached day component (1-31)
   uint8_t _weekday; ///< Cached weekday component (0-6, Sunday=0)
@@ -65,13 +65,11 @@
  * @param weekday Pointer to store the day of week (0-6, Sunday=0). Can be NULL
  * if not needed.
  * @return YES if the operation was successful, NO otherwise.
- * @note All output parameters are optional and can be NULL if that component is
- * not needed.
  */
-// - (BOOL)year:(uint16_t *)year
-//        month:(uint8_t *)month
-//          day:(uint8_t *)day
-//      weekday:(uint8_t *)weekday;
+- (BOOL)year:(uint16_t *)year
+       month:(uint8_t *)month
+         day:(uint8_t *)day
+     weekday:(uint8_t *)weekday;
 
 /**
  * @brief Retrieves the time components from this date.
@@ -83,34 +81,23 @@
  * @param nanoseconds Pointer to store the nanoseconds (0-999999999). Can be
  * NULL if not needed.
  * @return YES if the operation was successful, NO otherwise.
- * @note All output parameters are optional and can be NULL if that component is
- * not needed.
  * @note Time is returned in UTC timezone.
  */
-// - (BOOL)hours:(uint8_t *)hours
-//         minutes:(uint8_t *)minutes
-//         seconds:(uint8_t *)seconds
-//     nanoseconds:(uint32_t *)nanoseconds;
+- (BOOL)hours:(uint8_t *)hours
+        minutes:(uint8_t *)minutes
+        seconds:(uint8_t *)seconds
+    nanoseconds:(uint32_t *)nanoseconds;
 
 /**
  * @brief Sets the date components for this date object.
  * @param year The year to set (e.g., 2025).
  * @param month The month to set (1-12).
  * @param day The day of month to set (1-31).
- * @param weekday The day of week to set (0-6, Sunday=0). This parameter is
- * ignored and calculated automatically based on the date.
  * @return YES if the date was set successfully, NO if the date is invalid.
- * @note The weekday parameter is provided for API consistency but is ignored.
- *       The actual weekday is calculated from the year, month, and day.
  * @note Invalid dates (e.g., February 30th) will cause this method to return
  * NO.
- * @warning This method modifies the internal time representation and may affect
- *          the time components (hours, minutes, seconds, nanoseconds).
  */
-// - (BOOL)setYear:(uint16_t)year
-//           month:(uint8_t)month
-//             day:(uint8_t)day
-//         weekday:(uint8_t)weekday;
+- (BOOL)setYear:(uint16_t)year month:(uint8_t)month day:(uint8_t)day;
 
 /**
  * @brief Sets the time components for this date object.
@@ -123,12 +110,46 @@
  * @note Time is set in UTC timezone.
  * @note This method preserves the date components (year, month, day) while
  *       only modifying the time portion.
- * @warning Invalid time values will cause this method to return NO without
- *          modifying the date object.
  */
-// - (BOOL)setHours:(uint8_t)hours
-//          minutes:(uint8_t)minutes
-//          seconds:(uint8_t)seconds
-//      nanoseconds:(uint32_t)nanoseconds;
+- (BOOL)setHours:(uint8_t)hours
+         minutes:(uint8_t)minutes
+         seconds:(uint8_t)seconds
+     nanoseconds:(uint32_t)nanoseconds;
+
+/**
+ * @brief Compares the date against another date, and returns the difference.
+ * @param otherDate The date to compare against.
+ * @return The time interval since the reference date. If the other date is
+ * later, the interval will be negative.
+ */
+- (NXTimeInterval)compare:(NXDate *)otherDate;
+
+/**
+ * @brief Determine if the date is earlier than another date
+ * @param otherDate The date to compare against.
+ * @return YES if this date is earlier than otherDate, NO otherwise.
+ */
+- (BOOL)isEarlierThan:(NXDate *)otherDate;
+
+/**
+ * @brief Determine if the date is later than another date
+ * @param otherDate The date to compare against.
+ * @return YES if this date is later than otherDate, NO otherwise.
+ */
+- (BOOL)isLaterThan:(NXDate *)otherDate;
+
+/**
+ * @brief Add a time interval to this date.
+ * @param interval The time interval to add.
+ */
+- (void)addTimeInterval:(NXTimeInterval)interval;
+
+/**
+ * @brief Return a new date by adding a time interval to this date.
+ * @param interval The time interval to add.
+ * @return A new NXDate instance representing the date after adding the
+ * interval.
+ */
+- (NXDate *)dateByAddingTimeInterval:(NXTimeInterval)interval;
 
 @end

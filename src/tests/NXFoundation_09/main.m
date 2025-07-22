@@ -118,10 +118,136 @@ int main() {
   test_assert(strcmp([desc1 cStr], [desc2 cStr]) == 0);
   printf("✓ Description strings are consistent\n");
 
+  // Test 11: Test date component getters
+  printf("\nTest 11: Testing date component getters...\n");
+  NXDate *componentDate = [NXDate date];
+  test_assert(componentDate != nil);
+  
+  uint16_t year;
+  uint8_t month, day, weekday;
+  BOOL dateSuccess = [componentDate year:&year month:&month day:&day weekday:&weekday];
+  test_assert(dateSuccess);
+  test_assert(year >= 2025 && year <= 9999);
+  test_assert(month >= 1 && month <= 12);
+  test_assert(day >= 1 && day <= 31);
+  test_assert(weekday <= 6);
+  printf("✓ Date components: %04d-%02d-%02d (weekday: %d)\n", year, month, day, weekday);
+
+  // Test 12: Test time component getters
+  printf("\nTest 12: Testing time component getters...\n");
+  uint8_t hours, minutes, seconds;
+  uint32_t nanoseconds;
+  BOOL timeSuccess = [componentDate hours:&hours minutes:&minutes seconds:&seconds nanoseconds:&nanoseconds];
+  test_assert(timeSuccess);
+  test_assert(hours <= 23);
+  test_assert(minutes <= 59);
+  test_assert(seconds <= 59);
+  test_assert(nanoseconds < 1000000000);
+  printf("✓ Time components: %02d:%02d:%02d.%09d\n", hours, minutes, seconds, nanoseconds);
+
+  // Test 13: Test date comparison methods
+  printf("\nTest 13: Testing date comparison methods...\n");
+  NXDate *baseDate = [NXDate date];
+  NXDate *laterDate = [NXDate dateWithTimeIntervalSinceNow:5 * Second];
+  NXDate *earlierDate = [NXDate dateWithTimeIntervalSinceNow:-5 * Second];
+  
+  // Test compare method directly
+  NXTimeInterval diff1 = [baseDate compare:laterDate];
+  NXTimeInterval diff2 = [baseDate compare:earlierDate];
+  test_assert(diff1 < 0); // baseDate is earlier than laterDate
+  test_assert(diff2 > 0); // baseDate is later than earlierDate
+  
+  // Test comparison convenience methods
+  test_assert([baseDate isEarlierThan:laterDate]);
+  test_assert([baseDate isLaterThan:earlierDate]);
+  test_assert(![baseDate isEarlierThan:earlierDate]);
+  test_assert(![baseDate isLaterThan:laterDate]);
+  printf("✓ Date comparison methods work correctly\n");
+
+  // Test 14: Test addTimeInterval method
+  printf("\nTest 14: Testing addTimeInterval method...\n");
+  NXDate *mutableDate = [NXDate date];
+  test_assert(mutableDate != nil);
+  
+  NXString *beforeDesc = [mutableDate description];
+  [mutableDate addTimeInterval:3 * Hour + 15 * Minute]; // Add 3h 15m
+  NXString *afterDesc = [mutableDate description];
+  
+  test_assert(beforeDesc != nil && afterDesc != nil);
+  test_assert(strcmp([beforeDesc cStr], [afterDesc cStr]) != 0); // Should be different
+  printf("✓ Before: %s\n", [beforeDesc cStr]);
+  printf("✓ After (+3h15m): %s\n", [afterDesc cStr]);
+
+  // Test 15: Test dateByAddingTimeInterval method
+  printf("\nTest 15: Testing dateByAddingTimeInterval method...\n");
+  NXDate *originalDate = [NXDate date];
+  NXDate *derivedDate = [originalDate dateByAddingTimeInterval:-2 * Day]; // 2 days ago
+  
+  test_assert(originalDate != nil && derivedDate != nil);
+  test_assert(originalDate != derivedDate); // Different instances
+  test_assert([derivedDate isEarlierThan:originalDate]);
+  
+  NXString *origDesc = [originalDate description];
+  NXString *derivedDesc = [derivedDate description];
+  printf("✓ Original: %s\n", [origDesc cStr]);
+  printf("✓ Derived (-2d): %s\n", [derivedDesc cStr]);
+
+  // Test 16: Test setter methods
+  printf("\nTest 16: Testing date/time setter methods...\n");
+  NXDate *setterDate = [NXDate date];
+  test_assert(setterDate != nil);
+  
+  // Test date setter
+  BOOL dateSetSuccess = [setterDate setYear:2024 month:12 day:25];
+  test_assert(dateSetSuccess);
+  
+  uint16_t newYear;
+  uint8_t newMonth, newDay;
+  [setterDate year:&newYear month:&newMonth day:&newDay weekday:NULL];
+  test_assert(newYear == 2024);
+  test_assert(newMonth == 12);
+  test_assert(newDay == 25);
+  printf("✓ Date setter: Set to 2024-12-25\n");
+  
+  // Test time setter
+  BOOL timeSetSuccess = [setterDate setHours:14 minutes:30 seconds:45 nanoseconds:123456789];
+  test_assert(timeSetSuccess);
+  
+  uint8_t newHours, newMinutes, newSeconds;
+  uint32_t newNanoseconds;
+  [setterDate hours:&newHours minutes:&newMinutes seconds:&newSeconds nanoseconds:&newNanoseconds];
+  test_assert(newHours == 14);
+  test_assert(newMinutes == 30);
+  test_assert(newSeconds == 45);
+  test_assert(newNanoseconds == 123456789);
+  printf("✓ Time setter: Set to 14:30:45.123456789\n");
+  
+  NXString *setterDesc = [setterDate description];
+  printf("✓ Final date: %s\n", [setterDesc cStr]);
+
+  // Test 17: Test invalid setter parameters
+  printf("\nTest 17: Testing invalid setter parameter validation...\n");
+  NXDate *validationDate = [NXDate date];
+  
+  // Invalid date parameters
+  test_assert(![validationDate setYear:0 month:1 day:1]); // Invalid year
+  test_assert(![validationDate setYear:2025 month:0 day:1]); // Invalid month
+  test_assert(![validationDate setYear:2025 month:13 day:1]); // Invalid month
+  test_assert(![validationDate setYear:2025 month:1 day:0]); // Invalid day
+  test_assert(![validationDate setYear:2025 month:1 day:32]); // Invalid day
+  
+  // Invalid time parameters
+  test_assert(![validationDate setHours:24 minutes:0 seconds:0 nanoseconds:0]); // Invalid hour
+  test_assert(![validationDate setHours:0 minutes:60 seconds:0 nanoseconds:0]); // Invalid minute
+  test_assert(![validationDate setHours:0 minutes:0 seconds:60 nanoseconds:0]); // Invalid second
+  test_assert(![validationDate setHours:0 minutes:0 seconds:0 nanoseconds:1000000000]); // Invalid nanoseconds
+  printf("✓ Invalid parameter validation works correctly\n");
+
   // Cleanup
   [pool release];
   [zone release];
 
-  printf("\n🎉 All NXDate tests passed successfully!\n");
+  printf("\n🎉 All NXDate comprehensive tests passed successfully!\n");
+  printf("Tested: Creation, intervals, components, comparisons, setters, validation\n");
   return 0;
 }

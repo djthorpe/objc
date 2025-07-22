@@ -1,7 +1,8 @@
 /**
  * @file runtime.h
  * @brief Defines the core types and functions of the Objective-C runtime.
- * @details This file provides the fundamental data structures and functions
+ *
+ * This file provides the fundamental data structures and functions
  * that constitute the Objective-C runtime. It includes definitions for objects,
  * classes, selectors, and methods, as well as functions for introspection
  * and message dispatch.
@@ -13,26 +14,35 @@
 
 /** @brief A pointer to an instance of a class. */
 typedef struct objc_object *id;
+
 /** @brief A pointer to a method selector. */
 typedef const struct objc_selector *SEL;
+
 /** @brief A pointer to a class definition. */
 typedef struct objc_class *Class;
+
 /** @brief A pointer to a method implementation. */
 typedef id (*IMP)(id, SEL, ...);
+
 /** @brief A pointer to a method. */
 typedef struct objc_method *Method;
+
 // typedef struct objc_property* Property;
 
 /** @brief A null object pointer. */
 #define nil ((id)0)
+
 /** @brief A null class pointer. */
 #define Nil ((Class)0)
 
 // Booleans
+
 /** @brief A Boolean value. */
 typedef bool BOOL;
+
 /** @brief The Boolean value `true`. */
 #define YES true
+
 /** @brief The Boolean value `false`. */
 #define NO false
 
