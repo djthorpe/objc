@@ -26,6 +26,7 @@ __attribute__((used)) static void load_categories() {
 + (id)allocWithZone:(NXZone *)zone {
   if (zone == nil) {
     zone = [NXZone defaultZone]; // Use the default zone if none is provided
+    objc_assert(zone);           // Abort if no default zone is available
   }
   id instance = [zone allocWithSize:class_getInstanceSize(self)];
   if (instance) {

@@ -6,8 +6,7 @@ add_library(${NAME} STATIC
     NXAutoreleasePool.m
     NXDate.m
     NXNumber.m
-    NXNumberInt.m
-    NXNumberUnsignedInt.m
+    NXNumberBool.m
     NXObject.m
     NXString.m
     NXTimeInterval.m
