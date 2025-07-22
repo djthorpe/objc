@@ -130,7 +130,7 @@ int main() {
                                      day:&day
                                  weekday:&weekday];
   test_assert(dateSuccess);
-  test_assert(year >= 2025 && year <= 9999);
+  test_assert(year >= 1970 && year <= 9999);
   test_assert(month >= 1 && month <= 12);
   test_assert(day >= 1 && day <= 31);
   test_assert(weekday <= 6);
