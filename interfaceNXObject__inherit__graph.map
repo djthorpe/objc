@@ -2,8 +2,9 @@
 <area shape="rect" id="node3" href="$interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="5,155,120,181"/>
 <area shape="rect" id="node4" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="144,155,291,181"/>
 <area shape="rect" id="node5" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="315,155,387,181"/>
-<area shape="rect" id="node6" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="411,155,490,181"/>
-<area shape="rect" id="node7" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="514,155,601,181"/>
-<area shape="rect" id="node8" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="625,155,700,181"/>
-<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="368,5,432,32"/>
+<area shape="rect" id="node6" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="411,155,504,181"/>
+<area shape="rect" id="node7" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="529,155,607,181"/>
+<area shape="rect" id="node8" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="631,155,718,181"/>
+<area shape="rect" id="node9" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="743,155,817,181"/>
+<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="425,5,489,32"/>
 </map>
