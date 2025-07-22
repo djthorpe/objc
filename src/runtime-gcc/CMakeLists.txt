@@ -9,6 +9,7 @@ add_library(${NAME} STATIC
     module.c
     NXConstantString.m
     Object.m
+    Protocol.m
     protocol.c
     statics.c
 )

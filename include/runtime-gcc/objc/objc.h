@@ -8,4 +8,5 @@
 #if __OBJC__
 #include "NXConstantString.h"
 #include "Object.h"
+#include "Protocol.h"
 #endif // __OBJC__

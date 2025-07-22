@@ -3,8 +3,10 @@
  * @brief Architecture-related constants, types, and functions for NXFoundation.
  * @details This header provides utilities for determining system architecture
  * properties such as bit width (32/64-bit) and byte order (endianness).
- * These functions are useful for writing portable code that adapts to
- * different hardware architectures.
+ * These utilities include functions to retrieve the current architecture's
+ * bit width, endianness, and the number of CPU cores available. They are
+ * designed to help developers write portable code that adapts to different
+ * hardware architectures seamlessly.
  */
 #pragma once
 
@@ -26,7 +28,7 @@ typedef enum {
  *
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
  */
-int NXArchBits(void);
+uint8_t NXArchBits(void);
 
 /**
  * @brief Get the current architecture endianness.
@@ -36,3 +38,12 @@ int NXArchBits(void);
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
  */
 NXEndian NXArchEndian(void);
+
+/**
+ * @brief Get the number of CPU cores available on the current system.
+ * @return The number of CPU cores available. Returns at least 1, even if
+ *   the actual core count cannot be determined. Returns a maximum of 255 cores.
+ *
+ * \headerfile NXArch.h NXFoundation/NXFoundation.h
+ */
+uint8_t NXArchNumCores(void);

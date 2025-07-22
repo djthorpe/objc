@@ -21,4 +21,5 @@
  * @return The shared NXNull instance.
  */
 + (NXNull *)nullValue;
+
 @end

@@ -30,5 +30,6 @@
 #include "NXTimeInterval.h"
 #include "NXZone.h"
 #include "Object+Description.h"
+#include "Object+Protocol.h"
 
 #endif // __OBJC__

@@ -1,5 +1,6 @@
 #include <objc/objc.h>
 #include <stddef.h>
+#include <stdint.h>
 
 int __gnu_objc_personality_v0(int version __attribute((unused)),
                               int actions __attribute((unused)),

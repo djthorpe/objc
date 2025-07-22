@@ -6,6 +6,7 @@
  * and resources.
  */
 #pragma once
+#include "thread.h"
 #include "time.h"
 #include <stdarg.h>
 #include <stddef.h>
