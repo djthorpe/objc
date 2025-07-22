@@ -3,10 +3,7 @@
 #include <string.h>
 #include <tests/tests.h>
 
-// Forward declare NXNumberBool for testing (internal)
-@interface NXNumberBool : NXNumber
-- (BOOL)boolValue;
-@end
+// Removed forward declaration of NXNumberBool to avoid tight coupling.
 
 int main() {
   printf("Starting NXNumber boolean value tests...\n");
