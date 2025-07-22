@@ -156,10 +156,10 @@ typedef enum {
 
 /**
  * @brief Counts the number of occurrences of a string.
- * @param other The string to count occurrences of.
+ * @param other The NXConstantString or NXString instance to count occurrences of.
  * @return The number of times the string appears in the string.
  */
-- (uint32_t)countOccurrencesOfString:(NXString *)other;
+- (uint32_t)countOccurrencesOfString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Checks if the string contains a given substring.
