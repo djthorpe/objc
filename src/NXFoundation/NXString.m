@@ -122,7 +122,7 @@
     return nil;
   }
 
-  // Use a variable argument lists to handle the format string
+  // Use a variable argument list to handle the format string
   va_list args, argsCopy;
   va_start(args, format);
   va_copy(argsCopy, args);
