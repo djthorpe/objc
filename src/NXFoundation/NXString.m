@@ -137,7 +137,7 @@
     if (instance->_data) {
       sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
                    args);       // Format the string into the allocated memory
-      instance->_value = _data; // Set the value to the allocated data
+      instance->_value = instance->_data; // Set the value to the allocated data
     } else {
       [instance release];
       instance = nil; // Allocation failed, set self to nil
