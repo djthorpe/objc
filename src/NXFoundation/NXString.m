@@ -136,7 +136,7 @@
     instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
     if (instance->_data) {
       sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
-                   args);       // Format the string into the allocated memory
+                   args); // Format the string into the allocated memory
       instance->_value = instance->_data; // Set the value to the allocated data
     } else {
       [instance release];
@@ -222,7 +222,8 @@
  */
 - (uint32_t)countOccurrencesOfByte:(const char)ch {
   uint32_t count = 0;
-  for (unsigned int i = 0; i < _length; i++) {
+  unsigned int i = 0;
+  for (i = 0; i < _length; i++) {
     if (_value[i] == ch) {
       count++;
     }
