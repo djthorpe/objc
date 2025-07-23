@@ -9,10 +9,26 @@
 
 @interface Protocol : Object {
 @private
-  const char *protocol_name;
-  struct objc_protocol_list *protocol_list;
-  struct objc_method_list *instance_methods;
-  struct objc_method_list *class_methods;
+  const char *_name;
 }
+
+/**
+ * @brief Returns the name of the protocol.
+ * @return A C string containing the protocol name.
+ */
+- (const char *)name;
+
+/**
+ * @brief Checks if this protocol conforms to another protocol.
+ * @param aProtocolObject The protocol to check conformance against.
+ * @return YES if this protocol conforms to the specified protocol, NO
+ * otherwise.
+ *
+ * This method determines whether this protocol adopts or inherits
+ * from the specified protocol. A protocol conforms to another protocol if it
+ * explicitly declares that it adopts the protocol, or if it inherits
+ * from a protocol that conforms to the specified protocol.
+ */
+- (BOOL)conformsTo:(Protocol *)aProtocolObject;
 
 @end

@@ -1,8 +1,8 @@
 #include "protocol.h"
 #include "api.h"
 #include <objc/objc.h>
-#include <string.h>
 #include <runtime-sys/sys.h>
+#include <string.h>
 
 #define PROTOCOL_TABLE_SIZE 32
 objc_protocol_t *protocol_table[PROTOCOL_TABLE_SIZE + 1];
@@ -53,4 +53,66 @@ void __objc_protocol_list_register(struct objc_protocol_list *list) {
   if (list->next != NULL) {
     __objc_protocol_list_register(list->next); // Register next protocol list
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
+
+/**
+ * @brief Checks if a protocol conforms to another protocol.
+ */
+BOOL proto_conformsTo(objc_protocol_t *protocol,
+                      objc_protocol_t *otherProtocol) {
+  if (protocol == NULL || otherProtocol == NULL) {
+    return NO; // Cannot check conformance with NULL protocols
+  }
+  // Check for same protocol
+  if (protocol == otherProtocol) {
+    return YES; // Protocols are the same
+  }
+  // Check for name
+  if (strcmp(protocol->name, otherProtocol->name) == 0) {
+    return YES; // Protocols are the same
+  }
+  // Check other protocols in the list
+  struct objc_protocol_list *proto = protocol->protocol_list;
+  while (proto != NULL) {
+    for (size_t i = 0; i < proto->count; i++) {
+      if (proto_conformsTo(proto->protocols[i], otherProtocol)) {
+        return YES; // Found a matching protocol
+      }
+    }
+    proto = proto->next; // Move to next protocol list
+  }
+  // No matching protocol found
+  return NO;
+}
+
+/**
+ * @brief Checks if a class conforms to a protocol.
+ */
+BOOL class_conformsTo(Class cls, objc_protocol_t *otherProtocol) {
+  if (cls == Nil || otherProtocol == NULL) {
+    return NO; // Cannot check conformance with Nil class or NULL protocol
+  }
+
+  // Check if the class implements the protocol directly
+  struct objc_protocol_list *proto = cls->protocols;
+  while (proto != NULL) {
+    for (size_t i = 0; i < proto->count; i++) {
+      if (proto_conformsTo(proto->protocols[i], otherProtocol)) {
+        return YES; // Found a matching protocol
+      }
+    }
+    proto = proto->next; // Move to next protocol list
+  }
+
+  // Get superclass and check if it conforms
+  Class superclass = class_getSuperclass(cls);
+  if (superclass != Nil) {
+    return class_conformsTo(superclass, otherProtocol); // Check superclass
+  }
+
+  // Class does not conform to the protocol
+  return NO;
 }

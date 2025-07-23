@@ -193,8 +193,7 @@
   if (self == other) {
     return YES;
   }
-  if (other == nil ||
-      [other conformsToProtocol:@protocol(NXStringProtocol)] == NO) {
+  if (other == nil || [other conformsTo:@protocol(NXStringProtocol)] == NO) {
     return NO;
   }
   if ([other length] != _length) {

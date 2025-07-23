@@ -27,7 +27,8 @@ typedef id (*IMP)(id, SEL, ...);
 /** @brief A pointer to a method. */
 typedef struct objc_method *Method;
 
-// typedef struct objc_property* Property;
+/** @brief An instance of a protocol. */
+typedef struct objc_protocol objc_protocol_t;
 
 /** @brief A null object pointer. */
 #define nil ((id)0)
@@ -163,3 +164,21 @@ BOOL class_respondsToSelector(Class cls, SEL sel);
  * @return A C-string representing the selector's name.
  */
 const char *sel_getName(SEL sel);
+
+/**
+ * @brief Checks if a protocol conforms to another protocol.
+ * @param protocol The protocol to test for conformance.
+ * @param otherProtocol The protocol to check conformance against.
+ * @return `YES` if `protocol` conforms to `otherProtocol`, `NO` otherwise.
+ */
+BOOL proto_conformsTo(objc_protocol_t *protocol,
+                      objc_protocol_t *otherProtocol);
+
+/**
+ * @brief Checks if a class conforms to a protocol.
+ * @param cls The class to test for conformance.
+ * @param otherProtocol The protocol to check conformance against.
+ * @return `YES` if methods of a `cls` conforms to `otherProtocol`, `NO`
+ * otherwise.
+ */
+BOOL class_conformsTo(Class cls, objc_protocol_t *otherProtocol);
