@@ -6,7 +6,9 @@
 #include "runtime.h"
 
 #if __OBJC__
+#include "NXConstantString+Protocol.h"
 #include "NXConstantString.h"
+#include "Object+Protocol.h"
 #include "Object.h"
 #include "Protocol.h"
 #endif // __OBJC__

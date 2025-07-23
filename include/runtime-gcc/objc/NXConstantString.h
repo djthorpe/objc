@@ -17,7 +17,7 @@
  *
  * \headerfile NXConstantString.h objc/objc.h
  */
-@interface NXConstantString : Object {
+@interface NXConstantString : Object <NXConstantStringProtocol> {
 @private
   const char *_data;    ///< Pointer to the null-terminated C-string.
   unsigned int _length; ///< Length of the string in bytes, not including the
