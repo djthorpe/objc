@@ -144,8 +144,8 @@
       instance = nil; // Allocation failed, set self to nil
     }
   }
-  va_end(argsCopy);
   va_end(args);
+  va_end(argsCopy);
   return [instance autorelease]; // Return an autoreleased instance
 }
 
