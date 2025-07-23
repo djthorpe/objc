@@ -10,13 +10,6 @@
 }
 
 /**
- * @brief Returns the description of the protocol.
- */
-- (NXConstantString *)description {
-  return [NXConstantString stringWithCString:_name];
-}
-
-/**
  * @brief Checks if this protocol conforms to another protocol.
  */
 - (BOOL)conformsTo:(Protocol *)aProtocolObject {
@@ -31,7 +24,7 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Protocol class]]) {
+  if (object_getClass(self) != object_getClass(anObject)) {
     return NO;
   }
   Protocol *otherProtocol = (Protocol *)anObject;
