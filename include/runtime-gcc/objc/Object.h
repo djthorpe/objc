@@ -5,6 +5,7 @@
  * This class provides basic memory management and introspection capabilities.
  */
 #pragma once
+#include "Object+Protocol.h"
 
 /**
  * @brief The root class of all Objective-C classes.
@@ -15,7 +16,7 @@
  * \headerfile Object.h objc/objc.h
  */
 OBJC_ROOT_CLASS
-@interface Object {
+@interface Object <ObjectProtocol> {
   /**
    * @var isa
    * @brief A pointer to the object's class structure.

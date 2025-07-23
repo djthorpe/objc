@@ -24,12 +24,10 @@
 #include "NXNull.h"
 #include "NXNumber.h"
 #include "NXObject.h"
-#include "NXString+Protocol.h"
 #include "NXString.h"
 #include "NXThread.h"
 #include "NXTimeInterval.h"
 #include "NXZone.h"
 #include "Object+Description.h"
-#include "Object+Protocol.h"
 
 #endif // __OBJC__

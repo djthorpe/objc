@@ -34,7 +34,7 @@ void __objc_protocol_register(objc_protocol_t *p) {
       return;
     }
     if (strcmp(protocol_table[i]->name, p->name) == 0) {
-      sys_panicf("Duplicate protocol named: %s", p->name);
+      // sys_panicf("Duplicate protocol named: %s", p->name);
     }
   }
   sys_panicf("Protocol table is full, cannot register protocol: %s", p->name);

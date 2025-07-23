@@ -4,7 +4,6 @@
  * functionality.
  */
 #pragma once
-#include "Object+Protocol.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // CLASS DEFINITIONS
@@ -17,7 +16,7 @@
  *
  * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
-@interface NXString : NXObject <NXStringProtocol> {
+@interface NXString : NXObject <NXConstantStringProtocol> {
 @private
   const char *_value;
   char *_data; ///< Pointer to the retained string data
@@ -32,7 +31,8 @@
 /**
  * @brief Return a string by referencing another string.
  */
-+ (NXString *)stringWithString:(id<NXStringProtocol, ObjectProtocol>)other;
++ (NXString *)stringWithString:
+    (id<NXConstantStringProtocol, ObjectProtocol>)other;
 
 /**
  * @brief Return a string by referencing a c-string.
@@ -54,7 +54,7 @@
  * retain.
  * @return The initialized string object.
  */
-- (id)initWithString:(id<NXStringProtocol, ObjectProtocol>)other;
+- (id)initWithString:(id<NXConstantStringProtocol, ObjectProtocol>)other;
 
 /**
  * @brief Initializes a new string by referencing a constant c-string.
@@ -98,7 +98,7 @@
  * it will currently panic, but should raise an exception in the future,
  * when exception handling is implemented.
  */
-// - (void)appendString:(id<NXStringProtocol>)other;
+// - (void)appendString:(id<NXConstantStringProtocol>)other;
 
 /**
  * @brief Appends a string with format and arguments to this string.
@@ -146,8 +146,8 @@
  * end, or NULL to skip.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-// - (BOOL)trimPrefix:(id<NXStringProtocol>)prefix
-// suffix:(id<NXStringProtocol>)suffix;
+// - (BOOL)trimPrefix:(id<NXConstantStringProtocol>)prefix
+// suffix:(id<NXConstantStringProtocol>)suffix;
 
 /**
  * @brief Checks if the string starts with a given prefix.
@@ -155,7 +155,7 @@
  * prefix.
  * @return YES if the string starts with the specified prefix, NO otherwise.
  */
-// - (BOOL)hasPrefix:(id<NXStringProtocol>)prefix;
+// - (BOOL)hasPrefix:(id<NXConstantStringProtocol>)prefix;
 
 /**
  * @brief Checks if the string ends with a given suffix.
@@ -163,7 +163,7 @@
  * suffix.
  * @return YES if the string ends with the specified suffix, NO otherwise.
  */
-// - (BOOL)hasSuffix:(id<NXStringProtocol>)suffix;
+// - (BOOL)hasSuffix:(id<NXConstantStringProtocol>)suffix;
 
 /**
  * @brief Counts the number of occurrences of a character.
@@ -178,7 +178,7 @@
  * of.
  * @return The number of times the string appears in the string.
  */
-// - (uint32_t)countOccurrencesOfString:(id<NXStringProtocol>)other;
+// - (uint32_t)countOccurrencesOfString:(id<NXConstantStringProtocol>)other;
 
 /**
  * @brief Checks if the string contains a given substring.
@@ -186,7 +186,7 @@
  * containment.
  * @return YES if the string contains the specified substring, NO otherwise.
  */
-// - (BOOL)containsString:(id<NXStringProtocol>)other;
+// - (BOOL)containsString:(id<NXConstantStringProtocol>)other;
 
 /**
  * @brief Compares this string with another string.
@@ -195,6 +195,6 @@
  * (Ascending), Same, or later (Descending) than the other string, according
  * to lexicographical order.
  */
-- (NXComparisonResult)compare:(id<NXStringProtocol>)other;
+- (NXComparisonResult)compare:(id<NXConstantStringProtocol>)other;
 
 @end

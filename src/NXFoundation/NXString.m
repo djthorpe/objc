@@ -32,7 +32,7 @@
 /**
  * @brief Initializes a new string by referencing another string.
  */
-- (id)initWithString:(id<NXStringProtocol, ObjectProtocol>)other {
+- (id)initWithString:(id<NXConstantStringProtocol, ObjectProtocol>)other {
   self = [self init];
   if (self == nil || self == other || other == nil) {
     return nil;
@@ -53,7 +53,8 @@
 /**
  * @brief Return a string by referencing another string.
  */
-+ (NXString *)stringWithString:(id<NXStringProtocol, ObjectProtocol>)other {
++ (NXString *)stringWithString:
+    (id<NXConstantStringProtocol, ObjectProtocol>)other {
   objc_assert([NXAutoreleasePool currentPool]);
   return [[[NXString alloc] initWithString:other] autorelease];
 }
@@ -193,7 +194,8 @@
   if (self == other) {
     return YES;
   }
-  if (other == nil || [other conformsTo:@protocol(NXStringProtocol)] == NO) {
+  if (other == nil ||
+      [other conformsTo:@protocol(NXConstantStringProtocol)] == NO) {
     return NO;
   }
   if ([other length] != _length) {
@@ -209,7 +211,7 @@
 /**
  * @brief Compares this string with another string.
  */
-- (NXComparisonResult)compare:(id<NXStringProtocol>)other {
+- (NXComparisonResult)compare:(id<NXConstantStringProtocol>)other {
   objc_assert(other);
   const char *otherCStr = [other cStr];
   if (otherCStr == _value) {
