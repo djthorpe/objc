@@ -168,6 +168,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a359230f72face8b5990d70523f5d3ec5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a359230f72face8b5990d70523f5d3ec5">sel_getName</a> (<a class="el" href="runtime_8h.html#acc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
 <tr class="memdesc:a359230f72face8b5990d70523f5d3ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a selector.  <a href="#a359230f72face8b5990d70523f5d3ec5">More...</a><br /></td></tr>
 <tr class="separator:a359230f72face8b5990d70523f5d3ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa62343541481469b654863125aec01b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#aa62343541481469b654863125aec01b9">proto_getName</a> (<a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *protocol)</td></tr>
+<tr class="memdesc:aa62343541481469b654863125aec01b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a protocol.  <a href="#aa62343541481469b654863125aec01b9">More...</a><br /></td></tr>
+<tr class="separator:aa62343541481469b654863125aec01b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6881363f093343fcf8529a4477f97afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a6881363f093343fcf8529a4477f97afe">proto_conformsTo</a> (<a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *protocol, <a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *otherProtocol)</td></tr>
 <tr class="memdesc:a6881363f093343fcf8529a4477f97afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a protocol conforms to another protocol.  <a href="#a6881363f093343fcf8529a4477f97afe">More...</a><br /></td></tr>
 <tr class="separator:a6881363f093343fcf8529a4477f97afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -832,6 +835,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>YES</code> if <code>protocol</code> conforms to <code>otherProtocol</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aa62343541481469b654863125aec01b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa62343541481469b654863125aec01b9">&#9670;&nbsp;</a></span>proto_getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* proto_getName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>protocol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of a protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>The protocol to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the protocol, or <code>NULL</code> if <code>protocol</code> is <code>NULL</code>. </dd></dl>
 
 </div>
 </div>

@@ -66,11 +66,11 @@ $(function() {
 <li><b>Cross-Compilation</b> For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
 </ul>
 <h2>Building the libraries</h2>
-<p>Three static libraries are currently provided:</p>
+<p>Three static libraries are currently built:</p>
 <ul>
 <li><code>objc-gcc</code> - the Objective C runtime library using the ancient GCC ABI</li>
 <li><code>NXFoundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
-<li><code>sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.</li>
+<li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.</li>
 </ul>
 <p>Download the source code from GitHub:</p>
 <div class="fragment"><div class="line">git clone git@github.com:djthorpe/objc.git</div><div class="line">cd objc</div></div><!-- fragment --><p>The <code>TOOLCHAIN_PATH</code> environment variable should point to the directory where the toolchain is installed. For Macintosh, you can use Homebrew to install the GCC toolchain, which is required for compiling the runtime on MacOS:</p>
@@ -81,7 +81,7 @@ $(function() {
 <p>TODO: the libraries should be installed under a prefix path:</p>
 <div class="fragment"><div class="line">PREFIX=/opt/objc make install</div></div><!-- fragment --><ul>
 <li>/opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a</li>
-<li>/opt/objc/lib/armv6m-none-eabi/libsys.a</li>
+<li>/opt/objc/lib/armv6m-none-eabi/libruntime-sys.a</li>
 <li>/opt/objc/lib/armv6m-none-eabi/libFoundation.a</li>
 <li>/opt/objc/include/objc</li>
 <li>/opt/objc/include/sys</li>
@@ -106,7 +106,7 @@ $(function() {
 <li>[X] Date and Time - <code><a class="el" href="interfaceNXDate.html" title="A class for representing and manipulating dates. ">NXDate</a></code> - mutable date and time</li>
 <li>[X] <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with booleans</li>
 <li>[X] <code><a class="el" href="interfaceNXNull.html" title="The NXNull class. ">NXNull</a></code> - singleton for null objects that can be inserted into collections</li>
-<li>[X] Protocols and <code>conformsToProtocol:</code></li>
+<li>[X] Protocols and <code>conformsTo:</code></li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt16</code> and <code>NXNumberUnsignedInt16</code></li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt32</code> and <code>NXNumberUnsignedInt32</code></li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt64</code> and <code>NXNumberUnsignedInt64</code></li>
