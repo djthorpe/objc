@@ -59,6 +59,16 @@ void __objc_protocol_list_register(struct objc_protocol_list *list) {
 // PUBLIC METHODS
 
 /**
+ * @brief Returns the name of a protocol.
+ */
+const char *proto_getName(objc_protocol_t *protocol) {
+  if (protocol == NULL || protocol->name == NULL) {
+    return NULL; // Cannot get name of NULL protocol
+  }
+  return protocol->name; // Return the name of the protocol
+}
+
+/**
  * @brief Checks if a protocol conforms to another protocol.
  */
 BOOL proto_conformsTo(objc_protocol_t *protocol,

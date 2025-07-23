@@ -1,4 +1,5 @@
 #include <objc/objc.h>
+#include <string.h>
 
 @implementation Protocol
 
@@ -15,6 +16,20 @@
 - (BOOL)conformsTo:(Protocol *)aProtocolObject {
   return proto_conformsTo((objc_protocol_t *)self,
                           (objc_protocol_t *)aProtocolObject);
+}
+
+/**
+ * @brief Determines if this protocol is equal to another object.
+ */
+- (BOOL)isEqual:(id)anObject {
+  if (self == anObject) {
+    return YES;
+  }
+  if (object_getClass(self) != object_getClass(anObject)) {
+    return NO;
+  }
+  Protocol *otherProtocol = (Protocol *)anObject;
+  return strcmp([self name], [otherProtocol name]) == 0;
 }
 
 @end

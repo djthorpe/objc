@@ -166,6 +166,14 @@ BOOL class_respondsToSelector(Class cls, SEL sel);
 const char *sel_getName(SEL sel);
 
 /**
+ * @brief Returns the name of a protocol.
+ * @param protocol The protocol to inspect.
+ * @return A C-string containing the name of the protocol, or `NULL` if
+ * `protocol` is `NULL`.
+ */
+const char *proto_getName(objc_protocol_t *protocol);
+
+/**
  * @brief Checks if a protocol conforms to another protocol.
  * @param protocol The protocol to test for conformance.
  * @param otherProtocol The protocol to check conformance against.
