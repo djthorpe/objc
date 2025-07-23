@@ -1,6 +1,7 @@
 var searchData=
 [
   ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object']]],
+  ['new',['new',['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString']]],
   ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
   ['numberwithbool_3a',['numberWithBool:',['../interfaceNXNumber.html#ad31141fabac9793fcf015df9cea49132',1,'NXNumber']]],
   ['nxarchbits',['NXArchBits',['../NXArch_8h.html#a9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],

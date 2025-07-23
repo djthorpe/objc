@@ -2,6 +2,7 @@ var searchData=
 [
   ['name',['name',['../interfaceObject.html#a753f22340aa8c0ed1021b96fb2e56c21',1,'Object']]],
   ['nanosecond',['Nanosecond',['../NXTimeInterval_8h.html#aaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
+  ['new',['new',['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString']]],
   ['nil',['Nil',['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
   ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
