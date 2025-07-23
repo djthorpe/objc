@@ -9,11 +9,11 @@ add_library(${NAME} STATIC
     abort.c
     puts.c
     sys.c
-    time.c
+    timeget.c
     thread.c
     ../all/panicf.c
     ../all/printf.c
-    ../all/time.c
+    ../posix/time.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

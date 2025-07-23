@@ -2,12 +2,15 @@
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
+// Forward declaration
+int test_sys_02(void);
+
 int main(void) {
-  // Initialize the system
-  sys_init();
+  // Run sys_printf tests
+  return TestMain("test_sys_02", test_sys_02);
+}
 
-  sys_printf("Running sys_02 time tests...\n");
-
+int test_sys_02(void) {
   // Test 1: Basic sys_time_get_utc functionality
   do {
     sys_time_t time;

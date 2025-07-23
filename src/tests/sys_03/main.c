@@ -2,12 +2,15 @@
 #include <stdio.h>
 #include <tests/tests.h>
 
+// Forward declaration
+int test_sys_03(void);
+
 int main(void) {
-  // Initialize the system
-  sys_init();
+  // Run sys_printf tests
+  return TestMain("test_sys_03", test_sys_03);
+}
 
-  printf("Starting sys_thread_numcores tests...\n");
-
+int test_sys_03(void) {
   // Test 1: Basic functionality - should return at least 1 core
   printf("\nTest 1: Testing basic core count functionality...\n");
   uint8_t cores = sys_thread_numcores();

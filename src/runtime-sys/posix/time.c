@@ -1,32 +1,10 @@
-// Ensure POSIX time constants are available
-#define _POSIX_C_SOURCE 199309L
-#ifdef __APPLE__
-// On macOS, timegm is available as a BSD extension
-#define _DARWIN_C_SOURCE
-#else
-// On Linux, use GNU extensions for timegm
-#define _GNU_SOURCE
-#endif
 #include <runtime-sys/sys.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <time.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC FUNCTIONS
-
-bool sys_time_get_utc(sys_time_t *time) {
-  if (time == NULL) {
-    return false;
-  }
-
-  struct timespec ts;
-  if (clock_gettime(CLOCK_REALTIME, &ts) != 0) {
-    return false; // Return false if clock_gettime fails
-  }
-
-  time->seconds = (int64_t)ts.tv_sec;
-  time->nanoseconds = (int32_t)ts.tv_nsec;
-  return true;
-}
 
 bool sys_time_get_time_utc(sys_time_t *time, uint8_t *hours, uint8_t *minutes,
                            uint8_t *seconds) {
@@ -169,4 +147,36 @@ bool sys_time_set_date_utc(sys_time_t *time, uint16_t year, uint8_t month,
   // Preserve nanoseconds
 
   return true;
+}
+
+#define NANOSECONDS_PER_SECOND 1000000000LL
+
+int64_t sys_time_compare_ns(const sys_time_t *start, const sys_time_t *end) {
+  sys_time_t start_time = {0, 0}; // Default to epoch (0 seconds, 0 nanoseconds)
+  sys_time_t end_time;
+
+  // Handle NULL start parameter - treat as epoch
+  if (start != NULL) {
+    start_time = *start;
+  }
+
+  // Handle NULL end parameter - treat as current time
+  if (end != NULL) {
+    end_time = *end;
+  } else {
+    if (!sys_time_get_utc(&end_time)) {
+      // If we can't get current time, return 0 (no difference)
+      return 0;
+    }
+  }
+
+  // Calculate difference in seconds, then convert to nanoseconds
+  int64_t seconds_diff = end_time.seconds - start_time.seconds;
+  int64_t nanoseconds_diff = end_time.nanoseconds - start_time.nanoseconds;
+
+  // Convert seconds to nanoseconds and add the nanoseconds difference
+  int64_t total_diff_ns =
+      (seconds_diff * NANOSECONDS_PER_SECOND) + nanoseconds_diff;
+
+  return total_diff_ns;
 }

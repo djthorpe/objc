@@ -1,35 +1,35 @@
-#include <stdio.h>
-#include <string.h>
 #include <objc/objc.h>
+#include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
-int main() {
-    printf("Running runtime_01 test...\n");
+int test_runtime_01(void);
+int main(void) { return TestMain("test_runtime_01", test_runtime_01); }
 
-    Object* obj = [[Object alloc] init];
-    test_assert(obj != NULL);
+int test_runtime_01(void) {
+  Object *obj = [[Object alloc] init];
+  test_assert(obj != NULL);
 
-    printf("Step 1\n");
+  sys_printf("Step 1\n");
 
-    const char *className = object_getClassName(obj);
-    test_assert(className != NULL);
-    test_assert(strcmp(className, "Object") == 0);
+  const char *className = object_getClassName(obj);
+  test_assert(className != NULL);
+  test_cstrings_equal(className, "Object");
 
-    printf("Step 2\n");
+  sys_printf("Step 2\n");
 
-    Class cls = object_getClass(obj);
-    test_assert(cls != NULL);
+  Class cls = object_getClass(obj);
+  test_assert(cls != NULL);
 
-    const char *clsName = class_getName(cls);
-    test_assert(clsName != NULL);
-    test_assert(strcmp(clsName, "Object") == 0);
+  const char *clsName = class_getName(cls);
+  test_assert(clsName != NULL);
+  test_cstrings_equal(clsName, "Object");
 
-    // Check class
-    test_assert(cls == [obj class]);
-    test_assert([obj isEqual:obj] == YES);
+  // Check class
+  test_assert(cls == [obj class]);
+  test_assert([obj isEqual:obj] == YES);
 
-    // Dispose of the object
-    [obj dealloc];
+  // Dispose of the object
+  [obj dealloc];
 
-    return 0;
+  return 0;
 }

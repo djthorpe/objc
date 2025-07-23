@@ -1,10 +1,15 @@
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
-int main(void) {
-  // Initialize the system
-  sys_init();
+// Forward declaration
+int test_sys_01(void);
 
+int main(void) {
+  // Run sys_printf tests
+  return TestMain("test_sys_01", test_sys_01);
+}
+
+int test_sys_01(void) {
   // Output a message to the console
   do {
     size_t len = sys_printf("Hello, World!\n");
@@ -797,5 +802,6 @@ int main(void) {
     test_cstrings_equal(buffer, "   "); // Should be spaces (truncated)
   } while (0);
 
-  sys_printf("All tests passed!\n");
+  // Return success
+  return 0;
 }

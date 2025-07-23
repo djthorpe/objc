@@ -50,6 +50,11 @@ extern uint32_t sys_random_uint32(void);
 extern void sys_init(void);
 
 /**
+ * @brief Cleans up the system on shutdown.
+ */
+extern void sys_exit(void);
+
+/**
  * @brief Aborts the current process immediately.
  * @note This function does not return to the caller.
  *
