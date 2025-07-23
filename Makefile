@@ -36,7 +36,7 @@ NXFoundation: libobjc-gcc
 	@echo make NXFoundation
 	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
 
-# Test the libobjc-gcc runtime library
+# Run the tests
 .PHONY: tests
 tests: NXFoundation
 	@echo
