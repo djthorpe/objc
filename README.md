@@ -94,6 +94,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Date and Time - `NXDate` - mutable date and time
 - [X] `NXNumber` with booleans
 - [X] `NXNull` - singleton for null objects that can be inserted into collections
+- [X] Protocols and `conformsToProtocol:`
 - [ ] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
 - [ ] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
 - [ ] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
@@ -113,7 +114,6 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] Calling `+[initialise]` for categories
 - [ ] `NXApplication` and `NXRunLoop`
 - [ ] Pico toolchain - integrate with Pico SDK
-- [ ] Protocols and `conformsToProtocol:`
 - [ ] Threading & `@synchronized` support
 - [ ] Exception handling?
 
