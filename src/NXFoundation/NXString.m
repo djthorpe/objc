@@ -146,6 +146,12 @@
     va_end(argsCopy);
     va_end(args);
     return [instance autorelease]; // Return an autoreleased instance
+  } else {
+    [instance release];
+    instance = nil; // Set instance to nil for failure case
+    va_end(argsCopy);
+    va_end(args);
+    return nil; // Return nil to indicate failure
   }
 
   /**
