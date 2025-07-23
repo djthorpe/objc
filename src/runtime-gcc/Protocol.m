@@ -29,7 +29,7 @@
     return NO;
   }
   Protocol *otherProtocol = (Protocol *)anObject;
-  return strcmp(_name, otherProtocol->_name) == 0;
+  return strcmp([self name], [otherProtocol name]) == 0;
 }
 
 @end
