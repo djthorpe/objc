@@ -10,9 +10,9 @@ add_library(${NAME} STATIC
     ../posix/sleep.c
     ../posix/thread.c
     ../posix/time.c
+    ../posix/timeget.c
     ../all/panicf.c
     ../all/printf.c
-    ../all/time.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

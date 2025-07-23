@@ -13,3 +13,17 @@ void sys_init(void) {
   struct timespec ts = {0, 0};
   aon_timer_start(&ts);
 }
+
+/**
+ * @brief Cleans up the system on shutdown.
+ */
+void sys_exit(void) {
+  // Stop the timer
+  aon_timer_stop();
+
+  // Loop
+  while (true) {
+    // Optionally, you can add a delay here to prevent busy-waiting
+    sleep_ms(1000);
+  }
+}
