@@ -130,7 +130,8 @@
   // Get the length of the formatted string
   const char *cFormat = [format cStr];
   instance->_length = sys_vsprintf(NULL, 0, cFormat, argsCopy);
-  va_end(argsCopy); // Clean up the copied va_list
+  if (instance->_length > 0) {
+    va_end(argsCopy); // Clean up the copied va_list
   if (instance->_length > 0) {
     // Allocate memory for the string
     instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
