@@ -30,12 +30,10 @@ int main(void) { return TestMain("test_runtime_26", test_runtime_26); }
 @end
 
 int test_runtime_26(void) {
-  id<Enabling> object;
-
-  object = [[Feature alloc] init];
+  id<Enabling> object = [[Feature alloc] init];
   test_assert(object != nil);
   [object setEnabled:YES];
   test_assert([object isEnabled]);
-  [object dealloc];
+  [(Object *)object dealloc];
   return 0;
 }

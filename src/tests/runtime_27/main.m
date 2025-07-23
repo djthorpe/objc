@@ -53,7 +53,7 @@ int test_runtime_27(void) {
   test_assert(object != nil);
   test_assert([object isEnabled]);
   test_assert([object importance] == 1000);
-  [object dealloc];
+  [(Object *)object dealloc];
 
   return 0;
 }

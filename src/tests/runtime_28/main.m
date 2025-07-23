@@ -32,6 +32,6 @@ int test_runtime_28(void) {
   test_assert(object != nil);
   test_assert([(Object *)object conformsTo:@protocol(Evaluating)]);
   test_assert([object importance] == 1000);
-  [object dealloc];
+  [(Object *)object dealloc];
   return 0;
 }

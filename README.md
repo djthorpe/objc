@@ -17,11 +17,11 @@ You will minimally need the following tools to build the runtime:
 
 ## Building the libraries
 
-Three static libraries are currently provided:
+Three static libraries are currently built:
 
 - `objc-gcc` - the Objective C runtime library using the ancient GCC ABI
 - `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
-- `sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.
+- `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.
 
 Download the source code from GitHub:
 
@@ -60,7 +60,7 @@ PREFIX=/opt/objc make install
 ```
 
 - /opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a
-- /opt/objc/lib/armv6m-none-eabi/libsys.a
+- /opt/objc/lib/armv6m-none-eabi/libruntime-sys.a
 - /opt/objc/lib/armv6m-none-eabi/libFoundation.a
 - /opt/objc/include/objc
 - /opt/objc/include/sys
@@ -94,7 +94,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Date and Time - `NXDate` - mutable date and time
 - [X] `NXNumber` with booleans
 - [X] `NXNull` - singleton for null objects that can be inserted into collections
-- [X] Protocols and `conformsToProtocol:`
+- [X] Protocols and `conformsTo:`
 - [ ] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
 - [ ] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
 - [ ] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`

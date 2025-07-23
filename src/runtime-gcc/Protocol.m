@@ -1,4 +1,5 @@
 #include <objc/objc.h>
+#include <string.h>
 
 @implementation Protocol
 
