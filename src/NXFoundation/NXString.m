@@ -131,19 +131,17 @@
   const char *cFormat = [format cStr];
   instance->_length = sys_vsprintf(NULL, 0, cFormat, argsCopy);
   if (instance->_length > 0) {
-    if (instance->_length > 0) {
-      // Allocate memory for the string
-      objc_assert(instance->_zone);
-      instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
-      if (instance->_data) {
-        sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
-                     args); // Format the string into the allocated memory
-        instance->_value =
-            instance->_data; // Set the value to the allocated data
-      } else {
-        [instance release];
-        instance = nil; // Allocation failed, set self to nil
-      }
+    // Allocate memory for the string
+    objc_assert(instance->_zone);
+    instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
+    if (instance->_data) {
+      sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
+                   args); // Format the string into the allocated memory
+      instance->_value =
+          instance->_data; // Set the value to the allocated data
+    } else {
+      [instance release];
+      instance = nil; // Allocation failed, set self to nil
     }
     va_end(argsCopy);
     va_end(args);
