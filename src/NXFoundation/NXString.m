@@ -124,10 +124,13 @@
   // Use a variable argument list to handle the format string
   va_list args;
   va_start(args, format);
+  va_list argsCopy;
+  va_copy(argsCopy, args);
 
   // Get the length of the formatted string
   const char *cFormat = [format cStr];
-  instance->_length = sys_vsprintf(NULL, 0, cFormat, args);
+  instance->_length = sys_vsprintf(NULL, 0, cFormat, argsCopy);
+  va_end(argsCopy); // Clean up the copied va_list
   if (instance->_length > 0) {
     // Allocate memory for the string
     instance->_data = [_zone allocWithSize:instance->_length + 1];
