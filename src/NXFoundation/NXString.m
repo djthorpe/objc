@@ -87,13 +87,15 @@
     return self;
   }
 
-  // Use a variable argument list to handle the format string
-  va_list args;
+  // Use a variable argument lists to handle the format string
+  va_list args, argsCopy;
   va_start(args, format);
+  va_copy(argsCopy, args);
 
   // Get the length of the formatted string
   const char *cFormat = [format cStr];
   _length = sys_vsprintf(NULL, 0, cFormat, args);
+  va_end(argsCopy); // Clean up the copied va_list
   if (_length > 0) {
     // Allocate memory for the string
     _data = [_zone allocWithSize:_length + 1];
@@ -106,7 +108,6 @@
       self = nil; // Allocation failed, set self to nil
     }
   }
-
   va_end(args);
   return self;
 }
@@ -121,10 +122,9 @@
     return nil;
   }
 
-  // Use a variable argument list to handle the format string
-  va_list args;
+  // Use a variable argument lists to handle the format string
+  va_list args, argsCopy;
   va_start(args, format);
-  va_list argsCopy;
   va_copy(argsCopy, args);
 
   // Get the length of the formatted string
@@ -143,7 +143,6 @@
       instance = nil; // Allocation failed, set self to nil
     }
   }
-
   va_end(args);
   return [instance autorelease]; // Return an autoreleased instance
 }
