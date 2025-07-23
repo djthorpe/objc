@@ -123,6 +123,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a167b310fc29ca0d888a72600171b968a"><td class="memItemLeft" align="right" valign="top">typedef struct objc_method *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a167b310fc29ca0d888a72600171b968a">Method</a></td></tr>
 <tr class="memdesc:a167b310fc29ca0d888a72600171b968a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to a method.  <a href="#a167b310fc29ca0d888a72600171b968a">More...</a><br /></td></tr>
 <tr class="separator:a167b310fc29ca0d888a72600171b968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94527388730bf1fbaa99e45d08b1b868"><td class="memItemLeft" align="right" valign="top">typedef struct objc_protocol&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a></td></tr>
+<tr class="memdesc:a94527388730bf1fbaa99e45d08b1b868"><td class="mdescLeft">&#160;</td><td class="mdescRight">An instance of a protocol.  <a href="#a94527388730bf1fbaa99e45d08b1b868">More...</a><br /></td></tr>
+<tr class="separator:a94527388730bf1fbaa99e45d08b1b868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab40a1f154aa44511af7f97b88296f7d3"><td class="memItemLeft" align="right" valign="top">typedef bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a></td></tr>
 <tr class="memdesc:ab40a1f154aa44511af7f97b88296f7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boolean value.  <a href="#ab40a1f154aa44511af7f97b88296f7d3">More...</a><br /></td></tr>
 <tr class="separator:ab40a1f154aa44511af7f97b88296f7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +168,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a359230f72face8b5990d70523f5d3ec5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a359230f72face8b5990d70523f5d3ec5">sel_getName</a> (<a class="el" href="runtime_8h.html#acc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
 <tr class="memdesc:a359230f72face8b5990d70523f5d3ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a selector.  <a href="#a359230f72face8b5990d70523f5d3ec5">More...</a><br /></td></tr>
 <tr class="separator:a359230f72face8b5990d70523f5d3ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6881363f093343fcf8529a4477f97afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#a6881363f093343fcf8529a4477f97afe">proto_conformsTo</a> (<a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *protocol, <a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *otherProtocol)</td></tr>
+<tr class="memdesc:a6881363f093343fcf8529a4477f97afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a protocol conforms to another protocol.  <a href="#a6881363f093343fcf8529a4477f97afe">More...</a><br /></td></tr>
+<tr class="separator:a6881363f093343fcf8529a4477f97afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a738aa79634e5b251dc817ffd19c7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runtime_8h.html#aa6a738aa79634e5b251dc817ffd19c7b">class_conformsTo</a> (<a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls, <a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *otherProtocol)</td></tr>
+<tr class="memdesc:aa6a738aa79634e5b251dc817ffd19c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a class conforms to a protocol.  <a href="#aa6a738aa79634e5b251dc817ffd19c7b">More...</a><br /></td></tr>
+<tr class="separator:aa6a738aa79634e5b251dc817ffd19c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the core types and functions of the Objective-C runtime. </p>
@@ -186,7 +195,7 @@ Functions</h2></td></tr>
 
 <p>A null object pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00033">33</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00034">34</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +213,7 @@ Functions</h2></td></tr>
 
 <p>A null class pointer. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00036">36</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00037">37</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -222,7 +231,7 @@ Functions</h2></td></tr>
 
 <p>The Boolean value <code>false</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00047">47</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00048">48</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +250,7 @@ Functions</h2></td></tr>
 <p>A macro to declare a class as a root class. </p>
 <p>This macro uses the <code>objc_root_class</code> attribute if it is available, which allows a class to be defined without a superclass. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00059">59</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00060">60</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +269,7 @@ Functions</h2></td></tr>
 <p>A macro to declare a method parameter is unused. </p>
 <p>This macro uses the <code>unused</code> attribute if it is available, which allows a method parameter to be marked as unused. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00072">72</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00073">73</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +287,7 @@ Functions</h2></td></tr>
 
 <p>The Boolean value <code>true</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00044">44</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00045">45</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -297,7 +306,7 @@ Functions</h2></td></tr>
 
 <p>A Boolean value. </p>
 
-<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00041">41</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00042">42</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
 
 </div>
 </div>
@@ -373,6 +382,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a94527388730bf1fbaa99e45d08b1b868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94527388730bf1fbaa99e45d08b1b868">&#9670;&nbsp;</a></span>objc_protocol_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct objc_protocol <a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An instance of a protocol. </p>
+
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00031">31</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+
+</div>
+</div>
 <a id="acc50f82530a982adeb5979def1ca71fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc50f82530a982adeb5979def1ca71fa">&#9670;&nbsp;</a></span>SEL</h2>
 
@@ -392,6 +419,44 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aa6a738aa79634e5b251dc817ffd19c7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a738aa79634e5b251dc817ffd19c7b">&#9670;&nbsp;</a></span>class_conformsTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a> class_conformsTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>otherProtocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a class conforms to a protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to test for conformance. </td></tr>
+    <tr><td class="paramname">otherProtocol</td><td>The protocol to check conformance against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if methods of a <code>cls</code> conforms to <code>otherProtocol</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a0a072d3c3465223f1540b23b6304b0c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a072d3c3465223f1540b23b6304b0c3">&#9670;&nbsp;</a></span>class_getInstanceSize()</h2>
 
@@ -729,6 +794,44 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a6881363f093343fcf8529a4477f97afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6881363f093343fcf8529a4477f97afe">&#9670;&nbsp;</a></span>proto_conformsTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a> proto_conformsTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>otherProtocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a protocol conforms to another protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>The protocol to test for conformance. </td></tr>
+    <tr><td class="paramname">otherProtocol</td><td>The protocol to check conformance against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if <code>protocol</code> conforms to <code>otherProtocol</code>, <code>NO</code> otherwise. </dd></dl>
 
 </div>
 </div>
