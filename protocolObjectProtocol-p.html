@@ -48,7 +48,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a>  </div>
+<a href="#pub-methods">Instance Methods</a> &#124;
+<a href="#pub-static-methods">Class Methods</a>  </div>
   <div class="headertitle">
 <div class="title">&lt;ObjectProtocol&gt; Protocol Reference</div>  </div>
 </div><!--header-->
@@ -57,24 +58,155 @@ $(function() {
 <p><a class="el" href="interfaceProtocol.html">Protocol</a> for objects.  
  <a href="protocolObjectProtocol-p.html#details">More...</a></p>
 
-<p><code>#import &lt;<a class="el" href="Object_09Protocol_8h_source.html">NXFoundation/NXFoundation.h</a>&gt;</code></p>
+<p><code>#import &lt;<a class="el" href="Object_09Protocol_8h_source.html">objc/objc.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for &lt;ObjectProtocol&gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="protocolObjectProtocol-p__inherit__graph.png" border="0" usemap="#_3ObjectProtocol_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="_3ObjectProtocol_4_inherit__map" id="_3ObjectProtocol_4_inherit__map">
+<area shape="rect" id="node2" href="interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="464,80,528,107"/>
+<area shape="rect" id="node3" href="interfaceNXConstantString.html" title="A constant string class. " alt="" coords="295,155,431,181"/>
+<area shape="rect" id="node4" href="interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="455,155,537,181"/>
+<area shape="rect" id="node13" href="interfaceProtocol.html" title="Protocol" alt="" coords="561,155,636,181"/>
+<area shape="rect" id="node5" href="interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="5,229,120,256"/>
+<area shape="rect" id="node6" href="interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="144,229,291,256"/>
+<area shape="rect" id="node7" href="interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="315,229,387,256"/>
+<area shape="rect" id="node8" href="interfaceNXNull.html" title="The NXNull class. " alt="" coords="411,229,477,256"/>
+<area shape="rect" id="node9" href="interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="501,229,595,256"/>
+<area shape="rect" id="node10" href="interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="619,229,698,256"/>
+<area shape="rect" id="node11" href="interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="722,229,809,256"/>
+<area shape="rect" id="node12" href="interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="833,229,908,256"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a440cb6ab557dce756ba82753f7c132b7"><td class="memItemLeft" align="right" valign="top"><a id="a440cb6ab557dce756ba82753f7c132b7"></a>
-(<a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>)&#160;</td><td class="memItemRight" valign="bottom">- <b>class</b></td></tr>
-<tr class="separator:a440cb6ab557dce756ba82753f7c132b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbc86996317881120b310c26f73b1106"><td class="memItemLeft" align="right" valign="top"><a id="acbc86996317881120b310c26f73b1106"></a>
-(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <b>isKindOfClass:</b></td></tr>
-<tr class="separator:acbc86996317881120b310c26f73b1106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac91fb28a34e7498b8800023f7eb00907"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#ac91fb28a34e7498b8800023f7eb00907">isEqual:</a></td></tr>
+<tr class="memdesc:ac91fb28a34e7498b8800023f7eb00907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares the receiver to another object for equality.  <a href="#ac91fb28a34e7498b8800023f7eb00907">More...</a><br /></td></tr>
+<tr class="separator:ac91fb28a34e7498b8800023f7eb00907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54be9316598d5ada9373987f3ff67abe"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#a54be9316598d5ada9373987f3ff67abe">isKindOfClass:</a></td></tr>
+<tr class="memdesc:a54be9316598d5ada9373987f3ff67abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Boolean value that indicates whether the receiver is an instance of a given class.  <a href="#a54be9316598d5ada9373987f3ff67abe">More...</a><br /></td></tr>
+<tr class="separator:a54be9316598d5ada9373987f3ff67abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Class Methods</h2></td></tr>
+<tr class="memitem:acaf83f729b39eff35632783144598a29"><td class="memItemLeft" align="right" valign="top">(const char *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29">name</a></td></tr>
+<tr class="memdesc:acaf83f729b39eff35632783144598a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the class.  <a href="#acaf83f729b39eff35632783144598a29">More...</a><br /></td></tr>
+<tr class="separator:acaf83f729b39eff35632783144598a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="interfaceProtocol.html">Protocol</a> for objects. </p>
 <p>The <a class="el" href="protocolObjectProtocol-p.html" title="Protocol for objects. ">ObjectProtocol</a> defines the minimal interface that objects must implement to provide basic functionality. </p>
 
 <p class="definition">Definition at line <a class="el" href="Object_09Protocol_8h_source.html#l00017">17</a> of file <a class="el" href="Object_09Protocol_8h_source.html">Object+Protocol.h</a>.</p>
-</div><hr/>The documentation for this protocol was generated from the following file:<ul>
-<li>include/NXFoundation/<a class="el" href="Object_09Protocol_8h_source.html">Object+Protocol.h</a></li>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a id="ac91fb28a34e7498b8800023f7eb00907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac91fb28a34e7498b8800023f7eb00907">&#9670;&nbsp;</a></span>isEqual:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) isEqual: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td>
+          <td class="paramname"><em>anObject</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compares the receiver to another object for equality. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">anObject</td><td>The object to compare with the receiver. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the objects are equal, otherwise NO.</dd></dl>
+<p>When comparing two objects, this method should be overridden to compare the contents of the objects. </p>
+
+<p>Reimplemented in <a class="el" href="interfaceObject.html#af12644c1cd7498475dc61c4df7138133">Object</a>.</p>
+
+</div>
+</div>
+<a id="a54be9316598d5ada9373987f3ff67abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54be9316598d5ada9373987f3ff67abe">&#9670;&nbsp;</a></span>isKindOfClass:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) isKindOfClass: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>)&#160;</td>
+          <td class="paramname"><em>cls</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a Boolean value that indicates whether the receiver is an instance of a given class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>A class object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the receiver is an instance of cls or an instance of any class that inherits from cls, otherwise NO. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="interfaceObject.html#a50e8930b119217c2f0b9fca710bd3a8c">Object</a>.</p>
+
+</div>
+</div>
+<a id="acaf83f729b39eff35632783144598a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaf83f729b39eff35632783144598a29">&#9670;&nbsp;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (const char *) name </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the name of the class. </p>
+<dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the class. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="interfaceObject.html#a81428c9198d7756c61b0d4c33969e186">Object</a>, and <a class="el" href="interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a">Protocol</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this protocol was generated from the following file:<ul>
+<li>include/runtime-gcc/objc/<a class="el" href="Object_09Protocol_8h_source.html">Object+Protocol.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->

@@ -7,7 +7,7 @@ var searchData=
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
   ['stringwithcstring_3a',['stringWithCString:',['../interfaceNXString.html#ab391fe0fb40f1e8fc4478159fc787c2b',1,'NXString']]],
   ['stringwithformat_3a',['stringWithFormat:',['../interfaceNXString.html#a1c2b80633ce694dbd218dc665e99de02',1,'NXString']]],
-  ['stringwithstring_3a',['stringWithString:',['../interfaceNXString.html#a9eef0327a31f41340aa4668a08b81bda',1,'NXString']]],
+  ['stringwithstring_3a',['stringWithString:',['../interfaceNXString.html#a6e8e4b0328c11e131ff516b24fe842cb',1,'NXString']]],
   ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]],
   ['sys_5fabort',['sys_abort',['../sys_8h.html#a51400f71e4702fdbd13394546f4182bb',1,'sys.h']]],
   ['sys_5fexit',['sys_exit',['../sys_8h.html#ac8c2364fd51221e5ac983f174aeb289f',1,'sys.h']]],

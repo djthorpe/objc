@@ -1,4 +1,5 @@
 <map id="NXAutoreleasePool" name="NXAutoreleasePool">
-<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="37,80,120,107"/>
-<area shape="rect" id="node3" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="47,5,111,32"/>
+<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="37,155,120,181"/>
+<area shape="rect" id="node3" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="47,80,111,107"/>
+<area shape="rect" id="node4" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="9,5,148,32"/>
 </map>

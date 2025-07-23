@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
+  ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../NXTimeInterval_8h.html#aaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
   ['new',['new',['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString']]],
   ['nil',['Nil',['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
@@ -22,7 +22,9 @@ var searchData=
   ['nxcomparisonresult_2eh',['NXComparisonResult.h',['../NXComparisonResult_8h.html',1,'']]],
   ['nxcomparisonsame',['NXComparisonSame',['../NXComparisonResult_8h.html#ad8cd3aa20b406ea96f21007d88380a1da4926f4a1faf77b1057dcd5e81d85cf85',1,'NXComparisonResult.h']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
+  ['nxconstantstring_2bprotocol_2eh',['NXConstantString+Protocol.h',['../NXConstantString_09Protocol_8h.html',1,'']]],
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
+  ['nxconstantstringprotocol_2dp',['NXConstantStringProtocol-p',['../protocolNXConstantStringProtocol-p.html',1,'']]],
   ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxendian',['NXEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23',1,'NXArch.h']]],
@@ -38,9 +40,7 @@ var searchData=
   ['nxrandint32',['NXRandInt32',['../NXNumber_8h.html#a3c5ce4190cd3e1aad68bb62c2ae70878',1,'NXNumber.h']]],
   ['nxrandunsignedint32',['NXRandUnsignedInt32',['../NXNumber_8h.html#aa883ed827a2c8aec90e77fec9036c430',1,'NXNumber.h']]],
   ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
-  ['nxstring_2bprotocol_2eh',['NXString+Protocol.h',['../NXString_09Protocol_8h.html',1,'']]],
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
-  ['nxstringprotocol_2dp',['NXStringProtocol-p',['../protocolNXStringProtocol-p.html',1,'']]],
   ['nxthread',['NXThread',['../interfaceNXThread.html',1,'']]],
   ['nxthread_2eh',['NXThread.h',['../NXThread_8h.html',1,'']]],
   ['nxtimeinterval',['NXTimeInterval',['../NXTimeInterval_8h.html#acb415dcba0be032b662a4d117a80d5cf',1,'NXTimeInterval.h']]],

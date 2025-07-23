@@ -7,9 +7,9 @@ var searchData=
   ['class_5fgetsuperclass',['class_getSuperclass',['../runtime_8h.html#a08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
   ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../runtime_8h.html#a1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
   ['class_5frespondstoselector',['class_respondsToSelector',['../runtime_8h.html#a2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
-  ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#a1ba6044ff6b4516f702d3de11b5f4592',1,'NXString::compare:()']]],
+  ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#af5014b9b35f1ce101b204e3f6af5d0f0',1,'NXString::compare:()']]],
   ['conformsto_3a',['conformsTo:',['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
   ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#a1fabed2981caaf91cac4facc1c43d6c4',1,'NXString']]],
-  ['cstr',['cStr',['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../protocolNXStringProtocol-p.html#ac519ed6000afeefa7ad53c47a0a5b7ef',1,'NXStringProtocol-p::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
+  ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
   ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
 ];

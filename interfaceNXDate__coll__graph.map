@@ -1,5 +1,6 @@
 <map id="NXDate" name="NXDate">
-<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="5,81,88,108"/>
-<area shape="rect" id="node3" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="15,5,79,32"/>
-<area shape="rect" id="node4" href="$structsys__time.html" title="Represents a system time structure. " alt="" coords="113,81,194,108"/>
+<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="33,157,116,184"/>
+<area shape="rect" id="node3" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="43,81,107,108"/>
+<area shape="rect" id="node4" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node5" href="$structsys__time.html" title="Represents a system time structure. " alt="" coords="141,157,222,184"/>
 </map>
