@@ -97,6 +97,7 @@
   _length = sys_vsprintf(NULL, 0, cFormat, args);
   if (_length > 0) {
     // Allocate memory for the string
+    objc_assert(_zone);
     _data = [_zone allocWithSize:_length + 1];
     if (_data) {
       sys_vsprintf(_data, _length + 1, cFormat,
@@ -137,105 +138,99 @@
     if (instance->_data) {
       sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
                    args); // Format the string into the allocated memory
-      instance->_value =
-          instance->_data; // Set the value to the allocated data
+      instance->_value = instance->_data; // Set the value to the allocated data
     } else {
       [instance release];
       instance = nil; // Allocation failed, set self to nil
     }
-    va_end(argsCopy);
-    va_end(args);
-    return [instance autorelease]; // Return an autoreleased instance
-  } else {
-    [instance release];
-    instance = nil; // Set instance to nil for failure case
-    va_end(argsCopy);
-    va_end(args);
-    return nil; // Return nil to indicate failure
   }
+  va_end(argsCopy);
+  va_end(args);
+  return [instance autorelease]; // Return an autoreleased instance
+}
 
-  /**
-   * @brief Releases the string's internal value.
-   */
-  -(void)dealloc {
-    if (_data) {
-      [_zone free:_data]; // Free the allocated data
-    }
-    [super dealloc];
+/**
+ * @brief Releases the string's internal value.
+ */
+- (void)dealloc {
+  if (_data) {
+    [_zone free:_data]; // Free the allocated data
   }
+  [super dealloc];
+}
 
-  ///////////////////////////////////////////////////////////////////////////////
-  // INSTANCE METHODS
+///////////////////////////////////////////////////////////////////////////////
+// INSTANCE METHODS
 
-  /**
-   * @brief Returns the C-string representation of the string.
-   */
-  -(const char *)cStr {
-    return _value ? _value : "";
+/**
+ * @brief Returns the C-string representation of the string.
+ */
+- (const char *)cStr {
+  return _value ? _value : "";
+}
+
+/**
+ * @brief Returns the length of the string.
+ */
+- (unsigned int)length {
+  if (_value) {
+    return _length;
   }
+  return 0;
+}
 
-  /**
-   * @brief Returns the length of the string.
-   */
-  -(unsigned int)length {
-    if (_value) {
-      return _length;
-    }
-    return 0;
+/**
+ * @brief Returns the string through a description method.
+ */
+- (NXString *)description {
+  return self;
+}
+
+/**
+ * @brief Checks if the string is equal to another object.
+ */
+- (BOOL)isEqual:(id)other {
+  if (self == other) {
+    return YES;
   }
-
-  /**
-   * @brief Returns the string through a description method.
-   */
-  -(NXString *)description {
-    return self;
+  if (other == nil ||
+      [other conformsToProtocol:@protocol(NXStringProtocol)] == NO) {
+    return NO;
   }
-
-  /**
-   * @brief Checks if the string is equal to another object.
-   */
-  -(BOOL)isEqual : (id)other {
-    if (self == other) {
-      return YES;
-    }
-    if (other == nil ||
-        [other conformsToProtocol:@protocol(NXStringProtocol)] == NO) {
-      return NO;
-    }
-    if ([other length] != _length) {
-      return NO;
-    }
-    const char *otherCStr = [other cStr];
-    if (otherCStr == _value) {
-      return YES; // Same pointer, same content
-    }
-    return strcmp(_value ? _value : "", otherCStr ? otherCStr : "") == 0;
+  if ([other length] != _length) {
+    return NO;
   }
-
-  /**
-   * @brief Compares this string with another string.
-   */
-  -(NXComparisonResult)compare : (id<NXStringProtocol>)other {
-    objc_assert(other);
-    const char *otherCStr = [other cStr];
-    if (otherCStr == _value) {
-      return NXComparisonSame; // Same pointer, same content
-    }
-    return strcmp(_value ? _value : "", otherCStr ? otherCStr : "");
+  const char *otherCStr = [other cStr];
+  if (otherCStr == _value) {
+    return YES; // Same pointer, same content
   }
+  return strcmp(_value ? _value : "", otherCStr ? otherCStr : "") == 0;
+}
 
-  /**
-   * @brief Counts the number of occurrences of a character.
-   */
-  -(uint32_t)countOccurrencesOfByte : (const char)ch {
-    uint32_t count = 0;
-    unsigned int i = 0;
-    for (i = 0; i < _length; i++) {
-      if (_value[i] == ch) {
-        count++;
-      }
-    }
-    return count;
+/**
+ * @brief Compares this string with another string.
+ */
+- (NXComparisonResult)compare:(id<NXStringProtocol>)other {
+  objc_assert(other);
+  const char *otherCStr = [other cStr];
+  if (otherCStr == _value) {
+    return NXComparisonSame; // Same pointer, same content
   }
+  return strcmp(_value ? _value : "", otherCStr ? otherCStr : "");
+}
 
-  @end
+/**
+ * @brief Counts the number of occurrences of a character.
+ */
+- (uint32_t)countOccurrencesOfByte:(const char)ch {
+  uint32_t count = 0;
+  unsigned int i = 0;
+  for (i = 0; i < _length; i++) {
+    if (_value[i] == ch) {
+      count++;
+    }
+  }
+  return count;
+}
+
+@end
