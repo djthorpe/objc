@@ -25,6 +25,26 @@
 }
 
 /**
+ * @brief Return a new empty string.
+ */
++ (NXString *)new;
+
+/**
+ * @brief Return a string by referencing another string.
+ */
++ (NXString *)stringWithString:(id<NXStringProtocol, ObjectProtocol>)other;
+
+/**
+ * @brief Return a string by referencing a c-string.
+ */
++ (NXString *)stringWithCString:(const char *)cStr;
+
+/**
+ * @brief Return a string from format string and arguments.
+ */
++ (NXString *)stringWithFormat:(NXConstantString *)format, ...;
+
+/**
  * @brief Initializes a new string by referencing another string.
  *
  * This method retains the source string, and if modified, it will create a
@@ -78,7 +98,7 @@
  * it will currently panic, but should raise an exception in the future,
  * when exception handling is implemented.
  */
-- (void)appendString:(id<NXStringProtocol>)other;
+// - (void)appendString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Appends a string with format and arguments to this string.
@@ -89,7 +109,7 @@
  * it will currently panic, but should raise an exception in the future,
  * when exception handling is implemented.
  */
-- (void)appendStringWithFormat:(NXConstantString *)format, ...;
+// - (void)appendStringWithFormat:(NXConstantString *)format, ...;
 
 /**
  * @brief Appends a null-terminated C-string to this string.
@@ -99,7 +119,7 @@
  * it will currently panic, but should raise an exception in the future,
  * when exception handling is implemented.
  */
-- (void)appendCString:(const char *)other;
+// - (void)appendCString:(const char *)other;
 
 /**
  * @brief Returns a quoted version of the string.
@@ -110,13 +130,13 @@
  * enclosed in double quotes. Special characters within the string are escaped
  * according to JSON string escaping rules.
  */
-- (NXString *)quotedString;
+// - (NXString *)quotedString;
 
 /**
  * @brief Trims leading and trailing whitespace from the string.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-- (BOOL)trimSpace;
+// - (BOOL)trimSpace;
 
 /**
  * @brief Trims leading and trailing string values from the string.
@@ -126,8 +146,8 @@
  * end, or NULL to skip.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-- (BOOL)trimPrefix:(id<NXStringProtocol>)prefix
-            suffix:(id<NXStringProtocol>)suffix;
+// - (BOOL)trimPrefix:(id<NXStringProtocol>)prefix
+// suffix:(id<NXStringProtocol>)suffix;
 
 /**
  * @brief Checks if the string starts with a given prefix.
@@ -135,7 +155,7 @@
  * prefix.
  * @return YES if the string starts with the specified prefix, NO otherwise.
  */
-- (BOOL)hasPrefix:(id<NXStringProtocol>)prefix;
+// - (BOOL)hasPrefix:(id<NXStringProtocol>)prefix;
 
 /**
  * @brief Checks if the string ends with a given suffix.
@@ -143,7 +163,7 @@
  * suffix.
  * @return YES if the string ends with the specified suffix, NO otherwise.
  */
-- (BOOL)hasSuffix:(id<NXStringProtocol>)suffix;
+// - (BOOL)hasSuffix:(id<NXStringProtocol>)suffix;
 
 /**
  * @brief Counts the number of occurrences of a character.
@@ -158,7 +178,7 @@
  * of.
  * @return The number of times the string appears in the string.
  */
-- (uint32_t)countOccurrencesOfString:(id<NXStringProtocol>)other;
+// - (uint32_t)countOccurrencesOfString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Checks if the string contains a given substring.
@@ -166,7 +186,7 @@
  * containment.
  * @return YES if the string contains the specified substring, NO otherwise.
  */
-- (BOOL)containsString:(id<NXStringProtocol>)other;
+// - (BOOL)containsString:(id<NXStringProtocol>)other;
 
 /**
  * @brief Compares this string with another string.
