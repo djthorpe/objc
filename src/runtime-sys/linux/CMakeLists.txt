@@ -4,10 +4,10 @@ add_library(${NAME} STATIC
     abort.c
     exception.c
     mutex.c
-    random.c
     sys.c
     ../posix/malloc.c
     ../posix/puts.c
+    ../posix/random.c
     ../posix/sleep.c
     ../posix/thread.c
     ../posix/time.c

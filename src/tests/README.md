@@ -8,7 +8,7 @@ The tests are organized into three main categories:
 
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_19): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_01, sys_02, sys_03): Tests for low-level system functionality.
+- **System Tests** (sys_01, sys_02, sys_03, sys_04): Tests for low-level system functionality.
 
 ---
 
@@ -88,3 +88,4 @@ The tests are organized into three main categories:
 | sys_01 | Printf System Functions | Tests comprehensive printf-style formatting functions. Includes `sys_printf()` and `sys_sprintf()` with extensive format specifier testing: string (`%s`, including NULL), integer (`%d`, `%+d`), hexadecimal (`%x`, `%X`, `%#x`, `%#X`), binary (`%b`, `%#b`), octal (`%o`, `%#o`), unsigned (`%u`), character (`%c`), percent literal (`%`, `%%`), and edge cases. |
 | sys_02 | Time System Functions | Tests low-level time management functions. Tests `sys_time_get_utc()` with time structure validation (seconds > 0, nanoseconds in valid range), NULL parameter handling, time consistency testing (sequential calls should be monotonic), time precision and accuracy validation. |
 | sys_03 | Thread System Functions | Tests low-level threading system information. Tests `sys_thread_numcores()` CPU core count detection with validation (>= 1, within reasonable bounds), consistency testing across multiple calls, performance testing (function should be fast), boundary testing (should not exceed UINT8_MAX - 1). |
+| sys_04 | Random Number Generation | Tests low-level random number generation functions. Tests `sys_random_uint32()` and `sys_random_uint64()` with basic functionality validation, randomness verification (multiple calls should differ), range validation, performance testing (functions should be fast), consistency testing across multiple batches, statistical distribution validation, and 64-bit full range utilization verification. |
