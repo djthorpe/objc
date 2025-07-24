@@ -1,15 +1,15 @@
-#include "NXNumberInt64.h"
+#include "NXNumberInt32.h"
 #include <NXFoundation/NXFoundation.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
-@implementation NXNumberInt64
+@implementation NXNumberInt32
 
 /**
- * @brief Initialize an instance with a int64_t value.
+ * @brief Initialize an instance with a int32_t value.
  */
-- (id)initWithInt64:(int64_t)value {
+- (id)initWithInt32:(int32_t)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -18,13 +18,13 @@
 }
 
 /**
- * @brief Return an instance with a int64_t value.
+ * @brief Return an instance with a int32_t value.
  */
-+ (NXNumber *)numberWithInt64:(int64_t)value {
++ (NXNumber *)numberWithInt32:(int32_t)value {
   if (value == 0) {
     return [NXNumber zeroValue];
   }
-  return [[[NXNumberInt64 alloc] initWithInt64:value] autorelease];
+  return [[[NXNumberInt32 alloc] initWithInt32:value] autorelease];
 }
 
 /**
@@ -54,14 +54,6 @@
  * @brief Get the stored value as a int32_t.
  */
 - (int32_t)int32Value {
-  objc_assert(_value >= INT32_MIN && _value <= INT32_MAX);
-  return (int32_t)_value;
-}
-
-/**
- * @brief Returns the 64-bit integer value.
- */
-- (int64_t)int64Value {
   return _value;
 }
 
@@ -69,8 +61,15 @@
  * @brief Get the stored value as a uint32_t.
  */
 - (uint32_t)unsignedInt32Value {
-  objc_assert(_value >= 0 && _value <= UINT32_MAX);
+  objc_assert(_value >= 0);
   return (uint32_t)_value;
+}
+
+/**
+ * @brief Returns the 64-bit integer value.
+ */
+- (int64_t)int64Value {
+  return (int64_t)_value;
 }
 
 /**
@@ -86,7 +85,7 @@
  * @brief Return the string representation of the value.
  */
 - (NXString *)description {
-  return [NXString stringWithFormat:@"%lld", _value];
+  return [NXString stringWithFormat:@"%d", _value];
 }
 
 /**
@@ -97,9 +96,9 @@
     return YES;
   }
 
-  // Check if it's another NXNumberInt64
-  if ([object isKindOfClass:[NXNumberInt64 class]]) {
-    NXNumberInt64 *other = (NXNumberInt64 *)object;
+  // Check if it's another NXNumberInt32
+  if ([object isKindOfClass:[NXNumberInt32 class]]) {
+    NXNumberInt32 *other = (NXNumberInt32 *)object;
     return _value == other->_value;
   }
 
@@ -114,7 +113,7 @@
     } else {
       // If this value is negative, compare with signed value
       int64_t otherInt64 = [other int64Value];
-      return _value == otherInt64;
+      return (int64_t)_value == otherInt64;
     }
   }
 

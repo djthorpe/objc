@@ -1,6 +1,11 @@
 #include "NXNumberBool.h"
+#include "NXNumberInt16.h"
+#include "NXNumberInt32.h"
 #include "NXNumberInt64.h"
+#include "NXNumberUnsignedInt16.h"
+#include "NXNumberUnsignedInt32.h"
 #include "NXNumberUnsignedInt64.h"
+#include "NXNumberZero.h"
 #include <NXFoundation/NXFoundation.h>
 #include <runtime-sys/sys.h>
 
@@ -27,6 +32,34 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
  */
 + (NXNumber *)numberWithBool:(BOOL)value {
   return value ? [NXNumberBool trueValue] : [NXNumberBool falseValue];
+}
+
+/**
+ * @brief Create an NXNumber object with a 16-bit signed integer value.
+ */
++ (NXNumber *)numberWithInt16:(int16_t)value {
+  return [NXNumberInt16 numberWithInt16:value];
+}
+
+/**
+ * @brief Create an NXNumber object with a 16-bit unsigned integer value.
+ */
++ (NXNumber *)numberWithUnsignedInt16:(uint16_t)value {
+  return [NXNumberUnsignedInt16 numberWithUnsignedInt16:value];
+}
+
+/**
+ * @brief Create an NXNumber object with a 32-bit signed integer value.
+ */
++ (NXNumber *)numberWithInt32:(int32_t)value {
+  return [NXNumberInt32 numberWithInt32:value];
+}
+
+/**
+ * @brief Create an NXNumber object with a 32-bit unsigned integer value.
+ */
++ (NXNumber *)numberWithUnsignedInt32:(uint32_t)value {
+  return [NXNumberUnsignedInt32 numberWithUnsignedInt32:value];
 }
 
 /**
@@ -58,11 +91,50 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 }
 
 /**
+ * @brief Get a singleton NXNumber representing a zero value.
+ */
++ (NXNumber *)zeroValue {
+  return [NXNumberZero zeroValue];
+}
+
+/**
  * @brief Get the stored value as a boolean.
  * @note Default implementation returns NO.
  */
 - (BOOL)boolValue {
   return NO;
+}
+
+/**
+ * @brief Get the stored value as a 16-bit signed integer.
+ * @note Default implementation returns 0.
+ */
+- (int16_t)int16Value {
+  return 0;
+}
+
+/**
+ * @brief Get the stored value as a 16-bit unsigned integer.
+ * @note Default implementation returns 0.
+ */
+- (uint16_t)unsignedInt16Value {
+  return 0;
+}
+
+/**
+ * @brief Get the stored value as a 32-bit signed integer.
+ * @note Default implementation returns 0.
+ */
+- (int32_t)int32Value {
+  return 0;
+}
+
+/**
+ * @brief Get the stored value as a 32-bit unsigned integer.
+ * @note Default implementation returns 0.
+ */
+- (uint32_t)unsignedInt32Value {
+  return 0;
 }
 
 /**

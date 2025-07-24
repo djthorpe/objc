@@ -95,11 +95,13 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXNumber` with booleans
 - [X] `NXNull` - singleton for null objects that can be inserted into collections
 - [X] Protocols and `conformsTo:`
-- [ ] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
-- [ ] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
-- [ ] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
+- [X] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
+- [X] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
+- [X] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
+- [ ] printf - `%@` format specifier for logging objects and `[Object description]`
+- [ ] printf - `%f and %lf` format specifier for floats and doubles
+- [ ] printf - `%T` format specifier for time intervals
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
-- [ ] `NXLog` and `NXString stringWithFormat:` support - `%@` format specifier for logging objects and `[Object description]`
 - [ ] `NXString` - mutable strings - append, appendFormat, substring, split, join, etc.
 - [ ] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
