@@ -39,7 +39,7 @@ brew install gcc@15
 TOOLCHAIN_PATH=/opt/homebrew RELEASE=1 CC=gcc-15 make
 ```
 
-Once you've made the libraries, use the `make tests` target to run the unit tests.
+Once you've made the libraries, use the `make tests` target to run the unit tests. There is information about test coverage in the [tests directory](src/tests/README.md).
 
 You can target different architectures by setting the `TARGET` environment variable. For a RP2040-based board, you can use the `clang` compiler with the ARM toolchain. The `TARGET` environment variable should be set to the target architecture, such as `armv6m-none-eabi` for the RP2040 Pico board:
 
