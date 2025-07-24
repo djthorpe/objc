@@ -128,13 +128,11 @@ static NXNumberBool *falseNumber;
     if (_value) {
       // This is true, check if other equals 1
       int64_t otherInt64 = [other int64Value];
-      uint64_t otherUint64 = [other unsignedInt64Value];
-      return (otherInt64 == 1) || (otherUint64 == 1);
+      return (otherInt64 == 1);
     } else {
       // This is false, check if other equals 0
       int64_t otherInt64 = [other int64Value];
-      uint64_t otherUint64 = [other unsignedInt64Value];
-      return (otherInt64 == 0) && (otherUint64 == 0);
+      return (otherInt64 == 0);
     }
   }
 
