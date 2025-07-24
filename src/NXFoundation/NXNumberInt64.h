@@ -17,7 +17,7 @@
 + (NXNumber *)numberWithInt64:(int64_t)value;
 
 /**
- * @brief Return an instance of an true value.
+ * @brief Return an instance of a zero value.
  * @return A statically allocated NXNumberInt64 instance representing zero.
  */
 + (NXNumber *)zeroValue;
