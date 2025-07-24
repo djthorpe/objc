@@ -8,6 +8,8 @@ add_library(${NAME} STATIC
     NXNull.m
     NXNumber.m
     NXNumberBool.m
+    NXNumberInt64.m
+    NXNumberUnsignedInt64.m
     NXObject.m
     NXString.m
     NXTimeInterval.m

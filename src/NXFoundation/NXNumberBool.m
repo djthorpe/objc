@@ -58,11 +58,35 @@ static NXNumberBool *falseNumber;
 }
 
 /**
+ * @brief Get the stored value as a int64_t.
+ */
+- (int64_t)int64Value {
+  return _value ? 1 : 0;
+}
+
+/**
+ * @brief Get the stored value as a uint64_t.
+ */
+- (uint64_t)unsignedInt64Value {
+  return _value ? 1 : 0;
+}
+
+/**
  * @brief Return the string representation of the boolean value.
  */
 - (NXString *)description {
-  return [[[NXString alloc] initWithCString:(_value ? "true" : "false")]
-      autorelease];
+  return [NXString stringWithCString:(_value ? "true" : "false")];
+}
+
+/**
+ * @brief Check for equality with another NXNumber instance.
+ */
+- (BOOL)isEqual:(id)object {
+  if (![object isKindOfClass:[NXNumberBool class]]) {
+    return NO;
+  }
+  NXNumberBool *other = (NXNumberBool *)object;
+  return _value == other->_value;
 }
 
 @end

@@ -38,4 +38,18 @@
  */
 - (BOOL)boolValue;
 
+/**
+ * @brief Get the stored value as a int64_t.
+ * @return The int64_t value stored in this instance. If the value is true, it
+ * returns 1; if false, it returns 0.
+ */
+- (int64_t)int64Value;
+
+/**
+ * @brief Returns the 64-bit unsigned integer value stored in this NXNumber
+ * instance.
+ * @return The 64-bit unsigned integer value stored in this instance.
+ */
+- (uint64_t)unsignedInt64Value;
+
 @end
