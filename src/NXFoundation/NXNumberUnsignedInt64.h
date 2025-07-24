@@ -18,7 +18,7 @@
 + (NXNumber *)numberWithUnsignedInt64:(uint64_t)value;
 
 /**
- * @brief Return an instance of an true value.
+ * @brief Return an instance of a zero value.
  * @return A statically allocated NXNumberUnsignedInt64 instance representing
  * zero.
  */
