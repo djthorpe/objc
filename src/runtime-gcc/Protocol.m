@@ -11,6 +11,14 @@
 }
 
 /**
+ * @brief Returns the class name of the protocol.
+ * @return A C string containing the protocol class name.
+ */
++ (const char *)name {
+  return "Protocol";
+}
+
+/**
  * @brief Checks if this protocol conforms to another protocol.
  */
 - (BOOL)conformsTo:(Protocol *)aProtocolObject {

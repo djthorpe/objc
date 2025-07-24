@@ -51,6 +51,12 @@ add_subdirectory(runtime_28)
 add_subdirectory(runtime_29)
 add_subdirectory(runtime_30)
 add_subdirectory(runtime_31)
+add_subdirectory(runtime_32)
+add_subdirectory(runtime_33)
+add_subdirectory(runtime_34)
+add_subdirectory(runtime_35)
+add_subdirectory(runtime_36)
+add_subdirectory(runtime_37)
 
 # Test cases - NXFoundation
 add_subdirectory(NXFoundation_01)
