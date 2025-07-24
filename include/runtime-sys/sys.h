@@ -8,6 +8,7 @@
 #pragma once
 #include "malloc.h"
 #include "printf.h"
+#include "random.h"
 #include "thread.h"
 #include "time.h"
 #include <stdint.h>
@@ -30,19 +31,6 @@ extern void sys_puts(const char *str);
  * system's standard output stream, but does not flush the output buffer.
  */
 extern void sys_putch(const char ch);
-
-/**
- * @brief Returns a random number as a 32-bit unsigned integer.
- * @return A random unsigned 32-bit integer value.
- * @warning The function may not be thread-safe depending on the platform
- *          implementation.
- *
- *  This function generates a random unsigned 32-bit integer value
- *  using the system's random number generator. The quality and
- *  distribution of randomness depends on the underlying platform
- *  implementation.
- */
-extern uint32_t sys_random_uint32(void);
 
 /**
  * @brief Initializes the system on startup.
