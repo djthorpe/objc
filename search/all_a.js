@@ -7,6 +7,8 @@ var searchData=
   ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
   ['numberwithbool_3a',['numberWithBool:',['../interfaceNXNumber.html#ad31141fabac9793fcf015df9cea49132',1,'NXNumber']]],
+  ['numberwithint64_3a',['numberWithInt64:',['../interfaceNXNumber.html#a970d91a0c04c7f96dd9861b6baf13258',1,'NXNumber']]],
+  ['numberwithunsignedint64_3a',['numberWithUnsignedInt64:',['../interfaceNXNumber.html#a84283d5fd779f493afcce5c2d74b3381',1,'NXNumber']]],
   ['nxapplication',['NXApplication',['../interfaceNXApplication.html',1,'']]],
   ['nxapplication_2eh',['NXApplication.h',['../NXApplication_8h.html',1,'']]],
   ['nxarch_2eh',['NXArch.h',['../NXArch_8h.html',1,'']]],
