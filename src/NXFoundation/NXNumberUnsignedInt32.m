@@ -1,15 +1,15 @@
-#include "NXNumberUnsignedInt64.h"
+#include "NXNumberUnsignedInt32.h"
 #include <NXFoundation/NXFoundation.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
-@implementation NXNumberUnsignedInt64
+@implementation NXNumberUnsignedInt32
 
 /**
- * @brief Initialize an instance with a uint64_t value.
+ * @brief Initialize an instance with a uint32_t value.
  */
-- (id)initWithUnsignedInt64:(uint64_t)value {
+- (id)initWithUnsignedInt32:(uint32_t)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -18,14 +18,14 @@
 }
 
 /**
- * @brief Return an instance with a uint64_t value.
+ * @brief Return an instance with a uint32_t value.
  */
-+ (NXNumber *)numberWithUnsignedInt64:(uint64_t)value {
++ (NXNumber *)numberWithUnsignedInt32:(uint32_t)value {
   if (value == 0) {
     return [NXNumber zeroValue];
   }
   return
-      [[[NXNumberUnsignedInt64 alloc] initWithUnsignedInt64:value] autorelease];
+      [[[NXNumberUnsignedInt32 alloc] initWithUnsignedInt32:value] autorelease];
 }
 
 /**
@@ -63,8 +63,7 @@
  * @brief Get the stored value as a uint32_t.
  */
 - (uint32_t)unsignedInt32Value {
-  objc_assert(_value <= UINT32_MAX);
-  return (uint32_t)_value;
+  return _value;
 }
 
 /**
@@ -78,14 +77,14 @@
  * @brief Returns the 64-bit unsigned integer value.
  */
 - (uint64_t)unsignedInt64Value {
-  return _value;
+  return (uint64_t)_value;
 }
 
 /**
  * @brief Return the string representation of the value.
  */
 - (NXString *)description {
-  return [NXString stringWithFormat:@"%llu", _value];
+  return [NXString stringWithFormat:@"%u", _value];
 }
 
 /**
@@ -96,9 +95,9 @@
     return YES;
   }
 
-  // Check if it's another NXNumberUnsignedInt64
-  if ([object isKindOfClass:[NXNumberUnsignedInt64 class]]) {
-    NXNumberUnsignedInt64 *other = (NXNumberUnsignedInt64 *)object;
+  // Check if it's another NXNumberUnsignedInt32
+  if ([object isKindOfClass:[NXNumberUnsignedInt32 class]]) {
+    NXNumberUnsignedInt32 *other = (NXNumberUnsignedInt32 *)object;
     return _value == other->_value;
   }
 
@@ -109,7 +108,7 @@
 
     // Only compare if the other number is non-negative
     if (otherInt64 >= 0) {
-      return _value == (uint64_t)otherInt64;
+      return (uint64_t)_value == (uint64_t)otherInt64;
     }
   }
 

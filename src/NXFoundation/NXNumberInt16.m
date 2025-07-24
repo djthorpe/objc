@@ -1,15 +1,15 @@
-#include "NXNumberInt64.h"
+#include "NXNumberInt16.h"
 #include <NXFoundation/NXFoundation.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
-@implementation NXNumberInt64
+@implementation NXNumberInt16
 
 /**
- * @brief Initialize an instance with a int64_t value.
+ * @brief Initialize an instance with a int16_t value.
  */
-- (id)initWithInt64:(int64_t)value {
+- (id)initWithInt16:(int16_t)value {
   self = [super init];
   if (self) {
     _value = value;
@@ -18,13 +18,13 @@
 }
 
 /**
- * @brief Return an instance with a int64_t value.
+ * @brief Return an instance with a int16_t value.
  */
-+ (NXNumber *)numberWithInt64:(int64_t)value {
++ (NXNumber *)numberWithInt16:(int16_t)value {
   if (value == 0) {
     return [NXNumber zeroValue];
   }
-  return [[[NXNumberInt64 alloc] initWithInt64:value] autorelease];
+  return [[[NXNumberInt16 alloc] initWithInt16:value] autorelease];
 }
 
 /**
@@ -38,47 +38,44 @@
  * @brief Get the stored value as a int16_t.
  */
 - (int16_t)int16Value {
-  objc_assert(_value >= INT16_MIN && _value <= INT16_MAX);
-  return (int16_t)_value;
-}
-
-/**
- * @brief Get the stored value as a uint16_t.
- */
-- (uint16_t)unsignedInt16Value {
-  objc_assert(_value >= 0 && _value <= UINT16_MAX);
-  return (uint16_t)_value;
+  return _value;
 }
 
 /**
  * @brief Get the stored value as a int32_t.
  */
 - (int32_t)int32Value {
-  objc_assert(_value >= INT32_MIN && _value <= INT32_MAX);
   return (int32_t)_value;
 }
 
 /**
- * @brief Returns the 64-bit integer value.
+ * @brief Get the stored value as a int64_t.
  */
 - (int64_t)int64Value {
-  return _value;
+  return (int64_t)_value;
+}
+
+/**
+ * @brief Get the stored value as a uint16_t.
+ */
+- (uint16_t)unsignedInt16Value {
+  objc_assert(_value >= 0);
+  return (uint16_t)_value;
 }
 
 /**
  * @brief Get the stored value as a uint32_t.
  */
 - (uint32_t)unsignedInt32Value {
-  objc_assert(_value >= 0 && _value <= UINT32_MAX);
+  objc_assert(_value >= 0);
   return (uint32_t)_value;
 }
 
 /**
- * @brief Returns the 64-bit unsigned integer value.
+ * @brief Get the stored value as a uint64_t.
  */
 - (uint64_t)unsignedInt64Value {
   objc_assert(_value >= 0);
-  // Ensure the value is non-negative before casting to uint64_t
   return (uint64_t)_value;
 }
 
@@ -86,7 +83,7 @@
  * @brief Return the string representation of the value.
  */
 - (NXString *)description {
-  return [NXString stringWithFormat:@"%lld", _value];
+  return [NXString stringWithFormat:@"%d", _value];
 }
 
 /**
@@ -97,9 +94,9 @@
     return YES;
   }
 
-  // Check if it's another NXNumberInt64
-  if ([object isKindOfClass:[NXNumberInt64 class]]) {
-    NXNumberInt64 *other = (NXNumberInt64 *)object;
+  // Check if it's another NXNumberInt16
+  if ([object isKindOfClass:[NXNumberInt16 class]]) {
+    NXNumberInt16 *other = (NXNumberInt16 *)object;
     return _value == other->_value;
   }
 
@@ -114,7 +111,7 @@
     } else {
       // If this value is negative, compare with signed value
       int64_t otherInt64 = [other int64Value];
-      return _value == otherInt64;
+      return (int64_t)_value == otherInt64;
     }
   }
 

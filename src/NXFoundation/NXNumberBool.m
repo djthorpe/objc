@@ -58,6 +58,34 @@ static NXNumberBool *falseNumber;
 }
 
 /**
+ * @brief Get the stored value as a int16_t.
+ */
+- (int16_t)int16Value {
+  return _value ? 1 : 0;
+}
+
+/**
+ * @brief Get the stored value as a uint16_t.
+ */
+- (uint16_t)unsignedInt16Value {
+  return _value ? 1 : 0;
+}
+
+/**
+ * @brief Get the stored value as a int32_t.
+ */
+- (int32_t)int32Value {
+  return _value ? 1 : 0;
+}
+
+/**
+ * @brief Get the stored value as a uint32_t.
+ */
+- (uint32_t)unsignedInt32Value {
+  return _value ? 1 : 0;
+}
+
+/**
  * @brief Get the stored value as a int64_t.
  */
 - (int64_t)int64Value {
@@ -82,11 +110,33 @@ static NXNumberBool *falseNumber;
  * @brief Check for equality with another NXNumber instance.
  */
 - (BOOL)isEqual:(id)object {
-  if (![object isKindOfClass:[NXNumberBool class]]) {
-    return NO;
+  if (self == object) {
+    return YES;
   }
-  NXNumberBool *other = (NXNumberBool *)object;
-  return _value == other->_value;
+
+  // Check if it's another NXNumberBool
+  if ([object isKindOfClass:[NXNumberBool class]]) {
+    NXNumberBool *other = (NXNumberBool *)object;
+    return _value == other->_value;
+  }
+
+  // Check if it's any other NXNumber subclass
+  if ([object isKindOfClass:[NXNumber class]]) {
+    NXNumber *other = (NXNumber *)object;
+
+    // Compare boolean values - true equals 1, false equals 0
+    if (_value) {
+      // This is true, check if other equals 1
+      int64_t otherInt64 = [other int64Value];
+      return (otherInt64 == 1);
+    } else {
+      // This is false, check if other equals 0
+      int64_t otherInt64 = [other int64Value];
+      return (otherInt64 == 0);
+    }
+  }
+
+  return NO;
 }
 
 @end
