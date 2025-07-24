@@ -37,7 +37,7 @@
   if (self == nil || self == other || other == nil) {
     return nil;
   }
-  if ([other class] == [NXConstantString class]) {
+  if (object_getClass(other) == objc_lookupClass("NXConstantString")) {
     _value = [other cStr];
     _length = [other length];
   } else if ([other isKindOfClass:[NXString class]]) {
