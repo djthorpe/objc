@@ -13,9 +13,9 @@ static NXNumberUnsignedInt64 *zeroNumber;
 @implementation NXNumberUnsignedInt64
 
 /**
- * @brief Initialize an instance with a int64_t value.
+ * @brief Initialize an instance with a uint64_t value.
  */
-- (id)initWithUnsignedInt64:(int64_t)value {
+- (id)initWithUnsignedInt64:(uint64_t)value {
   self = [super init];
   if (self) {
     _value = value;
