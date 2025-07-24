@@ -62,6 +62,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;malloc.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="printf_8h_source.html">printf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="random_8h_source.html">random.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="thread_8h_source.html">thread.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="time_8h_source.html">time.h</a>&quot;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -72,8 +73,9 @@ Include dependency graph for sys.h:</div>
 <map name="include_2runtime-sys_2sys_8h" id="include_2runtime-sys_2sys_8h">
 <area shape="rect" id="node2" href="runtime-sys_2malloc_8h_source.html" title="malloc.h" alt="" coords="5,95,84,121"/>
 <area shape="rect" id="node4" href="printf_8h.html" title="Defines formatted print output functions. " alt="" coords="108,95,176,121"/>
-<area shape="rect" id="node6" href="thread_8h.html" title="Defines thread management functions. " alt="" coords="200,95,276,121"/>
-<area shape="rect" id="node8" href="time_8h.html" title="Defines system time management functions. " alt="" coords="351,95,415,121"/>
+<area shape="rect" id="node6" href="random_8h.html" title="Defines random number generation functions. " alt="" coords="200,95,284,121"/>
+<area shape="rect" id="node8" href="thread_8h.html" title="Defines thread management functions. " alt="" coords="360,95,436,121"/>
+<area shape="rect" id="node9" href="time_8h.html" title="Defines system time management functions. " alt="" coords="461,95,525,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -99,9 +101,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ae13dd8a6d75ee7e807c43ae84ec66dfd">sys_putch</a> (const char ch)</td></tr>
 <tr class="memdesc:ae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a character to the system console or standard output.  <a href="#ae13dd8a6d75ee7e807c43ae84ec66dfd">More...</a><br /></td></tr>
 <tr class="separator:ae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39c02847b060cfe7b9c568a06bc7ad74"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a39c02847b060cfe7b9c568a06bc7ad74">sys_random_uint32</a> (void)</td></tr>
-<tr class="memdesc:a39c02847b060cfe7b9c568a06bc7ad74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a random number as a 32-bit unsigned integer.  <a href="#a39c02847b060cfe7b9c568a06bc7ad74">More...</a><br /></td></tr>
-<tr class="separator:a39c02847b060cfe7b9c568a06bc7ad74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af411a8bc6b7ed4b0af9114e10c959448"><td class="memItemLeft" align="right" valign="top"><a id="af411a8bc6b7ed4b0af9114e10c959448"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#af411a8bc6b7ed4b0af9114e10c959448">sys_init</a> (void)</td></tr>
 <tr class="memdesc:af411a8bc6b7ed4b0af9114e10c959448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the system on startup. <br /></td></tr>
@@ -234,29 +233,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_
   </dd>
 </dl>
 <p>This function writes the specified null-terminated string to the system's standard output stream, and flushes the output buffer. </p>
-
-</div>
-</div>
-<a id="a39c02847b060cfe7b9c568a06bc7ad74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39c02847b060cfe7b9c568a06bc7ad74">&#9670;&nbsp;</a></span>sys_random_uint32()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t sys_random_uint32 </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a random number as a 32-bit unsigned integer. </p>
-<dl class="section return"><dt>Returns</dt><dd>A random unsigned 32-bit integer value. </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>The function may not be thread-safe depending on the platform implementation.</dd></dl>
-<p>This function generates a random unsigned 32-bit integer value using the system's random number generator. The quality and distribution of randomness depends on the underlying platform implementation. </p>
 
 </div>
 </div>
