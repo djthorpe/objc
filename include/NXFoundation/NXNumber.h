@@ -41,9 +41,24 @@ uint32_t NXRandUnsignedInt32();
 /**
  * @brief Creates a new NXNumber instance with a boolean value.
  * @param value The boolean value to wrap in the number instance.
- * @return A new NXNumber instance containing the boolean value.
+ * @return A new NXNumber instance containing the value.
  */
 + (NXNumber *)numberWithBool:(BOOL)value;
+
+/**
+ * @brief Creates a new NXNumber instance with a 64-bit signed integer value.
+ * @param value The 64-bit signed integer value to wrap in the number instance.
+ * @return A new NXNumber instance containing the value.
+ */
++ (NXNumber *)numberWithInt64:(int64_t)value;
+
+/**
+ * @brief Creates a new NXNumber instance with an unsigned 64-bit integer value.
+ * @param value The 64-bit unsigned integer value to wrap in the number
+ * instance.
+ * @return A new NXNumber instance containing the value.
+ */
++ (NXNumber *)numberWithUnsignedInt64:(uint64_t)value;
 
 /**
  * @brief Returns a NXNumber instance representing the boolean value true.
@@ -64,5 +79,19 @@ uint32_t NXRandUnsignedInt32();
  * This method returns YES if the stored value is non-zero, NO otherwise.
  */
 - (BOOL)boolValue;
+
+/**
+ * @brief Returns the 64-bit signed integer value stored in this NXNumber
+ * instance.
+ * @return The 64-bit signed integer value stored in this instance.
+ */
+- (int64_t)int64Value;
+
+/**
+ * @brief Returns the 64-bit unsigned integer value stored in this NXNumber
+ * instance.
+ * @return The 64-bit unsigned integer value stored in this instance.
+ */
+- (uint64_t)unsignedInt64Value;
 
 @end
