@@ -104,6 +104,10 @@
     NXNumber *other = (NXNumber *)object;
 
     // Since this is unsigned, we can safely compare with unsigned values
+    // Check if the other object represents a negative signed integer
+    if ([other int64Value] < 0) {
+      return NO;
+    }
     uint64_t otherUint64 = [other unsignedInt64Value];
     return (uint64_t)_value == otherUint64;
   }
