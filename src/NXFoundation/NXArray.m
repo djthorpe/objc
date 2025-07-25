@@ -316,10 +316,7 @@
  * @brief Returns YES if the collection contains the specified object.
  */
 - (BOOL)containsObject:(id)object {
-  // Return NO if object is nil
-  if (object == nil) {
-    return NO;
-  }
+  objc_assert(object);
 
   size_t i;
   for (i = 0; i < _length; i++) {
