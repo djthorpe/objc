@@ -492,4 +492,30 @@
   _length = 0;
 }
 
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES; // Same instance
+  }
+  if (other == nil || ![other isKindOfClass:[NXArray class]]) {
+    return NO; // Not equal if other is nil or not an NXArray
+  }
+
+  // Check if lengths are equal
+  NXArray *otherArray = (NXArray *)other;
+  if (_length != otherArray->_length) {
+    return NO;
+  }
+
+  // Compare each object for equality
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id obj1 = _data[i];
+    if ([obj1 isEqual:[otherArray objectAtIndex:i]] == NO) {
+      return NO;
+    }
+  }
+
+  return YES; // All objects are equal
+}
+
 @end
