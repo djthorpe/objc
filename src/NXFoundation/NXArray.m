@@ -181,7 +181,7 @@
     // No change needed
     return YES;
   }
-  if (cap == NXNotFound) {
+  if (cap == (size_t)NXNotFound) {
     // Fail if maximum capacity is reached
     return NO;
   }
