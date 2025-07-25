@@ -41,7 +41,7 @@ uint32_t NXRandUnsignedInt32();
  *
  * \headerfile NXNumber.h NXFoundation/NXFoundation.h
  */
-@interface NXNumber : NXObject
+@interface NXNumber : NXObject <JSONProtocol>
 
 /**
  * @brief Creates a new NXNumber instance with a boolean value.

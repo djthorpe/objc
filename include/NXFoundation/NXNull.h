@@ -15,7 +15,8 @@
  *
  * \headerfile NXNull.h NXFoundation/NXFoundation.h
  */
-@interface NXNull : NXObject
+@interface NXNull : NXObject <JSONProtocol>
+
 /**
  * @brief Returns the shared singleton instance of NXNull.
  * @return The shared NXNull instance.

@@ -15,6 +15,7 @@
 @class NXZone;
 
 // Includes
+#include "JSONProtocol.h"
 #include "NXApplication.h"
 #include "NXArch.h"
 #include "NXAutoreleasePool.h"

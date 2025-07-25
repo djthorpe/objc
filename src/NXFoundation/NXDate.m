@@ -1,5 +1,4 @@
 #include <NXFoundation/NXFoundation.h>
-#include <stdio.h>
 #include <runtime-sys/sys.h>
 
 @implementation NXDate
@@ -86,15 +85,17 @@
  * @brief Return the date as a string representation.
  */
 - (NXString *)description {
-  if ([self _cacheComponents]) {
-    return [[[NXString alloc] initWithFormat:@"%04d-%02d-%02dT%02d:%02d:%02dZ",
-                                             _year, _month, _day, _hours,
-                                             _minutes, _seconds] autorelease];
-  } else {
-    return [[[NXString alloc]
-        initWithFormat:@"[NXDate seconds: %ld, nanoseconds: %d]", _time.seconds,
-                       _time.nanoseconds] autorelease];
-  }
+  objc_assert([self _cacheComponents]); // Ensure components are cached
+  return [[[NXString alloc] initWithFormat:@"%04d-%02d-%02dT%02d:%02d:%02dZ",
+                                           _year, _month, _day, _hours,
+                                           _minutes, _seconds] autorelease];
+}
+
+/**
+ * @brief Return the date as a JSON string representation.
+ */
+- (NXString *)JSONString {
+  return [self description];
 }
 
 /**

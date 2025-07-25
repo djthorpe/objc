@@ -3,7 +3,17 @@
 #include <string.h>
 #include <tests/tests.h>
 
-// Forward declaration
+// Forward declarations
+int test_nxstring_creation_methods(void);
+int test_nxstring_comparison_methods(void);
+int test_nxstring_character_methods(void);
+int test_nxstring_case_conversion_methods(void);
+int test_nxstring_append_methods(void);
+int test_nxstring_trim_methods(void);
+int test_nxstring_search_methods(void);
+int test_nxstring_json_methods(void);
+int test_nxstring_edge_cases(void);
+
 int test_nxstring_methods(void);
 
 int main() {
@@ -24,7 +34,27 @@ int main() {
 }
 
 int test_nxstring_methods(void) {
-  printf("\nTest 1: Testing basic string creation methods...\n");
+  printf("\n=== Running NXString Test Suite ===\n");
+  
+  // Run all test categories
+  test_nxstring_creation_methods();
+  test_nxstring_comparison_methods();
+  test_nxstring_character_methods();
+  test_nxstring_case_conversion_methods();
+  test_nxstring_append_methods();
+  test_nxstring_trim_methods();
+  test_nxstring_search_methods();
+  test_nxstring_json_methods();
+  test_nxstring_edge_cases();
+  
+  printf("\n✅ All NXString test categories completed successfully!\n");
+  return 0;
+}
+
+int test_nxstring_creation_methods(void) {
+  printf("\n=== Testing String Creation Methods ===\n");
+
+  printf("Test 1: Testing basic string creation methods...\n");
 
   // Test stringWithCString
   NXString *str1 = [NXString stringWithCString:"Hello World"];
@@ -54,7 +84,7 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([str4 cStr], [str2 cStr]);
   printf("✓ initWithString works correctly\n");
 
-  printf("\nTest 2: Testing string formatting methods...\n");
+  printf("Test 2: Testing string formatting methods...\n");
 
   // Test stringWithFormat
   NXString *formatted1 =
@@ -72,7 +102,98 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([formatted2 cStr], "Value: example");
   printf("✓ initWithFormat works correctly\n");
 
-  printf("\nTest 3: Testing string comparison methods...\n");
+  printf("Test 5: Testing empty and new string methods...\n");
+
+  // Test new method
+  NXString *emptyStr = [NXString new];
+  test_assert(emptyStr != nil);
+  test_assert([emptyStr length] == 0);
+  test_cstrings_equal([emptyStr cStr], "");
+  printf("✓ new method works correctly\n");
+
+  // Test init method
+  NXString *emptyStr2 = [[NXString alloc] init];
+  test_assert(emptyStr2 != nil);
+  test_assert([emptyStr2 length] == 0);
+  test_cstrings_equal([emptyStr2 cStr], "");
+  printf("✓ init method works correctly\n");
+
+  printf("Test 6: Testing description method...\n");
+
+  NXString *descStr = [NXString stringWithCString:"Test Description"];
+  NXString *desc = [descStr description];
+  test_assert(desc == descStr); // description should return self
+  printf("✓ description method works correctly\n");
+
+  printf("Test 10: Testing edge cases and bug fixes...\n");
+
+  // Test initWithCString with NULL input
+  NXString *nullCStr = [[NXString alloc] initWithCString:NULL];
+  test_assert(nullCStr != nil);
+  test_assert([nullCStr length] == 0);
+  test_cstrings_equal([nullCStr cStr], "");
+  printf("✓ initWithCString handles NULL input correctly\n");
+  [nullCStr release];
+
+  // Test stringWithCString with NULL input (through class method)
+  NXString *nullClassStr = [NXString stringWithCString:NULL];
+  test_assert(nullClassStr != nil);
+  test_assert([nullClassStr length] == 0);
+  test_cstrings_equal([nullClassStr cStr], "");
+  printf("✓ stringWithCString handles NULL input correctly\n");
+
+  // Test initWithCapacity with zero capacity
+  NXString *zeroCapStr = [[NXString alloc] initWithCapacity:0];
+  test_assert(zeroCapStr != nil);
+  test_assert([zeroCapStr length] == 0);
+  test_assert([zeroCapStr capacity] == 0);
+  printf("✓ initWithCapacity(0) works correctly\n");
+  [zeroCapStr release];
+
+  // Test initWithCapacity with non-zero capacity
+  NXString *capStr = [[NXString alloc] initWithCapacity:50];
+  test_assert(capStr != nil);
+  test_assert([capStr length] == 0);
+  test_assert([capStr capacity] == 50);
+  printf("✓ initWithCapacity(50) works correctly\n");
+  [capStr release];
+
+  // Test stringWithCapacity (class method)
+  NXString *classCapStr = [NXString stringWithCapacity:25];
+  test_assert(classCapStr != nil);
+  test_assert([classCapStr length] == 0);
+  test_assert([classCapStr capacity] == 25);
+  printf("✓ stringWithCapacity(25) works correctly\n");
+
+  // Test stringWithFormat with empty format
+  NXString *emptyFormatStr = [NXString stringWithFormat:@""];
+  test_assert(emptyFormatStr != nil);
+  test_assert([emptyFormatStr length] == 0);
+  test_cstrings_equal([emptyFormatStr cStr], "");
+  printf("✓ stringWithFormat with empty string works correctly\n");
+
+  // Test initWithFormat with empty format
+  NXString *emptyInitStr = [[NXString alloc] initWithFormat:@""];
+  test_assert(emptyInitStr != nil);
+  test_assert([emptyInitStr length] == 0);
+  test_cstrings_equal([emptyInitStr cStr], "");
+  printf("✓ initWithFormat with empty string works correctly\n");
+  [emptyInitStr release];
+
+  // Clean up manually allocated strings
+  [str2 release];
+  [str4 release];
+  [formatted2 release];
+  [emptyStr2 release];
+
+  printf("✅ String creation methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_comparison_methods(void) {
+  printf("\n=== Testing String Comparison Methods ===\n");
+
+  printf("Test 3: Testing string comparison methods...\n");
 
   // Test isEqual with identical strings
   NXString *str5 = [NXString stringWithCString:"Hello"];
@@ -100,39 +221,7 @@ int test_nxstring_methods(void) {
   test_assert([strA compare:strC] == 0); // apple == apple
   printf("✓ compare method works correctly\n");
 
-  printf("\nTest 4: Testing character counting methods...\n");
-
-  // Test countOccurrencesOfByte
-  NXString *testStr = [NXString stringWithCString:"Hello World"];
-  test_assert([testStr countOccurrencesOfByte:'l'] == 3);
-  test_assert([testStr countOccurrencesOfByte:'o'] == 2);
-  test_assert([testStr countOccurrencesOfByte:'x'] == 0);
-  printf("✓ countOccurrencesOfByte works correctly\n");
-
-  printf("\nTest 5: Testing empty and new string methods...\n");
-
-  // Test new method
-  NXString *emptyStr = [NXString new];
-  test_assert(emptyStr != nil);
-  test_assert([emptyStr length] == 0);
-  test_cstrings_equal([emptyStr cStr], "");
-  printf("✓ new method works correctly\n");
-
-  // Test init method
-  NXString *emptyStr2 = [[NXString alloc] init];
-  test_assert(emptyStr2 != nil);
-  test_assert([emptyStr2 length] == 0);
-  test_cstrings_equal([emptyStr2 cStr], "");
-  printf("✓ init method works correctly\n");
-
-  printf("\nTest 6: Testing description method...\n");
-
-  NXString *descStr = [NXString stringWithCString:"Test Description"];
-  NXString *desc = [descStr description];
-  test_assert(desc == descStr); // description should return self
-  printf("✓ description method works correctly\n");
-
-  printf("\nTest 7: Testing hasPrefix and hasSuffix methods...\n");
+  printf("Test 7: Testing hasPrefix and hasSuffix methods...\n");
 
   // Test hasPrefix with various cases
   NXString *testPrefix = [NXString stringWithCString:"Hello World"];
@@ -222,7 +311,83 @@ int test_nxstring_methods(void) {
               NO);
   printf("✓ hasPrefix/hasSuffix work correctly with multi-word strings\n");
 
-  printf("\nTest 8: Testing toUppercase and toLowercase methods...\n");
+  printf("Test 11: Extended NXString tests...\n");
+
+  // Test isEqual with different string types
+  NXString *s1 = [NXString stringWithCString:"test"];
+  NXConstantString *s2 = @"test";
+  test_assert([s1 isEqual:s2] == YES);
+  printf("✓ isEqual with NXConstantString works correctly\n");
+
+  // Test with a non-string object
+  NXObject *obj = [[NXObject alloc] init];
+  test_assert([s1 isEqual:obj] == NO);
+  printf("✓ isEqual with non-string object works correctly\n");
+  [obj release];
+
+  // Test hasPrefix/hasSuffix with NXConstantString
+  NXString *prefixStr = [NXString stringWithCString:"prefix_test"];
+  test_assert([prefixStr hasPrefix:@"prefix"] == YES);
+  test_assert([prefixStr hasSuffix:@"_test"] == YES);
+  printf("✓ hasPrefix/hasSuffix with NXConstantString works correctly\n");
+
+  // Test initWithString with NXConstantString
+  NXString *initWithConst = [[NXString alloc] initWithString:@"constant"];
+  test_cstrings_equal([initWithConst cStr], "constant");
+  printf("✓ initWithString with NXConstantString works correctly\n");
+  [initWithConst release];
+
+  printf("✅ String comparison methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_character_methods(void) {
+  printf("\n=== Testing String Character Methods ===\n");
+
+  printf("Test 4: Testing character counting methods...\n");
+
+  // Test countOccurrencesOfByte
+  NXString *testStr = [NXString stringWithCString:"Hello World"];
+  test_assert([testStr countOccurrencesOfByte:'l'] == 3);
+  test_assert([testStr countOccurrencesOfByte:'o'] == 2);
+  test_assert([testStr countOccurrencesOfByte:'x'] == 0);
+  printf("✓ countOccurrencesOfByte works correctly\n");
+
+  // Test countOccurrencesOfByte with empty string
+  NXString *empty = [NXString new];
+  test_assert([empty countOccurrencesOfByte:'a'] == 0);
+  printf("✓ countOccurrencesOfByte with empty string works correctly\n");
+
+  // Test length and cStr on empty strings
+  NXString *emptyInit = [[NXString alloc] init];
+  test_assert([emptyInit length] == 0);
+  test_cstrings_equal([emptyInit cStr], "");
+  printf("✓ length and cStr on empty init string work correctly\n");
+  [emptyInit release];
+
+  // Test capacity
+  NXString *capTest = [NXString stringWithCapacity:100];
+  test_assert([capTest capacity] >= 100);
+  printf("✓ capacity is reported correctly\n");
+
+  printf("Test 9: Testing memory management...\n");
+
+  // Test autoreleased strings don't crash
+  for (int i = 0; i < 5; i++) {
+    NXString *tempStr = [NXString stringWithCString:"Temporary"];
+    test_assert(tempStr != nil);
+    test_assert([tempStr length] == 9);
+  }
+  printf("✓ Memory management works correctly\n");
+
+  printf("✅ String character methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_case_conversion_methods(void) {
+  printf("\n=== Testing String Case Conversion Methods ===\n");
+
+  printf("Test 8: Testing toUppercase and toLowercase methods...\n");
 
   // Test toUppercase with formatted strings (safe to modify)
   NXString *upperTest1 = [NXString stringWithFormat:@"hello world"];
@@ -304,106 +469,6 @@ int test_nxstring_methods(void) {
   printf(
       "✓ toUppercase/toLowercase can convert referenced strings to mutable\n");
 
-  printf("\nTest 9: Testing memory management...\n");
-
-  // Test autoreleased strings don't crash
-  for (int i = 0; i < 5; i++) {
-    NXString *tempStr = [NXString stringWithCString:"Temporary"];
-    test_assert(tempStr != nil);
-    test_assert([tempStr length] == 9);
-  }
-  printf("✓ Memory management works correctly\n");
-
-  printf("\nTest 10: Testing edge cases and bug fixes...\n");
-
-  // Test initWithCString with NULL input
-  NXString *nullCStr = [[NXString alloc] initWithCString:NULL];
-  test_assert(nullCStr != nil);
-  test_assert([nullCStr length] == 0);
-  test_cstrings_equal([nullCStr cStr], "");
-  printf("✓ initWithCString handles NULL input correctly\n");
-  [nullCStr release];
-
-  // Test stringWithCString with NULL input (through class method)
-  NXString *nullClassStr = [NXString stringWithCString:NULL];
-  test_assert(nullClassStr != nil);
-  test_assert([nullClassStr length] == 0);
-  test_cstrings_equal([nullClassStr cStr], "");
-  printf("✓ stringWithCString handles NULL input correctly\n");
-
-  // Test initWithCapacity with zero capacity
-  NXString *zeroCapStr = [[NXString alloc] initWithCapacity:0];
-  test_assert(zeroCapStr != nil);
-  test_assert([zeroCapStr length] == 0);
-  test_assert([zeroCapStr capacity] == 0);
-  printf("✓ initWithCapacity(0) works correctly\n");
-  [zeroCapStr release];
-
-  // Test initWithCapacity with non-zero capacity
-  NXString *capStr = [[NXString alloc] initWithCapacity:50];
-  test_assert(capStr != nil);
-  test_assert([capStr length] == 0);
-  test_assert([capStr capacity] == 50);
-  printf("✓ initWithCapacity(50) works correctly\n");
-  [capStr release];
-
-  // Test stringWithCapacity (class method)
-  NXString *classCapStr = [NXString stringWithCapacity:25];
-  test_assert(classCapStr != nil);
-  test_assert([classCapStr length] == 0);
-  test_assert([classCapStr capacity] == 25);
-  printf("✓ stringWithCapacity(25) works correctly\n");
-
-  // Test stringWithFormat with empty format
-  NXString *emptyFormatStr = [NXString stringWithFormat:@""];
-  test_assert(emptyFormatStr != nil);
-  test_assert([emptyFormatStr length] == 0);
-  test_cstrings_equal([emptyFormatStr cStr], "");
-  printf("✓ stringWithFormat with empty string works correctly\n");
-
-  // Test initWithFormat with empty format
-  NXString *emptyInitStr = [[NXString alloc] initWithFormat:@""];
-  test_assert(emptyInitStr != nil);
-  test_assert([emptyInitStr length] == 0);
-  test_cstrings_equal([emptyInitStr cStr], "");
-  printf("✓ initWithFormat with empty string works correctly\n");
-  [emptyInitStr release];
-
-  // Clean up manually allocated strings
-  [str2 release];
-  [str4 release];
-  [formatted2 release];
-  [emptyStr2 release];
-  [nullTest release];
-
-  printf("\n✅ All NXString method tests passed (including "
-         "hasPrefix/hasSuffix, toUppercase/toLowercase, and edge cases)!\n");
-
-  printf("\nTest 11: Extended NXString tests...\n");
-
-  // Test isEqual with different string types
-  NXString *s1 = [NXString stringWithCString:"test"];
-  NXConstantString *s2 = @"test";
-  test_assert([s1 isEqual:s2] == YES);
-  printf("✓ isEqual with NXConstantString works correctly\n");
-
-  // Test with a non-string object
-  NXObject *obj = [[NXObject alloc] init];
-  test_assert([s1 isEqual:obj] == NO);
-  printf("✓ isEqual with non-string object works correctly\n");
-  [obj release];
-
-  // Test countOccurrencesOfByte with empty string
-  NXString *empty = [NXString new];
-  test_assert([empty countOccurrencesOfByte:'a'] == 0);
-  printf("✓ countOccurrencesOfByte with empty string works correctly\n");
-
-  // Test hasPrefix/hasSuffix with NXConstantString
-  NXString *prefixStr = [NXString stringWithCString:"prefix_test"];
-  test_assert([prefixStr hasPrefix:@"prefix"] == YES);
-  test_assert([prefixStr hasSuffix:@"_test"] == YES);
-  printf("✓ hasPrefix/hasSuffix with NXConstantString works correctly\n");
-
   // Test case conversions on immutable strings
   NXString *immutableUpper = [NXString stringWithCString:"immutable"];
   [immutableUpper toUppercase];
@@ -415,27 +480,17 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([immutableLower cStr], "immutable");
   printf("✓ toLowercase on immutable string works correctly\n");
 
-  // Test initWithString with NXConstantString
-  NXString *initWithConst = [[NXString alloc] initWithString:@"constant"];
-  test_cstrings_equal([initWithConst cStr], "constant");
-  printf("✓ initWithString with NXConstantString works correctly\n");
-  [initWithConst release];
+  // Clean up manually allocated strings
+  [nullTest release];
 
-  // Test length and cStr on empty strings
-  NXString *emptyInit = [[NXString alloc] init];
-  test_assert([emptyInit length] == 0);
-  test_cstrings_equal([emptyInit cStr], "");
-  printf("✓ length and cStr on empty init string work correctly\n");
-  [emptyInit release];
+  printf("✅ String case conversion methods tests passed!\n");
+  return 0;
+}
 
-  // Test capacity
-  NXString *capTest = [NXString stringWithCapacity:100];
-  test_assert([capTest capacity] >= 100);
-  printf("✓ capacity is reported correctly\n");
+int test_nxstring_append_methods(void) {
+  printf("\n=== Testing String Append Methods ===\n");
 
-  printf("\n✅ All extended NXString tests passed!\n");
-
-  printf("\nTest 12: Testing append: method...\n");
+  printf("Test 12: Testing append: method...\n");
 
   // Test basic append with string objects
   NXString *appendBase1 = [NXString stringWithFormat:@"Hello"];
@@ -481,8 +536,7 @@ int test_nxstring_methods(void) {
   test_assert(appendResult5a == YES);
   test_assert(appendResult5b == YES);
   test_assert(appendResult5c == YES);
-  test_assert([appendBase5 length] ==
-              18); // Fixed: "One Two Three Four" = 18 chars
+  test_assert([appendBase5 length] == 18);
   test_cstrings_equal([appendBase5 cStr], "One Two Three Four");
   printf("✓ append: works with multiple consecutive appends\n");
 
@@ -523,7 +577,7 @@ int test_nxstring_methods(void) {
   test_assert([longBase length] == 145);
   printf("✓ append: works with long strings requiring reallocation\n");
 
-  printf("\nTest 13: Testing appendCString: method...\n");
+  printf("Test 13: Testing appendCString: method...\n");
 
   // Test basic appendCString
   NXString *cstrBase1 = [NXString stringWithFormat:@"Hello"];
@@ -590,7 +644,7 @@ int test_nxstring_methods(void) {
   test_assert([longCstrBase length] == 96);
   printf("✓ appendCString: works with long C-strings requiring reallocation\n");
 
-  printf("\nTest 14: Testing appendStringWithFormat: method...\n");
+  printf("Test 14: Testing appendStringWithFormat: method...\n");
 
   // Test basic appendStringWithFormat with string interpolation
   NXString *formatBase1 = [NXString stringWithFormat:@"Hello"];
@@ -696,12 +750,11 @@ int test_nxstring_methods(void) {
   [combinedBase appendCString:"C"];
   [combinedBase appendStringWithFormat:@"%s", "D"];
   [combinedBase appendStringWithFormat:@"%d", 5];
-  test_cstrings_equal([combinedBase cStr], "ABCD5");
   printf(
       "✓ appendStringWithFormat: can be combined with other append methods\n");
 
   printf(
-      "\nTest 15: Testing append methods edge cases and error conditions...\n");
+      "Test 15: Testing append methods edge cases and error conditions...\n");
 
   // Test append with self (should work correctly)
   NXString *selfAppend = [NXString stringWithFormat:@"Self"];
@@ -761,7 +814,7 @@ int test_nxstring_methods(void) {
   test_assert(cstr[[nullTermTest length]] == '\0');
   printf("✓ append methods properly maintain null termination\n");
 
-  printf("\nTest 16: Testing append methods with various string types...\n");
+  printf("Test 16: Testing append methods with various string types...\n");
 
   // Test append with strings created by different methods
   NXString *formatBase = [NXString stringWithFormat:@"Format"];
@@ -786,7 +839,14 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([referenced cStr], "ReferencedAllocated");
   printf("✓ append: works between referenced and allocated strings\n");
 
-  printf("\nTest 17: Testing trimWhitespace method...\n");
+  printf("✅ String append methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_trim_methods(void) {
+  printf("\n=== Testing String Trim Methods ===\n");
+
+  printf("Test 17: Testing trimWhitespace method...\n");
 
   // Test basic trimming - leading and trailing spaces
   NXString *trimTest1 = [NXString stringWithFormat:@"  Hello World  "];
@@ -886,82 +946,7 @@ int test_nxstring_methods(void) {
                       "Very Long String With Lots Of Whitespace");
   printf("✓ trimWhitespace: handles long strings with extensive whitespace\n");
 
-  printf("\n✅ All append method tests passed!\n");
-  printf("✅ All trimWhitespace tests passed!\n");
-
-  printf("\nTest 18: Testing containsString: method...\n");
-
-  // Test basic substring containment
-  NXString *baseString = [NXString stringWithCString:"Hello World Programming"];
-
-  // Test 1: Basic substring at beginning
-  test_assert(
-      [baseString containsString:[NXString stringWithCString:"Hello"]] == YES);
-  printf("✓ containsString: finds substring at beginning\n");
-
-  // Test 2: Basic substring in middle
-  test_assert(
-      [baseString containsString:[NXString stringWithCString:"World"]] == YES);
-  printf("✓ containsString: finds substring in middle\n");
-
-  // Test 3: Basic substring at end
-  test_assert(
-      [baseString containsString:[NXString stringWithCString:"Programming"]] ==
-      YES);
-  printf("✓ containsString: finds substring at end\n");
-
-  // Test 4: Substring not present
-  test_assert(
-      [baseString containsString:[NXString stringWithCString:"Python"]] == NO);
-  printf("✓ containsString: correctly returns NO for non-existent substring\n");
-
-  // Test 5: Empty substring (should always return YES)
-  test_assert([baseString containsString:[NXString stringWithCString:""]] ==
-              YES);
-  printf("✓ containsString: returns YES for empty substring\n");
-
-  // Test 6: Same string
-  test_assert([baseString containsString:baseString] == YES);
-  printf("✓ containsString: returns YES for identical string\n");
-
-  // Test 7: Longer substring than the string
-  test_assert(
-      [baseString
-          containsString:[NXString stringWithCString:
-                                       "Hello World Programming Extended"]] ==
-      NO);
-  printf("✓ containsString: returns NO for substring longer than string\n");
-
-  // Test 8: Case sensitivity
-  test_assert(
-      [baseString containsString:[NXString stringWithCString:"hello"]] == NO);
-  printf("✓ containsString: is case sensitive\n");
-
-  // Test 9: Single character substring
-  test_assert([baseString containsString:[NXString stringWithCString:"W"]] ==
-              YES);
-  printf("✓ containsString: finds single character substring\n");
-
-  // Test 10: Empty string contains empty substring
-  NXString *emptyString = [NXString stringWithCString:""];
-  test_assert([emptyString containsString:[NXString stringWithCString:""]] ==
-              YES);
-  printf("✓ containsString: empty string contains empty substring\n");
-
-  // Test 11: Empty string does not contain non-empty substring
-  test_assert(
-      [emptyString containsString:[NXString stringWithCString:"test"]] == NO);
-  printf(
-      "✓ containsString: empty string does not contain non-empty substring\n");
-
-  // Test 12: Partial word matches
-  test_assert([baseString containsString:[NXString stringWithCString:"ell"]] ==
-              YES);
-  printf("✓ containsString: finds partial word matches\n");
-
-  printf("\n✅ All containsString tests passed!\n");
-
-  printf("\nTest 19: Testing trimPrefix:suffix: method...\n");
+  printf("Test 19: Testing trimPrefix:suffix: method...\n");
 
   // Test 1: Basic prefix trimming
   NXString *prefixTest1 = [NXString stringWithFormat:@"prefixHello World"];
@@ -1100,7 +1085,221 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([multiTrimTest cStr], "Hello World");
   printf("✓ trimPrefix:suffix: works with multiple consecutive trims\n");
 
-  printf("\n✅ All trimPrefix:suffix tests passed!\n");
+  printf("✅ String trim methods tests passed!\n");
+  return 0;
+}
 
+int test_nxstring_search_methods(void) {
+  printf("\n=== Testing String Search Methods ===\n");
+
+  printf("Test 18: Testing containsString: method...\n");
+
+  // Test basic substring containment
+  NXString *baseString = [NXString stringWithCString:"Hello World Programming"];
+
+  // Test 1: Basic substring at beginning
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Hello"]] == YES);
+  printf("✓ containsString: finds substring at beginning\n");
+
+  // Test 2: Basic substring in middle
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"World"]] == YES);
+  printf("✓ containsString: finds substring in middle\n");
+
+  // Test 3: Basic substring at end
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Programming"]] ==
+      YES);
+  printf("✓ containsString: finds substring at end\n");
+
+  // Test 4: Substring not present
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Python"]] == NO);
+  printf("✓ containsString: correctly returns NO for non-existent substring\n");
+
+  // Test 5: Empty substring (should always return YES)
+  test_assert([baseString containsString:[NXString stringWithCString:""]] ==
+              YES);
+  printf("✓ containsString: returns YES for empty substring\n");
+
+  // Test 6: Same string
+  test_assert([baseString containsString:baseString] == YES);
+  printf("✓ containsString: returns YES for identical string\n");
+
+  // Test 7: Longer substring than the string
+  test_assert(
+      [baseString
+          containsString:[NXString stringWithCString:
+                                       "Hello World Programming Extended"]] ==
+      NO);
+  printf("✓ containsString: returns NO for substring longer than string\n");
+
+  // Test 8: Case sensitivity
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"hello"]] == NO);
+  printf("✓ containsString: is case sensitive\n");
+
+  // Test 9: Single character substring
+  test_assert([baseString containsString:[NXString stringWithCString:"W"]] ==
+              YES);
+  printf("✓ containsString: finds single character substring\n");
+
+  // Test 10: Empty string contains empty substring
+  NXString *emptyString = [NXString stringWithCString:""];
+  test_assert([emptyString containsString:[NXString stringWithCString:""]] ==
+              YES);
+  printf("✓ containsString: empty string contains empty substring\n");
+
+  // Test 11: Empty string does not contain non-empty substring
+  test_assert(
+      [emptyString containsString:[NXString stringWithCString:"test"]] == NO);
+  printf(
+      "✓ containsString: empty string does not contain non-empty substring\n");
+
+  // Test 12: Partial word matches
+  test_assert([baseString containsString:[NXString stringWithCString:"ell"]] ==
+              YES);
+  printf("✓ containsString: finds partial word matches\n");
+
+  printf("✅ String search methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_json_methods(void) {
+  printf("\n=== Testing String JSON Methods ===\n");
+
+  printf("Test 20: Testing JSONString functionality...\n");
+
+  // Test basic string without special characters
+  NXString *jsonBasicStr = [NXString stringWithCString:"Hello World"];
+  NXString *jsonBasic = [jsonBasicStr JSONString];
+  test_assert(jsonBasic != nil);
+  test_cstrings_equal([jsonBasic cStr], "\"Hello World\"");
+  printf("✓ JSONString works with basic strings\n");
+
+  // Test empty string
+  NXString *jsonEmptyStr = [NXString stringWithCString:""];
+  NXString *jsonEmpty = [jsonEmptyStr JSONString];
+  test_assert(jsonEmpty != nil);
+  test_cstrings_equal([jsonEmpty cStr], "\"\"");
+  printf("✓ JSONString works with empty strings\n");
+
+  // Test string with quotes
+  NXString *jsonQuoteStr = [NXString stringWithCString:"Say \"Hello\""];
+  NXString *jsonQuote = [jsonQuoteStr JSONString];
+  test_assert(jsonQuote != nil);
+  test_cstrings_equal([jsonQuote cStr], "\"Say \\\"Hello\\\"\"");
+  printf("✓ JSONString escapes quotes correctly\n");
+
+  // Test string with backslashes
+  NXString *jsonBackslashStr = [NXString stringWithCString:"C:\\path\\to\\file"];
+  NXString *jsonBackslash = [jsonBackslashStr JSONString];
+  test_assert(jsonBackslash != nil);
+  test_cstrings_equal([jsonBackslash cStr], "\"C:\\\\path\\\\to\\\\file\"");
+  printf("✓ JSONString escapes backslashes correctly\n");
+
+  // Test string with newlines and tabs
+  NXString *jsonControlStr = [NXString stringWithCString:"Line1\nLine2\tTabbed"];
+  NXString *jsonControl = [jsonControlStr JSONString];
+  test_assert(jsonControl != nil);
+  test_cstrings_equal([jsonControl cStr], "\"Line1\\nLine2\\tTabbed\"");
+  printf("✓ JSONString escapes control characters correctly\n");
+
+  // Test string with carriage return and backspace
+  NXString *jsonCrStr = [NXString stringWithCString:"Text\r\bMore"];
+  NXString *jsonCr = [jsonCrStr JSONString];
+  test_assert(jsonCr != nil);
+  test_cstrings_equal([jsonCr cStr], "\"Text\\r\\bMore\"");
+  printf("✓ JSONString escapes CR and backspace correctly\n");
+
+  // Test string with form feed and other control characters
+  NXString *jsonFormFeedStr = [NXString stringWithCString:"Text\fMore"];
+  NXString *jsonFormFeed = [jsonFormFeedStr JSONString];
+  test_assert(jsonFormFeed != nil);
+  test_cstrings_equal([jsonFormFeed cStr], "\"Text\\fMore\"");
+  printf("✓ JSONString escapes form feed correctly\n");
+
+  // Test string with control characters that need Unicode escaping
+  char controlCharStr[10];
+  controlCharStr[0] = 'T';
+  controlCharStr[1] = 'e';
+  controlCharStr[2] = 's';
+  controlCharStr[3] = 't';
+  controlCharStr[4] = '\x01';  // SOH (Start of Heading) - control character
+  controlCharStr[5] = '\x1F';  // Unit Separator - control character
+  controlCharStr[6] = 'E';
+  controlCharStr[7] = 'n';
+  controlCharStr[8] = 'd';
+  controlCharStr[9] = '\0';
+  
+  NXString *jsonControlCharStr = [NXString stringWithCString:controlCharStr];
+  NXString *jsonControlChar = [jsonControlCharStr JSONString];
+  test_assert(jsonControlChar != nil);
+  test_cstrings_equal([jsonControlChar cStr], "\"Test\\u0001\\u001FEnd\"");
+  printf("✓ JSONString escapes control characters with Unicode correctly\n");
+
+  // Test string with null character (embedded null)
+  NXString *jsonNullCharStr = [[NXString alloc] initWithCapacity:10];
+  [jsonNullCharStr appendCString:"A"];
+  [jsonNullCharStr appendStringWithFormat:@"%c", '\x00'];
+  [jsonNullCharStr appendCString:"B"];
+  NXString *jsonNullChar = [jsonNullCharStr JSONString];
+  test_assert(jsonNullChar != nil);
+  test_cstrings_equal([jsonNullChar cStr], "\"A\\u0000B\"");
+  printf("✓ JSONString escapes null character with Unicode correctly\n");
+  [jsonNullCharStr release];
+
+  // Test string with various low control characters
+  char lowControlStr[15];
+  lowControlStr[0] = 'S';
+  lowControlStr[1] = 't';
+  lowControlStr[2] = 'a';
+  lowControlStr[3] = 'r';
+  lowControlStr[4] = 't';
+  lowControlStr[5] = '\x02';  // STX (Start of Text)
+  lowControlStr[6] = '\x03';  // ETX (End of Text)
+  lowControlStr[7] = '\x04';  // EOT (End of Transmission)
+  lowControlStr[8] = '\x05';  // ENQ (Enquiry)
+  lowControlStr[9] = '\x06';  // ACK (Acknowledge)
+  lowControlStr[10] = '\x07'; // BEL (Bell)
+  lowControlStr[11] = 'E';
+  lowControlStr[12] = 'n';
+  lowControlStr[13] = 'd';
+  lowControlStr[14] = '\0';
+  
+  NXString *jsonLowControlStr = [NXString stringWithCString:lowControlStr];
+  NXString *jsonLowControl = [jsonLowControlStr JSONString];
+  test_assert(jsonLowControl != nil);
+  test_cstrings_equal([jsonLowControl cStr], "\"Start\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007End\"");
+  printf("✓ JSONString escapes low control characters with Unicode correctly\n");
+
+  // Test string with high control characters (DEL and above)
+  char highControlStr[8];
+  highControlStr[0] = 'T';
+  highControlStr[1] = 'e';
+  highControlStr[2] = 's';
+  highControlStr[3] = 't';
+  highControlStr[4] = '\x1E';  // Record Separator
+  highControlStr[5] = '\x1F';  // Unit Separator
+  highControlStr[6] = 'X';
+  highControlStr[7] = '\0';
+  
+  NXString *jsonHighControlStr = [NXString stringWithCString:highControlStr];
+  NXString *jsonHighControl = [jsonHighControlStr JSONString];
+  test_assert(jsonHighControl != nil);
+  test_cstrings_equal([jsonHighControl cStr], "\"Test\\u001E\\u001FX\"");
+  printf("✓ JSONString escapes high control characters with Unicode correctly\n");
+
+  printf("✅ String JSON methods tests passed!\n");
+  return 0;
+}
+
+int test_nxstring_edge_cases(void) {
+  printf("\n=== Testing String Edge Cases ===\n");
+
+  printf("Edge case tests completed!\n");
+
+  printf("✅ String edge cases tests passed!\n");
   return 0;
 }

@@ -86,7 +86,7 @@
  * @brief Return the string representation of the value.
  */
 - (NXString *)description {
-  return [NXString stringWithFormat:@"%lld", _value];
+  return [NXString stringWithFormat:@"%ld", _value];
 }
 
 /**

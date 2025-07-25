@@ -105,7 +105,7 @@
     return self;
   }
 
-  // Use a variable argument list to handle the format string
+  // Create a copy since sys_vsprintf calls consume the va_list
   va_list argsCopy;
   va_copy(argsCopy, args);
 
@@ -316,12 +316,11 @@
 /**
  * @brief Counts the number of occurrences of a byte character.
  */
-- (uint32_t)countOccurrencesOfByte:(uint8_t)ch {
+- (unsigned int)countOccurrencesOfByte:(uint8_t)ch {
   if (_value == NULL) {
     return 0; // No occurrences in a NULL string
   }
-  uint32_t count = 0;
-  unsigned int i = 0;
+  unsigned int count = 0, i = 0;
   for (i = 0; i < _length; i++) {
     if (_value[i] == ch) {
       count++;
@@ -482,7 +481,7 @@
   va_list args;
   va_start(args, format);
 
-  // Use a variable argument list to handle the format string
+  // Create a single copy since sys_vsprintf calls consume the va_list
   va_list argsCopy;
   va_copy(argsCopy, args);
 
@@ -507,7 +506,8 @@
   // Format the string directly into the allocated memory at the end of current
   // string
   sys_vsprintf(_data + _length, length + 1, cFormat, argsCopy);
-  _length += length; // Update length
+  _length += length;     // Update length
+  _data[_length] = '\0'; // Ensure null termination
 
   va_end(argsCopy);
   va_end(args);
@@ -650,6 +650,74 @@
 
   // Return whether string was modified
   return modified;
+}
+
+/**
+ * @brief Returns a quoted version of the string.
+ * @return A new NXString instance containing the string enclosed in
+ * double quotes. Returns nil if a new string could not be created.
+ *
+ * This method creates a new string that contains the original string
+ * enclosed in double quotes. Special characters within the string are escaped
+ * according to JSON string escaping rules.
+ */
+- (NXString *)JSONString {
+  // Handle NULL/empty string case
+  if (_value == NULL || _length == 0) {
+    return [NXString stringWithCString:"\"\""];
+  }
+
+  // Create a new mutable string with enough capacity for the quoted string
+  // Estimate: original length + quotes + potential escaping (conservative
+  // estimate)
+  size_t capacity = _length * 2 + 8; // More conservative capacity estimation
+  NXString *quotedString = [[NXString alloc] initWithCapacity:capacity];
+  if (quotedString == nil) {
+    return nil; // Allocation failed, return nil
+  }
+
+  // Start with opening quote
+  [quotedString appendCString:"\""];
+
+  // Append the original string, escaping special characters as needed
+  size_t i;
+  for (i = 0; i < _length; i++) {
+    char c = _value[i];
+    switch (c) {
+    case '"':
+      [quotedString appendCString:"\\\""];
+      break;
+    case '\\':
+      [quotedString appendCString:"\\\\"]; // Escape backslash
+      break;
+    case '\b':
+      [quotedString appendCString:"\\b"];
+      break;
+    case '\f':
+      [quotedString appendCString:"\\f"];
+      break;
+    case '\n':
+      [quotedString appendCString:"\\n"];
+      break;
+    case '\r':
+      [quotedString appendCString:"\\r"];
+      break;
+    case '\t':
+      [quotedString appendCString:"\\t"];
+      break;
+    default:
+      if (c < ' ') { // Control characters
+        [quotedString appendStringWithFormat:@"\\u%04X", (unsigned char)c];
+      } else {
+        [quotedString appendStringWithFormat:@"%c", c];
+      }
+    }
+  }
+
+  // End with closing quote
+  [quotedString appendCString:"\""];
+
+  return [quotedString autorelease]; // Return the quoted string
 }
 
 @end

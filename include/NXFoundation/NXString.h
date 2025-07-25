@@ -16,7 +16,7 @@
  *
  * \headerfile NXString.h NXFoundation/NXFoundation.h
  */
-@interface NXString : NXObject <NXConstantStringProtocol> {
+@interface NXString : NXObject <NXConstantStringProtocol, JSONProtocol> {
 @private
   const char *_value; ///< Pointer to the string data
   unsigned int
@@ -218,7 +218,7 @@
  * @param ch The character to count occurrences of.
  * @return The number of times the character appears in the string.
  */
-- (uint32_t)countOccurrencesOfByte:(uint8_t)ch;
+- (unsigned int)countOccurrencesOfByte:(uint8_t)ch;
 
 /**
  * @brief Returns a quoted version of the string.
@@ -229,7 +229,7 @@
  * enclosed in double quotes. Special characters within the string are escaped
  * according to JSON string escaping rules.
  */
-// - (NXString *)quotedString;
+- (NXString *)JSONString;
 
 /**
  * @brief Counts the number of occurrences of a string.
