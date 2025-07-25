@@ -1018,6 +1018,161 @@ int test_array_methods(void) {
   test_assert([circularInsertArray count] == 2);
   printf("✓ Circular reference prevention works for insert at all positions\n");
 
+  // Test 26: Comprehensive isEqual: method testing
+  printf("\nTest 26: Testing comprehensive isEqual: functionality...\n");
+
+  // Test 1: Identity comparison (same instance)
+  NXArray *identityArray = [NXArray arrayWithObjects:safeStr, nil];
+  BOOL identityEqual = [identityArray isEqual:identityArray];
+  test_assert(identityEqual == YES);
+  printf("✓ Identity comparison: same instance returns YES\n");
+
+  // Test 2: Nil comparison
+  BOOL nilEqual = [identityArray isEqual:nil];
+  test_assert(nilEqual == NO);
+  printf("✓ Nil comparison: returns NO\n");
+
+  // Test 3: Wrong type comparison
+  NXString *notAnArray = [NXString stringWithCString:"not an array"];
+  BOOL wrongTypeEqual = [identityArray isEqual:notAnArray];
+  test_assert(wrongTypeEqual == NO);
+  printf("✓ Wrong type comparison: returns NO\n");
+
+  // Test 4: Empty arrays comparison
+  NXArray *emptyArray1 = [NXArray new];
+  NXArray *emptyArray2 = [NXArray new];
+  BOOL emptyEqual = [emptyArray1 isEqual:emptyArray2];
+  test_assert(emptyEqual == YES);
+  test_assert([emptyArray1 count] == 0);
+  test_assert([emptyArray2 count] == 0);
+  printf("✓ Empty arrays comparison: returns YES\n");
+
+  // Test 5: Arrays with different lengths
+  NXArray *shortArray = [NXArray arrayWithObjects:safeStr, nil];
+  NXArray *longArray = [NXArray
+      arrayWithObjects:safeStr, [NXString stringWithCString:"extra"], nil];
+  BOOL differentLengthEqual = [shortArray isEqual:longArray];
+  test_assert(differentLengthEqual == NO);
+  test_assert([shortArray count] == 1);
+  test_assert([longArray count] == 2);
+  printf("✓ Different length arrays: returns NO\n");
+
+  // Test 6: Arrays with identical content
+  NXString *eqStr1 = [NXString stringWithCString:"hello"];
+  NXString *eqStr2 = [NXString stringWithCString:"world"];
+  NXArray *eqArray1 = [NXArray arrayWithObjects:eqStr1, eqStr2, nil];
+
+  NXString *eqStr3 =
+      [NXString stringWithCString:"hello"]; // Same content as eqStr1
+  NXString *eqStr4 =
+      [NXString stringWithCString:"world"]; // Same content as eqStr2
+  NXArray *eqArray2 = [NXArray arrayWithObjects:eqStr3, eqStr4, nil];
+
+  BOOL identicalContentEqual = [eqArray1 isEqual:eqArray2];
+  test_assert(identicalContentEqual == YES);
+  test_assert([eqArray1 count] == 2);
+  test_assert([eqArray2 count] == 2);
+  printf("✓ Identical content arrays: returns YES\n");
+
+  // Test 7: Arrays with different content (same length)
+  NXString *diffStr = [NXString stringWithCString:"different"];
+  NXArray *eqArray3 = [NXArray arrayWithObjects:eqStr1, diffStr, nil];
+  BOOL differentContentEqual = [eqArray1 isEqual:eqArray3];
+  test_assert(differentContentEqual == NO);
+  test_assert([eqArray1 count] == 2);
+  test_assert([eqArray3 count] == 2);
+  printf("✓ Different content arrays: returns NO\n");
+
+  // Test 8: Arrays with different order (same elements)
+  NXArray *reversedArray =
+      [NXArray arrayWithObjects:eqStr2, eqStr1, nil]; // Reversed order
+  BOOL differentOrderEqual = [eqArray1 isEqual:reversedArray];
+  test_assert(differentOrderEqual == NO);
+  test_assert([eqArray1 count] == 2);
+  test_assert([reversedArray count] == 2);
+  printf("✓ Different order arrays: returns NO\n");
+
+  // Test 9: Nested array equality
+  NXArray *nestedInner1 = [NXArray arrayWithObjects:eqStr1, nil];
+  NXArray *nestedInner2 =
+      [NXArray arrayWithObjects:eqStr1, nil]; // Same content as nestedInner1
+  NXArray *nestedOuter1 = [NXArray arrayWithObjects:nestedInner1, eqStr2, nil];
+  NXArray *nestedOuter2 = [NXArray arrayWithObjects:nestedInner2, eqStr2, nil];
+
+  BOOL nestedEqual = [nestedOuter1 isEqual:nestedOuter2];
+  test_assert(nestedEqual == YES);
+  test_assert([nestedOuter1 count] == 2);
+  test_assert([nestedOuter2 count] == 2);
+  printf("✓ Nested arrays with same content: returns YES\n");
+
+  // Test 10: Nested arrays with different content
+  NXArray *differentNested = [NXArray arrayWithObjects:diffStr, nil];
+  NXArray *nestedOuter3 =
+      [NXArray arrayWithObjects:differentNested, eqStr2, nil];
+  BOOL nestedDifferentEqual = [nestedOuter1 isEqual:nestedOuter3];
+  test_assert(nestedDifferentEqual == NO);
+  printf("✓ Nested arrays with different content: returns NO\n");
+
+  // Test 11: Mixed object types
+  NXNumber *equalNum1 = [NXNumber numberWithInt32:42];
+  NXNumber *equalNum2 = [NXNumber numberWithInt32:42];    // Same value
+  NXNumber *differentNum = [NXNumber numberWithInt32:99]; // Different value
+
+  NXArray *mixedArray1 = [NXArray arrayWithObjects:eqStr1, equalNum1, nil];
+  NXArray *mixedArray2 =
+      [NXArray arrayWithObjects:eqStr3, equalNum2, nil]; // Same content
+  NXArray *mixedArray3 =
+      [NXArray arrayWithObjects:eqStr1, differentNum, nil]; // Different number
+
+  BOOL mixedSameEqual = [mixedArray1 isEqual:mixedArray2];
+  BOOL mixedDifferentEqual = [mixedArray1 isEqual:mixedArray3];
+  test_assert(mixedSameEqual == YES);
+  test_assert(mixedDifferentEqual == NO);
+  printf("✓ Mixed object types: correctly compares using isEqual:\n");
+
+  // Test 12: Single element arrays
+  NXArray *singleArray1 = [NXArray arrayWithObjects:eqStr1, nil];
+  NXArray *singleArray2 =
+      [NXArray arrayWithObjects:eqStr3, nil]; // Same content
+  NXArray *singleArray3 =
+      [NXArray arrayWithObjects:eqStr2, nil]; // Different content
+
+  BOOL singleSameEqual = [singleArray1 isEqual:singleArray2];
+  BOOL singleDifferentEqual = [singleArray1 isEqual:singleArray3];
+  test_assert(singleSameEqual == YES);
+  test_assert(singleDifferentEqual == NO);
+  printf("✓ Single element arrays: correctly compare single elements\n");
+
+  // Test 13: Large arrays equality (performance test)
+  NXArray *largeArray1 = [NXArray new];
+  NXArray *largeArray2 = [NXArray new];
+
+  // Add 20 identical elements to both arrays
+  unsigned int k;
+  for (k = 0; k < 20; k++) {
+    NXString *element1 = [NXString stringWithCString:"element"];
+    NXString *element2 = [NXString stringWithCString:"element"]; // Same content
+    [largeArray1 append:element1];
+    [largeArray2 append:element2];
+  }
+
+  BOOL largeEqual = [largeArray1 isEqual:largeArray2];
+  test_assert(largeEqual == YES);
+  test_assert([largeArray1 count] == 20);
+  test_assert([largeArray2 count] == 20);
+
+  // Make the last element different
+  NXString *differentLast = [NXString stringWithCString:"different"];
+  [largeArray2 removeObjectAtIndex:19];
+  [largeArray2 append:differentLast];
+
+  BOOL largeModifiedEqual = [largeArray1 isEqual:largeArray2];
+  test_assert(largeModifiedEqual == NO);
+  test_assert([largeArray1 count] == 20);
+  test_assert([largeArray2 count] == 20);
+  printf("✓ Large arrays: correctly handles performance and difference "
+         "detection\n");
+
   // Note: testStr1, testStr2, testStr3, testArray, nestedArray, outerArray,
   // emptyTestArray, appendArray are autoreleased No manual releases needed for
   // these objects
@@ -1031,7 +1186,7 @@ int test_array_methods(void) {
          "operations with comprehensive testing\n");
   printf("    ✅ Implemented: initWithObjects:, arrayWithObjects:, JSONString, "
          "JSONBytes, containsObject:, append:, insert:atIndex:, "
-         "indexForObject:, remove:, removeObjectAtIndex:\n");
+         "indexForObject:, remove:, removeObjectAtIndex:, isEqual:\n");
   printf("    ✅ Handles non-JSON-compliant objects via description method\n");
   printf("    ✅ Supports recursive collection search in containsObject:\n");
   printf(
@@ -1039,6 +1194,7 @@ int test_array_methods(void) {
   printf("    ✅ Array element removal with remove: and removeObjectAtIndex: "
          "methods\n");
   printf("    ✅ Circular reference prevention for mutation operations\n");
+  printf("    ✅ Comprehensive equality testing with isEqual: method\n");
   printf("    ✅ Comprehensive edge case coverage: memory management, "
          "boundaries, nested arrays\n");
   printf("    ✅ Protocol conformance and polymorphic behavior validation\n");
@@ -1046,7 +1202,7 @@ int test_array_methods(void) {
   printf("    ✅ JSON serialization edge cases and accuracy verification\n");
   printf("    ⚠️  objectAtIndex: uses assertions for bounds checking\n");
 
-  printf("\n✅ All NXArray methods and edge cases tested comprehensively (24 "
+  printf("\n✅ All NXArray methods and edge cases tested comprehensively (26 "
          "test suites)!\n");
   return 0;
 }
