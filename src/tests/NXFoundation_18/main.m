@@ -590,8 +590,108 @@ int test_nxstring_methods(void) {
   test_assert([longCstrBase length] == 96);
   printf("✓ appendCString: works with long C-strings requiring reallocation\n");
 
+  printf("\nTest 14: Testing appendStringWithFormat: method...\n");
+
+  // Test basic appendStringWithFormat with string interpolation
+  NXString *formatBase1 = [NXString stringWithFormat:@"Hello"];
+  BOOL formatResult1 = [formatBase1 appendStringWithFormat:@" %s", "World"];
+  test_assert(formatResult1 == YES);
+  test_assert([formatBase1 length] == 11);
+  test_cstrings_equal([formatBase1 cStr], "Hello World");
+  printf("✓ appendStringWithFormat: works with basic string formatting\n");
+
+  // Test appendStringWithFormat with numbers
+  NXString *formatBase2 = [NXString stringWithFormat:@"Count: "];
+  BOOL formatResult2 = [formatBase2 appendStringWithFormat:@"%d", 42];
+  test_assert(formatResult2 == YES);
+  test_assert([formatBase2 length] == 9);
+  test_cstrings_equal([formatBase2 cStr], "Count: 42");
+  printf("✓ appendStringWithFormat: works with number formatting\n");
+
+  // Test appendStringWithFormat with multiple format specifiers
+  NXString *formatBase3 = [NXString stringWithFormat:@"Data: "];
+  BOOL formatResult3 = [formatBase3 appendStringWithFormat:@"Name=%s, ID=%d, Score=%d", "Alice", 123, 95];
+  test_assert(formatResult3 == YES);
+  test_assert([formatBase3 length] == 34);
+  test_cstrings_equal([formatBase3 cStr], "Data: Name=Alice, ID=123, Score=95");
+  printf("✓ appendStringWithFormat: works with multiple format specifiers\n");
+
+  // Test appendStringWithFormat with empty format result
+  NXString *formatBase4 = [NXString stringWithFormat:@"NoChange"];
+  BOOL formatResult4 = [formatBase4 appendStringWithFormat:@""];
+  test_assert(formatResult4 == YES);
+  test_assert([formatBase4 length] == 8);
+  test_cstrings_equal([formatBase4 cStr], "NoChange");
+  printf("✓ appendStringWithFormat: handles empty format string correctly\n");
+
+  // Test appendStringWithFormat to empty string
+  NXString *formatBase5 = [NXString stringWithFormat:@""];
+  BOOL formatResult5 = [formatBase5 appendStringWithFormat:@"First: %s", "Content"];
+  test_assert(formatResult5 == YES);
+  test_assert([formatBase5 length] == 14);
+  test_cstrings_equal([formatBase5 cStr], "First: Content");
+  printf("✓ appendStringWithFormat: works when appending to empty string\n");
+
+  // Test multiple appendStringWithFormat calls
+  NXString *formatBase6 = [NXString stringWithFormat:@"Start"];
+  BOOL formatResult6a = [formatBase6 appendStringWithFormat:@" %s", "Middle"];
+  BOOL formatResult6b = [formatBase6 appendStringWithFormat:@" %s", "End"];
+  test_assert(formatResult6a == YES);
+  test_assert(formatResult6b == YES);
+  test_assert([formatBase6 length] == 16);
+  test_cstrings_equal([formatBase6 cStr], "Start Middle End");
+  printf("✓ appendStringWithFormat: works with multiple consecutive appends\n");
+
+  // Test appendStringWithFormat with special characters in format
+  NXString *formatBase7 = [NXString stringWithFormat:@"Special"];
+  BOOL formatResult7 = [formatBase7 appendStringWithFormat:@": %s", "!@#$%^&*()"];
+  test_assert(formatResult7 == YES);
+  test_assert([formatBase7 length] == 19);
+  test_cstrings_equal([formatBase7 cStr], "Special: !@#$%^&*()");
+  printf("✓ appendStringWithFormat: works with special characters\n");
+
+  // Test appendStringWithFormat with mixed types
+  NXString *formatBase8 = [NXString stringWithFormat:@"Mixed"];
+  BOOL formatResult8 = [formatBase8 appendStringWithFormat:@": str=%s, int=%d, char=%c", "test", 789, 'X'];
+  test_assert(formatResult8 == YES);
+  test_cstrings_equal([formatBase8 cStr], "Mixed: str=test, int=789, char=X");
+  printf("✓ appendStringWithFormat: works with mixed format types\n");
+
+  // Test appendStringWithFormat to immutable string
+  NXString *immutableFormat = [NXString stringWithCString:"Immutable"];
+  BOOL immutableFormatResult = [immutableFormat appendStringWithFormat:@" %s", "Formatted"];
+  test_assert(immutableFormatResult == YES);
+  test_cstrings_equal([immutableFormat cStr], "Immutable Formatted");
+  printf("✓ appendStringWithFormat: converts immutable strings to mutable\n");
+
+  // Test appendStringWithFormat with long formatted content
+  NXString *longFormatBase = [NXString stringWithFormat:@"Base"];
+  BOOL longFormatResult = [longFormatBase appendStringWithFormat:@" %s %d %s", 
+                          "This is a very long formatted string that will test memory allocation", 
+                          12345, 
+                          "and reallocation capabilities"];
+  test_assert(longFormatResult == YES);
+  test_assert([longFormatBase length] == 110);
+  printf("✓ appendStringWithFormat: works with long formatted strings requiring reallocation\n");
+
+  // Test appendStringWithFormat with hex and other number formats
+  NXString *formatBase9 = [NXString stringWithFormat:@"Numbers"];
+  BOOL formatResult9 = [formatBase9 appendStringWithFormat:@": dec=%d, hex=0x%x, oct=%o", 255, 255, 255];
+  test_assert(formatResult9 == YES);
+  test_cstrings_equal([formatBase9 cStr], "Numbers: dec=255, hex=0xff, oct=377");
+  printf("✓ appendStringWithFormat: works with different number formats\n");
+
+  // Test combining appendStringWithFormat with other append methods
+  NXString *combinedBase = [NXString stringWithFormat:@"A"];
+  [combinedBase append:[NXString stringWithCString:"B"]];
+  [combinedBase appendCString:"C"];
+  [combinedBase appendStringWithFormat:@"%s", "D"];
+  [combinedBase appendStringWithFormat:@"%d", 5];
+  test_cstrings_equal([combinedBase cStr], "ABCD5");
+  printf("✓ appendStringWithFormat: can be combined with other append methods\n");
+
   printf(
-      "\nTest 14: Testing append methods edge cases and error conditions...\n");
+      "\nTest 15: Testing append methods edge cases and error conditions...\n");
 
   // Test append with self (should work correctly)
   NXString *selfAppend = [NXString stringWithFormat:@"Self"];
@@ -604,7 +704,7 @@ int test_nxstring_methods(void) {
   NXString *capacityTest = [NXString stringWithCapacity:10];
   [capacityTest appendCString:"12345"]; // Should fit in initial capacity
   test_assert([capacityTest capacity] >= 10);
-  [capacityTest appendCString:"67890ABCDEF"]; // Should require expansion
+  [capacityTest appendStringWithFormat:@"%s", "67890ABCDEF"]; // Should require expansion
   test_assert([capacityTest capacity] > 10);
   test_cstrings_equal([capacityTest cStr], "1234567890ABCDEF");
   printf("✓ append methods properly handle capacity expansion\n");
@@ -615,8 +715,9 @@ int test_nxstring_methods(void) {
   [alternating appendCString:"C"];
   [alternating append:@"D"];
   [alternating appendCString:"E"];
-  test_cstrings_equal([alternating cStr], "ABCDE");
-  printf("✓ append: and appendCString: can be used together\n");
+  [alternating appendStringWithFormat:@"%s", "F"];
+  test_cstrings_equal([alternating cStr], "ABCDEF");
+  printf("✓ append:, appendCString:, and appendStringWithFormat: can be used together\n");
 
   // Test very small strings
   NXString *tiny1 = [NXString stringWithFormat:@"A"];
@@ -648,7 +749,7 @@ int test_nxstring_methods(void) {
   test_assert(cstr[[nullTermTest length]] == '\0');
   printf("✓ append methods properly maintain null termination\n");
 
-  printf("\nTest 15: Testing append methods with various string types...\n");
+  printf("\nTest 16: Testing append methods with various string types...\n");
 
   // Test append with strings created by different methods
   NXString *formatBase = [NXString stringWithFormat:@"Format"];
