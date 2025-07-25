@@ -55,13 +55,13 @@ typedef enum {
 + (NXData *)dataWithString:(id<NXConstantStringProtocol>)aString;
 
 /**
- * @brief Returns a new NXData instance with a copy of data.
- * @param data The data to copy.
+ * @brief Returns a new NXData instance with a copy of bytes.
+ * @param bytes The bytes to copy.
  * @param size The number of bytes to copy.
- * @return A new NXData instance containing a copy of the specified data.
+ * @return A new NXData instance containing a copy of the specified bytes.
  *
  * This method allocates a new NXData instance and copies the contents of the
- * specified data into it.
+ * specified bytes into it.
  */
 + (NXData *)dataWithBytes:(const void *)bytes size:(size_t)size;
 
