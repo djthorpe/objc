@@ -28,8 +28,10 @@ void *sys_memset(void *ptr, uint8_t value, size_t size) {
  * @brief Copy memory from source to destination
  */
 void *sys_memcpy(void *dest, const void *src, size_t size) {
-  if (dest == NULL || src == NULL || size == 0)
+  if (dest == NULL || src == NULL)
     return NULL;
+  if (size == 0)
+    return dest;
   memcpy(dest, src, size);
   return dest;
 }
