@@ -168,7 +168,7 @@
 
 /**
  * @brief Removes all objects from the array.
- * @return YES if the operation was successful, NO otherwise.
+ *
  *
  * This method clears the array by releasing all objects and resetting the
  * internal data structure. The array's count is set to zero and its capacity
