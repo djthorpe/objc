@@ -117,8 +117,11 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75">appendStringWithFormat:</a></td></tr>
 <tr class="memdesc:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string with format and arguments to this string.  <a href="#a6e7b80cd6c4940f2946bbfc8a5e31b75">More...</a><br /></td></tr>
 <tr class="separator:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb033a2797d7c94ae51e030b94f0648"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a3eb033a2797d7c94ae51e030b94f0648">trimWhitespace</a></td></tr>
+<tr class="memdesc:a3eb033a2797d7c94ae51e030b94f0648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a quoted version of the string.  <a href="#a3eb033a2797d7c94ae51e030b94f0648">More...</a><br /></td></tr>
+<tr class="separator:a3eb033a2797d7c94ae51e030b94f0648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7526675981069cdd5afef75f2ecbe2ce"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a7526675981069cdd5afef75f2ecbe2ce">hasPrefix:</a></td></tr>
-<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a quoted version of the string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
+<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims leading and trailing string values from the string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
 <tr class="separator:a7526675981069cdd5afef75f2ecbe2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a15e50e8f7ef7b0b5cb219afa183641b1">hasSuffix:</a></td></tr>
 <tr class="memdesc:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the string ends with a given suffix.  <a href="#a15e50e8f7ef7b0b5cb219afa183641b1">More...</a><br /></td></tr>
@@ -468,9 +471,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
       </table>
 </div><div class="memdoc">
 
-<p>Returns a quoted version of the string. </p>
-<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> instance containing the string enclosed in double quotes.</dd></dl>
-<p>This method creates a new string that contains the original string enclosed in double quotes. Special characters within the string are escaped according to JSON string escaping rules. Trims leading and trailing whitespace from the string. </p><dl class="section return"><dt>Returns</dt><dd>YES if the string was modified, NO if it was already trimmed. Trims leading and trailing string values from the string. </dd></dl>
+<p>Trims leading and trailing string values from the string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prefix</td><td>The <a class="el" href="interfaceNXConstantString.html" title="A constant string class. ">NXConstantString</a> or <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> instance to trim from the start, or NULL to skip. </td></tr>
@@ -769,6 +770,27 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <p>Converts the string to uppercase. </p>
 <dl class="section return"><dt>Returns</dt><dd>YES if the string was modified to uppercase, NO if the string was not modified (e.g., it is already uppercase or unable to make mutable).</dd></dl>
 <p>This method modifies the string in place, converting all alphabetic characters to their uppercase equivalents. </p>
+
+</div>
+</div>
+<a id="a3eb033a2797d7c94ae51e030b94f0648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eb033a2797d7c94ae51e030b94f0648">&#9670;&nbsp;</a></span>trimWhitespace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) trimWhitespace </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a quoted version of the string. </p>
+<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> instance containing the string enclosed in double quotes.</dd></dl>
+<p>This method creates a new string that contains the original string enclosed in double quotes. Special characters within the string are escaped according to JSON string escaping rules. Trims leading and trailing whitespace from the string. </p><dl class="section return"><dt>Returns</dt><dd>YES if the string was modified, NO if it was already trimmed. </dd></dl>
 
 </div>
 </div>
