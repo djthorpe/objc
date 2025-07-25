@@ -175,12 +175,10 @@
  * @brief Appends a string with format and arguments to this string.
  * @param format The format string to use for appending.
  * @param ... Variable arguments for the format string.
- * @note If the string needs to be modified, it will create a mutable copy,
- * or attempt to increase capacity if necessary. If the operation fails,
- * it will currently panic, but should raise an exception in the future,
- * when exception handling is implemented.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
  */
-// - (void)appendStringWithFormat:(NXConstantString *)format, ...;
+- (BOOL)appendStringWithFormat:(NXConstantString *)format, ...;
 
 /**
  * @brief Returns a quoted version of the string.

@@ -479,4 +479,51 @@
   return YES;
 }
 
+/**
+ * @brief Appends a string with format and arguments to this string.
+ * @param format The format string to use for appending.
+ * @param ... Variable arguments for the format string.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
+ */
+- (BOOL)appendStringWithFormat:(NXConstantString *)format, ... {
+  objc_assert(format);
+
+  va_list args;
+  va_start(args, format);
+
+  // Use a variable argument list to handle the format string
+  va_list argsCopy;
+  va_copy(argsCopy, args);
+
+  // Get the length of the formatted string
+  const char *cFormat = [format cStr];
+  size_t length = sys_vsprintf(NULL, 0, cFormat, args);
+
+  if (length == 0) {
+    va_end(argsCopy);
+    va_end(args);
+    return YES; // Nothing to append, empty formatted string
+  }
+
+  // Ensure string is mutable with enough capacity for current string +
+  // formatted string
+  if ([self _makeMutableWithCapacity:_length + length + 1] == NO) {
+    va_end(argsCopy);
+    va_end(args);
+    return NO; // Failed to make mutable, cannot append
+  }
+
+  // Format the string directly into the allocated memory at the end of current
+  // string
+  sys_vsprintf(_data + _length, length + 1, cFormat, argsCopy);
+  _length += length; // Update length
+
+  va_end(argsCopy);
+  va_end(args);
+
+  // Return success
+  return YES;
+}
+
 @end
