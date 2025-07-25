@@ -434,5 +434,245 @@ int test_nxstring_methods(void) {
   printf("✓ capacity is reported correctly\n");
 
   printf("\n✅ All extended NXString tests passed!\n");
+
+  printf("\nTest 12: Testing append: method...\n");
+
+  // Test basic append with string objects
+  NXString *appendBase1 = [NXString stringWithFormat:@"Hello"];
+  NXString *appendOther1 = [NXString stringWithCString:" World"];
+  BOOL appendResult1 = [appendBase1 append:appendOther1];
+  test_assert(appendResult1 == YES);
+  test_assert([appendBase1 length] == 11);
+  test_cstrings_equal([appendBase1 cStr], "Hello World");
+  printf("✓ append: works with NXString objects\n");
+
+  // Test append with NXConstantString
+  NXString *appendBase2 = [NXString stringWithFormat:@"Hello"];
+  BOOL appendResult2 = [appendBase2 append:@" Constants"];
+  test_assert(appendResult2 == YES);
+  test_assert([appendBase2 length] == 15);
+  test_cstrings_equal([appendBase2 cStr], "Hello Constants");
+  printf("✓ append: works with NXConstantString\n");
+
+  // Test append empty string
+  NXString *appendBase3 = [NXString stringWithFormat:@"NoChange"];
+  NXString *emptyAppend = [NXString stringWithCString:""];
+  BOOL appendResult3 = [appendBase3 append:emptyAppend];
+  test_assert(appendResult3 == YES);
+  test_assert([appendBase3 length] == 8);
+  test_cstrings_equal([appendBase3 cStr], "NoChange");
+  printf("✓ append: handles empty string correctly\n");
+
+  // Test append to empty string
+  NXString *appendBase4 = [NXString stringWithFormat:@""];
+  NXString *appendOther4 = [NXString stringWithCString:"FirstContent"];
+  BOOL appendResult4 = [appendBase4 append:appendOther4];
+  test_assert(appendResult4 == YES);
+  test_assert([appendBase4 length] == 12);
+  test_cstrings_equal([appendBase4 cStr], "FirstContent");
+  printf("✓ append: works when appending to empty string\n");
+
+  // Test multiple appends
+  NXString *appendBase5 = [NXString stringWithFormat:@"One"];
+  BOOL appendResult5a = [appendBase5 append:@" Two"];
+  BOOL appendResult5b = [appendBase5 append:@" Three"];
+  NXString *fourStr = [NXString stringWithCString:" Four"];
+  BOOL appendResult5c = [appendBase5 append:fourStr];
+  test_assert(appendResult5a == YES);
+  test_assert(appendResult5b == YES);
+  test_assert(appendResult5c == YES);
+  test_assert([appendBase5 length] ==
+              18); // Fixed: "One Two Three Four" = 18 chars
+  test_cstrings_equal([appendBase5 cStr], "One Two Three Four");
+  printf("✓ append: works with multiple consecutive appends\n");
+
+  // Test append with special characters
+  NXString *appendBase6 = [NXString stringWithFormat:@"Test"];
+  NXString *specialStr = [NXString stringWithCString:"!@#$%^&*()"];
+  BOOL appendResult6 = [appendBase6 append:specialStr];
+  test_assert(appendResult6 == YES);
+  test_assert([appendBase6 length] == 14);
+  test_cstrings_equal([appendBase6 cStr], "Test!@#$%^&*()");
+  printf("✓ append: works with special characters\n");
+
+  // Test append with numbers
+  NXString *appendBase7 = [NXString stringWithFormat:@"Count: "];
+  NXString *numberStr = [NXString stringWithFormat:@"%d", 12345];
+  BOOL appendResult7 = [appendBase7 append:numberStr];
+  test_assert(appendResult7 == YES);
+  test_cstrings_equal([appendBase7 cStr], "Count: 12345");
+  printf("✓ append: works with formatted numbers\n");
+
+  // Test append to immutable string (should make it mutable)
+  NXString *immutableBase = [NXString stringWithCString:"Immutable"];
+  NXString *appendToImmutable = [NXString stringWithCString:" Converted"];
+  BOOL immutableResult = [immutableBase append:appendToImmutable];
+  test_assert(immutableResult == YES);
+  test_cstrings_equal([immutableBase cStr], "Immutable Converted");
+  printf("✓ append: converts immutable strings to mutable\n");
+
+  // Test append with long strings
+  NXString *longBase = [NXString
+      stringWithFormat:
+          @"This is a very long string that should test memory allocation"];
+  NXString *longAppend =
+      [NXString stringWithCString:" and this is an even longer appendage that "
+                                  "will require additional memory allocation"];
+  BOOL longResult = [longBase append:longAppend];
+  test_assert(longResult == YES);
+  test_assert([longBase length] == 145);
+  printf("✓ append: works with long strings requiring reallocation\n");
+
+  printf("\nTest 13: Testing appendCString: method...\n");
+
+  // Test basic appendCString
+  NXString *cstrBase1 = [NXString stringWithFormat:@"Hello"];
+  BOOL cstrResult1 = [cstrBase1 appendCString:" C-String"];
+  test_assert(cstrResult1 == YES);
+  test_assert([cstrBase1 length] == 14);
+  test_cstrings_equal([cstrBase1 cStr], "Hello C-String");
+  printf("✓ appendCString: works with basic C-strings\n");
+
+  // Test appendCString with empty string
+  NXString *cstrBase2 = [NXString stringWithFormat:@"NoChange"];
+  BOOL cstrResult2 = [cstrBase2 appendCString:""];
+  test_assert(cstrResult2 == YES);
+  test_assert([cstrBase2 length] == 8);
+  test_cstrings_equal([cstrBase2 cStr], "NoChange");
+  printf("✓ appendCString: handles empty C-string correctly\n");
+
+  // Test appendCString to empty string
+  NXString *cstrBase3 = [NXString stringWithFormat:@""];
+  BOOL cstrResult3 = [cstrBase3 appendCString:"FirstContent"];
+  test_assert(cstrResult3 == YES);
+  test_assert([cstrBase3 length] == 12);
+  test_cstrings_equal([cstrBase3 cStr], "FirstContent");
+  printf("✓ appendCString: works when appending to empty string\n");
+
+  // Test multiple appendCString calls
+  NXString *cstrBase4 = [NXString stringWithFormat:@"Start"];
+  BOOL cstrResult4a = [cstrBase4 appendCString:" Middle"];
+  BOOL cstrResult4b = [cstrBase4 appendCString:" End"];
+  test_assert(cstrResult4a == YES);
+  test_assert(cstrResult4b == YES);
+  test_assert([cstrBase4 length] == 16);
+  test_cstrings_equal([cstrBase4 cStr], "Start Middle End");
+  printf("✓ appendCString: works with multiple consecutive appends\n");
+
+  // Test appendCString with special characters
+  NXString *cstrBase5 = [NXString stringWithFormat:@"Symbols"];
+  BOOL cstrResult5 = [cstrBase5 appendCString:": !@#$%^&*()"];
+  test_assert(cstrResult5 == YES);
+  test_assert([cstrBase5 length] == 19);
+  test_cstrings_equal([cstrBase5 cStr], "Symbols: !@#$%^&*()");
+  printf("✓ appendCString: works with special characters\n");
+
+  // Test appendCString with numbers and mixed content
+  NXString *cstrBase6 = [NXString stringWithFormat:@"Result"];
+  BOOL cstrResult6 = [cstrBase6 appendCString:": 123ABC!@#"];
+  test_assert(cstrResult6 == YES);
+  test_cstrings_equal([cstrBase6 cStr], "Result: 123ABC!@#");
+  printf("✓ appendCString: works with mixed numbers and characters\n");
+
+  // Test appendCString to immutable string
+  NXString *immutableCstr = [NXString stringWithCString:"Immutable"];
+  BOOL immutableCstrResult = [immutableCstr appendCString:" CString"];
+  test_assert(immutableCstrResult == YES);
+  test_cstrings_equal([immutableCstr cStr], "Immutable CString");
+  printf("✓ appendCString: converts immutable strings to mutable\n");
+
+  // Test appendCString with long C-string
+  NXString *longCstrBase = [NXString stringWithFormat:@"Base"];
+  const char *longCstr = " This is a very long C-string that will test memory "
+                         "allocation and reallocation capabilities";
+  BOOL longCstrResult = [longCstrBase appendCString:longCstr];
+  test_assert(longCstrResult == YES);
+  test_assert([longCstrBase length] == 96);
+  printf("✓ appendCString: works with long C-strings requiring reallocation\n");
+
+  printf(
+      "\nTest 14: Testing append methods edge cases and error conditions...\n");
+
+  // Test append with self (should work correctly)
+  NXString *selfAppend = [NXString stringWithFormat:@"Self"];
+  BOOL selfResult = [selfAppend append:selfAppend];
+  test_assert(selfResult == YES);
+  test_cstrings_equal([selfAppend cStr], "SelfSelf");
+  printf("✓ append: works when appending string to itself\n");
+
+  // Test capacity growth with append
+  NXString *capacityTest = [NXString stringWithCapacity:10];
+  [capacityTest appendCString:"12345"]; // Should fit in initial capacity
+  test_assert([capacityTest capacity] >= 10);
+  [capacityTest appendCString:"67890ABCDEF"]; // Should require expansion
+  test_assert([capacityTest capacity] > 10);
+  test_cstrings_equal([capacityTest cStr], "1234567890ABCDEF");
+  printf("✓ append methods properly handle capacity expansion\n");
+
+  // Test alternating append methods
+  NXString *alternating = [NXString stringWithFormat:@"A"];
+  [alternating append:[NXString stringWithCString:"B"]];
+  [alternating appendCString:"C"];
+  [alternating append:@"D"];
+  [alternating appendCString:"E"];
+  test_cstrings_equal([alternating cStr], "ABCDE");
+  printf("✓ append: and appendCString: can be used together\n");
+
+  // Test very small strings
+  NXString *tiny1 = [NXString stringWithFormat:@"A"];
+  NXString *tiny2 = [NXString stringWithCString:"B"];
+  [tiny1 append:tiny2];
+  test_cstrings_equal([tiny1 cStr], "AB");
+  printf("✓ append: works with very small strings\n");
+
+  // Test single character appends
+  NXString *singleCharAppend = [NXString stringWithFormat:@""];
+  [singleCharAppend appendCString:"a"];
+  [singleCharAppend appendCString:"b"];
+  [singleCharAppend appendCString:"c"];
+  test_cstrings_equal([singleCharAppend cStr], "abc");
+  printf("✓ appendCString: works with single character appends\n");
+
+  // Test unicode/extended ASCII characters (if supported)
+  NXString *unicodeBase = [NXString stringWithFormat:@"Unicode"];
+  [unicodeBase appendCString:" Test: àáâãäå"];
+  test_assert([unicodeBase length] >
+              13); // Length should include extended chars
+  printf("✓ appendCString: handles extended ASCII characters\n");
+
+  // Test null terminator handling
+  NXString *nullTermTest = [NXString stringWithFormat:@"Before"];
+  [nullTermTest appendCString:" After"];
+  // Verify null terminator is properly placed
+  const char *cstr = [nullTermTest cStr];
+  test_assert(cstr[[nullTermTest length]] == '\0');
+  printf("✓ append methods properly maintain null termination\n");
+
+  printf("\nTest 15: Testing append methods with various string types...\n");
+
+  // Test append with strings created by different methods
+  NXString *formatBase = [NXString stringWithFormat:@"Format"];
+  NXString *cstrCreated = [NXString stringWithCString:" CStr"];
+  NXString *stringCreated = [NXString stringWithString:@" String"];
+  NXString *capacityCreated = [NXString stringWithCapacity:20];
+  [capacityCreated appendCString:" Capacity"];
+
+  [formatBase append:cstrCreated];
+  [formatBase append:stringCreated];
+  [formatBase append:capacityCreated];
+  test_cstrings_equal([formatBase cStr], "Format CStr String Capacity");
+  printf("✓ append: works with strings created by different methods\n");
+
+  // Test with strings that have different internal states
+  NXString *referenced =
+      [NXString stringWithCString:"Referenced"];          // _data = NULL
+  NXString *allocated = [NXString stringWithCapacity:50]; // _data != NULL
+  [allocated appendCString:"Allocated"];
+
+  [referenced append:allocated];
+  test_cstrings_equal([referenced cStr], "ReferencedAllocated");
+  printf("✓ append: works between referenced and allocated strings\n");
+
+  printf("\n✅ All append method tests passed!\n");
   return 0;
 }
