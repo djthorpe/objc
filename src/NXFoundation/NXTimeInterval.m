@@ -49,7 +49,7 @@ NXString *NXTimeIntervalDescription(NXTimeInterval interval,
   }
 
   // Truncate the interval to the specified precision
-  interval = interval / truncate * truncate;
+  interval = interval - (interval % truncate);
   if (interval == 0) {
     return [NXString stringWithCString:"0s"];
   }
