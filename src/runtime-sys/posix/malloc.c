@@ -16,8 +16,10 @@ void sys_free(void *ptr) { return free(ptr); }
  * @brief Set memory to a specific value
  */
 void *sys_memset(void *ptr, uint8_t value, size_t size) {
-  if (ptr == NULL || size == 0)
+  if (ptr == NULL)
     return NULL;
+  if (size == 0)
+    return ptr;
   memset(ptr, value, size);
   return ptr;
 }
