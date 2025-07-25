@@ -395,7 +395,7 @@
   // Ensure string is mutable. Capacity is set to 0 to ensure it reallocates
   // enough space for the current string. If the string is already mutable,
   // this will be a no-op.
-  if ([self _makeMutableWithCapacity:0] == NO) {
+  if ([self _makeMutableWithCapacity:_length + 1] == NO) {
     return NO; // Failed to make mutable, cannot convert
   }
 
