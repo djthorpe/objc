@@ -114,8 +114,11 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a23292b71d529573fa606c2b043788e7d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a23292b71d529573fa606c2b043788e7d">appendCString:</a></td></tr>
 <tr class="memdesc:a23292b71d529573fa606c2b043788e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a null-terminated C-string to this string.  <a href="#a23292b71d529573fa606c2b043788e7d">More...</a><br /></td></tr>
 <tr class="separator:a23292b71d529573fa606c2b043788e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75">appendStringWithFormat:</a></td></tr>
+<tr class="memdesc:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string with format and arguments to this string.  <a href="#a6e7b80cd6c4940f2946bbfc8a5e31b75">More...</a><br /></td></tr>
+<tr class="separator:a6e7b80cd6c4940f2946bbfc8a5e31b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7526675981069cdd5afef75f2ecbe2ce"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a7526675981069cdd5afef75f2ecbe2ce">hasPrefix:</a></td></tr>
-<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string with format and arguments to this string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
+<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a quoted version of the string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
 <tr class="separator:a7526675981069cdd5afef75f2ecbe2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a15e50e8f7ef7b0b5cb219afa183641b1">hasSuffix:</a></td></tr>
 <tr class="memdesc:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the string ends with a given suffix.  <a href="#a15e50e8f7ef7b0b5cb219afa183641b1">More...</a><br /></td></tr>
@@ -299,6 +302,44 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
+<a id="a6e7b80cd6c4940f2946bbfc8a5e31b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e7b80cd6c4940f2946bbfc8a5e31b75">&#9670;&nbsp;</a></span>appendStringWithFormat:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) appendStringWithFormat: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXConstantString.html">NXConstantString</a> *)&#160;</td>
+          <td class="paramname"><em>format</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">,</td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a string with format and arguments to this string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>The format string to use for appending. </td></tr>
+    <tr><td class="paramname">...</td><td>Variable arguments for the format string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if successfully modified, NO if it wasn't possible to allocate additional capacity. </dd></dl>
+
+</div>
+</div>
 <a id="a3bcf23a50bea6cb88d991b5196037230"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3bcf23a50bea6cb88d991b5196037230">&#9670;&nbsp;</a></span>capacity()</h2>
 
@@ -427,15 +468,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
       </table>
 </div><div class="memdoc">
 
-<p>Appends a string with format and arguments to this string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>The format string to use for appending. </td></tr>
-    <tr><td class="paramname">...</td><td>Variable arguments for the format string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>If the string needs to be modified, it will create a mutable copy, or attempt to increase capacity if necessary. If the operation fails, it will currently panic, but should raise an exception in the future, when exception handling is implemented. Returns a quoted version of the string. </dd></dl>
+<p>Returns a quoted version of the string. </p>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> instance containing the string enclosed in double quotes.</dd></dl>
 <p>This method creates a new string that contains the original string enclosed in double quotes. Special characters within the string are escaped according to JSON string escaping rules. Trims leading and trailing whitespace from the string. </p><dl class="section return"><dt>Returns</dt><dd>YES if the string was modified, NO if it was already trimmed. Trims leading and trailing string values from the string. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>

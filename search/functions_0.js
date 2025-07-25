@@ -7,5 +7,6 @@ var searchData=
   ['allocwithzone_3a',['allocWithZone:',['../interfaceNXObject.html#a07c1150dddd0486576a9c9af00244db5',1,'NXObject']]],
   ['append_3a',['append:',['../interfaceNXString.html#a6173efb724785281af7e37a77026f2d8',1,'NXString']]],
   ['appendcstring_3a',['appendCString:',['../interfaceNXString.html#a23292b71d529573fa606c2b043788e7d',1,'NXString']]],
+  ['appendstringwithformat_3a',['appendStringWithFormat:',['../interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75',1,'NXString']]],
   ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
 ];
