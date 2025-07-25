@@ -78,7 +78,7 @@
   va_end(argsCopy);
 
   // Do not allow for objectCount == NXNotFound
-  if (objectCount == NXNotFound) {
+  if (objectCount == (size_t)NXNotFound) {
     [self release];
     return nil;
   }
