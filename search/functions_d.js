@@ -4,6 +4,7 @@ var searchData=
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
+  ['size',['size',['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
   ['stringwithcapacity_3a',['stringWithCapacity:',['../interfaceNXString.html#ac74475849c328fd46525a6be18a916fb',1,'NXString']]],
   ['stringwithcstring_3a',['stringWithCString:',['../interfaceNXString.html#ab391fe0fb40f1e8fc4478159fc787c2b',1,'NXString']]],

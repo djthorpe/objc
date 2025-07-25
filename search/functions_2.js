@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['capacity',['capacity',['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
+  ['capacity',['capacity',['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
   ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()']]],
   ['class_5fconformsto',['class_conformsTo',['../runtime_8h.html#aa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
   ['class_5fgetinstancesize',['class_getInstanceSize',['../runtime_8h.html#a0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],

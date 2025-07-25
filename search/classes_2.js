@@ -5,6 +5,7 @@ var searchData=
   ['nxautoreleasepool',['NXAutoreleasePool',['../interfaceNXAutoreleasePool.html',1,'']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
   ['nxconstantstringprotocol_2dp',['NXConstantStringProtocol-p',['../protocolNXConstantStringProtocol-p.html',1,'']]],
+  ['nxdata',['NXData',['../interfaceNXData.html',1,'']]],
   ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
   ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],
   ['nxnumber',['NXNumber',['../interfaceNXNumber.html',1,'']]],

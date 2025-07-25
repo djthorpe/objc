@@ -7,6 +7,7 @@ var searchData=
   ['nxcomparisonresult_2eh',['NXComparisonResult.h',['../NXComparisonResult_8h.html',1,'']]],
   ['nxconstantstring_2bprotocol_2eh',['NXConstantString+Protocol.h',['../NXConstantString_09Protocol_8h.html',1,'']]],
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
+  ['nxdata_2eh',['NXData.h',['../NXData_8h.html',1,'']]],
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
   ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
