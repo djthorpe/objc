@@ -35,3 +35,15 @@ void *sys_memcpy(void *dest, const void *src, size_t size) {
   memcpy(dest, src, size);
   return dest;
 }
+
+/**
+ * @brief Move memory from source to destination (handles overlapping regions)
+ */
+void *sys_memmove(void *dest, const void *src, size_t size) {
+  if (dest == NULL || src == NULL)
+    return NULL;
+  if (size == 0)
+    return dest;
+  memmove(dest, src, size);
+  return dest;
+}

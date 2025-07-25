@@ -41,4 +41,12 @@
  */
 - (BOOL)isKindOfClass:(Class)cls;
 
+/**
+ * @brief Checks if the receiver's class conforms to a protocol.
+ * @param aProtocolObject The protocol to check conformance against.
+ * @return YES if the receiver's class conforms to the specified protocol, NO
+ * otherwise.
+ */
+- (BOOL)conformsTo:(Protocol *)aProtocolObject;
+
 @end
