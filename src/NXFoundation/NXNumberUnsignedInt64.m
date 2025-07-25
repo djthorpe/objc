@@ -89,6 +89,14 @@
 }
 
 /**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  // Format: "18446744073709551615"
+  return 20; // 20 characters for the maximum value of uint64_t
+}
+
+/**
  * @brief Check for equality with another NXNumber instance.
  */
 - (BOOL)isEqual:(id)object {

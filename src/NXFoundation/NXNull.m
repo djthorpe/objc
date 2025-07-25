@@ -35,4 +35,11 @@ static NXNull *nullValue;
   return [self description];
 }
 
+/**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  return 4;
+}
+
 @end

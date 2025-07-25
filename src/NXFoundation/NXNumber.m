@@ -154,7 +154,10 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 }
 
 /**
- * @brief Return the JSON string representation of a null value.
+ * @brief Return the JSON string representation of a number value.
+ *
+ * @note Number values are already in a format suitable for JSON, so this method
+ * simply returns the string representation of the number.
  */
 - (NXString *)JSONString {
   return [self description];

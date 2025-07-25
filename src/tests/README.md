@@ -6,7 +6,7 @@ The tests are organized into three main categories:
 
 ## Test Categories
 
-- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_20): Tests for the NXFoundation framework classes and functionality.
+- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_21): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
 - **System Tests** (sys_01, sys_02, sys_03, sys_04): Tests for low-level system functionality.
 
@@ -24,7 +24,7 @@ The tests are organized into three main categories:
 | NXFoundation_06 | Autorelease Pool Testing | Tests autorelease pool creation, object management, and cleanup. |
 | NXFoundation_07 | Thread Sleep Operations | Tests threading functionality with `[NXThread sleepForTimeInterval:]`. |
 | NXFoundation_08 | Application Runner | Tests basic application execution with `[NXApplication run]`. |
-| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, time intervals, descriptions, and underlying time functions. |
+| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, time intervals, descriptions, component getters, date comparisons, and addTimeInterval/dateByAddingTimeInterval methods. |
 | NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation, sizing, and cleanup. |
 | NXFoundation_11 | Architecture Information | Tests system architecture detection (bits, endianness, cores). |
 | NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and range validation. |
@@ -36,6 +36,7 @@ The tests are organized into three main categories:
 | NXFoundation_18 | String Method Testing | Comprehensive NXString tests: formatting, comparison, operations, JSON escaping. |
 | NXFoundation_19 | Number Comprehensive Testing | Comprehensive NXNumber tests: all types, conversions, edge cases, memory management. |
 | NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, and NXDate. |
+| NXFoundation_21 | Array Functionality and JSON Testing | Tests NXArray creation, object access, initWithObjects, arrayWithObjects, JSON serialization, JSONBytes capacity estimation, JSON compliance with special characters, and non-JSON-compliant object handling via description method. |
 
 ---
 

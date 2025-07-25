@@ -82,6 +82,13 @@ static NXNumberZero *zeroNumber;
 }
 
 /**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  return 1;
+}
+
+/**
  * @brief Check if this number is equal to another object.
  */
 - (BOOL)isEqual:(id)object {

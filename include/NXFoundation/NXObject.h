@@ -17,7 +17,7 @@
  *
  * \headerfile NXObject.h NXFoundation/NXFoundation.h
  */
-@interface NXObject : Object {
+@interface NXObject : Object <RetainProtocol> {
 @protected
   /**
    * @var _zone

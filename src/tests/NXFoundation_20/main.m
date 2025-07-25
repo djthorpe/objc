@@ -180,21 +180,30 @@ int test_json_methods(void) {
   NXString *dateJson = [currentDate JSONString];
   test_assert(dateJson != nil);
 
-  // Verify it's the same as description (ISO 8601 format)
+  // Verify JSONString is quoted version of description
   NXString *dateDesc = [currentDate description];
-  test_assert([dateJson isEqual:dateDesc]);
-  printf("✓ NXDate JSONString matches description\n");
 
-  // Verify ISO 8601 format pattern (YYYY-MM-DDTHH:MM:SSZ)
+  // Build expected JSON manually since we can't use @ format specifier
+  NXString *expectedJson = [NXString stringWithCString:"\""];
+  [expectedJson append:dateDesc];
+  [expectedJson appendCString:"\""];
+
+  test_assert([dateJson isEqual:expectedJson]);
+  printf("✓ NXDate JSONString is quoted version of description\n");
+
+  // Verify ISO 8601 format pattern ("YYYY-MM-DDTHH:MM:SSZ")
   const char *dateStr = [dateJson cStr];
-  test_assert(strlen(dateStr) == 20); // Should be exactly 20 characters
-  test_assert(dateStr[4] == '-');     // Year-Month separator
-  test_assert(dateStr[7] == '-');     // Month-Day separator
-  test_assert(dateStr[10] == 'T');    // Date-Time separator
-  test_assert(dateStr[13] == ':');    // Hour-Minute separator
-  test_assert(dateStr[16] == ':');    // Minute-Second separator
-  test_assert(dateStr[19] == 'Z');    // UTC timezone indicator
-  printf("✓ NXDate JSON string follows ISO 8601 format\n");
+  test_assert(strlen(dateStr) ==
+              22); // Should be exactly 22 characters (including quotes)
+  test_assert(dateStr[0] == '"');  // Should start with quote
+  test_assert(dateStr[5] == '-');  // Year-Month separator
+  test_assert(dateStr[8] == '-');  // Month-Day separator
+  test_assert(dateStr[11] == 'T'); // Date-Time separator
+  test_assert(dateStr[14] == ':'); // Hour-Minute separator
+  test_assert(dateStr[17] == ':'); // Minute-Second separator
+  test_assert(dateStr[20] == 'Z'); // UTC timezone indicator
+  test_assert(dateStr[21] == '"'); // Should end with quote
+  printf("✓ NXDate JSON string follows quoted ISO 8601 format\n");
 
   // Test date with specific time
   NXDate *specificDate =
@@ -203,13 +212,16 @@ int test_json_methods(void) {
   test_assert(specificJson != nil);
   // Just verify it has the correct ISO format structure, not exact content
   const char *specificDateStr = [specificJson cStr];
-  test_assert(strlen(specificDateStr) == 20); // Should be exactly 20 characters
-  test_assert(specificDateStr[4] == '-');     // Year-Month separator
-  test_assert(specificDateStr[7] == '-');     // Month-Day separator
-  test_assert(specificDateStr[10] == 'T');    // Date-Time separator
-  test_assert(specificDateStr[13] == ':');    // Hour-Minute separator
-  test_assert(specificDateStr[16] == ':');    // Minute-Second separator
-  test_assert(specificDateStr[19] == 'Z');    // UTC timezone indicator
+  test_assert(strlen(specificDateStr) ==
+              22); // Should be exactly 22 characters (including quotes)
+  test_assert(specificDateStr[0] == '"');  // Should start with quote
+  test_assert(specificDateStr[5] == '-');  // Year-Month separator
+  test_assert(specificDateStr[8] == '-');  // Month-Day separator
+  test_assert(specificDateStr[11] == 'T'); // Date-Time separator
+  test_assert(specificDateStr[14] == ':'); // Hour-Minute separator
+  test_assert(specificDateStr[17] == ':'); // Minute-Second separator
+  test_assert(specificDateStr[20] == 'Z'); // UTC timezone indicator
+  test_assert(specificDateStr[21] == '"'); // Should end with quote
   printf("✓ NXDate time interval JSON formatting\n");
 
   // Test 5: JSON compliance validation
@@ -260,8 +272,11 @@ int test_json_methods(void) {
   NXDate *testDate = [NXDate date];
   NXString *testDateJson = [testDate JSONString];
   const char *dateJsonStr = [testDateJson cStr];
-  test_assert(dateJsonStr[0] != '"'); // Description doesn't include quotes
-  test_assert(dateJsonStr[strlen(dateJsonStr) - 1] != '"');
+  test_assert(dateJsonStr[0] == '"'); // Should start with quote
+  test_assert(dateJsonStr[strlen(dateJsonStr) - 1] ==
+              '"'); // Should end with quote
+  test_assert(strlen(dateJsonStr) ==
+              22); // Should be exactly 22 characters including quotes
   printf("✓ NXDate JSON output format verified\n");
 
   // Test 6: Protocol conformance verification
