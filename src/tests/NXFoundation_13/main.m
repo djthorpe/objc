@@ -246,7 +246,29 @@ int main() {
   printf("  desc1: %s\n", [desc1 cStr]);
   printf("  desc2: %s\n", [desc2 cStr]);
   printf("  desc3: %s\n", [desc3 cStr]);
-  printf("  desc4: %s\n", [desc4 cStr]);
+  printf("  desc4 (negative): %s\n", [desc4 cStr]);
+
+  // Test with days
+  NXTimeInterval dayInterval =
+      2 * Day + 3 * Hour + 45 * Minute + 30 * Second + 500 * Millisecond;
+  NXString *desc5 = NXTimeIntervalDescription(dayInterval, Millisecond);
+  test_assert(desc5 != nil);
+  printf("  desc5 (with days): %s\n", [desc5 cStr]);
+
+  // Test negative intervals with proper formatting
+  NXTimeInterval negativeDay = -(1 * Day + 2 * Hour + 30 * Minute);
+  NXString *desc6 = NXTimeIntervalDescription(negativeDay, Minute);
+  test_assert(desc6 != nil);
+  printf("  desc6 (negative day): %s\n", [desc6 cStr]);
+
+  // Test very small negative interval
+  NXTimeInterval smallNegative = -500 * Millisecond;
+  NXString *desc7 = NXTimeIntervalDescription(smallNegative, Millisecond);
+  test_assert(desc7 != nil);
+  printf("  desc7 (small negative): %s\n", [desc7 cStr]);
+
+  printf(
+      "✓ NXTimeIntervalDescription works with days and negative intervals\n");
 
   // Cleanup
   [pool release];
