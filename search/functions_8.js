@@ -1,20 +1,4 @@
 var searchData=
 [
-  ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
-  ['new',['new',['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString']]],
-  ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
-  ['numberwithbool_3a',['numberWithBool:',['../interfaceNXNumber.html#ad31141fabac9793fcf015df9cea49132',1,'NXNumber']]],
-  ['numberwithint16_3a',['numberWithInt16:',['../interfaceNXNumber.html#ad8e17f2470a31608697c21ae4642aeb7',1,'NXNumber']]],
-  ['numberwithint32_3a',['numberWithInt32:',['../interfaceNXNumber.html#a9891073f5a70425d74c11ba0cae2e10a',1,'NXNumber']]],
-  ['numberwithint64_3a',['numberWithInt64:',['../interfaceNXNumber.html#a970d91a0c04c7f96dd9861b6baf13258',1,'NXNumber']]],
-  ['numberwithunsignedint16_3a',['numberWithUnsignedInt16:',['../interfaceNXNumber.html#abeba3c92ca22cce5c3ce2fd1982c8294',1,'NXNumber']]],
-  ['numberwithunsignedint32_3a',['numberWithUnsignedInt32:',['../interfaceNXNumber.html#a138cbfffeab84815f061005037029f7c',1,'NXNumber']]],
-  ['numberwithunsignedint64_3a',['numberWithUnsignedInt64:',['../interfaceNXNumber.html#a84283d5fd779f493afcce5c2d74b3381',1,'NXNumber']]],
-  ['nxarchbits',['NXArchBits',['../NXArch_8h.html#a9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
-  ['nxarchendian',['NXArchEndian',['../NXArch_8h.html#a1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],
-  ['nxarchnumcores',['NXArchNumCores',['../NXArch_8h.html#ae5ebb9b55da9e716c8d6c78437096a3b',1,'NXArch.h']]],
-  ['nxrandint32',['NXRandInt32',['../NXNumber_8h.html#a3c5ce4190cd3e1aad68bb62c2ae70878',1,'NXNumber.h']]],
-  ['nxrandunsignedint32',['NXRandUnsignedInt32',['../NXNumber_8h.html#aa883ed827a2c8aec90e77fec9036c430',1,'NXNumber.h']]],
-  ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../NXTimeInterval_8h.html#a49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
-  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../NXTimeInterval_8h.html#a9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]]
+  ['length',['length',['../protocolNXConstantStringProtocol-p.html#aad2fbd9b7c96ff2381d5e479ec191b40',1,'NXConstantStringProtocol-p::length()'],['../interfaceNXConstantString.html#ac008e5f6fa7b441d551761de3c0ac14e',1,'NXConstantString::length()'],['../interfaceNXString.html#ab1ec72b601d56d58f0d2f2d73ab42c57',1,'NXString::length()']]]
 ];

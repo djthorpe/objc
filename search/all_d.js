@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['random_2eh',['random.h',['../random_8h.html',1,'']]],
-  ['release',['release',['../interfaceNXObject.html#abccce59171d368454f3d1743ddfd805e',1,'NXObject']]],
-  ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject']]],
-  ['run',['run',['../interfaceNXApplication.html#ae843bb8728032b71f97006a5c9048c4b',1,'NXApplication']]],
-  ['runtime_2eh',['runtime.h',['../runtime_8h.html',1,'']]]
+  ['printf_2eh',['printf.h',['../printf_8h.html',1,'']]],
+  ['proto_5fconformsto',['proto_conformsTo',['../runtime_8h.html#a6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
+  ['proto_5fgetname',['proto_getName',['../runtime_8h.html#aa62343541481469b654863125aec01b9',1,'runtime.h']]],
+  ['protocol',['Protocol',['../interfaceProtocol.html',1,'']]],
+  ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]]
 ];
