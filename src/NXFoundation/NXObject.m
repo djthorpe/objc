@@ -33,6 +33,8 @@ __attribute__((used)) static void load_categories() {
     object_setClass(instance, self);
     ((NXObject *)instance)->_zone = zone; // Set the zone for the instance
     ((NXObject *)instance)->_retain = 1;  // Retain the instance
+    ((NXObject *)instance)->_next =
+        Nil; // Initialize the autorelease linked list pointer
   }
   return instance;
 }

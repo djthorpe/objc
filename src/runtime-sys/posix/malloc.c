@@ -1,12 +1,33 @@
-#include <stdlib.h>
 #include <runtime-sys/sys.h>
+#include <stdlib.h>
+#include <string.h>
 
-/*
- ** Allocate memory
+/**
+ * @brief Allocate memory
  */
 void *sys_malloc(size_t size) { return malloc(size); }
 
-/*
- ** Free allocated memory
+/**
+ * @brief Free allocated memory
  */
 void sys_free(void *ptr) { return free(ptr); }
+
+/**
+ * @brief Set memory to a specific value
+ */
+void *sys_memset(void *ptr, uint8_t value, size_t size) {
+  if (ptr == NULL || size == 0)
+    return NULL;
+  memset(ptr, value, size);
+  return ptr;
+}
+
+/**
+ * @brief Copy memory from source to destination
+ */
+void *sys_memcpy(void *dest, const void *src, size_t size) {
+  if (dest == NULL || src == NULL || size == 0)
+    return NULL;
+  memcpy(dest, src, size);
+  return dest;
+}
