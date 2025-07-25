@@ -1,4 +1,6 @@
 var searchData=
 [
+  ['tolowercase',['toLowercase',['../interfaceNXString.html#aeeecc1e2a683aae2a7b25476deee8167',1,'NXString']]],
+  ['touppercase',['toUppercase',['../interfaceNXString.html#a5837f08e476b546a89e26767571ed0f4',1,'NXString']]],
   ['truevalue',['trueValue',['../interfaceNXNumber.html#a09d785a02139d2620348ef839ef88dad',1,'NXNumber']]]
 ];

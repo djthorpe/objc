@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['capacity',['capacity',['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString']]],
   ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../runtime_8h.html#a6404e728cf4fd26bbb2d79a9ba21aa02',1,'Class():&#160;runtime.h']]],
   ['class_5fconformsto',['class_conformsTo',['../runtime_8h.html#aa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
   ['class_5fgetinstancesize',['class_getInstanceSize',['../runtime_8h.html#a0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],
@@ -9,7 +10,7 @@ var searchData=
   ['class_5frespondstoselector',['class_respondsToSelector',['../runtime_8h.html#a2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
   ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#af5014b9b35f1ce101b204e3f6af5d0f0',1,'NXString::compare:()']]],
   ['conformsto_3a',['conformsTo:',['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
-  ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#a1fabed2981caaf91cac4facc1c43d6c4',1,'NXString']]],
+  ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#ad7de3650b5d7e7d7ff50044c3a9dc3bb',1,'NXString']]],
   ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
   ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
 ];

@@ -7,6 +7,7 @@ var searchData=
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
+  ['stringwithcapacity_3a',['stringWithCapacity:',['../interfaceNXString.html#ac74475849c328fd46525a6be18a916fb',1,'NXString']]],
   ['stringwithcstring_3a',['stringWithCString:',['../interfaceNXString.html#ab391fe0fb40f1e8fc4478159fc787c2b',1,'NXString']]],
   ['stringwithformat_3a',['stringWithFormat:',['../interfaceNXString.html#a1c2b80633ce694dbd218dc665e99de02',1,'NXString']]],
   ['stringwithstring_3a',['stringWithString:',['../interfaceNXString.html#a6e8e4b0328c11e131ff516b24fe842cb',1,'NXString']]],
