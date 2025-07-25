@@ -78,7 +78,7 @@
   va_end(argsCopy);
 
   // Do not allow for objectCount == NXNotFound
-  if (objectCount == NXNotFound) {
+  if (objectCount == (size_t)NXNotFound) {
     [self release];
     return nil;
   }
@@ -181,7 +181,7 @@
     // No change needed
     return YES;
   }
-  if (cap == NXNotFound) {
+  if (cap == (size_t)NXNotFound) {
     // Fail if maximum capacity is reached
     return NO;
   }
