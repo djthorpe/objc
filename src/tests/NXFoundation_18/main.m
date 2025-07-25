@@ -132,7 +132,179 @@ int test_nxstring_methods(void) {
   test_assert(desc == descStr); // description should return self
   printf("✓ description method works correctly\n");
 
-  printf("\nTest 7: Testing memory management...\n");
+  printf("\nTest 7: Testing hasPrefix and hasSuffix methods...\n");
+
+  // Test hasPrefix with various cases
+  NXString *testPrefix = [NXString stringWithCString:"Hello World"];
+
+  // Test hasPrefix - normal cases
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:"Hello"]] ==
+              YES);
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:"Hell"]] ==
+              YES);
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:"H"]] == YES);
+  test_assert(
+      [testPrefix hasPrefix:[NXString stringWithCString:"Hello World"]] ==
+      YES); // Exact match
+  printf("✓ hasPrefix works for valid prefixes\n");
+
+  // Test hasPrefix - negative cases
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:"World"]] ==
+              NO);
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:"hello"]] ==
+              NO); // Case sensitive
+  test_assert(
+      [testPrefix hasPrefix:[NXString stringWithCString:"Hello World!"]] ==
+      NO); // Longer than string
+  printf("✓ hasPrefix correctly rejects invalid prefixes\n");
+
+  // Test hasPrefix - edge cases
+  test_assert([testPrefix hasPrefix:[NXString stringWithCString:""]] ==
+              YES); // Empty prefix
+  NXString *emptyTestStr = [NXString stringWithCString:""];
+  test_assert([emptyTestStr hasPrefix:[NXString stringWithCString:""]] ==
+              YES); // Empty string, empty prefix
+  test_assert([emptyTestStr hasPrefix:[NXString stringWithCString:"a"]] ==
+              NO); // Empty string, non-empty prefix
+  printf("✓ hasPrefix handles edge cases correctly\n");
+
+  // Test hasSuffix with various cases
+  NXString *testSuffix = [NXString stringWithCString:"Hello World"];
+
+  // Test hasSuffix - normal cases
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:"World"]] ==
+              YES);
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:"orld"]] ==
+              YES);
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:"d"]] == YES);
+  test_assert(
+      [testSuffix hasSuffix:[NXString stringWithCString:"Hello World"]] ==
+      YES); // Exact match
+  printf("✓ hasSuffix works for valid suffixes\n");
+
+  // Test hasSuffix - negative cases
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:"Hello"]] ==
+              NO);
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:"world"]] ==
+              NO); // Case sensitive
+  test_assert(
+      [testSuffix hasSuffix:[NXString stringWithCString:"!Hello World"]] ==
+      NO); // Longer than string
+  printf("✓ hasSuffix correctly rejects invalid suffixes\n");
+
+  // Test hasSuffix - edge cases
+  test_assert([testSuffix hasSuffix:[NXString stringWithCString:""]] ==
+              YES); // Empty suffix
+  test_assert([emptyTestStr hasSuffix:[NXString stringWithCString:""]] ==
+              YES); // Empty string, empty suffix
+  test_assert([emptyTestStr hasSuffix:[NXString stringWithCString:"a"]] ==
+              NO); // Empty string, non-empty suffix
+  printf("✓ hasSuffix handles edge cases correctly\n");
+
+  // Test prefix/suffix with single character strings
+  NXString *singleChar = [NXString stringWithCString:"A"];
+  test_assert([singleChar hasPrefix:[NXString stringWithCString:"A"]] == YES);
+  test_assert([singleChar hasSuffix:[NXString stringWithCString:"A"]] == YES);
+  test_assert([singleChar hasPrefix:[NXString stringWithCString:"B"]] == NO);
+  test_assert([singleChar hasSuffix:[NXString stringWithCString:"B"]] == NO);
+  printf(
+      "✓ hasPrefix/hasSuffix work correctly with single character strings\n");
+
+  // Test prefix/suffix with multi-word strings
+  NXString *multiWord = [NXString stringWithCString:"The quick brown fox"];
+  test_assert([multiWord hasPrefix:[NXString stringWithCString:"The quick"]] ==
+              YES);
+  test_assert([multiWord hasSuffix:[NXString stringWithCString:"brown fox"]] ==
+              YES);
+  test_assert(
+      [multiWord hasPrefix:[NXString stringWithCString:"quick brown"]] == NO);
+  test_assert([multiWord hasSuffix:[NXString stringWithCString:"The quick"]] ==
+              NO);
+  printf("✓ hasPrefix/hasSuffix work correctly with multi-word strings\n");
+
+  printf("\nTest 8: Testing toUppercase and toLowercase methods...\n");
+
+  // Test toUppercase with formatted strings (safe to modify)
+  NXString *upperTest1 = [NXString stringWithFormat:@"hello world"];
+  [upperTest1 toUppercase];
+  test_cstrings_equal([upperTest1 cStr], "HELLO WORLD");
+  printf("✓ toUppercase works with basic lowercase text\n");
+
+  // Test toLowercase with formatted strings (safe to modify)
+  NXString *lowerTest1 = [NXString stringWithFormat:@"HELLO WORLD"];
+  [lowerTest1 toLowercase];
+  test_cstrings_equal([lowerTest1 cStr], "hello world");
+  printf("✓ toLowercase works with basic uppercase text\n");
+
+  // Test mixed case conversion
+  NXString *mixedTest = [NXString stringWithFormat:@"HeLLo WoRLd"];
+  [mixedTest toUppercase];
+  test_cstrings_equal([mixedTest cStr], "HELLO WORLD");
+  [mixedTest toLowercase];
+  test_cstrings_equal([mixedTest cStr], "hello world");
+  printf("✓ toUppercase/toLowercase work with mixed case\n");
+
+  // Test with numbers and special characters (should remain unchanged)
+  NXString *specialTest = [NXString stringWithFormat:@"Hello123!@# World"];
+  [specialTest toUppercase];
+  test_cstrings_equal([specialTest cStr], "HELLO123!@# WORLD");
+  [specialTest toLowercase];
+  test_cstrings_equal([specialTest cStr], "hello123!@# world");
+  printf("✓ toUppercase/toLowercase preserve numbers and special characters\n");
+
+  // Test with single character
+  NXString *singleTest = [NXString stringWithFormat:@"a"];
+  [singleTest toUppercase];
+  test_cstrings_equal([singleTest cStr], "A");
+  [singleTest toLowercase];
+  test_cstrings_equal([singleTest cStr], "a");
+  printf("✓ toUppercase/toLowercase work with single characters\n");
+
+  // Test with already uppercase/lowercase strings
+  NXString *alreadyUpper = [NXString stringWithFormat:@"ALREADY UPPER"];
+  [alreadyUpper toUppercase];
+  test_cstrings_equal([alreadyUpper cStr], "ALREADY UPPER");
+  printf("✓ toUppercase handles already uppercase strings\n");
+
+  NXString *alreadyLower = [NXString stringWithFormat:@"already lower"];
+  [alreadyLower toLowercase];
+  test_cstrings_equal([alreadyLower cStr], "already lower");
+  printf("✓ toLowercase handles already lowercase strings\n");
+
+  // Test with empty string
+  NXString *emptyCase = [NXString stringWithFormat:@""];
+  [emptyCase toUppercase];
+  test_cstrings_equal([emptyCase cStr], "");
+  [emptyCase toLowercase];
+  test_cstrings_equal([emptyCase cStr], "");
+  printf("✓ toUppercase/toLowercase handle empty strings\n");
+
+  // Test with only special characters
+  NXString *onlySpecial = [NXString stringWithFormat:@"!@#$^&*()"];
+  [onlySpecial toUppercase];
+  test_cstrings_equal([onlySpecial cStr], "!@#$^&*()");
+  [onlySpecial toLowercase];
+  test_cstrings_equal([onlySpecial cStr], "!@#$^&*()");
+  printf("✓ toUppercase/toLowercase handle special character strings\n");
+
+  // Test with NULL value (should not crash)
+  NXString *nullTest =
+      [[NXString alloc] init]; // Creates string with NULL _value
+  [nullTest toUppercase];      // Should return safely without crash
+  [nullTest toLowercase];      // Should return safely without crash
+  test_assert([nullTest length] == 0);
+  printf("✓ toUppercase/toLowercase handle NULL values safely\n");
+
+  // Test converting referenced (immutable) strings to mutable
+  NXString *referencedStr = [NXString stringWithCString:"hello world"];
+  [referencedStr toUppercase]; // Should make it mutable and convert
+  test_cstrings_equal([referencedStr cStr], "HELLO WORLD");
+  [referencedStr toLowercase]; // Should work since it's now mutable
+  test_cstrings_equal([referencedStr cStr], "hello world");
+  printf(
+      "✓ toUppercase/toLowercase can convert referenced strings to mutable\n");
+
+  printf("\nTest 9: Testing memory management...\n");
 
   // Test autoreleased strings don't crash
   for (int i = 0; i < 5; i++) {
@@ -142,12 +314,125 @@ int test_nxstring_methods(void) {
   }
   printf("✓ Memory management works correctly\n");
 
+  printf("\nTest 10: Testing edge cases and bug fixes...\n");
+
+  // Test initWithCString with NULL input
+  NXString *nullCStr = [[NXString alloc] initWithCString:NULL];
+  test_assert(nullCStr != nil);
+  test_assert([nullCStr length] == 0);
+  test_cstrings_equal([nullCStr cStr], "");
+  printf("✓ initWithCString handles NULL input correctly\n");
+  [nullCStr release];
+
+  // Test stringWithCString with NULL input (through class method)
+  NXString *nullClassStr = [NXString stringWithCString:NULL];
+  test_assert(nullClassStr != nil);
+  test_assert([nullClassStr length] == 0);
+  test_cstrings_equal([nullClassStr cStr], "");
+  printf("✓ stringWithCString handles NULL input correctly\n");
+
+  // Test initWithCapacity with zero capacity
+  NXString *zeroCapStr = [[NXString alloc] initWithCapacity:0];
+  test_assert(zeroCapStr != nil);
+  test_assert([zeroCapStr length] == 0);
+  test_assert([zeroCapStr capacity] == 0);
+  printf("✓ initWithCapacity(0) works correctly\n");
+  [zeroCapStr release];
+
+  // Test initWithCapacity with non-zero capacity
+  NXString *capStr = [[NXString alloc] initWithCapacity:50];
+  test_assert(capStr != nil);
+  test_assert([capStr length] == 0);
+  test_assert([capStr capacity] == 50);
+  printf("✓ initWithCapacity(50) works correctly\n");
+  [capStr release];
+
+  // Test stringWithCapacity (class method)
+  NXString *classCapStr = [NXString stringWithCapacity:25];
+  test_assert(classCapStr != nil);
+  test_assert([classCapStr length] == 0);
+  test_assert([classCapStr capacity] == 25);
+  printf("✓ stringWithCapacity(25) works correctly\n");
+
+  // Test stringWithFormat with empty format
+  NXString *emptyFormatStr = [NXString stringWithFormat:@""];
+  test_assert(emptyFormatStr != nil);
+  test_assert([emptyFormatStr length] == 0);
+  test_cstrings_equal([emptyFormatStr cStr], "");
+  printf("✓ stringWithFormat with empty string works correctly\n");
+
+  // Test initWithFormat with empty format
+  NXString *emptyInitStr = [[NXString alloc] initWithFormat:@""];
+  test_assert(emptyInitStr != nil);
+  test_assert([emptyInitStr length] == 0);
+  test_cstrings_equal([emptyInitStr cStr], "");
+  printf("✓ initWithFormat with empty string works correctly\n");
+  [emptyInitStr release];
+
   // Clean up manually allocated strings
   [str2 release];
   [str4 release];
   [formatted2 release];
   [emptyStr2 release];
+  [nullTest release];
 
-  printf("\n✅ All NXString method tests passed!\n");
+  printf("\n✅ All NXString method tests passed (including "
+         "hasPrefix/hasSuffix, toUppercase/toLowercase, and edge cases)!\n");
+
+  printf("\nTest 11: Extended NXString tests...\n");
+
+  // Test isEqual with different string types
+  NXString *s1 = [NXString stringWithCString:"test"];
+  NXConstantString *s2 = @"test";
+  test_assert([s1 isEqual:s2] == YES);
+  printf("✓ isEqual with NXConstantString works correctly\n");
+
+  // Test with a non-string object
+  NXObject *obj = [[NXObject alloc] init];
+  test_assert([s1 isEqual:obj] == NO);
+  printf("✓ isEqual with non-string object works correctly\n");
+  [obj release];
+
+  // Test countOccurrencesOfByte with empty string
+  NXString *empty = [NXString new];
+  test_assert([empty countOccurrencesOfByte:'a'] == 0);
+  printf("✓ countOccurrencesOfByte with empty string works correctly\n");
+
+  // Test hasPrefix/hasSuffix with NXConstantString
+  NXString *prefixStr = [NXString stringWithCString:"prefix_test"];
+  test_assert([prefixStr hasPrefix:@"prefix"] == YES);
+  test_assert([prefixStr hasSuffix:@"_test"] == YES);
+  printf("✓ hasPrefix/hasSuffix with NXConstantString works correctly\n");
+
+  // Test case conversions on immutable strings
+  NXString *immutableUpper = [NXString stringWithCString:"immutable"];
+  [immutableUpper toUppercase];
+  test_cstrings_equal([immutableUpper cStr], "IMMUTABLE");
+  printf("✓ toUppercase on immutable string works correctly\n");
+
+  NXString *immutableLower = [NXString stringWithCString:"IMMUTABLE"];
+  [immutableLower toLowercase];
+  test_cstrings_equal([immutableLower cStr], "immutable");
+  printf("✓ toLowercase on immutable string works correctly\n");
+
+  // Test initWithString with NXConstantString
+  NXString *initWithConst = [[NXString alloc] initWithString:@"constant"];
+  test_cstrings_equal([initWithConst cStr], "constant");
+  printf("✓ initWithString with NXConstantString works correctly\n");
+  [initWithConst release];
+
+  // Test length and cStr on empty strings
+  NXString *emptyInit = [[NXString alloc] init];
+  test_assert([emptyInit length] == 0);
+  test_cstrings_equal([emptyInit cStr], "");
+  printf("✓ length and cStr on empty init string work correctly\n");
+  [emptyInit release];
+
+  // Test capacity
+  NXString *capTest = [NXString stringWithCapacity:100];
+  test_assert([capTest capacity] >= 100);
+  printf("✓ capacity is reported correctly\n");
+
+  printf("\n✅ All extended NXString tests passed!\n");
   return 0;
 }

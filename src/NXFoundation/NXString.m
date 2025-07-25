@@ -1,4 +1,4 @@
-#include "NXZone+malloc.h"
+#include "NXString+unicode.h"
 #include <NXFoundation/NXFoundation.h>
 #include <runtime-sys/sys.h>
 #include <string.h>
@@ -17,16 +17,42 @@
     _value = NULL;
     _data = NULL;
     _length = 0;
+    _cap = 0;
   }
   return self;
 }
 
 /**
- * @brief Return a new empty string.
+ * @brief Initializes a new empty mutable string
+ * @note The capacity argument is the initial size of the string buffer, which
+ * includes the null terminator. If the capacity argument is zero, no memory
+ * is allocated, and the string starts empty.
  */
-+ (NXString *)new {
-  objc_assert([NXAutoreleasePool currentPool]);
-  return [[[NXString alloc] init] autorelease];
+- (id)initWithCapacity:(size_t)capacity {
+  self = [self init];
+  if (self == nil) {
+    return nil; // Allocation failed during init
+  }
+  if (capacity == 0) {
+    return self; // Return empty string with no capacity
+  }
+
+  // Allocate memory for the string data
+  objc_assert(_zone);
+  _data = [_zone allocWithSize:capacity];
+  if (_data == NULL) {
+    [self release];
+    return nil; // Allocation failed, return nil
+  }
+
+  // Set initial values
+  sys_memset(_data, 0, capacity); // Initialize allocated memory to zero
+  _value = _data;                 // Set value to point to the allocated data
+  _length = 0;                    // Initialize length to 0
+  _cap = capacity;
+
+  // Return success
+  return self;
 }
 
 /**
@@ -51,20 +77,11 @@
 }
 
 /**
- * @brief Return a string by referencing another string.
- */
-+ (NXString *)stringWithString:
-    (id<NXConstantStringProtocol, ObjectProtocol>)other {
-  objc_assert([NXAutoreleasePool currentPool]);
-  return [[[NXString alloc] initWithString:other] autorelease];
-}
-
-/**
  * @brief Initialize a new string by referencing a c-string.
  */
 - (id)initWithCString:(const char *)cStr {
   self = [self init];
-  if (self) {
+  if (self && cStr != NULL) {
     _value = cStr;
     _length = (unsigned int)strlen(cStr);
   }
@@ -72,25 +89,24 @@
 }
 
 /**
- * @brief Return a string by referencing a c-string.
- */
-+ (NXString *)stringWithCString:(const char *)cStr {
-  objc_assert([NXAutoreleasePool currentPool]);
-  return [[[NXString alloc] initWithCString:cStr] autorelease];
-}
-
-/**
  * @brief Initialize a new string with a format string and arguments.
  */
 - (id)initWithFormat:(NXConstantString *)format, ... {
-  self = [super init];
+  va_list args;
+  va_start(args, format);
+  self = [self initWithFormat:format arguments:args];
+  va_end(args);
+  return self;
+}
+
+- (id)initWithFormat:(NXConstantString *)format arguments:(va_list)args {
+  self = [self init];
   if (!self) {
     return self;
   }
 
   // Use a variable argument list to handle the format string
-  va_list args, argsCopy;
-  va_start(args, format);
+  va_list argsCopy;
   va_copy(argsCopy, args);
 
   // Get the length of the formatted string
@@ -102,52 +118,61 @@
     _data = [_zone allocWithSize:_length + 1];
     if (_data) {
       sys_vsprintf(_data, _length + 1, cFormat,
-                   args); // Format the string into the allocated memory
-      _value = _data;     // Set the value to the allocated data
+                   argsCopy); // Format the string into the allocated memory
+      _value = _data;         // Set the value to the allocated data
+      _cap = _length + 1;     // Set capacity to length + null terminator
     } else {
       [self release];
       self = nil; // Allocation failed, set self to nil
     }
   }
-  va_end(args);
   va_end(argsCopy);
   return self;
+}
+
+/**
+ * @brief Return a new empty string.
+ */
++ (NXString *)new {
+  objc_assert([NXAutoreleasePool currentPool]);
+  return [[[NXString alloc] init] autorelease];
+}
+
+/**
+ * @brief Return a string by referencing a c-string.
+ */
++ (NXString *)stringWithCString:(const char *)cStr {
+  objc_assert([NXAutoreleasePool currentPool]);
+  return [[[NXString alloc] initWithCString:cStr] autorelease];
+}
+
+/**
+ * @brief Return a new empty string, but with a specific capacity.
+ */
++ (NXString *)stringWithCapacity:(size_t)capacity {
+  objc_assert([NXAutoreleasePool currentPool]);
+  return [[[NXString alloc] initWithCapacity:capacity] autorelease];
+}
+
+/**
+ * @brief Return a string by referencing another string.
+ */
++ (NXString *)stringWithString:
+    (id<NXConstantStringProtocol, ObjectProtocol>)other {
+  objc_assert([NXAutoreleasePool currentPool]);
+  return [[[NXString alloc] initWithString:other] autorelease];
 }
 
 /**
  * @brief Return a string instance with a format string and arguments.
  */
 + (NXString *)stringWithFormat:(NXConstantString *)format, ... {
-  objc_assert([NXAutoreleasePool currentPool]);
-  NXString *instance = [NXString alloc];
-  if (!instance) {
-    return nil;
-  }
-
-  // Use a variable argument list to handle the format string
-  va_list args, argsCopy;
+  va_list args;
   va_start(args, format);
-  va_copy(argsCopy, args);
-
-  // Get the length of the formatted string
-  const char *cFormat = [format cStr];
-  instance->_length = sys_vsprintf(NULL, 0, cFormat, argsCopy);
-  if (instance->_length > 0) {
-    // Allocate memory for the string
-    objc_assert(instance->_zone);
-    instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
-    if (instance->_data) {
-      sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
-                   args); // Format the string into the allocated memory
-      instance->_value = instance->_data; // Set the value to the allocated data
-    } else {
-      [instance release];
-      instance = nil; // Allocation failed, set self to nil
-    }
-  }
+  id instance = [[[self alloc] initWithFormat:format
+                                    arguments:args] autorelease];
   va_end(args);
-  va_end(argsCopy);
-  return [instance autorelease]; // Return an autoreleased instance
+  return instance;
 }
 
 /**
@@ -161,7 +186,68 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// INSTANCE METHODS
+// PRIVATE METHODS
+
+- (BOOL)_makeMutableWithCapacity:(size_t)cap {
+  // Validate input - ensure capacity is at least current capacity or minimum
+  // required
+  size_t minRequired =
+      _length + 1; // Minimum for current string + null terminator
+  if (cap < minRequired) {
+    cap = minRequired;
+  }
+  if (cap < _cap) {
+    cap = _cap; // Don't reduce existing capacity
+  }
+
+  // Fast path: if allocated data is already present and capacity is sufficient
+  if (_data != NULL && _cap >= cap) {
+    return YES; // Already mutable with sufficient capacity
+  }
+
+  // If _data is NULL, let's make it mutable directly
+  if (_data == NULL) {
+    _data = [_zone allocWithSize:cap];
+    if (_data == NULL) {
+      return NO; // Allocation failed, cannot make mutable
+    }
+
+    // Copy existing string content if any
+    if (_value != NULL && _length > 0) {
+      sys_memcpy(_data, _value, _length + 1);
+    } else {
+      sys_memset(_data, 0, cap); // Initialize allocated memory to zero
+    }
+    _value = _data; // Update _value to point to mutable data
+    _cap = cap;
+    return YES; // Now _data is mutable
+  }
+
+  // If _data is not NULL but capacity is insufficient, reallocate
+  char *data = [_zone allocWithSize:cap];
+  if (data == NULL) {
+    return NO; // Allocation failed, cannot make mutable
+  }
+
+  // Copy existing data
+  if (_length > 0) {
+    sys_memcpy(data, _data, _length + 1);
+  } else {
+    sys_memset(data, 0, cap); // Initialize allocated memory to zero
+  }
+
+  // Free old data and update pointers
+  [_zone free:_data];
+  _data = data;
+  _value = _data; // Ensure _value points to the mutable data
+  _cap = cap;
+
+  // Return success
+  return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
 
 /**
  * @brief Returns the C-string representation of the string.
@@ -178,6 +264,13 @@
     return _length;
   }
   return 0;
+}
+
+/**
+ * @brief Returns the size of the currently allocated string buffer.
+ */
+- (size_t)capacity {
+  return _cap;
 }
 
 /**
@@ -221,9 +314,12 @@
 }
 
 /**
- * @brief Counts the number of occurrences of a character.
+ * @brief Counts the number of occurrences of a byte character.
  */
-- (uint32_t)countOccurrencesOfByte:(const char)ch {
+- (uint32_t)countOccurrencesOfByte:(uint8_t)ch {
+  if (_value == NULL) {
+    return 0; // No occurrences in a NULL string
+  }
   uint32_t count = 0;
   unsigned int i = 0;
   for (i = 0; i < _length; i++) {
@@ -232,6 +328,99 @@
     }
   }
   return count;
+}
+
+/**
+ * @brief Checks if the string starts with a given prefix.
+ */
+- (BOOL)hasPrefix:(id<NXConstantStringProtocol>)prefix {
+  objc_assert(prefix);
+  const char *prefixCStr = [prefix cStr];
+  objc_assert(prefixCStr);
+  size_t prefixLength = (size_t)[prefix length];
+
+  if (prefixLength == 0) {
+    return YES; // An empty prefix matches any string
+  }
+  if (prefixLength > _length || _value == NULL) {
+    return NO; // Prefix is longer than the string
+  }
+  return strncmp(_value, prefixCStr, prefixLength) == 0;
+}
+
+/**
+ * @brief Checks if the string ends with a given suffix.
+ */
+- (BOOL)hasSuffix:(id<NXConstantStringProtocol>)suffix {
+  objc_assert(suffix);
+  const char *suffixCStr = [suffix cStr];
+  objc_assert(suffixCStr);
+  size_t suffixLength = (size_t)[suffix length];
+
+  if (suffixLength == 0) {
+    return YES; // An empty suffix matches any string
+  }
+  if (suffixLength > _length || _value == NULL) {
+    return NO; // Suffix is longer than the string
+  }
+  return strncmp(_value + (_length - suffixLength), suffixCStr, suffixLength) ==
+         0;
+}
+
+/**
+ * @brief Converts the string to uppercase.
+ */
+- (BOOL)toUppercase {
+  if (_value == NULL || _length == 0) {
+    return YES; // Nothing to convert
+  }
+
+  // Ensure string is mutable. Capacity is set to 0 to ensure it reallocates
+  // enough space for the current string. If the string is already mutable,
+  // this will be a no-op.
+  if ([self _makeMutableWithCapacity:0] == NO) {
+    return NO; // Failed to make mutable, cannot convert
+  }
+
+  size_t i;
+  BOOL modified = NO;
+  for (i = 0; i < _length; i++) {
+    char upperChar = _char_toUpper(_data[i]);
+    if (upperChar != _data[i]) {
+      modified = YES;
+      _data[i] = upperChar;
+    }
+  }
+
+  return modified;
+}
+
+/**
+ * @brief Converts the string to lowercase.
+ */
+- (BOOL)toLowercase {
+  if (_value == NULL || _length == 0) {
+    return YES; // Nothing to convert
+  }
+
+  // Ensure string is mutable. Capacity is set to 0 to ensure it reallocates
+  // enough space for the current string. If the string is already mutable,
+  // this will be a no-op.
+  if ([self _makeMutableWithCapacity:0] == NO) {
+    return NO; // Failed to make mutable, cannot convert
+  }
+
+  size_t i;
+  BOOL modified = NO;
+  for (i = 0; i < _length; i++) {
+    char lowerChar = _char_toLower(_data[i]);
+    if (lowerChar != _data[i]) {
+      modified = YES;
+      _data[i] = lowerChar;
+    }
+  }
+
+  return modified;
 }
 
 @end

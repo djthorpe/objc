@@ -22,7 +22,6 @@ add_library(${NAME} STATIC
     NXZone.m
     NXZone+arena.c
     NXZone+malloc.m
-    Object+Description.m
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../include/runtime-${RUNTIME}
