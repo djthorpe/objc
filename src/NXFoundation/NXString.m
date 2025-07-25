@@ -613,7 +613,7 @@
 
   // Start trim region
   size_t prefixLength = prefix ? [prefix length] : 0;
-  if (prefixLength > 0 && _length >= prefixLength) {
+  if (prefix != nil && prefixLength > 0 && _length >= prefixLength) {
     if ([self hasPrefix:prefix]) {
       start = prefixLength; // Update start index after removing prefix
       modified = YES;       // Mark as modified
