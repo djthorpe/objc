@@ -423,4 +423,60 @@
   return modified;
 }
 
+/**
+ * @brief Appends another string to this string.
+ * @param other The string to append.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
+ */
+- (BOOL)append:(id<NXConstantStringProtocol>)other {
+  objc_assert(other);
+  size_t otherLength = [other length];
+  if (otherLength == 0) {
+    return YES; // Nothing to append, empty string
+  }
+
+  // Ensure string is mutable. Capacity is set to 0 to ensure it reallocates
+  // enough space for the current string. If the string is already mutable,
+  // this will be a no-op.
+  if ([self _makeMutableWithCapacity:_length + otherLength + 1] == NO) {
+    return NO; // Failed to make mutable, cannot append
+  }
+
+  // Append the C-string to the end of the current string
+  sys_memcpy(_data + _length, [other cStr], otherLength + 1);
+  _length += otherLength; // Update length
+
+  // Return success
+  return YES;
+}
+
+/**
+ * @brief Appends a null-terminated C-string to this string.
+ * @param other The C-string to append.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
+ */
+- (BOOL)appendCString:(const char *)other {
+  objc_assert(other);
+  size_t otherLength = strlen(other);
+  if (otherLength == 0) {
+    return YES; // Nothing to append, empty C-string
+  }
+
+  // Ensure string is mutable. Capacity is set to 0 to ensure it reallocates
+  // enough space for the current string. If the string is already mutable,
+  // this will be a no-op.
+  if ([self _makeMutableWithCapacity:_length + otherLength + 1] == NO) {
+    return NO; // Failed to make mutable, cannot append
+  }
+
+  // Append the C-string to the end of the current string
+  sys_memcpy(_data + _length, other, otherLength + 1);
+  _length += otherLength; // Update length
+
+  // Return success
+  return YES;
+}
+
 @end

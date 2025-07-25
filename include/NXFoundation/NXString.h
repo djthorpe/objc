@@ -158,12 +158,18 @@
 /**
  * @brief Appends another string to this string.
  * @param other The string to append.
- * @note If the string needs to be modified, it will create a mutable copy,
- * or attempt to increase capacity if necessary. If the operation fails,
- * it will currently panic, but should raise an exception in the future,
- * when exception handling is implemented.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
  */
-// - (void)appendString:(id<NXConstantStringProtocol>)other;
+- (BOOL)append:(id<NXConstantStringProtocol>)other;
+
+/**
+ * @brief Appends a null-terminated C-string to this string.
+ * @param other The C-string to append.
+ * @return YES if successfully modified, NO if it wasn't possible to allocate
+ * additional capacity.
+ */
+- (BOOL)appendCString:(const char *)other;
 
 /**
  * @brief Appends a string with format and arguments to this string.
@@ -175,16 +181,6 @@
  * when exception handling is implemented.
  */
 // - (void)appendStringWithFormat:(NXConstantString *)format, ...;
-
-/**
- * @brief Appends a null-terminated C-string to this string.
- * @param other The C-string to append.
- * @note If the string needs to be modified, it will create a mutable copy,
- * or attempt to increase capacity if necessary. If the operation fails,
- * it will currently panic, but should raise an exception in the future,
- * when exception handling is implemented.
- */
-// - (void)appendCString:(const char *)other;
 
 /**
  * @brief Returns a quoted version of the string.
