@@ -610,7 +610,8 @@ int test_nxstring_methods(void) {
 
   // Test appendStringWithFormat with multiple format specifiers
   NXString *formatBase3 = [NXString stringWithFormat:@"Data: "];
-  BOOL formatResult3 = [formatBase3 appendStringWithFormat:@"Name=%s, ID=%d, Score=%d", "Alice", 123, 95];
+  BOOL formatResult3 = [formatBase3
+      appendStringWithFormat:@"Name=%s, ID=%d, Score=%d", "Alice", 123, 95];
   test_assert(formatResult3 == YES);
   test_assert([formatBase3 length] == 34);
   test_cstrings_equal([formatBase3 cStr], "Data: Name=Alice, ID=123, Score=95");
@@ -626,7 +627,8 @@ int test_nxstring_methods(void) {
 
   // Test appendStringWithFormat to empty string
   NXString *formatBase5 = [NXString stringWithFormat:@""];
-  BOOL formatResult5 = [formatBase5 appendStringWithFormat:@"First: %s", "Content"];
+  BOOL formatResult5 =
+      [formatBase5 appendStringWithFormat:@"First: %s", "Content"];
   test_assert(formatResult5 == YES);
   test_assert([formatBase5 length] == 14);
   test_cstrings_equal([formatBase5 cStr], "First: Content");
@@ -644,7 +646,8 @@ int test_nxstring_methods(void) {
 
   // Test appendStringWithFormat with special characters in format
   NXString *formatBase7 = [NXString stringWithFormat:@"Special"];
-  BOOL formatResult7 = [formatBase7 appendStringWithFormat:@": %s", "!@#$%^&*()"];
+  BOOL formatResult7 =
+      [formatBase7 appendStringWithFormat:@": %s", "!@#$%^&*()"];
   test_assert(formatResult7 == YES);
   test_assert([formatBase7 length] == 19);
   test_cstrings_equal([formatBase7 cStr], "Special: !@#$%^&*()");
@@ -652,33 +655,39 @@ int test_nxstring_methods(void) {
 
   // Test appendStringWithFormat with mixed types
   NXString *formatBase8 = [NXString stringWithFormat:@"Mixed"];
-  BOOL formatResult8 = [formatBase8 appendStringWithFormat:@": str=%s, int=%d, char=%c", "test", 789, 'X'];
+  BOOL formatResult8 = [formatBase8
+      appendStringWithFormat:@": str=%s, int=%d, char=%c", "test", 789, 'X'];
   test_assert(formatResult8 == YES);
   test_cstrings_equal([formatBase8 cStr], "Mixed: str=test, int=789, char=X");
   printf("✓ appendStringWithFormat: works with mixed format types\n");
 
   // Test appendStringWithFormat to immutable string
   NXString *immutableFormat = [NXString stringWithCString:"Immutable"];
-  BOOL immutableFormatResult = [immutableFormat appendStringWithFormat:@" %s", "Formatted"];
+  BOOL immutableFormatResult =
+      [immutableFormat appendStringWithFormat:@" %s", "Formatted"];
   test_assert(immutableFormatResult == YES);
   test_cstrings_equal([immutableFormat cStr], "Immutable Formatted");
   printf("✓ appendStringWithFormat: converts immutable strings to mutable\n");
 
   // Test appendStringWithFormat with long formatted content
   NXString *longFormatBase = [NXString stringWithFormat:@"Base"];
-  BOOL longFormatResult = [longFormatBase appendStringWithFormat:@" %s %d %s", 
-                          "This is a very long formatted string that will test memory allocation", 
-                          12345, 
-                          "and reallocation capabilities"];
+  BOOL longFormatResult = [longFormatBase
+      appendStringWithFormat:@" %s %d %s",
+                             "This is a very long formatted string that will "
+                             "test memory allocation",
+                             12345, "and reallocation capabilities"];
   test_assert(longFormatResult == YES);
   test_assert([longFormatBase length] == 110);
-  printf("✓ appendStringWithFormat: works with long formatted strings requiring reallocation\n");
+  printf("✓ appendStringWithFormat: works with long formatted strings "
+         "requiring reallocation\n");
 
   // Test appendStringWithFormat with hex and other number formats
   NXString *formatBase9 = [NXString stringWithFormat:@"Numbers"];
-  BOOL formatResult9 = [formatBase9 appendStringWithFormat:@": dec=%d, hex=0x%x, oct=%o", 255, 255, 255];
+  BOOL formatResult9 = [formatBase9
+      appendStringWithFormat:@": dec=%d, hex=0x%x, oct=%o", 255, 255, 255];
   test_assert(formatResult9 == YES);
-  test_cstrings_equal([formatBase9 cStr], "Numbers: dec=255, hex=0xff, oct=377");
+  test_cstrings_equal([formatBase9 cStr],
+                      "Numbers: dec=255, hex=0xff, oct=377");
   printf("✓ appendStringWithFormat: works with different number formats\n");
 
   // Test combining appendStringWithFormat with other append methods
@@ -688,7 +697,8 @@ int test_nxstring_methods(void) {
   [combinedBase appendStringWithFormat:@"%s", "D"];
   [combinedBase appendStringWithFormat:@"%d", 5];
   test_cstrings_equal([combinedBase cStr], "ABCD5");
-  printf("✓ appendStringWithFormat: can be combined with other append methods\n");
+  printf(
+      "✓ appendStringWithFormat: can be combined with other append methods\n");
 
   printf(
       "\nTest 15: Testing append methods edge cases and error conditions...\n");
@@ -704,7 +714,8 @@ int test_nxstring_methods(void) {
   NXString *capacityTest = [NXString stringWithCapacity:10];
   [capacityTest appendCString:"12345"]; // Should fit in initial capacity
   test_assert([capacityTest capacity] >= 10);
-  [capacityTest appendStringWithFormat:@"%s", "67890ABCDEF"]; // Should require expansion
+  [capacityTest
+      appendStringWithFormat:@"%s", "67890ABCDEF"]; // Should require expansion
   test_assert([capacityTest capacity] > 10);
   test_cstrings_equal([capacityTest cStr], "1234567890ABCDEF");
   printf("✓ append methods properly handle capacity expansion\n");
@@ -717,7 +728,8 @@ int test_nxstring_methods(void) {
   [alternating appendCString:"E"];
   [alternating appendStringWithFormat:@"%s", "F"];
   test_cstrings_equal([alternating cStr], "ABCDEF");
-  printf("✓ append:, appendCString:, and appendStringWithFormat: can be used together\n");
+  printf("✓ append:, appendCString:, and appendStringWithFormat: can be used "
+         "together\n");
 
   // Test very small strings
   NXString *tiny1 = [NXString stringWithFormat:@"A"];
@@ -774,6 +786,107 @@ int test_nxstring_methods(void) {
   test_cstrings_equal([referenced cStr], "ReferencedAllocated");
   printf("✓ append: works between referenced and allocated strings\n");
 
+  printf("\nTest 17: Testing trimWhitespace method...\n");
+
+  // Test basic trimming - leading and trailing spaces
+  NXString *trimTest1 = [NXString stringWithFormat:@"  Hello World  "];
+  BOOL trimResult1 = [trimTest1 trimWhitespace];
+  test_assert(trimResult1 == YES);
+  test_assert([trimTest1 length] == 11);
+  test_cstrings_equal([trimTest1 cStr], "Hello World");
+  printf("✓ trimWhitespace: removes leading and trailing spaces\n");
+
+  // Test trimming only leading spaces
+  NXString *trimTest2 = [NXString stringWithFormat:@"   Leading"];
+  BOOL trimResult2 = [trimTest2 trimWhitespace];
+  test_assert(trimResult2 == YES);
+  test_assert([trimTest2 length] == 7);
+  test_cstrings_equal([trimTest2 cStr], "Leading");
+  printf("✓ trimWhitespace: removes only leading spaces\n");
+
+  // Test trimming only trailing spaces
+  NXString *trimTest3 = [NXString stringWithFormat:@"Trailing   "];
+  BOOL trimResult3 = [trimTest3 trimWhitespace];
+  test_assert(trimResult3 == YES);
+  test_assert([trimTest3 length] == 8);
+  test_cstrings_equal([trimTest3 cStr], "Trailing");
+  printf("✓ trimWhitespace: removes only trailing spaces\n");
+
+  // Test trimming mixed whitespace (spaces, tabs, newlines)
+  NXString *trimTest4 = [NXString stringWithFormat:@"\t\n  Mixed  \r\n\t"];
+  BOOL trimResult4 = [trimTest4 trimWhitespace];
+  test_assert(trimResult4 == YES);
+  test_assert([trimTest4 length] == 5);
+  test_cstrings_equal([trimTest4 cStr], "Mixed");
+  printf("✓ trimWhitespace: removes mixed whitespace characters\n");
+
+  // Test no trimming needed - already trimmed
+  NXString *trimTest5 = [NXString stringWithFormat:@"NoTrimNeeded"];
+  BOOL trimResult5 = [trimTest5 trimWhitespace];
+  test_assert(trimResult5 == NO);
+  test_assert([trimTest5 length] == 12);
+  test_cstrings_equal([trimTest5 cStr], "NoTrimNeeded");
+  printf("✓ trimWhitespace: returns NO when no trimming needed\n");
+
+  // Test empty string
+  NXString *trimTest6 = [NXString stringWithFormat:@""];
+  BOOL trimResult6 = [trimTest6 trimWhitespace];
+  test_assert(trimResult6 == NO);
+  test_assert([trimTest6 length] == 0);
+  test_cstrings_equal([trimTest6 cStr], "");
+  printf("✓ trimWhitespace: handles empty string correctly\n");
+
+  // Test string with only whitespace
+  NXString *trimTest7 = [NXString stringWithFormat:@"   \t\n\r   "];
+  BOOL trimResult7 = [trimTest7 trimWhitespace];
+  test_assert(trimResult7 == YES);
+  test_assert([trimTest7 length] == 0);
+  test_cstrings_equal([trimTest7 cStr], "");
+  printf("✓ trimWhitespace: handles whitespace-only string correctly\n");
+
+  // Test single character with whitespace
+  NXString *trimTest8 = [NXString stringWithFormat:@"  A  "];
+  BOOL trimResult8 = [trimTest8 trimWhitespace];
+  test_assert(trimResult8 == YES);
+  test_assert([trimTest8 length] == 1);
+  test_cstrings_equal([trimTest8 cStr], "A");
+  printf("✓ trimWhitespace: handles single character correctly\n");
+
+  // Test string with internal whitespace (should preserve it)
+  NXString *trimTest9 = [NXString stringWithFormat:@"  Hello   World  "];
+  BOOL trimResult9 = [trimTest9 trimWhitespace];
+  test_assert(trimResult9 == YES);
+  test_assert([trimTest9 length] == 13);
+  test_cstrings_equal([trimTest9 cStr], "Hello   World");
+  printf("✓ trimWhitespace: preserves internal whitespace\n");
+
+  // Test trimming on immutable string (should convert to mutable)
+  NXString *immutableTrim = [NXString stringWithCString:"  Immutable  "];
+  BOOL immutableTrimResult = [immutableTrim trimWhitespace];
+  test_assert(immutableTrimResult == YES);
+  test_cstrings_equal([immutableTrim cStr], "Immutable");
+  printf("✓ trimWhitespace: converts immutable strings to mutable\n");
+
+  // Test multiple consecutive trims (second should return NO)
+  NXString *multiTrim = [NXString stringWithFormat:@"  Multiple  "];
+  BOOL multiTrimResult1 = [multiTrim trimWhitespace];
+  BOOL multiTrimResult2 = [multiTrim trimWhitespace];
+  test_assert(multiTrimResult1 == YES);
+  test_assert(multiTrimResult2 == NO);
+  test_cstrings_equal([multiTrim cStr], "Multiple");
+  printf("✓ trimWhitespace: multiple calls work correctly\n");
+
+  // Test very long string with lots of whitespace
+  NXString *longWhitespace =
+      [NXString stringWithFormat:@"                    Very Long String With "
+                                 @"Lots Of Whitespace                    "];
+  BOOL longWhitespaceResult = [longWhitespace trimWhitespace];
+  test_assert(longWhitespaceResult == YES);
+  test_cstrings_equal([longWhitespace cStr],
+                      "Very Long String With Lots Of Whitespace");
+  printf("✓ trimWhitespace: handles long strings with extensive whitespace\n");
+
   printf("\n✅ All append method tests passed!\n");
+  printf("✅ All trimWhitespace tests passed!\n");
   return 0;
 }

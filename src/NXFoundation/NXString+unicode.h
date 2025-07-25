@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-static inline bool _char_isSpace(uint8_t c) {
+static inline bool _char_isWhitespace(uint8_t c) {
   return (c == ' ') || (c == '\t') || (c == '\n') || (c == '\r');
 }
 
