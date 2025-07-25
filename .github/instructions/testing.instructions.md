@@ -2,7 +2,6 @@
 applyTo: '**'
 ---
 
-Provide project context and coding guidelines that AI should follow when generating code, answering questions, or reviewing changes.
 # Testing Instructions
 
 In order to compile and run all the tests on a Mac, run the following command in the repository root:
