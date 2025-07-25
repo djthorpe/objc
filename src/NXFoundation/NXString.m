@@ -598,7 +598,9 @@
  */
 - (BOOL)trimPrefix:(id<NXConstantStringProtocol>)prefix
             suffix:(id<NXConstantStringProtocol>)suffix {
-  objc_assert(prefix || suffix);
+  if (prefix == NULL && suffix == NULL) {
+    return NO; // Nothing to trim if both prefix and suffix are null
+  }
 
   if (_value == NULL || _length == 0) {
     return NO; // Nothing to trim, empty string
