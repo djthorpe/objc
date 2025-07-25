@@ -39,6 +39,8 @@ var searchData=
   ['nxlittleendian',['NXLittleEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23ae3ec7d49809ce50a2421b245165d5974',1,'NXArch.h']]],
   ['nxlog',['NXLog',['../NXLog_8h.html#a6af05e6dd8b6052f740e7384539d45ab',1,'NXLog.h']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
+  ['nxnotfound',['NXNotFound',['../NXNotFound_8h.html#a832113a9df42038a2b5524e1fce176b6',1,'NXNotFound.h']]],
+  ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
   ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],
   ['nxnull_2eh',['NXNull.h',['../NXNull_8h.html',1,'']]],
   ['nxnumber',['NXNumber',['../interfaceNXNumber.html',1,'']]],

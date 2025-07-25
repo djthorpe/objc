@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['indexforobject_3a',['indexForObject:',['../interfaceNXArray.html#adec8286935f7831fcc4dcfa1185dec05',1,'NXArray']]],
   ['init',['init',['../interfaceObject.html#ad5f41da394dd6fff8a0de38dfa370420',1,'Object']]],
   ['initialize',['initialize',['../interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5',1,'Object']]],
   ['initwithcapacity_3a',['initWithCapacity:',['../interfaceNXString.html#a8c061b9494c5bb9003eed8ea24896eb8',1,'NXString']]],
@@ -8,6 +9,7 @@ var searchData=
   ['initwithformat_3aarguments_3a',['initWithFormat:arguments:',['../interfaceNXString.html#a04814ca0fd486fdf6cb32fc14daad810',1,'NXString']]],
   ['initwithobjects_3a',['initWithObjects:',['../interfaceNXArray.html#a4f44e672eab815de7af01f067ae91aab',1,'NXArray']]],
   ['initwithstring_3a',['initWithString:',['../interfaceNXString.html#addee4e6e812fc8f39cccc51edb204f1b',1,'NXString']]],
+  ['insert_3aatindex_3a',['insert:atIndex:',['../interfaceNXArray.html#ae49c62332902dc0a3cec42eb118905dc',1,'NXArray']]],
   ['int16value',['int16Value',['../interfaceNXNumber.html#a45f7d544fbe3ffc47489072a90ba7621',1,'NXNumber']]],
   ['int32value',['int32Value',['../interfaceNXNumber.html#ae1e38ca9c66330ab50a76321c4f4eb50',1,'NXNumber']]],
   ['int64value',['int64Value',['../interfaceNXNumber.html#aa4675dea0334164edab8d92740c1f4d7',1,'NXNumber']]],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonprotocol_2dp',['JSONProtocol-p',['../protocolJSONProtocol-p.html',1,'']]]
+  ['collectionprotocol_2dp',['CollectionProtocol-p',['../protocolCollectionProtocol-p.html',1,'']]]
 ];

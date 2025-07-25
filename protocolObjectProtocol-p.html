@@ -88,6 +88,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a54be9316598d5ada9373987f3ff67abe"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#a54be9316598d5ada9373987f3ff67abe">isKindOfClass:</a></td></tr>
 <tr class="memdesc:a54be9316598d5ada9373987f3ff67abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Boolean value that indicates whether the receiver is an instance of a given class.  <a href="#a54be9316598d5ada9373987f3ff67abe">More...</a><br /></td></tr>
 <tr class="separator:a54be9316598d5ada9373987f3ff67abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df">conformsTo:</a></td></tr>
+<tr class="memdesc:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the receiver's class conforms to a protocol.  <a href="#a1d2cf5c8b18a1e5021427eb6b33e21df">More...</a><br /></td></tr>
+<tr class="separator:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
@@ -101,6 +104,43 @@ Class Methods</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Object_09Protocol_8h_source.html#l00017">17</a> of file <a class="el" href="Object_09Protocol_8h_source.html">Object+Protocol.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="a1d2cf5c8b18a1e5021427eb6b33e21df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d2cf5c8b18a1e5021427eb6b33e21df">&#9670;&nbsp;</a></span>conformsTo:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) conformsTo: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceProtocol.html">Protocol</a> *)&#160;</td>
+          <td class="paramname"><em>aProtocolObject</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the receiver's class conforms to a protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">aProtocolObject</td><td>The protocol to check conformance against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the receiver's class conforms to the specified protocol, NO otherwise. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="interfaceObject.html#a8933d0f25d908db0309a701b0f06a825">Object</a>, <a class="el" href="interfaceObject.html#a8933d0f25d908db0309a701b0f06a825">Object</a>, and <a class="el" href="interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a">Protocol</a>.</p>
+
+</div>
+</div>
 <a id="ac91fb28a34e7498b8800023f7eb00907"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac91fb28a34e7498b8800023f7eb00907">&#9670;&nbsp;</a></span>isEqual:()</h2>
 
