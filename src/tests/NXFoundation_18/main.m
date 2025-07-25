@@ -378,5 +378,61 @@ int test_nxstring_methods(void) {
 
   printf("\n✅ All NXString method tests passed (including "
          "hasPrefix/hasSuffix, toUppercase/toLowercase, and edge cases)!\n");
+
+  printf("\nTest 11: Extended NXString tests...\n");
+
+  // Test isEqual with different string types
+  NXString *s1 = [NXString stringWithCString:"test"];
+  NXConstantString *s2 = @"test";
+  test_assert([s1 isEqual:s2] == YES);
+  printf("✓ isEqual with NXConstantString works correctly\n");
+
+  // Test with a non-string object
+  NXObject *obj = [[NXObject alloc] init];
+  test_assert([s1 isEqual:obj] == NO);
+  printf("✓ isEqual with non-string object works correctly\n");
+  [obj release];
+
+  // Test countOccurrencesOfByte with empty string
+  NXString *empty = [NXString new];
+  test_assert([empty countOccurrencesOfByte:'a'] == 0);
+  printf("✓ countOccurrencesOfByte with empty string works correctly\n");
+
+  // Test hasPrefix/hasSuffix with NXConstantString
+  NXString *prefixStr = [NXString stringWithCString:"prefix_test"];
+  test_assert([prefixStr hasPrefix:@"prefix"] == YES);
+  test_assert([prefixStr hasSuffix:@"_test"] == YES);
+  printf("✓ hasPrefix/hasSuffix with NXConstantString works correctly\n");
+
+  // Test case conversions on immutable strings
+  NXString *immutableUpper = [NXString stringWithCString:"immutable"];
+  [immutableUpper toUppercase];
+  test_cstrings_equal([immutableUpper cStr], "IMMUTABLE");
+  printf("✓ toUppercase on immutable string works correctly\n");
+
+  NXString *immutableLower = [NXString stringWithCString:"IMMUTABLE"];
+  [immutableLower toLowercase];
+  test_cstrings_equal([immutableLower cStr], "immutable");
+  printf("✓ toLowercase on immutable string works correctly\n");
+
+  // Test initWithString with NXConstantString
+  NXString *initWithConst = [[NXString alloc] initWithString:@"constant"];
+  test_cstrings_equal([initWithConst cStr], "constant");
+  printf("✓ initWithString with NXConstantString works correctly\n");
+  [initWithConst release];
+
+  // Test length and cStr on empty strings
+  NXString *emptyInit = [[NXString alloc] init];
+  test_assert([emptyInit length] == 0);
+  test_cstrings_equal([emptyInit cStr], "");
+  printf("✓ length and cStr on empty init string work correctly\n");
+  [emptyInit release];
+
+  // Test capacity
+  NXString *capTest = [NXString stringWithCapacity:100];
+  test_assert([capTest capacity] >= 100);
+  printf("✓ capacity is reported correctly\n");
+
+  printf("\n✅ All extended NXString tests passed!\n");
   return 0;
 }

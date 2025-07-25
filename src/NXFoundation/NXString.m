@@ -92,14 +92,21 @@
  * @brief Initialize a new string with a format string and arguments.
  */
 - (id)initWithFormat:(NXConstantString *)format, ... {
-  self = [super init];
+  va_list args;
+  va_start(args, format);
+  self = [self initWithFormat:format arguments:args];
+  va_end(args);
+  return self;
+}
+
+- (id)initWithFormat:(NXConstantString *)format arguments:(va_list)args {
+  self = [self init];
   if (!self) {
     return self;
   }
 
   // Use a variable argument list to handle the format string
-  va_list args, argsCopy;
-  va_start(args, format);
+  va_list argsCopy;
   va_copy(argsCopy, args);
 
   // Get the length of the formatted string
@@ -111,15 +118,14 @@
     _data = [_zone allocWithSize:_length + 1];
     if (_data) {
       sys_vsprintf(_data, _length + 1, cFormat,
-                   args); // Format the string into the allocated memory
-      _value = _data;     // Set the value to the allocated data
-      _cap = _length + 1; // Set capacity to length + null terminator
+                   argsCopy); // Format the string into the allocated memory
+      _value = _data;         // Set the value to the allocated data
+      _cap = _length + 1;     // Set capacity to length + null terminator
     } else {
       [self release];
       self = nil; // Allocation failed, set self to nil
     }
   }
-  va_end(args);
   va_end(argsCopy);
   return self;
 }
@@ -161,38 +167,12 @@
  * @brief Return a string instance with a format string and arguments.
  */
 + (NXString *)stringWithFormat:(NXConstantString *)format, ... {
-  objc_assert([NXAutoreleasePool currentPool]);
-  NXString *instance = [NXString alloc];
-  if (!instance) {
-    return nil;
-  }
-
-  // Use a variable argument list to handle the format string
-  va_list args, argsCopy;
+  va_list args;
   va_start(args, format);
-  va_copy(argsCopy, args);
-
-  // Get the length of the formatted string
-  const char *cFormat = [format cStr];
-  instance->_length = sys_vsprintf(NULL, 0, cFormat, argsCopy);
-  if (instance->_length > 0) {
-    // Allocate memory for the string
-    objc_assert(instance->_zone);
-    instance->_data = [instance->_zone allocWithSize:instance->_length + 1];
-    if (instance->_data) {
-      sys_vsprintf(instance->_data, instance->_length + 1, cFormat,
-                   args); // Format the string into the allocated memory
-      instance->_value = instance->_data; // Set the value to the allocated data
-      instance->_cap =
-          instance->_length + 1; // Set capacity to length + null terminator
-    } else {
-      [instance release];
-      instance = nil; // Allocation failed, set self to nil
-    }
-  }
+  id instance = [[[self alloc] initWithFormat:format
+                                    arguments:args] autorelease];
   va_end(args);
-  va_end(argsCopy);
-  return [instance autorelease]; // Return an autoreleased instance
+  return instance;
 }
 
 /**

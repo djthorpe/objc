@@ -7,6 +7,7 @@ TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
+MAKEFLAGS += --no-print-directory
 
 # check for RELEASE=1
 ifdef RELEASE

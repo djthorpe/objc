@@ -113,6 +113,17 @@
 - (id)initWithFormat:(NXConstantString *)format, ...;
 
 /**
+ * @brief Initializes a new string with a formatted string and arguments.
+ * @param format The format string to use for initialization.
+ * @param args A va_list containing the arguments for the format string.
+ * @return A new NXString instance containing the formatted content.
+ *
+ * This initializer is used internally to initialize the string with a format
+ * and variable arguments. It is not intended to be called directly.
+ */
+- (id)initWithFormat:(NXConstantString *)format arguments:(va_list)args;
+
+/**
  * @brief Returns the C-string representation of the string.
  * @return A pointer to a null-terminated C-string representing the string
  * content.
