@@ -506,8 +506,7 @@
   // Format the string directly into the allocated memory at the end of current
   // string
   sys_vsprintf(_data + _length, length + 1, cFormat, argsCopy);
-  _length += length;     // Update length
-  _data[_length] = '\0'; // Ensure null termination
+  _length += length; // Update length
 
   va_end(argsCopy);
   va_end(args);

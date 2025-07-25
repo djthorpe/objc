@@ -1,7 +1,7 @@
 #include "NXZone+arena.h"
 #include <NXFoundation/NXFoundation.h>
-#include <string.h>
 #include <runtime-sys/sys.h>
+#include <string.h>
 
 // Define the first zone allocated as the default zone
 static id defaultZone = nil;
@@ -77,11 +77,14 @@ static id defaultZone = nil;
     defaultZone = nil;
   }
 
-  // Free the linked list of arenas associated with this zone
-  objc_arena_delete((objc_arena_t *)_root);
+  // Make copy of the root arena pointer
+  objc_arena_t *root = (objc_arena_t *)_root;
 
   // Call superclass dealloc
   [super dealloc];
+
+  // Free the linked list of arenas associated with this zone
+  objc_arena_delete(root);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
