@@ -108,8 +108,14 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a3bcf23a50bea6cb88d991b5196037230"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230">capacity</a></td></tr>
 <tr class="memdesc:a3bcf23a50bea6cb88d991b5196037230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the capacity of the string.  <a href="#a3bcf23a50bea6cb88d991b5196037230">More...</a><br /></td></tr>
 <tr class="separator:a3bcf23a50bea6cb88d991b5196037230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6173efb724785281af7e37a77026f2d8"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a6173efb724785281af7e37a77026f2d8">append:</a></td></tr>
+<tr class="memdesc:a6173efb724785281af7e37a77026f2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends another string to this string.  <a href="#a6173efb724785281af7e37a77026f2d8">More...</a><br /></td></tr>
+<tr class="separator:a6173efb724785281af7e37a77026f2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23292b71d529573fa606c2b043788e7d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a23292b71d529573fa606c2b043788e7d">appendCString:</a></td></tr>
+<tr class="memdesc:a23292b71d529573fa606c2b043788e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a null-terminated C-string to this string.  <a href="#a23292b71d529573fa606c2b043788e7d">More...</a><br /></td></tr>
+<tr class="separator:a23292b71d529573fa606c2b043788e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7526675981069cdd5afef75f2ecbe2ce"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a7526675981069cdd5afef75f2ecbe2ce">hasPrefix:</a></td></tr>
-<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends another string to this string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
+<tr class="memdesc:a7526675981069cdd5afef75f2ecbe2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string with format and arguments to this string.  <a href="#a7526675981069cdd5afef75f2ecbe2ce">More...</a><br /></td></tr>
 <tr class="separator:a7526675981069cdd5afef75f2ecbe2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a15e50e8f7ef7b0b5cb219afa183641b1">hasSuffix:</a></td></tr>
 <tr class="memdesc:a15e50e8f7ef7b0b5cb219afa183641b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the string ends with a given suffix.  <a href="#a15e50e8f7ef7b0b5cb219afa183641b1">More...</a><br /></td></tr>
@@ -239,6 +245,60 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </dl>
 <p class="definition">Definition at line <a class="el" href="NXString_8h_source.html#l00019">19</a> of file <a class="el" href="NXString_8h_source.html">NXString.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="a6173efb724785281af7e37a77026f2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6173efb724785281af7e37a77026f2d8">&#9670;&nbsp;</a></span>append:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) append: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolNXConstantStringProtocol-p.html">NXConstantStringProtocol</a> &gt;)&#160;</td>
+          <td class="paramname"><em>other</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends another string to this string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The string to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if successfully modified, NO if it wasn't possible to allocate additional capacity. </dd></dl>
+
+</div>
+</div>
+<a id="a23292b71d529573fa606c2b043788e7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23292b71d529573fa606c2b043788e7d">&#9670;&nbsp;</a></span>appendCString:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) appendCString: </td>
+          <td></td>
+          <td class="paramtype">(const char *)&#160;</td>
+          <td class="paramname"><em>other</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appends a null-terminated C-string to this string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The C-string to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if successfully modified, NO if it wasn't possible to allocate additional capacity. </dd></dl>
+
+</div>
+</div>
 <a id="a3bcf23a50bea6cb88d991b5196037230"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3bcf23a50bea6cb88d991b5196037230">&#9670;&nbsp;</a></span>capacity()</h2>
 
@@ -367,25 +427,11 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
       </table>
 </div><div class="memdoc">
 
-<p>Appends another string to this string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The string to append. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>If the string needs to be modified, it will create a mutable copy, or attempt to increase capacity if necessary. If the operation fails, it will currently panic, but should raise an exception in the future, when exception handling is implemented. Appends a string with format and arguments to this string. </dd></dl>
+<p>Appends a string with format and arguments to this string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">format</td><td>The format string to use for appending. </td></tr>
     <tr><td class="paramname">...</td><td>Variable arguments for the format string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>If the string needs to be modified, it will create a mutable copy, or attempt to increase capacity if necessary. If the operation fails, it will currently panic, but should raise an exception in the future, when exception handling is implemented. Appends a null-terminated C-string to this string. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The C-string to append. </td></tr>
   </table>
   </dd>
 </dl>
