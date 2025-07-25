@@ -195,7 +195,7 @@
  * @brief Trims leading and trailing whitespace from the string.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-// - (BOOL)trimSpace;
+- (BOOL)trimWhitespace;
 
 /**
  * @brief Trims leading and trailing string values from the string.

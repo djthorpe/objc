@@ -425,9 +425,6 @@
 
 /**
  * @brief Appends another string to this string.
- * @param other The string to append.
- * @return YES if successfully modified, NO if it wasn't possible to allocate
- * additional capacity.
  */
 - (BOOL)append:(id<NXConstantStringProtocol>)other {
   objc_assert(other);
@@ -453,9 +450,6 @@
 
 /**
  * @brief Appends a null-terminated C-string to this string.
- * @param other The C-string to append.
- * @return YES if successfully modified, NO if it wasn't possible to allocate
- * additional capacity.
  */
 - (BOOL)appendCString:(const char *)other {
   objc_assert(other);
@@ -481,10 +475,6 @@
 
 /**
  * @brief Appends a string with format and arguments to this string.
- * @param format The format string to use for appending.
- * @param ... Variable arguments for the format string.
- * @return YES if successfully modified, NO if it wasn't possible to allocate
- * additional capacity.
  */
 - (BOOL)appendStringWithFormat:(NXConstantString *)format, ... {
   objc_assert(format);
@@ -523,6 +513,50 @@
   va_end(args);
 
   // Return success
+  return YES;
+}
+
+/**
+ * @brief Trims leading and trailing whitespace from the string.
+ * @return YES if the string was modified, NO if it was already trimmed.
+ */
+- (BOOL)trimWhitespace {
+  if (_value == NULL || _length == 0) {
+    return NO; // Nothing to trim, empty string
+  }
+
+  // Find leading whitespace
+  size_t start = 0;
+  while (start < _length && _char_isWhitespace(_value[start])) {
+    start++;
+  }
+
+  // Find trailing whitespace
+  size_t end = _length;
+  while (end > start && _char_isWhitespace(_value[end - 1])) {
+    end--;
+  }
+
+  // If no changes, return NO
+  if (start == 0 && end == _length) {
+    return NO; // No trimming needed
+  }
+
+  // Ensure string is mutable with enough capacity for trimmed string
+  if ([self _makeMutableWithCapacity:end - start + 1] == NO) {
+    return NO; // Failed to make mutable, cannot trim
+  }
+
+  // Move trimmed content to the start of the string
+  if (start > 0) {
+    sys_memcpy(_data, _data + start, end - start);
+  }
+
+  // Null-terminate the new string and update length
+  _data[end - start] = '\0';
+  _length = end - start;
+
+  // String was modified
   return YES;
 }
 
