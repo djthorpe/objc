@@ -1,4 +1,3 @@
-
 /**
  * @file NXData.h
  * @brief Defines a structure for storing binary data.
@@ -26,7 +25,11 @@ typedef enum {
  *
  * \headerfile NXData.h NXFoundation/NXFoundation.h
  */
-@interface NXData : NXObject <JSONProtocol>
+@interface NXData : NXObject <JSONProtocol> {
+  void *_data;  // Raw data buffer
+  size_t _size; // Current size in bytes
+  size_t _cap;  // Total capacity in bytes
+}
 
 /**
  * @brief Return a new empty NXData instance.
@@ -34,13 +37,33 @@ typedef enum {
 + (NXData *)new;
 
 /**
+ * @brief Initializes a new NXData instance with the specified capacity.
+ * @param capacity The initial capacity of the data, in bytes.
+ * @return A new NXData instance with the specified capacity.
+ */
+- (id)initWithCapacity:(size_t)capacity;
+
+/**
+ * @brief Initializes a new NXData instance with a copy of the specified string.
+ * @param aString The string to copy.
+ * @return A new NXData instance containing a copy of the specified string.
+ */
+- (id)initWithString:(id<NXConstantStringProtocol>)aString;
+
+/**
+ * @brief Initializes a new NXData instance with a copy of bytes.
+ * @param bytes The bytes to copy.
+ * @param size The number of bytes to copy.
+ * @return A new NXData instance containing a copy of the specified bytes.
+ */
+- (id)initWithBytes:(const void *)bytes size:(size_t)size;
+
+/**
  * @brief Returns a new NXData instance with the specified capacity.
  * @param capacity The initial capacity of the data, in bytes.
  * @return A new NXData instance with the specified capacity.
  *
  * This method allocates a new NXData instance with the specified capacity.
- * The data can be used to store binary information. The data is initialized
- * to zero.
  */
 + (NXData *)dataWithCapacity:(size_t)capacity;
 
