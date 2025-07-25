@@ -317,6 +317,9 @@
  * @brief Counts the number of occurrences of a byte character.
  */
 - (uint32_t)countOccurrencesOfByte:(uint8_t)ch {
+  if (_value == NULL) {
+    return 0; // No occurrences in a NULL string
+  }
   uint32_t count = 0;
   unsigned int i = 0;
   for (i = 0; i < _length; i++) {
