@@ -888,5 +888,219 @@ int test_nxstring_methods(void) {
 
   printf("\n✅ All append method tests passed!\n");
   printf("✅ All trimWhitespace tests passed!\n");
+
+  printf("\nTest 18: Testing containsString: method...\n");
+
+  // Test basic substring containment
+  NXString *baseString = [NXString stringWithCString:"Hello World Programming"];
+
+  // Test 1: Basic substring at beginning
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Hello"]] == YES);
+  printf("✓ containsString: finds substring at beginning\n");
+
+  // Test 2: Basic substring in middle
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"World"]] == YES);
+  printf("✓ containsString: finds substring in middle\n");
+
+  // Test 3: Basic substring at end
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Programming"]] ==
+      YES);
+  printf("✓ containsString: finds substring at end\n");
+
+  // Test 4: Substring not present
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"Python"]] == NO);
+  printf("✓ containsString: correctly returns NO for non-existent substring\n");
+
+  // Test 5: Empty substring (should always return YES)
+  test_assert([baseString containsString:[NXString stringWithCString:""]] ==
+              YES);
+  printf("✓ containsString: returns YES for empty substring\n");
+
+  // Test 6: Same string
+  test_assert([baseString containsString:baseString] == YES);
+  printf("✓ containsString: returns YES for identical string\n");
+
+  // Test 7: Longer substring than the string
+  test_assert(
+      [baseString
+          containsString:[NXString stringWithCString:
+                                       "Hello World Programming Extended"]] ==
+      NO);
+  printf("✓ containsString: returns NO for substring longer than string\n");
+
+  // Test 8: Case sensitivity
+  test_assert(
+      [baseString containsString:[NXString stringWithCString:"hello"]] == NO);
+  printf("✓ containsString: is case sensitive\n");
+
+  // Test 9: Single character substring
+  test_assert([baseString containsString:[NXString stringWithCString:"W"]] ==
+              YES);
+  printf("✓ containsString: finds single character substring\n");
+
+  // Test 10: Empty string contains empty substring
+  NXString *emptyString = [NXString stringWithCString:""];
+  test_assert([emptyString containsString:[NXString stringWithCString:""]] ==
+              YES);
+  printf("✓ containsString: empty string contains empty substring\n");
+
+  // Test 11: Empty string does not contain non-empty substring
+  test_assert(
+      [emptyString containsString:[NXString stringWithCString:"test"]] == NO);
+  printf(
+      "✓ containsString: empty string does not contain non-empty substring\n");
+
+  // Test 12: Partial word matches
+  test_assert([baseString containsString:[NXString stringWithCString:"ell"]] ==
+              YES);
+  printf("✓ containsString: finds partial word matches\n");
+
+  printf("\n✅ All containsString tests passed!\n");
+
+  printf("\nTest 19: Testing trimPrefix:suffix: method...\n");
+
+  // Test 1: Basic prefix trimming
+  NXString *prefixTest1 = [NXString stringWithFormat:@"prefixHello World"];
+  BOOL prefixResult1 =
+      [prefixTest1 trimPrefix:[NXString stringWithCString:"prefix"] suffix:nil];
+  test_assert(prefixResult1 == YES);
+  test_cstrings_equal([prefixTest1 cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: trims prefix correctly\n");
+
+  // Test 2: Basic suffix trimming
+  NXString *suffixTest1 = [NXString stringWithFormat:@"Hello Worldsuffix"];
+  BOOL suffixResult1 =
+      [suffixTest1 trimPrefix:nil suffix:[NXString stringWithCString:"suffix"]];
+  test_assert(suffixResult1 == YES);
+  test_cstrings_equal([suffixTest1 cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: trims suffix correctly\n");
+
+  // Test 3: Both prefix and suffix trimming
+  NXString *bothTest1 = [NXString stringWithFormat:@"prefixHello Worldsuffix"];
+  BOOL bothResult1 =
+      [bothTest1 trimPrefix:[NXString stringWithCString:"prefix"]
+                     suffix:[NXString stringWithCString:"suffix"]];
+  test_assert(bothResult1 == YES);
+  test_cstrings_equal([bothTest1 cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: trims both prefix and suffix correctly\n");
+
+  // Test 4: No matching prefix
+  NXString *noMatchPrefix = [NXString stringWithFormat:@"Hello World"];
+  BOOL noMatchPrefixResult =
+      [noMatchPrefix trimPrefix:[NXString stringWithCString:"nomatch"]
+                         suffix:nil];
+  test_assert(noMatchPrefixResult == NO);
+  test_cstrings_equal([noMatchPrefix cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: returns NO when prefix doesn't match\n");
+
+  // Test 5: No matching suffix
+  NXString *noMatchSuffix = [NXString stringWithFormat:@"Hello World"];
+  BOOL noMatchSuffixResult =
+      [noMatchSuffix trimPrefix:nil
+                         suffix:[NXString stringWithCString:"nomatch"]];
+  test_assert(noMatchSuffixResult == NO);
+  test_cstrings_equal([noMatchSuffix cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: returns NO when suffix doesn't match\n");
+
+  // Test 6: Empty prefix and suffix
+  NXString *emptyTrimTest = [NXString stringWithFormat:@"Hello World"];
+  BOOL emptyTrimResult =
+      [emptyTrimTest trimPrefix:[NXString stringWithCString:""]
+                         suffix:[NXString stringWithCString:""]];
+  test_assert(emptyTrimResult == NO);
+  test_cstrings_equal([emptyTrimTest cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: handles empty prefix/suffix correctly\n");
+
+  // Test 7: Prefix longer than string
+  NXString *longPrefixTest = [NXString stringWithFormat:@"Hi"];
+  BOOL longPrefixResult =
+      [longPrefixTest trimPrefix:[NXString stringWithCString:"VeryLongPrefix"]
+                          suffix:nil];
+  test_assert(longPrefixResult == NO);
+  test_cstrings_equal([longPrefixTest cStr], "Hi");
+  printf("✓ trimPrefix:suffix: handles prefix longer than string\n");
+
+  // Test 8: Suffix longer than string
+  NXString *longSuffixTest = [NXString stringWithFormat:@"Hi"];
+  BOOL longSuffixResult =
+      [longSuffixTest trimPrefix:nil
+                          suffix:[NXString stringWithCString:"VeryLongSuffix"]];
+  test_assert(longSuffixResult == NO);
+  test_cstrings_equal([longSuffixTest cStr], "Hi");
+  printf("✓ trimPrefix:suffix: handles suffix longer than string\n");
+
+  // Test 9: Exact match (entire string is prefix)
+  NXString *exactPrefixTest = [NXString stringWithFormat:@"exact"];
+  BOOL exactPrefixResult =
+      [exactPrefixTest trimPrefix:[NXString stringWithCString:"exact"]
+                           suffix:nil];
+  test_assert(exactPrefixResult == YES);
+  test_cstrings_equal([exactPrefixTest cStr], "");
+  printf("✓ trimPrefix:suffix: handles exact prefix match (empty result)\n");
+
+  // Test 10: Exact match (entire string is suffix)
+  NXString *exactSuffixTest = [NXString stringWithFormat:@"exact"];
+  BOOL exactSuffixResult =
+      [exactSuffixTest trimPrefix:nil
+                           suffix:[NXString stringWithCString:"exact"]];
+  test_assert(exactSuffixResult == YES);
+  test_cstrings_equal([exactSuffixTest cStr], "");
+  printf("✓ trimPrefix:suffix: handles exact suffix match (empty result)\n");
+
+  // Test 11: Overlapping prefix and suffix (entire string)
+  NXString *overlapTest = [NXString stringWithFormat:@"test"];
+  BOOL overlapResult =
+      [overlapTest trimPrefix:[NXString stringWithCString:"te"]
+                       suffix:[NXString stringWithCString:"st"]];
+  test_assert(overlapResult == YES);
+  test_cstrings_equal([overlapTest cStr], "");
+  printf("✓ trimPrefix:suffix: handles overlapping prefix/suffix correctly\n");
+
+  // Test 12: Empty string input
+  NXString *emptyInputTest = [NXString stringWithFormat:@""];
+  BOOL emptyInputResult =
+      [emptyInputTest trimPrefix:[NXString stringWithCString:"prefix"]
+                          suffix:[NXString stringWithCString:"suffix"]];
+  test_assert(emptyInputResult == NO);
+  test_cstrings_equal([emptyInputTest cStr], "");
+  printf("✓ trimPrefix:suffix: handles empty input string correctly\n");
+
+  // Test 13: Case sensitivity
+  NXString *caseTest = [NXString stringWithFormat:@"PrefixHello WorldSuffix"];
+  BOOL caseResult = [caseTest trimPrefix:[NXString stringWithCString:"prefix"]
+                                  suffix:[NXString stringWithCString:"suffix"]];
+  test_assert(caseResult == NO);
+  test_cstrings_equal([caseTest cStr], "PrefixHello WorldSuffix");
+  printf("✓ trimPrefix:suffix: is case sensitive\n");
+
+  // Test 14: Single character prefix and suffix
+  NXString *singleCharTest = [NXString stringWithFormat:@"aHello Worldz"];
+  BOOL singleCharResult =
+      [singleCharTest trimPrefix:[NXString stringWithCString:"a"]
+                          suffix:[NXString stringWithCString:"z"]];
+  test_assert(singleCharResult == YES);
+  test_cstrings_equal([singleCharTest cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: handles single character prefix/suffix\n");
+
+  // Test 15: Multiple consecutive trims
+  NXString *multiTrimTest = [NXString stringWithFormat:@"abcHello Worldxyz"];
+  BOOL multiTrim1 = [multiTrimTest trimPrefix:[NXString stringWithCString:"a"]
+                                       suffix:[NXString stringWithCString:"z"]];
+  BOOL multiTrim2 = [multiTrimTest trimPrefix:[NXString stringWithCString:"b"]
+                                       suffix:[NXString stringWithCString:"y"]];
+  BOOL multiTrim3 = [multiTrimTest trimPrefix:[NXString stringWithCString:"c"]
+                                       suffix:[NXString stringWithCString:"x"]];
+  test_assert(multiTrim1 == YES);
+  test_assert(multiTrim2 == YES);
+  test_assert(multiTrim3 == YES);
+  test_cstrings_equal([multiTrimTest cStr], "Hello World");
+  printf("✓ trimPrefix:suffix: works with multiple consecutive trims\n");
+
+  printf("\n✅ All trimPrefix:suffix tests passed!\n");
+
   return 0;
 }
