@@ -481,8 +481,6 @@ int test_nxstring_methods(void) {
   test_assert(appendResult5a == YES);
   test_assert(appendResult5b == YES);
   test_assert(appendResult5c == YES);
-  printf("DEBUG: Final string: '%s', length: %u\n", [appendBase5 cStr],
-         [appendBase5 length]);
   test_assert([appendBase5 length] ==
               18); // Fixed: "One Two Three Four" = 18 chars
   test_cstrings_equal([appendBase5 cStr], "One Two Three Four");
