@@ -100,12 +100,12 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
 - [X] Fix linking categories in static libraries (see test NXFoundation_05)
 - [X] `NXString` - mutable strings - append, appendFormat
+- [X] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
+- [ ] `NXString` - array methods - split, join, etc.
 - [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] printf - `%T` format specifier for time intervals
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
-- [ ] `NXString` - mutable strings - append, appendFormat, substring, split, join, etc.
-- [ ] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [ ] `NXData` - mutable data creating hashes
 - [ ] `make install` will compile the libraries and install them to a prefix path

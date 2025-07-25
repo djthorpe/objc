@@ -344,8 +344,6 @@
 
 /**
  * @brief Appends an object to the end of the array.
- * @param object The object to append to the array.
- * @return YES if the object was successfully appended, NO otherwise.
  */
 - (BOOL)append:(id<RetainProtocol, ObjectProtocol>)object {
   objc_assert(object);
@@ -424,9 +422,6 @@
 
 /**
  * @brief Returns the index for the specified object.
- * @param object The object to find in the array.
- * @return The index of the object in the array, or NXNotFound if the object
- * is not found.
  */
 - (unsigned int)indexForObject:(id<ObjectProtocol>)object {
   objc_assert(object);
@@ -439,6 +434,62 @@
     }
   }
   return NXNotFound;
+}
+
+/**
+ * @brief Removes the first occurrence of the specified object from the array.
+ */
+- (BOOL)remove:(id<RetainProtocol>)object {
+  objc_assert(object);
+
+  // Find the index of the object (cast to ObjectProtocol for indexForObject)
+  unsigned int index = [self indexForObject:(id<ObjectProtocol>)object];
+
+  // If object not found, return NO
+  if (index == NXNotFound) {
+    return NO;
+  }
+
+  // Use removeObjectAtIndex to do the actual removal
+  return [self removeObjectAtIndex:index];
+}
+
+/**
+ * @brief Removes the object at the specified index from the array.
+ */
+- (BOOL)removeObjectAtIndex:(unsigned int)index {
+  objc_assert(index < _length); // Ensure index is within bounds
+
+  // Release the object at the specified index
+  [(id)_data[index] release];
+
+  // Shift all elements down by one position
+  sys_memmove(&_data[index], &_data[index + 1],
+              (_length - index - 1) * sizeof(void *));
+  _length--;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Removes all objects from the array.
+ */
+- (void)removeAllObjects {
+  // Release all objects in the array
+  if (_data != NULL) {
+    size_t i;
+    for (i = 0; i < _length; i++) {
+      if (_data[i] != NULL) {
+        [(id)_data[i] release];
+      }
+    }
+    // Zero out the data array
+    sys_memset(_data, 0, _cap * sizeof(void *));
+  }
+
+  // Reset length to zero, but preserve capacity
+  _length = 0;
 }
 
 @end
