@@ -21,9 +21,12 @@
 #ifdef DEBUG
 #define objc_assert(condition)                                                 \
   if (!(condition)) {                                                          \
-    sys_panicf("Assertion failed: %s, file %s, line %d", #condition, __FILE__, \
+    sys_panicf("ASSERT FAIL: %s, file %s, line %d", #condition, __FILE__,      \
                __LINE__);                                                      \
   }
 #else
-#define objc_assert(condition)
+#define objc_assert(condition)                                                 \
+  if (!(condition)) {                                                          \
+    sys_panicf("ASSERT FAIL: %s", #condition);                                 \
+  }
 #endif

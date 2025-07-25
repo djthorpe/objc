@@ -19,9 +19,11 @@
 #include "NXArch.h"
 #include "NXComparisonResult.h"
 #include "NXLog.h"
+#include "NXNotFound.h"
 #include "NXTimeInterval.h"
 
 // Protocols and Category Definitions
+#include "Collection+Protocol.h"
 #include "JSON+Protocol.h"
 #include "Object+Description.h"
 #include "Retain+Protocol.h"

@@ -107,7 +107,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 16-bit signed integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (int16_t)int16Value {
   return 0;
@@ -115,7 +115,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 16-bit unsigned integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (uint16_t)unsignedInt16Value {
   return 0;
@@ -123,7 +123,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 32-bit signed integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (int32_t)int32Value {
   return 0;
@@ -131,7 +131,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 32-bit unsigned integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (uint32_t)unsignedInt32Value {
   return 0;
@@ -139,7 +139,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 64-bit signed integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (int64_t)int64Value {
   return 0;
@@ -147,7 +147,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 64-bit unsigned integer.
- * @note Default implementation returns 0.
+ * @note Default implementation returns 0  as it's always subclassed.
  */
 - (uint64_t)unsignedInt64Value {
   return 0;
@@ -155,12 +155,17 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Return the JSON string representation of a number value.
- *
- * @note Number values are already in a format suitable for JSON, so this method
- * simply returns the string representation of the number.
  */
 - (NXString *)JSONString {
   return [self description];
+}
+
+/**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ * @note Default implementation returns 0 as it's always subclassed.
+ */
+- (size_t)JSONBytes {
+  return 0;
 }
 
 @end

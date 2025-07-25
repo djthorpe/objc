@@ -293,17 +293,238 @@ int test_array_methods(void) {
               4); // At minimum should account for "[]" + content
   printf("✓ JSONBytes estimation works with non-JSON-compliant objects\n");
 
+  // Test 11: Testing containsObject method
+  printf("\nTest 11: Testing containsObject method...\n");
+
+  // Create test objects (these are autoreleased)
+  NXString *testStr1 = [NXString stringWithCString:"hello"];
+  NXString *testStr2 = [NXString stringWithCString:"world"];
+  NXString *testStr3 = [NXString stringWithCString:"missing"];
+
+  // Create array with some objects (this is autoreleased)
+  NXArray *testArray = [NXArray arrayWithObjects:testStr1, testStr2, nil];
+
+  // Test: Object that exists
+  test_assert([testArray containsObject:testStr1]);
+  test_assert([testArray containsObject:testStr2]);
+  printf("✓ Contains existing objects\n");
+
+  // Test: Object that doesn't exist
+  test_assert(![testArray containsObject:testStr3]);
+  printf("✓ Correctly returns NO for missing objects\n");
+
+  // Test: Nil object (should return NO, not crash)
+  test_assert(![testArray containsObject:nil]);
+  printf("✓ Handles nil objects gracefully\n");
+
+  // Test: Empty array
+  NXArray *emptyTestArray =
+      [NXArray new]; // This is autoreleased, don't manually release
+  test_assert(![emptyTestArray containsObject:testStr1]);
+  printf("✓ Empty array correctly returns NO\n");
+
+  // Test: Nested array (recursive search)
+  NXArray *nestedArray = [NXArray arrayWithObjects:testStr3, nil];
+  NXArray *outerArray = [NXArray arrayWithObjects:testStr1, nestedArray, nil];
+  test_assert(
+      [outerArray containsObject:testStr3]); // Should find it recursively
+  test_assert([outerArray
+      containsObject:nestedArray]); // Should find the nested array itself
+  printf("✓ Recursive search in nested collections works\n");
+
+  // Test 12: Testing append method
+  printf("\nTest 12: Testing append method...\n");
+
+  // Create a new empty array
+  NXArray *appendArray = [NXArray new];
+  test_assert([appendArray count] == 0);
+  printf("✓ Created empty array\n");
+
+  // Test appending first object (should grow from capacity 0 to 1)
+  BOOL result1 = [appendArray append:testStr1];
+  test_assert(result1 == YES);
+  test_assert([appendArray count] == 1);
+  test_assert([appendArray capacity] >= 1);
+  test_assert([appendArray firstObject] == testStr1);
+  printf("✓ First append successful, capacity: %zu\n", [appendArray capacity]);
+
+  // Test appending second object (should grow capacity from 1 to 2)
+  BOOL result2 = [appendArray append:testStr2];
+  test_assert(result2 == YES);
+  test_assert([appendArray count] == 2);
+  test_assert([appendArray capacity] >= 2);
+  test_assert([appendArray objectAtIndex:1] == testStr2);
+  printf("✓ Second append successful, capacity: %zu\n", [appendArray capacity]);
+
+  // Test appending third object (should grow capacity from 2 to 3 with 1.5x
+  // growth)
+  BOOL result3 = [appendArray append:testStr3];
+  test_assert(result3 == YES);
+  test_assert([appendArray count] == 3);
+  test_assert([appendArray capacity] >= 3);
+  test_assert([appendArray lastObject] == testStr3);
+  printf("✓ Third append successful, capacity: %zu\n", [appendArray capacity]);
+
+  // Test circular reference prevention
+  BOOL circularResult = [appendArray append:appendArray];
+  test_assert(circularResult == NO);
+  test_assert([appendArray count] == 3); // Should not have increased
+  printf("✓ Circular reference prevention works\n");
+
+  // Test JSON output of appended array
+  NXString *appendedJson = [appendArray JSONString];
+  test_assert(appendedJson != nil);
+  test_cstrings_equal([appendedJson cStr],
+                      "[\"hello\", \"world\", \"missing\"]");
+  printf("✓ Appended array JSON output correct\n");
+  printf("✓ All append operations successful\n");
+
+  // Test 13: Testing insert:atIndex: method
+  printf("\nTest 13: Testing insert:atIndex: method...\n");
+
+  // Create array for insertion testing
+  NXArray *insertArray = [NXArray new];
+  NXString *first = [NXString stringWithCString:"first"];
+  NXString *last = [NXString stringWithCString:"last"];
+  NXString *middle = [NXString stringWithCString:"middle"];
+  NXString *beginning = [NXString stringWithCString:"beginning"];
+
+  // Test inserting into empty array at index 0
+  BOOL insertResult1 = [insertArray insert:first atIndex:0];
+  test_assert(insertResult1 == YES);
+  test_assert([insertArray count] == 1);
+  printf("✓ Insert into empty array at index 0\n");
+
+  // Test inserting at the end (should delegate to append)
+  BOOL insertResult2 = [insertArray insert:last atIndex:1];
+  test_assert(insertResult2 == YES);
+  test_assert([insertArray count] == 2);
+  printf("✓ Insert at end (delegates to append)\n");
+
+  // Test inserting in the middle
+  BOOL insertResult3 = [insertArray insert:middle atIndex:1];
+  test_assert(insertResult3 == YES);
+  test_assert([insertArray count] == 3);
+  printf("✓ Insert in middle\n");
+
+  // Test inserting at the beginning
+  BOOL insertResult4 = [insertArray insert:beginning atIndex:0];
+  test_assert(insertResult4 == YES);
+  test_assert([insertArray count] == 4);
+  printf("✓ Insert at beginning\n");
+
+  // Verify final array order: ["beginning", "first", "middle", "last"]
+  test_assert([insertArray count] == 4);
+
+  // Check order
+  NXString *elem0 = [insertArray objectAtIndex:0];
+  NXString *elem1 = [insertArray objectAtIndex:1];
+  NXString *elem2 = [insertArray objectAtIndex:2];
+  NXString *elem3 = [insertArray objectAtIndex:3];
+
+  test_cstrings_equal([elem0 cStr], "beginning");
+  test_cstrings_equal([elem1 cStr], "first");
+  test_cstrings_equal([elem2 cStr], "middle");
+  test_cstrings_equal([elem3 cStr], "last");
+  printf("✓ Array elements in correct order\n");
+
+  // Test capacity growth during insertion
+  size_t capacityBefore = [insertArray capacity];
+  NXString *extra1 = [NXString stringWithCString:"extra1"];
+  NXString *extra2 = [NXString stringWithCString:"extra2"];
+
+  // Insert multiple elements to trigger capacity growth
+  [insertArray insert:extra1 atIndex:2];
+  [insertArray insert:extra2 atIndex:2];
+
+  size_t capacityAfter = [insertArray capacity];
+  test_assert(capacityAfter > capacityBefore);
+  printf("✓ Capacity growth during insertion: %zu → %zu\n", capacityBefore,
+         capacityAfter);
+
+  // Test circular reference prevention
+  BOOL circularInsert = [insertArray insert:insertArray atIndex:0];
+  test_assert(circularInsert == NO);
+  printf("✓ Circular reference prevention works\n");
+
+  // Test JSON output with inserted elements
+  NXString *insertedJSON = [insertArray JSONString];
+  test_assert(insertedJSON != nil);
+  printf("JSON after insertions: %s\n", [insertedJSON cStr]);
+
+  // Verify JSON contains all elements
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"beginning"]]);
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"first"]]);
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"middle"]]);
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"last"]]);
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"extra1"]]);
+  test_assert(
+      [insertedJSON containsString:[NXString stringWithCString:"extra2"]]);
+  printf("✓ JSON output contains all inserted elements\n");
+  printf("✓ All insert operations successful\n");
+
+  // Test 14: Testing indexForObject: method
+  printf("\nTest 14: Testing indexForObject: method...\n");
+  
+  // Create test strings
+  NXString *findStr1 = [NXString stringWithCString:"find1"];
+  NXString *findStr2 = [NXString stringWithCString:"find2"];
+  NXString *findStr3 = [NXString stringWithCString:"find3"];
+  NXString *notFoundStr = [NXString stringWithCString:"notfound"];
+  
+  // Create array with test objects
+  NXArray *findArray = [NXArray arrayWithObjects:findStr1, findStr2, findStr3, nil];
+  test_assert([findArray count] == 3);
+  
+  // Test finding objects at various positions
+  unsigned int index1 = [findArray indexForObject:findStr1];
+  unsigned int index2 = [findArray indexForObject:findStr2];
+  unsigned int index3 = [findArray indexForObject:findStr3];
+  unsigned int indexNotFound = [findArray indexForObject:notFoundStr];
+  
+  test_assert(index1 == 0);
+  test_assert(index2 == 1);
+  test_assert(index3 == 2);
+  test_assert(indexNotFound == NXNotFound);
+  printf("✓ Found objects at correct indices: 0, 1, 2\n");
+  printf("✓ Missing object returns NXNotFound (%u)\n", NXNotFound);
+  
+  // Test with empty array
+  unsigned int emptyIndex = [emptyArray indexForObject:findStr1];
+  test_assert(emptyIndex == NXNotFound);
+  printf("✓ Empty array returns NXNotFound for any object\n");
+  
+  // Test with object that exists multiple times (should return first occurrence)
+  NXArray *duplicateArray = [NXArray arrayWithObjects:findStr1, findStr2, findStr1, nil];
+  unsigned int firstOccurrence = [duplicateArray indexForObject:findStr1];
+  test_assert(firstOccurrence == 0);
+  printf("✓ Returns index of first occurrence when object appears multiple times\n");
+  
+  printf("✓ All indexForObject: tests successful\n");
+
+  // Note: testStr1, testStr2, testStr3, testArray, nestedArray, outerArray,
+  // emptyTestArray, appendArray are autoreleased No manual releases needed for
+  // these objects
+
   // Clean up allocated objects
   [basicObject release];
   [object1 release];
   [object2 release];
 
-  printf("\n⚠️  Note: NXArray implementation now supports object creation "
-         "methods\n");
+  printf("\n⚠️  Note: NXArray implementation now supports all major array "
+         "operations\n");
   printf("    ✅ Implemented: initWithObjects:, arrayWithObjects:, JSONString, "
-         "JSONBytes\n");
+         "JSONBytes, containsObject:, append:, insert:atIndex:, indexForObject:\n");
   printf("    ✅ Handles non-JSON-compliant objects via description method\n");
-  printf("    ❌ Still missing: append:, insert:atIndex:\n");
+  printf("    ✅ Supports recursive collection search in containsObject:\n");
+  printf(
+      "    ✅ Dynamic array growth with append: and insert:atIndex: methods\n");
+  printf("    ✅ Circular reference prevention for mutation operations\n");
   printf("    ⚠️  objectAtIndex: uses assertions for bounds checking\n");
 
   printf("\n✅ All implemented NXArray methods tested successfully!\n");

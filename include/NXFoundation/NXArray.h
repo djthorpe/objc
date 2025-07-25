@@ -15,7 +15,7 @@
  *
  * \headerfile NXArray.h NXFoundation/NXFoundation.h
  */
-@interface NXArray : NXObject <JSONProtocol> {
+@interface NXArray : NXObject <JSONProtocol, CollectionProtocol> {
 @private
   void **_data;   ///< Pointer to the array data
   size_t _length; ///< Current number of elements in the array
@@ -89,6 +89,19 @@
 - (id)lastObject;
 
 /**
+ * @brief Returns YES if the collection contains the specified object.
+ * @param object The object to check for containment.
+ * @return YES if the collection contains the specified object, NO otherwise.
+ *
+ * This method recursively checks each element in the collection for equality
+ * with the specified object. It will return YES if any element matches,
+ * including those in nested arrays and maps. If you wish to check for an
+ * object's presence as an element in the array, use the `indexForObject:`
+ * method instead.
+ */
+- (BOOL)containsObject:(id)object;
+
+/**
  * @brief Returns the object at the specified index.
  * @param index The index of the object to return.
  * @return The object at the specified index.
@@ -98,11 +111,19 @@
 - (id)objectAtIndex:(unsigned int)index;
 
 /**
+ * @brief Returns the index for the specified object.
+ * @param object The object to find in the array.
+ * @return The index of the object in the array, or NXNotFound if the object
+ * is not found.
+ */
+- (unsigned int)indexForObject:(id<ObjectProtocol>)object;
+
+/**
  * @brief Appends an object to the end of the array.
  * @param object The object to append to the array.
  * @return YES if the object was successfully appended, NO otherwise.
  */
-//- (BOOL)append:(id<ObjectProtocol>)object;
+- (BOOL)append:(id<RetainProtocol, ObjectProtocol>)object;
 
 /**
  * @brief Inserts an object at the specified index in the array.
@@ -114,6 +135,7 @@
  * to make room for the new object. If the index is greater than the
  * current count, an exception should be thrown.
  */
-//- (BOOL)insert:(id<ObjectProtocol>)object atIndex:(unsigned int)index;
+- (BOOL)insert:(id<RetainProtocol, ObjectProtocol>)object
+       atIndex:(unsigned int)index;
 
 @end

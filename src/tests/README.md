@@ -2,6 +2,8 @@
 
 This directory contains comprehensive test coverage for the Objective-C runtime and NXFoundation framework. Tests can be run with `make tests` from the project root directory.
 
+The tests are designed to work correctly in both debug and release builds (`RELEASE=1`), with proper handling of assertions and error conditions.
+
 The tests are organized into three main categories:
 
 ## Test Categories
@@ -36,7 +38,7 @@ The tests are organized into three main categories:
 | NXFoundation_18 | String Method Testing | Comprehensive NXString tests: formatting, comparison, operations, JSON escaping. |
 | NXFoundation_19 | Number Comprehensive Testing | Comprehensive NXNumber tests: all types, conversions, edge cases, memory management. |
 | NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, and NXDate. |
-| NXFoundation_21 | Array Functionality and JSON Testing | Tests NXArray creation, object access, initWithObjects, arrayWithObjects, JSON serialization, JSONBytes capacity estimation, JSON compliance with special characters, and non-JSON-compliant object handling via description method. |
+| NXFoundation_21 | Array Functionality and JSON Testing | Tests NXArray creation, object access, initWithObjects, arrayWithObjects, JSON serialization, JSONBytes capacity estimation, JSON compliance with special characters, non-JSON-compliant object handling via description method, containsObject method with recursive search, append and insert:atIndex: methods with capacity growth, indexForObject method with proper index finding, and circular reference prevention for mutation operations. |
 
 ---
 

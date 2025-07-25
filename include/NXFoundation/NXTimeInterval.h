@@ -2,19 +2,9 @@
  * @file NXTimeInterval.h
  * @brief Time interval type and constants for duration measurements.
  *
- * @details This header defines NXTimeInterval, a 64-bit signed integer type for
- *          representing time durations in nanoseconds. It provides predefined
- *          constants for common time units to simplify time calculations.
- *
- * @example
- * @code
- * // Sleep for 5 seconds
- * NXTimeInterval duration = 5 * Second;
- * objc_sleep(duration);
- *
- * // Calculate timeout in minutes
- * NXTimeInterval timeout = 30 * Minute;
- * @endcode
+ * This header defines NXTimeInterval, a 64-bit signed integer type for
+ * representing time durations in nanoseconds. It provides predefined
+ * constants for common time units to simplify time calculations.
  */
 
 #pragma once

@@ -38,3 +38,12 @@ extern void *sys_memset(void *ptr, uint8_t value, size_t size);
  * @return Pointer to destination, or NULL on error
  */
 extern void *sys_memcpy(void *dest, const void *src, size_t size);
+
+/**
+ * @brief Move memory from source to destination (handles overlapping regions)
+ * @param dest Destination memory block
+ * @param src Source memory block
+ * @param size Number of bytes to move
+ * @return Pointer to destination, or NULL on error
+ */
+extern void *sys_memmove(void *dest, const void *src, size_t size);

@@ -77,6 +77,12 @@
   }
   va_end(argsCopy);
 
+  // Do not allow for objectCount == NXNotFound
+  if (objectCount == NXNotFound) {
+    [self release];
+    return nil;
+  }
+
   // Allocate memory for the objects
   _data = sys_malloc(objectCount * sizeof(void *));
   if (_data == NULL) {
@@ -161,6 +167,44 @@
   va_end(args);
 
   return array;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+- (BOOL)_setCapacity:(size_t)cap {
+  if (cap < _length) {
+    // Minimum capacity is _length
+    return NO;
+  }
+  if (cap == _cap) {
+    // No change needed
+    return YES;
+  }
+  if (cap == NXNotFound) {
+    // Fail if maximum capacity is reached
+    return NO;
+  }
+
+  // Allocate new memory for the larger or smaller capacity
+  void **data = sys_malloc(cap * sizeof(void *));
+  if (data == NULL) {
+    // Allocation failed
+    return NO;
+  }
+
+  // Copy existing data to the new array, release old data
+  if (_data != NULL) {
+    sys_memcpy(data, _data, _length * sizeof(void *));
+    sys_free(_data);
+  }
+
+  // Set the new data pointer and capacity
+  _data = data;
+  _cap = cap;
+
+  // Return success
+  return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -266,6 +310,138 @@
     cap += [object JSONBytes] + 2; // +2 for the comma and space
   }
   return cap;
+}
+
+/**
+ * @brief Returns YES if the collection contains the specified object.
+ */
+- (BOOL)containsObject:(id)object {
+  // Return NO if object is nil
+  if (object == nil) {
+    return NO;
+  }
+
+  size_t i;
+  for (i = 0; i < _length; i++) {
+    id element = _data[i];
+
+    // Skip nil elements (defensive programming)
+    if (element == nil) {
+      continue;
+    }
+
+    // Check for direct pointer equality first
+    if (element == object) {
+      return YES;
+    }
+
+    // Check if element is a collection and recursively search it
+    if ([element conformsTo:@protocol(CollectionProtocol)]) {
+      if ([element containsObject:object]) {
+        return YES;
+      }
+    }
+  }
+  return NO;
+}
+
+/**
+ * @brief Appends an object to the end of the array.
+ * @param object The object to append to the array.
+ * @return YES if the object was successfully appended, NO otherwise.
+ */
+- (BOOL)append:(id<RetainProtocol, ObjectProtocol>)object {
+  objc_assert(object);
+
+  // We cannot insert if we're trying to insert 'self' because
+  // that would create a circular reference
+  if (object == self) {
+    return NO;
+  } else if ([object conformsTo:@protocol(CollectionProtocol)]) {
+    if ([(id<CollectionProtocol>)object containsObject:self]) {
+      return NO; // Prevent inserting collections directly
+    }
+  }
+
+  // Check if we need to grow the capacity
+  if (_length >= _cap) {
+    // Grow capacity by 1.5x to be conservative, with special cases for small
+    // values
+    size_t cap = _cap < 2 ? _cap + 1 : _cap + (_cap >> 1);
+    if ([self _setCapacity:cap] == NO) {
+      return NO; // Failed to increase capacity
+    }
+  }
+
+  // Insert the object at the end
+  objc_assert(_length < _cap); // Ensure we have space
+  _data[_length] = [object retain];
+  _length++;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Inserts an object at the specified index in the array.
+ */
+- (BOOL)insert:(id<RetainProtocol, ObjectProtocol>)object
+       atIndex:(unsigned int)index {
+  objc_assert(object);
+  objc_assert(index <= _length); // Ensure index is within bounds
+
+  // We cannot insert if we're trying to insert 'self' because
+  // that would create a circular reference
+  if (object == self) {
+    return NO;
+  } else if ([object conformsTo:@protocol(CollectionProtocol)]) {
+    if ([(id<CollectionProtocol>)object containsObject:self]) {
+      return NO; // Prevent inserting collections directly
+    }
+  }
+
+  // Check if we need to grow the capacity
+  if (_length >= _cap) {
+    // Grow capacity by 1.5x to be conservative, with special cases for small
+    // values
+    size_t cap = _cap < 2 ? _cap + 1 : _cap + (_cap >> 1);
+    if ([self _setCapacity:cap] == NO) {
+      return NO; // Failed to increase capacity
+    }
+  }
+
+  // Shift all elements from index to the right by one position
+  if (index < _length) {
+    sys_memmove(&_data[index + 1], &_data[index],
+                (_length - index) * sizeof(void *));
+  }
+
+  // Insert the object at the specified index
+  objc_assert(_length < _cap); // Ensure we have space
+  _data[index] = [object retain];
+  _length++;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Returns the index for the specified object.
+ * @param object The object to find in the array.
+ * @return The index of the object in the array, or NXNotFound if the object
+ * is not found.
+ */
+- (unsigned int)indexForObject:(id<ObjectProtocol>)object {
+  objc_assert(object);
+
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id element = (id)_data[i];
+    if ([element isEqual:object]) {
+      return i;
+    }
+  }
+  return NXNotFound;
 }
 
 @end
