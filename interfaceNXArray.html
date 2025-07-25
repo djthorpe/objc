@@ -124,6 +124,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a2292dafda24a2529458ea8d8e12266e1"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#ab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXArray.html#a2292dafda24a2529458ea8d8e12266e1">removeObjectAtIndex:</a></td></tr>
 <tr class="memdesc:a2292dafda24a2529458ea8d8e12266e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the object at the specified index from the array.  <a href="#a2292dafda24a2529458ea8d8e12266e1">More...</a><br /></td></tr>
 <tr class="separator:a2292dafda24a2529458ea8d8e12266e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXArray.html#a8dce821e5ec9322fb43c60c04d75fa4f">removeAllObjects</a></td></tr>
+<tr class="memdesc:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all objects from the array.  <a href="#a8dce821e5ec9322fb43c60c04d75fa4f">More...</a><br /></td></tr>
+<tr class="separator:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceNXObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfaceNXObject')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interfaceNXObject.html">NXObject</a></td></tr>
 <tr class="memitem:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="runtime_8h.html#a0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">retain</a></td></tr>
 <tr class="memdesc:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increases the retain count of the receiver.  <a href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">More...</a><br /></td></tr>
@@ -596,6 +599,26 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if the object was found and successfully removed, NO otherwise.</dd></dl>
 <p>This method searches the array from the beginning to find the first occurrence of an object that is equal to the specified object (using the <code>isEqual:</code> method). If found, the object is removed and all subsequent elements are shifted down to fill the gap. The array's count is decremented by one. If the object is not found in the array, the method returns NO and the array remains unchanged. </p>
+
+</div>
+</div>
+<a id="a8dce821e5ec9322fb43c60c04d75fa4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dce821e5ec9322fb43c60c04d75fa4f">&#9670;&nbsp;</a></span>removeAllObjects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) removeAllObjects </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes all objects from the array. </p>
+<p>This method clears the array by releasing all objects and resetting the internal data structure. The array's count is set to zero and its capacity remains unchanged. </p>
 
 </div>
 </div>
