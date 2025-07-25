@@ -18,15 +18,38 @@
  */
 @interface NXString : NXObject <NXConstantStringProtocol> {
 @private
-  const char *_value;
+  const char *_value; ///< Pointer to the string data
+  unsigned int
+      _length; ///< Length of the string in bytes, excluding null terminator
   char *_data; ///< Pointer to the retained string data
-  unsigned int _length;
+  size_t _cap; ///< Capacity of the retained string data buffer
 }
 
 /**
  * @brief Return a new empty string.
  */
 + (NXString *)new;
+
+/**
+ * @brief Create a new empty string with pre-allocated capacity.
+ * @param capacity The initial capacity (in bytes) to allocate for the string
+ * buffer. This should include space for the null terminator.
+ * @return A new autoreleased NXString instance with the specified capacity
+ * allocated.
+ *
+ * This method creates a mutable string with internal storage
+ * pre-allocated to the specified capacity. This is useful when you plan to
+ * modify the string (e.g., with append operations) and want to avoid multiple
+ * reallocations. The string starts empty but has the capacity to grow up to the
+ * specified size without requiring memory reallocation.
+ *
+ * @note The capacity represents the total buffer size including the null
+ * terminator, so a capacity of 10 allows for 9 characters plus the null
+ * terminator, for example.
+ *
+ * @warning If memory allocation fails, this method will return nil.
+ */
++ (NXString *)stringWithCapacity:(size_t)capacity;
 
 /**
  * @brief Return a string by referencing another string.
@@ -55,6 +78,24 @@
  * @return The initialized string object.
  */
 - (id)initWithString:(id<NXConstantStringProtocol, ObjectProtocol>)other;
+
+/**
+ * @brief Initializes a new empty mutable string with pre-allocated capacity.
+ *
+ * @param capacity The initial capacity (in bytes) to allocate for the string
+ * buffer. This should include space for the null terminator. If 0 is passed, no
+ * memory is allocated and the string starts empty.
+ *
+ * @return The initialized string object with the specified capacity allocated.
+ *
+ * @note This method creates a mutable string with internal storage
+ * pre-allocated to the specified capacity. The string starts empty but has the
+ * capacity to grow up to the specified size without requiring memory
+ * reallocation.
+ *
+ * @warning If memory allocation fails, this method will return nil.
+ */
+- (id)initWithCapacity:(size_t)capacity;
 
 /**
  * @brief Initializes a new string by referencing a constant c-string.
@@ -89,6 +130,19 @@
  * the null terminator.
  */
 - (unsigned int)length;
+
+/**
+ * @brief Returns the capacity of the string.
+ * @return The total allocated size of the string buffer, including the null
+ * terminator.
+ *
+ * This method returns the current capacity of the string's internal buffer,
+ * which may be larger than the actual length of the string. This is useful for
+ * understanding how much space is available for appending or modifying the
+ * string without requiring reallocation. If zero is returned, it indicates
+ * that the string is currently immutable.
+ */
+- (size_t)capacity;
 
 /**
  * @brief Appends another string to this string.
@@ -155,7 +209,7 @@
  * prefix.
  * @return YES if the string starts with the specified prefix, NO otherwise.
  */
-// - (BOOL)hasPrefix:(id<NXConstantStringProtocol>)prefix;
+- (BOOL)hasPrefix:(id<NXConstantStringProtocol>)prefix;
 
 /**
  * @brief Checks if the string ends with a given suffix.
@@ -163,14 +217,14 @@
  * suffix.
  * @return YES if the string ends with the specified suffix, NO otherwise.
  */
-// - (BOOL)hasSuffix:(id<NXConstantStringProtocol>)suffix;
+- (BOOL)hasSuffix:(id<NXConstantStringProtocol>)suffix;
 
 /**
- * @brief Counts the number of occurrences of a character.
+ * @brief Counts the number of occurrences of a byte character.
  * @param ch The character to count occurrences of.
  * @return The number of times the character appears in the string.
  */
-- (uint32_t)countOccurrencesOfByte:(const char)ch;
+- (uint32_t)countOccurrencesOfByte:(uint8_t)ch;
 
 /**
  * @brief Counts the number of occurrences of a string.
@@ -196,5 +250,25 @@
  * to lexicographical order.
  */
 - (NXComparisonResult)compare:(id<NXConstantStringProtocol>)other;
+
+/**
+ * @brief Converts the string to uppercase.
+ * @return YES if the string was modified to uppercase, NO if the string was
+ * not modified (e.g., it is already uppercase or unable to make mutable).
+ *
+ * This method modifies the string in place, converting all alphabetic
+ * characters to their uppercase equivalents.
+ */
+- (BOOL)toUppercase;
+
+/**
+ * @brief Converts the string to lowercase.
+ * @return YES if the string was modified to lowercase, NO if the string was
+ * not modified (e.g., it is already lowercase or unable to make mutable).
+ *
+ * This method modifies the string in place, converting all alphabetic
+ * characters to their lowercase equivalents.
+ */
+- (BOOL)toLowercase;
 
 @end
