@@ -102,11 +102,14 @@
 - (BOOL)containsObject:(id)object;
 
 /**
- * @brief Returns the object at the specified index.
- * @param index The index of the object to return.
- * @return The object at the specified index.
+ * @brief Returns the lowest index for an object equivalent to the specified
+ * object.
+ * @param index The object to find in the array.
+ * @return The index of the object in the array, or NXNotFound if the object
  *
- * @note This method should throw an exception if the index is out of bounds.
+ * This method searches the array from the beginning to the end and returns the
+ * lowest index for an object equivalent to the specified object. Two objects
+ * are considered equivalent if their `isEqual:` method returns YES.
  */
 - (id)objectAtIndex:(unsigned int)index;
 
@@ -137,5 +140,30 @@
  */
 - (BOOL)insert:(id<RetainProtocol, ObjectProtocol>)object
        atIndex:(unsigned int)index;
+
+/**
+ * @brief Removes the first occurrence of the specified object from the array.
+ * @param object The object to remove from the array.
+ * @return YES if the object was found and successfully removed, NO otherwise.
+ *
+ * This method searches the array from the beginning to find the first
+ * occurrence of an object that is equal to the specified object (using the
+ * `isEqual:` method). If found, the object is removed and all subsequent
+ * elements are shifted down to fill the gap. The array's count is decremented
+ * by one. If the object is not found in the array, the method returns NO and
+ * the array remains unchanged.
+ */
+- (BOOL)remove:(id<RetainProtocol>)object;
+
+/**
+ * @brief Removes the object at the specified index from the array.
+ * @param index The index of the object to remove.
+ * @return YES if the object was successfully removed, NO otherwise.
+ *
+ * This method removes the object at the specified index and shifts all
+ * subsequent elements down by one position to fill the gap. The array's count
+ * is decremented by one.
+ */
+- (BOOL)removeObjectAtIndex:(unsigned int)index;
 
 @end

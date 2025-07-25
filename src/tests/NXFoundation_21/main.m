@@ -470,41 +470,45 @@ int test_array_methods(void) {
 
   // Test 14: Testing indexForObject: method
   printf("\nTest 14: Testing indexForObject: method...\n");
-  
+
   // Create test strings
   NXString *findStr1 = [NXString stringWithCString:"find1"];
   NXString *findStr2 = [NXString stringWithCString:"find2"];
   NXString *findStr3 = [NXString stringWithCString:"find3"];
   NXString *notFoundStr = [NXString stringWithCString:"notfound"];
-  
+
   // Create array with test objects
-  NXArray *findArray = [NXArray arrayWithObjects:findStr1, findStr2, findStr3, nil];
+  NXArray *findArray =
+      [NXArray arrayWithObjects:findStr1, findStr2, findStr3, nil];
   test_assert([findArray count] == 3);
-  
+
   // Test finding objects at various positions
   unsigned int index1 = [findArray indexForObject:findStr1];
   unsigned int index2 = [findArray indexForObject:findStr2];
   unsigned int index3 = [findArray indexForObject:findStr3];
   unsigned int indexNotFound = [findArray indexForObject:notFoundStr];
-  
+
   test_assert(index1 == 0);
   test_assert(index2 == 1);
   test_assert(index3 == 2);
   test_assert(indexNotFound == NXNotFound);
   printf("✓ Found objects at correct indices: 0, 1, 2\n");
   printf("✓ Missing object returns NXNotFound (%u)\n", NXNotFound);
-  
+
   // Test with empty array
   unsigned int emptyIndex = [emptyArray indexForObject:findStr1];
   test_assert(emptyIndex == NXNotFound);
   printf("✓ Empty array returns NXNotFound for any object\n");
-  
-  // Test with object that exists multiple times (should return first occurrence)
-  NXArray *duplicateArray = [NXArray arrayWithObjects:findStr1, findStr2, findStr1, nil];
+
+  // Test with object that exists multiple times (should return first
+  // occurrence)
+  NXArray *duplicateArray =
+      [NXArray arrayWithObjects:findStr1, findStr2, findStr1, nil];
   unsigned int firstOccurrence = [duplicateArray indexForObject:findStr1];
   test_assert(firstOccurrence == 0);
-  printf("✓ Returns index of first occurrence when object appears multiple times\n");
-  
+  printf("✓ Returns index of first occurrence when object appears multiple "
+         "times\n");
+
   printf("✓ All indexForObject: tests successful\n");
 
   // Note: testStr1, testStr2, testStr3, testArray, nestedArray, outerArray,
@@ -519,7 +523,8 @@ int test_array_methods(void) {
   printf("\n⚠️  Note: NXArray implementation now supports all major array "
          "operations\n");
   printf("    ✅ Implemented: initWithObjects:, arrayWithObjects:, JSONString, "
-         "JSONBytes, containsObject:, append:, insert:atIndex:, indexForObject:\n");
+         "JSONBytes, containsObject:, append:, insert:atIndex:, "
+         "indexForObject:\n");
   printf("    ✅ Handles non-JSON-compliant objects via description method\n");
   printf("    ✅ Supports recursive collection search in containsObject:\n");
   printf(
