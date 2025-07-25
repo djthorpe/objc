@@ -153,4 +153,11 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
   return 0;
 }
 
+/**
+ * @brief Return the JSON string representation of a null value.
+ */
+- (NXString *)JSONString {
+  return [self description];
+}
+
 @end

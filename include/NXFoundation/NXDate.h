@@ -16,12 +16,9 @@
  * The NXDate class provides an interface for managing dates and times.
  * It represents a single point in time since a reference date.
  *
- * @note All time calculations are performed using NXTimeInterval, which
- * provides sub-second precision.
- *
  * \headerfile NXDate.h NXFoundation/NXFoundation.h
  */
-@interface NXDate : NXObject {
+@interface NXDate : NXObject <JSONProtocol> {
 @protected
   sys_time_t _time; ///< Time representation
 @private

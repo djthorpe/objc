@@ -25,7 +25,14 @@ static NXNull *nullValue;
  * @brief Return the string representation of a null value.
  */
 - (NXString *)description {
-  return [[[NXString alloc] initWithCString:"null"] autorelease];
+  return [NXString stringWithCString:"null"];
+}
+
+/**
+ * @brief Return the JSON string representation of a null value.
+ */
+- (NXString *)JSONString {
+  return [self description];
 }
 
 @end
