@@ -24,7 +24,7 @@ The tests are organized into three main categories:
 | NXFoundation_06 | Autorelease Pool Testing | Tests autorelease pool creation, object management, and cleanup. |
 | NXFoundation_07 | Thread Sleep Operations | Tests threading functionality with `[NXThread sleepForTimeInterval:]`. |
 | NXFoundation_08 | Application Runner | Tests basic application execution with `[NXApplication run]`. |
-| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, time intervals, descriptions, and underlying time functions. |
+| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, time intervals, descriptions, component getters, date comparisons, and addTimeInterval/dateByAddingTimeInterval methods. |
 | NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation, sizing, and cleanup. |
 | NXFoundation_11 | Architecture Information | Tests system architecture detection (bits, endianness, cores). |
 | NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and range validation. |

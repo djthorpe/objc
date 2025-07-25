@@ -204,9 +204,7 @@
  * @brief Returns the object at the specified index.
  */
 - (id)objectAtIndex:(unsigned int)index {
-  if (index >= _length) {
-    return nil; // Return nil for out-of-bounds access instead of crashing
-  }
+  objc_assert(index < _length); // Ensure index is within bounds
   return _data[index];
 }
 
