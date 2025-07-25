@@ -147,7 +147,7 @@ uint32_t NXRandUnsignedInt32() { return sys_random_uint32(); }
 
 /**
  * @brief Get the stored value as a 64-bit unsigned integer.
- * @note Default implementation returns 0  as it's always subclassed.
+ * @note Default implementation returns 0 as it's always subclassed.
  */
 - (uint64_t)unsignedInt64Value {
   return 0;
