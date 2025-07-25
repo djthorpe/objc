@@ -98,6 +98,8 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Number - `NXNumber` with `NXNumberInt16` and `NXNumberUnsignedInt16`
 - [X] Number - `NXNumber` with `NXNumberInt32` and `NXNumberUnsignedInt32`
 - [X] Number - `NXNumber` with `NXNumberInt64` and `NXNumberUnsignedInt64`
+- [X] Fix linking categories in static libraries (see test NXFoundation_05)
+- [X] `NXString` - mutable strings - append, appendFormat
 - [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] printf - `%T` format specifier for time intervals
@@ -107,7 +109,6 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [ ] `NXData` - mutable data creating hashes
 - [ ] `make install` will compile the libraries and install them to a prefix path
-- [ ] Fix linking categories in static libraries (see test NXFoundation_05)
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] More efficient method implementation lookup

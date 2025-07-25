@@ -181,17 +181,6 @@
 - (BOOL)appendStringWithFormat:(NXConstantString *)format, ...;
 
 /**
- * @brief Returns a quoted version of the string.
- * @return A new NXString instance containing the string enclosed in
- * double quotes.
- *
- * This method creates a new string that contains the original string
- * enclosed in double quotes. Special characters within the string are escaped
- * according to JSON string escaping rules.
- */
-// - (NXString *)quotedString;
-
-/**
  * @brief Trims leading and trailing whitespace from the string.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
@@ -205,8 +194,8 @@
  * end, or NULL to skip.
  * @return YES if the string was modified, NO if it was already trimmed.
  */
-// - (BOOL)trimPrefix:(id<NXConstantStringProtocol>)prefix
-// suffix:(id<NXConstantStringProtocol>)suffix;
+- (BOOL)trimPrefix:(id<NXConstantStringProtocol>)prefix
+            suffix:(id<NXConstantStringProtocol>)suffix;
 
 /**
  * @brief Checks if the string starts with a given prefix.
@@ -232,6 +221,17 @@
 - (uint32_t)countOccurrencesOfByte:(uint8_t)ch;
 
 /**
+ * @brief Returns a quoted version of the string.
+ * @return A new NXString instance containing the string enclosed in
+ * double quotes.
+ *
+ * This method creates a new string that contains the original string
+ * enclosed in double quotes. Special characters within the string are escaped
+ * according to JSON string escaping rules.
+ */
+// - (NXString *)quotedString;
+
+/**
  * @brief Counts the number of occurrences of a string.
  * @param other The NXConstantString or NXString instance to count occurrences
  * of.
@@ -245,7 +245,7 @@
  * containment.
  * @return YES if the string contains the specified substring, NO otherwise.
  */
-// - (BOOL)containsString:(id<NXConstantStringProtocol>)other;
+- (BOOL)containsString:(id<NXConstantStringProtocol>)other;
 
 /**
  * @brief Compares this string with another string.

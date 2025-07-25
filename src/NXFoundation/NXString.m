@@ -560,4 +560,96 @@
   return YES;
 }
 
+/**
+ * @brief Checks if the string contains a given substring.
+ * @param other The NXConstantString or NXString instance to check for
+ * containment.
+ * @return YES if the string contains the specified substring, NO otherwise.
+ */
+- (BOOL)containsString:(id<NXConstantStringProtocol>)other {
+  objc_assert(other);
+
+  // Handle edge cases
+  if (_value == NULL || _length == 0) {
+    return [other length] == 0; // Empty string contains only empty substring
+  }
+
+  const char *otherCStr = [other cStr];
+  size_t otherLength = [other length];
+  if (otherLength == 0) {
+    return YES; // Any string contains an empty substring
+  }
+
+  if (otherLength > _length) {
+    return NO; // Substring cannot be longer than the string
+  }
+
+  // Use strstr to find the substring
+  return strstr(_value, otherCStr) != NULL;
+}
+
+/**
+ * @brief Trims leading and trailing string values from the string.
+ * @param prefix The NXConstantString or NXString instance to trim from the
+ * start, or NULL to skip.
+ * @param suffix The NXConstantString or NXString instance to trim from the
+ * end, or NULL to skip.
+ * @return YES if the string was modified, NO if it was already trimmed.
+ */
+- (BOOL)trimPrefix:(id<NXConstantStringProtocol>)prefix
+            suffix:(id<NXConstantStringProtocol>)suffix {
+  if (prefix == NULL && suffix == NULL) {
+    return NO; // Nothing to trim if both prefix and suffix are null
+  }
+
+  if (_value == NULL || _length == 0) {
+    return NO; // Nothing to trim, empty string
+  }
+
+  // We find the start and end of the trimming region
+  BOOL modified = NO;
+  size_t start = 0;
+  size_t end = _length;
+
+  // Start trim region
+  size_t prefixLength = prefix ? [prefix length] : 0;
+  if (prefix != nil && prefixLength > 0 && _length >= prefixLength) {
+    if ([self hasPrefix:prefix]) {
+      start = prefixLength; // Update start index after removing prefix
+      modified = YES;       // Mark as modified
+    }
+  }
+
+  // End trim region
+  size_t suffixLength = suffix ? [suffix length] : 0;
+  if (suffixLength > 0 && _length >= suffixLength) {
+    if ([self hasSuffix:suffix]) {
+      end -= suffixLength; // Update end index after removing suffix
+      if (end < start) {
+        end = start; // Ensure end does not go before start
+      }
+      modified = YES; // Mark as modified
+    }
+  }
+
+  // Apply changes if any modifications were made
+  if (modified) {
+    if ([self _makeMutableWithCapacity:end - start + 1] == NO) {
+      return NO; // Failed to make mutable, cannot trim
+    }
+
+    // Move trimmed content to the start of the string
+    if (start > 0) {
+      sys_memcpy(_data, _data + start, end - start);
+    }
+
+    // Null-terminate the new string and update length
+    _data[end - start] = '\0';
+    _length = end - start;
+  }
+
+  // Return whether string was modified
+  return modified;
+}
+
 @end
