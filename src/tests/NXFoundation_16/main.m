@@ -1,9 +1,8 @@
 #include <NXFoundation/NXFoundation.h>
-#include <stdio.h>
 #include <tests/tests.h>
 
 int main() {
-  printf("Starting NXFoundation random number tests...\n");
+  sys_printf("Starting NXFoundation random number tests...\n");
 
   // First create a zone for allocations
   NXZone *zone = [NXZone zoneWithSize:4096];
@@ -19,7 +18,7 @@ int main() {
   NXLog(@"Generated signed: %d, unsigned: %u", rand_signed, rand_unsigned);
   test_assert(rand_signed != 0 ||
               rand_unsigned != 0); // At least one should be non-zero
-  printf("✓ Basic random number generation works\n");
+  sys_printf("✓ Basic random number generation works\n");
 
   // Test 2: Multiple calls produce different values
   NXLog(@"Test 2: Testing that multiple calls produce different values...");
@@ -38,8 +37,8 @@ int main() {
   }
   NXLog(@"Found %d duplicates in 100 random numbers", duplicates);
   test_assert(duplicates < 10); // Should be very few duplicates
-  printf("✓ Multiple calls produce varied values (duplicates: %d)\n",
-         duplicates);
+  sys_printf("✓ Multiple calls produce varied values (duplicates: %d)\n",
+             duplicates);
 
   // Test 3: Distribution test - check range coverage
   NXLog(@"Test 3: Testing distribution across ranges...");
@@ -57,7 +56,7 @@ int main() {
         zero);
   test_assert(positive > 300 &&
               negative > 300); // Should have reasonable distribution
-  printf("✓ Good distribution across positive/negative values\n");
+  sys_printf("✓ Good distribution across positive/negative values\n");
 
   // Test 4: Unsigned and signed values have different ranges
   NXLog(@"Test 4: Testing signed vs unsigned value ranges...");
@@ -77,7 +76,7 @@ int main() {
   NXLog(@"Signed positive count: %d, Large unsigned count: %u", signed_sum,
         unsigned_sum);
   test_assert(found_large_unsigned); // Should find some values > INT32_MAX
-  printf("✓ Signed and unsigned ranges work correctly\n");
+  sys_printf("✓ Signed and unsigned ranges work correctly\n");
 
   // Test 5: Modulo operations work correctly for ranges
   NXLog(@"Test 5: Testing modulo operations for ranges...");
@@ -90,13 +89,13 @@ int main() {
     }
   }
   test_assert(range_test_passed);
-  printf("✓ Modulo operations produce correct ranges\n");
+  sys_printf("✓ Modulo operations produce correct ranges\n");
 
   // Test 6: Statistical uniformity test
   NXLog(@"Test 6: Testing statistical uniformity across buckets...");
   const int num_buckets = 10;
   int buckets[num_buckets];
-  memset(buckets, 0, sizeof(buckets));
+  sys_memset(buckets, 0, sizeof(buckets));
   const int samples = 10000;
 
   for (int i = 0; i < samples; i++) {
@@ -124,7 +123,7 @@ int main() {
   }
 
   test_assert(uniform_distribution);
-  printf("✓ Statistical uniformity test passed\n");
+  sys_printf("✓ Statistical uniformity test passed\n");
 
   // Test 7: Range boundary testing
   NXLog(@"Test 7: Testing range boundaries...");
@@ -143,7 +142,7 @@ int main() {
   NXLog(@"Found values in upper range: %s, lower range: %s",
         found_max_range ? "YES" : "NO", found_min_range ? "YES" : "NO");
   test_assert(found_max_range && found_min_range);
-  printf("✓ Range boundary testing passed\n");
+  sys_printf("✓ Range boundary testing passed\n");
 
   // Test 8: Sequence independence
   NXLog(@"Test 8: Testing sequence independence...");
@@ -165,7 +164,7 @@ int main() {
   int diff = increasing > decreasing ? increasing - decreasing
                                      : decreasing - increasing;
   test_assert(diff < 200); // Less than 20% difference
-  printf("✓ Sequence independence test passed\n");
+  sys_printf("✓ Sequence independence test passed\n");
 
   // Test 9: Zero occurrence frequency
   NXLog(@"Test 9: Testing zero occurrence frequency...");
@@ -178,12 +177,12 @@ int main() {
   }
 
   double zero_frequency = (double)zero_count / total_samples;
-  printf("Zero occurred %d times out of %d (expected: ~0.0000%%)\n", zero_count,
-         total_samples);
+  sys_printf("Zero occurred %d times out of %d (expected: ~0.0000%%)\n",
+             zero_count, total_samples);
 
   // Zero should occur very rarely (much less than 1%)
   test_assert(zero_frequency < 0.001); // Less than 0.1%
-  printf("✓ Zero occurrence frequency test passed\n");
+  sys_printf("✓ Zero occurrence frequency test passed\n");
 
   // Test 10: Bit pattern analysis
   NXLog(@"Test 10: Testing bit pattern distribution...");
@@ -215,9 +214,9 @@ int main() {
   NXLog(@"Expected bits per position: %d, Tolerance: ±%d", expected_bit_count,
         bit_tolerance);
   test_assert(bit_distribution_good);
-  printf("✓ Bit pattern distribution test passed\n");
+  sys_printf("✓ Bit pattern distribution test passed\n");
 
-  printf("\n=== All NXFoundation random number tests passed! ===\n");
+  sys_printf("\n=== All NXFoundation random number tests passed! ===\n");
 
   // Clean up - release pool before releasing zone
   [pool release];

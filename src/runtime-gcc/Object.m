@@ -1,5 +1,4 @@
 #include <objc/objc.h>
-#include <stdlib.h>
 
 @implementation Object
 
@@ -10,6 +9,7 @@
 + (id)alloc {
   id obj = (id)objc_malloc(class_getInstanceSize(self));
   if (obj) {
+    sys_memset(obj, 0, class_getInstanceSize(self));
     object_setClass(obj, self);
   }
   return obj;
