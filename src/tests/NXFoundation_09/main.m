@@ -16,7 +16,7 @@ int main() {
   bool time_success = sys_time_get_utc(&test_time);
   printf("sys_time_get_utc success: %d\n", time_success);
   if (time_success) {
-    printf("Current time: %lld seconds, %d nanoseconds\n",
+    printf("Current time: %ld seconds, %d nanoseconds\n",
            (long long)test_time.seconds, test_time.nanoseconds);
   }
   test_assert(time_success);

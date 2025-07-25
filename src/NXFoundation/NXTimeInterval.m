@@ -66,31 +66,31 @@ NXString *NXTimeIntervalDescription(NXTimeInterval interval,
   int64_t days = interval / Day;
   interval -= days * Day;
   if (days > 0) {
-    [desc appendStringWithFormat:@"%lld day%s ", days, (days == 1) ? "" : "s"];
+    [desc appendStringWithFormat:@"%ld day%s ", days, (days == 1) ? "" : "s"];
   }
 
   int64_t hours = interval / Hour;
   interval -= hours * Hour;
   if (hours > 0) {
-    [desc appendStringWithFormat:@"%lldh ", hours];
+    [desc appendStringWithFormat:@"%ldh ", hours];
   }
 
   int64_t minutes = interval / Minute;
   interval -= minutes * Minute;
   if (minutes > 0) {
-    [desc appendStringWithFormat:@"%lldm ", minutes];
+    [desc appendStringWithFormat:@"%ldm ", minutes];
   }
 
   int64_t seconds = interval / Second;
   interval -= seconds * Second;
   if (seconds > 0) {
-    [desc appendStringWithFormat:@"%llds ", seconds];
+    [desc appendStringWithFormat:@"%lds ", seconds];
   }
 
   int64_t milliseconds = interval / Millisecond;
   interval -= milliseconds * Millisecond;
   if (milliseconds > 0) {
-    [desc appendStringWithFormat:@"%lldms ", milliseconds];
+    [desc appendStringWithFormat:@"%ldms ", milliseconds];
   }
 
   // Return the formatted string, trimming any trailing spaces
