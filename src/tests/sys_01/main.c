@@ -1,6 +1,15 @@
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
+// Helper function to test sys_vsprintf
+size_t helper_test_sys_vsprintf(char *buf, size_t sz, const char *format, ...) {
+  va_list args;
+  va_start(args, format);
+  size_t result = sys_vsprintf(buf, sz, format, args);
+  va_end(args);
+  return result;
+}
+
 // Forward declaration
 int test_sys_01(void);
 
@@ -800,6 +809,43 @@ int test_sys_01(void) {
     test_assert(len == 10);             // 9 spaces + 'A' = 10 chars
     test_assert(buffer[3] == '\0');     // Should null-terminate
     test_cstrings_equal(buffer, "   "); // Should be spaces (truncated)
+  } while (0);
+
+  // === TEST sys_vsprintf NULL TERMINATION ===
+
+  // Test sys_vsprintf with buffer overflow and ensure null termination
+  do {
+    char buffer[8];
+    for (int i = 0; i < 8; i++)
+      buffer[i] = 'X'; // Initialize to detect overwrites
+
+    size_t len =
+        helper_test_sys_vsprintf(buffer, 8, "Hello %s World", "Beautiful");
+    test_assert(len == 21);         // "Hello Beautiful World" = 21 chars
+    test_assert(buffer[7] == '\0'); // Should null-terminate at last position
+    test_cstrings_equal(buffer, "Hello B"); // Should truncate correctly
+  } while (0);
+
+  // Test sys_vsprintf with exact buffer size
+  do {
+    char buffer[6];
+    for (int i = 0; i < 6; i++)
+      buffer[i] = 'X'; // Initialize
+
+    size_t len = helper_test_sys_vsprintf(buffer, 6, "Test%d", 42);
+    test_assert(len == 6);          // "Test42" = 6 chars
+    test_assert(buffer[5] == '\0'); // Should null-terminate at last position
+    test_cstrings_equal(buffer, "Test4"); // Should truncate to fit
+  } while (0);
+
+  // Test sys_vsprintf with empty buffer
+  do {
+    char buffer[1];
+    buffer[0] = 'X'; // Initialize
+
+    size_t len = helper_test_sys_vsprintf(buffer, 1, "Hello");
+    test_assert(len == 5);          // Should return full length needed
+    test_assert(buffer[0] == '\0'); // Should null-terminate empty buffer
   } while (0);
 
   // Return success

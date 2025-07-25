@@ -1,6 +1,6 @@
+#include <runtime-sys/sys.h>
 #include <stdarg.h>
 #include <stddef.h>
-#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
@@ -420,6 +420,12 @@ size_t sys_vsprintf(char *buf, size_t sz, const char *format, va_list args) {
   va_copy(args_copy, args);
   size_t len = _sys_vprintf(&state, format, &args_copy);
   va_end(args_copy);
+
+  // Null terminate the buffer
+  if (buf && sz > 0) {
+    buf[state.pos < sz - 1 ? state.pos : sz - 1] = '\0';
+  }
+
   return len;
 }
 
