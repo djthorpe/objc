@@ -5,7 +5,6 @@
  * This class provides basic memory management and introspection capabilities.
  */
 #pragma once
-#include "Object+Protocol.h"
 
 /**
  * @brief The root class of all Objective-C classes.

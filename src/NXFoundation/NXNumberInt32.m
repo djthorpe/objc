@@ -89,6 +89,14 @@
 }
 
 /**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  // Format: "-2147483648"
+  return 11;
+}
+
+/**
  * @brief Check for equality with another NXNumber instance.
  */
 - (BOOL)isEqual:(id)object {

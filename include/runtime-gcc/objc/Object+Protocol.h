@@ -10,7 +10,7 @@
  * @brief Protocol for objects.
  *
  * The ObjectProtocol defines the minimal interface that objects must
- * implement to provide basic functionality.
+ * implement to provide basic object introspection functionality.
  *
  * \headerfile Object+Protocol.h objc/objc.h
  */
@@ -40,4 +40,5 @@
  * that inherits from cls, otherwise NO.
  */
 - (BOOL)isKindOfClass:(Class)cls;
+
 @end

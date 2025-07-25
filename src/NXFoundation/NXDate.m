@@ -85,7 +85,8 @@
  * @brief Return the date as a string representation.
  */
 - (NXString *)description {
-  objc_assert([self _cacheComponents]); // Ensure components are cached
+  BOOL cacheSuccess = [self _cacheComponents];
+  objc_assert(cacheSuccess); // Ensure components are cached
   return [[[NXString alloc] initWithFormat:@"%04d-%02d-%02dT%02d:%02d:%02dZ",
                                            _year, _month, _day, _hours,
                                            _minutes, _seconds] autorelease];
@@ -95,7 +96,19 @@
  * @brief Return the date as a JSON string representation.
  */
 - (NXString *)JSONString {
-  return [self description];
+  BOOL cacheSuccess = [self _cacheComponents];
+  objc_assert(cacheSuccess); // Ensure components are cached
+  return
+      [NXString stringWithFormat:@"\"%04d-%02d-%02dT%02d:%02d:%02dZ\"", _year,
+                                 _month, _day, _hours, _minutes, _seconds];
+}
+
+/**
+ * @brief Returns the appropriate JSON length for the instance.
+ */
+- (size_t)JSONBytes {
+  // Format: "YYYY-MM-DDTHH:MM:SSZ"
+  return 22; // 22 characters
 }
 
 /**

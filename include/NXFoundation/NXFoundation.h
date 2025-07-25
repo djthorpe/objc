@@ -3,8 +3,9 @@
 
 #if __OBJC__
 
-// Forward declaration of classes
+// Forward Declaration of classes
 @class NXApplication;
+@class NXArray;
 @class NXAutoreleasePool;
 @class NXDate;
 @class NXNull;
@@ -14,21 +15,27 @@
 @class NXThread;
 @class NXZone;
 
-// Includes
-#include "JSONProtocol.h"
-#include "NXApplication.h"
+// Non-Class Definitions
 #include "NXArch.h"
-#include "NXAutoreleasePool.h"
 #include "NXComparisonResult.h"
-#include "NXDate.h"
 #include "NXLog.h"
+#include "NXTimeInterval.h"
+
+// Protocols and Category Definitions
+#include "JSON+Protocol.h"
+#include "Object+Description.h"
+#include "Retain+Protocol.h"
+
+// Class Definitions
+#include "NXApplication.h"
+#include "NXArray.h"
+#include "NXAutoreleasePool.h"
+#include "NXDate.h"
 #include "NXNull.h"
 #include "NXNumber.h"
 #include "NXObject.h"
 #include "NXString.h"
 #include "NXThread.h"
-#include "NXTimeInterval.h"
 #include "NXZone.h"
-#include "Object+Description.h"
 
 #endif // __OBJC__

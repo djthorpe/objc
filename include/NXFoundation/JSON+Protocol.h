@@ -19,4 +19,16 @@
  */
 - (NXString *)JSONString;
 
+/**
+ * @brief Returns the appropriate capacity for the JSON
+ * representation of the instance.
+ * @return An approximate number of bytes required to represent the instance
+ * in JSON format.
+ *
+ * This method is used to determine the approximate capacity required for the
+ * JSON representation, which can be useful for memory allocation or performance
+ * optimizations.
+ */
+- (size_t)JSONBytes;
+
 @end

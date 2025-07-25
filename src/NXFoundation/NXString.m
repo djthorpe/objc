@@ -60,7 +60,7 @@
  */
 - (id)initWithString:(id<NXConstantStringProtocol, ObjectProtocol>)other {
   self = [self init];
-  if (self == nil || self == other || other == nil) {
+  if (self == nil || other == nil) {
     return nil;
   }
   if (object_getClass(other) == objc_lookupClass("NXConstantString")) {
@@ -718,6 +718,13 @@
   [quotedString appendCString:"\""];
 
   return [quotedString autorelease]; // Return the quoted string
+}
+
+/**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  return _length + 2 + (_length >> 2); // Length + quotes + potential escaping
 }
 
 @end

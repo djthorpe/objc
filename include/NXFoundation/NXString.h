@@ -232,14 +232,6 @@
 - (NXString *)JSONString;
 
 /**
- * @brief Counts the number of occurrences of a string.
- * @param other The NXConstantString or NXString instance to count occurrences
- * of.
- * @return The number of times the string appears in the string.
- */
-// - (uint32_t)countOccurrencesOfString:(id<NXConstantStringProtocol>)other;
-
-/**
  * @brief Checks if the string contains a given substring.
  * @param other The NXConstantString or NXString instance to check for
  * containment.
