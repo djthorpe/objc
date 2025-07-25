@@ -18,5 +18,6 @@ var searchData=
   ['object_5fgetsuperclass',['object_getSuperclass',['../runtime_8h.html#a45c1ac82472fb1e16043e0f03037e64b',1,'runtime.h']]],
   ['object_5fiskindofclass',['object_isKindOfClass',['../runtime_8h.html#a435d6fc780b3f52b73013c71c9386f63',1,'runtime.h']]],
   ['object_5fsetclass',['object_setClass',['../runtime_8h.html#ad6763d930ab4a58f5d4e89542dfedf05',1,'runtime.h']]],
+  ['objectatindex_3a',['objectAtIndex:',['../interfaceNXArray.html#a349dfba95888604ad749e91203595267',1,'NXArray']]],
   ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]]
 ];

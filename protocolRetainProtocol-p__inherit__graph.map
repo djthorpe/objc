@@ -1,0 +1,12 @@
+<map id="&lt;RetainProtocol&gt;" name="&lt;RetainProtocol&gt;">
+<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="504,80,587,107"/>
+<area shape="rect" id="node3" href="$interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="5,155,120,181"/>
+<area shape="rect" id="node4" href="$interfaceNXArray.html" title="The NXArray class. " alt="" coords="145,155,221,181"/>
+<area shape="rect" id="node5" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="245,155,392,181"/>
+<area shape="rect" id="node6" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="416,155,488,181"/>
+<area shape="rect" id="node7" href="$interfaceNXNull.html" title="The NXNull class. " alt="" coords="512,155,579,181"/>
+<area shape="rect" id="node8" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="603,155,696,181"/>
+<area shape="rect" id="node9" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="721,155,799,181"/>
+<area shape="rect" id="node10" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="823,155,910,181"/>
+<area shape="rect" id="node11" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="935,155,1009,181"/>
+</map>

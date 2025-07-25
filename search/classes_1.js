@@ -1,6 +1,7 @@
 var searchData=
 [
   ['nxapplication',['NXApplication',['../interfaceNXApplication.html',1,'']]],
+  ['nxarray',['NXArray',['../interfaceNXArray.html',1,'']]],
   ['nxautoreleasepool',['NXAutoreleasePool',['../interfaceNXAutoreleasePool.html',1,'']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
   ['nxconstantstringprotocol_2dp',['NXConstantStringProtocol-p',['../protocolNXConstantStringProtocol-p.html',1,'']]],

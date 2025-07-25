@@ -8,6 +8,7 @@ var searchData=
   ['initwithcstring_3a',['initWithCString:',['../interfaceNXString.html#aeb374c44599158565750c46e4927f3bb',1,'NXString']]],
   ['initwithformat_3a',['initWithFormat:',['../interfaceNXString.html#a278ddef64290c1f05cb77cff96d49373',1,'NXString']]],
   ['initwithformat_3aarguments_3a',['initWithFormat:arguments:',['../interfaceNXString.html#a04814ca0fd486fdf6cb32fc14daad810',1,'NXString']]],
+  ['initwithobjects_3a',['initWithObjects:',['../interfaceNXArray.html#a4f44e672eab815de7af01f067ae91aab',1,'NXArray']]],
   ['initwithstring_3a',['initWithString:',['../interfaceNXString.html#addee4e6e812fc8f39cccc51edb204f1b',1,'NXString']]],
   ['int16value',['int16Value',['../interfaceNXNumber.html#a45f7d544fbe3ffc47489072a90ba7621',1,'NXNumber']]],
   ['int32value',['int32Value',['../interfaceNXNumber.html#ae1e38ca9c66330ab50a76321c4f4eb50',1,'NXNumber']]],

@@ -8,5 +8,7 @@ var searchData=
   ['append_3a',['append:',['../interfaceNXString.html#a6173efb724785281af7e37a77026f2d8',1,'NXString']]],
   ['appendcstring_3a',['appendCString:',['../interfaceNXString.html#a23292b71d529573fa606c2b043788e7d',1,'NXString']]],
   ['appendstringwithformat_3a',['appendStringWithFormat:',['../interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75',1,'NXString']]],
+  ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
+  ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],
   ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
 ];

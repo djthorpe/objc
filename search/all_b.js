@@ -2,7 +2,7 @@ var searchData=
 [
   ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../NXTimeInterval_8h.html#aaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
-  ['new',['new',['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString']]],
+  ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
   ['nil',['Nil',['../runtime_8h.html#ae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../runtime_8h.html#a7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
   ['no',['NO',['../runtime_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
@@ -19,6 +19,8 @@ var searchData=
   ['nxarchbits',['NXArchBits',['../NXArch_8h.html#a9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
   ['nxarchendian',['NXArchEndian',['../NXArch_8h.html#a1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],
   ['nxarchnumcores',['NXArchNumCores',['../NXArch_8h.html#ae5ebb9b55da9e716c8d6c78437096a3b',1,'NXArch.h']]],
+  ['nxarray',['NXArray',['../interfaceNXArray.html',1,'']]],
+  ['nxarray_2eh',['NXArray.h',['../NXArray_8h.html',1,'']]],
   ['nxautoreleasepool',['NXAutoreleasePool',['../interfaceNXAutoreleasePool.html',1,'']]],
   ['nxautoreleasepool_2eh',['NXAutoreleasePool.h',['../NXAutoreleasePool_8h.html',1,'']]],
   ['nxbigendian',['NXBigEndian',['../NXArch_8h.html#a64a1cc18eff9f4a79f16c2bf56d7ad23aeeca89ca8f48a3c0bb4150232b6a1072',1,'NXArch.h']]],

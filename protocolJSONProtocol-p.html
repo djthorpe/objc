@@ -61,10 +61,11 @@ Inheritance diagram for &lt;JSONProtocol&gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="protocolJSONProtocol-p__inherit__graph.png" border="0" usemap="#_3JSONProtocol_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="_3JSONProtocol_4_inherit__map" id="_3JSONProtocol_4_inherit__map">
-<area shape="rect" id="node2" href="interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="5,80,77,107"/>
-<area shape="rect" id="node3" href="interfaceNXNull.html" title="The NXNull class. " alt="" coords="101,80,168,107"/>
-<area shape="rect" id="node4" href="interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="192,80,285,107"/>
-<area shape="rect" id="node5" href="interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="310,80,389,107"/>
+<area shape="rect" id="node2" href="interfaceNXArray.html" title="The NXArray class. " alt="" coords="5,80,81,107"/>
+<area shape="rect" id="node3" href="interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="106,80,178,107"/>
+<area shape="rect" id="node4" href="interfaceNXNull.html" title="The NXNull class. " alt="" coords="202,80,269,107"/>
+<area shape="rect" id="node5" href="interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="293,80,386,107"/>
+<area shape="rect" id="node6" href="interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="411,80,489,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -73,12 +74,44 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a38e57feae1d1aa1f72bc7b976e0fdd0d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXString.html">NXString</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolJSONProtocol-p.html#a38e57feae1d1aa1f72bc7b976e0fdd0d">JSONString</a></td></tr>
 <tr class="memdesc:a38e57feae1d1aa1f72bc7b976e0fdd0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a JSON representation of the instance.  <a href="#a38e57feae1d1aa1f72bc7b976e0fdd0d">More...</a><br /></td></tr>
 <tr class="separator:a38e57feae1d1aa1f72bc7b976e0fdd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaad3cde165fbef7b3d8a2bfae6f76c3"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolJSONProtocol-p.html#acaad3cde165fbef7b3d8a2bfae6f76c3">JSONBytes</a></td></tr>
+<tr class="memdesc:acaad3cde165fbef7b3d8a2bfae6f76c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the appropriate capacity for the JSON representation of the instance.  <a href="#acaad3cde165fbef7b3d8a2bfae6f76c3">More...</a><br /></td></tr>
+<tr class="separator:acaad3cde165fbef7b3d8a2bfae6f76c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A protocol that defines JSON methods for an <a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="JSONProtocol_8h_source.html#l00013">13</a> of file <a class="el" href="JSONProtocol_8h_source.html">JSONProtocol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="JSON_09Protocol_8h_source.html#l00013">13</a> of file <a class="el" href="JSON_09Protocol_8h_source.html">JSON+Protocol.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="acaad3cde165fbef7b3d8a2bfae6f76c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaad3cde165fbef7b3d8a2bfae6f76c3">&#9670;&nbsp;</a></span>JSONBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (size_t) JSONBytes </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the appropriate capacity for the JSON representation of the instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>An approximate number of bytes required to represent the instance in JSON format.</dd></dl>
+<p>This method is used to determine the approximate capacity required for the JSON representation, which can be useful for memory allocation or performance optimizations. </p>
+
+</div>
+</div>
 <a id="a38e57feae1d1aa1f72bc7b976e0fdd0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38e57feae1d1aa1f72bc7b976e0fdd0d">&#9670;&nbsp;</a></span>JSONString()</h2>
 
@@ -110,7 +143,7 @@ Instance Methods</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this protocol was generated from the following file:<ul>
-<li>include/NXFoundation/<a class="el" href="JSONProtocol_8h_source.html">JSONProtocol.h</a></li>
+<li>include/NXFoundation/<a class="el" href="JSON_09Protocol_8h_source.html">JSON+Protocol.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
