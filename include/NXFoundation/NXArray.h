@@ -166,4 +166,14 @@
  */
 - (BOOL)removeObjectAtIndex:(unsigned int)index;
 
+/**
+ * @brief Removes all objects from the array.
+ *
+ *
+ * This method clears the array by releasing all objects and resetting the
+ * internal data structure. The array's count is set to zero and its capacity
+ * remains unchanged.
+ */
+- (void)removeAllObjects;
+
 @end

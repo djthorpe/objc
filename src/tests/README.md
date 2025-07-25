@@ -38,7 +38,7 @@ The tests are organized into three main categories:
 | NXFoundation_18 | String Method Testing | Comprehensive NXString tests: formatting, comparison, operations, JSON escaping. |
 | NXFoundation_19 | Number Comprehensive Testing | Comprehensive NXNumber tests: all types, conversions, edge cases, memory management. |
 | NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, and NXDate. |
-| NXFoundation_21 | Array Functionality and JSON Testing | Tests NXArray creation, object access, initWithObjects, arrayWithObjects, JSON serialization, JSONBytes capacity estimation, JSON compliance with special characters, non-JSON-compliant object handling via description method, containsObject method with recursive search, append and insert:atIndex: methods with capacity growth, indexForObject method with proper index finding, and circular reference prevention for mutation operations. |
+| NXFoundation_21 | Array Testing | Tests complete NXArray functionality: creation, access methods, JSON serialization, mutable operations (append/insert/remove), circular reference prevention, capacity management, nested arrays, and edge cases. |
 
 ---
 
