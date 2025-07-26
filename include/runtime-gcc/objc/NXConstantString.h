@@ -10,12 +10,12 @@
 
 /**
  * @brief A constant string class.
+ * @headerfile NXConstantString.h objc/objc.h
+ * @ingroup objc 
  *
  * This class is used to represent immutable strings. It stores a pointer
  * to a C-string and its length. For compatibility with modern Objective-C code,
  * it is aliased to `NSString` when compiling with Clang.
- *
- * \headerfile NXConstantString.h objc/objc.h
  */
 @interface NXConstantString : Object <NXConstantStringProtocol> {
 @private
