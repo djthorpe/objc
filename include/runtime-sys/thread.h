@@ -13,6 +13,7 @@ extern "C" {
 
 /**
  * @brief Returns the number of CPU cores available on the host system.
+ * @ingroup System  
  * @return The number of CPU cores available on the system. Returns 1 if the
  *         number of cores cannot be determined or if the system has only one
  *         core.
@@ -24,6 +25,7 @@ extern uint8_t sys_thread_numcores(void);
 
 /**
  * @brief Pauses the execution of the current thread for a specified time.
+ * @ingroup System  
  * @param msec The number of milliseconds to sleep.
  */
 extern void sys_sleep(int32_t msec);
