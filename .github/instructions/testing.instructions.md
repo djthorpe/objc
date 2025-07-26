@@ -29,3 +29,17 @@ ctest --output-on-failure --test-dir build --tests-regex <test_target>
 When you've updated a test with more test coverage, make sure to update the file in `src/tests/README.md`
 to keep the summary of tests up to date with the same name as the target, and include the new test 
 cases in that file.
+
+# Cross-Compilation
+
+To cross-compile the libraries for the pico, this is the command to run:
+
+```bash
+CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make
+```
+
+Then the tests can be compiled as before, and loaded onto a Pico with the following command:
+
+```bash
+cmake --build build --target <test_target> && picotool load -x build/src/tests/<test_target>/<test_target>.uf2
+```
