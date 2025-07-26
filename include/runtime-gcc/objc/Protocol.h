@@ -7,6 +7,11 @@
  */
 #pragma once
 
+/**
+ * @brief Protocol class definition
+ * @headerfile Protocol.h objc/objc.h
+ * @ingroup objc  
+ */
 @interface Protocol : Object {
 @private
   const char *_name;
