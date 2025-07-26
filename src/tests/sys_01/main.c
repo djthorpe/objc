@@ -754,7 +754,7 @@ int test_sys_01(void) {
     test_assert(buffer[len - 2] == ':' && buffer[len - 1] == 'P');
     // Expected length: "123:0x" + (2 * sizeof(void*)) hex digits + ":P"
     size_t expected_len =
-        8 + (2 * sizeof(void *)); // "123:0x" + hex digits + ":P"
+        6 + (2 * sizeof(void *)) + 2; // "123:0x" + hex digits + ":P"
     test_assert(len == expected_len);
   } while (0);
 
