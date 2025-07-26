@@ -224,7 +224,6 @@
 
   // Calculate the required buffer size
   size_t cap = [self base64Capacity];
-  objc_assert(cap > 0);
 
   // Create a new mutable string with enough capacity, including the null
   NXString *result = [NXString stringWithCapacity:cap + 1];
