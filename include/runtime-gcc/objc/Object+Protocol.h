@@ -8,11 +8,11 @@
 
 /**
  * @brief Protocol for objects.
+ * @headerfile Object+Protocol.h objc/objc.h
+ * @ingroup objc 
  *
  * The ObjectProtocol defines the minimal interface that objects must
  * implement to provide basic object introspection functionality.
- *
- * \headerfile Object+Protocol.h objc/objc.h
  */
 @protocol ObjectProtocol
 @required
