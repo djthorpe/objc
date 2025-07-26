@@ -14,6 +14,7 @@ extern "C" {
 
 /**
  * @brief Allocates a block of memory.
+ * @ingroup System  
  * @param size The number of bytes to allocate.
  * @return A pointer to the allocated memory, or NULL if the allocation fails.
  */
@@ -21,12 +22,14 @@ extern void *sys_malloc(size_t size);
 
 /**
  * @brief Frees a block of memory.
+ * @ingroup System  
  * @param ptr A pointer to the memory block to be deallocated.
  */
 extern void sys_free(void *ptr);
 
 /**
  * @brief Set memory to a specific value
+ * @ingroup System  
  * @param ptr Pointer to the memory block
  * @param value Value to set each byte to
  * @param size Number of bytes to set
@@ -36,6 +39,7 @@ extern void *sys_memset(void *ptr, uint8_t value, size_t size);
 
 /**
  * @brief Copy memory from source to destination
+ * @ingroup System  
  * @param dest Destination memory block
  * @param src Source memory block
  * @param size Number of bytes to copy
@@ -45,6 +49,7 @@ extern void *sys_memcpy(void *dest, const void *src, size_t size);
 
 /**
  * @brief Move memory from source to destination (handles overlapping regions)
+ * @ingroup System  
  * @param dest Destination memory block
  * @param src Source memory block
  * @param size Number of bytes to move
@@ -54,6 +59,7 @@ extern void *sys_memmove(void *dest, const void *src, size_t size);
 
 /**
  * @brief Compare two memory blocks
+ * @ingroup System  
  * @param ptr1 First memory block
  * @param ptr2 Second memory block
  * @param num Number of bytes to compare
