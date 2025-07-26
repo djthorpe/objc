@@ -104,6 +104,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
 - [X] `NXData` - mutable binary data with Base64/hex encoding and append operations
 - [X] Hash functions - MD5 and SHA-256 hash computation through `sys_hash_*` API
+- [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
 - [ ] `NXString` - array methods - split, join, etc.
 - [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
@@ -115,7 +116,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] More efficient method implementation lookup
 - [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
-- [ ] `NXScanner` - scanning and tokenizing
+- [ ] `NXScanner`, `ReaderProtocol` - scanning and tokenizing
 - [ ] Calling `+[initialise]` for categories
 - [ ] `NXApplication` and `NXRunLoop`
 - [ ] Pico toolchain - integrate with Pico SDK
