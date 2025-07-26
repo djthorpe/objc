@@ -343,13 +343,13 @@ int test_json_methods(void) {
   [singleData release];
   printf("✓ Single byte NXData JSON serialization\n");
 
-  // Test string data (with null terminator)
+  // Test string data (without null terminator)
   NXData *stringData = [[NXData alloc] initWithString:@"Test"];
   test_assert([stringData JSONBytes] ==
-              9); // "VGVzdAA=" (8 chars + null terminator)
+              9); // "VGVzdA==" (8 chars + null terminator)
   NXString *stringJson = [stringData JSONString];
   test_assert(stringJson != nil);
-  test_cstrings_equal([stringJson cStr], "VGVzdAA="); // "Test\0" in Base64
+  test_cstrings_equal([stringJson cStr], "VGVzdA=="); // "Test" in Base64
   [stringData release];
   printf("✓ String-based NXData JSON serialization\n");
 
