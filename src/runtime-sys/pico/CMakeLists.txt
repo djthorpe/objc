@@ -23,6 +23,6 @@ target_include_directories(${NAME} PRIVATE
 )
 target_link_libraries(${NAME} 
     pico_stdlib
-    pico_aon_timer
     pico_rand
+    pico_time
 )
