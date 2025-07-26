@@ -179,7 +179,7 @@
   // Make a new mutable string with enough capacity, including the null
   // terminator
   NXString *result = [NXString stringWithCapacity:(_size * 2) + 1];
-  if (result == NULL) {
+  if (result == nil) {
     return nil; // Handle memory allocation failure
   }
 
