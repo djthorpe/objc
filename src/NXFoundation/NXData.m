@@ -225,7 +225,7 @@
   // Calculate the required buffer size
   size_t cap = [self base64Capacity];
 
-  // Create a new mutable string with enough capacity, including the null
+  // Create a new mutable string with enough capacity; the null terminator is already included in the calculation
   NXString *result = [NXString stringWithCapacity:cap];
   if (result == NULL) {
     return nil; // Handle memory allocation failure
