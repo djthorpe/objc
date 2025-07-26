@@ -1,8 +1,8 @@
 <map id="include/runtime&#45;sys/sys.h" name="include/runtime&#45;sys/sys.h">
-<area shape="rect" id="node2" href="$hash_8h.html" title="Defines the ability to create hashes from data. " alt="" coords="203,95,269,121"/>
-<area shape="rect" id="node6" href="$runtime-sys_2malloc_8h_source.html" title="malloc.h" alt="" coords="101,95,179,121"/>
+<area shape="rect" id="node2" href="$hash_8h.html" title="Defines the ability to create hashes from data. " alt="" coords="211,95,277,121"/>
+<area shape="rect" id="node6" href="$memory_8h_source.html" title="memory.h" alt="" coords="101,95,187,121"/>
 <area shape="rect" id="node7" href="$printf_8h.html" title="Defines formatted print output functions. " alt="" coords="9,95,77,121"/>
-<area shape="rect" id="node9" href="$random_8h.html" title="Defines random number generation functions. " alt="" coords="433,95,517,121"/>
-<area shape="rect" id="node10" href="$thread_8h.html" title="Defines thread management functions. " alt="" coords="541,95,617,121"/>
-<area shape="rect" id="node11" href="$time_8h.html" title="Defines system time management functions. " alt="" coords="293,95,357,121"/>
+<area shape="rect" id="node9" href="$random_8h.html" title="Defines random number generation functions. " alt="" coords="441,95,525,121"/>
+<area shape="rect" id="node10" href="$thread_8h.html" title="Defines thread management functions. " alt="" coords="549,95,625,121"/>
+<area shape="rect" id="node11" href="$time_8h.html" title="Defines system time management functions. " alt="" coords="301,95,365,121"/>
 </map>

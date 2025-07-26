@@ -2,7 +2,9 @@ var searchData=
 [
   ['objc_20runtime',['objc runtime',['../index.html',1,'']]],
   ['objc_5fassert',['objc_assert',['../assert_8h.html#a3aeb8450dfbaacf0eb908d9f386d5db9',1,'assert.h']]],
+  ['objc_5ffree',['objc_free',['../malloc_8h.html#a8f8e2ee1df5b130d4c96555fff909fdd',1,'malloc.h']]],
   ['objc_5flookupclass',['objc_lookupClass',['../runtime_8h.html#ad60fc60359e0c7b9a6751f835f5537a2',1,'runtime.h']]],
+  ['objc_5fmalloc',['objc_malloc',['../malloc_8h.html#a12b32d3d80a37f14adc2bc963eb0bde7',1,'malloc.h']]],
   ['objc_5fprotocol_5ft',['objc_protocol_t',['../runtime_8h.html#a94527388730bf1fbaa99e45d08b1b868',1,'runtime.h']]],
   ['objc_5froot_5fclass',['OBJC_ROOT_CLASS',['../runtime_8h.html#a1636d49f54f5501c0bb5ce698de32eee',1,'runtime.h']]],
   ['objc_5fsync_5fenter',['objc_sync_enter',['../mutex_8h.html#ab912f47eca33ff595b0270360079ff38',1,'mutex.h']]],
