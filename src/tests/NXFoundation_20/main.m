@@ -1,5 +1,6 @@
 #include <NXFoundation/NXFoundation.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <tests/tests.h>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -318,6 +319,87 @@ int test_json_methods(void) {
   test_assert([[[NXNull nullValue] JSONString] length] ==
               4); // Should be exactly "null"
   printf("✓ JSON string lengths are reasonable\n");
+
+  printf("\nTest 6: Testing NXData JSONString and JSONBytes...\n");
+
+  // Test empty data
+  NXData *emptyData = [[NXData alloc] init];
+  test_assert([emptyData JSONBytes] == 1); // Empty Base64: 1 (null terminator)
+  NXString *emptyDataJson = [emptyData JSONString];
+  test_assert(emptyDataJson != nil);
+  test_cstrings_equal([emptyDataJson cStr],
+                      ""); // Empty data -> empty Base64 string
+  [emptyData release];
+  printf("✓ Empty NXData JSON serialization\n");
+
+  // Test single byte data
+  char singleByte = 'A'; // 0x41
+  NXData *singleData = [[NXData alloc] initWithBytes:&singleByte size:1];
+  test_assert([singleData JSONBytes] ==
+              5); // "QQ==" (4 chars + null terminator)
+  NXString *singleJson = [singleData JSONString];
+  test_assert(singleJson != nil);
+  test_cstrings_equal([singleJson cStr], "QQ==");
+  [singleData release];
+  printf("✓ Single byte NXData JSON serialization\n");
+
+  // Test string data (with null terminator)
+  NXData *stringData = [[NXData alloc] initWithString:@"Test"];
+  test_assert([stringData JSONBytes] ==
+              9); // "VGVzdAA=" (8 chars + null terminator)
+  NXString *stringJson = [stringData JSONString];
+  test_assert(stringJson != nil);
+  test_cstrings_equal([stringJson cStr], "VGVzdAA="); // "Test\0" in Base64
+  [stringData release];
+  printf("✓ String-based NXData JSON serialization\n");
+
+  // Test binary data
+  char binaryBytes[] = {0x00, 0x01, 0x02, 0x03, 0xFF, 0xFE};
+  NXData *binaryData = [[NXData alloc] initWithBytes:binaryBytes size:6];
+  test_assert([binaryData JSONBytes] ==
+              9); // "AAECA//+" (8 chars + null terminator)
+  NXString *binaryJson = [binaryData JSONString];
+  test_assert(binaryJson != nil);
+  test_cstrings_equal([binaryJson cStr], "AAECA//+");
+  [binaryData release];
+  printf("✓ Binary NXData JSON serialization\n");
+
+  // Test RFC 4648 compliance
+  NXData *rfcData = [[NXData alloc] initWithBytes:"foobar" size:6];
+  test_assert([rfcData JSONBytes] ==
+              9); // "Zm9vYmFy" (8 chars + null terminator)
+  NXString *rfcJson = [rfcData JSONString];
+  test_assert(rfcJson != nil);
+  test_cstrings_equal([rfcJson cStr], "Zm9vYmFy"); // RFC 4648 test vector
+  [rfcData release];
+  printf("✓ NXData RFC 4648 Base64 compliance\n");
+
+  // Test consistency between JSONBytes and JSONString
+  char testBytes[] = {0xDE, 0xAD, 0xBE, 0xEF};
+  NXData *consistencyData = [[NXData alloc] initWithBytes:testBytes size:4];
+  size_t estimatedBytes = [consistencyData JSONBytes];
+  NXString *actualJson = [consistencyData JSONString];
+  test_assert(actualJson != nil);
+  size_t actualLength = strlen([actualJson cStr]) + 1; // +1 for null terminator
+  test_assert(estimatedBytes == actualLength);
+  test_cstrings_equal([actualJson cStr], "3q2+7w==");
+  [consistencyData release];
+  printf("✓ JSONBytes estimation matches actual JSONString length\n");
+
+  // Test larger data for performance validation
+  size_t largeSize = 100;
+  char *largeBytes = malloc(largeSize);
+  for (size_t i = 0; i < largeSize; i++) {
+    largeBytes[i] = (char)(i % 256);
+  }
+  NXData *largeData = [[NXData alloc] initWithBytes:largeBytes size:largeSize];
+  size_t largeEstimate = [largeData JSONBytes];
+  NXString *largeDataJson = [largeData JSONString];
+  test_assert(largeDataJson != nil);
+  test_assert(largeEstimate == strlen([largeDataJson cStr]) + 1);
+  free(largeBytes);
+  [largeData release];
+  printf("✓ Large NXData JSON serialization performance\n");
 
   printf("\n✅ All JSONProtocol conformance tests passed!\n");
   return 0;

@@ -185,7 +185,8 @@ int test_data_methods(void) {
   {
     NXData *data = [[NXData alloc] initWithString:@"Test\n\t\\"];
     test_assert(data != nil);
-    test_assert([data size] == 8); // Test\n\t\\ is 7 characters + null terminator = 8
+    test_assert([data size] ==
+                8); // Test\n\t\\ is 7 characters + null terminator = 8
 
     const char *bytes = (const char *)[data bytes];
     test_cstrings_equal(bytes, "Test\n\t\\");
@@ -221,19 +222,7 @@ int test_data_methods(void) {
     printf("  ✓ Binary data with null bytes works\n");
   }
 
-  printf("Test 16: JSONBytes method\n");
-  {
-    NXData *data1 = [[NXData alloc] initWithCapacity:10];
-    test_assert([data1 JSONBytes] == 0); // size * 2 = 0 * 2 = 0
-    [data1 release];
-
-    NXData *data2 = [[NXData alloc] initWithString:@"Test"];
-    test_assert([data2 JSONBytes] == 10); // size * 2 = 5 * 2 = 10
-    [data2 release];
-    printf("  ✓ JSONBytes method works\n");
-  }
-
-  printf("Test 17: Accessor methods consistency\n");
+  printf("Test 16: Accessor methods consistency\n");
   {
     char testBytes[] = {0x10, 0x20, 0x30};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:3];
@@ -252,7 +241,7 @@ int test_data_methods(void) {
     printf("  ✓ Accessor methods are consistent\n");
   }
 
-  printf("Test 18: String with Unicode-like content\n");
+  printf("Test 17: String with Unicode-like content\n");
   {
     NXData *data = [[NXData alloc] initWithString:@"café"];
     test_assert(data != nil);
@@ -262,7 +251,7 @@ int test_data_methods(void) {
     printf("  ✓ Unicode-like string content works\n");
   }
 
-  printf("Test 19: Maximum reasonable capacity\n");
+  printf("Test 18: Maximum reasonable capacity\n");
   {
     // Test a reasonably large but not excessive capacity
     NXData *data = [[NXData alloc] initWithCapacity:1024 * 1024]; // 1MB
@@ -273,7 +262,7 @@ int test_data_methods(void) {
     printf("  ✓ Large capacity (1MB) allocation works\n");
   }
 
-  printf("Test 20: Edge case - single byte\n");
+  printf("Test 19: Edge case - single byte\n");
   {
     char singleByte = 0xFF;
     NXData *data = [[NXData alloc] initWithBytes:&singleByte size:1];
@@ -287,7 +276,7 @@ int test_data_methods(void) {
     printf("  ✓ Single byte data works\n");
   }
 
-  printf("Test 21: hexString - empty data\n");
+  printf("Test 20: hexString - empty data\n");
   {
     NXData *data = [[NXData alloc] init];
     NXString *hexStr = [data hexString];
@@ -297,7 +286,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for empty data returns empty string\n");
   }
 
-  printf("Test 22: hexString - single byte\n");
+  printf("Test 21: hexString - single byte\n");
   {
     char singleByte = 0xAB;
     NXData *data = [[NXData alloc] initWithBytes:&singleByte size:1];
@@ -308,7 +297,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for single byte works\n");
   }
 
-  printf("Test 23: hexString - multiple bytes\n");
+  printf("Test 22: hexString - multiple bytes\n");
   {
     char testBytes[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:8];
@@ -319,7 +308,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for multiple bytes works\n");
   }
 
-  printf("Test 24: hexString - zero bytes\n");
+  printf("Test 23: hexString - zero bytes\n");
   {
     char testBytes[] = {0x00, 0x00, 0x00};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:3];
@@ -330,7 +319,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for zero bytes works\n");
   }
 
-  printf("Test 25: hexString - all possible byte values\n");
+  printf("Test 24: hexString - all possible byte values\n");
   {
     char testBytes[] = {0x00, 0x0F, 0xF0, 0xFF};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:4];
@@ -341,7 +330,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for edge byte values works\n");
   }
 
-  printf("Test 26: hexString - string data\n");
+  printf("Test 25: hexString - string data\n");
   {
     NXData *data = [[NXData alloc] initWithString:@"Hi"];
     NXString *hexStr = [data hexString];
@@ -352,7 +341,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString for string data works\n");
   }
 
-  printf("Test 27: hexString - consistency check\n");
+  printf("Test 26: hexString - consistency check\n");
   {
     char testBytes[] = {0xDE, 0xAD, 0xBE, 0xEF};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:4];
@@ -370,7 +359,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString returns consistent results\n");
   }
 
-  printf("Test 28: base64String - empty data\n");
+  printf("Test 27: base64String - empty data\n");
   {
     NXData *data = [[NXData alloc] init];
     NXString *b64Str = [data base64String];
@@ -380,7 +369,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for empty data returns empty string\n");
   }
 
-  printf("Test 29: base64String - single byte\n");
+  printf("Test 28: base64String - single byte\n");
   {
     char singleByte = 'A'; // 0x41
     NXData *data = [[NXData alloc] initWithBytes:&singleByte size:1];
@@ -391,7 +380,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for single byte works\n");
   }
 
-  printf("Test 30: base64String - two bytes\n");
+  printf("Test 29: base64String - two bytes\n");
   {
     char testBytes[] = {'A', 'B'}; // 0x41, 0x42
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:2];
@@ -402,7 +391,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for two bytes works\n");
   }
 
-  printf("Test 31: base64String - three bytes (no padding)\n");
+  printf("Test 30: base64String - three bytes (no padding)\n");
   {
     char testBytes[] = {'A', 'B', 'C'}; // 0x41, 0x42, 0x43
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:3];
@@ -413,7 +402,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for three bytes (no padding) works\n");
   }
 
-  printf("Test 32: base64String - four bytes\n");
+  printf("Test 31: base64String - four bytes\n");
   {
     char testBytes[] = {'A', 'B', 'C', 'D'}; // 0x41, 0x42, 0x43, 0x44
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:4];
@@ -424,7 +413,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for four bytes works\n");
   }
 
-  printf("Test 33: base64String - RFC 4648 test vectors\n");
+  printf("Test 32: base64String - RFC 4648 test vectors\n");
   {
     // Test vector 1: "f" -> "Zg=="
     NXData *data1 = [[NXData alloc] initWithBytes:"f" size:1];
@@ -471,7 +460,7 @@ int test_data_methods(void) {
     printf("  ✓ RFC 4648 base64 test vectors pass\n");
   }
 
-  printf("Test 34: base64String - binary data\n");
+  printf("Test 33: base64String - binary data\n");
   {
     char testBytes[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:6];
@@ -482,7 +471,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for binary data works\n");
   }
 
-  printf("Test 35: base64String - all zero bytes\n");
+  printf("Test 34: base64String - all zero bytes\n");
   {
     char testBytes[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:6];
@@ -493,7 +482,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for all zero bytes works\n");
   }
 
-  printf("Test 36: base64String - all 0xFF bytes\n");
+  printf("Test 35: base64String - all 0xFF bytes\n");
   {
     char testBytes[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:6];
@@ -504,7 +493,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for all 0xFF bytes works\n");
   }
 
-  printf("Test 37: base64String - edge case byte values\n");
+  printf("Test 36: base64String - edge case byte values\n");
   {
     // Test bytes that exercise different parts of the Base64 alphabet
     char testBytes[] = {0x3E, 0x3F, 0x40}; // Should produce '+', '/', 'A'
@@ -516,7 +505,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for edge case byte values works\n");
   }
 
-  printf("Test 38: base64String - longer data\n");
+  printf("Test 37: base64String - longer data\n");
   {
     // Test with a longer string to ensure proper handling
     const char *testStr = "The quick brown fox jumps over the lazy dog";
@@ -530,7 +519,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String for longer data works\n");
   }
 
-  printf("Test 39: base64String - consistency check\n");
+  printf("Test 38: base64String - consistency check\n");
   {
     char testBytes[] = {0xDE, 0xAD, 0xBE, 0xEF};
     NXData *data = [[NXData alloc] initWithBytes:testBytes size:4];
@@ -548,7 +537,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String returns consistent results\n");
   }
 
-  printf("Test 40: hexString - large data performance\n");
+  printf("Test 39: hexString - large data performance\n");
   {
     // Test with a reasonably large amount of data
     size_t size = 1024;
@@ -568,7 +557,7 @@ int test_data_methods(void) {
     printf("  ✓ hexString handles large data correctly\n");
   }
 
-  printf("Test 41: base64String - large data performance\n");
+  printf("Test 40: base64String - large data performance\n");
   {
     // Test with a reasonably large amount of data
     size_t size = 1023; // 1023 bytes -> 1364 base64 chars (with padding)
@@ -590,7 +579,7 @@ int test_data_methods(void) {
     printf("  ✓ base64String handles large data correctly\n");
   }
 
-  printf("Test 42: Cross-format consistency\n");
+  printf("Test 41: Cross-format consistency\n");
   {
     // Test that hexString and base64String work with the same data
     char testBytes[] = "Hello, World!";
@@ -610,7 +599,7 @@ int test_data_methods(void) {
     printf("  ✓ Both encoding methods work consistently with same data\n");
   }
 
-  printf("Test 43: Edge case - maximum single byte values\n");
+  printf("Test 42: Edge case - maximum single byte values\n");
   {
     // Test with bytes that represent edge cases in both hex and base64
     char testBytes[] = {0x00, 0x0F, 0x10, 0x1F, 0xF0, 0xFF};
@@ -628,7 +617,7 @@ int test_data_methods(void) {
     printf("  ✓ Edge case byte values handled correctly in both formats\n");
   }
 
-  printf("Test 44: String data encoding verification\n");
+  printf("Test 43: String data encoding verification\n");
   {
     // Test encoding of string data created with initWithString
     NXData *data = [[NXData alloc] initWithString:@"ABC"];

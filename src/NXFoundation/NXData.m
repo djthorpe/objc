@@ -1,3 +1,4 @@
+#include "NXString+unicode.h"
 #include <NXFoundation/NXFoundation.h>
 
 @implementation NXData
@@ -202,6 +203,14 @@
 }
 
 /**
+ * @brief Returns the capacity needed for the Base64 encoded string
+ * representation of the data.
+ */
+- (size_t)base64Capacity {
+  return ((_size + 2) / 3) * 4 + 1; // +1 for null terminator
+}
+
+/**
  * @brief Returns a Base64 encoded string representation of the data.
  */
 - (NXString *)base64String {
@@ -214,8 +223,10 @@
   }
 
   // Calculate the required buffer size
-  size_t cap = ((_size + 2) / 3) * 4;
-  NXString *result = [NXString stringWithCapacity:cap + 1];
+  size_t cap = [self base64Capacity];
+
+  // Create a new mutable string with enough capacity; the null terminator is already included in the calculation
+  NXString *result = [NXString stringWithCapacity:cap];
   if (result == NULL) {
     return nil; // Handle memory allocation failure
   }
@@ -262,7 +273,43 @@
  * @brief Prints a hexdump representation of the data to the console.
  */
 - (void)dump {
-  // TODO
+  if (_size == 0) {
+    sys_printf("No data to dump.\n");
+    return;
+  }
+
+  // Get data
+  uint8_t *data = (uint8_t *)_data;
+  objc_assert(data);
+
+  size_t i, j;
+  for (i = 0; i < _size; i += 16) {
+    // Print the address
+    sys_printf("%p  ", (void *)(data + i));
+
+    // Print hex values
+    for (j = 0; j < 16; j++) {
+      if (i + j < _size)
+        sys_printf("%02x ", data[i + j]);
+      else
+        sys_printf("   "); // Padding for incomplete lines
+
+      // Extra space after 8 bytes for readability
+      if (j == 7)
+        sys_printf(" ");
+    }
+
+    // Print ASCII representation
+    sys_printf(" |");
+    for (j = 0; j < 16; j++) {
+      if (i + j < _size) {
+        sys_printf("%c", _char_toPrintable(data[i + j]));
+      } else {
+        sys_printf(" "); // Padding for incomplete lines
+      }
+    }
+    sys_printf("|\n");
+  }
 }
 
 /**
@@ -304,14 +351,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 // JSON PROTOCOL METHODS
 
+/**
+ * @brief Determines the approximate capacity of the JSON representation, which
+ * is encoded as a base64 string.
+ */
 - (size_t)JSONBytes {
-  // TODO: Return approximate bytes needed for JSON representation
-  return _size * 2; // Rough estimate for hex encoding
+  return [self base64Capacity];
 }
 
+/**
+ * @brief Return the base64 encoded JSON string representation of the data.
+ */
 - (NXString *)JSONString {
-  // TODO: Implement JSON string representation
-  return nil;
+  return [self base64String];
 }
 
 @end
