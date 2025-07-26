@@ -29,7 +29,7 @@
 
   // Allocate memory for the  data
   _data = sys_malloc(capacity);
-  if (_data == 0) {
+  if (_data == NULL) {
     [self release];
     return nil;
   } else {
@@ -73,7 +73,7 @@
  * @brief Initializes a new NXData instance with bytes
  */
 - (id)initWithBytes:(const void *)bytes size:(size_t)size {
-  objc_assert(bytes != NULL);
+  objc_assert(bytes);
 
   // Check size
   if (size == 0) {
