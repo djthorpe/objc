@@ -731,7 +731,7 @@ int test_sys_01(void) {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "null: %p", (void *)NULL);
     // Expected length: "null: 0x" + (2 * sizeof(void*)) hex digits
-    size_t expected_len = 8 + (2 * sizeof(void *)); // "null: 0x" = 8 chars
+    size_t expected_len = 8 + (2 * sizeof(void *)); // "null: 0x" is 8 characters (7 for "null: 0x" including the space) plus hex digits
     if (sizeof(void *) == 4) {
       test_cstrings_equal("null: 0x00000000", buffer);
     } else {
