@@ -62,6 +62,7 @@ $(function() {
 <ul>
 <li><b>Build system</b> <code>make</code> and <code>cmake</code> - for the build system</li>
 <li><b>Compiler</b> <code>clang</code> or <code>gcc</code> - for compiling the runtime (<code>clang</code> is not supported on Apple Silicon). You can use the environment variable <code>CC</code> to specify the compiler, e.g. <code>CC=clang</code> or <code>CC=gcc</code>.</li>
+<li><b>Library Dependencies</b> <code>openssl</code> for Linux and Darwin - for the hash functions, which are used in the runtime and NXFoundation framework.</li>
 <li><b>Documentation</b> <code>docker</code> is needed for generating the documentation from the source code.</li>
 <li><b>Cross-Compilation</b> For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
 </ul>
@@ -70,7 +71,7 @@ $(function() {
 <ul>
 <li><code>objc-gcc</code> - the Objective C runtime library using the ancient GCC ABI</li>
 <li><code>NXFoundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
-<li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.</li>
+<li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).</li>
 </ul>
 <p>Download the source code from GitHub:</p>
 <div class="fragment"><div class="line">git clone git@github.com:djthorpe/objc.git</div><div class="line">cd objc</div></div><!-- fragment --><p>The <code>TOOLCHAIN_PATH</code> environment variable should point to the directory where the toolchain is installed. For Macintosh, you can use Homebrew to install the GCC toolchain, which is required for compiling the runtime on MacOS:</p>
@@ -113,13 +114,14 @@ $(function() {
 <li>[X] Fix linking categories in static libraries (see test NXFoundation_05)</li>
 <li>[X] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings - append, appendFormat</li>
 <li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray class. ">NXArray</a></code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
+<li>[X] <code><a class="el" href="interfaceNXData.html" title="The NXData class. ">NXData</a></code> - mutable binary data with Base64/hex encoding and append operations</li>
+<li>[X] Hash functions - MD5 and SHA-256 hash computation through <code>sys_hash_*</code> API</li>
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - array methods - split, join, etc.</li>
 <li>[ ] printf - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
 <li>[ ] printf - <code>T</code> format specifier for time intervals</li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
 <li>[ ] <code>NXMap</code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
-<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData class. ">NXData</a></code> - mutable data creating hashes</li>
 <li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] clang compatibility (probably fix with selectors)</li>
 <li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>)</li>
