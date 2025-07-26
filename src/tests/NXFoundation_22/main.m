@@ -185,8 +185,7 @@ int test_data_methods(void) {
   {
     NXData *data = [[NXData alloc] initWithString:@"Test\n\t\\"];
     test_assert(data != nil);
-    test_assert([data size] == 8); // 6 chars + null terminator = 7, but
-                                   // Test\n\t\\ is 7 chars + null = 8
+    test_assert([data size] == 8); // Test\n\t\\ is 7 characters + null terminator = 8
 
     const char *bytes = (const char *)[data bytes];
     test_cstrings_equal(bytes, "Test\n\t\\");
