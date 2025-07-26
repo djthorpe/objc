@@ -95,336 +95,37 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a45596b2dc3b59917dfbbf36d5b3d4816"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__time.html">sys_time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a></td></tr>
-<tr class="memdesc:a45596b2dc3b59917dfbbf36d5b3d4816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a system time structure.  <a href="#a45596b2dc3b59917dfbbf36d5b3d4816">More...</a><br /></td></tr>
-<tr class="separator:a45596b2dc3b59917dfbbf36d5b3d4816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45596b2dc3b59917dfbbf36d5b3d4816"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__time.html">sys_time</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a></td></tr>
+<tr class="memdesc:ga45596b2dc3b59917dfbbf36d5b3d4816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a system time structure.  <a href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">More...</a><br /></td></tr>
+<tr class="separator:ga45596b2dc3b59917dfbbf36d5b3d4816"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0f593b86e80e479fff851b0b0c715da0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a0f593b86e80e479fff851b0b0c715da0">sys_time_get_utc</a> (<a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time)</td></tr>
-<tr class="memdesc:a0f593b86e80e479fff851b0b0c715da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current UTC time.  <a href="#a0f593b86e80e479fff851b0b0c715da0">More...</a><br /></td></tr>
-<tr class="separator:a0f593b86e80e479fff851b0b0c715da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a664e2499cff45dfad7da8a16ad873dfd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a664e2499cff45dfad7da8a16ad873dfd">sys_time_get_time_utc</a> (<a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint8_t *hours, uint8_t *minutes, uint8_t *seconds)</td></tr>
-<tr class="memdesc:a664e2499cff45dfad7da8a16ad873dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts time components from a sys_time_t structure.  <a href="#a664e2499cff45dfad7da8a16ad873dfd">More...</a><br /></td></tr>
-<tr class="separator:a664e2499cff45dfad7da8a16ad873dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34afa8ff2a90627f3119d0fe662fdb89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a34afa8ff2a90627f3119d0fe662fdb89">sys_time_get_date_utc</a> (<a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint16_t *year, uint8_t *month, uint8_t *day, uint8_t *weekday)</td></tr>
-<tr class="memdesc:a34afa8ff2a90627f3119d0fe662fdb89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts date components from a sys_time_t structure.  <a href="#a34afa8ff2a90627f3119d0fe662fdb89">More...</a><br /></td></tr>
-<tr class="separator:a34afa8ff2a90627f3119d0fe662fdb89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a172740122067a523d9d32478126db59b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a172740122067a523d9d32478126db59b">sys_time_set_time_utc</a> (<a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint8_t hours, uint8_t minutes, uint8_t seconds)</td></tr>
-<tr class="memdesc:a172740122067a523d9d32478126db59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets time components in a sys_time_t structure, preserving the date.  <a href="#a172740122067a523d9d32478126db59b">More...</a><br /></td></tr>
-<tr class="separator:a172740122067a523d9d32478126db59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad6616ff63c8cbdbaf3fd97697bb074c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#aad6616ff63c8cbdbaf3fd97697bb074c">sys_time_set_date_utc</a> (<a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint16_t year, uint8_t month, uint8_t day)</td></tr>
-<tr class="memdesc:aad6616ff63c8cbdbaf3fd97697bb074c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets date components in a sys_time_t structure, preserving the time.  <a href="#aad6616ff63c8cbdbaf3fd97697bb074c">More...</a><br /></td></tr>
-<tr class="separator:aad6616ff63c8cbdbaf3fd97697bb074c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ca6ec26efbd88031d42509a07482f3d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#a4ca6ec26efbd88031d42509a07482f3d">sys_time_compare_ns</a> (const <a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *start, const <a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *end)</td></tr>
-<tr class="memdesc:a4ca6ec26efbd88031d42509a07482f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the difference in nanoseconds between two sys_time_t structures.  <a href="#a4ca6ec26efbd88031d42509a07482f3d">More...</a><br /></td></tr>
-<tr class="separator:a4ca6ec26efbd88031d42509a07482f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f593b86e80e479fff851b0b0c715da0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga0f593b86e80e479fff851b0b0c715da0">sys_time_get_utc</a> (<a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time)</td></tr>
+<tr class="memdesc:ga0f593b86e80e479fff851b0b0c715da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current UTC time.  <a href="group__System.html#ga0f593b86e80e479fff851b0b0c715da0">More...</a><br /></td></tr>
+<tr class="separator:ga0f593b86e80e479fff851b0b0c715da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga664e2499cff45dfad7da8a16ad873dfd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga664e2499cff45dfad7da8a16ad873dfd">sys_time_get_time_utc</a> (<a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint8_t *hours, uint8_t *minutes, uint8_t *seconds)</td></tr>
+<tr class="memdesc:ga664e2499cff45dfad7da8a16ad873dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts time components from a sys_time_t structure.  <a href="group__System.html#ga664e2499cff45dfad7da8a16ad873dfd">More...</a><br /></td></tr>
+<tr class="separator:ga664e2499cff45dfad7da8a16ad873dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34afa8ff2a90627f3119d0fe662fdb89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga34afa8ff2a90627f3119d0fe662fdb89">sys_time_get_date_utc</a> (<a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint16_t *year, uint8_t *month, uint8_t *day, uint8_t *weekday)</td></tr>
+<tr class="memdesc:ga34afa8ff2a90627f3119d0fe662fdb89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts date components from a sys_time_t structure.  <a href="group__System.html#ga34afa8ff2a90627f3119d0fe662fdb89">More...</a><br /></td></tr>
+<tr class="separator:ga34afa8ff2a90627f3119d0fe662fdb89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga172740122067a523d9d32478126db59b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga172740122067a523d9d32478126db59b">sys_time_set_time_utc</a> (<a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint8_t hours, uint8_t minutes, uint8_t seconds)</td></tr>
+<tr class="memdesc:ga172740122067a523d9d32478126db59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets time components in a sys_time_t structure, preserving the date.  <a href="group__System.html#ga172740122067a523d9d32478126db59b">More...</a><br /></td></tr>
+<tr class="separator:ga172740122067a523d9d32478126db59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad6616ff63c8cbdbaf3fd97697bb074c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gaad6616ff63c8cbdbaf3fd97697bb074c">sys_time_set_date_utc</a> (<a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *time, uint16_t year, uint8_t month, uint8_t day)</td></tr>
+<tr class="memdesc:gaad6616ff63c8cbdbaf3fd97697bb074c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets date components in a sys_time_t structure, preserving the time.  <a href="group__System.html#gaad6616ff63c8cbdbaf3fd97697bb074c">More...</a><br /></td></tr>
+<tr class="separator:gaad6616ff63c8cbdbaf3fd97697bb074c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ca6ec26efbd88031d42509a07482f3d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga4ca6ec26efbd88031d42509a07482f3d">sys_time_compare_ns</a> (const <a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *start, const <a class="el" href="group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *end)</td></tr>
+<tr class="memdesc:ga4ca6ec26efbd88031d42509a07482f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the difference in nanoseconds between two sys_time_t structures.  <a href="group__System.html#ga4ca6ec26efbd88031d42509a07482f3d">More...</a><br /></td></tr>
+<tr class="separator:ga4ca6ec26efbd88031d42509a07482f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines system time management functions. </p>
 <p>This file declares various system methods for managing time and date. </p>
 
 <p class="definition">Definition in file <a class="el" href="time_8h_source.html">time.h</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a45596b2dc3b59917dfbbf36d5b3d4816"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45596b2dc3b59917dfbbf36d5b3d4816">&#9670;&nbsp;</a></span>sys_time_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structsys__time.html">sys_time</a>  <a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a system time structure. </p>
-<p>This structure is used to represent time in the system, including the current UTC time with nanosecond precision. Timezones are not included in this structure at the moment. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a4ca6ec26efbd88031d42509a07482f3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ca6ec26efbd88031d42509a07482f3d">&#9670;&nbsp;</a></span>sys_time_compare_ns()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int64_t sys_time_compare_ns </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>start</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>end</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculates the difference in nanoseconds between two sys_time_t structures. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">start</td><td>Pointer to the start time. If <code>NULL</code>, this is treated as the epoch (seconds since January 1, 1970). </td></tr>
-    <tr><td class="paramname">end</td><td>Pointer to the end time. If <code>NULL</code>, this is treated as the current time. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The difference in nanoseconds. If end is earlier than start, returns a negative value. </dd></dl>
-
-</div>
-</div>
-<a id="a34afa8ff2a90627f3119d0fe662fdb89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34afa8ff2a90627f3119d0fe662fdb89">&#9670;&nbsp;</a></span>sys_time_get_date_utc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_time_get_date_utc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t *&#160;</td>
-          <td class="paramname"><em>year</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>month</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>day</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>weekday</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extracts date components from a sys_time_t structure. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Pointer to a sys_time_t structure to extract date from. </td></tr>
-    <tr><td class="paramname">year</td><td>Pointer to store year (e.g., 2025), or NULL to skip. </td></tr>
-    <tr><td class="paramname">month</td><td>Pointer to store month (1-12), or NULL to skip. </td></tr>
-    <tr><td class="paramname">day</td><td>Pointer to store day (1-31), or NULL to skip. </td></tr>
-    <tr><td class="paramname">weekday</td><td>Pointer to store weekday (0-6, where 0=Sunday), or NULL to skip. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, false on error. </dd></dl>
-
-</div>
-</div>
-<a id="a664e2499cff45dfad7da8a16ad873dfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a664e2499cff45dfad7da8a16ad873dfd">&#9670;&nbsp;</a></span>sys_time_get_time_utc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_time_get_time_utc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>hours</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>minutes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>seconds</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extracts time components from a sys_time_t structure. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Pointer to a sys_time_t structure to extract time from. </td></tr>
-    <tr><td class="paramname">hours</td><td>Pointer to store hours (0-23), or NULL to skip. </td></tr>
-    <tr><td class="paramname">minutes</td><td>Pointer to store minutes (0-59), or NULL to skip. </td></tr>
-    <tr><td class="paramname">seconds</td><td>Pointer to store seconds (0-59), or NULL to skip. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, false on error. </dd></dl>
-
-</div>
-</div>
-<a id="a0f593b86e80e479fff851b0b0c715da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f593b86e80e479fff851b0b0c715da0">&#9670;&nbsp;</a></span>sys_time_get_utc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_time_get_utc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>time</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current UTC time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Pointer to a sys_time_t structure to fill with current time. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, false on error. </dd></dl>
-
-</div>
-</div>
-<a id="aad6616ff63c8cbdbaf3fd97697bb074c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad6616ff63c8cbdbaf3fd97697bb074c">&#9670;&nbsp;</a></span>sys_time_set_date_utc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_time_set_date_utc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>year</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>month</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>day</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets date components in a sys_time_t structure, preserving the time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Pointer to a sys_time_t structure to modify. </td></tr>
-    <tr><td class="paramname">year</td><td>Year to set (supports pre-epoch dates, e.g., 1969, 1900). </td></tr>
-    <tr><td class="paramname">month</td><td>Month to set (1-12). </td></tr>
-    <tr><td class="paramname">day</td><td>Day to set (1-31). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, false on error or invalid parameters. </dd></dl>
-
-</div>
-</div>
-<a id="a172740122067a523d9d32478126db59b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a172740122067a523d9d32478126db59b">&#9670;&nbsp;</a></span>sys_time_set_time_utc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_time_set_time_utc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="time_8h.html#a45596b2dc3b59917dfbbf36d5b3d4816">sys_time_t</a> *&#160;</td>
-          <td class="paramname"><em>time</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>hours</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>minutes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>seconds</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets time components in a sys_time_t structure, preserving the date. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Pointer to a sys_time_t structure to modify. </td></tr>
-    <tr><td class="paramname">hours</td><td>Hours to set (0-23). </td></tr>
-    <tr><td class="paramname">minutes</td><td>Minutes to set (0-59). </td></tr>
-    <tr><td class="paramname">seconds</td><td>Seconds to set (0-59). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, false on error or invalid parameters. </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->
