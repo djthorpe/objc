@@ -27,7 +27,7 @@
     return self; // No need to allocate if capacity is zero
   }
 
-  // Allocate memory for the  data
+  // Allocate memory for the data
   _data = sys_malloc(capacity);
   if (_data == 0) {
     [self release];
