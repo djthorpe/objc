@@ -5,7 +5,7 @@
 #   docker buildx build -f docker/Dockerfile.bookworm --build-arg PLATFORM=arm64 --tag bookworm-builder .
 #   docker buildx build -f docker/Dockerfile.bookworm --build-arg PLATFORM=x86_64 --tag bookworm-builder .
 #
-# RUN TESTS (clang/gcc):
+# RUN TESTS (gcc/clang):
 #   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && make clean && CC=gcc make tests"
 #   docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && make clean && CC=clang make tests"
 #
@@ -14,5 +14,5 @@ FROM --platform=$PLATFORM debian:bookworm
 
 # Install build dependencies
 RUN apt update && apt upgrade -y && \
-    apt install -y --no-install-recommends build-essential cmake git clang gobjc
+    apt install -y --no-install-recommends build-essential cmake git clang gobjc libssl-dev
 

@@ -1,10 +1,14 @@
 set(NAME "runtime-sys")
 
+# Find OpenSSL
+find_package(OpenSSL REQUIRED)
+
 add_library(${NAME} STATIC
     abort.c
     exception.c
     mutex.c
     sys.c
+    ../openssl/hash.c
     ../posix/malloc.c
     ../posix/puts.c
     ../posix/random.c
@@ -18,4 +22,9 @@ add_library(${NAME} STATIC
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
     ${CMAKE_CURRENT_LIST_DIR}/../../../include/runtime-${RUNTIME}
+    ${TOOLCHAIN_PATH}/include
+)
+target_link_libraries(${NAME} PRIVATE
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )

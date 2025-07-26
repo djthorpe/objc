@@ -6,6 +6,7 @@
  * and resources.
  */
 #pragma once
+#include "hash.h"
 #include "malloc.h"
 #include "printf.h"
 #include "random.h"
