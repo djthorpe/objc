@@ -26,7 +26,7 @@ bool sys_time_get_utc(sys_time_t *time) {
 }
 
 struct tm *gmtime(const time_t *clock) {
-  static struct tm _tm;
+  __thread struct tm _tm;
   if (clock == NULL) {
     return NULL;
   }
