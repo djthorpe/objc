@@ -11,6 +11,7 @@
 
 /**
  * @def objc_assert(condition)
+ * @ingroup objc   
  * @brief Asserts that a condition is true.
  * @param condition The condition to check.
  * @details If the `DEBUG` macro is defined, this macro will check the given
