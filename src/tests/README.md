@@ -37,9 +37,9 @@ The tests are organized into three main categories:
 | NXFoundation_17 | Null Value Testing | Tests NXNull singleton functionality and consistency. |
 | NXFoundation_18 | String Method Testing | Comprehensive NXString tests: formatting, comparison, operations, JSON escaping. |
 | NXFoundation_19 | Number Comprehensive Testing | Comprehensive NXNumber tests: all types, conversions, edge cases, memory management. |
-| NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, and NXDate. |
-| NXFoundation_21 | Array Testing | Tests complete NXArray functionality: creation, access methods, JSON serialization, mutable operations (append/insert/remove), circular reference prevention, capacity management, nested arrays, equality comparison, and edge cases across 26 test suites. |
-| NXFoundation_22 | Data Operations | Tests NXData binary data storage with initialization methods, capacity management, string/bytes handling, factory methods, memory management, hexString encoding (empty data, single/multiple bytes, edge values, consistency), base64String encoding (empty data, RFC 4648 test vectors, binary data, padding cases, large data performance), cross-format consistency, and comprehensive edge cases across 44 test scenarios. |
+| NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, NXDate, and NXData with Base64 serialization. |
+| NXFoundation_21 | Array Testing | Tests NXArray functionality: creation, access, JSON serialization, mutable operations, and edge cases. |
+| NXFoundation_22 | Data Operations | Tests NXData binary data storage: initialization, memory management, hexString/base64String encoding, and cross-format consistency. |
 
 ---
 
