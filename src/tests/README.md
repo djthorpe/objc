@@ -18,28 +18,28 @@ The tests are organized into three main categories:
 
 | Test Name | Purpose | Description |
 |-----------|---------|-------------|
-| NXFoundation_01 | Zone Management | Tests basic zone allocation, default zone setup, and deallocation. |
-| NXFoundation_02 | Basic Object Creation | Tests fundamental object creation, class verification, and release. |
-| NXFoundation_03 | Class Hierarchy Testing | Tests class inheritance and type checking with custom TestA/TestB hierarchy. |
+| NXFoundation_01 | Zone Management | Tests zone allocation, default zone setup, and deallocation. |
+| NXFoundation_02 | Basic Object Creation | Tests object creation, class verification, and release. |
+| NXFoundation_03 | Class Hierarchy Testing | Tests inheritance and type checking with TestA/TestB hierarchy. |
 | NXFoundation_04 | String Operations | Tests NXString creation, C string interoperability, and length validation. |
-| NXFoundation_05 | Object Description | Tests object description string generation and memory management. |
-| NXFoundation_06 | Autorelease Pool Testing | Tests autorelease pool creation, object management, and cleanup. |
-| NXFoundation_07 | Thread Sleep Operations | Tests threading functionality with `[NXThread sleepForTimeInterval:]`. |
-| NXFoundation_08 | Application Runner | Tests basic application execution with `[NXApplication run]`. |
-| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, time intervals, descriptions, component getters, date comparisons, and addTimeInterval/dateByAddingTimeInterval methods. |
-| NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation, sizing, and cleanup. |
+| NXFoundation_05 | Object Description | Tests object description generation and memory management. |
+| NXFoundation_06 | Autorelease Pool Testing | Tests autorelease pool creation, management, and cleanup. |
+| NXFoundation_07 | Thread Sleep Operations | Tests threading with `[NXThread sleepForTimeInterval:]`. |
+| NXFoundation_08 | Application Runner | Tests application execution with `[NXApplication run]`. |
+| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, intervals, descriptions, components, and comparisons. |
+| NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation and cleanup. |
 | NXFoundation_11 | Architecture Information | Tests system architecture detection (bits, endianness, cores). |
-| NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and range validation. |
-| NXFoundation_13 | Time Interval Operations | Tests time constants, arithmetic, conversions, and description formatting. |
-| NXFoundation_14 | Date Edge Cases | Tests NXDate overflow handling and edge cases with large intervals. |
+| NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and validation. |
+| NXFoundation_13 | Time Interval Operations | Tests time constants, arithmetic, conversions, and formatting. |
+| NXFoundation_14 | Date Edge Cases | Tests NXDate overflow and edge cases with large intervals. |
 | NXFoundation_15 | Number Boolean Operations | Tests NXNumber boolean functionality and arithmetic. |
 | NXFoundation_16 | Random Number Statistics | Tests random number quality, duplicates, and distribution. |
 | NXFoundation_17 | Null Value Testing | Tests NXNull singleton functionality and consistency. |
-| NXFoundation_18 | String Method Testing | Comprehensive NXString tests: formatting, comparison, operations, JSON escaping. |
-| NXFoundation_19 | Number Comprehensive Testing | Comprehensive NXNumber tests: all types, conversions, edge cases, memory management. |
-| NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for NXString, NXNumber, NXNull, NXDate, and NXData with Base64 serialization. |
-| NXFoundation_21 | Array Testing | Tests NXArray functionality: creation, access, JSON serialization, mutable operations, and edge cases. |
-| NXFoundation_22 | Data Operations | Tests NXData binary data storage: initialization, memory management, hexString/base64String encoding, append operations (appendString/appendBytes/appendData), capacity expansion, and cross-format consistency. |
+| NXFoundation_18 | String Method Testing | Tests NXString formatting, comparison, operations, and JSON escaping. |
+| NXFoundation_19 | Number Testing | Tests NXNumber types, conversions, edge cases, and memory management. |
+| NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for core types with Base64 serialization. |
+| NXFoundation_21 | Array Testing | Tests NXArray creation, access, JSON serialization, and mutable operations. |
+| NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, hashing, and equality. |
 
 ---
 
@@ -50,22 +50,22 @@ The tests are organized into three main categories:
 | runtime_01 | Basic Object Introspection | Tests object/class introspection: `object_getClassName()`, `object_getClass()`, equality. |
 | runtime_02 | Custom Class Testing | Tests runtime behavior with custom classes and introspection. |
 | runtime_03 | Constant String Testing | Tests NXConstantString: creation, length, C string conversion, equality. |
-| runtime_04 | Getter/Setter Method Testing | Tests getter/setter methods with custom Test class and value manipulation. |
-| runtime_05 | Instance Variable Access | Tests instance variable access with custom objects and multiple values. |
+| runtime_04 | Getter/Setter Method Testing | Tests getter/setter methods with custom Test class. |
+| runtime_05 | Instance Variable Access | Tests instance variable access with custom objects. |
 | runtime_06 | Category Method Testing | Tests category method functionality with description methods. |
-| runtime_08 | Method Chaining | Tests method chaining, call tracking, and `[[Foo foo] bar]` patterns. |
-| runtime_09 | Method Type Conflict Resolution | Tests handling of method signature conflicts between class/instance methods. |
-| runtime_10 | Class Method Dispatch | Tests class method invocation with type casting and self redefinition. |
-| runtime_11 | Root Class Testing | Tests custom root class with `OBJC_ROOT_CLASS` and class lookup. |
-| runtime_12 | Root Class with Subclass | Tests root class inheritance with simple subclass hierarchy. |
-| runtime_13 | Multiple Subclass Testing | Tests root class with multiple subclasses and inheritance paths. |
-| runtime_14 | Instance Variables and Accessors | Tests root class subclass with instance variables and accessor methods. |
-| runtime_15 | Method Selector Testing | Tests hidden `_cmd` argument and `sel_getName()` functionality. |
+| runtime_08 | Method Chaining | Tests method chaining and `[[Foo foo] bar]` patterns. |
+| runtime_09 | Method Type Conflict Resolution | Tests method signature conflicts between class/instance methods. |
+| runtime_10 | Class Method Dispatch | Tests class method invocation with type casting. |
+| runtime_11 | Root Class Testing | Tests custom root class with `OBJC_ROOT_CLASS`. |
+| runtime_12 | Root Class with Subclass | Tests root class inheritance with subclass hierarchy. |
+| runtime_13 | Multiple Subclass Testing | Tests root class with multiple subclasses. |
+| runtime_14 | Instance Variables and Accessors | Tests root class subclass with instance variables and accessors. |
+| runtime_15 | Method Selector Testing | Tests hidden `_cmd` argument and `sel_getName()`. |
 | runtime_16 | Type Encoding Testing | Tests `@encode` directive and type encoding constants. |
 | runtime_17 | Enumeration and Bitfields | Tests enumeration types with bitfield instance variables. |
 | runtime_18 | Complex Bitfield Structures | Tests complex bitfield structures as instance variables. |
 | runtime_19 | Forward Class Declaration | Tests `@class` forward declarations and incomplete types. |
-| runtime_20 | Function Message Dispatch | Tests function-based message dispatch and dynamic method creation. |
+| runtime_20 | Function Message Dispatch | Tests function-based message dispatch and dynamic methods. |
 | runtime_21 | Informal Protocol Testing | Tests informal protocols (categories) with method addition. |
 | runtime_22 | Class Initialization | Tests `+initialize` method behavior and inheritance. |
 | runtime_23 | Automatic Initialize Call | Tests automatic `+initialize` invocation and class state setup. |
@@ -74,7 +74,7 @@ The tests are organized into three main categories:
 | runtime_26 | Protocol Type Variables | Tests protocol-typed variables (`id<Protocol>`) and method invocation. |
 | runtime_27 | Multiple Protocol Adoption | Tests multiple protocol conformance and implementation. |
 | runtime_28 | Protocol Adoption in Category | Tests protocol adoption through categories. |
-| runtime_29 | Protocol Runtime Access | Tests runtime protocol access with `@protocol()` and introspection. |
+| runtime_29 | Protocol Runtime Access | Tests runtime protocol access with `@protocol()`. |
 | runtime_30 | Protocol Definition and Access | Tests protocol definition and runtime access with `proto_getName()`. |
 | runtime_31 | Protocol Inheritance | Tests protocol inheritance and conformance checking. |
 | runtime_32 | Protocol Object Properties | Tests protocol object validation, properties, and operations. |
@@ -90,8 +90,9 @@ The tests are organized into three main categories:
 
 | Test Name | Purpose | Description |
 |-----------|---------|-------------|
-| sys_01 | Printf System Functions | Tests `sys_printf()` and `sys_sprintf()` with comprehensive format specifiers and edge cases. |
+| sys_00 | Memory System Functions | Tests `sys_malloc()`, `sys_free()`, `sys_memset()`, `sys_memcpy()`, `sys_memmove()`, `sys_memcmp()`. |
+| sys_01 | Printf System Functions | Tests `sys_printf()` and `sys_sprintf()` with format specifiers and edge cases. |
 | sys_02 | Time System Functions | Tests `sys_time_get_utc()` with validation, NULL handling, and consistency. |
-| sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation, consistency, and boundary testing. |
-| sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with validation and distribution testing. |
-| sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms: initialization, known test vectors, multi-part updates, error handling, and cleanup behavior. |
+| sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation and boundary testing. |
+| sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with distribution testing. |
+| sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms and test vectors. |

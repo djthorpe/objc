@@ -47,3 +47,12 @@ extern void *sys_memcpy(void *dest, const void *src, size_t size);
  * @return Pointer to destination, or NULL on error
  */
 extern void *sys_memmove(void *dest, const void *src, size_t size);
+
+/**
+ * @brief Compare two memory blocks
+ * @param ptr1 First memory block
+ * @param ptr2 Second memory block
+ * @param num Number of bytes to compare
+ * @return 0 if equal, negative if ptr1 < ptr2, positive if ptr1 > ptr2
+ */
+extern int sys_memcmp(const void *ptr1, const void *ptr2, size_t num);

@@ -468,6 +468,24 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// OBJECT PROTOCOL METHODS
+
+- (BOOL)isEqual:(id)anObject {
+  if (self == anObject) {
+    return YES; // Same instance
+  }
+  if (anObject == nil || object_isKindOfClass(anObject, isa) == NO) {
+    return NO; // Not the same class
+  }
+  NXData *other = (NXData *)anObject;
+  if (_size != other->_size) {
+    return NO; // Different sizes
+  }
+  // Compare the data bytes
+  return sys_memcmp(_data, other->_data, _size) == 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // JSON PROTOCOL METHODS
 
 /**

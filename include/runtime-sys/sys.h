@@ -7,7 +7,7 @@
  */
 #pragma once
 #include "hash.h"
-#include "malloc.h"
+#include "memory.h"
 #include "printf.h"
 #include "random.h"
 #include "thread.h"

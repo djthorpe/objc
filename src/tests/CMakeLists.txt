@@ -16,6 +16,7 @@ include_directories(
 )
 
 # Test cases - system functions
+add_subdirectory(sys_00)
 add_subdirectory(sys_01)
 add_subdirectory(sys_02)
 add_subdirectory(sys_03)
