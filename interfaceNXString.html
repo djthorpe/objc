@@ -109,6 +109,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:ab1ec72b601d56d58f0d2f2d73ab42c57"><td class="memItemLeft" align="right" valign="top">(unsigned int)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#ab1ec72b601d56d58f0d2f2d73ab42c57">length</a></td></tr>
 <tr class="memdesc:ab1ec72b601d56d58f0d2f2d73ab42c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the string.  <a href="#ab1ec72b601d56d58f0d2f2d73ab42c57">More...</a><br /></td></tr>
 <tr class="separator:ab1ec72b601d56d58f0d2f2d73ab42c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f928cc59a56e54cc247ab2535b0707"><td class="memItemLeft" align="right" valign="top">(void *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a58f928cc59a56e54cc247ab2535b0707">bytes</a></td></tr>
+<tr class="memdesc:a58f928cc59a56e54cc247ab2535b0707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mutable C-string representation of the string.  <a href="#a58f928cc59a56e54cc247ab2535b0707">More...</a><br /></td></tr>
+<tr class="separator:a58f928cc59a56e54cc247ab2535b0707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bcf23a50bea6cb88d991b5196037230"><td class="memItemLeft" align="right" valign="top">(size_t)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230">capacity</a></td></tr>
 <tr class="memdesc:a3bcf23a50bea6cb88d991b5196037230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the capacity of the string.  <a href="#a3bcf23a50bea6cb88d991b5196037230">More...</a><br /></td></tr>
 <tr class="separator:a3bcf23a50bea6cb88d991b5196037230"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -356,6 +359,27 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if successfully modified, NO if it wasn't possible to allocate additional capacity. </dd></dl>
+
+</div>
+</div>
+<a id="a58f928cc59a56e54cc247ab2535b0707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f928cc59a56e54cc247ab2535b0707">&#9670;&nbsp;</a></span>bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void *) bytes </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the mutable C-string representation of the string. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a null-terminated C-string representing the string content. Returns NULL if it the string cannot be made mutable.</dd></dl>
+<p>If the string is immutable, this method makes the string mutable and returns a pointer to the internal buffer. If the string is already mutable, it simply returns the pointer to the internal buffer. </p>
 
 </div>
 </div>
