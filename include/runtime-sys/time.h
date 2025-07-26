@@ -8,6 +8,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Represents a system time structure.
  *
@@ -84,3 +88,7 @@ bool sys_time_set_date_utc(sys_time_t *time, uint16_t year, uint8_t month,
  * a negative value.
  */
 int64_t sys_time_compare_ns(const sys_time_t *start, const sys_time_t *end);
+
+#ifdef __cplusplus
+}
+#endif

@@ -14,6 +14,10 @@
 #include "time.h"
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Outputs a string to the system console or standard output.
  * @param str A pointer to a null-terminated string to be output. If `str` is
@@ -60,3 +64,7 @@ extern void sys_abort(void);
  * @note This function does not return to the caller.
  */
 extern void sys_panicf(const char *fmt, ...);
+
+#ifdef __cplusplus
+}
+#endif

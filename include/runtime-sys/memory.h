@@ -8,6 +8,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Allocates a block of memory.
  * @param size The number of bytes to allocate.
@@ -56,3 +60,7 @@ extern void *sys_memmove(void *dest, const void *src, size_t size);
  * @return 0 if equal, negative if ptr1 < ptr2, positive if ptr1 > ptr2
  */
 extern int sys_memcmp(const void *ptr1, const void *ptr2, size_t num);
+
+#ifdef __cplusplus
+}
+#endif

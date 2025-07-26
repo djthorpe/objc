@@ -1,4 +1,4 @@
-#include <pico/random.h>
+#include <pico/rand.h>
 #include <runtime-sys/sys.h>
 #include <stdint.h>
 

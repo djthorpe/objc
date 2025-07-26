@@ -8,6 +8,10 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Prints formatted output to the system console.
  * @param format A printf-style format string that specifies how subsequent
@@ -51,3 +55,7 @@ extern size_t sys_sprintf(char *buf, size_t sz, const char *format, ...);
  */
 extern size_t sys_vsprintf(char *buf, size_t sz, const char *format,
                            va_list args);
+
+#ifdef __cplusplus
+}
+#endif

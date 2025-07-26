@@ -26,7 +26,7 @@ The tests are organized into three main categories:
 | NXFoundation_06 | Autorelease Pool Testing | Tests autorelease pool creation, management, and cleanup. |
 | NXFoundation_07 | Thread Sleep Operations | Tests threading with `[NXThread sleepForTimeInterval:]`. |
 | NXFoundation_08 | Application Runner | Tests application execution with `[NXApplication run]`. |
-| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, intervals, descriptions, components, and comparisons. |
+| NXFoundation_09 | Date and Time Operations | Tests NXDate creation, intervals, descriptions, and comparisons. |
 | NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation and cleanup. |
 | NXFoundation_11 | Architecture Information | Tests system architecture detection (bits, endianness, cores). |
 | NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and validation. |
@@ -39,7 +39,7 @@ The tests are organized into three main categories:
 | NXFoundation_19 | Number Testing | Tests NXNumber types, conversions, edge cases, and memory management. |
 | NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for core types with Base64 serialization. |
 | NXFoundation_21 | Array Testing | Tests NXArray creation, access, JSON serialization, and mutable operations. |
-| NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, hashing, and equality. |
+| NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, and equality comparisons. |
 
 ---
 
@@ -77,7 +77,7 @@ The tests are organized into three main categories:
 | runtime_29 | Protocol Runtime Access | Tests runtime protocol access with `@protocol()`. |
 | runtime_30 | Protocol Definition and Access | Tests protocol definition and runtime access with `proto_getName()`. |
 | runtime_31 | Protocol Inheritance | Tests protocol inheritance and conformance checking. |
-| runtime_32 | Protocol Object Properties | Tests protocol object validation, properties, and operations. |
+| runtime_32 | Protocol Object Properties | Tests protocol object validation and operations. |
 | runtime_33 | Protocol Identity and Equality | Tests protocol identity, comparison, and uniqueness. |
 | runtime_34 | Variadic Method Arguments | Tests variadic methods with `va_list` and variable arguments. |
 | runtime_35 | Static Variables in Classes | Tests static variables within class implementations. |
@@ -91,8 +91,8 @@ The tests are organized into three main categories:
 | Test Name | Purpose | Description |
 |-----------|---------|-------------|
 | sys_00 | Memory System Functions | Tests `sys_malloc()`, `sys_free()`, `sys_memset()`, `sys_memcpy()`, `sys_memmove()`, `sys_memcmp()`. |
-| sys_01 | Printf System Functions | Tests `sys_printf()` and `sys_sprintf()` with format specifiers and edge cases. |
-| sys_02 | Time System Functions | Tests `sys_time_get_utc()` with validation, NULL handling, and consistency. |
-| sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation and boundary testing. |
+| sys_01 | Printf System Functions | Tests `sys_printf()`, `sys_sprintf()`, and `sys_vsprintf()` with 102 tests covering format specifiers, width modifiers, and buffer overflow. |
+| sys_02 | Time System Functions | Tests `sys_time_get_utc()` with validation and NULL handling. |
+| sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation and boundary checks. |
 | sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with distribution testing. |
 | sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms and test vectors. |

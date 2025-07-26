@@ -21,16 +21,18 @@ set(CMAKE_C_EXTENSIONS ON)  # Enable GNU extensions for Pico SDK compatibility
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Lowercase and uppercase system name
+string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
+string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
+
 # Compile options
 add_compile_options(
     "-Wall"
     "-Wextra"
     "$<$<CONFIG:DEBUG>:-DDEBUG>"
     "$<$<CONFIG:RELEASE>:-O3>"
+    "-DSYSTEM_NAME_${SYSTEM_NAME_UPPER}"
 )
-
-# Lowercase system name for directory structure
-string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 
 # Libraries
 add_subdirectory("src/malloc")
