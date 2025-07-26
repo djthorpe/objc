@@ -143,6 +143,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:ga795b667df1ea24eeb5045a9f625f8611"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga795b667df1ea24eeb5045a9f625f8611">sys_panicf</a> (const char *fmt,...)</td></tr>
 <tr class="memdesc:ga795b667df1ea24eeb5045a9f625f8611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a formatted panic message and aborts the process.  <a href="#ga795b667df1ea24eeb5045a9f625f8611">More...</a><br /></td></tr>
 <tr class="separator:ga795b667df1ea24eeb5045a9f625f8611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd9cf2d40386c9cef130e39d39155293"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gafd9cf2d40386c9cef130e39d39155293">sys_thread_numcores</a> (void)</td></tr>
+<tr class="memdesc:gafd9cf2d40386c9cef130e39d39155293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of CPU cores available on the host system.  <a href="#gafd9cf2d40386c9cef130e39d39155293">More...</a><br /></td></tr>
+<tr class="separator:gafd9cf2d40386c9cef130e39d39155293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacb5a950a99bad2a938dee8c861e50269"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gacb5a950a99bad2a938dee8c861e50269">sys_sleep</a> (int32_t msec)</td></tr>
+<tr class="memdesc:gacb5a950a99bad2a938dee8c861e50269"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the execution of the current thread for a specified time.  <a href="#gacb5a950a99bad2a938dee8c861e50269">More...</a><br /></td></tr>
+<tr class="separator:gacb5a950a99bad2a938dee8c861e50269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>System methods for managing memory, threads and resources. </p>
@@ -727,6 +733,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 
 </div>
 </div>
+<a id="gacb5a950a99bad2a938dee8c861e50269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacb5a950a99bad2a938dee8c861e50269">&#9670;&nbsp;</a></span>sys_sleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_sleep </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>msec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pauses the execution of the current thread for a specified time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msec</td><td>The number of milliseconds to sleep. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga340ab3d1b3e0cef587d52b580cd59d25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga340ab3d1b3e0cef587d52b580cd59d25">&#9670;&nbsp;</a></span>sys_sprintf()</h2>
 
@@ -776,6 +808,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of characters that would have been written if the buffer was sufficiently large, not counting the null terminator. </dd></dl>
+
+</div>
+</div>
+<a id="gafd9cf2d40386c9cef130e39d39155293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafd9cf2d40386c9cef130e39d39155293">&#9670;&nbsp;</a></span>sys_thread_numcores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t sys_thread_numcores </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of CPU cores available on the host system. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of CPU cores available on the system. Returns 1 if the number of cores cannot be determined or if the system has only one core.</dd></dl>
+<p>This function queries the system to determine the total number of processing cores available. </p>
 
 </div>
 </div>
