@@ -1,3 +1,8 @@
+/**
+ * @file objc.h
+ * @brief Defines the Objective-C runtime.
+ * @defgroup objc Objective-C Runtime
+ */
 #pragma once
 
 #include "assert.h"
