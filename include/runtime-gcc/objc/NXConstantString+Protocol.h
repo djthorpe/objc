@@ -18,6 +18,8 @@
 
 /**
  * @brief Protocol for constant string objects.
+ * @headerfile NXConstantString+Protocol.h objc/objc.h
+ * @ingroup objc 
  *
  * The NXConstantStringProtocol defines the minimal interface that constant
  * string objects must implement to provide basic string functionality. This
@@ -27,8 +29,6 @@
  * Classes conforming to this protocol can be used wherever basic string
  * operations such as accessing the C string representation or getting the
  * length are required.
- *
- * \headerfile NXConstantString+Protocol.h objc/objc.h
  */
 @protocol NXConstantStringProtocol
 
