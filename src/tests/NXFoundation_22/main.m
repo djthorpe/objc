@@ -90,12 +90,12 @@ int test_data_methods(void) {
   {
     NXData *data = [[NXData alloc] initWithString:@"Hello"];
     test_assert(data != nil);
-    test_assert([data size] == 6); // 5 chars + null terminator
-    test_assert([data capacity] == 6);
+    test_assert([data size] == 5); // 5 chars, no null terminator
+    test_assert([data capacity] == 5);
     test_assert([data bytes] != NULL);
 
     const char *bytes = (const char *)[data bytes];
-    test_cstrings_equal(bytes, "Hello");
+    test_assert(strncmp(bytes, "Hello", 5) == 0);
     [data release];
     printf("  ✓ String initialization works\n");
   }
@@ -115,11 +115,11 @@ int test_data_methods(void) {
   {
     NXData *data = [NXData dataWithString:@"Test"];
     test_assert(data != nil);
-    test_assert([data size] == 5); // 4 chars + null terminator
-    test_assert([data capacity] == 5);
+    test_assert([data size] == 4); // 4 chars, no null terminator
+    test_assert([data capacity] == 4);
 
     const char *bytes = (const char *)[data bytes];
-    test_cstrings_equal(bytes, "Test");
+    test_assert(strncmp(bytes, "Test", 4) == 0);
     printf("  ✓ Factory +dataWithString works\n");
   }
 
@@ -186,10 +186,10 @@ int test_data_methods(void) {
     NXData *data = [[NXData alloc] initWithString:@"Test\n\t\\"];
     test_assert(data != nil);
     test_assert([data size] ==
-                8); // Test\n\t\\ is 7 characters + null terminator = 8
+                7); // Test\n\t\\ is 7 characters, no null terminator
 
     const char *bytes = (const char *)[data bytes];
-    test_cstrings_equal(bytes, "Test\n\t\\");
+    test_assert(strncmp(bytes, "Test\n\t\\", 7) == 0);
     [data release];
     printf("  ✓ Special characters in string work\n");
   }
@@ -335,8 +335,8 @@ int test_data_methods(void) {
     NXData *data = [[NXData alloc] initWithString:@"Hi"];
     NXString *hexStr = [data hexString];
     test_assert(hexStr != nil);
-    // "Hi" + null terminator = 0x48, 0x69, 0x00
-    test_cstrings_equal([hexStr cStr], "486900");
+    // "Hi" without null terminator = 0x48, 0x69
+    test_cstrings_equal([hexStr cStr], "4869");
     [data release];
     printf("  ✓ hexString for string data works\n");
   }
@@ -627,12 +627,214 @@ int test_data_methods(void) {
 
     test_assert(hexStr != nil);
     test_assert(b64Str != nil);
-    // "ABC\0" = 0x41, 0x42, 0x43, 0x00
-    test_cstrings_equal([hexStr cStr], "41424300");
-    test_cstrings_equal([b64Str cStr], "QUJDAA==");
+    // "ABC" without null terminator = 0x41, 0x42, 0x43
+    test_cstrings_equal([hexStr cStr], "414243");
+    test_cstrings_equal([b64Str cStr], "QUJD");
 
     [data release];
     printf("  ✓ String data encoding works correctly\n");
+  }
+
+  // APPEND METHOD TESTS
+  printf("Test 44: appendString - basic functionality\n");
+  {
+    NXData *data = [[NXData alloc] initWithString:@"Hello"];
+    test_assert([data size] == 5); // "Hello" without null terminator
+
+    BOOL result = [data appendString:@" World"];
+    test_assert(result == YES);
+    test_assert(
+        [data size] ==
+        11); // "Hello" + " World" (5 + 6, no null terminator from append)
+
+    const char *bytes = (const char *)[data bytes];
+    test_assert(strncmp(bytes, "Hello World", 11) == 0);
+    [data release];
+    printf("  ✓ String appending works correctly\n");
+  }
+
+  printf("Test 45: appendString - empty string\n");
+  {
+    NXData *data = [[NXData alloc] initWithString:@"Test"];
+    size_t originalSize = [data size];
+
+    BOOL result = [data appendString:@""];
+    test_assert(result == YES);
+    test_assert([data size] == originalSize);
+    [data release];
+    printf("  ✓ Empty string append handled correctly\n");
+  }
+
+  printf("Test 46: appendString - capacity expansion\n");
+  {
+    NXData *data = [[NXData alloc] initWithCapacity:5];
+    [data appendString:@"Hi"];
+    test_assert([data size] == 2);
+    test_assert([data capacity] >= 5);
+
+    // This should trigger capacity expansion
+    BOOL result = [data appendString:@"ExtraLongString"];
+    test_assert(result == YES);
+    test_assert([data size] == 17); // 2 + 15
+    test_assert([data capacity] >= 17);
+    [data release];
+    printf("  ✓ String append with capacity expansion works\n");
+  }
+
+  printf("Test 47: appendBytes - basic functionality\n");
+  {
+    char initial[] = {0x01, 0x02};
+    NXData *data = [[NXData alloc] initWithBytes:initial size:2];
+
+    char append[] = {0x03, 0x04, 0x05};
+    BOOL result = [data appendBytes:append size:3];
+    test_assert(result == YES);
+    test_assert([data size] == 5);
+
+    const char *bytes = (const char *)[data bytes];
+    test_assert(bytes[0] == 0x01);
+    test_assert(bytes[1] == 0x02);
+    test_assert(bytes[2] == 0x03);
+    test_assert(bytes[3] == 0x04);
+    test_assert(bytes[4] == 0x05);
+    [data release];
+    printf("  ✓ Bytes appending works correctly\n");
+  }
+
+  printf("Test 48: appendBytes - zero size\n");
+  {
+    NXData *data = [[NXData alloc] initWithCapacity:10];
+    size_t originalSize = [data size];
+
+    char dummy[] = {0xFF};
+    BOOL result = [data appendBytes:dummy size:0];
+    test_assert(result == YES);
+    test_assert([data size] == originalSize);
+    [data release];
+    printf("  ✓ Zero-size bytes append handled correctly\n");
+  }
+
+  printf("Test 49: appendBytes - capacity expansion\n");
+  {
+    NXData *data = [[NXData alloc] initWithCapacity:3];
+    char initial[] = {0xAA, 0xBB};
+    [data appendBytes:initial size:2];
+
+    // This should trigger capacity expansion
+    char large[] = {0xCC, 0xDD, 0xEE, 0xFF, 0x11, 0x22};
+    BOOL result = [data appendBytes:large size:6];
+    test_assert(result == YES);
+    test_assert([data size] == 8);
+    test_assert([data capacity] >= 8);
+    [data release];
+    printf("  ✓ Bytes append with capacity expansion works\n");
+  }
+
+  printf("Test 50: appendData - basic functionality\n");
+  {
+    NXData *data1 = [[NXData alloc] initWithString:@"First"];
+    NXData *data2 = [[NXData alloc] initWithString:@"Second"];
+
+    size_t size1 = [data1 size]; // 5 ("First")
+    size_t size2 = [data2 size]; // 6 ("Second")
+
+    BOOL result = [data1 appendData:data2];
+    test_assert(result == YES);
+    test_assert([data1 size] == size1 + size2);
+
+    const char *bytes = (const char *)[data1 bytes];
+    test_assert(strncmp(bytes, "FirstSecond", 11) == 0);
+
+    [data1 release];
+    [data2 release];
+    printf("  ✓ Data appending works correctly\n");
+  }
+
+  printf("Test 51: appendData - empty data\n");
+  {
+    NXData *data1 = [[NXData alloc] initWithString:@"Content"];
+    NXData *emptyData = [[NXData alloc] init];
+    size_t originalSize = [data1 size];
+
+    BOOL result = [data1 appendData:emptyData];
+    test_assert(result == YES);
+    test_assert([data1 size] == originalSize);
+
+    [data1 release];
+    [emptyData release];
+    printf("  ✓ Empty data append handled correctly\n");
+  }
+
+  printf("Test 52: appendData - capacity expansion\n");
+  {
+    NXData *data1 = [[NXData alloc] initWithCapacity:5];
+    char small[] = {0x01, 0x02};
+    [data1 appendBytes:small size:2];
+
+    char large[] = {0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A};
+    NXData *data2 = [[NXData alloc] initWithBytes:large size:8];
+
+    BOOL result = [data1 appendData:data2];
+    test_assert(result == YES);
+    test_assert([data1 size] == 10);
+    test_assert([data1 capacity] >= 10);
+
+    [data1 release];
+    [data2 release];
+    printf("  ✓ Data append with capacity expansion works\n");
+  }
+
+  printf("Test 53: Mixed append operations\n");
+  {
+    NXData *data = [[NXData alloc] init];
+
+    // Start with string
+    [data appendString:@"Start"];
+    test_assert([data size] == 5);
+
+    // Add some bytes
+    char bytes[] = {0x00, 0xFF};
+    [data appendBytes:bytes size:2];
+    test_assert([data size] == 7);
+
+    // Add another data object
+    NXData *other = [[NXData alloc] initWithString:@"End"];
+    [data appendData:other];
+    test_assert([data size] == 10); // 5 + 2 + 3 ("End")
+
+    // Verify content structure
+    const char *result = (const char *)[data bytes];
+    test_assert(strncmp(result, "Start", 5) == 0);
+    test_assert(result[5] == 0x00);
+    test_assert(result[6] == (char)0xFF);
+    test_assert(strncmp(result + 7, "End", 3) == 0);
+
+    [data release];
+    [other release];
+    printf("  ✓ Mixed append operations work correctly\n");
+  }
+
+  printf("Test 54: Append encoding verification\n");
+  {
+    NXData *data = [[NXData alloc] init];
+
+    // Build data through appends
+    [data appendString:@"AB"];
+    char bytes[] = {0xCD};
+    [data appendBytes:bytes size:1];
+
+    // Verify encoding
+    NXString *hexStr = [data hexString];
+    NXString *b64Str = [data base64String];
+
+    test_assert(hexStr != nil);
+    test_assert(b64Str != nil);
+    // "AB" = 0x41, 0x42, then 0xCD
+    test_cstrings_equal([hexStr cStr], "4142CD");
+    test_cstrings_equal([b64Str cStr], "QULN");
+
+    [data release];
+    printf("  ✓ Append operations preserve encoding correctness\n");
   }
 
   printf("All NXData tests completed successfully!\n");

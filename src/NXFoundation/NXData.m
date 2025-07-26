@@ -54,17 +54,18 @@
   }
 
   // Allocate memory for the data
-  self = [self initWithCapacity:length + 1]; // +1 for null terminator
+  self = [self initWithCapacity:length]; // Only for the string content, no null
+                                         // terminator
   if (!self) {
     return nil;
   } else {
-    _size = _cap;
+    _size = length;
   }
 
-  // Copy the string data into the NXData instance, including
+  // Copy the string data into the NXData instance, excluding
   // null termination
   objc_assert(_data);
-  sys_memcpy(_data, [aString cStr], length + 1);
+  sys_memcpy(_data, [aString cStr], length);
 
   // Return self
   return self;
@@ -131,6 +132,48 @@
  */
 + (NXData *)dataWithBytes:(const void *)bytes size:(size_t)size {
   return [[[NXData alloc] initWithBytes:bytes size:size] autorelease];
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+- (BOOL)_setCapacity:(size_t)capacity {
+  // Check if the new capacity is less than the current size
+  if (capacity < _size) {
+    return NO; // Cannot shrink below current size
+  } else if (capacity == 0 && _size > 0) {
+    return NO; // Cannot set zero capacity with existing data
+  } else if (capacity == _cap) {
+    return YES; // No change needed
+  }
+
+  // If capacity is zero, we don't need to allocate anything
+  if (capacity == 0) {
+    sys_free(_data); // Free existing data if any
+    _data = NULL;
+    _cap = 0;
+    _size = 0;  // Reset size to zero
+    return YES; // Successfully set capacity to zero
+  }
+
+  // Allocate new memory for the data
+  void *data = sys_malloc(capacity);
+  if (data == NULL) {
+    return NO; // Memory allocation failed
+  }
+
+  // Copy existing data to the new buffer, if any
+  if (_data != NULL) {
+    sys_memcpy(data, _data, _size);
+    sys_free(_data); // Free old data buffer
+  }
+
+  // Update the instance variables
+  _data = data;
+  _cap = capacity;
+
+  // Successfully set new capacity
+  return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -225,7 +268,8 @@
   // Calculate the required buffer size
   size_t cap = [self base64Capacity];
 
-  // Create a new mutable string with enough capacity; the null terminator is already included in the calculation
+  // Create a new mutable string with enough capacity; the null terminator is
+  // already included in the calculation
   NXString *result = [NXString stringWithCapacity:cap];
   if (result == NULL) {
     return nil; // Handle memory allocation failure
@@ -313,47 +357,93 @@
 }
 
 /**
- * @brief Appends a string to the data.
- * @param aString The string to append.
- * @return YES if successful, NO otherwise.
+ * @brief Appends a string to the data, not including the null terminator.
  */
 - (BOOL)appendString:(id<NXConstantStringProtocol>)aString {
-  (void)aString; // Mark as intentionally unused
-  // TODO: Implement string appending
-  return NO;
+  objc_assert(aString);
+  size_t length = [aString length];
+  if (length == 0) {
+    return YES; // Nothing to append, return success
+  }
+
+  // Increase the capacity if needed
+  if (_size + length > _cap) {
+    if ([self _setCapacity:_cap + length] == NO) {
+      return NO; // Failed to set new capacity
+    }
+  }
+
+  // Copy the bytes to the end of the existing data
+  const void *bytes = [aString cStr];
+  objc_assert(bytes);
+  objc_assert(_data);
+  sys_memcpy(_data + _size, bytes, length);
+  _size += length;
+
+  // Return success
+  return YES;
 }
 
 /**
  * @brief Appends raw bytes to the data.
- * @param bytes The bytes to append.
- * @param size The number of bytes to append.
- * @return YES if successful, NO otherwise.
  */
 - (BOOL)appendBytes:(const void *)bytes size:(size_t)size {
-  (void)bytes; // Mark as intentionally unused
-  (void)size;  // Mark as intentionally unused
-  // TODO
-  return NO;
+  objc_assert(bytes);
+  if (size == 0) {
+    return YES; // Nothing to append, return success
+  }
+
+  // Increase the capacity if needed
+  if (_size + size > _cap) {
+    if ([self _setCapacity:_cap + size] == NO) {
+      return NO; // Failed to set new capacity
+    }
+  }
+
+  // Copy the bytes to the end of the existing data
+  objc_assert(_data);
+  sys_memcpy(_data + _size, bytes, size);
+  _size += size;
+
+  // Return success
+  return YES;
 }
 
 /**
  * @brief Appends another NXData instance to this data, by copying its
  * contents.
- * @param data The data to append.
- * @return YES if successful, NO otherwise.
  */
 - (BOOL)appendData:(NXData *)data {
-  (void)data; // Mark as intentionally unused
-  // TODO
-  return NO;
+  objc_assert(data);
+  size_t size = [data size];
+  if (size == 0) {
+    return YES; // Nothing to append, return success
+  }
+
+  // Increase the capacity if needed
+  if (_size + size > _cap) {
+    if ([self _setCapacity:_cap + size] == NO) {
+      return NO; // Failed to set new capacity
+    }
+  }
+
+  // Copy the data from the other NXData instance
+  const void *src = [data bytes];
+  objc_assert(src);
+  objc_assert(_data);
+  sys_memcpy(_data + _size, src, size);
+  _size += size;
+
+  // Return success
+  return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // JSON PROTOCOL METHODS
 
 /**
- * @brief Determines the approximate capacity of the JSON representation, which
- * is encoded as a base64 string.
+ * @brief Determines the approximate capacity of the JSON representation,
+ * which is encoded as a base64 string.
  */
 - (size_t)JSONBytes {
   return [self base64Capacity];
