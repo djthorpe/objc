@@ -11,8 +11,8 @@
  * @brief Hash algorithms supported by NXData.
  */
 typedef enum {
-  NXHashAlgorithmMD5,    // MD5 hash (128-bit)
-  NXHashAlgorithmSHA256, // SHA-256 hash (256-bit)
+  NXHashAlgorithmMD5 = sys_hash_md5,       // MD5 hash (128-bit)
+  NXHashAlgorithmSHA256 = sys_hash_sha256, // SHA-256 hash (256-bit)
 } NXHashAlgorithm;
 
 ///////////////////////////////////////////////////////////////////////////////

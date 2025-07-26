@@ -9,7 +9,7 @@ add_library(${NAME} STATIC
     mutex.c
     sys.c
     ../openssl/hash.c
-    ../posix/malloc.c
+    ../posix/memory.c
     ../posix/puts.c
     ../posix/random.c
     ../posix/sleep.c

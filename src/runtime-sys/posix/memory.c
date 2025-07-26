@@ -47,3 +47,13 @@ void *sys_memmove(void *dest, const void *src, size_t size) {
   memmove(dest, src, size);
   return dest;
 }
+
+/**
+ * @brief Compare two memory blocks
+ */
+int sys_memcmp(const void *ptr1, const void *ptr2, size_t num) {
+  if (ptr1 == NULL || ptr2 == NULL || num == 0) {
+    return 0;
+  }
+  return memcmp(ptr1, ptr2, num);
+}
