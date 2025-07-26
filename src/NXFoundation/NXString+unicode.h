@@ -19,3 +19,7 @@ static inline uint8_t _char_toUpper(uint8_t c) {
 static inline uint8_t _char_toLower(uint8_t c) {
   return (c >= 'A' && c <= 'Z') ? (c - 'A' + 'a') : c;
 }
+
+static inline uint8_t _char_toPrintable(uint8_t c) {
+  return (c >= 32 && c <= 126) ? c : '.';
+}
