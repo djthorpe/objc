@@ -204,9 +204,38 @@
  * @brief Creates a new NXData instance with a hash of the data.
  */
 - (NXData *)hashWithAlgorithm:(NXHashAlgorithm)algorithm {
-  (void)algorithm; // Mark as intentionally unused
-  // TODO: Implement hash computation
-  return nil;
+  // Initialize the hash context
+  sys_hash_t ctx = sys_hash_init((sys_hash_algorithm_t)algorithm);
+  size_t hash_size = sys_hash_size(&ctx);
+  if (hash_size == 0) {
+    return nil; // Invalid hash algorithm
+  }
+
+  // Create a new NXData instance to hold the hash
+  NXData *hash = [[NXData alloc] initWithCapacity:hash_size];
+  if (hash == nil) {
+    return nil; // Memory allocation failed
+  }
+
+  // Compute the hash from this data
+  bool success = true;
+  if (_size > 0) {
+    success = sys_hash_update(&ctx, _data, _size);
+  }
+
+  // Finalize the hash computation
+  const uint8_t *hash_result = sys_hash_finalize(&ctx);
+  if (success == false || hash_result == NULL) {
+    [hash release];
+    return nil; // Hashing failed
+  }
+
+  // Copy the hash data into the hash instance and set the size
+  sys_memcpy(hash->_data, hash_result, hash_size);
+  hash->_size = hash_size;
+
+  // Return autoreleased hash instance
+  return [hash autorelease];
 }
 
 /**

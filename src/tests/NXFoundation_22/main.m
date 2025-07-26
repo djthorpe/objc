@@ -292,6 +292,7 @@ int test_data_methods(void) {
     NXData *data = [[NXData alloc] initWithBytes:&singleByte size:1];
     NXString *hexStr = [data hexString];
     test_assert(hexStr != nil);
+    printf("  DEBUG: Expected 'AB', got '%s'\n", [hexStr cStr]);
     test_cstrings_equal([hexStr cStr], "AB");
     [data release];
     printf("  ✓ hexString for single byte works\n");
@@ -835,6 +836,190 @@ int test_data_methods(void) {
 
     [data release];
     printf("  ✓ Append operations preserve encoding correctness\n");
+  }
+
+  printf("Test 55: Hash - MD5 empty data\n");
+  {
+    NXData *data = [[NXData alloc] init];
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmMD5];
+    test_assert(hash != nil);
+    test_assert([hash size] == 16); // MD5 is 128 bits = 16 bytes
+
+    // MD5 of empty string: d41d8cd98f00b204e9800998ecf8427e
+    NXString *hexHash = [hash hexString];
+    test_cstrings_equal([hexHash cStr], "D41D8CD98F00B204E9800998ECF8427E");
+
+    [data release];
+    printf("  ✓ MD5 hash of empty data works\n");
+  }
+
+  printf("Test 56: Hash - SHA256 empty data\n");
+  {
+    NXData *data = [[NXData alloc] init];
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+    test_assert(hash != nil);
+    test_assert([hash size] == 32); // SHA-256 is 256 bits = 32 bytes
+
+    // SHA-256 of empty string:
+    // e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    NXString *hexHash = [hash hexString];
+    test_cstrings_equal(
+        [hexHash cStr],
+        "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855");
+
+    [data release];
+    printf("  ✓ SHA-256 hash of empty data works\n");
+  }
+
+  printf("Test 57: Hash - MD5 'abc'\n");
+  {
+    NXData *data = [NXData dataWithString:@"abc"];
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmMD5];
+    test_assert(hash != nil);
+    test_assert([hash size] == 16);
+
+    // MD5 of "abc": 900150983cd24fb0d6963f7d28e17f72
+    NXString *hexHash = [hash hexString];
+    test_cstrings_equal([hexHash cStr], "900150983CD24FB0D6963F7D28E17F72");
+
+    printf("  ✓ MD5 hash of 'abc' works\n");
+  }
+
+  printf("Test 58: Hash - SHA256 'abc'\n");
+  {
+    NXData *data = [NXData dataWithString:@"abc"];
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+    test_assert(hash != nil);
+    test_assert([hash size] == 32);
+
+    // SHA-256 of "abc":
+    // ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+    NXString *hexHash = [hash hexString];
+    test_cstrings_equal(
+        [hexHash cStr],
+        "BA7816BF8F01CFEA414140DE5DAE2223B00361A396177A9CB410FF61F20015AD");
+
+    printf("  ✓ SHA-256 hash of 'abc' works\n");
+  }
+
+  printf("Test 59: Hash - Binary data\n");
+  {
+    uint8_t binary_data[] = {0x00, 0x01, 0x02, 0x03, 0xFF, 0xFE, 0xFD, 0xFC};
+    NXData *data = [NXData dataWithBytes:binary_data size:sizeof(binary_data)];
+
+    // Test MD5
+    NXData *md5Hash = [data hashWithAlgorithm:NXHashAlgorithmMD5];
+    test_assert(md5Hash != nil);
+    test_assert([md5Hash size] == 16);
+
+    // Test SHA-256
+    NXData *sha256Hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+    test_assert(sha256Hash != nil);
+    test_assert([sha256Hash size] == 32);
+
+    // Verify hashes are different and both non-empty
+    test_assert(
+        strcmp([[md5Hash hexString] cStr], [[sha256Hash hexString] cStr]) != 0);
+    test_assert([[md5Hash hexString] length] > 0);
+    test_assert([[sha256Hash hexString] length] > 0);
+
+    printf("  ✓ Binary data hashing works\n");
+  }
+
+  printf("Test 60: Hash - Large data\n");
+  {
+    // Create 1KB of repeating pattern
+    char pattern[] = "0123456789ABCDEF";
+    NXData *data = [[NXData alloc] init];
+    for (int i = 0; i < 64; i++) { // 64 * 16 = 1024 bytes
+      [data appendBytes:pattern size:16];
+    }
+    test_assert([data size] == 1024);
+
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+    test_assert(hash != nil);
+    test_assert([hash size] == 32);
+
+    // Verify hash is computed (non-zero)
+    const uint8_t *hashBytes = (const uint8_t *)[hash bytes];
+    bool hasNonZero = false;
+    for (int i = 0; i < 32; i++) {
+      if (hashBytes[i] != 0) {
+        hasNonZero = true;
+        break;
+      }
+    }
+    test_assert(hasNonZero);
+
+    [data release];
+    printf("  ✓ Large data hashing works\n");
+  }
+
+  printf("Test 61: Hash - Consistency check\n");
+  {
+    NXData *data1 = [NXData dataWithString:@"test"];
+    NXData *data2 = [NXData dataWithString:@"test"];
+
+    NXData *hash1 = [data1 hashWithAlgorithm:NXHashAlgorithmMD5];
+    NXData *hash2 = [data2 hashWithAlgorithm:NXHashAlgorithmMD5];
+
+    test_assert(hash1 != nil);
+    test_assert(hash2 != nil);
+
+    // Same input should produce same hash
+    test_cstrings_equal([[hash1 hexString] cStr], [[hash2 hexString] cStr]);
+
+    printf("  ✓ Hash consistency works\n");
+  }
+
+  printf("Test 62: Hash - Different algorithms produce different results\n");
+  {
+    NXData *data = [NXData dataWithString:@"hello world"];
+
+    NXData *md5Hash = [data hashWithAlgorithm:NXHashAlgorithmMD5];
+    NXData *sha256Hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+
+    test_assert(md5Hash != nil);
+    test_assert(sha256Hash != nil);
+    test_assert([md5Hash size] == 16);
+    test_assert([sha256Hash size] == 32);
+
+    // Different algorithms should produce different results
+    test_assert(
+        strcmp([[md5Hash hexString] cStr], [[sha256Hash hexString] cStr]) != 0);
+
+    printf("  ✓ Different algorithms produce different results\n");
+  }
+
+  printf("Test 63: Hash - Memory management\n");
+  {
+    NXData *data = [NXData dataWithString:@"memory test"];
+
+    // Create multiple hashes to test memory management
+    for (int i = 0; i < 10; i++) {
+      NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmSHA256];
+      test_assert(hash != nil);
+      test_assert([hash size] == 32);
+      // hash will be autoreleased, no manual release needed
+    }
+
+    printf("  ✓ Hash memory management works\n");
+  }
+
+  printf("Test 64: Hash - Single byte data\n");
+  {
+    uint8_t single_byte = 0x42;
+    NXData *data = [NXData dataWithBytes:&single_byte size:1];
+
+    NXData *hash = [data hashWithAlgorithm:NXHashAlgorithmMD5];
+    test_assert(hash != nil);
+    test_assert([hash size] == 16);
+
+    // Verify hash is computed
+    NXString *hexHash = [hash hexString];
+    test_assert([hexHash length] == 32); // 16 bytes * 2 hex chars per byte
+
+    printf("  ✓ Single byte data hashing works\n");
   }
 
   printf("All NXData tests completed successfully!\n");
