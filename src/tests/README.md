@@ -10,7 +10,7 @@ The tests are organized into three main categories:
 
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_22): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_01, sys_02, sys_03, sys_04): Tests for low-level system functionality.
+- **System Tests** (sys_01, sys_02, sys_03, sys_04, sys_05): Tests for low-level system functionality.
 
 ---
 
@@ -94,3 +94,4 @@ The tests are organized into three main categories:
 | sys_02 | Time System Functions | Tests `sys_time_get_utc()` with validation, NULL handling, and consistency. |
 | sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation, consistency, and boundary testing. |
 | sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with validation and distribution testing. |
+| sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms: initialization, known test vectors, multi-part updates, error handling, and cleanup behavior. |

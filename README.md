@@ -12,6 +12,7 @@ You will minimally need the following tools to build the runtime:
 
 - **Build system** `make` and `cmake` - for the build system
 - **Compiler** `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). You can use the environment variable `CC` to specify the compiler, e.g. `CC=clang` or `CC=gcc`.
+- **Library Dependencies** `openssl` for Linux and Darwin - for the hash functions, which are used in the runtime and NXFoundation framework.
 - **Documentation** `docker` is needed for generating the documentation from the source code.
 - **Cross-Compilation** For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>. Install this to the `/opt` directory. You can use the environment variable `TOOLCHAIN_PATH` to specify the path to the toolchain, e.g. `TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal`.
 
@@ -21,7 +22,7 @@ Three static libraries are currently built:
 
 - `objc-gcc` - the Objective C runtime library using the ancient GCC ABI
 - `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
-- `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis.
+- `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).
 
 Download the source code from GitHub:
 
@@ -101,13 +102,14 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Fix linking categories in static libraries (see test NXFoundation_05)
 - [X] `NXString` - mutable strings - append, appendFormat
 - [X] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
+- [X] `NXData` - mutable binary data with Base64/hex encoding and append operations
+- [X] Hash functions - MD5 and SHA-256 hash computation through `sys_hash_*` API
 - [ ] `NXString` - array methods - split, join, etc.
 - [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] printf - `%T` format specifier for time intervals
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
-- [ ] `NXData` - mutable data creating hashes
 - [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:` (see test `runtime_14`)
