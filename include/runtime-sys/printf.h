@@ -14,6 +14,7 @@ extern "C" {
 
 /**
  * @brief Prints formatted output to the system console.
+ * @ingroup System  
  * @param format A printf-style format string that specifies how subsequent
  *               arguments are formatted and printed.
  * @param ... Additional arguments corresponding to format specifiers in format.
@@ -23,6 +24,7 @@ extern size_t sys_printf(const char *format, ...);
 
 /**
  * @brief Prints formatted output using a va_list argument.
+ * @ingroup System  
  * @param format A printf-style format string.
  * @param args A va_list containing the arguments for the format string.
  * @return The number of characters printed.
@@ -31,6 +33,7 @@ extern size_t sys_vprintf(const char *format, va_list args);
 
 /**
  * @brief Prints formatted output to a string buffer.
+ * @ingroup System  
  * @param buf Pointer to the destination buffer where the formatted string
  *            will be stored. If NULL, only the length is calculated.
  * @param sz Size of the destination buffer in bytes, including space for
@@ -44,6 +47,7 @@ extern size_t sys_sprintf(char *buf, size_t sz, const char *format, ...);
 
 /**
  * @brief Prints formatted output to a string buffer using a va_list argument.
+ * @ingroup System  
  * @param buf Pointer to the destination buffer where the formatted string
  *            will be stored. If NULL, only the length is calculated.
  * @param sz Size of the destination buffer in bytes, including space for
