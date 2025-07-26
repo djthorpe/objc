@@ -117,6 +117,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga86745087b8aeeae5c0715896240ab992"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga86745087b8aeeae5c0715896240ab992">sys_vsprintf</a> (char *buf, size_t sz, const char *format, va_list args)</td></tr>
 <tr class="memdesc:ga86745087b8aeeae5c0715896240ab992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to a string buffer using a va_list argument.  <a href="#ga86745087b8aeeae5c0715896240ab992">More...</a><br /></td></tr>
 <tr class="separator:ga86745087b8aeeae5c0715896240ab992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39c02847b060cfe7b9c568a06bc7ad74"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga39c02847b060cfe7b9c568a06bc7ad74">sys_random_uint32</a> (void)</td></tr>
+<tr class="memdesc:ga39c02847b060cfe7b9c568a06bc7ad74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a random number as a 32-bit unsigned integer.  <a href="#ga39c02847b060cfe7b9c568a06bc7ad74">More...</a><br /></td></tr>
+<tr class="separator:ga39c02847b060cfe7b9c568a06bc7ad74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fce61e0b72cfddf664a85be328cddab"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga2fce61e0b72cfddf664a85be328cddab">sys_random_uint64</a> (void)</td></tr>
+<tr class="memdesc:ga2fce61e0b72cfddf664a85be328cddab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a random number as a 64-bit unsigned integer.  <a href="#ga2fce61e0b72cfddf664a85be328cddab">More...</a><br /></td></tr>
+<tr class="separator:ga2fce61e0b72cfddf664a85be328cddab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
 <tr class="memdesc:ga4eced11c2352451c4ea6c7386e58342b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a string to the system console or standard output.  <a href="#ga4eced11c2352451c4ea6c7386e58342b">More...</a><br /></td></tr>
 <tr class="separator:ga4eced11c2352451c4ea6c7386e58342b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -674,6 +680,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 <p>This function writes the specified null-terminated string to the system's standard output stream, and flushes the output buffer. </p>
+
+</div>
+</div>
+<a id="ga39c02847b060cfe7b9c568a06bc7ad74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga39c02847b060cfe7b9c568a06bc7ad74">&#9670;&nbsp;</a></span>sys_random_uint32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t sys_random_uint32 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a random number as a 32-bit unsigned integer. </p>
+<dl class="section return"><dt>Returns</dt><dd>A random unsigned 32-bit integer value. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The function may not be thread-safe depending on the platform implementation. </dd></dl>
+
+</div>
+</div>
+<a id="ga2fce61e0b72cfddf664a85be328cddab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2fce61e0b72cfddf664a85be328cddab">&#9670;&nbsp;</a></span>sys_random_uint64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sys_random_uint64 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a random number as a 64-bit unsigned integer. </p>
+<dl class="section return"><dt>Returns</dt><dd>A random unsigned 64-bit integer value. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The function may not be thread-safe depending on the platform implementation. </dd></dl>
 
 </div>
 </div>
