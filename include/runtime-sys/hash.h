@@ -4,14 +4,6 @@
  *
  * This file declares various system methods for hash generation using OpenSSL.
  * Supports MD5 and SHA-256 algorithms with a simple, consistent API.
- *
- * Usage example:
- * @code
- * sys_hash_t hash = sys_hash_init(sys_hash_sha256);
- * sys_hash_update(&hash, "hello", 5);
- * sys_hash_update(&hash, "world", 5);
- * const uint8_t *result = sys_hash_finalize(&hash);
- * @endcode
  */
 #pragma once
 #include <stdbool.h>
@@ -24,6 +16,7 @@ extern "C" {
 
 /**
  * @brief Hash algorithm identifiers.
+ * @ingroup System 
  *
  * Enumeration of supported cryptographic hash algorithms.
  */
@@ -34,6 +27,7 @@ typedef enum {
 
 /**
  * @brief Hash context structure.
+ * @ingroup System  
  *
  * Contains the state and result buffer for hash operations.
  */
@@ -45,6 +39,7 @@ typedef struct {
 
 /**
  * @brief Initializes a new hash context for the specified algorithm.
+ * @ingroup System  
  * @param algorithm The hash algorithm to use.
  * @return A new sys_hash_t instance initialized for the specified algorithm.
  *
@@ -61,6 +56,7 @@ extern sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm);
 
 /**
  * @brief Returns the size of the hash in bytes.
+ * @ingroup System  
  * @param hash The hash context to query.
  * @return The size of the hash in bytes.
  *
@@ -72,6 +68,7 @@ extern size_t sys_hash_size(sys_hash_t *hash);
 
 /**
  * @brief Updates the hash context with new data.
+ * @ingroup System  
  * @param hash The hash context to update.
  * @param data The data to add to the hash.
  * @param size The size of the data in bytes.
@@ -81,6 +78,7 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
 
 /**
  * @brief Finalizes the hash computation and returns the hash value.
+ * @ingroup System  
  * @param hash The hash context to finalize.
  * @return A pointer to the computed hash value, or NULL on failure.
  *
