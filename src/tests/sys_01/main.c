@@ -368,13 +368,12 @@ int test_sys_01(void) {
   } while (0);
 
   // Test 46: negative long integers
-  // TODO
   sys_puts("Test 46: sys_printf with negative long integers\n");
-  /*do {
-    size_t len = sys_printf("negative long: %ld\n", -9876543210L);
-    test_assert(len == 27); // "negative long: -9876543210\n" = 27 characters
+  do {
+    // Use a negative long value that fits in both 32-bit and 64-bit systems
+    size_t len = sys_printf("negative long: %ld\n", -123456789L);
+    test_assert(len == 26); // "negative long: -123456789\n" = 26 characters
   } while (0);
-*/
 
   // Test 47: negative with sprintf
   sys_puts("Test 47: sys_sprintf with negative values\n");
@@ -401,16 +400,23 @@ int test_sys_01(void) {
 
   // Test 50: negative long minimum (LONG_MIN edge case)
   sys_puts("Test 50: sys_sprintf with LONG_MIN edge case\n");
-  // TODO
-  /*
   do {
     char buffer[100];
-    size_t len =
-        sys_sprintf(buffer, sizeof(buffer), "%ld", (-9223372036854775807L - 1));
-    test_cstrings_equal("-9223372036854775808", buffer);
-    test_assert(len == 20); // "-9223372036854775808" = 20 characters
+    // Use platform-appropriate LONG_MIN value
+    if (sizeof(long) == 4) {
+      // 32-bit long: LONG_MIN = -2147483648
+      size_t len =
+          sys_sprintf(buffer, sizeof(buffer), "%ld", (-2147483647L - 1));
+      test_cstrings_equal("-2147483648", buffer);
+      test_assert(len == 11); // "-2147483648" = 11 characters
+    } else {
+      // 64-bit long: LONG_MIN = -9223372036854775808
+      size_t len = sys_sprintf(buffer, sizeof(buffer), "%ld",
+                               (-9223372036854775807L - 1));
+      test_cstrings_equal("-9223372036854775808", buffer);
+      test_assert(len == 20); // "-9223372036854775808" = 20 characters
+    }
   } while (0);
-  */
 
   // Test 51: multiple negative values in one call
   sys_puts("Test 51: sys_printf with multiple negative values\n");
@@ -720,20 +726,21 @@ int test_sys_01(void) {
   } while (0);
 
   // Test 84: NULL pointer
-  // TODO
-  /*
   sys_puts("Test 84: NULL pointer\n");
   do {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "null: %p", (void *)NULL);
-    test_cstrings_equal("null: 0x0000000000000000", buffer);
-    test_assert(len == 24); // "null: 0x" + 16 zeros = 24 characters
+    // Expected length: "null: 0x" + (2 * sizeof(void*)) hex digits
+    size_t expected_len = 8 + (2 * sizeof(void *)); // "null: 0x" = 8 chars
+    if (sizeof(void *) == 4) {
+      test_cstrings_equal("null: 0x00000000", buffer);
+    } else {
+      test_cstrings_equal("null: 0x0000000000000000", buffer);
+    }
+    test_assert(len == expected_len);
   } while (0);
-  */
 
   // Test 85: pointer with other format specifiers
-  // TODO
-  /*
   sys_puts("Test 85: pointer with other format specifiers\n");
   do {
     int var = 123;
@@ -745,11 +752,12 @@ int test_sys_01(void) {
                 buffer[3] == ':');
     test_assert(buffer[4] == '0' && buffer[5] == 'x');
     test_assert(buffer[len - 2] == ':' && buffer[len - 1] == 'P');
-    test_assert(len == 24); // "123:0x" + 16 hex digits + ":P" = 24 characters
+    // Expected length: "123:0x" + (2 * sizeof(void*)) hex digits + ":P"
+    size_t expected_len =
+        8 + (2 * sizeof(void *)); // "123:0x" + hex digits + ":P"
+    test_assert(len == expected_len);
   } while (0);
-  */
 
-  /*
   // Test 86: specific pointer value
   sys_puts("Test 86: specific pointer value\n");
   do {
@@ -757,18 +765,28 @@ int test_sys_01(void) {
     int dummy_var = 0;
     void *test_ptr = (void *)&dummy_var;
     size_t len = sys_sprintf(buffer, sizeof(buffer), "addr: %p", test_ptr);
-    test_assert(len >= 10); // "addr: 0x" + at least some hex digits
+    // Expected length: "addr: 0x" + (2 * sizeof(void*)) hex digits
+    size_t expected_len = 8 + (2 * sizeof(void *)); // "addr: 0x" + hex digits
+    test_assert(len == expected_len);
+    test_assert(buffer[0] == 'a' && buffer[1] == 'd' && buffer[2] == 'd' &&
+                buffer[3] == 'r' && buffer[4] == ':' && buffer[5] == ' ');
+    test_assert(buffer[6] == '0' && buffer[7] == 'x');
   } while (0);
-  */
 
-  /*
   // Test 87: pointer formatting consistency
   sys_puts("Test 87: pointer formatting consistency\n");
   do {
     size_t len = sys_printf("ptr: %p\n", (void *)0x1000);
-    test_assert(len == 24); // "ptr: 0x" + 16 hex digits + "\n" = 24 characters
+    // Expected length calculation: "ptr: 0x00001000\n" = 16 chars
+    // "ptr: " (5) + "0x00001000" (10) + "\n" (1) = 16 total
+    // 32-bit: "ptr: 0x00001000\n" = 16 characters
+    // 64-bit: "ptr: 0x0000000000001000\n" = 24 characters
+    if (sizeof(void *) == 4) {
+      test_assert(len == 16); // 32-bit: "ptr: 0x00001000\n" = 16 chars
+    } else {
+      test_assert(len == 24); // 64-bit: "ptr: 0x0000000000001000\n" = 24 chars
+    }
   } while (0);
-  */
 
   // === BUFFER OVERFLOW TESTS ===
 
@@ -872,8 +890,6 @@ int test_sys_01(void) {
   } while (0);
 
   // Test 96: pointer formatting overflow
-  // TODO
-  /*
   sys_puts("Test 96: pointer formatting overflow\n");
   do {
     char buffer[10];
@@ -882,13 +898,14 @@ int test_sys_01(void) {
 
     int dummy_var = 0; // Local variable to obtain a valid memory address
     size_t len = sys_sprintf(buffer, 10, "%p", (void *)&dummy_var);
-    test_assert(len == 18);         // "0x" + 16 hex digits = 18 chars
+    // Expected length: "0x" + (2 * sizeof(void*)) hex digits
+    size_t expected_len = 2 + (2 * sizeof(void *));
+    test_assert(len == expected_len);
     test_assert(buffer[9] == '\0'); // Should null-terminate
-    // Should start with "0x" and be exactly 9 chars (including null terminator)
+    // Should start with "0x"
     test_assert(buffer[0] == '0' && buffer[1] == 'x');
     test_assert(buffer[2] >= '0' && buffer[2] <= 'f'); // Valid hex digit
   } while (0);
-*/
 
   // Test 97: multiple format specifiers with small buffer
   sys_puts("Test 97: multiple format specifiers with small buffer\n");
