@@ -68,6 +68,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ga3aeb8450dfbaacf0eb908d9f386d5db9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga3aeb8450dfbaacf0eb908d9f386d5db9">objc_assert</a>(condition)</td></tr>
+<tr class="memdesc:ga3aeb8450dfbaacf0eb908d9f386d5db9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that a condition is true.  <a href="#ga3aeb8450dfbaacf0eb908d9f386d5db9">More...</a><br /></td></tr>
+<tr class="separator:ga3aeb8450dfbaacf0eb908d9f386d5db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7a7ca81d2a85873283b5ec82953b1b25"><td class="memItemLeft" align="right" valign="top"><a id="ga7a7ca81d2a85873283b5ec82953b1b25"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25">nil</a>&#160;&#160;&#160;((<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>)0)</td></tr>
 <tr class="memdesc:ga7a7ca81d2a85873283b5ec82953b1b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">A null object pointer. <br /></td></tr>
@@ -184,6 +187,35 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga3aeb8450dfbaacf0eb908d9f386d5db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3aeb8450dfbaacf0eb908d9f386d5db9">&#9670;&nbsp;</a></span>objc_assert</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define objc_assert</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">condition</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!(condition)) {                                                          \</div><div class="line">    sys_panicf(<span class="stringliteral">&quot;ASSERT FAIL: %s&quot;</span>, #condition);                                 \</div><div class="line">  }</div></div><!-- fragment -->
+<p>Asserts that a condition is true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>The condition to check.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If the <code>DEBUG</code> macro is defined, this macro will check the given condition. If the condition is false, it will call <code>panicf</code> with an assertion failure message, including the condition, file name, and line number. If <code>DEBUG</code> is not defined, this macro does nothing. </p>
+
+<p class="definition">Definition at line <a class="el" href="assert_8h_source.html#l00029">29</a> of file <a class="el" href="assert_8h_source.html">assert.h</a>.</p>
+
+</div>
+</div>
 <a id="ga1636d49f54f5501c0bb5ce698de32eee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1636d49f54f5501c0bb5ce698de32eee">&#9670;&nbsp;</a></span>OBJC_ROOT_CLASS</h2>
 

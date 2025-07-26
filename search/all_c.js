@@ -3,7 +3,7 @@ var searchData=
   ['objc_20runtime',['objc runtime',['../index.html',1,'']]],
   ['objective_2dc_20runtime',['Objective-C Runtime',['../group__objc.html',1,'']]],
   ['objc_2eh',['objc.h',['../objc_8h.html',1,'']]],
-  ['objc_5fassert',['objc_assert',['../assert_8h.html#a3aeb8450dfbaacf0eb908d9f386d5db9',1,'assert.h']]],
+  ['objc_5fassert',['objc_assert',['../group__objc.html#ga3aeb8450dfbaacf0eb908d9f386d5db9',1,'assert.h']]],
   ['objc_5ffree',['objc_free',['../group__objc.html#ga8f8e2ee1df5b130d4c96555fff909fdd',1,'malloc.h']]],
   ['objc_5flookupclass',['objc_lookupClass',['../group__objc.html#gad60fc60359e0c7b9a6751f835f5537a2',1,'runtime.h']]],
   ['objc_5fmalloc',['objc_malloc',['../group__objc.html#ga12b32d3d80a37f14adc2bc963eb0bde7',1,'malloc.h']]],
