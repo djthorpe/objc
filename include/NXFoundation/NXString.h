@@ -143,6 +143,17 @@
 - (unsigned int)length;
 
 /**
+ * @brief Returns the mutable C-string representation of the string.
+ * @return A pointer to a null-terminated C-string representing the string
+ * content. Returns NULL if it the string cannot be made mutable.
+ *
+ * If the string is immutable, this method makes the string mutable and
+ * returns a pointer to the internal buffer. If the string is already mutable,
+ * it simply returns the pointer to the internal buffer.
+ */
+- (void *)bytes;
+
+/**
  * @brief Returns the capacity of the string.
  * @return The total allocated size of the string buffer, including the null
  * terminator.

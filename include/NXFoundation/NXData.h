@@ -119,7 +119,7 @@ typedef enum {
 /**
  * @brief Returns a Base64 encoded string representation of the data.
  */
-- (NXString *)base64Encoding;
+- (NXString *)base64String;
 
 /**
  * @brief Prints a hexdump representation of the data to the console.

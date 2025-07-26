@@ -274,6 +274,16 @@
 }
 
 /**
+ * @brief Returns the mutable C-string representation of the string.
+ */
+- (void *)bytes {
+  if ([self _makeMutableWithCapacity:0] == NO) {
+    return NULL; // Failed to make mutable, cannot return bytes
+  }
+  return _data;
+}
+
+/**
  * @brief Returns the string through a description method.
  */
 - (NXString *)description {

@@ -170,48 +170,92 @@
  */
 - (NXString *)hexString {
   static const char hexDigits[] = "0123456789ABCDEF";
-  char *hexBuffer;
-  const uint8_t *dataBytes;
-  size_t i;
-  uint8_t byte;
-  NXString *result;
 
   // Handle empty data case
   if (_size == 0 || _data == NULL) {
     return [NXString stringWithCString:""];
   }
 
-  // Allocate buffer for hex string (2 chars per byte + null terminator)
-  hexBuffer = (char *)sys_malloc(_size * 2 + 1);
-  if (!hexBuffer) {
+  // Make a new mutable string with enough capacity, including the null
+  // terminator
+  NXString *result = [NXString stringWithCapacity:(_size * 2) + 1];
+  if (result == NULL) {
     return nil; // Handle memory allocation failure
   }
 
-  // Convert each byte to two hex characters
-  dataBytes = (const uint8_t *)_data;
+  // Get the buffer from the result string to write hex characters into,
+  // since we've created a mutable string this shouldn't fail
+  char *data = (char *)[result bytes];
+  objc_assert(data);
 
+  size_t i;
+  size_t j = 0;
   for (i = 0; i < _size; i++) {
-    byte = dataBytes[i];
-    hexBuffer[i * 2] = hexDigits[(byte >> 4) & 0x0F];
-    hexBuffer[i * 2 + 1] = hexDigits[byte & 0x0F];
+    char byte = ((char *)_data)[i];
+    data[j++] = hexDigits[(byte >> 4) & 0x0F];
+    data[j++] = hexDigits[byte & 0x0F];
   }
+  data[j] = '\0';
 
-  // Null-terminate the string
-  hexBuffer[_size * 2] = '\0';
-
-  // Create NXString from C string and free the buffer
-  result = [NXString stringWithCString:hexBuffer];
-  sys_free(hexBuffer);
-
+  // Return the hex string
   return result;
 }
 
 /**
  * @brief Returns a Base64 encoded string representation of the data.
  */
-- (NXString *)base64Encoding {
-  // TODO
-  return nil;
+- (NXString *)base64String {
+  static const char b64_table[] =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+  // Handle empty data case
+  if (_size == 0 || _data == NULL) {
+    return [NXString stringWithCString:""];
+  }
+
+  // Calculate the required buffer size
+  size_t cap = ((_size + 2) / 3) * 4;
+  NXString *result = [NXString stringWithCapacity:cap + 1];
+  if (result == NULL) {
+    return nil; // Handle memory allocation failure
+  }
+
+  // Get the buffer and cast data properly
+  char *output = (char *)[result bytes];
+  const uint8_t *input = (const uint8_t *)_data;
+  objc_assert(output);
+
+  // Process complete 3-byte groups
+  size_t i;
+  size_t j = 0;
+  for (i = 0; i + 2 < _size; i += 3) {
+    uint32_t bits = (input[i] << 16) | (input[i + 1] << 8) | input[i + 2];
+    output[j++] = b64_table[(bits >> 18) & 0x3f];
+    output[j++] = b64_table[(bits >> 12) & 0x3f];
+    output[j++] = b64_table[(bits >> 6) & 0x3f];
+    output[j++] = b64_table[bits & 0x3f];
+  }
+
+  // Handle remaining bytes (1 or 2)
+  if (i < _size) {
+    uint32_t bits = input[i] << 16;
+    if (i + 1 < _size) {
+      bits |= input[i + 1] << 8;
+    }
+    output[j++] = b64_table[(bits >> 18) & 0x3f];
+    output[j++] = b64_table[(bits >> 12) & 0x3f];
+    if (i + 1 < _size) {
+      output[j++] = b64_table[(bits >> 6) & 0x3f];
+      output[j++] = '=';
+    } else {
+      output[j++] = '=';
+      output[j++] = '=';
+    }
+  }
+  output[j] = '\0';
+
+  // Return the Base64 encoded string
+  return result;
 }
 
 /**
