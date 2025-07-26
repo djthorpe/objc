@@ -7,6 +7,10 @@
 #pragma once
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Returns a random number as a 32-bit unsigned integer.
  * @return A random unsigned 32-bit integer value.
@@ -22,3 +26,7 @@ extern uint32_t sys_random_uint32(void);
  *          implementation.
  */
 extern uint64_t sys_random_uint64(void);
+
+#ifdef __cplusplus
+}
+#endif

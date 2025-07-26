@@ -1,5 +1,6 @@
 #include <pico/aon_timer.h>
 #include <pico/stdlib.h>
+#include <runtime-sys/sys.h>
 
 /**
  * @brief Initializes the system on startup.

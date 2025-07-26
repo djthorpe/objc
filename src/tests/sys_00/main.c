@@ -1,7 +1,5 @@
-#include <runtime-sys/memory.h>
 #include <runtime-sys/sys.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <tests/tests.h>
 
 // Forward declaration
@@ -13,33 +11,37 @@ int main(void) {
 }
 
 int test_sys_00(void) {
-  printf("Test 1: sys_malloc - basic allocation\n");
+  sys_puts("Test 1: sys_malloc - basic allocation\n");
   {
     void *ptr = sys_malloc(100);
     test_assert(ptr != NULL);
     sys_free(ptr);
-    printf("  ✓ Basic malloc/free works\n");
+    sys_puts("  ✓ Basic malloc/free works\n");
   }
 
-  printf("Test 2: sys_malloc - zero size\n");
+  sys_puts("Test 2: sys_malloc - zero size\n");
   {
     void *ptr = sys_malloc(0);
     // Zero size malloc behavior is implementation-defined, but should not crash
     if (ptr != NULL) {
       sys_free(ptr);
     }
-    printf("  ✓ Zero size malloc handled\n");
+    sys_puts("  ✓ Zero size malloc handled\n");
   }
 
-  printf("Test 3: sys_malloc - large allocation\n");
+  sys_puts("Test 3: sys_malloc - large allocation\n");
   {
+#ifdef SYSTEM_NAME_PICO
+    void *ptr = sys_malloc(128 * 1024); // 128KB
+#else
     void *ptr = sys_malloc(1024 * 1024); // 1MB
+#endif
     test_assert(ptr != NULL);
     sys_free(ptr);
-    printf("  ✓ Large allocation works\n");
+    sys_puts("  ✓ Large allocation works\n");
   }
 
-  printf("Test 4: sys_malloc - multiple allocations\n");
+  sys_puts("Test 4: sys_malloc - multiple allocations\n");
   {
     void *ptrs[10];
     for (int i = 0; i < 10; i++) {
@@ -51,10 +53,10 @@ int test_sys_00(void) {
     for (int i = 9; i >= 0; i--) {
       sys_free(ptrs[i]);
     }
-    printf("  ✓ Multiple allocations and reverse free works\n");
+    sys_puts("  ✓ Multiple allocations and reverse free works\n");
   }
 
-  printf("Test 5: sys_memset - basic functionality\n");
+  sys_puts("Test 5: sys_memset - basic functionality\n");
   {
     uint8_t buffer[100];
     void *result = sys_memset(buffer, 0xAA, sizeof(buffer));
@@ -64,19 +66,19 @@ int test_sys_00(void) {
     for (size_t i = 0; i < sizeof(buffer); i++) {
       test_assert(buffer[i] == 0xAA);
     }
-    printf("  ✓ Basic memset works\n");
+    sys_puts("  ✓ Basic memset works\n");
   }
 
-  printf("Test 6: sys_memset - zero size\n");
+  sys_puts("Test 6: sys_memset - zero size\n");
   {
     uint8_t buffer[10] = {0x00};
     void *result = sys_memset(buffer, 0xFF, 0);
     test_assert(result == buffer);
     test_assert(buffer[0] == 0x00); // Should not be modified
-    printf("  ✓ Zero size memset works\n");
+    sys_puts("  ✓ Zero size memset works\n");
   }
 
-  printf("Test 7: sys_memset - different values\n");
+  sys_puts("Test 7: sys_memset - different values\n");
   {
     uint8_t buffer[256];
 
@@ -97,10 +99,10 @@ int test_sys_00(void) {
     for (size_t i = 0; i < sizeof(buffer); i++) {
       test_assert(buffer[i] == 0x55);
     }
-    printf("  ✓ Different memset values work\n");
+    sys_puts("  ✓ Different memset values work\n");
   }
 
-  printf("Test 8: sys_memcpy - basic functionality\n");
+  sys_puts("Test 8: sys_memcpy - basic functionality\n");
   {
     uint8_t src[100];
     uint8_t dest[100];
@@ -117,10 +119,10 @@ int test_sys_00(void) {
     for (size_t i = 0; i < sizeof(src); i++) {
       test_assert(dest[i] == src[i]);
     }
-    printf("  ✓ Basic memcpy works\n");
+    sys_puts("  ✓ Basic memcpy works\n");
   }
 
-  printf("Test 9: sys_memcpy - zero size\n");
+  sys_puts("Test 9: sys_memcpy - zero size\n");
   {
     uint8_t src[10] = {0xAA};
     uint8_t dest[10] = {0x00};
@@ -128,10 +130,10 @@ int test_sys_00(void) {
     void *result = sys_memcpy(dest, src, 0);
     test_assert(result == dest);
     test_assert(dest[0] == 0x00); // Should not be modified
-    printf("  ✓ Zero size memcpy works\n");
+    sys_puts("  ✓ Zero size memcpy works\n");
   }
 
-  printf("Test 10: sys_memcpy - large data\n");
+  sys_puts("Test 10: sys_memcpy - large data\n");
   {
     void *src = sys_malloc(1024);
     void *dest = sys_malloc(1024);
@@ -153,10 +155,10 @@ int test_sys_00(void) {
 
     sys_free(src);
     sys_free(dest);
-    printf("  ✓ Large data memcpy works\n");
+    sys_puts("  ✓ Large data memcpy works\n");
   }
 
-  printf("Test 11: sys_memmove - non-overlapping\n");
+  sys_puts("Test 11: sys_memmove - non-overlapping\n");
   {
     uint8_t src[50];
     uint8_t dest[50];
@@ -173,10 +175,10 @@ int test_sys_00(void) {
     for (size_t i = 0; i < sizeof(src); i++) {
       test_assert(dest[i] == (uint8_t)(i + 1));
     }
-    printf("  ✓ Non-overlapping memmove works\n");
+    sys_puts("  ✓ Non-overlapping memmove works\n");
   }
 
-  printf("Test 12: sys_memmove - overlapping forward\n");
+  sys_puts("Test 12: sys_memmove - overlapping forward\n");
   {
     uint8_t buffer[100];
 
@@ -192,10 +194,10 @@ int test_sys_00(void) {
     for (size_t i = 0; i < 50; i++) {
       test_assert(buffer[i + 10] == (uint8_t)(i & 0xFF));
     }
-    printf("  ✓ Overlapping forward memmove works\n");
+    sys_puts("  ✓ Overlapping forward memmove works\n");
   }
 
-  printf("Test 13: sys_memmove - overlapping backward\n");
+  sys_puts("Test 13: sys_memmove - overlapping backward\n");
   {
     uint8_t buffer[100];
 
@@ -211,10 +213,10 @@ int test_sys_00(void) {
     for (size_t i = 0; i < 50; i++) {
       test_assert(buffer[i] == (uint8_t)((i + 10) & 0xFF));
     }
-    printf("  ✓ Overlapping backward memmove works\n");
+    sys_puts("  ✓ Overlapping backward memmove works\n");
   }
 
-  printf("Test 14: sys_memcmp - equal data\n");
+  sys_puts("Test 14: sys_memcmp - equal data\n");
   {
     uint8_t data1[50];
     uint8_t data2[50];
@@ -226,10 +228,10 @@ int test_sys_00(void) {
 
     int result = sys_memcmp(data1, data2, sizeof(data1));
     test_assert(result == 0);
-    printf("  ✓ Equal data memcmp works\n");
+    sys_puts("  ✓ Equal data memcmp works\n");
   }
 
-  printf("Test 15: sys_memcmp - different data\n");
+  sys_puts("Test 15: sys_memcmp - different data\n");
   {
     uint8_t data1[50];
     uint8_t data2[50];
@@ -245,20 +247,20 @@ int test_sys_00(void) {
 
     result = sys_memcmp(data2, data1, sizeof(data1));
     test_assert(result > 0); // data2 should be greater than data1
-    printf("  ✓ Different data memcmp works\n");
+    sys_puts("  ✓ Different data memcmp works\n");
   }
 
-  printf("Test 16: sys_memcmp - zero size\n");
+  sys_puts("Test 16: sys_memcmp - zero size\n");
   {
     uint8_t data1[10] = {0xAA};
     uint8_t data2[10] = {0xBB};
 
     int result = sys_memcmp(data1, data2, 0);
     test_assert(result == 0); // Zero size should always return 0
-    printf("  ✓ Zero size memcmp works\n");
+    sys_puts("  ✓ Zero size memcmp works\n");
   }
 
-  printf("Test 17: sys_memcmp - single byte differences\n");
+  sys_puts("Test 17: sys_memcmp - single byte differences\n");
   {
     uint8_t data1[100];
     uint8_t data2[100];
@@ -285,10 +287,10 @@ int test_sys_00(void) {
     result = sys_memcmp(data1, data2, sizeof(data1));
     test_assert(result < 0);
 
-    printf("  ✓ Single byte difference memcmp works\n");
+    sys_puts("  ✓ Single byte difference memcmp works\n");
   }
 
-  printf("Test 18: Memory allocation stress test\n");
+  sys_puts("Test 18: Memory allocation stress test\n");
   {
     const int num_allocs = 1000;
     void *ptrs[num_allocs];
@@ -318,10 +320,10 @@ int test_sys_00(void) {
       }
     }
 
-    printf("  ✓ Memory allocation stress test works\n");
+    sys_puts("  ✓ Memory allocation stress test works\n");
   }
 
-  printf("Test 19: Memory function integration test\n");
+  sys_puts("Test 19: Memory function integration test\n");
   {
     // Allocate buffer
     void *buffer = sys_malloc(1024);
@@ -349,10 +351,10 @@ int test_sys_00(void) {
     test_assert(sys_memcmp(buffer, (uint8_t *)buffer + 512, 512) == 0);
 
     sys_free(buffer);
-    printf("  ✓ Memory function integration works\n");
+    sys_puts("  ✓ Memory function integration works\n");
   }
 
-  printf("Test 20: Edge case - alignment testing\n");
+  sys_puts("Test 20: Edge case - alignment testing\n");
   {
     // Test various alignments
     for (size_t offset = 0; offset < 16; offset++) {
@@ -369,9 +371,9 @@ int test_sys_00(void) {
 
       sys_free(base);
     }
-    printf("  ✓ Alignment testing works\n");
+    sys_puts("  ✓ Alignment testing works\n");
   }
 
-  printf("All memory function tests completed successfully!\n");
+  sys_puts("All memory function tests completed successfully!\n");
   return 0;
 }

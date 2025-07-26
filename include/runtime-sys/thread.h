@@ -7,6 +7,10 @@
 #pragma once
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Returns the number of CPU cores available on the host system.
  * @return The number of CPU cores available on the system. Returns 1 if the
@@ -23,3 +27,7 @@ extern uint8_t sys_thread_numcores(void);
  * @param msec The number of milliseconds to sleep.
  */
 extern void sys_sleep(int32_t msec);
+
+#ifdef __cplusplus
+}
+#endif

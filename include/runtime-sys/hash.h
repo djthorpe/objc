@@ -18,6 +18,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Hash algorithm identifiers.
  *
@@ -85,3 +89,7 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
  * The context is automatically cleaned up after finalization.
  */
 extern const uint8_t *sys_hash_finalize(sys_hash_t *hash);
+
+#ifdef __cplusplus
+}
+#endif
