@@ -292,7 +292,6 @@ int test_data_methods(void) {
     NXData *data = [[NXData alloc] initWithBytes:&singleByte size:1];
     NXString *hexStr = [data hexString];
     test_assert(hexStr != nil);
-    printf("  DEBUG: Expected 'AB', got '%s'\n", [hexStr cStr]);
     test_cstrings_equal([hexStr cStr], "AB");
     [data release];
     printf("  ✓ hexString for single byte works\n");
