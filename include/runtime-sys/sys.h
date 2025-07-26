@@ -1,6 +1,7 @@
 /**
  * @file sys.h
  * @brief Defines system management functions.
+ * @defgroup sys
  *
  * This file declares various system methods for managing memory, threads
  * and resources.
