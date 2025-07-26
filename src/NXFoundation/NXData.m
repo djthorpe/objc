@@ -226,7 +226,7 @@
   size_t cap = [self base64Capacity];
 
   // Create a new mutable string with enough capacity, including the null
-  NXString *result = [NXString stringWithCapacity:cap + 1];
+  NXString *result = [NXString stringWithCapacity:cap];
   if (result == NULL) {
     return nil; // Handle memory allocation failure
   }
