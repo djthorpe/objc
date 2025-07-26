@@ -13,6 +13,7 @@ var searchData=
   ['stringwithformat_3a',['stringWithFormat:',['../interfaceNXString.html#a1c2b80633ce694dbd218dc665e99de02',1,'NXString']]],
   ['stringwithstring_3a',['stringWithString:',['../interfaceNXString.html#a6e8e4b0328c11e131ff516b24fe842cb',1,'NXString']]],
   ['superclass',['superclass',['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()'],['../interfaceObject.html#a4c7d6bb91a684d0b9cb057f94045e3fb',1,'Object::superclass()']]],
+  ['sys',['Sys',['../group__sys.html',1,'']]],
   ['sys_2eh',['sys.h',['../sys_8h.html',1,'']]],
   ['sys_5fabort',['sys_abort',['../sys_8h.html#a51400f71e4702fdbd13394546f4182bb',1,'sys.h']]],
   ['sys_5fexit',['sys_exit',['../sys_8h.html#ac8c2364fd51221e5ac983f174aeb289f',1,'sys.h']]],
