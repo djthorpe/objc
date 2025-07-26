@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['id',['id',['../runtime_8h.html#a0332efe4206b49a80b5028908f36de0c',1,'runtime.h']]],
-  ['imp',['IMP',['../runtime_8h.html#acd98b3996b82623e9e28e3cd4507a575',1,'runtime.h']]],
+  ['id',['id',['../group__objc.html#ga0332efe4206b49a80b5028908f36de0c',1,'runtime.h']]],
+  ['imp',['IMP',['../group__objc.html#gacd98b3996b82623e9e28e3cd4507a575',1,'runtime.h']]],
   ['indexforobject_3a',['indexForObject:',['../interfaceNXArray.html#adec8286935f7831fcc4dcfa1185dec05',1,'NXArray']]],
   ['init',['init',['../interfaceObject.html#ad5f41da394dd6fff8a0de38dfa370420',1,'Object']]],
   ['initialize',['initialize',['../interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5',1,'Object']]],

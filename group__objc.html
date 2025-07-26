@@ -48,7 +48,10 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Objective-C Runtime</div>  </div>
 </div><!--header-->
@@ -62,8 +65,622 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceProtocol.html">Protocol</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> class definition.  <a href="interfaceProtocol.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga7a7ca81d2a85873283b5ec82953b1b25"><td class="memItemLeft" align="right" valign="top"><a id="ga7a7ca81d2a85873283b5ec82953b1b25"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25">nil</a>&#160;&#160;&#160;((<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>)0)</td></tr>
+<tr class="memdesc:ga7a7ca81d2a85873283b5ec82953b1b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">A null object pointer. <br /></td></tr>
+<tr class="separator:ga7a7ca81d2a85873283b5ec82953b1b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3b89c60b6c464ce16be3640106365f7"><td class="memItemLeft" align="right" valign="top"><a id="gae3b89c60b6c464ce16be3640106365f7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gae3b89c60b6c464ce16be3640106365f7">Nil</a>&#160;&#160;&#160;((<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>)0)</td></tr>
+<tr class="memdesc:gae3b89c60b6c464ce16be3640106365f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A null class pointer. <br /></td></tr>
+<tr class="separator:gae3b89c60b6c464ce16be3640106365f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ebc9a785e5ab85457c98595aac81589"><td class="memItemLeft" align="right" valign="top"><a id="ga7ebc9a785e5ab85457c98595aac81589"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga7ebc9a785e5ab85457c98595aac81589">YES</a>&#160;&#160;&#160;true</td></tr>
+<tr class="memdesc:ga7ebc9a785e5ab85457c98595aac81589"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Boolean value <code>true</code>. <br /></td></tr>
+<tr class="separator:ga7ebc9a785e5ab85457c98595aac81589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga996bde01ecac342918f0a2c4e7ce7bd5"><td class="memItemLeft" align="right" valign="top"><a id="ga996bde01ecac342918f0a2c4e7ce7bd5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga996bde01ecac342918f0a2c4e7ce7bd5">NO</a>&#160;&#160;&#160;false</td></tr>
+<tr class="memdesc:ga996bde01ecac342918f0a2c4e7ce7bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Boolean value <code>false</code>. <br /></td></tr>
+<tr class="separator:ga996bde01ecac342918f0a2c4e7ce7bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1636d49f54f5501c0bb5ce698de32eee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga1636d49f54f5501c0bb5ce698de32eee">OBJC_ROOT_CLASS</a></td></tr>
+<tr class="memdesc:ga1636d49f54f5501c0bb5ce698de32eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro to declare a class as a root class.  <a href="#ga1636d49f54f5501c0bb5ce698de32eee">More...</a><br /></td></tr>
+<tr class="separator:ga1636d49f54f5501c0bb5ce698de32eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2e5ab70591b8c9424a23877a448e4a4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gad2e5ab70591b8c9424a23877a448e4a4">OBJC_UNUSED</a></td></tr>
+<tr class="memdesc:gad2e5ab70591b8c9424a23877a448e4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro to declare a method parameter is unused.  <a href="#gad2e5ab70591b8c9424a23877a448e4a4">More...</a><br /></td></tr>
+<tr class="separator:gad2e5ab70591b8c9424a23877a448e4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga0332efe4206b49a80b5028908f36de0c"><td class="memItemLeft" align="right" valign="top"><a id="ga0332efe4206b49a80b5028908f36de0c"></a>
+typedef struct objc_object *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a></td></tr>
+<tr class="memdesc:ga0332efe4206b49a80b5028908f36de0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to an instance of a class. <br /></td></tr>
+<tr class="separator:ga0332efe4206b49a80b5028908f36de0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc50f82530a982adeb5979def1ca71fa"><td class="memItemLeft" align="right" valign="top"><a id="gacc50f82530a982adeb5979def1ca71fa"></a>
+typedef const struct objc_selector *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a></td></tr>
+<tr class="memdesc:gacc50f82530a982adeb5979def1ca71fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to a method selector. <br /></td></tr>
+<tr class="separator:gacc50f82530a982adeb5979def1ca71fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6404e728cf4fd26bbb2d79a9ba21aa02"><td class="memItemLeft" align="right" valign="top"><a id="ga6404e728cf4fd26bbb2d79a9ba21aa02"></a>
+typedef struct objc_class *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a></td></tr>
+<tr class="memdesc:ga6404e728cf4fd26bbb2d79a9ba21aa02"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to a class definition. <br /></td></tr>
+<tr class="separator:ga6404e728cf4fd26bbb2d79a9ba21aa02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd98b3996b82623e9e28e3cd4507a575"><td class="memItemLeft" align="right" valign="top"><a id="gacd98b3996b82623e9e28e3cd4507a575"></a>
+typedef <a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gacd98b3996b82623e9e28e3cd4507a575">IMP</a>) (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>, <a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>,...)</td></tr>
+<tr class="memdesc:gacd98b3996b82623e9e28e3cd4507a575"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to a method implementation. <br /></td></tr>
+<tr class="separator:gacd98b3996b82623e9e28e3cd4507a575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga167b310fc29ca0d888a72600171b968a"><td class="memItemLeft" align="right" valign="top"><a id="ga167b310fc29ca0d888a72600171b968a"></a>
+typedef struct objc_method *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga167b310fc29ca0d888a72600171b968a">Method</a></td></tr>
+<tr class="memdesc:ga167b310fc29ca0d888a72600171b968a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to a method. <br /></td></tr>
+<tr class="separator:ga167b310fc29ca0d888a72600171b968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga94527388730bf1fbaa99e45d08b1b868"><td class="memItemLeft" align="right" valign="top"><a id="ga94527388730bf1fbaa99e45d08b1b868"></a>
+typedef struct objc_protocol&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a></td></tr>
+<tr class="memdesc:ga94527388730bf1fbaa99e45d08b1b868"><td class="mdescLeft">&#160;</td><td class="mdescRight">An instance of a protocol. <br /></td></tr>
+<tr class="separator:ga94527388730bf1fbaa99e45d08b1b868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab40a1f154aa44511af7f97b88296f7d3"><td class="memItemLeft" align="right" valign="top"><a id="gab40a1f154aa44511af7f97b88296f7d3"></a>
+typedef bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a></td></tr>
+<tr class="memdesc:gab40a1f154aa44511af7f97b88296f7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boolean value. <br /></td></tr>
+<tr class="separator:gab40a1f154aa44511af7f97b88296f7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gad60fc60359e0c7b9a6751f835f5537a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gad60fc60359e0c7b9a6751f835f5537a2">objc_lookupClass</a> (const char *name)</td></tr>
+<tr class="memdesc:gad60fc60359e0c7b9a6751f835f5537a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks up a class by name.  <a href="#gad60fc60359e0c7b9a6751f835f5537a2">More...</a><br /></td></tr>
+<tr class="separator:gad60fc60359e0c7b9a6751f835f5537a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga07ce1ddc081be789fbb88d8a0beeded0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga07ce1ddc081be789fbb88d8a0beeded0">class_getName</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
+<tr class="memdesc:ga07ce1ddc081be789fbb88d8a0beeded0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a class.  <a href="#ga07ce1ddc081be789fbb88d8a0beeded0">More...</a><br /></td></tr>
+<tr class="separator:ga07ce1ddc081be789fbb88d8a0beeded0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17b085d44512c2db39ae4ba4e53ae748"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga17b085d44512c2db39ae4ba4e53ae748">object_getClassName</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> obj)</td></tr>
+<tr class="memdesc:ga17b085d44512c2db39ae4ba4e53ae748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of an object's class.  <a href="#ga17b085d44512c2db39ae4ba4e53ae748">More...</a><br /></td></tr>
+<tr class="separator:ga17b085d44512c2db39ae4ba4e53ae748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a52026f8341ccd035d68c2fdb091491"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga0a52026f8341ccd035d68c2fdb091491">object_getClass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> object)</td></tr>
+<tr class="memdesc:ga0a52026f8341ccd035d68c2fdb091491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the class of an object.  <a href="#ga0a52026f8341ccd035d68c2fdb091491">More...</a><br /></td></tr>
+<tr class="separator:ga0a52026f8341ccd035d68c2fdb091491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6763d930ab4a58f5d4e89542dfedf05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gad6763d930ab4a58f5d4e89542dfedf05">object_setClass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> object, <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
+<tr class="memdesc:gad6763d930ab4a58f5d4e89542dfedf05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the class of an object.  <a href="#gad6763d930ab4a58f5d4e89542dfedf05">More...</a><br /></td></tr>
+<tr class="separator:gad6763d930ab4a58f5d4e89542dfedf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45c1ac82472fb1e16043e0f03037e64b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga45c1ac82472fb1e16043e0f03037e64b">object_getSuperclass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> obj)</td></tr>
+<tr class="memdesc:ga45c1ac82472fb1e16043e0f03037e64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the superclass of an object.  <a href="#ga45c1ac82472fb1e16043e0f03037e64b">More...</a><br /></td></tr>
+<tr class="separator:ga45c1ac82472fb1e16043e0f03037e64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08133c439eca8d5e6f93f450c6f3cc6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga08133c439eca8d5e6f93f450c6f3cc6a">class_getSuperclass</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
+<tr class="memdesc:ga08133c439eca8d5e6f93f450c6f3cc6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the superclass of a class.  <a href="#ga08133c439eca8d5e6f93f450c6f3cc6a">More...</a><br /></td></tr>
+<tr class="separator:ga08133c439eca8d5e6f93f450c6f3cc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga435d6fc780b3f52b73013c71c9386f63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga435d6fc780b3f52b73013c71c9386f63">object_isKindOfClass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> object, <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
+<tr class="memdesc:ga435d6fc780b3f52b73013c71c9386f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an instance class matches, or subclass of another class.  <a href="#ga435d6fc780b3f52b73013c71c9386f63">More...</a><br /></td></tr>
+<tr class="separator:ga435d6fc780b3f52b73013c71c9386f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a072d3c3465223f1540b23b6304b0c3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3">class_getInstanceSize</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
+<tr class="memdesc:ga0a072d3c3465223f1540b23b6304b0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of an instance of a class.  <a href="#ga0a072d3c3465223f1540b23b6304b0c3">More...</a><br /></td></tr>
+<tr class="separator:ga0a072d3c3465223f1540b23b6304b0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e81322cccc6c5d8c80814e5d4c9cabc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga1e81322cccc6c5d8c80814e5d4c9cabc">class_metaclassRespondsToSelector</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls, <a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
+<tr class="memdesc:ga1e81322cccc6c5d8c80814e5d4c9cabc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a class object responds to a selector.  <a href="#ga1e81322cccc6c5d8c80814e5d4c9cabc">More...</a><br /></td></tr>
+<tr class="separator:ga1e81322cccc6c5d8c80814e5d4c9cabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fa7f9d3bdb155fb39a35714304ed104"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104">class_respondsToSelector</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls, <a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
+<tr class="memdesc:ga2fa7f9d3bdb155fb39a35714304ed104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an instance of a class responds to a selector.  <a href="#ga2fa7f9d3bdb155fb39a35714304ed104">More...</a><br /></td></tr>
+<tr class="separator:ga2fa7f9d3bdb155fb39a35714304ed104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga359230f72face8b5990d70523f5d3ec5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga359230f72face8b5990d70523f5d3ec5">sel_getName</a> (<a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
+<tr class="memdesc:ga359230f72face8b5990d70523f5d3ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a selector.  <a href="#ga359230f72face8b5990d70523f5d3ec5">More...</a><br /></td></tr>
+<tr class="separator:ga359230f72face8b5990d70523f5d3ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa62343541481469b654863125aec01b9"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gaa62343541481469b654863125aec01b9">proto_getName</a> (<a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *protocol)</td></tr>
+<tr class="memdesc:gaa62343541481469b654863125aec01b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a protocol.  <a href="#gaa62343541481469b654863125aec01b9">More...</a><br /></td></tr>
+<tr class="separator:gaa62343541481469b654863125aec01b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6881363f093343fcf8529a4477f97afe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga6881363f093343fcf8529a4477f97afe">proto_conformsTo</a> (<a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *protocol, <a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *otherProtocol)</td></tr>
+<tr class="memdesc:ga6881363f093343fcf8529a4477f97afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a protocol conforms to another protocol.  <a href="#ga6881363f093343fcf8529a4477f97afe">More...</a><br /></td></tr>
+<tr class="separator:ga6881363f093343fcf8529a4477f97afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6a738aa79634e5b251dc817ffd19c7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b">class_conformsTo</a> (<a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls, <a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *otherProtocol)</td></tr>
+<tr class="memdesc:gaa6a738aa79634e5b251dc817ffd19c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a class conforms to a protocol.  <a href="#gaa6a738aa79634e5b251dc817ffd19c7b">More...</a><br /></td></tr>
+<tr class="separator:gaa6a738aa79634e5b251dc817ffd19c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga1636d49f54f5501c0bb5ce698de32eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1636d49f54f5501c0bb5ce698de32eee">&#9670;&nbsp;</a></span>OBJC_ROOT_CLASS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OBJC_ROOT_CLASS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A macro to declare a class as a root class. </p>
+<p>This macro uses the <code>objc_root_class</code> attribute if it is available, which allows a class to be defined without a superclass. </p>
+
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00083">83</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+
+</div>
+</div>
+<a id="gad2e5ab70591b8c9424a23877a448e4a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad2e5ab70591b8c9424a23877a448e4a4">&#9670;&nbsp;</a></span>OBJC_UNUSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OBJC_UNUSED</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A macro to declare a method parameter is unused. </p>
+<p>This macro uses the <code>unused</code> attribute if it is available, which allows a method parameter to be marked as unused. </p>
+
+<p class="definition">Definition at line <a class="el" href="runtime_8h_source.html#l00097">97</a> of file <a class="el" href="runtime_8h_source.html">runtime.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaa6a738aa79634e5b251dc817ffd19c7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6a738aa79634e5b251dc817ffd19c7b">&#9670;&nbsp;</a></span>class_conformsTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> class_conformsTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>otherProtocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a class conforms to a protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to test for conformance. </td></tr>
+    <tr><td class="paramname">otherProtocol</td><td>The protocol to check conformance against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if methods of a <code>cls</code> conforms to <code>otherProtocol</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga0a072d3c3465223f1540b23b6304b0c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0a072d3c3465223f1540b23b6304b0c3">&#9670;&nbsp;</a></span>class_getInstanceSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t class_getInstanceSize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the size of an instance of a class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The size of an instance of the class in bytes, or 0 if the class is <code>Nil</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga07ce1ddc081be789fbb88d8a0beeded0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga07ce1ddc081be789fbb88d8a0beeded0">&#9670;&nbsp;</a></span>class_getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* class_getName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of a class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the class, or <code>NULL</code> if <code>cls</code> is <code>Nil</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga08133c439eca8d5e6f93f450c6f3cc6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga08133c439eca8d5e6f93f450c6f3cc6a">&#9670;&nbsp;</a></span>class_getSuperclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> class_getSuperclass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the superclass of a class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The superclass of the class, or <code>Nil</code> if it is a root class. </dd></dl>
+
+</div>
+</div>
+<a id="ga1e81322cccc6c5d8c80814e5d4c9cabc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1e81322cccc6c5d8c80814e5d4c9cabc">&#9670;&nbsp;</a></span>class_metaclassRespondsToSelector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> class_metaclassRespondsToSelector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>&#160;</td>
+          <td class="paramname"><em>sel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a class object responds to a selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to inspect. </td></tr>
+    <tr><td class="paramname">sel</td><td>The selector to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if the class responds to the selector, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ga2fa7f9d3bdb155fb39a35714304ed104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2fa7f9d3bdb155fb39a35714304ed104">&#9670;&nbsp;</a></span>class_respondsToSelector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> class_respondsToSelector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>&#160;</td>
+          <td class="paramname"><em>sel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an instance of a class responds to a selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cls</td><td>The class to inspect. </td></tr>
+    <tr><td class="paramname">sel</td><td>The selector to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if instances of the class respond to the selector, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gad60fc60359e0c7b9a6751f835f5537a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad60fc60359e0c7b9a6751f835f5537a2">&#9670;&nbsp;</a></span>objc_lookupClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> objc_lookupClass </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Looks up a class by name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the class to look up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The class object, or <code>Nil</code> if the class is not found. </dd></dl>
+
+</div>
+</div>
+<a id="ga0a52026f8341ccd035d68c2fdb091491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0a52026f8341ccd035d68c2fdb091491">&#9670;&nbsp;</a></span>object_getClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> object_getClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>object</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the class of an object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The class of the object, or <code>Nil</code> if the object is <code>nil</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga17b085d44512c2db39ae4ba4e53ae748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga17b085d44512c2db39ae4ba4e53ae748">&#9670;&nbsp;</a></span>object_getClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* object_getClassName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of an object's class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>The object to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the object's class, or <code>NULL</code> if <code>obj</code> is <code>nil</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga45c1ac82472fb1e16043e0f03037e64b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga45c1ac82472fb1e16043e0f03037e64b">&#9670;&nbsp;</a></span>object_getSuperclass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> object_getSuperclass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the superclass of an object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>The object to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The superclass of the object, or <code>Nil</code> if it is a root class. </dd></dl>
+
+</div>
+</div>
+<a id="ga435d6fc780b3f52b73013c71c9386f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga435d6fc780b3f52b73013c71c9386f63">&#9670;&nbsp;</a></span>object_isKindOfClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> object_isKindOfClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an instance class matches, or subclass of another class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to inspect. </td></tr>
+    <tr><td class="paramname">cls</td><td>The class to compare against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if <code>object</code> class matches or is a subclass of <code>cls</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gad6763d930ab4a58f5d4e89542dfedf05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad6763d930ab4a58f5d4e89542dfedf05">&#9670;&nbsp;</a></span>object_setClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void object_setClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>cls</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the class of an object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to modify. </td></tr>
+    <tr><td class="paramname">cls</td><td>The new class for the object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga6881363f093343fcf8529a4477f97afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6881363f093343fcf8529a4477f97afe">&#9670;&nbsp;</a></span>proto_conformsTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> proto_conformsTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>otherProtocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a protocol conforms to another protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>The protocol to test for conformance. </td></tr>
+    <tr><td class="paramname">otherProtocol</td><td>The protocol to check conformance against. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if <code>protocol</code> conforms to <code>otherProtocol</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gaa62343541481469b654863125aec01b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa62343541481469b654863125aec01b9">&#9670;&nbsp;</a></span>proto_getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* proto_getName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga94527388730bf1fbaa99e45d08b1b868">objc_protocol_t</a> *&#160;</td>
+          <td class="paramname"><em>protocol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of a protocol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">protocol</td><td>The protocol to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the protocol, or <code>NULL</code> if <code>protocol</code> is <code>NULL</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga359230f72face8b5990d70523f5d3ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga359230f72face8b5990d70523f5d3ec5">&#9670;&nbsp;</a></span>sel_getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* sel_getName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>&#160;</td>
+          <td class="paramname"><em>sel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of a selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sel</td><td>The selector to inspect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A C-string representing the selector's name. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
