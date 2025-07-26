@@ -3,8 +3,7 @@
  * @brief Defines system management functions.
  * @defgroup System
  *
- * This file declares various system methods for managing memory, threads
- * and resources.
+ * System methods for managing memory, threads and resources.
  */
 #pragma once
 #include "hash.h"
