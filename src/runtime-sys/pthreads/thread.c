@@ -80,7 +80,7 @@ bool sys_thread_create(sys_thread_func_t func, void *arg) {
   }
 
   // Allocate wrapper structure
-  thread_wrapper_t *wrapper = malloc(sizeof(thread_wrapper_t));
+  thread_wrapper_t *wrapper = sys_malloc(sizeof(thread_wrapper_t));
   if (!wrapper) {
     return false;
   }
