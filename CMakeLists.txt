@@ -43,3 +43,6 @@ add_subdirectory("src/NXFoundation")
 # Tests
 include(CTest)
 add_subdirectory("src/tests")
+
+# Examples
+add_subdirectory("src/examples")

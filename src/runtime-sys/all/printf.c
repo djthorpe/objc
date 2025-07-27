@@ -3,6 +3,12 @@
 #include <stddef.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+
+// Global mutex for thread-safe printf operations
+static sys_mutex_t printf_mutex;
+
+///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
 typedef enum {
@@ -402,14 +408,23 @@ size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+void _sys_printf_init(void) { printf_mutex = sys_mutex_init(); }
+
+void _sys_printf_finalize(void) { sys_mutex_finalize(&printf_mutex); }
+
+///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
 size_t sys_vprintf(const char *format, va_list args) {
+  sys_mutex_lock(&printf_mutex);
   struct sys_printf_state state = {.putch = _sys_printf_putch};
   va_list args_copy;
   va_copy(args_copy, args);
   size_t len = _sys_vprintf(&state, format, &args_copy);
   va_end(args_copy);
+  sys_mutex_unlock(&printf_mutex);
   return len;
 }
 

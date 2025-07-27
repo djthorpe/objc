@@ -45,6 +45,13 @@ tests: NXFoundation
 	@${CMAKE} --build ${BUILD_DIR}/src/tests
 	@${CMAKE} --build ${BUILD_DIR} --target test
 
+# Make the examples
+.PHONY: examples
+examples: NXFoundation
+	@echo
+	@echo make examples
+	@${CMAKE} --build ${BUILD_DIR}/src/examples
+
 # Generate the documentation
 .PHONY: docs
 docs: dep-docker 
