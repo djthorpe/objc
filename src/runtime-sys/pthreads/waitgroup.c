@@ -129,35 +129,7 @@ bool sys_waitgroup_done(sys_waitgroup_t *wg) {
 }
 
 /**
- * @brief Wait for the waitgroup counter to reach zero
- */
-bool sys_waitgroup_wait(sys_waitgroup_t *wg) {
-  if (wg == NULL || !wg->init) {
-    return false;
-  }
-
-  waitgroup_data_t *wgd = (waitgroup_data_t *)wg->ctx;
-
-  // Lock the mutex
-  if (pthread_mutex_lock(&wgd->mutex) != 0) {
-    return false;
-  }
-
-  // Wait while counter is greater than 0
-  while (wgd->counter > 0) {
-    if (pthread_cond_wait(&wgd->cond, &wgd->mutex) != 0) {
-      pthread_mutex_unlock(&wgd->mutex);
-      return false;
-    }
-  }
-
-  // Unlock the mutex
-  pthread_mutex_unlock(&wgd->mutex);
-  return true;
-}
-
-/**
- * @brief Finalize and cleanup a waitgroup
+ * @brief Finalize and cleanup a waitgroup - wait for completion then cleanup
  */
 void sys_waitgroup_finalize(sys_waitgroup_t *wg) {
   if (wg == NULL || !wg->init) {
@@ -166,11 +138,25 @@ void sys_waitgroup_finalize(sys_waitgroup_t *wg) {
 
   waitgroup_data_t *wgd = (waitgroup_data_t *)wg->ctx;
 
-  // Destroy the condition variable and mutex
+  // Lock the mutex
+  if (pthread_mutex_lock(&wgd->mutex) != 0) {
+    return;
+  }
+
+  // Wait while counter is greater than 0
+  while (wgd->counter > 0) {
+    if (pthread_cond_wait(&wgd->cond, &wgd->mutex) != 0) {
+      pthread_mutex_unlock(&wgd->mutex);
+      return;
+    }
+  }
+
+  // Unlock the mutex
+  pthread_mutex_unlock(&wgd->mutex);
+
+  // Clean up pthread resources and mark as uninitialized
   pthread_cond_destroy(&wgd->cond);
   pthread_mutex_destroy(&wgd->mutex);
-
-  // Clear the structure
   wg->init = false;
   sys_memset(wg->ctx, 0, sizeof(wg->ctx));
 }
