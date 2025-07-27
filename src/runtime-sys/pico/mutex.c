@@ -52,6 +52,9 @@ bool sys_mutex_unlock(sys_mutex_t *mutex) {
   }
 
   mutex_t *pm = (mutex_t *)mutex->ctx;
+  if (!mutex_is_initialized(pm)) {
+    return false;
+  }
   mutex_exit(pm);
   return true;
 }
