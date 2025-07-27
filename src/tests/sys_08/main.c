@@ -5,7 +5,7 @@
 int test_sys_08(void);
 
 int main(void) {
-  // Run mutex function tests
+  // Run condition variable function tests
   return TestMain("test_sys_08", test_sys_08);
 }
 
