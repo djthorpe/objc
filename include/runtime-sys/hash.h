@@ -15,6 +15,24 @@ extern "C" {
 #endif
 
 /**
+ * @brief Size of the hash.
+ * @ingroup System
+ *
+ * This defines the size of the hash value produced by the hash operations.
+ * It should be large enough to hold any hash algorithm's output.
+ */
+#define SYS_HASH_SIZE 32
+
+/**
+ * @brief Size of the hash context buffer.
+ * @ingroup System
+ *
+ * This defines the size of the context buffer used for hash operations.
+ * It should be large enough to hold any hash algorithm's context.
+ */
+#define SYS_HASH_CTX_SIZE 128
+
+/**
  * @brief Hash algorithm identifiers.
  * @ingroup System
  *
@@ -33,9 +51,11 @@ typedef enum {
  */
 typedef struct {
   sys_hash_algorithm_t algorithm; // The hash algorithm used
-  uint8_t hash[32]; // Buffer to hold the hash value = max is SHA-256 (32 bytes)
-  size_t size;      // Size of the hash in bytes
-  uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash algorithm
+  uint8_t hash[SYS_HASH_SIZE]; // Buffer to hold the hash value = max is SHA-256
+                               // (32 bytes)
+  size_t size;                 // Size of the hash in bytes
+  uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash
+                                  // algorithm
 } sys_hash_t;
 
 /**
