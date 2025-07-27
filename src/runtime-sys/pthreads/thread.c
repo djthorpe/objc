@@ -10,9 +10,9 @@
 #define _GNU_SOURCE
 #endif
 
-#include "runtime-sys/thread.h"
 #include <errno.h>
 #include <pthread.h>
+#include <runtime-sys/sys.h>
 #include <stdlib.h>
 #include <unistd.h>
 
