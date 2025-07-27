@@ -251,11 +251,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6bc3531da1d947e8b588749cecc2b692"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga6bc3531da1d947e8b588749cecc2b692">sys_waitgroup_done</a> (<a class="el" href="structsys__waitgroup__t.html">sys_waitgroup_t</a> *wg)</td></tr>
 <tr class="memdesc:ga6bc3531da1d947e8b588749cecc2b692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrement the waitgroup counter.  <a href="#ga6bc3531da1d947e8b588749cecc2b692">More...</a><br /></td></tr>
 <tr class="separator:ga6bc3531da1d947e8b588749cecc2b692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga47e40bb08616539f1d8b25b312eb17a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga47e40bb08616539f1d8b25b312eb17a3">sys_waitgroup_wait</a> (<a class="el" href="structsys__waitgroup__t.html">sys_waitgroup_t</a> *wg)</td></tr>
-<tr class="memdesc:ga47e40bb08616539f1d8b25b312eb17a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the waitgroup counter to reach zero.  <a href="#ga47e40bb08616539f1d8b25b312eb17a3">More...</a><br /></td></tr>
-<tr class="separator:ga47e40bb08616539f1d8b25b312eb17a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabca9a01a0834ad14251f39c45a1120d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gabca9a01a0834ad14251f39c45a1120d6">sys_waitgroup_finalize</a> (<a class="el" href="structsys__waitgroup__t.html">sys_waitgroup_t</a> *wg)</td></tr>
-<tr class="memdesc:gabca9a01a0834ad14251f39c45a1120d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and cleanup a waitgroup.  <a href="#gabca9a01a0834ad14251f39c45a1120d6">More...</a><br /></td></tr>
+<tr class="memdesc:gabca9a01a0834ad14251f39c45a1120d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and cleanup a waitgroup - wait for completion then cleanup.  <a href="#gabca9a01a0834ad14251f39c45a1120d6">More...</a><br /></td></tr>
 <tr class="separator:gabca9a01a0834ad14251f39c45a1120d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
 <tr class="memdesc:ga4eced11c2352451c4ea6c7386e58342b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a string to the system console or standard output.  <a href="#ga4eced11c2352451c4ea6c7386e58342b">More...</a><br /></td></tr>
@@ -2493,7 +2490,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
-<p>Decrements the waitgroup counter by 1. This should be called when a goroutine finishes its work. If the counter reaches 0, all threads waiting on <a class="el" href="group__System.html#ga47e40bb08616539f1d8b25b312eb17a3" title="Wait for the waitgroup counter to reach zero. ">sys_waitgroup_wait()</a> will be woken up. </p>
+<p>Decrements the waitgroup counter by 1. This should be called when a goroutine finishes its work. If the counter reaches 0, all threads waiting on sys_waitgroup_wait() will be woken up. </p>
 
 </div>
 </div>
@@ -2513,14 +2510,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
       </table>
 </div><div class="memdoc">
 
-<p>Finalize and cleanup a waitgroup. </p>
+<p>Finalize and cleanup a waitgroup - wait for completion then cleanup. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wg</td><td>Pointer to the waitgroup to finalize</td></tr>
   </table>
   </dd>
 </dl>
-<p>Releases all resources associated with the waitgroup and renders it unusable. The waitgroup counter should be 0 and no threads should be waiting when this function is called. </p>
+<p>Blocks until the waitgroup counter reaches 0, then releases all resources associated with the waitgroup and renders it unusable. The waitgroup counter should reach 0 through done() calls from worker threads. </p>
 
 </div>
 </div>
@@ -2542,35 +2539,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 
 <p>Initialize a new waitgroup. </p>
 <dl class="section return"><dt>Returns</dt><dd>Initialized waitgroup structure</dd></dl>
-<p>Creates and initializes a new waitgroup for thread synchronization. The waitgroup counter starts at 0. The returned waitgroup must be finalized with <a class="el" href="group__System.html#gabca9a01a0834ad14251f39c45a1120d6" title="Finalize and cleanup a waitgroup. ">sys_waitgroup_finalize()</a> </p>
-
-</div>
-</div>
-<a id="ga47e40bb08616539f1d8b25b312eb17a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga47e40bb08616539f1d8b25b312eb17a3">&#9670;&nbsp;</a></span>sys_waitgroup_wait()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_waitgroup_wait </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__waitgroup__t.html">sys_waitgroup_t</a> *&#160;</td>
-          <td class="paramname"><em>wg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Wait for the waitgroup counter to reach zero. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">wg</td><td>Pointer to the waitgroup </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
-<p>Blocks until the waitgroup counter reaches 0. Multiple threads can wait on the same waitgroup. </p>
+<p>Creates and initializes a new waitgroup for thread synchronization. The waitgroup counter starts at 0. The returned waitgroup must be finalized with <a class="el" href="group__System.html#gabca9a01a0834ad14251f39c45a1120d6" title="Finalize and cleanup a waitgroup - wait for completion then cleanup. ">sys_waitgroup_finalize()</a> </p>
 
 </div>
 </div>
