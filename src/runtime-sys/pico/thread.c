@@ -4,27 +4,18 @@
 #include <runtime-sys/sys.h>
 
 /**
- * @brief Thread wrapper structure for Pico multicore compatibility
- */
-typedef struct {
-  sys_thread_func_t func;
-  void *arg;
-} pico_thread_wrapper_t;
-
-/**
  * @brief Wrapper function to adapt sys_thread_func_t to Pico multicore function
  */
 static void pico_thread_wrapper(void) {
-  // Get the wrapper from the multicore FIFO
-  pico_thread_wrapper_t *wrapper =
-      (pico_thread_wrapper_t *)multicore_fifo_pop_blocking();
+  // Get the function pointer and argument from the multicore FIFO
+  sys_thread_func_t func = (sys_thread_func_t)multicore_fifo_pop_blocking();
+  void *arg = (void *)multicore_fifo_pop_blocking();
 
-  if (wrapper && wrapper->func) {
+  if (func) {
     // Call the actual thread function
-    wrapper->func(wrapper->arg);
-
-    // Free the wrapper structure
-    sys_free(wrapper);
+    func(arg);
+  } else {
+    sys_panicf("Pico thread wrapper: function pointer is NULL");
   }
 }
 
@@ -63,7 +54,7 @@ bool sys_thread_create(sys_thread_func_t func, void *arg) {
 
 bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
                                uint8_t core) {
-  if (!func) {
+  if (func == NULL) {
     return false;
   }
 
@@ -87,21 +78,13 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
     // Reset core 1 to prepare for new task
     multicore_reset_core1();
 
-    // Allocate wrapper structure
-    pico_thread_wrapper_t *wrapper =
-        (pico_thread_wrapper_t *)sys_malloc(sizeof(pico_thread_wrapper_t));
-    if (!wrapper) {
-      return false;
-    }
-
-    wrapper->func = func;
-    wrapper->arg = arg;
-
-    // Send the wrapper through the FIFO
-    multicore_fifo_push_blocking((uintptr_t)wrapper);
-
     // Launch the wrapper function on core 1
     multicore_launch_core1(pico_thread_wrapper);
+
+    // Send the function pointer and argument through the FIFO
+    // Order is important: function pointer first, then argument
+    multicore_fifo_push_blocking((uintptr_t)func);
+    multicore_fifo_push_blocking((uintptr_t)arg);
     return true;
   default:
     // Invalid core number, should not happen
