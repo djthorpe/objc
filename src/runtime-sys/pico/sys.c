@@ -1,3 +1,4 @@
+#include "../all/printf.h"
 #include <pico/stdlib.h>
 #include <runtime-sys/sys.h>
 
@@ -5,17 +6,17 @@
  * @brief Initializes the system on startup.
  */
 void sys_init(void) {
-  // Initialize standard I/O
   stdio_init_all();
   sleep_ms(1000);
+  sys_printf_init();
 }
 
 /**
  * @brief Cleans up the system on shutdown.
  */
 void sys_exit(void) {
+  sys_printf_finalize();
   while (true) {
-    // Optionally, you can add a delay here to prevent busy-waiting
     sleep_ms(1000);
   }
 }
