@@ -230,6 +230,18 @@ static void mutex_stress_worker(void *arg) {
 
 // Main threading stress test function
 int test_sys_10(void) {
+#ifdef SYSTEM_NAME_PICO
+  // On Pico, we can't run stress tests that require multiple concurrent threads
+  // since the RP2040 only has 2 cores and core 1 can only run one task at a
+  // time
+  sys_printf("Skipping threading stress tests on Pico platform\n");
+  sys_printf("Reason: Pico's threading model doesn't support multiple "
+             "concurrent threads\n");
+  sys_printf(
+      "All stress tests require multiple threads running simultaneously\n");
+  return 0; // Success - tests are not applicable on this platform
+#endif
+
   int num_cores = sys_thread_numcores();
 
   sys_printf("Starting comprehensive threading stress tests...\n");

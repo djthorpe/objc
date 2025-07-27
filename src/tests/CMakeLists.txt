@@ -29,6 +29,8 @@ add_subdirectory(sys_09)
 add_subdirectory(sys_10)
 add_subdirectory(sys_11)
 add_subdirectory(sys_12)
+add_subdirectory(sys_13)
+add_subdirectory(sys_14)
 
 # Test cases - runtime
 add_subdirectory(runtime_01)

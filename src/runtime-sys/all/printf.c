@@ -418,13 +418,13 @@ void _sys_printf_finalize(void) { sys_mutex_finalize(&printf_mutex); }
 // PUBLIC METHODS
 
 size_t sys_vprintf(const char *format, va_list args) {
-  sys_mutex_lock(&printf_mutex);
+  //  sys_mutex_lock(&printf_mutex);
   struct sys_printf_state state = {.putch = _sys_printf_putch};
   va_list args_copy;
   va_copy(args_copy, args);
   size_t len = _sys_vprintf(&state, format, &args_copy);
   va_end(args_copy);
-  sys_mutex_unlock(&printf_mutex);
+  //  sys_mutex_unlock(&printf_mutex);
   return len;
 }
 

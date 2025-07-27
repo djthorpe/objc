@@ -13,7 +13,7 @@
 
 /**
  * @brief Internal condition variable data structure
- * 
+ *
  * Uses semaphore for signaling and mutex for protecting waiter count.
  * This implementation follows the "signal and continue" semantics where
  * the signaling thread continues and the waiting thread runs when the
@@ -25,7 +25,8 @@ typedef struct {
   int waiters_count;    ///< Number of threads currently waiting
 } pico_cond_data_t;
 
-// Ensure the embedded buffer is large enough for our condition variable structure
+// Ensure the embedded buffer is large enough for our condition variable
+// structure
 _Static_assert(sizeof(pico_cond_data_t) <= SYS_COND_CTX_SIZE,
                "SYS_COND_CTX_SIZE too small for pico_cond_data_t");
 
@@ -43,7 +44,7 @@ sys_cond_t sys_cond_init(void) {
   // Initialize semaphore with 0 permits (no waiters initially)
   // Max permits should accommodate reasonable number of waiting threads
   sem_init(&cd->sem, 0, 1024);
-  
+
   // Initialize mutex for protecting waiters count
   mutex_init(&cd->waiters_lock);
   cd->waiters_count = 0;
@@ -92,7 +93,8 @@ bool sys_cond_wait(sys_cond_t *cond, sys_mutex_t *mutex) {
 /**
  * @brief Wait on a condition variable with timeout
  */
-bool sys_cond_timedwait(sys_cond_t *cond, sys_mutex_t *mutex, uint32_t timeout_ms) {
+bool sys_cond_timedwait(sys_cond_t *cond, sys_mutex_t *mutex,
+                        uint32_t timeout_ms) {
   if (!cond || !cond->init || !mutex || !mutex->init) {
     return false;
   }
@@ -113,11 +115,8 @@ bool sys_cond_timedwait(sys_cond_t *cond, sys_mutex_t *mutex, uint32_t timeout_m
   // Release the user mutex
   mutex_exit(user_mutex);
 
-  // Calculate absolute timeout
-  absolute_time_t timeout = make_timeout_time_ms(timeout_ms);
-  
-  // Wait for signal with timeout
-  bool signaled = sem_acquire_timeout(&cd->sem, timeout);
+  // Wait for signal with timeout (convert ms to us)
+  bool signaled = sem_acquire_timeout_us(&cd->sem, timeout_ms * 1000);
 
   // Decrement waiter count
   mutex_enter_blocking(&cd->waiters_lock);
@@ -183,8 +182,6 @@ void sys_cond_finalize(sys_cond_t *cond) {
   if (!cond || !cond->init) {
     return;
   }
-
-  pico_cond_data_t *cd = (pico_cond_data_t *)cond->ctx;
 
   // Wake up any remaining waiters before cleanup
   sys_cond_broadcast(cond);

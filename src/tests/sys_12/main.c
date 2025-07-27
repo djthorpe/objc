@@ -1,5 +1,3 @@
-#include <runtime-sys/event.h>
-#include <runtime-sys/sync.h>
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 

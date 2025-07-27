@@ -56,10 +56,12 @@ bool sys_timer_start(sys_timer_t *timer) {
     return false; // Invalid timer (not properly initialized)
   }
 
-  // Check if timer is already running (ctx buffer has been initialized)
+  // Get pointer to the context buffer
   pico_timer_ctx_t *ctx = (pico_timer_ctx_t *)timer->ctx.ctx;
-  if (ctx == NULL || ctx->repeating_timer.alarm_id != 0) {
-    return false; // Invalid context or timer is already running
+
+  // Check if timer is already running (alarm_id != 0 means it's active)
+  if (ctx->repeating_timer.alarm_id != 0) {
+    return false; // Timer is already running
   }
 
   // Initialize the context in the buffer
@@ -93,9 +95,9 @@ bool sys_timer_finalize(sys_timer_t *timer) {
   }
 
   pico_timer_ctx_t *ctx = (pico_timer_ctx_t *)timer->ctx.ctx;
-  // Validate that the context has been initialized
-  if (ctx == NULL || ctx->repeating_timer.alarm_id == 0) {
-    return false; // Timer not running, uninitialized, or already finalized
+  // Check if timer is actually running (alarm_id != 0 means it's active)
+  if (ctx->repeating_timer.alarm_id == 0) {
+    return false; // Timer not running or already finalized
   }
 
   // Cancel the repeating timer
