@@ -144,14 +144,14 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
 
   // Initialize thread attributes
   if (pthread_attr_init(&attr) != 0) {
-    free(wrapper);
+    sys_free(wrapper);
     return false;
   }
 
   // Set thread to detached state for fire-and-forget behavior
   if (pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED) != 0) {
     pthread_attr_destroy(&attr);
-    free(wrapper);
+    sys_free(wrapper);
     return false;
   }
 
