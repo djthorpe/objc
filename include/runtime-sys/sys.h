@@ -6,6 +6,7 @@
  * System methods for managing memory, threads and resources.
  */
 #pragma once
+#include "event.h"
 #include "hash.h"
 #include "memory.h"
 #include "printf.h"

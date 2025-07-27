@@ -20,6 +20,9 @@ extern "C" {
 /** @brief Buffer size for platform-specific condition variable context data */
 #define SYS_COND_CTX_SIZE 64 // Adjust based on platform requirements
 
+/** @brief Buffer size for platform-specific waitgroup context data */
+#define SYS_WAITGROUP_CTX_SIZE 128 // Larger to hold mutex + cond + counter
+
 /**
  * @brief Mutex context structure.
  * @ingroup System
@@ -49,6 +52,23 @@ typedef struct {
     uint64_t align;             ///< Force 8-byte alignment
   };
 } sys_cond_t;
+
+/**
+ * @brief Waitgroup context structure.
+ * @ingroup System
+ *
+ * Contains the state and configuration for waitgroup operations.
+ * A waitgroup allows one goroutine to wait for a collection of goroutines
+ * to finish executing.
+ */
+typedef struct {
+  bool init; ///< Indicates if the waitgroup is initialized
+  union {
+    uint8_t ctx[SYS_WAITGROUP_CTX_SIZE]; ///< Embedded buffer for
+                                         ///< platform-specific data
+    uint64_t align;                      ///< Force 8-byte alignment
+  };
+} sys_waitgroup_t;
 
 /**
  * @brief Initialize a new mutex
@@ -181,6 +201,63 @@ bool sys_cond_broadcast(sys_cond_t *cond);
  * this function is called.
  */
 void sys_cond_finalize(sys_cond_t *cond);
+
+/**
+ * @brief Initialize a new waitgroup
+ * @ingroup System
+ * @return Initialized waitgroup structure
+ *
+ * Creates and initializes a new waitgroup for thread synchronization.
+ * The waitgroup counter starts at 0. The returned waitgroup must be
+ * finalized with sys_waitgroup_finalize()
+ */
+sys_waitgroup_t sys_waitgroup_init(void);
+
+/**
+ * @brief Add to the waitgroup counter
+ * @ingroup System
+ * @param wg Pointer to the waitgroup
+ * @param delta Number to add to the counter (must be positive)
+ * @return true if successful, false on error
+ *
+ * Increments the waitgroup counter by delta. This should be called before
+ * starting goroutines that the waitgroup should wait for.
+ */
+bool sys_waitgroup_add(sys_waitgroup_t *wg, int delta);
+
+/**
+ * @brief Decrement the waitgroup counter
+ * @ingroup System
+ * @param wg Pointer to the waitgroup
+ * @return true if successful, false on error
+ *
+ * Decrements the waitgroup counter by 1. This should be called when a
+ * goroutine finishes its work. If the counter reaches 0, all threads
+ * waiting on sys_waitgroup_wait() will be woken up.
+ */
+bool sys_waitgroup_done(sys_waitgroup_t *wg);
+
+/**
+ * @brief Wait for the waitgroup counter to reach zero
+ * @ingroup System
+ * @param wg Pointer to the waitgroup
+ * @return true if successful, false on error
+ *
+ * Blocks until the waitgroup counter reaches 0. Multiple threads can
+ * wait on the same waitgroup.
+ */
+bool sys_waitgroup_wait(sys_waitgroup_t *wg);
+
+/**
+ * @brief Finalize and cleanup a waitgroup
+ * @ingroup System
+ * @param wg Pointer to the waitgroup to finalize
+ *
+ * Releases all resources associated with the waitgroup and renders it
+ * unusable. The waitgroup counter should be 0 and no threads should be
+ * waiting when this function is called.
+ */
+void sys_waitgroup_finalize(sys_waitgroup_t *wg);
 
 #ifdef __cplusplus
 }
