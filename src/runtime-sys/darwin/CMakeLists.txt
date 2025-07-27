@@ -6,7 +6,6 @@ find_package(OpenSSL REQUIRED)
 add_library(${NAME} STATIC
     abort.c
     exception.c
-    mutex.c
     sys.c
     timer.c
     ../openssl/hash.c
@@ -17,6 +16,8 @@ add_library(${NAME} STATIC
     ../posix/thread.c
     ../posix/time.c
     ../posix/timeget.c
+    ../pthreads/mutex.c
+    ../all/mutex.c
     ../all/panicf.c
     ../all/printf.c
 )
@@ -28,4 +29,5 @@ target_include_directories(${NAME} PRIVATE
 target_link_libraries(${NAME} PRIVATE
     OpenSSL::SSL
     OpenSSL::Crypto
+    pthread
 )

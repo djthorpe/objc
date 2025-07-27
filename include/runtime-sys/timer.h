@@ -21,7 +21,7 @@ extern "C" {
  * This defines the size of the context buffer used for timer operations.
  * It should be large enough to hold any platform-specific timer context.
  */
-#define SYS_TIMER_CTX_SIZE 128
+#define SYS_TIMER_CTX_SIZE 32
 
 /**
  * @brief Timer context structure.
@@ -35,7 +35,8 @@ typedef struct sys_timer_t {
   void *userdata;
   union {
     void *ptr; // Pointer to the timer context (platform-specific)
-    uint8_t ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
+    uint8_t
+        ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
   } ctx;
 } sys_timer_t;
 
