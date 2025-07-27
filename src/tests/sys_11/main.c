@@ -249,7 +249,7 @@ int test_sys_11(void) {
     }
     sys_printf("PASS: Result collection test completed successfully\n");
 
-    free(shared_data.results);
+    sys_free(shared_data.results);
     sys_waitgroup_finalize(&shared_data.waitgroup);
   }
 
