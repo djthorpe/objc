@@ -268,7 +268,7 @@ int test_sys_10(void) {
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     int expected = NUM_THREADS * ITERATIONS;
     int final_count = atomic_load(&shared_data.counter);
@@ -358,7 +358,7 @@ int test_sys_10(void) {
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     long produced = atomic_load(&shared_data.total_produced);
     long consumed = atomic_load(&shared_data.total_consumed);
@@ -421,7 +421,7 @@ int test_sys_10(void) {
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     long expected_producer = NUM_THREADS * ITERATIONS / 2;
     long expected_consumer = NUM_THREADS * ITERATIONS / 2;
@@ -477,7 +477,7 @@ int test_sys_10(void) {
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     int final_counter = atomic_load(&shared_data.counter);
     sys_printf("Final counter: %d operations\n", final_counter);
@@ -538,7 +538,7 @@ int test_sys_10(void) {
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     int expected = CORES_TO_USE * THREADS_PER_CORE * ITERATIONS;
     int final_count = atomic_load(&shared_data.counter);

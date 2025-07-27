@@ -238,24 +238,13 @@ bool sys_waitgroup_add(sys_waitgroup_t *wg, int delta);
 bool sys_waitgroup_done(sys_waitgroup_t *wg);
 
 /**
- * @brief Wait for the waitgroup counter to reach zero
- * @ingroup System
- * @param wg Pointer to the waitgroup
- * @return true if successful, false on error
- *
- * Blocks until the waitgroup counter reaches 0. Multiple threads can
- * wait on the same waitgroup.
- */
-bool sys_waitgroup_wait(sys_waitgroup_t *wg);
-
-/**
- * @brief Finalize and cleanup a waitgroup
+ * @brief Finalize and cleanup a waitgroup - wait for completion then cleanup
  * @ingroup System
  * @param wg Pointer to the waitgroup to finalize
  *
- * Releases all resources associated with the waitgroup and renders it
- * unusable. The waitgroup counter should be 0 and no threads should be
- * waiting when this function is called.
+ * Blocks until the waitgroup counter reaches 0, then releases all resources
+ * associated with the waitgroup and renders it unusable. The waitgroup counter
+ * should reach 0 through done() calls from worker threads.
  */
 void sys_waitgroup_finalize(sys_waitgroup_t *wg);
 

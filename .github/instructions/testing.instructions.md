@@ -26,6 +26,12 @@ You can then run the test with with the following command, to get more detailed 
 ctest --output-on-failure --test-dir build --tests-regex <test_target>
 ```
 
+You may run a test more than once using:
+
+```bash
+ctest --output-on-failure --test-dir build --tests-regex <test_target> --repeat until-fail:10
+```
+
 When you've updated a test with more test coverage, make sure to update the file in `src/tests/README.md`
 to keep the summary of tests up to date with the same name as the target, and include the new test 
 cases in that file.

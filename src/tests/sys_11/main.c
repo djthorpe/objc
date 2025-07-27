@@ -102,7 +102,13 @@ int test_sys_11(void) {
     shared_data.waitgroup = sys_waitgroup_init();
     atomic_init(&shared_data.counter, 0);
 
-    const int NUM_THREADS = 3;
+#ifdef SYSTEM_NAME_PICO
+    // On Pico, only one worker thread can run on core 1
+    const int NUM_THREADS = 1;
+#else
+    // On other platforms, use all available cores
+    const int NUM_THREADS = sys_thread_numcores();
+#endif
     const int WORK_PER_THREAD = 100;
     waitgroup_thread_data_t thread_data[NUM_THREADS];
 
@@ -119,15 +125,22 @@ int test_sys_11(void) {
       thread_data[i].work_amount = WORK_PER_THREAD;
       thread_data[i].delay_ms = 0;
 
+#ifdef SYSTEM_NAME_PICO
+      if (!sys_thread_create_on_core(simple_worker, &thread_data[i], 1)) {
+        sys_printf("Failed to create thread %d on core 1\n", i);
+        return 1;
+      }
+#else
       if (!sys_thread_create(simple_worker, &thread_data[i])) {
         sys_printf("Failed to create thread %d\n", i);
         return 1;
       }
+#endif
     }
 
     // Wait for all threads to complete
     sys_printf("Waiting for all threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     int expected = NUM_THREADS * WORK_PER_THREAD;
     int final_count = atomic_load(&shared_data.counter);
@@ -139,7 +152,7 @@ int test_sys_11(void) {
     }
     sys_printf("PASS: Basic waitgroup test completed successfully\n");
 
-    sys_waitgroup_finalize(&shared_data.waitgroup);
+    // Note: waitgroup is automatically finalized
   }
 
   // Test 2: Waitgroup with delayed threads
@@ -150,7 +163,13 @@ int test_sys_11(void) {
     atomic_init(&shared_data.counter, 0);
     atomic_init(&shared_data.thread_count, 0);
 
-    const int NUM_THREADS = 4;
+#ifdef SYSTEM_NAME_PICO
+    // On Pico, only one worker thread can run on core 1
+    const int NUM_THREADS = 1;
+#else
+    // On other platforms, use all available cores
+    const int NUM_THREADS = sys_thread_numcores();
+#endif
     waitgroup_thread_data_t thread_data[NUM_THREADS];
     int delays[] = {50, 100, 150, 200}; // Different delays for each thread
     int work_amounts[] = {10, 20, 30, 40};
@@ -164,33 +183,47 @@ int test_sys_11(void) {
     for (int i = 0; i < NUM_THREADS; i++) {
       thread_data[i].shared_data = &shared_data;
       thread_data[i].thread_id = i;
-      thread_data[i].work_amount = work_amounts[i];
-      thread_data[i].delay_ms = delays[i];
+      thread_data[i].work_amount =
+          work_amounts[i % 4];                 // Cycle through work amounts
+      thread_data[i].delay_ms = delays[i % 4]; // Cycle through delays
 
+#ifdef SYSTEM_NAME_PICO
+      if (!sys_thread_create_on_core(delayed_worker, &thread_data[i], 1)) {
+        sys_printf("Failed to create delayed thread %d on core 1\n", i);
+        return 1;
+      }
+#else
       if (!sys_thread_create(delayed_worker, &thread_data[i])) {
         sys_printf("Failed to create delayed thread %d\n", i);
         return 1;
       }
+#endif
     }
 
     // Wait for all threads to complete
     sys_printf("Waiting for all delayed threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
-    int expected_work = 10 + 20 + 30 + 40; // Sum of work_amounts
+    // Calculate expected work (sum of work amounts for each thread)
+    int expected_work = 0;
+    for (int i = 0; i < NUM_THREADS; i++) {
+      expected_work += work_amounts[i % 4];
+    }
+    int expected_threads = NUM_THREADS;
     int final_count = atomic_load(&shared_data.counter);
     int thread_count = atomic_load(&shared_data.thread_count);
 
     sys_printf("Expected work: %d, Got: %d\n", expected_work, final_count);
-    sys_printf("Expected threads: %d, Got: %d\n", NUM_THREADS, thread_count);
+    sys_printf("Expected threads: %d, Got: %d\n", expected_threads,
+               thread_count);
 
-    if (final_count != expected_work || thread_count != NUM_THREADS) {
+    if (final_count != expected_work || thread_count != expected_threads) {
       sys_printf("FAIL: Delayed waitgroup test failed!\n");
       return 1;
     }
     sys_printf("PASS: Delayed waitgroup test completed successfully\n");
 
-    sys_waitgroup_finalize(&shared_data.waitgroup);
+    // Note: waitgroup is automatically finalized
   }
 
   // Test 3: Waitgroup with result collection
@@ -199,7 +232,13 @@ int test_sys_11(void) {
     waitgroup_test_data_t shared_data = {0};
     shared_data.waitgroup = sys_waitgroup_init();
 
-    const int NUM_THREADS = 5;
+#ifdef SYSTEM_NAME_PICO
+    // On Pico, only one worker thread can run on core 1
+    const int NUM_THREADS = 1;
+#else
+    // On other platforms, use all available cores
+    const int NUM_THREADS = sys_thread_numcores();
+#endif
     shared_data.results = sys_malloc(NUM_THREADS * sizeof(int));
     shared_data.expected_results = NUM_THREADS;
     waitgroup_thread_data_t thread_data[NUM_THREADS];
@@ -222,15 +261,22 @@ int test_sys_11(void) {
           i + 1; // Each thread has different work amount
       thread_data[i].delay_ms = 0;
 
+#ifdef SYSTEM_NAME_PICO
+      if (!sys_thread_create_on_core(result_worker, &thread_data[i], 1)) {
+        sys_printf("Failed to create result thread %d on core 1\n", i);
+        return 1;
+      }
+#else
       if (!sys_thread_create(result_worker, &thread_data[i])) {
         sys_printf("Failed to create result thread %d\n", i);
         return 1;
       }
+#endif
     }
 
     // Wait for all threads to complete
     sys_printf("Waiting for all result threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     // Verify results
     bool all_results_correct = true;
@@ -250,7 +296,7 @@ int test_sys_11(void) {
     sys_printf("PASS: Result collection test completed successfully\n");
 
     sys_free(shared_data.results);
-    sys_waitgroup_finalize(&shared_data.waitgroup);
+    // Note: waitgroup is automatically finalized
   }
 
   // Test 4: Stress test with many threads
@@ -260,7 +306,13 @@ int test_sys_11(void) {
     shared_data.waitgroup = sys_waitgroup_init();
     atomic_init(&shared_data.counter, 0);
 
-    const int NUM_THREADS = 10;
+#ifdef SYSTEM_NAME_PICO
+    // On Pico, only one worker thread can run on core 1
+    const int NUM_THREADS = 1;
+#else
+    // On other platforms, use all available cores
+    const int NUM_THREADS = sys_thread_numcores();
+#endif
     const int WORK_PER_THREAD = 500;
     waitgroup_thread_data_t thread_data[NUM_THREADS];
 
@@ -276,15 +328,22 @@ int test_sys_11(void) {
       thread_data[i].work_amount = WORK_PER_THREAD;
       thread_data[i].delay_ms = 0;
 
+#ifdef SYSTEM_NAME_PICO
+      if (!sys_thread_create_on_core(stress_worker, &thread_data[i], 1)) {
+        sys_printf("Failed to create stress thread %d on core 1\n", i);
+        return 1;
+      }
+#else
       if (!sys_thread_create(stress_worker, &thread_data[i])) {
         sys_printf("Failed to create stress thread %d\n", i);
         return 1;
       }
+#endif
     }
 
     // Wait for all threads to complete
     sys_printf("Waiting for all stress threads to complete...\n");
-    sys_waitgroup_wait(&shared_data.waitgroup);
+    sys_waitgroup_finalize(&shared_data.waitgroup);
 
     int expected = NUM_THREADS * WORK_PER_THREAD;
     int final_count = atomic_load(&shared_data.counter);
@@ -296,7 +355,7 @@ int test_sys_11(void) {
     }
     sys_printf("PASS: Stress test completed successfully\n");
 
-    sys_waitgroup_finalize(&shared_data.waitgroup);
+    // Note: waitgroup is automatically finalized
   }
 
   // Test 5: Error handling
@@ -322,8 +381,8 @@ int test_sys_11(void) {
     }
     sys_printf("PASS: Add() correctly failed with negative value\n");
 
-    // Test normal operation
-    sys_printf("Testing normal Add/Done cycle...\n");
+    // Test normal operation with finalize
+    sys_printf("Testing normal Add/Done/Finalize cycle...\n");
     if (!sys_waitgroup_add(&wg, 1)) {
       sys_printf("FAIL: Add(1) should succeed\n");
       return 1;
@@ -332,9 +391,10 @@ int test_sys_11(void) {
       sys_printf("FAIL: Done() should succeed after Add(1)\n");
       return 1;
     }
-    sys_printf("PASS: Normal Add/Done cycle works correctly\n");
-
     sys_waitgroup_finalize(&wg);
+    sys_printf("PASS: Normal Add/Done/Finalize cycle works correctly\n");
+
+    // Note: waitgroup is automatically finalized
   }
 
   sys_printf("\n=== All Waitgroup Tests Completed Successfully! ===\n");

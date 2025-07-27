@@ -1,22 +1,24 @@
 /**
  * @file main.c
- * @brief Pico multicore programming example
+ * @brief Pico multicore programming example with waitgroups
  * @ingroup Examples
  *
  * This example demonstrates how to use the sys_thread_create_on_core() function
- * to run tasks on core 1 of the Raspberry Pi Pico (RP2040).
+ * to run tasks on core 1 of the Raspberry Pi Pico (RP2040), and how to use
+ * waitgroups for efficient synchronization between cores.
  *
  * The example shows:
  * - Basic multicore task creation
  * - Inter-core communication
  * - Thread-safe printf operations
+ * - Efficient synchronization using waitgroups (no polling!)
  * - Error handling for invalid operations
  *
  * @note This example requires a Raspberry Pi Pico or compatible RP2040 board.
  *
  * @example main.c
- * This is a complete example showing multicore programming on the Pico
- * platform.
+ * This is a complete example showing multicore programming with waitgroup
+ * synchronization on the Pico platform.
  */
 
 #include <runtime-sys/sys.h>
@@ -24,8 +26,8 @@
 // Global variables for demonstration
 #include <stdatomic.h>
 
-static atomic_bool core1_finished = false;
 static atomic_int core1_counter = 0;
+static sys_waitgroup_t wg;
 /**
  * @brief Function to run on core 1
  */
@@ -43,7 +45,9 @@ void core1_task(void *arg) {
   }
 
   sys_printf("Core 1: Task %d completed!\n", *task_id);
-  core1_finished = true;
+
+  // Signal completion using waitgroup
+  sys_waitgroup_done(&wg);
 }
 
 /**
@@ -61,7 +65,9 @@ void core1_blink_task(void *arg) {
   }
 
   sys_printf("Core 1: Blink task completed!\n");
-  core1_finished = true;
+
+  // Signal completion using waitgroup
+  sys_waitgroup_done(&wg);
 }
 
 int main() {
@@ -75,25 +81,22 @@ int main() {
   // Test 1: Basic thread creation on core 1
   sys_printf("\n--- Test 1: Basic Core 1 Task ---\n");
   int task_id = 42;
-  core1_finished = false;
   core1_counter = 0;
+
+  // Initialize waitgroup and add one waiter
+  wg = sys_waitgroup_init();
+  if (!wg.init) {
+    sys_printf("Main: Failed to initialize waitgroup\n");
+    return 1;
+  }
+  sys_waitgroup_add(&wg, 1);
 
   if (sys_thread_create_on_core(core1_task, &task_id, 1)) {
     sys_printf("Main: Successfully launched task on core 1\n");
 
-    // Wait for core 1 to finish while doing work on core 0
-    int main_counter = 0;
-    while (!core1_finished) {
-      main_counter++;
-      sys_printf("Main: Core 0 counter: %d\n", main_counter);
-      sys_sleep(300);
-
-      // Safety timeout
-      if (main_counter > 20) {
-        sys_printf("Main: Timeout waiting for core 1\n");
-        break;
-      }
-    }
+    // Wait for core 1 to finish - no more polling!
+    sys_printf("Main: Waiting for core 1 task to complete...\n");
+    sys_waitgroup_finalize(&wg);
 
     sys_printf("Main: Core 1 task finished. Final core1_counter: %d\n",
                core1_counter);
@@ -101,27 +104,32 @@ int main() {
     sys_printf("Main: Failed to launch task on core 1\n");
   }
 
-  sys_sleep(2000);
+  sys_waitgroup_finalize(&wg);
 
   // Test 2: Sequential tasks on core 1
   sys_printf("\n--- Test 2: Sequential Core 1 Tasks ---\n");
 
   int blink_count = 5;
-  core1_finished = false;
+
+  // Initialize waitgroup for the blink task
+  wg = sys_waitgroup_init();
+  if (!wg.init) {
+    sys_printf("Main: Failed to initialize waitgroup\n");
+    return 1;
+  }
+  sys_waitgroup_add(&wg, 1);
 
   if (sys_thread_create_on_core(core1_blink_task, &blink_count, 1)) {
     sys_printf("Main: Successfully launched blink task on core 1\n");
 
-    // Wait for completion
-    while (!core1_finished) {
-      sys_printf("Main: Waiting for blink task...\n");
-      sys_sleep(1000);
-    }
+    // Wait for completion - much cleaner than polling!
+    sys_printf("Main: Waiting for blink task to complete...\n");
+    sys_waitgroup_finalize(&wg);
+    sys_printf("Main: Blink task completed!\n");
   } else {
     sys_printf("Main: Failed to launch blink task on core 1\n");
+    sys_waitgroup_finalize(&wg); // Clean up on failure
   }
-
-  sys_sleep(1000);
 
   // Test 3: Demonstrate that generic sys_thread_create fails
   sys_printf("\n--- Test 3: Generic Thread Creation (Should Fail) ---\n");

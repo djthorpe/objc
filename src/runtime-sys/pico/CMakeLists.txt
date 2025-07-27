@@ -16,6 +16,7 @@ add_library(${NAME} STATIC
     timeget.c
     timer.c
     thread.c
+    waitgroup.c
     ../all/event.c
     ../all/panicf.c
     ../all/printf.c
