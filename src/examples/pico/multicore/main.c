@@ -25,7 +25,7 @@
 #include <stdatomic.h>
 
 static _Atomic bool core1_finished = false;
-static _Atomic int core1_counter = 0;
+static atomic_int core1_counter = 0;
 /**
  * @brief Function to run on core 1
  */
