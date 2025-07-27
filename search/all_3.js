@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['capacity',['capacity',['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
+  ['capacity',['capacity',['../structsys__event__queue__t.html#ac04a37b0761ef48521520d6a0f778ddc',1,'sys_event_queue_t::capacity()'],['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
   ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02',1,'Class():&#160;runtime.h']]],
   ['class_5fconformsto',['class_conformsTo',['../group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
   ['class_5fgetinstancesize',['class_getInstanceSize',['../group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],
@@ -14,8 +14,9 @@ var searchData=
   ['conformsto_3a',['conformsTo:',['../protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df',1,'ObjectProtocol-p::conformsTo:()'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
   ['containsobject_3a',['containsObject:',['../protocolCollectionProtocol-p.html#ab5da6b8ce9987eff807856d5b66283d5',1,'CollectionProtocol-p::containsObject:()'],['../interfaceNXArray.html#a678c21d8e6dc8d74e6b90e3c9309129f',1,'NXArray::containsObject:()']]],
   ['containsstring_3a',['containsString:',['../interfaceNXString.html#a87abf6b4ab5c3cf25502964a6a4bf084',1,'NXString']]],
-  ['count',['count',['../protocolCollectionProtocol-p.html#ad324c20c667623d5db39bb92bb2b64a3',1,'CollectionProtocol-p::count()'],['../interfaceNXArray.html#a646cc48310aa5bc75ca8acd44e13b56c',1,'NXArray::count()']]],
+  ['count',['count',['../structsys__event__queue__t.html#aefcfba7add9fc4c679af1abcd7d9f8e0',1,'sys_event_queue_t::count()'],['../protocolCollectionProtocol-p.html#ad324c20c667623d5db39bb92bb2b64a3',1,'CollectionProtocol-p::count()'],['../interfaceNXArray.html#a646cc48310aa5bc75ca8acd44e13b56c',1,'NXArray::count()']]],
   ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#aaf83c02e39bb9542243bf558eb3be495',1,'NXString']]],
   ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
+  ['ctx',['ctx',['../structsys__mutex__t.html#a61c39b2c784acc6b4325b7e7ade762d3',1,'sys_mutex_t::ctx()'],['../structsys__cond__t.html#a386505ebba884eb5ea366d317d9cb2cd',1,'sys_cond_t::ctx()'],['../structsys__waitgroup__t.html#ad0b72946c28d02f8fbaec3b130851687',1,'sys_waitgroup_t::ctx()']]],
   ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
 ];

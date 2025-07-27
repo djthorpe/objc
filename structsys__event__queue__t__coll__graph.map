@@ -1,0 +1,4 @@
+<map id="sys_event_queue_t" name="sys_event_queue_t">
+<area shape="rect" id="node2" href="$structsys__mutex__t.html" title="Mutex context structure. " alt="" coords="5,5,111,32"/>
+<area shape="rect" id="node3" href="$structsys__cond__t.html" title="Condition variable context structure. " alt="" coords="135,5,229,32"/>
+</map>

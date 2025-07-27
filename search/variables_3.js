@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isa',['isa',['../interfaceObject.html#ac697e8f00653acf23f4e018f382e3641',1,'Object']]]
+  ['day',['Day',['../NXTimeInterval_8h.html#ab6e099b3347127ab2c726380f45aabd6',1,'NXTimeInterval.h']]]
 ];

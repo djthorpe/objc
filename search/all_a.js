@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['malloc_2eh',['malloc.h',['../malloc_8h.html',1,'']]],
-  ['method',['Method',['../group__objc.html#ga167b310fc29ca0d888a72600171b968a',1,'runtime.h']]],
-  ['millisecond',['Millisecond',['../NXTimeInterval_8h.html#ae92c8d12ab345aad726d1e06da6f9489',1,'NXTimeInterval.h']]],
-  ['minute',['Minute',['../NXTimeInterval_8h.html#a1d067ed42a6146a596017dd7cd348b2e',1,'NXTimeInterval.h']]],
-  ['mutex_2eh',['mutex.h',['../mutex_8h.html',1,'']]]
+  ['lastobject',['lastObject',['../interfaceNXArray.html#a45a9a6966fc06eb2daf7e5971013146b',1,'NXArray']]],
+  ['length',['length',['../protocolNXConstantStringProtocol-p.html#aad2fbd9b7c96ff2381d5e479ec191b40',1,'NXConstantStringProtocol-p::length()'],['../interfaceNXConstantString.html#ac008e5f6fa7b441d551761de3c0ac14e',1,'NXConstantString::length()'],['../interfaceNXString.html#ab1ec72b601d56d58f0d2f2d73ab42c57',1,'NXString::length()']]]
 ];
