@@ -35,8 +35,7 @@ typedef struct sys_timer_t {
   void *userdata;
   union {
     void *ptr; // Pointer to the timer context (platform-specific)
-    uint8_t
-        ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
+    uint8_t ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
   } ctx;
 } sys_timer_t;
 
