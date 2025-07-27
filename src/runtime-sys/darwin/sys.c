@@ -3,10 +3,10 @@
 
 void sys_init(void) {
   // Initialize printf mutex for thread-safe printing
-  sys_printf_init();
+  _sys_printf_init();
 }
 
 void sys_exit(void) {
   // Finalize printf mutex and cleanup resources
-  sys_printf_finalize();
+  _sys_printf_finalize();
 }

@@ -6,6 +6,7 @@ PROJECT_BRIEF          = "Objective-C runtime and foundation library"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = /data/docs
 INPUT                  = /data/README.md /data/include/runtime-sys /data/include/runtime-gcc /data/include/NXFoundation
+EXAMPLE_PATH           = /data/src/examples
 USE_MDFILE_AS_MAINPAGE = README.md
 STRIP_FROM_PATH        = /data
 FILE_PATTERNS          = "*.h" "*.m" "*.c" "*.md"

@@ -1,3 +1,24 @@
+/**
+ * @file main.c
+ * @brief Pico multicore programming example
+ * @ingroup Examples
+ *
+ * This example demonstrates how to use the sys_thread_create_on_core() function
+ * to run tasks on core 1 of the Raspberry Pi Pico (RP2040).
+ *
+ * The example shows:
+ * - Basic multicore task creation
+ * - Inter-core communication
+ * - Thread-safe printf operations
+ * - Error handling for invalid operations
+ *
+ * @note This example requires a Raspberry Pi Pico or compatible RP2040 board.
+ *
+ * @example main.c
+ * This is a complete example showing multicore programming on the Pico
+ * platform.
+ */
+
 #include <runtime-sys/sys.h>
 
 // Global variables for demonstration

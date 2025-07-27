@@ -8,14 +8,14 @@
 void sys_init(void) {
   stdio_init_all();
   sleep_ms(1000);
-  sys_printf_init();
+  _sys_printf_init();
 }
 
 /**
  * @brief Cleans up the system on shutdown.
  */
 void sys_exit(void) {
-  sys_printf_finalize();
+  _sys_printf_finalize();
   while (true) {
     sleep_ms(1000);
   }
