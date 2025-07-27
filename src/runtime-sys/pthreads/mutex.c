@@ -5,6 +5,9 @@
 _Static_assert(sizeof(pthread_mutex_t) <= SYS_MUTEX_CTX_SIZE,
                "SYS_MUTEX_CTX_SIZE too small for pthread_mutex_t");
 
+/**
+ * @brief Initialize a new mutex
+ */
 sys_mutex_t sys_mutex_init(void) {
   sys_mutex_t mutex;
   mutex.init = false;
@@ -27,6 +30,9 @@ sys_mutex_t sys_mutex_init(void) {
   return mutex;
 }
 
+/**
+ * @brief Lock a mutex, by blocking
+ */
 bool sys_mutex_lock(sys_mutex_t *mutex) {
   if (mutex == NULL || !mutex->init) {
     return false;
@@ -35,6 +41,9 @@ bool sys_mutex_lock(sys_mutex_t *mutex) {
   return pthread_mutex_lock(pm) == 0;
 }
 
+/**
+ * @brief Try to lock a mutex, without blocking
+ */
 bool sys_mutex_trylock(sys_mutex_t *mutex) {
   if (mutex == NULL || !mutex->init) {
     return false;
@@ -44,19 +53,21 @@ bool sys_mutex_trylock(sys_mutex_t *mutex) {
   return pthread_mutex_trylock(pm) == 0;
 }
 
+/**
+ * @brief Unlock a mutex
+ */
 bool sys_mutex_unlock(sys_mutex_t *mutex) {
   if (mutex == NULL || !mutex->init) {
     return false;
   }
   pthread_mutex_t *pm = (pthread_mutex_t *)mutex->ctx;
-  // Unlock the mutex and log an error if it fails
-  int result = pthread_mutex_unlock(pm);
-  if (result != 0) {
-    sys_log_error("pthread_mutex_unlock failed with error code: %d", result);
-  }
-  return true;
+  // Unlock the mutex and return error if it fails
+  return pthread_mutex_unlock(pm) == 0;
 }
 
+/**
+ * @brief Finalize and cleanup a mutex
+ */
 void sys_mutex_finalize(sys_mutex_t *mutex) {
   if (mutex == NULL || !mutex->init) {
     return;

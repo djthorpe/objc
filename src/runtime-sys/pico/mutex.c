@@ -63,7 +63,6 @@ void sys_mutex_finalize(sys_mutex_t *mutex) {
   if (mutex == NULL || !mutex->init) {
     return;
   }
-
   mutex->init = false;
   sys_memset(mutex->ctx, 0, sizeof(mutex->ctx));
 }
