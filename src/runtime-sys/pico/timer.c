@@ -93,8 +93,9 @@ bool sys_timer_finalize(sys_timer_t *timer) {
   }
 
   pico_timer_ctx_t *ctx = (pico_timer_ctx_t *)timer->ctx.ctx;
-  if (ctx->repeating_timer.alarm_id == 0) {
-    return false; // Timer not running or already finalized
+  // Validate that the context has been initialized
+  if (ctx == NULL || ctx->repeating_timer.alarm_id == 0) {
+    return false; // Timer not running, uninitialized, or already finalized
   }
 
   // Cancel the repeating timer
