@@ -12,6 +12,7 @@
 #include "random.h"
 #include "thread.h"
 #include "time.h"
+#include "timer.h"
 #include <stdint.h>
 
 #ifdef __cplusplus
