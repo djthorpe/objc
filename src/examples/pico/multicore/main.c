@@ -1,9 +1,10 @@
 #include <runtime-sys/sys.h>
 
 // Global variables for demonstration
-static volatile bool core1_finished = false;
-static volatile int core1_counter = 0;
+#include <stdatomic.h>
 
+static _Atomic bool core1_finished = false;
+static _Atomic int core1_counter = 0;
 /**
  * @brief Function to run on core 1
  */
