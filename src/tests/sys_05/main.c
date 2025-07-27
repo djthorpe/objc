@@ -1,6 +1,5 @@
 #include <runtime-sys/hash.h>
 #include <runtime-sys/sys.h>
-#include <stdio.h>
 #include <string.h>
 #include <tests/tests.h>
 
@@ -13,27 +12,27 @@ int main(void) {
 }
 
 int test_sys_05(void) {
-  printf("Test 1: Hash initialization - MD5\n");
+  sys_printf("Test 1: Hash initialization - MD5\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
     test_assert(sys_hash_size(&hash) == 16); // MD5 is 128 bits = 16 bytes
     // Cleanup is handled by sys_hash_finalize, but we need to call it to clean
     // up
     sys_hash_finalize(&hash);
-    printf("  ✓ MD5 initialization works\n");
+    sys_printf("  ✓ MD5 initialization works\n");
   }
 
-  printf("Test 2: Hash initialization - SHA256\n");
+  sys_printf("Test 2: Hash initialization - SHA256\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
     test_assert(sys_hash_size(&hash) == 32); // SHA-256 is 256 bits = 32 bytes
     // Cleanup is handled by sys_hash_finalize, but we need to call it to clean
     // up
     sys_hash_finalize(&hash);
-    printf("  ✓ SHA-256 initialization works\n");
+    sys_printf("  ✓ SHA-256 initialization works\n");
   }
 
-  printf("Test 3: MD5 hash of empty string\n");
+  sys_printf("Test 3: MD5 hash of empty string\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
     const uint8_t *result = sys_hash_finalize(&hash);
@@ -43,10 +42,10 @@ int test_sys_05(void) {
     uint8_t expected[] = {0xd4, 0x1d, 0x8c, 0xd9, 0x8f, 0x00, 0xb2, 0x04,
                           0xe9, 0x80, 0x09, 0x98, 0xec, 0xf8, 0x42, 0x7e};
     test_assert(memcmp(result, expected, 16) == 0);
-    printf("  ✓ MD5 empty string hash correct\n");
+    sys_printf("  ✓ MD5 empty string hash correct\n");
   }
 
-  printf("Test 4: SHA-256 hash of empty string\n");
+  sys_printf("Test 4: SHA-256 hash of empty string\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
     const uint8_t *result = sys_hash_finalize(&hash);
@@ -59,10 +58,10 @@ int test_sys_05(void) {
                           0x27, 0xae, 0x41, 0xe4, 0x64, 0x9b, 0x93, 0x4c,
                           0xa4, 0x95, 0x99, 0x1b, 0x78, 0x52, 0xb8, 0x55};
     test_assert(memcmp(result, expected, 32) == 0);
-    printf("  ✓ SHA-256 empty string hash correct\n");
+    sys_printf("  ✓ SHA-256 empty string hash correct\n");
   }
 
-  printf("Test 5: MD5 hash of 'abc'\n");
+  sys_printf("Test 5: MD5 hash of 'abc'\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
     const char *input = "abc";
@@ -74,10 +73,10 @@ int test_sys_05(void) {
     uint8_t expected[] = {0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0,
                           0xd6, 0x96, 0x3f, 0x7d, 0x28, 0xe1, 0x7f, 0x72};
     test_assert(memcmp(result, expected, 16) == 0);
-    printf("  ✓ MD5 'abc' hash correct\n");
+    sys_printf("  ✓ MD5 'abc' hash correct\n");
   }
 
-  printf("Test 6: SHA-256 hash of 'abc'\n");
+  sys_printf("Test 6: SHA-256 hash of 'abc'\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
     const char *input = "abc";
@@ -92,10 +91,10 @@ int test_sys_05(void) {
                           0xb0, 0x03, 0x61, 0xa3, 0x96, 0x17, 0x7a, 0x9c,
                           0xb4, 0x10, 0xff, 0x61, 0xf2, 0x00, 0x15, 0xad};
     test_assert(memcmp(result, expected, 32) == 0);
-    printf("  ✓ SHA-256 'abc' hash correct\n");
+    sys_printf("  ✓ SHA-256 'abc' hash correct\n");
   }
 
-  printf("Test 7: Multiple updates - MD5\n");
+  sys_printf("Test 7: Multiple updates - MD5\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
 
@@ -111,10 +110,10 @@ int test_sys_05(void) {
     uint8_t expected[] = {0x90, 0x01, 0x50, 0x98, 0x3c, 0xd2, 0x4f, 0xb0,
                           0xd6, 0x96, 0x3f, 0x7d, 0x28, 0xe1, 0x7f, 0x72};
     test_assert(memcmp(result, expected, 16) == 0);
-    printf("  ✓ Multiple updates work correctly\n");
+    sys_printf("  ✓ Multiple updates work correctly\n");
   }
 
-  printf("Test 8: Large data hashing - SHA-256\n");
+  sys_printf("Test 8: Large data hashing - SHA-256\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
 
@@ -127,10 +126,10 @@ int test_sys_05(void) {
     const uint8_t *result = sys_hash_finalize(&hash);
     test_assert(result != NULL);
     test_assert(sys_hash_size(&hash) == 32);
-    printf("  ✓ Large data hashing works\n");
+    sys_printf("  ✓ Large data hashing works\n");
   }
 
-  printf("Test 9: Binary data hashing\n");
+  sys_printf("Test 9: Binary data hashing\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
 
@@ -143,10 +142,10 @@ int test_sys_05(void) {
     test_assert(sys_hash_update(&hash, binary_data, 256) == true);
     const uint8_t *result = sys_hash_finalize(&hash);
     test_assert(result != NULL);
-    printf("  ✓ Binary data hashing works\n");
+    sys_printf("  ✓ Binary data hashing works\n");
   }
 
-  printf("Test 10: Error handling - NULL data\n");
+  sys_printf("Test 10: Error handling - NULL data\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
 
@@ -158,10 +157,10 @@ int test_sys_05(void) {
 
     // Cleanup context
     sys_hash_finalize(&hash);
-    printf("  ✓ NULL data handling works\n");
+    sys_printf("  ✓ NULL data handling works\n");
   }
 
-  printf("Test 11: Error handling - invalid context\n");
+  sys_printf("Test 11: Error handling - invalid context\n");
   {
     sys_hash_t hash = {0}; // Uninitialized hash
 
@@ -169,10 +168,10 @@ int test_sys_05(void) {
     test_assert(sys_hash_update(&hash, "test", 4) == false);
     test_assert(sys_hash_finalize(&hash) == NULL);
     test_assert(sys_hash_size(&hash) == 0);
-    printf("  ✓ Invalid context handling works\n");
+    sys_printf("  ✓ Invalid context handling works\n");
   }
 
-  printf("Test 12: Hash size after finalization\n");
+  sys_printf("Test 12: Hash size after finalization\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_sha256);
     test_assert(sys_hash_update(&hash, "test", 4) == true);
@@ -185,10 +184,10 @@ int test_sys_05(void) {
 
     // Size should still be available after finalization
     test_assert(sys_hash_size(&hash) == 32);
-    printf("  ✓ Hash size persistence works\n");
+    sys_printf("  ✓ Hash size persistence works\n");
   }
 
-  printf("Test 13: Finalization behavior\n");
+  sys_printf("Test 13: Finalization behavior\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
     test_assert(sys_hash_update(&hash, "partial", 7) == true);
@@ -200,10 +199,10 @@ int test_sys_05(void) {
     // Context should be unusable after finalization
     test_assert(sys_hash_update(&hash, "more", 4) == false);
     test_assert(sys_hash_finalize(&hash) == NULL);
-    printf("  ✓ Cleanup without finalization works\n");
+    sys_printf("  ✓ Cleanup without finalization works\n");
   }
 
-  printf("Test 14: Known test vectors - SHA-256\n");
+  sys_printf("Test 14: Known test vectors - SHA-256\n");
   {
     // Test with NIST test vector:
     // "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"
@@ -221,10 +220,10 @@ int test_sys_05(void) {
                           0xa3, 0x3c, 0xe4, 0x59, 0x64, 0xff, 0x21, 0x67,
                           0xf6, 0xec, 0xed, 0xd4, 0x19, 0xdb, 0x06, 0xc1};
     test_assert(memcmp(result, expected, 32) == 0);
-    printf("  ✓ NIST test vector correct\n");
+    sys_printf("  ✓ NIST test vector correct\n");
   }
 
-  printf("Test 15: Context reuse after finalization\n");
+  sys_printf("Test 15: Context reuse after finalization\n");
   {
     sys_hash_t hash = sys_hash_init(sys_hash_md5);
     test_assert(sys_hash_update(&hash, "first", 5) == true);
@@ -235,9 +234,9 @@ int test_sys_05(void) {
     test_assert(sys_hash_update(&hash, "second", 6) == false);
     const uint8_t *result2 = sys_hash_finalize(&hash);
     test_assert(result2 == NULL);
-    printf("  ✓ Context reuse prevention works\n");
+    sys_printf("  ✓ Context reuse prevention works\n");
   }
 
-  printf("All hash function tests completed successfully!\n");
+  sys_printf("All hash function tests completed successfully!\n");
   return 0;
 }
