@@ -2,7 +2,13 @@
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
+#ifdef SYSTEM_NAME_PICO
+void *stdout = NULL;
+void *stderr = NULL;
+#endif
+
 int test_runtime_01(void);
+
 int main(void) { return TestMain("test_runtime_01", test_runtime_01); }
 
 int test_runtime_01(void) {
@@ -30,6 +36,8 @@ int test_runtime_01(void) {
 
   // Dispose of the object
   [obj dealloc];
+
+  sys_printf("All Tests Passed!\n");
 
   return 0;
 }
