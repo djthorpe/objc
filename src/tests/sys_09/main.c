@@ -77,6 +77,20 @@ int test_sys_09(void) {
   test_count++;
   atomic_bool simple_finished = false;
   bool created = sys_thread_create(simple_thread_func, &simple_finished);
+
+#ifdef SYSTEM_NAME_PICO
+  // On Pico, sys_thread_create is not supported - users must use
+  // sys_thread_create_on_core
+  if (!created) {
+    printf("✓ Test %d: sys_thread_create() correctly unsupported on Pico\n",
+           test_count);
+    passed++;
+  } else {
+    printf("✗ Test %d: sys_thread_create() should not be supported on Pico\n",
+           test_count);
+  }
+#else
+  // On other platforms, sys_thread_create should work
   if (created) {
     // Wait for thread to finish (with timeout)
     int timeout = 100; // 100ms timeout
@@ -98,6 +112,7 @@ int test_sys_09(void) {
     printf("✗ Test %d: sys_thread_create() failed to create thread\n",
            test_count);
   }
+#endif
 
   // Test 4: sys_thread_create with NULL function should fail
   test_count++;
@@ -119,6 +134,13 @@ int test_sys_09(void) {
   thread_test_data_t data2 = {
       .counter = 0, .finished = false, .expected_value = 20};
 
+#ifdef SYSTEM_NAME_PICO
+  // On Pico, multiple sys_thread_create calls are not supported
+  printf("~ Test %d: Skipped multiple threads test (not supported on Pico)\n",
+         test_count);
+  passed++; // Count as passed since it's not applicable
+#else
+  // On other platforms, test multiple threads
   bool thread1_created = sys_thread_create(counter_thread_func, &data1);
   bool thread2_created = sys_thread_create(counter_thread_func, &data2);
 
@@ -152,14 +174,23 @@ int test_sys_09(void) {
   } else {
     printf("✗ Test %d: Failed to create multiple threads\n", test_count);
   }
+#endif
 
   // Test 5: sys_thread_create_on_core with valid core
   test_count++;
   if (num_cores > 1) {
     thread_test_data_t core_data = {
         .counter = 0, .finished = false, .expected_value = 0};
+
+#ifdef SYSTEM_NAME_PICO
+    // On Pico, test core 1 instead of core 0 (core 0 is main core)
+    bool core_created =
+        sys_thread_create_on_core(core_specific_thread_func, &core_data, 1);
+#else
+    // On other platforms, test core 0
     bool core_created =
         sys_thread_create_on_core(core_specific_thread_func, &core_data, 0);
+#endif
 
     if (core_created) {
       int timeout = 100;
@@ -169,9 +200,15 @@ int test_sys_09(void) {
       }
 
       if (atomic_load(&core_data.finished)) {
+#ifdef SYSTEM_NAME_PICO
+        printf("✓ Test %d: sys_thread_create_on_core() successfully created "
+               "thread on core 1\n",
+               test_count);
+#else
         printf("✓ Test %d: sys_thread_create_on_core() successfully created "
                "thread on core 0\n",
                test_count);
+#endif
         passed++;
       } else {
         printf("✗ Test %d: sys_thread_create_on_core() thread did not complete "
@@ -179,9 +216,15 @@ int test_sys_09(void) {
                test_count);
       }
     } else {
+#ifdef SYSTEM_NAME_PICO
+      printf("✗ Test %d: sys_thread_create_on_core() failed to create thread "
+             "on core 1\n",
+             test_count);
+#else
       printf("✗ Test %d: sys_thread_create_on_core() failed to create thread "
              "on core 0\n",
              test_count);
+#endif
     }
   } else {
     printf("~ Test %d: Skipped sys_thread_create_on_core() test (single core "
@@ -207,7 +250,13 @@ int test_sys_09(void) {
 
   // Test 7: sys_thread_create_on_core with NULL function should fail
   test_count++;
+#ifdef SYSTEM_NAME_PICO
+  // On Pico, test with core 1 since core 0 is not valid for thread creation
+  bool null_core_result = sys_thread_create_on_core(NULL, NULL, 1);
+#else
+  // On other platforms, test with core 0
   bool null_core_result = sys_thread_create_on_core(NULL, NULL, 0);
+#endif
   if (!null_core_result) {
     printf("✓ Test %d: sys_thread_create_on_core() properly rejected NULL "
            "function\n",

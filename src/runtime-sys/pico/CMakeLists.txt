@@ -7,6 +7,7 @@ pico_sdk_init()
 
 add_library(${NAME} STATIC
     abort.c
+    cond.c
     hash.c
     memory.c
     mutex.c

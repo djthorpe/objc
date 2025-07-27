@@ -69,6 +69,7 @@ bool sys_event_queue_push(sys_event_queue_t *queue, sys_event_t event) {
   if (queue == NULL || queue->items == NULL || !queue->mutex.init) {
     return false;
   }
+
   if (!sys_mutex_lock(&queue->mutex)) {
     return false;
   }
@@ -92,8 +93,9 @@ bool sys_event_queue_push(sys_event_queue_t *queue, sys_event_t event) {
     queue->count++;
   }
 
-  // Signal waiting consumers
-  bool result = sys_cond_signal(&queue->not_empty);
+  // Signal waiting consumers (broadcast for fairness in multi-consumer
+  // scenarios)
+  bool result = sys_cond_broadcast(&queue->not_empty);
   sys_mutex_unlock(&queue->mutex);
   return result;
 }
@@ -118,7 +120,7 @@ bool sys_event_queue_try_push(sys_event_queue_t *queue, sys_event_t event) {
   queue->count++;
 
   // Signal waiting consumers
-  bool result = sys_cond_signal(&queue->not_empty);
+  bool result = sys_cond_broadcast(&queue->not_empty);
   sys_mutex_unlock(&queue->mutex);
   return result;
 }
@@ -158,6 +160,7 @@ sys_event_t sys_event_queue_pop(sys_event_queue_t *queue) {
   sys_event_t event = queue->items[queue->tail];
   queue->tail = (queue->tail + 1) % queue->capacity;
   queue->count--;
+
   sys_mutex_unlock(&queue->mutex);
   return event;
 }
