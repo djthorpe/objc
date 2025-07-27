@@ -23,7 +23,7 @@ sys_timer_t sys_timer_init(uint32_t interval_ms, void *userdata,
   // Check arguments
   timer.callback = NULL;
   timer.interval = 0;
-  memset(&timer.ctx, 0, sizeof(timer.ctx)); // Clear the entire union
+  timer.ctx.ptr = NULL;
   if (interval_ms == 0 || callback == NULL) {
     return timer; // Return an invalid timer context
   }
