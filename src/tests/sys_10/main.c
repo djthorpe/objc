@@ -297,7 +297,7 @@ int test_sys_10(void) {
     const int NUM_CONSUMERS = 2;
     const int ITEMS_PER_PRODUCER = 50; // Reduce work load
 
-    shared_data.buffer = malloc(BUFFER_SIZE * sizeof(int));
+    shared_data.buffer = sys_malloc(BUFFER_SIZE * sizeof(int));
     shared_data.buffer_size = BUFFER_SIZE;
     atomic_init(&shared_data.buffer_head, 0);
     atomic_init(&shared_data.buffer_tail, 0);
