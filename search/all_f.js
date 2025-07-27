@@ -47,6 +47,11 @@ var searchData=
   ['sys_5ftime_5fset_5fdate_5futc',['sys_time_set_date_utc',['../group__System.html#gaad6616ff63c8cbdbaf3fd97697bb074c',1,'time.h']]],
   ['sys_5ftime_5fset_5ftime_5futc',['sys_time_set_time_utc',['../group__System.html#ga172740122067a523d9d32478126db59b',1,'time.h']]],
   ['sys_5ftime_5ft',['sys_time_t',['../group__System.html#ga45596b2dc3b59917dfbbf36d5b3d4816',1,'time.h']]],
+  ['sys_5ftimer_5fctx_5fsize',['SYS_TIMER_CTX_SIZE',['../group__System.html#ga208fc3368b9e3ed3d9d22e9be875731e',1,'timer.h']]],
+  ['sys_5ftimer_5ffinalize',['sys_timer_finalize',['../group__System.html#ga03c3073fd8f641e7cea076652bbe11dd',1,'timer.h']]],
+  ['sys_5ftimer_5finit',['sys_timer_init',['../group__System.html#gac1368a749ee9713f5339cfc2b27dbdcd',1,'timer.h']]],
+  ['sys_5ftimer_5fstart',['sys_timer_start',['../group__System.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772',1,'timer.h']]],
+  ['sys_5ftimer_5ft',['sys_timer_t',['../structsys__timer__t.html',1,'sys_timer_t'],['../group__System.html#ga3533996feca2a9c8233da4b172f4c007',1,'sys_timer_t():&#160;timer.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../group__System.html#gaac71469c45207a063e75bf7e6c2dbb5b',1,'printf.h']]],
   ['sys_5fvsprintf',['sys_vsprintf',['../group__System.html#ga86745087b8aeeae5c0715896240ab992',1,'printf.h']]],
   ['system',['System',['../group__System.html',1,'']]]

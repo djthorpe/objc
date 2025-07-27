@@ -39,6 +39,9 @@ var searchData=
   ['sys_5ftime_5fget_5futc',['sys_time_get_utc',['../group__System.html#ga0f593b86e80e479fff851b0b0c715da0',1,'time.h']]],
   ['sys_5ftime_5fset_5fdate_5futc',['sys_time_set_date_utc',['../group__System.html#gaad6616ff63c8cbdbaf3fd97697bb074c',1,'time.h']]],
   ['sys_5ftime_5fset_5ftime_5futc',['sys_time_set_time_utc',['../group__System.html#ga172740122067a523d9d32478126db59b',1,'time.h']]],
+  ['sys_5ftimer_5ffinalize',['sys_timer_finalize',['../group__System.html#ga03c3073fd8f641e7cea076652bbe11dd',1,'timer.h']]],
+  ['sys_5ftimer_5finit',['sys_timer_init',['../group__System.html#gac1368a749ee9713f5339cfc2b27dbdcd',1,'timer.h']]],
+  ['sys_5ftimer_5fstart',['sys_timer_start',['../group__System.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772',1,'timer.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../group__System.html#gaac71469c45207a063e75bf7e6c2dbb5b',1,'printf.h']]],
   ['sys_5fvsprintf',['sys_vsprintf',['../group__System.html#ga86745087b8aeeae5c0715896240ab992',1,'printf.h']]]
 ];
