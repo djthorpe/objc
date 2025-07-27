@@ -18,5 +18,6 @@ var searchData=
   ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#aaf83c02e39bb9542243bf558eb3be495',1,'NXString']]],
   ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
   ['ctx',['ctx',['../structsys__mutex__t.html#a61c39b2c784acc6b4325b7e7ade762d3',1,'sys_mutex_t::ctx()'],['../structsys__cond__t.html#a386505ebba884eb5ea366d317d9cb2cd',1,'sys_cond_t::ctx()'],['../structsys__waitgroup__t.html#ad0b72946c28d02f8fbaec3b130851687',1,'sys_waitgroup_t::ctx()']]],
-  ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
+  ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]],
+  ['code_20examples',['Code Examples',['../group__Examples.html',1,'']]]
 ];

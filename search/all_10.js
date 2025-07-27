@@ -97,5 +97,5 @@ var searchData=
   ['sys_5fwaitgroup_5finit',['sys_waitgroup_init',['../group__System.html#ga054b7429932a28dd301dacca5adb97e5',1,'sync.h']]],
   ['sys_5fwaitgroup_5ft',['sys_waitgroup_t',['../structsys__waitgroup__t.html',1,'']]],
   ['sys_5fwaitgroup_5fwait',['sys_waitgroup_wait',['../group__System.html#ga47e40bb08616539f1d8b25b312eb17a3',1,'sync.h']]],
-  ['system',['System',['../group__System.html',1,'']]]
+  ['system_20management',['System Management',['../group__System.html',1,'']]]
 ];
