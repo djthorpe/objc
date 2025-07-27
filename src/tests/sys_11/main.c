@@ -200,7 +200,7 @@ int test_sys_11(void) {
     shared_data.waitgroup = sys_waitgroup_init();
 
     const int NUM_THREADS = 5;
-    shared_data.results = malloc(NUM_THREADS * sizeof(int));
+    shared_data.results = sys_malloc(NUM_THREADS * sizeof(int));
     shared_data.expected_results = NUM_THREADS;
     waitgroup_thread_data_t thread_data[NUM_THREADS];
 
