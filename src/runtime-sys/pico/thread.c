@@ -97,12 +97,11 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
     wrapper->func = func;
     wrapper->arg = arg;
 
-    // Launch the wrapper function on core 1
-    multicore_launch_core1(pico_thread_wrapper);
-
     // Send the wrapper through the FIFO
     multicore_fifo_push_blocking((uintptr_t)wrapper);
 
+    // Launch the wrapper function on core 1
+    multicore_launch_core1(pico_thread_wrapper);
     return true;
   default:
     // Invalid core number, should not happen
