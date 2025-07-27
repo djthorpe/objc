@@ -15,31 +15,55 @@ extern "C" {
 #endif
 
 /**
+ * @brief Size of the hash.
+ * @ingroup System
+ *
+ * This defines the size of the hash value produced by the hash operations.
+ * It should be large enough to hold any hash algorithm's output.
+ */
+#define SYS_HASH_SIZE 32
+
+/**
+ * @brief Size of the hash context buffer.
+ * @ingroup System
+ *
+ * This defines the size of the context buffer used for hash operations.
+ * It should be large enough to hold any hash algorithm's context.
+ */
+#define SYS_HASH_CTX_SIZE 128
+
+/**
  * @brief Hash algorithm identifiers.
- * @ingroup System 
+ * @ingroup System
  *
  * Enumeration of supported cryptographic hash algorithms.
  */
 typedef enum {
-  sys_hash_md5,    // MD5 hash (128-bit)
-  sys_hash_sha256, // SHA-256 hash (256-bit)
+  sys_hash_md5 = 1, // MD5 hash (128-bit)
+  sys_hash_sha256,  // SHA-256 hash (256-bit)
 } sys_hash_algorithm_t;
 
 /**
  * @brief Hash context structure.
- * @ingroup System  
+ * @ingroup System
  *
  * Contains the state and result buffer for hash operations.
  */
 typedef struct {
-  uint8_t hash[32]; // Buffer to hold the hash value = max is SHA-256 (32 bytes)
-  size_t size;      // Size of the hash in bytes
-  void *ctx;        // Any context needed for the hash operation
+  sys_hash_algorithm_t algorithm; // The hash algorithm used
+  uint8_t hash[SYS_HASH_SIZE]; // Buffer to hold the hash value = max is SHA-256
+                               // (32 bytes)
+  size_t size;                 // Size of the hash in bytes
+  union {
+    void *ptr; // Pointer to the hash context (OpenSSL EVP_MD_CTX)
+    uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash
+                                    // algorithm
+  } ctx; // Union to hold either a pointer or a fixed-size context buffer
 } sys_hash_t;
 
 /**
  * @brief Initializes a new hash context for the specified algorithm.
- * @ingroup System  
+ * @ingroup System
  * @param algorithm The hash algorithm to use.
  * @return A new sys_hash_t instance initialized for the specified algorithm.
  *
@@ -56,7 +80,7 @@ extern sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm);
 
 /**
  * @brief Returns the size of the hash in bytes.
- * @ingroup System  
+ * @ingroup System
  * @param hash The hash context to query.
  * @return The size of the hash in bytes.
  *
@@ -68,7 +92,7 @@ extern size_t sys_hash_size(sys_hash_t *hash);
 
 /**
  * @brief Updates the hash context with new data.
- * @ingroup System  
+ * @ingroup System
  * @param hash The hash context to update.
  * @param data The data to add to the hash.
  * @param size The size of the data in bytes.
@@ -78,7 +102,7 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
 
 /**
  * @brief Finalizes the hash computation and returns the hash value.
- * @ingroup System  
+ * @ingroup System
  * @param hash The hash context to finalize.
  * @return A pointer to the computed hash value, or NULL on failure.
  *
