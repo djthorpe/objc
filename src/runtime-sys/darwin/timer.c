@@ -1,27 +1,17 @@
 #include <dispatch/dispatch.h>
 #include <runtime-sys/sys.h>
 
-// Custom dispatch queue for background execution
-static dispatch_queue_t queue;
-
 /**
  * @brief Initializes a new timer context.
  */
 sys_timer_t sys_timer_init(uint32_t interval_ms, void *userdata,
                            void (*callback)(sys_timer_t *)) {
   sys_timer_t timer;
-  static bool initialized = false;
-  if (!initialized) {
-    // TODO: Need to call dispatch_release with the queue when done
-    // to avoid memory leaks.
-    queue = dispatch_queue_create("objc", DISPATCH_QUEUE_SERIAL);
-    initialized = true;
-  }
 
   // Check arguments
   timer.callback = NULL;
   timer.interval = 0;
-  timer.ctx.ptr = NULL; // Initialize context pointer to NULL
+  timer.ctx.ptr = NULL;
   if (interval_ms == 0 || callback == NULL) {
     return timer; // Return an invalid timer context
   }
@@ -36,6 +26,9 @@ sys_timer_t sys_timer_init(uint32_t interval_ms, void *userdata,
   return timer;
 }
 
+/**
+ * @brief Callback function for the timer.
+ */
 static void sys_timer_callback(void *context) {
   sys_timer_t *timer = (sys_timer_t *)context;
   if (timer && timer->callback) {
@@ -58,6 +51,8 @@ bool sys_timer_start(sys_timer_t *timer) {
   }
 
   // Create a new dispatch source for this run
+  dispatch_queue_t queue =
+      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   dispatch_source_t ctx =
       dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
   if (!ctx) {
