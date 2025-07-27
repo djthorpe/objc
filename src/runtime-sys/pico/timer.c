@@ -63,7 +63,7 @@ bool sys_timer_start(sys_timer_t *timer) {
   }
 
   // Initialize the context in the buffer
-  memset(ctx, 0, sizeof(pico_timer_ctx_t));
+  sys_memset(ctx, 0, sizeof(pico_timer_ctx_t));
 
   // Get alarm pool
   alarm_pool_t *pool = alarm_pool_get_default();
@@ -77,7 +77,7 @@ bool sys_timer_start(sys_timer_t *timer) {
 
   if (!result) {
     // Clear context on failure
-    memset(ctx, 0, sizeof(pico_timer_ctx_t));
+    sys_memset(ctx, 0, sizeof(pico_timer_ctx_t));
     return false;
   }
 
@@ -101,7 +101,7 @@ bool sys_timer_finalize(sys_timer_t *timer) {
   cancel_repeating_timer(&ctx->repeating_timer);
 
   // Clear the context buffer
-  memset(ctx, 0, sizeof(pico_timer_ctx_t));
+  sys_memset(ctx, 0, sizeof(pico_timer_ctx_t));
 
   return true; // Return true on success
 }
