@@ -24,7 +24,7 @@
 // Global variables for demonstration
 #include <stdatomic.h>
 
-static _Atomic bool core1_finished = false;
+static atomic_bool core1_finished = false;
 static atomic_int core1_counter = 0;
 /**
  * @brief Function to run on core 1
