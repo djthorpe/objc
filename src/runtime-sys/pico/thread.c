@@ -1,4 +1,5 @@
 #include "hardware/platform_defs.h"
+#include "pico/multicore.h"
 #include <pico/stdlib.h>
 
 /**
@@ -13,6 +14,11 @@
 uint8_t sys_thread_numcores() {
   // RP2040 has exactly NUM_CORES (2) cores
   return (uint8_t)NUM_CORES;
+}
+
+uint8_t sys_thread_core(void) {
+  // On RP2040, use get_core_num() to get current core (0 or 1)
+  return (uint8_t)get_core_num();
 }
 
 /**

@@ -9,12 +9,14 @@ add_library(${NAME} STATIC
     abort.c
     hash.c
     memory.c
+    mutex.c
     puts.c
     random.c
     sys.c
     timeget.c
     timer.c
     thread.c
+    ../all/event.c
     ../all/panicf.c
     ../all/printf.c
     ../posix/time.c

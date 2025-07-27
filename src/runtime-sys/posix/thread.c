@@ -30,3 +30,9 @@ uint8_t sys_thread_numcores(void) {
 
   return (uint8_t)num_cores;
 }
+
+uint8_t sys_thread_core(void) {
+  // POSIX doesn't provide a standard way to get current CPU core
+  // Return 0 as fallback (assuming single core or core 0)
+  return 0;
+}

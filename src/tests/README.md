@@ -10,7 +10,7 @@ The tests are organized into three main categories:
 
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_22): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_01, sys_02, sys_03, sys_04, sys_05, sys_06): Tests for low-level system functionality.
+- **System Tests** (sys_00 through sys_12): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, and event queues.
 
 ---
 
@@ -96,4 +96,10 @@ The tests are organized into three main categories:
 | sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation and boundary checks. |
 | sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with distribution testing. |
 | sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms and test vectors. |
-| sys_06 | Timer System Functions | Tests `sys_timer_*` functions with 19 tests covering initialization, callbacks, one-shot/periodic behavior, timing precision, error handling, and edge cases. |
+| sys_06 | Input/Output System Functions | Tests `sys_printf()` formatting with integers, characters, and strings. |
+| sys_07 | Mutex Functions | Tests `sys_mutex_*` initialization, locking, unlocking, and error handling. |
+| sys_08 | Condition Variable Functions | Tests `sys_cond_*` initialization, signaling, broadcast, and timedwait. |
+| sys_09 | Thread Creation Functions | Tests `sys_thread_*` functions: numcores detection, thread creation/execution, core-specific creation, error handling, sleep edge cases. |
+| sys_10 | Threading Stress Tests | High contention mutex, producer/consumer, race condition detection, extreme stress (21K ops), CPU affinity. |
+| sys_11 | Waitgroup Synchronization | Basic/delayed coordination, result collection, high-load stress (5K ops), error handling. |
+| sys_12 | Event Queue Operations | Basic ops, overflow/overwrite, threading, peek-before-acquire, shutdown, high volume (800 events), rapid shutdown, mixed operations. |

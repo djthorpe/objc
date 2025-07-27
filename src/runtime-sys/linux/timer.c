@@ -9,7 +9,11 @@
 static void linux_timer_callback(union sigval sv) {
   sys_timer_t *timer = (sys_timer_t *)sv.sival_ptr;
   if (timer && timer->callback) {
-    timer->callback(timer);
+    // Check if timer is still valid by checking if timer_id is non-zero
+    timer_t *timer_id = (timer_t *)timer->ctx.ctx;
+    if (*timer_id != 0) {
+      timer->callback(timer);
+    }
   }
 }
 
@@ -106,8 +110,6 @@ bool sys_timer_finalize(sys_timer_t *timer) {
 
   // Delete the POSIX timer
   timer_delete(*timer_id);
-
-  // Clear the context buffer
   *timer_id = 0;
 
   return true; // Return true on success

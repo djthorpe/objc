@@ -6,10 +6,12 @@
  * System methods for managing memory, threads and resources.
  */
 #pragma once
+#include "event.h"
 #include "hash.h"
 #include "memory.h"
 #include "printf.h"
 #include "random.h"
+#include "sync.h"
 #include "thread.h"
 #include "time.h"
 #include "timer.h"
@@ -21,7 +23,7 @@ extern "C" {
 
 /**
  * @brief Outputs a string to the system console or standard output.
- * @ingroup System 
+ * @ingroup System
  * @param str A pointer to a null-terminated string to be output. If `str` is
  * `NULL`, existing output is flushed.
  *

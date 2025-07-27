@@ -21,7 +21,7 @@ extern "C" {
  * This defines the size of the context buffer used for timer operations.
  * It should be large enough to hold any platform-specific timer context.
  */
-#define SYS_TIMER_CTX_SIZE 128
+#define SYS_TIMER_CTX_SIZE 32
 
 /**
  * @brief Timer context structure.
