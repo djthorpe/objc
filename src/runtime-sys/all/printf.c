@@ -410,7 +410,14 @@ size_t _sys_sprintf_putch(struct sys_printf_state *state, char ch) {
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
-void sys_printf_init(void) { printf_mutex = sys_mutex_init(); }
+int sys_printf_init(void) {
+  printf_mutex = sys_mutex_init();
+  if (printf_mutex == NULL) {
+    // Handle mutex initialization failure
+    return -1; // Indicate failure
+  }
+  return 0; // Indicate success
+}
 
 void sys_printf_finalize(void) { sys_mutex_finalize(&printf_mutex); }
 
