@@ -58,8 +58,8 @@ bool sys_timer_start(sys_timer_t *timer) {
 
   // Check if timer is already running (ctx buffer has been initialized)
   pico_timer_ctx_t *ctx = (pico_timer_ctx_t *)timer->ctx.ctx;
-  if (ctx->repeating_timer.alarm_id != 0) {
-    return false; // Timer is already running
+  if (ctx == NULL || ctx->repeating_timer.alarm_id != 0) {
+    return false; // Invalid context or timer is already running
   }
 
   // Initialize the context in the buffer
