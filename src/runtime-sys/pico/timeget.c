@@ -25,8 +25,13 @@ bool sys_time_get_utc(sys_time_t *time) {
   return true;
 }
 
+/*
+ ** @brief Hacky implementation of gmtime because the newlib version
+ ** didn't seem to work, and I need to investigate further.
+ ** @todo Investigate why newlib's gmtime doesn't work as expected.
+ */
 struct tm *gmtime(const time_t *clock) {
-  __thread struct tm _tm;
+  struct tm _tm;
   if (clock == NULL) {
     return NULL;
   }
