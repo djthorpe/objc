@@ -118,7 +118,7 @@ int test_sys_05(void) {
 
     // Create 1000 'A' characters
     char large_data[1001];
-    memset(large_data, 'A', 1000);
+    sys_memset(large_data, 'A', 1000);
     large_data[1000] = '\0';
 
     test_assert(sys_hash_update(&hash, large_data, 1000) == true);
