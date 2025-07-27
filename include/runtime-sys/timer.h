@@ -64,7 +64,9 @@ extern bool sys_timer_start(sys_timer_t *timer);
  * @param timer The timer context to finalize.
  * @return true on success, false on failure.
  * This function stops the timer and cleans up any resources associated with it.
- * After calling this function,
+ * After calling this function, the timer context becomes invalid and should not
+ * be used again. To use a timer with the same configuration, initialize a new
+ * timer using sys_timer_init().
  */
 extern bool sys_timer_finalize(sys_timer_t *timer);
 
