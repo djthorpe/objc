@@ -49,8 +49,11 @@ bool sys_mutex_unlock(sys_mutex_t *mutex) {
     return false;
   }
   pthread_mutex_t *pm = (pthread_mutex_t *)mutex->ctx;
-  // Unlock the mutex - ignore errors for consistency with other platforms
-  pthread_mutex_unlock(pm);
+  // Unlock the mutex and log an error if it fails
+  int result = pthread_mutex_unlock(pm);
+  if (result != 0) {
+    sys_log_error("pthread_mutex_unlock failed with error code: %d", result);
+  }
   return true;
 }
 
