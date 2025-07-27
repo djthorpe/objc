@@ -20,7 +20,13 @@ extern "C" {
  *
  * Contains the state and configuration for timer operations.
  */
-typedef struct {
+typedef struct sys_timer_t {
+  void (*callback)(struct sys_timer_t *);
+  uint32_t interval; // Timer interval in milliseconds
+  void *userdata;
+  union {
+    void *ptr; // Pointer to the timer context (platform-specific)
+  } ctx;
 } sys_timer_t;
 
 /**
