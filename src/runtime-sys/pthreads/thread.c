@@ -180,7 +180,7 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
   pthread_attr_destroy(&attr);
 
   if (result != 0) {
-    free(wrapper);
+    sys_free(wrapper);
     return false;
   }
 
