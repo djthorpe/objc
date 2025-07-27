@@ -12,6 +12,7 @@ add_library(${NAME} STATIC
     random.c
     sys.c
     timeget.c
+    timer.c
     thread.c
     ../all/panicf.c
     ../all/printf.c

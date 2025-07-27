@@ -8,6 +8,7 @@ add_library(${NAME} STATIC
     exception.c
     mutex.c
     sys.c
+    timer.c
     ../openssl/hash.c
     ../posix/memory.c
     ../posix/puts.c
