@@ -43,7 +43,7 @@ static void *thread_wrapper(void *arg) {
   void *thread_arg = wrapper->arg;
 
   // Free the wrapper structure
-  free(wrapper);
+  sys_free(wrapper);
 
   // Call the actual thread function
   func(thread_arg);
