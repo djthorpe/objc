@@ -83,8 +83,15 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg,
 
     // Send the function pointer and argument through the FIFO
     // Order is important: function pointer first, then argument
-    multicore_fifo_push_blocking((uintptr_t)func);
-    multicore_fifo_push_blocking((uintptr_t)arg);
+    const uint32_t timeout_us = 1000000; // 1 second timeout
+    if (!multicore_fifo_push_timeout_us((uintptr_t)func, timeout_us)) {
+        sys_panicf("Failed to push function pointer to core 1 FIFO");
+        return false;
+    }
+    if (!multicore_fifo_push_timeout_us((uintptr_t)arg, timeout_us)) {
+        sys_panicf("Failed to push argument to core 1 FIFO");
+        return false;
+    }
     return true;
   default:
     // Invalid core number, should not happen
