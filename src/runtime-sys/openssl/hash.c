@@ -19,25 +19,23 @@ sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm) {
   hash.size = 0;
   hash.algorithm = 0; // Initialize to invalid state
 
-  // Store a pointer to the EVP_MD_CTX in our context buffer
-  // We'll allocate it dynamically since EVP_MD_CTX is opaque in OpenSSL 3.x
-  EVP_MD_CTX **ctx_ptr = (EVP_MD_CTX **)hash.ctx;
-  *ctx_ptr = EVP_MD_CTX_new();
-
-  if (*ctx_ptr == NULL) {
+  // Allocate EVP_MD_CTX dynamically and store pointer in union
+  hash.ctx.ptr = EVP_MD_CTX_new();
+  if (hash.ctx.ptr == NULL) {
     // Failed to allocate context
     return hash;
   }
 
+  EVP_MD_CTX *ctx = (EVP_MD_CTX *)hash.ctx.ptr;
   switch (algorithm) {
   case sys_hash_md5:
-    if (EVP_DigestInit_ex(*ctx_ptr, EVP_md5(), NULL)) {
+    if (EVP_DigestInit_ex(ctx, EVP_md5(), NULL)) {
       hash.size = 16; // MD5 produces a 128-bit hash
       hash.algorithm = algorithm;
     }
     break;
   case sys_hash_sha256:
-    if (EVP_DigestInit_ex(*ctx_ptr, EVP_sha256(), NULL)) {
+    if (EVP_DigestInit_ex(ctx, EVP_sha256(), NULL)) {
       hash.size = 32; // SHA-256 produces a 256-bit hash
       hash.algorithm = algorithm;
     }
@@ -46,8 +44,8 @@ sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm) {
 
   // If initialization failed, clean up
   if (hash.size == 0) {
-    EVP_MD_CTX_free(*ctx_ptr);
-    *ctx_ptr = NULL;
+    EVP_MD_CTX_free(ctx);
+    hash.ctx.ptr = NULL;
   }
 
   // Return the initialized hash context
@@ -74,8 +72,8 @@ bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size) {
   if (size == 0) {
     return true; // No data to update, consider it a success
   }
-  EVP_MD_CTX **ctx_ptr = (EVP_MD_CTX **)hash->ctx;
-  return EVP_DigestUpdate(*ctx_ptr, data, size) ? true : false;
+  EVP_MD_CTX *ctx = (EVP_MD_CTX *)hash->ctx.ptr;
+  return EVP_DigestUpdate(ctx, data, size) ? true : false;
 }
 
 /**
@@ -86,10 +84,10 @@ const uint8_t *sys_hash_finalize(sys_hash_t *hash) {
     return NULL; // Invalid context
   }
 
-  EVP_MD_CTX **ctx_ptr = (EVP_MD_CTX **)hash->ctx;
-  bool result = EVP_DigestFinal_ex(*ctx_ptr, hash->hash, NULL) ? true : false;
-  EVP_MD_CTX_free(*ctx_ptr); // Clean up the context
-  *ctx_ptr = NULL;
+  EVP_MD_CTX *ctx = (EVP_MD_CTX *)hash->ctx.ptr;
+  bool result = EVP_DigestFinal_ex(ctx, hash->hash, NULL) ? true : false;
+  EVP_MD_CTX_free(ctx); // Clean up the context
+  hash->ctx.ptr = NULL;
 
   // Set algorithm to zero to indicate finalization
   hash->algorithm = 0;

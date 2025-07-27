@@ -54,8 +54,11 @@ typedef struct {
   uint8_t hash[SYS_HASH_SIZE]; // Buffer to hold the hash value = max is SHA-256
                                // (32 bytes)
   size_t size;                 // Size of the hash in bytes
-  uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash
-                                  // algorithm
+  union {
+    void *ptr; // Pointer to the hash context (OpenSSL EVP_MD_CTX)
+    uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash
+                                    // algorithm
+  } ctx; // Union to hold either a pointer or a fixed-size context buffer
 } sys_hash_t;
 
 /**
