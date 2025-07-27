@@ -35,7 +35,7 @@ typedef struct {
   sys_hash_algorithm_t algorithm; // The hash algorithm used
   uint8_t hash[32]; // Buffer to hold the hash value = max is SHA-256 (32 bytes)
   size_t size;      // Size of the hash in bytes
-  uint8_t ctx[128]; // Context buffer large enough for any hash algorithm
+  uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash algorithm
 } sys_hash_t;
 
 /**
