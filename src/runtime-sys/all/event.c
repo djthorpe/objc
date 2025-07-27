@@ -70,94 +70,57 @@ bool sys_event_queue_push(sys_event_queue_t *queue, sys_event_t event) {
     return false;
   }
 
-  //  sys_printf("[DEBUG] sys_event_queue_push: about to lock mutex for event %d
-  //  "
-  //             "(core %d)\n",
-  //            (int)(uintptr_t)event, sys_thread_core());
   if (!sys_mutex_lock(&queue->mutex)) {
     return false;
   }
-  //  sys_printf("[DEBUG] sys_event_queue_push: mutex locked successfully\n");
-
-  /*
-  // Debug: Log push attempt
-  sys_printf("[DEBUG] sys_event_queue_push: attempting to push event %d (core "
-             "%d), queue count=%zu\n",
-             (int)(uintptr_t)event, sys_thread_core(), queue->count);
 
   // Don't allow pushes after shutdown
   if (queue->shutdown) {
-    sys_printf(
-        "[DEBUG] sys_event_queue_push: push failed - queue is shutdown\n");
     sys_mutex_unlock(&queue->mutex);
     return false;
   }
 
   // Add event to the queue
   queue->items[queue->head] = event;
-  size_t old_head = queue->head;
   queue->head = (queue->head + 1) % queue->capacity;
 
   // If queue was full, we overwrote the oldest item
   if (queue->count == queue->capacity) {
     // Move tail forward (oldest item was overwritten)
-    sys_printf("[DEBUG] sys_event_queue_push: queue full, overwrote item at "
-               "tail %zu\n",
-               queue->tail);
     queue->tail = (queue->tail + 1) % queue->capacity;
   } else {
     // Queue wasn't full, increment count
     queue->count++;
   }
 
-  sys_printf("[DEBUG] sys_event_queue_push: pushed event %d at position %zu, "
-             "queue now has %zu items\n",
-             (int)(uintptr_t)event, old_head, queue->count);
-
-  // Signal waiting consumers
-  bool result = sys_cond_signal(&queue->not_empty);
-  sys_printf("[DEBUG] sys_event_queue_push: condition signal result = %s\n",
-             result ? "true" : "false");
+  // Signal waiting consumers (broadcast for fairness in multi-consumer
+  // scenarios)
+  bool result = sys_cond_broadcast(&queue->not_empty);
   sys_mutex_unlock(&queue->mutex);
   return result;
-  */
-  return false;
 }
 
 bool sys_event_queue_try_push(sys_event_queue_t *queue, sys_event_t event) {
   if (queue == NULL || queue->items == NULL || !queue->mutex.init) {
     return false;
   }
-
-  sys_printf("[TP] trylock %d c%d\n", (int)(uintptr_t)event, sys_thread_core());
-
   if (!sys_mutex_trylock(&queue->mutex)) {
-    sys_printf("[TP] busy\n");
     return false;
   }
 
-  sys_printf("[TP] locked\n");
-
   // Don't allow pushes after shutdown or if queue is full
   if (queue->shutdown || queue->count == queue->capacity) {
-    sys_printf("[TP] reject s=%s c=%zu\n", queue->shutdown ? "1" : "0",
-               queue->count);
     sys_mutex_unlock(&queue->mutex);
     return false;
   }
 
   // Add event to the queue
   queue->items[queue->head] = event;
-  size_t old_head = queue->head;
   queue->head = (queue->head + 1) % queue->capacity;
   queue->count++;
 
-  sys_printf("[TP] pushed %d pos=%zu cnt=%zu\n", (int)(uintptr_t)event,
-             old_head, queue->count);
-
   // Signal waiting consumers
-  bool result = sys_cond_signal(&queue->not_empty);
-  sys_printf("[TP] signal=%s\n", result ? "OK" : "FAIL");
+  bool result = sys_cond_broadcast(&queue->not_empty);
   sys_mutex_unlock(&queue->mutex);
   return result;
 }
@@ -179,44 +142,24 @@ sys_event_t sys_event_queue_pop(sys_event_queue_t *queue) {
     return NULL;
   }
 
-  sys_printf(
-      "[DEBUG] sys_event_queue_pop: core %d attempting pop, queue count=%zu\n",
-      sys_thread_core(), queue->count);
-
   // Wait for events or shutdown
   while (queue->count == 0 && !queue->shutdown) {
-    sys_printf("[DEBUG] sys_event_queue_pop: core %d waiting for events (queue "
-               "empty)\n",
-               sys_thread_core());
     if (!sys_cond_wait(&queue->not_empty, &queue->mutex)) {
-      sys_printf("[DEBUG] sys_event_queue_pop: core %d condition wait failed\n",
-                 sys_thread_core());
       sys_mutex_unlock(&queue->mutex);
       return NULL;
     }
-    sys_printf(
-        "[DEBUG] sys_event_queue_pop: core %d woke up from condition wait\n",
-        sys_thread_core());
   }
 
   // Check if we woke up due to shutdown
   if (queue->shutdown && queue->count == 0) {
-    sys_printf(
-        "[DEBUG] sys_event_queue_pop: core %d returning NULL due to shutdown\n",
-        sys_thread_core());
     sys_mutex_unlock(&queue->mutex);
     return NULL;
   }
 
   // Remove and return the event
   sys_event_t event = queue->items[queue->tail];
-  size_t old_tail = queue->tail;
   queue->tail = (queue->tail + 1) % queue->capacity;
   queue->count--;
-
-  sys_printf("[DEBUG] sys_event_queue_pop: core %d popped event %d from "
-             "position %zu, queue now has %zu items\n",
-             sys_thread_core(), (int)(uintptr_t)event, old_tail, queue->count);
 
   sys_mutex_unlock(&queue->mutex);
   return event;
