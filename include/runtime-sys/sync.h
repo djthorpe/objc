@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 /** @brief Buffer size for platform-specific mutex context data */
-#define SYS_MUTEX_CTX_SIZE 128 // Adjust based on platform requirements
+#define SYS_MUTEX_CTX_SIZE 64 // Adjust based on platform requirements
 
 /**
  * @brief Mutex context structure.
@@ -24,9 +24,12 @@ extern "C" {
  * Contains the state and configuration for mutex operations.
  */
 typedef struct {
-  void *ptr; ///< Pointer for platforms using pointer-based mutexes
-  uint8_t ctx[SYS_MUTEX_CTX_SIZE]; ///< Embedded buffer for
-                                   ///< platform-specific data
+  bool init; ///< Indicates if the mutex is initialized
+  union {
+    uint8_t
+        ctx[SYS_MUTEX_CTX_SIZE]; ///< Embedded buffer for platform-specific data
+    uint64_t align;              ///< Force 8-byte alignment
+  };
 } sys_mutex_t;
 
 /**

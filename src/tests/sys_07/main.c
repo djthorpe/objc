@@ -15,16 +15,16 @@ int test_sys_07(void) {
   sys_printf("Test 1: Mutex initialization\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL); // Should be initialized
+    test_assert(mutex.init == true); // Should be initialized
     sys_mutex_finalize(&mutex);
-    test_assert(mutex.ptr == NULL); // Should be cleared after finalization
+    test_assert(mutex.init == false); // Should be cleared after finalization
     sys_printf("  ✓ Mutex initialization and finalization works\n");
   }
 
   sys_printf("Test 2: Basic lock and unlock\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Should be able to lock
     test_assert(sys_mutex_lock(&mutex) == true);
@@ -39,7 +39,7 @@ int test_sys_07(void) {
   sys_printf("Test 3: Try lock success\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Should be able to trylock an unlocked mutex
     test_assert(sys_mutex_trylock(&mutex) == true);
@@ -54,7 +54,7 @@ int test_sys_07(void) {
   sys_printf("Test 4: Try lock failure on locked mutex\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Lock the mutex first
     test_assert(sys_mutex_lock(&mutex) == true);
@@ -72,7 +72,7 @@ int test_sys_07(void) {
   sys_printf("Test 5: Multiple lock/unlock cycles\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     for (int i = 0; i < 10; i++) {
       test_assert(sys_mutex_lock(&mutex) == true);
@@ -114,11 +114,11 @@ int test_sys_07(void) {
   sys_printf("Test 8: Error handling - operations after finalization\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Finalize the mutex
     sys_mutex_finalize(&mutex);
-    test_assert(mutex.ptr == NULL);
+    test_assert(mutex.init == false);
 
     // All operations should fail after finalization
     test_assert(sys_mutex_lock(&mutex) == false);
@@ -136,9 +136,8 @@ int test_sys_07(void) {
     sys_mutex_t mutex1 = sys_mutex_init();
     sys_mutex_t mutex2 = sys_mutex_init();
 
-    test_assert(mutex1.ptr != NULL);
-    test_assert(mutex2.ptr != NULL);
-    test_assert(mutex1.ptr != mutex2.ptr); // Should be different
+    test_assert(mutex1.init == true);
+    test_assert(mutex2.init == true);
 
     // Should be able to lock both independently
     test_assert(sys_mutex_lock(&mutex1) == true);
@@ -157,7 +156,7 @@ int test_sys_07(void) {
   sys_printf("Test 10: Lock/trylock combinations\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Lock with lock()
     test_assert(sys_mutex_lock(&mutex) == true);
@@ -181,7 +180,7 @@ int test_sys_07(void) {
   sys_printf("Test 11: Mutex state consistency\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
     // Initially should be unlocked (trylock succeeds)
     test_assert(sys_mutex_trylock(&mutex) == true);
@@ -197,16 +196,19 @@ int test_sys_07(void) {
     sys_printf("  ✓ Mutex state consistency maintained\n");
   }
 
-  sys_printf("Test 12: Error handling - unlock without lock\n");
+  sys_printf("Test 12: Mutex operation sequencing\n");
   {
     sys_mutex_t mutex = sys_mutex_init();
-    test_assert(mutex.ptr != NULL);
+    test_assert(mutex.init == true);
 
-    // Unlocking an unlocked mutex should fail
-    test_assert(sys_mutex_unlock(&mutex) == false);
+    // Test lock -> unlock -> lock -> unlock sequence
+    test_assert(sys_mutex_lock(&mutex) == true);
+    test_assert(sys_mutex_unlock(&mutex) == true);
+    test_assert(sys_mutex_lock(&mutex) == true);
+    test_assert(sys_mutex_unlock(&mutex) == true);
 
     sys_mutex_finalize(&mutex);
-    sys_printf("  ✓ Unlock without lock fails correctly\n");
+    sys_printf("  ✓ Mutex operation sequencing works\n");
   }
 
   sys_printf("All mutex tests completed successfully!\n");

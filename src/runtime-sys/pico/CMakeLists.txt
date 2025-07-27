@@ -9,6 +9,7 @@ add_library(${NAME} STATIC
     abort.c
     hash.c
     memory.c
+    mutex.c
     puts.c
     random.c
     sys.c
