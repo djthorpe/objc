@@ -1,4 +1,3 @@
-#include <runtime-sys/sync.h>
 #include <runtime-sys/sys.h>
 #include <string.h>
 #include <tests/tests.h>

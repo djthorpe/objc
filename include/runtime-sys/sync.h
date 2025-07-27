@@ -17,6 +17,9 @@ extern "C" {
 /** @brief Buffer size for platform-specific mutex context data */
 #define SYS_MUTEX_CTX_SIZE 64 // Adjust based on platform requirements
 
+/** @brief Buffer size for platform-specific condition variable context data */
+#define SYS_COND_CTX_SIZE 64 // Adjust based on platform requirements
+
 /**
  * @brief Mutex context structure.
  * @ingroup System
@@ -31,6 +34,21 @@ typedef struct {
     uint64_t align;              ///< Force 8-byte alignment
   };
 } sys_mutex_t;
+
+/**
+ * @brief Condition variable context structure.
+ * @ingroup System
+ *
+ * Contains the state and configuration for condition variable operations.
+ */
+typedef struct {
+  bool init; ///< Indicates if the condition variable is initialized
+  union {
+    uint8_t
+        ctx[SYS_COND_CTX_SIZE]; ///< Embedded buffer for platform-specific data
+    uint64_t align;             ///< Force 8-byte alignment
+  };
+} sys_cond_t;
 
 /**
  * @brief Initialize a new mutex
@@ -90,6 +108,79 @@ bool sys_mutex_unlock(sys_mutex_t *mutex);
  * unusable. The mutex should not be locked when this function is called.
  */
 void sys_mutex_finalize(sys_mutex_t *mutex);
+
+/**
+ * @brief Initialize a new condition variable
+ * @ingroup System
+ * @return Initialized condition variable structure
+ *
+ * Creates and initializes a new condition variable for thread synchronization.
+ * The condition variable is ready for use with wait/signal operations.
+ * The returned condition variable must be finalized with sys_cond_finalize()
+ */
+sys_cond_t sys_cond_init(void);
+
+/**
+ * @brief Wait on a condition variable
+ * @ingroup System
+ * @param cond Pointer to the condition variable to wait on
+ * @param mutex Pointer to the mutex that must be locked by the calling thread
+ * @return true if the wait completed successfully, false on error
+ *
+ * Atomically releases the mutex and waits for the condition variable to be
+ * signaled. Upon return, the mutex is reacquired. The mutex must be locked
+ * by the calling thread before calling this function.
+ */
+bool sys_cond_wait(sys_cond_t *cond, sys_mutex_t *mutex);
+
+/**
+ * @brief Wait on a condition variable with timeout
+ * @ingroup System
+ * @param cond Pointer to the condition variable to wait on
+ * @param mutex Pointer to the mutex that must be locked by the calling thread
+ * @param timeout_ms Timeout in milliseconds (0 = no timeout)
+ * @return true if signaled, false if timeout or error
+ *
+ * Like sys_cond_wait() but returns after timeout_ms milliseconds if not
+ * signaled. Returns true if signaled, false if timeout or error occurred.
+ */
+bool sys_cond_timedwait(sys_cond_t *cond, sys_mutex_t *mutex,
+                        uint32_t timeout_ms);
+
+/**
+ * @brief Signal one waiting thread
+ * @ingroup System
+ * @param cond Pointer to the condition variable to signal
+ * @return true if successful, false on error
+ *
+ * Wakes up one thread waiting on the condition variable. If no threads
+ * are waiting, this function has no effect. The associated mutex should
+ * be locked when calling this function for predictable behavior.
+ */
+bool sys_cond_signal(sys_cond_t *cond);
+
+/**
+ * @brief Signal all waiting threads
+ * @ingroup System
+ * @param cond Pointer to the condition variable to broadcast
+ * @return true if successful, false on error
+ *
+ * Wakes up all threads waiting on the condition variable. If no threads
+ * are waiting, this function has no effect. The associated mutex should
+ * be locked when calling this function for predictable behavior.
+ */
+bool sys_cond_broadcast(sys_cond_t *cond);
+
+/**
+ * @brief Finalize and cleanup a condition variable
+ * @ingroup System
+ * @param cond Pointer to the condition variable to finalize
+ *
+ * Releases all resources associated with the condition variable and renders
+ * it unusable. No threads should be waiting on the condition variable when
+ * this function is called.
+ */
+void sys_cond_finalize(sys_cond_t *cond);
 
 #ifdef __cplusplus
 }

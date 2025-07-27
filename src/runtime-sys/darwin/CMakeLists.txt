@@ -17,6 +17,7 @@ add_library(${NAME} STATIC
     ../posix/time.c
     ../posix/timeget.c
     ../pthreads/mutex.c
+    ../pthreads/cond.c
     ../all/mutex.c
     ../all/panicf.c
     ../all/printf.c
