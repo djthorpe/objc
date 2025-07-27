@@ -104,7 +104,7 @@ bool sys_event_queue_try_push(sys_event_queue_t *queue, sys_event_t event) {
   if (queue == NULL || queue->items == NULL || !queue->mutex.init) {
     return false;
   }
-  if (!sys_mutex_trylock(&queue->mutex)) {
+  if (!sys_mutex_lock(&queue->mutex)) {
     return false;
   }
 
