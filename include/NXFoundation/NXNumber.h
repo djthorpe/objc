@@ -16,6 +16,7 @@
 
 /**
  * @brief Generate a random signed 32-bit integer.
+ * @ingroup Foundation
  * @details This function generates a random signed integer value using the
  * system's random number generator.
  * @return A random signed integer value.
@@ -25,6 +26,7 @@ int32_t NXRandInt32();
 
 /**
  * @brief Generate a random unsigned 32-bit integer.
+ * @ingroup Foundation
  * @details This function generates a random unsigned integer value.
  * @return A random unsigned integer value.
  * @note This function is not thread-safe.
@@ -36,6 +38,7 @@ uint32_t NXRandUnsignedInt32();
 
 /**
  * @brief The base class for NXNumber instances.
+ * @ingroup Foundation
  *
  * NXNumber represents a numeric value in the NXFoundation framework.
  *

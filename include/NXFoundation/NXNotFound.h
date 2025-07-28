@@ -8,5 +8,8 @@
 
 #pragma once
 
-/** @brief Constant representing "not found" */
+/**
+ * @brief Constant representing "not found"
+ * @ingroup Foundation
+ */
 extern const unsigned int NXNotFound;

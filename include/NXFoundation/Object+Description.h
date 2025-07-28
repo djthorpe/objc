@@ -9,6 +9,7 @@
 /**
  * @category Object(Description)
  * @brief A category that adds a description method to the Object class.
+ * @ingroup Foundation
  *
  * This category provides a standardized way to get a string
  * representation of any object instance or class, which is useful for

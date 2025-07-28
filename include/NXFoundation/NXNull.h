@@ -10,6 +10,7 @@
 
 /**
  * @brief The NXNull class
+ * @ingroup Foundation
  *
  * NXNull represents a null value that can be inserted into collections.
  *

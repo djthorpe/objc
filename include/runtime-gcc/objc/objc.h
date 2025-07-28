@@ -2,6 +2,9 @@
  * @file objc.h
  * @brief Defines the Objective-C runtime.
  * @defgroup objc Objective-C Runtime
+ *
+ * The underlying Objective-C runtime, providing class, object and protocol
+ * introspection, and resolution of selectors to the method implementation.
  */
 #pragma once
 

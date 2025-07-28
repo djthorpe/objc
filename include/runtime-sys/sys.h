@@ -5,15 +5,6 @@
  *
  * System methods for managing memory, threads and resources.
  */
-
-/**
- * @defgroup Examples Code Examples
- * @brief Code examples demonstrating system features
- *
- * This group contains complete code examples that demonstrate how to use
- * various features of the runtime system, including threading, memory
- * management, and platform-specific functionality.
- */
 #pragma once
 #include "event.h"
 #include "hash.h"

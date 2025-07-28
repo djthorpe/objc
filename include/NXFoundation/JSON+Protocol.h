@@ -6,6 +6,7 @@
 
 /**
  * @protocol JSONProtocol
+ * @ingroup Foundation
  * @brief A protocol that defines JSON methods for an Object.
  *
  * \headerfile Object+JSON.h NXFoundation/NXFoundation.h

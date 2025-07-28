@@ -7,6 +7,7 @@ PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = /data/docs
 INPUT                  = /data/README.md /data/include/runtime-sys /data/include/runtime-gcc /data/include/NXFoundation
 EXAMPLE_PATH           = /data/src/examples
+EXAMPLE_PATTERNS       = "*.h" "*.m" "*.c"
 USE_MDFILE_AS_MAINPAGE = README.md
 STRIP_FROM_PATH        = /data
 FILE_PATTERNS          = "*.h" "*.m" "*.c" "*.md"

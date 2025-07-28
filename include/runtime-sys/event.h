@@ -4,6 +4,14 @@
  *
  * This file declares types and functions for thread-safe event queues that
  * support multiple producers and consumers with peek-before-acquire semantics.
+ *
+ * @example pico/simplequeue/main.c
+ * This is a complete example showing how a simple use of an event queue works
+ * in a multicore programming context on the Pico platform.
+ *
+ * @example pico/runloop/main.c
+ * This is a complete example showing an example of multiple producers and
+ * consumers using the event queue in a runloop style on the Pico platform.
  */
 #pragma once
 #include "sync.h"

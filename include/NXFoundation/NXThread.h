@@ -11,6 +11,7 @@
 
 /**
  * @brief A class for managing and interacting with threads.
+ * @ingroup Foundation
  *
  * The NXThread class provides a high-level interface for managing
  * threads of execution in an application.

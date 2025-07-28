@@ -10,6 +10,7 @@
 
 /**
  * @brief A class for managing autorelease pools.
+ * @ingroup Foundation
  *
  * Autorelease pools provide a way to defer sending `release` messages to
  * objects. When an autorelease pool is drained, it sends a `release` message to

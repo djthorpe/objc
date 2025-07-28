@@ -9,6 +9,7 @@
 
 /**
  * @brief Hash algorithms supported by NXData.
+ * @ingroup Foundation
  */
 typedef enum {
   NXHashAlgorithmMD5 = sys_hash_md5,       // MD5 hash (128-bit)
@@ -20,6 +21,7 @@ typedef enum {
 
 /**
  * @brief The NXData class
+ * @ingroup Foundation
  *
  * NXData represents a structure for storing binary data.
  *

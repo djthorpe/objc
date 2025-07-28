@@ -10,6 +10,7 @@
 
 /**
  * @brief Enumeration representing the result of a comparison operation.
+ * @ingroup Foundation
  *
  * NXComparisonResult is used throughout the NXFoundation framework to
  * represent the outcome of comparison operations between objects. The values

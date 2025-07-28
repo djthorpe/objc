@@ -10,6 +10,7 @@
 
 /**
  * @def NXLog(format, ...)
+ * @ingroup Foundation
  * @brief Logs a formatted string to the standard error stream.
  * @param format An `NXConstantString` object that contains a C-style format
  * string.
