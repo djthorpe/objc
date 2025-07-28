@@ -48,6 +48,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
@@ -60,12 +61,24 @@ $(function() {
 
 <p>System methods for managing memory, threads and resources.  
 <a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for System Management:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="group__System.png" border="0" alt="" usemap="#group____System"/>
+<map name="group____System" id="group____System">
+<area shape="rect" id="node1" href="group__SystemEvents.html" title="System methods for managing memory, threads and resources. " alt="" coords="213,5,332,32"/>
+</map>
+</td></tr></table></center>
+</div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__SystemEvents"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEvents.html">System Events</a></td></tr>
+<tr class="memdesc:group__SystemEvents"><td class="mdescLeft">&#160;</td><td class="mdescRight">System methods for managing memory, threads and resources. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event queue structure for producer/consumer patterns.  <a href="structsys__event__queue__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hash__t.html">sys_hash_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash context structure.  <a href="structsys__hash__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,9 +112,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga2bdd4be7e6e04b4ee95e0459ff001702"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a></td></tr>
-<tr class="memdesc:ga2bdd4be7e6e04b4ee95e0459ff001702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event type for queue items.  <a href="#ga2bdd4be7e6e04b4ee95e0459ff001702">More...</a><br /></td></tr>
-<tr class="separator:ga2bdd4be7e6e04b4ee95e0459ff001702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga44d92420e9c1148c746ce7e89a81075d"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga44d92420e9c1148c746ce7e89a81075d">sys_thread_func_t</a>) (void *arg)</td></tr>
 <tr class="memdesc:ga44d92420e9c1148c746ce7e89a81075d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread function signatureFunction signature for thread entry points.  <a href="#ga44d92420e9c1148c746ce7e89a81075d">More...</a><br /></td></tr>
 <tr class="separator:ga44d92420e9c1148c746ce7e89a81075d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,45 +132,6 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gadf5a5676c999a3f4e21608a21e7e636f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gadf5a5676c999a3f4e21608a21e7e636f">sys_event_queue_init</a> (size_t capacity)</td></tr>
-<tr class="memdesc:gadf5a5676c999a3f4e21608a21e7e636f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new event queue.  <a href="#gadf5a5676c999a3f4e21608a21e7e636f">More...</a><br /></td></tr>
-<tr class="separator:gadf5a5676c999a3f4e21608a21e7e636f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4f27a3c63a3d274f23d4111dc05315a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gab4f27a3c63a3d274f23d4111dc05315a">sys_event_queue_finalize</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:gab4f27a3c63a3d274f23d4111dc05315a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and cleanup an event queue.  <a href="#gab4f27a3c63a3d274f23d4111dc05315a">More...</a><br /></td></tr>
-<tr class="separator:gab4f27a3c63a3d274f23d4111dc05315a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf3b1d50d0e78404ebd74355a474fb10b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gaf3b1d50d0e78404ebd74355a474fb10b">sys_event_queue_push</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue, <a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> event)</td></tr>
-<tr class="memdesc:gaf3b1d50d0e78404ebd74355a474fb10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Push an event to the queue (always succeeds)  <a href="#gaf3b1d50d0e78404ebd74355a474fb10b">More...</a><br /></td></tr>
-<tr class="separator:gaf3b1d50d0e78404ebd74355a474fb10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac876f605be4e2014ec50a51848d2bb21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gac876f605be4e2014ec50a51848d2bb21">sys_event_queue_try_push</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue, <a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> event)</td></tr>
-<tr class="memdesc:gac876f605be4e2014ec50a51848d2bb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to push an event without overwriting.  <a href="#gac876f605be4e2014ec50a51848d2bb21">More...</a><br /></td></tr>
-<tr class="separator:gac876f605be4e2014ec50a51848d2bb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4fd435e560a0892a61851b0f66c56f9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga4fd435e560a0892a61851b0f66c56f9a">sys_event_queue_peek</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:ga4fd435e560a0892a61851b0f66c56f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peek at the next event without removing it.  <a href="#ga4fd435e560a0892a61851b0f66c56f9a">More...</a><br /></td></tr>
-<tr class="separator:ga4fd435e560a0892a61851b0f66c56f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadce3a0a7f3b32706c7064e8659d52b21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gadce3a0a7f3b32706c7064e8659d52b21">sys_event_queue_pop</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:gadce3a0a7f3b32706c7064e8659d52b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove and return the next event (blocking)  <a href="#gadce3a0a7f3b32706c7064e8659d52b21">More...</a><br /></td></tr>
-<tr class="separator:gadce3a0a7f3b32706c7064e8659d52b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga37045eb6c48834403c8fc2bbafa5e202"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga37045eb6c48834403c8fc2bbafa5e202">sys_event_queue_try_pop</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:ga37045eb6c48834403c8fc2bbafa5e202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to remove and return the next event (non-blocking)  <a href="#ga37045eb6c48834403c8fc2bbafa5e202">More...</a><br /></td></tr>
-<tr class="separator:ga37045eb6c48834403c8fc2bbafa5e202"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad09cd8375749826b96633ff0d138902b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gad09cd8375749826b96633ff0d138902b">sys_event_queue_timed_pop</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue, uint32_t timeout_ms)</td></tr>
-<tr class="memdesc:gad09cd8375749826b96633ff0d138902b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove and return the next event with timeout.  <a href="#gad09cd8375749826b96633ff0d138902b">More...</a><br /></td></tr>
-<tr class="separator:gad09cd8375749826b96633ff0d138902b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ca657c0597f3133a202f68c7f91f6fd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga0ca657c0597f3133a202f68c7f91f6fd">sys_event_queue_size</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:ga0ca657c0597f3133a202f68c7f91f6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current number of events in the queue.  <a href="#ga0ca657c0597f3133a202f68c7f91f6fd">More...</a><br /></td></tr>
-<tr class="separator:ga0ca657c0597f3133a202f68c7f91f6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad8c695090d16fb853c6289a21c2db91b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gad8c695090d16fb853c6289a21c2db91b">sys_event_queue_empty</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:gad8c695090d16fb853c6289a21c2db91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the queue is empty.  <a href="#gad8c695090d16fb853c6289a21c2db91b">More...</a><br /></td></tr>
-<tr class="separator:gad8c695090d16fb853c6289a21c2db91b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac94e5bdf92c1b596445730c992e27c60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gac94e5bdf92c1b596445730c992e27c60">sys_event_queue_shutdown</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:gac94e5bdf92c1b596445730c992e27c60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shut down the queue gracefully.  <a href="#gac94e5bdf92c1b596445730c992e27c60">More...</a><br /></td></tr>
-<tr class="separator:gac94e5bdf92c1b596445730c992e27c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e1bf7986654d89f6debd775158dc685"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga2e1bf7986654d89f6debd775158dc685">sys_event_queue_lock</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:ga2e1bf7986654d89f6debd775158dc685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the queue for manual synchronization.  <a href="#ga2e1bf7986654d89f6debd775158dc685">More...</a><br /></td></tr>
-<tr class="separator:ga2e1bf7986654d89f6debd775158dc685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaebe7204ad57c101cbbb0eb1ccef42168"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gaebe7204ad57c101cbbb0eb1ccef42168">sys_event_queue_unlock</a> (<a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *queue)</td></tr>
-<tr class="memdesc:gaebe7204ad57c101cbbb0eb1ccef42168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the queue after manual synchronization.  <a href="#gaebe7204ad57c101cbbb0eb1ccef42168">More...</a><br /></td></tr>
-<tr class="separator:gaebe7204ad57c101cbbb0eb1ccef42168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga11ae4ec7ba4ce8204080783ec4820165"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hash__t.html">sys_hash_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga11ae4ec7ba4ce8204080783ec4820165">sys_hash_init</a> (<a class="el" href="group__System.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a> algorithm)</td></tr>
 <tr class="memdesc:ga11ae4ec7ba4ce8204080783ec4820165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new hash context for the specified algorithm.  <a href="#ga11ae4ec7ba4ce8204080783ec4820165">More...</a><br /></td></tr>
 <tr class="separator:ga11ae4ec7ba4ce8204080783ec4820165"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -378,25 +349,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga2bdd4be7e6e04b4ee95e0459ff001702"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2bdd4be7e6e04b4ee95e0459ff001702">&#9670;&nbsp;</a></span>sys_event_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void* <a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Event type for queue items. </p>
-<p>Simple event type that can hold any pointer data. This can be enhanced in the future to include metadata like timestamps, priorities, etc. </p>
-
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00033">33</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
-
-</div>
-</div>
 <a id="ga44d92420e9c1148c746ce7e89a81075d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga44d92420e9c1148c746ce7e89a81075d">&#9670;&nbsp;</a></span>sys_thread_func_t</h2>
 
@@ -681,407 +633,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the wait completed successfully, false on error</dd></dl>
 <p>Atomically releases the mutex and waits for the condition variable to be signaled. Upon return, the mutex is reacquired. The mutex must be locked by the calling thread before calling this function. </p>
-
-</div>
-</div>
-<a id="gad8c695090d16fb853c6289a21c2db91b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad8c695090d16fb853c6289a21c2db91b">&#9670;&nbsp;</a></span>sys_event_queue_empty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_event_queue_empty </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check if the queue is empty. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if empty, false otherwise</dd></dl>
-<p>Returns true if the queue contains no events. This is a snapshot value that may change immediately after the call returns in a multi-threaded environment. </p>
-
-</div>
-</div>
-<a id="gab4f27a3c63a3d274f23d4111dc05315a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab4f27a3c63a3d274f23d4111dc05315a">&#9670;&nbsp;</a></span>sys_event_queue_finalize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_event_queue_finalize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Finalize and cleanup an event queue. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the queue to finalize</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Finalizes the event queue and releases all associated resources. Any threads waiting on the queue will be woken up. The queue should not be used after this call. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2simplequeue_2main_8c-example.html#a14">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="gadf5a5676c999a3f4e21608a21e7e636f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadf5a5676c999a3f4e21608a21e7e636f">&#9670;&nbsp;</a></span>sys_event_queue_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> sys_event_queue_init </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>capacity</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize a new event queue. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">capacity</td><td>Maximum number of events the queue can hold </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Initialized event queue structure</dd></dl>
-<p>Creates a new thread-safe event queue with the specified capacity. The queue uses circular buffer semantics - when full, new items will overwrite the oldest items. The returned queue must be finalized with <a class="el" href="group__System.html#gab4f27a3c63a3d274f23d4111dc05315a" title="Finalize and cleanup an event queue. ">sys_event_queue_finalize()</a>. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2runloop_2main_8c-example.html#a18">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a10">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="ga2e1bf7986654d89f6debd775158dc685"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2e1bf7986654d89f6debd775158dc685">&#9670;&nbsp;</a></span>sys_event_queue_lock()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_event_queue_lock </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lock the queue for manual synchronization. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
-<p>Manually locks the queue mutex. This allows for atomic sequences of peek/pop operations. Must be paired with <a class="el" href="group__System.html#gaebe7204ad57c101cbbb0eb1ccef42168" title="Unlock the queue after manual synchronization. ">sys_event_queue_unlock()</a>. </p>
-
-</div>
-</div>
-<a id="ga4fd435e560a0892a61851b0f66c56f9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4fd435e560a0892a61851b0f66c56f9a">&#9670;&nbsp;</a></span>sys_event_queue_peek()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> sys_event_queue_peek </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Peek at the next event without removing it. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Next event or NULL if queue is empty</dd></dl>
-<p>Returns the next event that would be returned by <a class="el" href="group__System.html#gadce3a0a7f3b32706c7064e8659d52b21" title="Remove and return the next event (blocking) ">sys_event_queue_pop()</a> without removing it from the queue. This allows consumers to inspect events before deciding whether to acquire them. The queue must be locked by the caller. </p>
-
-</div>
-</div>
-<a id="gadce3a0a7f3b32706c7064e8659d52b21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadce3a0a7f3b32706c7064e8659d52b21">&#9670;&nbsp;</a></span>sys_event_queue_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> sys_event_queue_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Remove and return the next event (blocking) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Next event, or NULL if queue is shut down</dd></dl>
-<p>Removes and returns the next event from the queue. If the queue is empty, this function blocks until an event becomes available or the queue is shut down. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2runloop_2main_8c-example.html#a3">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a12">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="gaf3b1d50d0e78404ebd74355a474fb10b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf3b1d50d0e78404ebd74355a474fb10b">&#9670;&nbsp;</a></span>sys_event_queue_push()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_event_queue_push </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td>
-          <td class="paramname"><em>event</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Push an event to the queue (always succeeds) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-    <tr><td class="paramname">event</td><td>Event to add to the queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
-<p>Adds an event to the queue. This operation always succeeds - if the queue is full, the oldest event is overwritten. This ensures producers are never blocked. </p>
-
-</div>
-</div>
-<a id="gac94e5bdf92c1b596445730c992e27c60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac94e5bdf92c1b596445730c992e27c60">&#9670;&nbsp;</a></span>sys_event_queue_shutdown()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_event_queue_shutdown </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Shut down the queue gracefully. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Sets the shutdown flag and wakes up all waiting consumers. After shutdown, push operations may fail and pop operations will return NULL once the queue is empty. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2runloop_2main_8c-example.html#a10">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a9">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="ga0ca657c0597f3133a202f68c7f91f6fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0ca657c0597f3133a202f68c7f91f6fd">&#9670;&nbsp;</a></span>sys_event_queue_size()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t sys_event_queue_size </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the current number of events in the queue. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Current number of events, or 0 on error</dd></dl>
-<p>Returns the current number of events in the queue. This is a snapshot value that may change immediately after the call returns in a multi-threaded environment. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2runloop_2main_8c-example.html#a4">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a13">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="gad09cd8375749826b96633ff0d138902b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad09cd8375749826b96633ff0d138902b">&#9670;&nbsp;</a></span>sys_event_queue_timed_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> sys_event_queue_timed_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>timeout_ms</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Remove and return the next event with timeout. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>Timeout in milliseconds (0 = no timeout) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Next event, or NULL if timeout or queue shut down</dd></dl>
-<p>Removes and returns the next event from the queue. If the queue is empty, waits up to timeout_ms milliseconds for an event to become available. </p>
-
-</div>
-</div>
-<a id="ga37045eb6c48834403c8fc2bbafa5e202"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga37045eb6c48834403c8fc2bbafa5e202">&#9670;&nbsp;</a></span>sys_event_queue_try_pop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a> sys_event_queue_try_pop </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Try to remove and return the next event (non-blocking) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Next event, or NULL if queue is empty or error</dd></dl>
-<p>Attempts to remove and return the next event from the queue. Returns NULL immediately if the queue is empty. </p>
-
-</div>
-</div>
-<a id="gac876f605be4e2014ec50a51848d2bb21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac876f605be4e2014ec50a51848d2bb21">&#9670;&nbsp;</a></span>sys_event_queue_try_push()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_event_queue_try_push </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__System.html#ga2bdd4be7e6e04b4ee95e0459ff001702">sys_event_t</a>&#160;</td>
-          <td class="paramname"><em>event</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Try to push an event without overwriting. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-    <tr><td class="paramname">event</td><td>Event to add to the queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false if queue is full or error</dd></dl>
-<p>Attempts to add an event to the queue. Returns false if the queue is full, ensuring no existing events are overwritten. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2runloop_2main_8c-example.html#a14">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a5">pico/simplequeue/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="gaebe7204ad57c101cbbb0eb1ccef42168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaebe7204ad57c101cbbb0eb1ccef42168">&#9670;&nbsp;</a></span>sys_event_queue_unlock()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_event_queue_unlock </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__event__queue__t.html">sys_event_queue_t</a> *&#160;</td>
-          <td class="paramname"><em>queue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unlock the queue after manual synchronization. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">queue</td><td>Pointer to the event queue </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
-<p>Unlocks the queue mutex. Must be called after <a class="el" href="group__System.html#ga2e1bf7986654d89f6debd775158dc685" title="Lock the queue for manual synchronization. ">sys_event_queue_lock()</a>. </p>
 
 </div>
 </div>
