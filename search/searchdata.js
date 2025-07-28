@@ -8,8 +8,8 @@ var indexSectionsWithContent =
   5: "bcimnos",
   6: "ns",
   7: "n",
-  8: "ns",
-  9: "cos",
+  8: "s",
+  9: "fos",
   10: "o"
 };
 

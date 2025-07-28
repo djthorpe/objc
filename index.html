@@ -106,33 +106,35 @@ $(function() {
 <li>[X] Memory management - retain, release - reference counting for objects through <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></li>
 <li>[X] Date and Time - <code><a class="el" href="interfaceNXDate.html" title="A class for representing and manipulating dates. ">NXDate</a></code> - mutable date and time</li>
 <li>[X] <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with booleans</li>
-<li>[X] <code><a class="el" href="interfaceNXNull.html" title="The NXNull class. ">NXNull</a></code> - singleton for null objects that can be inserted into collections</li>
+<li>[X] <code><a class="el" href="interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. ">NXNull</a></code> - singleton for null objects that can be inserted into collections</li>
 <li>[X] Protocols and <code>conformsTo:</code></li>
 <li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt16</code> and <code>NXNumberUnsignedInt16</code></li>
 <li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt32</code> and <code>NXNumberUnsignedInt32</code></li>
 <li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt64</code> and <code>NXNumberUnsignedInt64</code></li>
 <li>[X] Fix linking categories in static libraries (see test NXFoundation_05)</li>
 <li>[X] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings - append, appendFormat</li>
-<li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray class. ">NXArray</a></code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
-<li>[X] <code><a class="el" href="interfaceNXData.html" title="The NXData class. ">NXData</a></code> - mutable binary data with Base64/hex encoding and append operations</li>
+<li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
+<li>[X] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - mutable binary data with Base64/hex encoding and append operations</li>
 <li>[X] Hash functions - MD5 and SHA-256 hash computation through <code>sys_hash_*</code> API</li>
-<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData class. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
+<li>[X] Pico toolchain - integrate with Pico SDK</li>
+<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
+<li>[ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on</li>
+<li>[ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed</li>
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - array methods - split, join, etc.</li>
 <li>[ ] printf - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
 <li>[ ] printf - <code>T</code> format specifier for time intervals</li>
+<li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
+<li>[ ] Threading &amp; <code>@synchronized</code> support</li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
 <li>[ ] <code>NXMap</code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
-<li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] clang compatibility (probably fix with selectors)</li>
 <li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>)</li>
 <li>[ ] More efficient method implementation lookup</li>
 <li>[ ] <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
 <li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning and tokenizing</li>
+<li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
-<li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
-<li>[ ] Pico toolchain - integrate with Pico SDK</li>
-<li>[ ] Threading &amp; <code>@synchronized</code> support</li>
 <li>[ ] Exception handling?</li>
 </ul>
 <h2>References</h2>

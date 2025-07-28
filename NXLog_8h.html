@@ -83,57 +83,16 @@ Include dependency graph for NXLog.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a6af05e6dd8b6052f740e7384539d45ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NXLog_8h.html#a6af05e6dd8b6052f740e7384539d45ab">NXLog</a>(format, ...)</td></tr>
-<tr class="memdesc:a6af05e6dd8b6052f740e7384539d45ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a formatted string to the standard error stream.  <a href="#a6af05e6dd8b6052f740e7384539d45ab">More...</a><br /></td></tr>
-<tr class="separator:a6af05e6dd8b6052f740e7384539d45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6af05e6dd8b6052f740e7384539d45ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga6af05e6dd8b6052f740e7384539d45ab">NXLog</a>(format, ...)</td></tr>
+<tr class="memdesc:ga6af05e6dd8b6052f740e7384539d45ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a formatted string to the standard error stream.  <a href="group__Foundation.html#ga6af05e6dd8b6052f740e7384539d45ab">More...</a><br /></td></tr>
+<tr class="separator:ga6af05e6dd8b6052f740e7384539d45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines a logging macro for printing formatted messages. </p>
 <p>This file provides the <code>NXLog</code> macro, which is a convenient way to print formatted output to the standard error stream. It is similar to <code>NSLog</code> from the Foundation framework. </p>
 
 <p class="definition">Definition in file <a class="el" href="NXLog_8h_source.html">NXLog.h</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a6af05e6dd8b6052f740e7384539d45ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6af05e6dd8b6052f740e7384539d45ab">&#9670;&nbsp;</a></span>NXLog</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NXLog</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                                         \</div><div class="line">    sys_printf((<span class="keyword">const</span> <span class="keywordtype">char</span> *)[format cStr], ##__VA_ARGS__);                    \</div><div class="line">    sys_puts(<span class="stringliteral">&quot;\n&quot;</span>);                                                            \</div><div class="line">  } <span class="keywordflow">while</span> (0)</div></div><!-- fragment -->
-<p>Logs a formatted string to the standard error stream. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>An <code><a class="el" href="interfaceNXConstantString.html" title="A constant string class. ">NXConstantString</a></code> object that contains a C-style format string. </td></tr>
-    <tr><td class="paramname">...</td><td>A comma-separated list of arguments to be printed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This macro takes a format string and a variable number of arguments, formats them, and prints the result to <code>stderr</code>, followed by a newline character. </p>
-
-<p class="definition">Definition at line <a class="el" href="NXLog_8h_source.html#l00023">23</a> of file <a class="el" href="NXLog_8h_source.html">NXLog.h</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->

@@ -9,6 +9,7 @@ var searchData=
   ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
   ['nxdata_2eh',['NXData.h',['../NXData_8h.html',1,'']]],
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
+  ['nxfoundation_2eh',['NXFoundation.h',['../NXFoundation_8h.html',1,'']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
   ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
   ['nxnull_2eh',['NXNull.h',['../NXNull_8h.html',1,'']]],
