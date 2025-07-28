@@ -119,7 +119,7 @@ bool core0_task() {
 
     // Random processing time longer than core1 time to simulate
     // it takes more work for the consumer to process the event
-    // than the consumer takes to produce it
+    // than the producer takes to produce it
     sys_sleep(sys_random_uint32() % 500);
 
     // Free the allocated string
