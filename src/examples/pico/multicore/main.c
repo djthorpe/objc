@@ -7,158 +7,100 @@
  * to run tasks on core 1 of the Raspberry Pi Pico (RP2040), and how to use
  * waitgroups for efficient synchronization between cores.
  *
- * The example shows:
- * - Basic multicore task creation
- * - Inter-core communication
- * - Thread-safe printf operations
- * - Efficient synchronization using waitgroups (no polling!)
- * - Error handling for invalid operations
+ * The waitgroup is used to synchronize tasks running on core 1 with the main
+ * thread running on core 0. It allows us to wait for tasks to complete without
+ * busy-waiting or polling.
  *
- * @note This example requires a Raspberry Pi Pico or compatible RP2040 board.
+ * The waitgroup is created with sys_waitgroup_init() and then just before a
+ * task is started, we call sys_waitgroup_add() to indicate that we expect a
+ * certain number of tasks to complete (usually one). After the task finishes,
+ * it calls sys_waitgroup_done() to signal that it is complete.
+ *
+ * Meanwhile the main thread can call sys_waitgroup_finalize() to block until
+ * all tasks have called done(). This allows us to wait for all tasks to finish
+ * without busy-waiting.
  *
  * @example main.c
  * This is a complete example showing multicore programming with waitgroup
  * synchronization on the Pico platform.
  */
-
 #include <runtime-sys/sys.h>
 
-// Global variables for demonstration
-#include <stdatomic.h>
+/////////////////////////////////////////////////////////////////////
+// CORE 1 TASKS
 
-static atomic_int core1_counter = 0;
-static sys_waitgroup_t wg;
 /**
  * @brief Function to run on core 1
+ *
+ * This function is executed on core 1 of the RP2040 (or just simply "another
+ * thread" on other platforms). It just "does something" on that core, and calls
+ * "done" on the waitgroup when it's done. This would allow the main thread (or
+ * "core") to reset the core and start the next task.
  */
 void core1_task(void *arg) {
-  int *task_id = (int *)arg;
+  sys_waitgroup_t *wg = (sys_waitgroup_t *)arg;
+  sys_printf("Core %d: Starting task\n", sys_thread_core());
 
-  sys_printf("Core 1: Starting task %d on core %d\n", *task_id,
-             sys_thread_core());
-
-  // Do some work on core 1
+  // Do some work
   for (int i = 0; i < 10; i++) {
-    core1_counter++;
-    sys_printf("Core 1: Task %d - Counter: %d\n", *task_id, core1_counter);
-    sys_sleep(500); // Sleep for 500ms
+    // Print out the task progress
+    sys_printf("  Core %d: Counter: %d\n", sys_thread_core(), i);
+
+    // Sleep for some time less than 500ms
+    sys_sleep(sys_random_uint32() % 500);
   }
 
-  sys_printf("Core 1: Task %d completed!\n", *task_id);
-
   // Signal completion using waitgroup
-  sys_waitgroup_done(&wg);
+  sys_waitgroup_done(wg);
+  sys_printf("Core %d: Task completed!\n", sys_thread_core());
 }
+
+/////////////////////////////////////////////////////////////////////
+// CORE 0 TASKS
 
 /**
- * @brief Another function to demonstrate multiple tasks
+ * @brief Function to run on core 0 (or "main thread")
+ *
+ * This function is executed on core 0 of the RP2040 (or "main
+ * thread" on other platforms). It co-ordinates tasks running on core 1, then
+ * waits for those tasks to complete.
  */
-void core1_blink_task(void *arg) {
-  int blink_count = *(int *)arg;
+bool core0_task() {
+  // Initialize waitgroup
+  sys_waitgroup_t wg = sys_waitgroup_init();
 
-  sys_printf("Core 1: Starting blink task for %d blinks on core %d\n",
-             blink_count, sys_thread_core());
+  // Indicate that we expect one task to complete
+  sys_waitgroup_add(&wg, 1);
+  sys_printf("Main: Starting task on core 1...\n");
 
-  for (int i = 0; i < blink_count; i++) {
-    sys_printf("Core 1: Blink %d/%d\n", i + 1, blink_count);
-    sys_sleep(200);
+  // Actually create the task on core 1. If this wasn't an RP2040, we would
+  // just use sys_thread_create() instead.
+  if (sys_thread_create_on_core(core1_task, &wg, 1) == false) {
+    sys_printf("Main: Failed to launch task on core 1\n");
+    return false;
   }
 
-  sys_printf("Core 1: Blink task completed!\n");
+  // Wait for core 1 task to complete
+  sys_printf("Main: Waiting for core 1 task to complete...\n");
+  sys_waitgroup_finalize(&wg);
+  sys_printf("Main: Core 1 task completed!\n");
 
-  // Signal completion using waitgroup
-  sys_waitgroup_done(&wg);
+  return true;
 }
+
+/////////////////////////////////////////////////////////////////////
+// MAIN
 
 int main() {
   // Initialize
   sys_init();
 
-  sys_printf("=== Pico Multicore Example ===\n");
-  sys_printf("Main: Running on core %d\n", sys_thread_core());
-  sys_printf("Main: Number of cores: %d\n", sys_thread_numcores());
-
-  // Test 1: Basic thread creation on core 1
-  sys_printf("\n--- Test 1: Basic Core 1 Task ---\n");
-  int task_id = 42;
-  core1_counter = 0;
-
-  // Initialize waitgroup and add one waiter
-  wg = sys_waitgroup_init();
-  if (!wg.init) {
-    sys_printf("Main: Failed to initialize waitgroup\n");
-    return 1;
-  }
-  sys_waitgroup_add(&wg, 1);
-
-  if (sys_thread_create_on_core(core1_task, &task_id, 1)) {
-    sys_printf("Main: Successfully launched task on core 1\n");
-
-    // Wait for core 1 to finish - no more polling!
-    sys_printf("Main: Waiting for core 1 task to complete...\n");
-    sys_waitgroup_finalize(&wg);
-
-    sys_printf("Main: Core 1 task finished. Final core1_counter: %d\n",
-               core1_counter);
-  } else {
-    sys_printf("Main: Failed to launch task on core 1\n");
+  // Run the task
+  if (core0_task() == false) {
+    sys_printf("Main: Core 0 task failed\n");
   }
 
-  sys_waitgroup_finalize(&wg);
-
-  // Test 2: Sequential tasks on core 1
-  sys_printf("\n--- Test 2: Sequential Core 1 Tasks ---\n");
-
-  int blink_count = 5;
-
-  // Initialize waitgroup for the blink task
-  wg = sys_waitgroup_init();
-  if (!wg.init) {
-    sys_printf("Main: Failed to initialize waitgroup\n");
-    return 1;
-  }
-  sys_waitgroup_add(&wg, 1);
-
-  if (sys_thread_create_on_core(core1_blink_task, &blink_count, 1)) {
-    sys_printf("Main: Successfully launched blink task on core 1\n");
-
-    // Wait for completion - much cleaner than polling!
-    sys_printf("Main: Waiting for blink task to complete...\n");
-    sys_waitgroup_finalize(&wg);
-    sys_printf("Main: Blink task completed!\n");
-  } else {
-    sys_printf("Main: Failed to launch blink task on core 1\n");
-    sys_waitgroup_finalize(&wg); // Clean up on failure
-  }
-
-  // Test 3: Demonstrate that generic sys_thread_create fails
-  sys_printf("\n--- Test 3: Generic Thread Creation (Should Fail) ---\n");
-  if (sys_thread_create(core1_task, &task_id)) {
-    sys_printf("Main: ERROR - Generic thread creation should have failed!\n");
-  } else {
-    sys_printf("Main: Correctly rejected generic thread creation\n");
-  }
-
-  // Test 4: Demonstrate that core 0 creation fails
-  sys_printf("\n--- Test 4: Core 0 Thread Creation (Should Fail) ---\n");
-  if (sys_thread_create_on_core(core1_task, &task_id, 0)) {
-    sys_printf("Main: ERROR - Core 0 thread creation should have failed!\n");
-  } else {
-    sys_printf("Main: Correctly rejected core 0 thread creation\n");
-  }
-
-  // Test 5: Demonstrate that invalid core fails
-  sys_printf("\n--- Test 5: Invalid Core Thread Creation (Should Fail) ---\n");
-  if (sys_thread_create_on_core(core1_task, &task_id, 99)) {
-    sys_printf(
-        "Main: ERROR - Invalid core thread creation should have failed!\n");
-  } else {
-    sys_printf("Main: Correctly rejected invalid core thread creation\n");
-  }
-
-  sys_printf("\n=== Multicore Example Complete ===\n");
-  sys_printf("Main: All tests completed successfully!\n");
-
+  // Cleanup and exit
   sys_exit();
   return 0;
 }
