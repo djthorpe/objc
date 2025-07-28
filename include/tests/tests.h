@@ -38,10 +38,19 @@
  * @return The return value from the test function
  */
 static inline int TestMain(const char *name, int (*test_func)(void)) {
-  sys_init();     // Initialize the system
-  sys_puts(name); // Print the test name
+  sys_init(); // Initialize the system
+  sys_puts("\n");
+  sys_puts("================================================================="
+           "===============\n");
+  sys_puts("START "); // Print the test name
+  sys_puts(name);     // Print the test name
   sys_puts("\n");
   int returnValue = test_func(); // Run the test function
-  sys_exit();                    // Exit the system
-  return returnValue;            // Return the test result
+  sys_puts("END ");              // Print the test name
+  sys_puts(name);                // Print the test name
+  sys_puts("\n");
+  sys_puts("================================================================="
+           "===============\n");
+  sys_exit();         // Exit the system
+  return returnValue; // Return the test result
 }

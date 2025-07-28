@@ -21,6 +21,7 @@ add_library(${NAME} STATIC
     ../all/event.c
     ../all/panicf.c
     ../all/printf.c
+    ../all/mutex.c
     ../posix/time.c
 )
 target_include_directories(${NAME} PRIVATE
