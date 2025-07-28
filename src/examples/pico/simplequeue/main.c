@@ -16,7 +16,7 @@
  *
  * You can tune the queue size to control how many events can be stored.
  * In this example, the consumer takes a lot of time to consume events
- * so the queue grows and until the producer is then unable to push more
+ * so the queue grows until the producer is then unable to push more
  * events.
  *
  * @example main.c
