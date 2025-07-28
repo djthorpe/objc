@@ -8,7 +8,7 @@
  *
  * In this example, we create a timer on each core which produces events,
  * which are then consumed on either core. This is a "runloop" pattern where
- * we expect to continue to process events indefinately.
+ * we expect to continue to process events indefinitely.
  *
  * We call shutdown after producing a number of events from either timer, and
  * the consumers on each core will end when all events have been drained.
