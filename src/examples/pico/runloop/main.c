@@ -37,7 +37,7 @@ void runloop(sys_event_queue_t *queue) {
     }
 
     // Simulate processing the event
-    // Sleep for some time less than 500ms
+    // Sleep for a random time less than 1000ms
     sys_printf("core %d: Processing event: %s (queue size=%d)\n", core,
                (char *)event, sys_event_queue_size(queue));
     sys_sleep(sys_random_uint32() % 1000);
