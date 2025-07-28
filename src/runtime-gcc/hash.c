@@ -68,9 +68,29 @@ struct objc_hashitem *__objc_hash_register(objc_class_t *cls,
 inline static BOOL __objc_hash_match(struct objc_hashitem *item,
                                      objc_class_t *cls, const char *method,
                                      const char *types) {
-  return item->cls == cls && item->method != NULL && method != NULL &&
-         strcmp(item->method, method) == 0 && item->types != NULL &&
-         types != NULL && strcmp(item->types, types) == 0;
+  // Basic class and method name matching
+  if (item->cls != cls || item->method == NULL || method == NULL ||
+      strcmp(item->method, method) != 0) {
+    return NO;
+  }
+  
+  // If both types are NULL, consider it a match (for selectors without type info)
+  if (item->types == NULL && types == NULL) {
+    return YES;
+  }
+  
+  // If one is NULL but not the other, it's a partial match for @selector() lookups
+  // Allow matching when types is NULL (from @selector) but item->types is not
+  if (types == NULL && item->types != NULL) {
+    return YES; // Allow @selector() to match methods with type encoding
+  }
+  
+  // If both are non-NULL, they must match exactly
+  if (item->types != NULL && types != NULL) {
+    return strcmp(item->types, types) == 0;
+  }
+  
+  return NO;
 }
 
 /*
