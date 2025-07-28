@@ -8,6 +8,7 @@
 
 /**
  * @brief Protocol for retaining and releasing objects.
+ * @ingroup Foundation
  *
  * The RetainProtocol defines the minimal interface that objects must
  * implement to provide retain and release functionality.

@@ -12,6 +12,7 @@
 
 /**
  * @brief A class for managing memory zones.
+ * @ingroup Foundation
  *
  * NXZone provides a mechanism for managing memory allocations. It can
  * be used to create memory arenas of a fixed size, from which objects can be

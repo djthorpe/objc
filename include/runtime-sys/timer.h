@@ -4,6 +4,10 @@
  *
  * This file declares various system methods for timer management.
  * Supports timers on all platforms with a simple, consistent API.
+ *
+ * @example pico/runloop/main.c
+ * This is a complete example showing an example of multiple producers and
+ * consumers using the event queue in a runloop style on the Pico platform.
  */
 #pragma once
 #include <stdbool.h>
@@ -35,7 +39,8 @@ typedef struct sys_timer_t {
   void *userdata;
   union {
     void *ptr; // Pointer to the timer context (platform-specific)
-    uint8_t ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
+    uint8_t
+        ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
   } ctx;
 } sys_timer_t;
 

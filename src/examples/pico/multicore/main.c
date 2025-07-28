@@ -1,7 +1,6 @@
 /**
  * @file main.c
  * @brief Pico multicore programming example with waitgroups
- * @ingroup Examples
  *
  * This example demonstrates how to use the sys_thread_create_on_core() function
  * to run tasks on core 1 of the Raspberry Pi Pico (RP2040), and how to use
@@ -19,10 +18,6 @@
  * Meanwhile the main thread can call sys_waitgroup_finalize() to block until
  * all tasks have called done(). This allows us to wait for all tasks to finish
  * without busy-waiting.
- *
- * @example main.c
- * This is a complete example showing multicore programming with waitgroup
- * synchronization on the Pico platform.
  */
 #include <runtime-sys/sys.h>
 

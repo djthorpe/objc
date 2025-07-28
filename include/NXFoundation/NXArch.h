@@ -12,6 +12,7 @@
 
 /**
  * @brief Enumeration representing different byte order (endianness) types.
+ * @ingroup Foundation
  *
  * \headerfile NXArch.h NXFoundation/NXFoundation.h
  */
@@ -23,6 +24,7 @@ typedef enum {
 
 /**
  * @brief Get the current architecture bits (32 or 64).
+ * @ingroup Foundation
  * @return The architecture bits, either 32 or 64.
  *   Returns 0 if the architecture is unknown.
  *
@@ -32,6 +34,7 @@ uint8_t NXArchBits(void);
 
 /**
  * @brief Get the current architecture endianness.
+ * @ingroup Foundation
  * @return The architecture endianness, either NXLittleEndian or NXBigEndian.
  *   Returns 0 if the architecture is unknown.
  *
@@ -41,6 +44,7 @@ NXEndian NXArchEndian(void);
 
 /**
  * @brief Get the number of CPU cores available on the current system.
+ * @ingroup Foundation
  * @return The number of CPU cores available. Returns at least 1, even if
  *   the actual core count cannot be determined. Returns a maximum of 255 cores.
  *

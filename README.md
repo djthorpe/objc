@@ -104,23 +104,25 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXArray` - ordered collections of objects, with methods for adding, removing, and accessing objects
 - [X] `NXData` - mutable binary data with Base64/hex encoding and append operations
 - [X] Hash functions - MD5 and SHA-256 hash computation through `sys_hash_*` API
+- [X] Pico toolchain - integrate with Pico SDK
 - [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
+- [ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on
+- [ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed
 - [ ] `NXString` - array methods - split, join, etc.
 - [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] printf - `%T` format specifier for time intervals
+- [ ] `NXApplication` and `NXRunLoop`
+- [ ] Threading & `@synchronized` support
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
-- [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] More efficient method implementation lookup
 - [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
 - [ ] `NXScanner`, `ReaderProtocol` - scanning and tokenizing
+- [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] Calling `+[initialise]` for categories
-- [ ] `NXApplication` and `NXRunLoop`
-- [ ] Pico toolchain - integrate with Pico SDK
-- [ ] Threading & `@synchronized` support
 - [ ] Exception handling?
 
 ## References

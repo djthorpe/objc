@@ -10,6 +10,7 @@
 
 /**
  * @brief A class for managing and manipulating string objects.
+ * @ingroup Foundation
  *
  * NXString provides functionality for creating and working with text strings.
  * It supports both mutable and immutable string representations.

@@ -10,6 +10,7 @@
 
 /**
  * @brief The base class for objects in the NXFoundation framework.
+ * @ingroup Foundation
  *
  * NXObject extends the functionality of the root Object class by adding
  * support for memory zones, object retention and releasing. All objects

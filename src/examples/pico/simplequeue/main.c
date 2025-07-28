@@ -1,7 +1,6 @@
 /**
  * @file main.c
  * @brief Pico producer/consumer event queue
- * @ingroup Examples
  *
  * This example demonstrates how to use the sys_thread_create_on_core() function
  * to run tasks on core 1 of the Raspberry Pi Pico (RP2040), and how to create
@@ -19,9 +18,6 @@
  * so the queue grows until the producer is then unable to push more
  * events.
  *
- * @example main.c
- * This is a complete example showing how a simple use of an event queue works
- * in a multicore programming context on the Pico platform.
  */
 #include <runtime-sys/sys.h>
 

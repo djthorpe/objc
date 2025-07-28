@@ -13,6 +13,7 @@
 /**
  * @brief Time interval type representing nanoseconds as a 64-bit signed
  * integer.
+ * @ingroup Foundation
  *
  * NXTimeInterval stores time durations in nanoseconds using a signed
  * 64-bit integer. This provides sufficient precision for most timing

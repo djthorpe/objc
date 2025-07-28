@@ -8,6 +8,7 @@
 /**
  * @brief The main application class that coordinates application-wide
  * functionality.
+ * @ingroup Foundation
  *
  * NXApplication serves as the central hub for application management
  * in NXFoundation. It follows the singleton pattern, providing a shared

@@ -10,6 +10,7 @@
 
 /**
  * @brief The NXArray class
+ * @ingroup Foundation
  *
  * NXArray represents an array that can store ordered objects.
  *

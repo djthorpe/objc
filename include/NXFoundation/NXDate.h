@@ -12,6 +12,7 @@
 
 /**
  * @brief A class for representing and manipulating dates.
+ * @ingroup Foundation
  *
  * The NXDate class provides an interface for managing dates and times.
  * It represents a single point in time since a reference date.
