@@ -1,7 +1,10 @@
 /**
  * @file event.h
  * @brief Defines event queue functionality for producer/consumer patterns.
+ * @defgroup SystemEvents System Events
+ * @ingroup System
  *
+ * System methods for managing memory, threads and resources.
  * This file declares types and functions for thread-safe event queues that
  * support multiple producers and consumers with peek-before-acquire semantics.
  *
@@ -25,7 +28,7 @@ extern "C" {
 
 /**
  * @brief Event type for queue items.
- * @ingroup System
+ * @ingroup SystemEvents
  *
  * Simple event type that can hold any pointer data. This can be enhanced
  * in the future to include metadata like timestamps, priorities, etc.
@@ -34,7 +37,7 @@ typedef void *sys_event_t;
 
 /**
  * @brief Event queue structure for producer/consumer patterns.
- * @ingroup System
+ * @ingroup SystemEvents
  *
  * Thread-safe queue that supports multiple producers and consumers.
  * Producers can always add items (with overflow handling), while consumers
@@ -53,7 +56,7 @@ typedef struct {
 
 /**
  * @brief Initialize a new event queue
- * @ingroup System
+ * @ingroup SystemEvents
  * @param capacity Maximum number of events the queue can hold
  * @return Initialized event queue structure
  *
@@ -66,7 +69,7 @@ sys_event_queue_t sys_event_queue_init(size_t capacity);
 
 /**
  * @brief Finalize and cleanup an event queue
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the queue to finalize
  *
  * Finalizes the event queue and releases all associated resources.
@@ -77,7 +80,7 @@ void sys_event_queue_finalize(sys_event_queue_t *queue);
 
 /**
  * @brief Push an event to the queue (always succeeds)
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @param event Event to add to the queue
  * @return true if successful, false on error
@@ -90,7 +93,7 @@ bool sys_event_queue_push(sys_event_queue_t *queue, sys_event_t event);
 
 /**
  * @brief Try to push an event without overwriting
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @param event Event to add to the queue
  * @return true if successful, false if queue is full or error
@@ -102,7 +105,7 @@ bool sys_event_queue_try_push(sys_event_queue_t *queue, sys_event_t event);
 
 /**
  * @brief Peek at the next event without removing it
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return Next event or NULL if queue is empty
  *
@@ -115,7 +118,7 @@ sys_event_t sys_event_queue_peek(sys_event_queue_t *queue);
 
 /**
  * @brief Remove and return the next event (blocking)
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return Next event, or NULL if queue is shut down
  *
@@ -127,7 +130,7 @@ sys_event_t sys_event_queue_pop(sys_event_queue_t *queue);
 
 /**
  * @brief Try to remove and return the next event (non-blocking)
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return Next event, or NULL if queue is empty or error
  *
@@ -138,7 +141,7 @@ sys_event_t sys_event_queue_try_pop(sys_event_queue_t *queue);
 
 /**
  * @brief Remove and return the next event with timeout
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @param timeout_ms Timeout in milliseconds (0 = no timeout)
  * @return Next event, or NULL if timeout or queue shut down
@@ -152,7 +155,7 @@ sys_event_t sys_event_queue_timed_pop(sys_event_queue_t *queue,
 
 /**
  * @brief Get the current number of events in the queue
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return Current number of events, or 0 on error
  *
@@ -164,7 +167,7 @@ size_t sys_event_queue_size(sys_event_queue_t *queue);
 
 /**
  * @brief Check if the queue is empty
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return true if empty, false otherwise
  *
@@ -176,7 +179,7 @@ bool sys_event_queue_empty(sys_event_queue_t *queue);
 
 /**
  * @brief Shut down the queue gracefully
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  *
  * Sets the shutdown flag and wakes up all waiting consumers.
@@ -187,7 +190,7 @@ void sys_event_queue_shutdown(sys_event_queue_t *queue);
 
 /**
  * @brief Lock the queue for manual synchronization
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return true if successful, false on error
  *
@@ -198,7 +201,7 @@ bool sys_event_queue_lock(sys_event_queue_t *queue);
 
 /**
  * @brief Unlock the queue after manual synchronization
- * @ingroup System
+ * @ingroup SystemEvents
  * @param queue Pointer to the event queue
  * @return true if successful, false on error
  *
