@@ -25,7 +25,7 @@
  * The format specifiers supported are:
  * - `%%c`: Character
  * - `%%s`: String
- * - `%%@`: NXObject (Objective-C object)
+ * - `%@`: NXObject (Objective-C object)
  * - `%%d`: Signed integer
  * - `%%u`: Unsigned integer
  * - `%%x`: Unsigned hexadecimal integer
@@ -34,21 +34,21 @@
  * - `%%X`: Uppercase hexadecimal integer
  * - `%%t`: NXTimeInterval (Objective-C time interval)
  * - `%%p`: Pointer address
- * - `%%%`: Literal percent sign
+ * - `%%`: Literal percent sign
  *
  *
  * The format specifiers can be modified with flags and width:
  * - Width:
- *   - `%%80d`: Number specifying the minimum width of the output
+ *   - `%80d`: Number specifying the minimum width of the output
  * - Data Type:
  *   - `%%ld` or `%%lu` long data type
  *   - `%%zu` size_t data type
  * - Flags:
- *   - `-`: Left-aligned output (eg, `%%-10s`)
- *   - `0`: Zero-padded output (eg, `%%05d`)
- *   - `+`: Forces a sign for positive numbers (eg, `%%+d`)
- *   - `#`: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0)
- * formats (eg, `%%#x`, `%%#b`, `%%#o`)
+ *   - `%-10s`: Left-aligned output
+ *   - `%05d`: Zero-padded outpu
+ *   - `%+d`: Forces a sign for positive numbers
+ *   - `%#x`, `%#b`, `%#o`: Forces a prefix for hexadecimal (0x), binary (0b)
+ * and octal (0) formats
  */
 #pragma once
 #include <stdarg.h>
