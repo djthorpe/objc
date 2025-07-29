@@ -120,10 +120,12 @@ Functions</h2></td></tr>
 <li><code>%-10s</code>: Left-aligned output</li>
 <li><code>%05d</code>: Zero-padded hexadecimal, decimal, octal, or binary output</li>
 <li><code>%+d</code>: Forces a sign for positive numbers</li>
-<li><code>%#x</code>, <code>%#b</code>, <code>%#o</code>: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0) formats </li>
+<li><code>%#x</code>, <code>%#b</code>, <code>%#o</code>: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0) formats</li>
 </ul>
 </li>
 </ul>
+<p>The <a class="el" href="group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d" title="Prints formatted output to the system console. ">sys_printf()</a> function is thread-safe and can be used from multiple threads simultaneously without additional synchronization. It was implemented to extend the use of printf to Objective-C objects and NXTimeInterval.</p>
+<p>At the moment floating point numbers are not supported, but they may be added in the future. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gab6bda746d6b03c697ebcf468f83fdb6d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab6bda746d6b03c697ebcf468f83fdb6d">&#9670;&nbsp;</a></span>sys_printf()</h2>
