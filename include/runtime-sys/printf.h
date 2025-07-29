@@ -25,14 +25,14 @@
  * The format specifiers supported are:
  * - `%%c`: Character
  * - `%%s`: String
- * - `%%@`: NXObject (Objective-C object) TODO
+ * - @todo `%%@`: NXObject (Objective-C object)
  * - `%%d`: Signed integer
  * - `%%u`: Unsigned integer
  * - `%%x`: Unsigned hexadecimal integer
  * - `%%b`: Unsigned binary integer
  * - `%%o`: Unsigned octal integer
  * - `%%X`: Uppercase hexadecimal integer
- * - `%%t`: NXTimeInterval (Objective-C time interval) TODO
+ * - @todo `%%t`: NXTimeInterval (Objective-C time interval)
  * - `%%p`: Pointer address
  * - `%%%`: Literal percent sign
  *
