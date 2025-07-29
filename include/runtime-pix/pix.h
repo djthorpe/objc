@@ -26,6 +26,7 @@
 
 /**
  * @brief Pixel operation types for drawing operations.
+ * @ingroup Pixel
  */
 typedef enum {
   PIX_SET ///< Set pixel operation
@@ -33,6 +34,7 @@ typedef enum {
 
 /**
  * @brief Color value type for pixel operations.
+ * @ingroup Pixel
  * @details Represents a color value, typically in RGBA format depending on the
  * pixel format.
  */
@@ -40,6 +42,7 @@ typedef uint32_t pix_color_t;
 
 /**
  * @brief Point structure representing X,Y coordinates.
+ * @ingroup Pixel
  */
 typedef struct {
   int16_t x; ///< X coordinate
@@ -48,6 +51,7 @@ typedef struct {
 
 /**
  * @brief Size structure representing width and height dimensions.
+ * @ingroup Pixel
  */
 typedef struct {
   uint16_t w; ///< Width in pixels
@@ -56,6 +60,7 @@ typedef struct {
 
 /**
  * @brief Pixel format enumeration defining color depth and layout.
+ * @ingroup Pixel
  */
 typedef enum {
   PIX_FMT_RGBA32, ///< 32-bit RGBA format with alpha channel
@@ -66,6 +71,7 @@ typedef enum {
 
 /**
  * @brief Frame structure containing pixel data and drawing operations.
+ * @ingroup Pixel
  *
  * A frame represents a rectangular region of pixels with associated
  * drawing functions. The frame is not thread-safe for performance
@@ -141,6 +147,12 @@ typedef struct {
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 
+/**
+ * @name Global Color and Point Constants
+ * @ingroup Pixel
+ * @{
+ */
+
 extern pix_point_t pix_zero_point; ///< Zero point (0,0)
 extern pix_size_t pix_zero_size;   ///< Zero size (0,0)
 extern pix_color_t pix_white;      ///< White (255,255,255,255)
@@ -155,11 +167,14 @@ extern pix_color_t pix_gray;       ///< Gray (128,128,128,255)
 extern pix_color_t pix_light_gray; ///< Light gray (192,192,192,255)
 extern pix_color_t pix_dark_gray;  ///< Dark gray (64,64,64,255)
 
+/** @} */
+
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
  * @brief Initialize a new framebuffer with the specified format and size.
+ * @ingroup Pixel
  * @param format Pixel format for the framebuffer
  * @param size Dimensions of the framebuffer in pixels
  * @param alignment Memory alignment requirement for the buffer (0 for default)
@@ -185,6 +200,7 @@ pix_frame_t pix_frame_init(pix_format_t format, pix_size_t size,
 
 /**
  * @brief Finalize and free resources associated with a framebuffer.
+ * @ingroup Pixel
  * @param frame Pointer to the framebuffer to finalize
  * @return true if successfully finalized, false on error.
  *
