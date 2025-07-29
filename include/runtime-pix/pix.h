@@ -1,7 +1,7 @@
 /**
  * @file pix.h
  * @brief Pixel and framebuffer management functions.
- * @defgroup Pixel Pixel Management
+ * @defgroup Pixel Pixels
  * @ingroup System
  *
  * This module declares types and functions for managing pixel data and
