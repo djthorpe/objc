@@ -100,7 +100,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Managing threads and program execution. </p>
 <p>This module declares types and functions for thread management, including thread creation, synchronization, and communication. It is generally aware of the number of "cores" available on the system, and allows creating threads that can run on a specific core, or on any available core.</p>
-<p>However, it really depends on the platform's capabilities and requirements. as to whether you should call <a class="el" href="group__SystemThread.html#ga677402551d5d11b4e3ee60391d5a4faf" title="Create a thread on any available core. ">sys_thread_create()</a> or <a class="el" href="group__SystemThread.html#ga1b72ef6424828a90881daa3559864cf4" title="Create a thread on a specific core. ">sys_thread_create_on_core()</a>.</p>
+<p>However, it really depends on the platform's capabilities and requirements. as to whether you should call <a class="el" href="group__SystemThread.html#ga677402551d5d11b4e3ee60391d5a4faf" title="Create a thread on any available core. ">sys_thread_create()</a> or <a class="el" href="group__SystemThread.html#ga1b72ef6424828a90881daa3559864cf4" title="Create a thread on a specific core. ">sys_thread_create_on_core()</a>. On the Pico platform, for example, you should use <a class="el" href="group__SystemThread.html#ga1b72ef6424828a90881daa3559864cf4" title="Create a thread on a specific core. ">sys_thread_create_on_core()</a> to ensure the thread runs on a specific core. If you call this method when an existing thread is already running on that core, the core will be reset and the new thread will be scheduled to run on that core, so it's important to ensure that there isn't an existing thread already running on the specified core before calling this function.</p>
 <p>The implementation of threads is like Go's goroutines, where the execution threads are "fire and forget" and do not require joining. If you wish to communicate between threads, use the event queue. If you wish to co-ordinate when threads are running or to synchronize their execution, you can use the provided synchronization primitives like waitgroups.</p>
 <p>There are also methods for suspending the current thread for a specified duration, and for halting execution of the process immediately, in case of catastrophic failure. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -119,7 +119,7 @@ Functions</h2></td></tr>
 <p>Thread function signatureFunction signature for thread entry points. </p>
 <p>The function receives a single void pointer argument and should not return a value. The thread terminates when this function returns. </p>
 
-<p class="definition">Definition at line <a class="el" href="thread_8h_source.html#l00048">48</a> of file <a class="el" href="thread_8h_source.html">thread.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread_8h_source.html#l00054">54</a> of file <a class="el" href="thread_8h_source.html">thread.h</a>.</p>
 
 </div>
 </div>
