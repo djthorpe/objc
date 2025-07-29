@@ -37,6 +37,7 @@ add_compile_options(
 # Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
+add_subdirectory("src/runtime-pix")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/NXFoundation")
 
