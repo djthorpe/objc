@@ -50,5 +50,11 @@ bool pix_frame_finalize(pix_frame_t *frame) {
   if (frame == NULL || frame->buf == NULL) {
     return false; // Nothing to finalize
   }
-  return _pix_frame_finalize_rgba32(frame);
+  switch (frame->format) {
+  case PIX_FMT_RGBA32:
+    return _pix_frame_finalize_rgba32(frame);
+  default:
+    // Unsupported format
+    return false;
+  }
 }
