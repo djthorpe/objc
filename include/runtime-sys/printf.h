@@ -42,8 +42,8 @@
  * - Width:
  *   - `%80d`: Number specifying the minimum width of the output
  * - Data Type:
- *   - `%%ld` or `%%lu` long data type
- *   - `%%zu` size_t data type
+ *   - `%%ld`, `%%lu`: long data type
+ *   - `%%zu`: size_t data type
  * - Flags:
  *   - `%-10s`: Left-aligned output
  *   - `%05d`: Zero-padded outpu
