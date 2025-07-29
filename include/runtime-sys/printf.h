@@ -23,30 +23,31 @@
  * that would have been written to the buffer, not counting the null terminator.
  *
  * The format specifiers supported are:
- * - %%c: Character
- * - %%s: String
- * - %%@: NXObject (Objective-C object) TODO
- * - %%d: Signed integer
- * - %%u: Unsigned integer
- * - %%x: Unsigned hexadecimal integer
- * - %%b: Unsigned binary integer
- * - %%o: Unsigned octal integer
- * - %%X: Uppercase hexadecimal integer
- * - %%t: NXTimeInterval (Objective-C time interval) TODO
- * - %%p: Pointer address
- * - %%%: Literal percent sign
+ * - `%%c`: Character
+ * - `%%s`: String
+ * - `%%@`: NXObject (Objective-C object) TODO
+ * - `%%d`: Signed integer
+ * - `%%u`: Unsigned integer
+ * - `%%x`: Unsigned hexadecimal integer
+ * - `%%b`: Unsigned binary integer
+ * - `%%o`: Unsigned octal integer
+ * - `%%X`: Uppercase hexadecimal integer
+ * - `%%t`: NXTimeInterval (Objective-C time interval) TODO
+ * - `%%p`: Pointer address
+ * - `%%%`: Literal percent sign
  *
  *
  * The format specifiers can be modified with flags and width:
- * - Width: Specifies the minimum width of the output (eg %%5d)
- * - Data Type: Specifies the data type length of the argument (eg %%ld for
- * long, %%zu for size_t)
+ * - Width: Specifies the minimum width of the output (eg `%%5d`)
+ * - Data Type
+ *   - Long data type (eg `%%ld`)
+ *   - Size_t data type (eg `%%zu`)
  * - Flags:
- *   - `-`: Left-aligned output (eg, %%-10s)
- *   - `0`: Zero-padded output (eg, %%05d)
- *   - `+`: Forces a sign for positive numbers (eg, %%+d)
+ *   - `-`: Left-aligned output (eg, `%%-10s`)
+ *   - `0`: Zero-padded output (eg, `%%05d`)
+ *   - `+`: Forces a sign for positive numbers (eg, `%%+d`)
  *   - `#`: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0)
- * formats (eg, %%#x, %%#b, %%#o)
+ * formats (eg, `%%#x`, `%%#b`, `%%#o`)
  */
 #pragma once
 #include <stdarg.h>
