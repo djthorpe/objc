@@ -25,7 +25,8 @@
  * The format specifiers supported are:
  * - `%%c`: Character
  * - `%%s`: String
- * - `%@`: NXObject (Objective-C object)
+ * - `%@`: NXObject (Objective-C object). This only works if the Objective-C
+ * runtime is available.
  * - `%%d`: Signed integer
  * - `%%u`: Unsigned integer
  * - `%%x`: Unsigned hexadecimal integer
