@@ -4,7 +4,17 @@
  * @defgroup SystemMemory Memory Management
  * @ingroup System
  *
- * Managing and manipulating memory.
+ * Functions for managing and manipulating memory.
+ *
+ * These are utility functions for memory allocation, deallocation,
+ * and manipulation. They provide a simple interface for dynamic memory
+ * management, including allocation, freeing, setting, copying, moving,
+ * and comparing memory blocks.
+ *
+ * In general your target platform will also provide its own memory management
+ * functions, but these are provided for convenience and consistency
+ * across platforms, in case some platforms do not provide their own
+ * versions.
  */
 #pragma once
 #include <stddef.h>

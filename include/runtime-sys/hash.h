@@ -5,7 +5,20 @@
  * @ingroup System
  *
  * Methods for hash generation, sometimes with hardware acceleration.
- * Currently supports MD5 and SHA-256 algorithms.
+ *
+ * This file declares types and functions for generating cryptographic hashes
+ * from data. It supports MD5 and SHA-256 hashing algorithms, the former of
+ * which (I have been told to tell you) is not secure, but is still widely
+ * used for checksums and non-security purposes. SHA-256 is a more secure
+ * algorithm and is recommended for security-sensitive applications, and often
+ * has hardware acceleration on modern platforms.
+ *
+ * In order to hash an arbitrary amount of data, you must first initialize
+ * a sys_hash_t context using sys_hash_init(), then you can call
+ * sys_hash_update() multiple times with chunks of data, and finally call
+ * sys_hash_finalize() to get the final hash value. The sys_hash_t context can
+ * be reused for multiple hashes, but you must call sys_hash_finalize() to clean
+ * it up after each use.
  */
 #pragma once
 #include <stdbool.h>

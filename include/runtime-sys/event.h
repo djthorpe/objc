@@ -4,9 +4,34 @@
  * @defgroup SystemEvents Events
  * @ingroup System
  *
- * System methods for managing memory, threads and resources.
+ * Defines event queue functionality for producer/consumer patterns.
+ *
  * This file declares types and functions for thread-safe event queues that
  * support multiple producers and consumers with peek-before-acquire semantics.
+ *
+ * It is intended to support event channels, for a single producer and
+ * single consumer, all the way to multiple producers and consumers.
+ *
+ * The event type sys_event_t is a simple pointer type that can be used to
+ * hold any data, but that data is not managed by the queue itself; If you
+ * want to manage the data, you must do so outside the queue. The queue supports
+ * operations to push events, pop events, and peek at events without removing
+ * them.
+ *
+ * If you peek events you also need to acquire the queue lock before doing so,
+ * and release it after you are done. This is to ensure that the queue state
+ * is not modified while you are inspecting it.
+ *
+ * You set a queue capacity when you initialize it, and the queue will
+ * use a circular buffer to store events. When the buffer is full, new
+ * events will overwrite the oldest events if you use the sys_event_queue_push()
+ * function. If you want to avoid overwriting, you can use
+ * sys_event_queue_try_push() function instead, which will return false
+ * if the queue is full.
+ *
+ * When you wish to shutdown the queue, you can call sys_event_queue_finalize().
+ * Consumers will be woken up and any further attempts to push events will fail,
+ * but existing events can still be popped, until the queue is empty.
  *
  * @example pico/simplequeue/main.c
  * This is a complete example showing how a simple use of an event queue works

@@ -4,8 +4,49 @@
  * @defgroup SystemFormatting String Formatting
  * @ingroup System
  *
- * Methods for creating and outputting
- * formatted strings.
+ * Methods for creating and outputting formatted strings.
+ *
+ * This file declares types and functions for formatted output to the system
+ * console or to a string buffer. It supports printf-style formatting with
+ * various format specifiers, width modifiers, and flags.
+ *
+ * The sys_printf() function is the main entry point for formatted output,
+ * and it supports a wide range of format specifiers, including integers,
+ * strings, and characters. It also supports width modifiers for padding
+ * and alignment, as well as flags for zero-padding, left-alignment, and
+ * sign handling. There are also functions for formatted output of Objective-C
+ * objects and NXTimeInterval values.
+ *
+ * The sys_sprintf() function is similar to sys_printf(), but it outputs
+ * the formatted string to a buffer instead of the console. It also supports
+ * the same format specifiers and flags, and it returns the number of characters
+ * that would have been written to the buffer, not counting the null terminator.
+ *
+ * The format specifiers supported are:
+ * - %c: Character
+ * - %s: String
+ * - %@: NXObject (Objective-C object) TODO
+ * - %d: Signed integer
+ * - %u: Unsigned integer
+ * - %x: Unsigned hexadecimal integer
+ * - %b: Unsigned binary integer
+ * - %o: Unsigned octal integer
+ * - %X: Uppercase hexadecimal integer
+ * - %t: NXTimeInterval (Objective-C time interval) TODO
+ * - %p: Pointer address
+ * - %%: Literal percent sign
+ *
+ *
+ * The format specifiers can be modified with flags and width:
+ * - Width: Specifies the minimum width of the output (e.g., %5d)
+ * - Length: Specifies the length of the argument (e.g., %ld for long, %zu for
+ * size_t)
+ * - Flags:
+ *   - `-`: Left-aligned output
+ *   - `0`: Zero-padded output
+ *   - `+`: Forces a sign for positive numbers
+ *   - `#`: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0)
+ * formats
  */
 #pragma once
 #include <stdarg.h>
