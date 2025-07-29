@@ -25,6 +25,13 @@
  */
 #pragma once
 
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+
+// Forward declaration
+struct pix_frame_t;
+
 /**
  * @brief Pixel operation types for drawing operations.
  * @ingroup Pixel
@@ -78,13 +85,12 @@ typedef enum {
  * drawing functions. The frame is not thread-safe for performance
  * reasons - callers must provide their own synchronization if needed.
  */
-typedef struct {
+typedef struct pix_frame_t {
   pix_point_t offset;  ///< Offset (in pixels) to the origin within the buffer
   pix_size_t size;     ///< Size of the buffer in pixels
   pix_format_t format; ///< Pixel format of the buffer
   void *buf;           ///< Raw buffer holding pixel data
   size_t stride;       ///< Bytes per scanline
-  size_t buf_size;     ///< Total size of the buffer in bytes
 
   /**
    * @brief Check if the framebuffer is currently drawable.
@@ -98,6 +104,7 @@ typedef struct {
 
   /**
    * @brief Clear a rectangular region to a solid color.
+   * @param frame Pointer to the frame to operate on
    * @param color Color to fill the rectangle with
    * @param origin Top-left corner of the rectangle to clear
    * @param size Dimensions of the rectangle to clear. If zero, clears the
@@ -105,26 +112,30 @@ typedef struct {
    *
    * Completely overwrites existing pixel data in the specified region.
    */
-  void (*clear_rect)(pix_color_t color, pix_point_t origin, pix_size_t size);
+  void (*clear_rect)(struct pix_frame_t *frame, pix_color_t color,
+                     pix_point_t origin, pix_size_t size);
 
   /**
    * @brief Get a single pixel value at the specified point.
+   * @param frame Pointer to the frame to operate on
    * @param origin Coordinates of the pixel to retrieve
    * @return Color value of the pixel in RGBA32 format
    */
-  pix_color_t (*get)(pix_point_t origin);
+  pix_color_t (*get)(struct pix_frame_t *frame, pix_point_t origin);
 
   /**
    * @brief Set a single pixel value at the specified point.
+   * @param frame Pointer to the frame to operate on
    * @param color Color value to set (RGBA32 format)
    * @param origin Coordinates of the pixel to set
    * @param op Pixel operation to perform (e.g., set, blend, etc.)
-   * @return true if the pixel was successfully set, false otherwise
    */
-  bool (*set)(pix_color_t color, pix_point_t origin, pix_op_t op);
+  void (*set)(struct pix_frame_t *frame, pix_color_t color, pix_point_t origin,
+              pix_op_t op);
 
   /**
    * @brief Get a rectangular region of pixels.
+   * @param frame Pointer to the frame to operate on
    * @param dst Destination buffer for pixel data (can be NULL for size query)
    * @param origin Top-left corner of the rectangle to retrieve
    * @param size Dimensions of the rectangle to retrieve
@@ -132,17 +143,19 @@ typedef struct {
    * is NULL
    * @details If dst is NULL, only returns the expected buffer size needed.
    */
-  size_t (*get_rect)(pix_color_t *dst, pix_point_t origin, pix_size_t size);
+  size_t (*get_rect)(struct pix_frame_t *frame, pix_color_t *dst,
+                     pix_point_t origin, pix_size_t size);
 
   /**
    * @brief Set a rectangular region of pixels from RGBA32 source data.
+   * @param frame Pointer to the frame to operate on
    * @param src Source buffer containing RGBA32 pixel data
    * @param origin Top-left corner where the rectangle should be placed
    * @param size Dimensions of the rectangle to set
    * @param op Pixel operation to perform for each pixel
    */
-  void (*set_rect)(pix_color_t *src, pix_point_t origin, pix_size_t size,
-                   pix_op_t op);
+  void (*set_rect)(struct pix_frame_t *frame, pix_color_t *src,
+                   pix_point_t origin, pix_size_t size, pix_op_t op);
 } pix_frame_t;
 
 ///////////////////////////////////////////////////////////////////////////////
