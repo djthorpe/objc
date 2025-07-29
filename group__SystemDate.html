@@ -112,6 +112,9 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for manipulating time and date. </p>
+<p>The structure <a class="el" href="structsys__date__t.html" title="Represents a system date and time structure. ">sys_date_t</a> represents a point in time with nanosecond precision, including timezone offset. It provides functions to get and set the current date and time, as well as to manipulate and format date and time values.</p>
+<p>The calculation of current timezone offset is not considered in this implementation, since that requires a lot of additional complexity around daylight saving time, leap seconds, and other factors that affect timekeeping.</p>
+<p>In addition, setting the system time is not supported on all platforms due to security and permission restrictions. However, on the Pico platform, it is possible to set the system time using the <a class="el" href="group__SystemDate.html#ga0dd21dab01d370bb6780f994d2dbcb99" title="Sets the current system time. ">sys_date_set_now()</a> function, and the current time can be retrieved using <a class="el" href="group__SystemDate.html#ga62b0339fed56194169264525925e5989" title="Gets the current system time. ">sys_date_get_now()</a>, which offsets the time set with the number of seconds since the Pico was booted. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gad0e2b399d7b34c3360cd8c9d5e2f5b4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad0e2b399d7b34c3360cd8c9d5e2f5b4e">&#9670;&nbsp;</a></span>sys_date_t</h2>
