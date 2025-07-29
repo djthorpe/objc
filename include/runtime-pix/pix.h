@@ -152,7 +152,6 @@ typedef struct {
  * @ingroup Pixel
  * @{
  */
-
 extern pix_point_t pix_zero_point; ///< Zero point (0,0)
 extern pix_size_t pix_zero_size;   ///< Zero size (0,0)
 extern pix_color_t pix_white;      ///< White (255,255,255,255)
@@ -166,7 +165,6 @@ extern pix_color_t pix_magenta;    ///< Magenta (255,0,255,255)
 extern pix_color_t pix_gray;       ///< Gray (128,128,128,255)
 extern pix_color_t pix_light_gray; ///< Light gray (192,192,192,255)
 extern pix_color_t pix_dark_gray;  ///< Dark gray (64,64,64,255)
-
 /** @} */
 
 ///////////////////////////////////////////////////////////////////////////////
