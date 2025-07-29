@@ -25,23 +25,24 @@
  * The format specifiers supported are:
  * - `%%c`: Character
  * - `%%s`: String
- * - @todo `%%@`: NXObject (Objective-C object)
+ * - `%%@`: NXObject (Objective-C object)
  * - `%%d`: Signed integer
  * - `%%u`: Unsigned integer
  * - `%%x`: Unsigned hexadecimal integer
  * - `%%b`: Unsigned binary integer
  * - `%%o`: Unsigned octal integer
  * - `%%X`: Uppercase hexadecimal integer
- * - @todo `%%t`: NXTimeInterval (Objective-C time interval)
+ * - `%%t`: NXTimeInterval (Objective-C time interval)
  * - `%%p`: Pointer address
  * - `%%%`: Literal percent sign
  *
  *
  * The format specifiers can be modified with flags and width:
- * - Width: Specifies the minimum width of the output (eg `%%5d`)
- * - Data Type
- *   - Long data type (eg `%%ld`)
- *   - Size_t data type (eg `%%zu`)
+ * - Width:
+ *   - `%%80d`: Number specifying the minimum width of the output
+ * - Data Type:
+ *   - `%%ld` or `%%lu` long data type
+ *   - `%%zu` size_t data type
  * - Flags:
  *   - `-`: Left-aligned output (eg, `%%-10s`)
  *   - `0`: Zero-padded output (eg, `%%05d`)
