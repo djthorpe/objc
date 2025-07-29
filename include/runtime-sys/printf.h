@@ -50,6 +50,13 @@
  *   - `%+d`: Forces a sign for positive numbers
  *   - `%#x`, `%#b`, `%#o`: Forces a prefix for hexadecimal (0x), binary (0b)
  * and octal (0) formats
+ *
+ * The sys_printf() function is thread-safe and can be used from multiple
+ * threads simultaneously without additional synchronization. It was implemented
+ * to extend the use of printf to Objective-C objects and NXTimeInterval.
+ *
+ * At the moment floating point numbers are not supported, but they may be
+ * added in the future.
  */
 #pragma once
 #include <stdarg.h>
