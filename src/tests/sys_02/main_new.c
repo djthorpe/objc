@@ -386,49 +386,12 @@ int test_sys_02(void) {
 
   sys_printf("All sys_02 date tests passed!\n");
 
-  // Test 20.5: Basic timegm availability check
-  do {
-    sys_printf("Testing timegm availability...\n");
-
-    // Create a simple tm structure for epoch
-    struct tm test_tm = {0};
-    test_tm.tm_year = 70; // 1970 - 1900
-    test_tm.tm_mon = 0;   // January
-    test_tm.tm_mday = 1;  // 1st
-    test_tm.tm_hour = 0;
-    test_tm.tm_min = 0;
-    test_tm.tm_sec = 0;
-    test_tm.tm_isdst = 0;
-
-    time_t result = timegm(&test_tm);
-    sys_printf("timegm({1970-01-01 00:00:00}) = %ld (expected 0)\n", result);
-
-    if (result == -1) {
-      sys_printf("ERROR: timegm returned -1, function may not be available!\n");
-    }
-
-    sys_printf("timegm availability check completed\n");
-  } while (0);
-
   // Test 21: gmtime functionality with known timestamps
   do {
     // Test Unix epoch: January 1, 1970, 00:00:00 UTC (Thursday)
     time_t epoch = 0;
     struct tm *tm_epoch = gmtime(&epoch);
     test_assert(tm_epoch != NULL);
-
-    // Debug output to see what we actually got
-    sys_printf("gmtime debug for epoch 0:\n");
-    sys_printf("  tm_year = %d (expected 70)\n", tm_epoch->tm_year);
-    sys_printf("  tm_mon = %d (expected 0)\n", tm_epoch->tm_mon);
-    sys_printf("  tm_mday = %d (expected 1)\n", tm_epoch->tm_mday);
-    sys_printf("  tm_hour = %d (expected 0)\n", tm_epoch->tm_hour);
-    sys_printf("  tm_min = %d (expected 0)\n", tm_epoch->tm_min);
-    sys_printf("  tm_sec = %d (expected 0)\n", tm_epoch->tm_sec);
-    sys_printf("  tm_wday = %d (expected 4)\n", tm_epoch->tm_wday);
-    sys_printf("  tm_yday = %d (expected 0)\n", tm_epoch->tm_yday);
-    sys_printf("  tm_isdst = %d (expected 0)\n", tm_epoch->tm_isdst);
-
     test_assert(tm_epoch->tm_year == 70); // 1970 - 1900
     test_assert(tm_epoch->tm_mon == 0);   // January (0-based)
     test_assert(tm_epoch->tm_mday == 1);  // 1st day
@@ -508,23 +471,7 @@ int test_sys_02(void) {
       struct tm *tm_converted = gmtime(&original);
       test_assert(tm_converted != NULL);
 
-      // Debug output for gmtime conversion
-      sys_printf("timegm debug for timestamp %ld:\n", original);
-      sys_printf(
-          "  gmtime result: %04d-%02d-%02d %02d:%02d:%02d (wday=%d, yday=%d)\n",
-          tm_converted->tm_year + 1900, tm_converted->tm_mon + 1,
-          tm_converted->tm_mday, tm_converted->tm_hour, tm_converted->tm_min,
-          tm_converted->tm_sec, tm_converted->tm_wday, tm_converted->tm_yday);
-
       time_t round_trip = timegm(tm_converted);
-      sys_printf("  timegm result: %ld (original: %ld, diff: %ld)\n",
-                 round_trip, original, round_trip - original);
-
-      // Let's see if timegm is working at all
-      if (round_trip == -1) {
-        sys_printf("  ERROR: timegm returned -1 (failure)\n");
-      }
-
       test_assert(round_trip == original);
 
       sys_printf("timegm: Round-trip test %d passed (timestamp %ld)\n", i + 1,

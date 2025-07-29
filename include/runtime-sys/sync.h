@@ -1,13 +1,17 @@
 /**
  * @file sync.h
- * @brief Defines the ability to create and respond to synchronization
- * primitives.
+ * @brief Synchronization primitives for thread-safe operations.
+ * @defgroup SystemSync Synchronization Primitives
+ * @ingroup System
  *
- * This file declares various system methods for synchronization management.
+ * Implements various synchronization methods for thread-safe operations.
  *
  * @example pico/multicore/main.c
  * This is a complete example showing multicore programming with waitgroup
  * synchronization on the Pico platform.
+ *
+ * @example clock/main.c
+ * Uses a waitgroup to co-ordinate the exit from a timer.
  */
 #pragma once
 #include <stdbool.h>
@@ -18,18 +22,33 @@
 extern "C" {
 #endif
 
-/** @brief Buffer size for platform-specific mutex context data */
-#define SYS_MUTEX_CTX_SIZE 64 // Adjust based on platform requirements
+/**
+ * @brief Buffer size for platform-specific mutex context data
+ * @ingroup SystemSync
+ *
+ * Adjust based on platform requirements
+ */
+#define SYS_MUTEX_CTX_SIZE 64
 
-/** @brief Buffer size for platform-specific condition variable context data */
-#define SYS_COND_CTX_SIZE 64 // Adjust based on platform requirements
+/**
+ * @brief Buffer size for platform-specific condition variable context data
+ * @ingroup SystemSync
+ *
+ * Adjust based on platform requirements
+ */
+#define SYS_COND_CTX_SIZE 64
 
-/** @brief Buffer size for platform-specific waitgroup context data */
+/**
+ * @brief Buffer size for platform-specific waitgroup context data
+ * @ingroup SystemSync
+ *
+ * Adjust based on platform requirements
+ */
 #define SYS_WAITGROUP_CTX_SIZE 128 // Larger to hold mutex + cond + counter
 
 /**
  * @brief Mutex context structure.
- * @ingroup System
+ * @ingroup SystemSync
  *
  * Contains the state and configuration for mutex operations.
  */
@@ -44,7 +63,7 @@ typedef struct {
 
 /**
  * @brief Condition variable context structure.
- * @ingroup System
+ * @ingroup SystemSync
  *
  * Contains the state and configuration for condition variable operations.
  */
@@ -59,7 +78,7 @@ typedef struct {
 
 /**
  * @brief Waitgroup context structure.
- * @ingroup System
+ * @ingroup SystemSync
  *
  * Contains the state and configuration for waitgroup operations.
  * A waitgroup allows one goroutine to wait for a collection of goroutines
@@ -76,7 +95,7 @@ typedef struct {
 
 /**
  * @brief Initialize a new mutex
- * @ingroup System
+ * @ingroup SystemSync
  * @return Initialized mutex structure
  *
  * Creates and initializes a new mutex for thread synchronization.
@@ -87,7 +106,7 @@ sys_mutex_t sys_mutex_init(void);
 
 /**
  * @brief Lock a mutex, by blocking
- * @ingroup System
+ * @ingroup SystemSync
  * @param mutex Pointer to the mutex to lock
  * @return true if the mutex was successfully locked, false on error
  *
@@ -100,7 +119,7 @@ bool sys_mutex_lock(sys_mutex_t *mutex);
 
 /**
  * @brief Try to lock a mutex
- * @ingroup System
+ * @ingroup SystemSync
  * @param mutex Pointer to the mutex to try locking
  * @return true if the mutex was successfully locked, false if already locked
  * or on error
@@ -113,7 +132,7 @@ bool sys_mutex_trylock(sys_mutex_t *mutex);
 
 /**
  * @brief Unlock a mutex
- * @ingroup System
+ * @ingroup SystemSync
  * @param mutex Pointer to the mutex to unlock
  * @return true if the mutex was successfully unlocked, false on error
  *
@@ -125,7 +144,7 @@ bool sys_mutex_unlock(sys_mutex_t *mutex);
 
 /**
  * @brief Finalize and cleanup a mutex
- * @ingroup System
+ * @ingroup SystemSync
  * @param mutex Pointer to the mutex to finalize
  *
  * Releases all resources associated with the mutex and renders it
@@ -135,7 +154,7 @@ void sys_mutex_finalize(sys_mutex_t *mutex);
 
 /**
  * @brief Initialize a new condition variable
- * @ingroup System
+ * @ingroup SystemSync
  * @return Initialized condition variable structure
  *
  * Creates and initializes a new condition variable for thread synchronization.
@@ -146,7 +165,7 @@ sys_cond_t sys_cond_init(void);
 
 /**
  * @brief Wait on a condition variable
- * @ingroup System
+ * @ingroup SystemSync
  * @param cond Pointer to the condition variable to wait on
  * @param mutex Pointer to the mutex that must be locked by the calling thread
  * @return true if the wait completed successfully, false on error
@@ -159,7 +178,7 @@ bool sys_cond_wait(sys_cond_t *cond, sys_mutex_t *mutex);
 
 /**
  * @brief Wait on a condition variable with timeout
- * @ingroup System
+ * @ingroup SystemSync
  * @param cond Pointer to the condition variable to wait on
  * @param mutex Pointer to the mutex that must be locked by the calling thread
  * @param timeout_ms Timeout in milliseconds (0 = no timeout)
@@ -173,7 +192,7 @@ bool sys_cond_timedwait(sys_cond_t *cond, sys_mutex_t *mutex,
 
 /**
  * @brief Signal one waiting thread
- * @ingroup System
+ * @ingroup SystemSync
  * @param cond Pointer to the condition variable to signal
  * @return true if successful, false on error
  *
@@ -185,7 +204,7 @@ bool sys_cond_signal(sys_cond_t *cond);
 
 /**
  * @brief Signal all waiting threads
- * @ingroup System
+ * @ingroup SystemSync
  * @param cond Pointer to the condition variable to broadcast
  * @return true if successful, false on error
  *
@@ -197,7 +216,7 @@ bool sys_cond_broadcast(sys_cond_t *cond);
 
 /**
  * @brief Finalize and cleanup a condition variable
- * @ingroup System
+ * @ingroup SystemSync
  * @param cond Pointer to the condition variable to finalize
  *
  * Releases all resources associated with the condition variable and renders
@@ -208,7 +227,7 @@ void sys_cond_finalize(sys_cond_t *cond);
 
 /**
  * @brief Initialize a new waitgroup
- * @ingroup System
+ * @ingroup SystemSync
  * @return Initialized waitgroup structure
  *
  * Creates and initializes a new waitgroup for thread synchronization.
@@ -219,7 +238,7 @@ sys_waitgroup_t sys_waitgroup_init(void);
 
 /**
  * @brief Add to the waitgroup counter
- * @ingroup System
+ * @ingroup SystemSync
  * @param wg Pointer to the waitgroup
  * @param delta Number to add to the counter (must be positive)
  * @return true if successful, false on error
@@ -231,7 +250,7 @@ bool sys_waitgroup_add(sys_waitgroup_t *wg, int delta);
 
 /**
  * @brief Decrement the waitgroup counter
- * @ingroup System
+ * @ingroup SystemSync
  * @param wg Pointer to the waitgroup
  * @return true if successful, false on error
  *
@@ -243,7 +262,7 @@ bool sys_waitgroup_done(sys_waitgroup_t *wg);
 
 /**
  * @brief Finalize and cleanup a waitgroup - wait for completion then cleanup
- * @ingroup System
+ * @ingroup SystemSync
  * @param wg Pointer to the waitgroup to finalize
  *
  * Blocks until the waitgroup counter reaches 0, then releases all resources

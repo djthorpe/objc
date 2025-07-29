@@ -1,13 +1,17 @@
 /**
  * @file timer.h
- * @brief Defines the ability to create and respond to timers.
+ * @brief Creating periodic and one-shot timers.
+ * @defgroup SystemTimer Timers
+ * @ingroup System
  *
- * This file declares various system methods for timer management.
- * Supports timers on all platforms with a simple, consistent API.
+ * Periodic and one-shot timers for scheduling tasks.
  *
  * @example pico/runloop/main.c
- * This is a complete example showing an example of multiple producers and
+ * An example of multiple producers and
  * consumers using the event queue in a runloop style on the Pico platform.
+ *
+ * @example clock/main.c
+ * Uses a timer to print out the current system time
  */
 #pragma once
 #include <stdbool.h>
@@ -20,7 +24,7 @@ extern "C" {
 
 /**
  * @brief Size of the timer context buffer.
- * @ingroup System
+ * @ingroup SystemTimer
  *
  * This defines the size of the context buffer used for timer operations.
  * It should be large enough to hold any platform-specific timer context.
@@ -29,7 +33,7 @@ extern "C" {
 
 /**
  * @brief Timer context structure.
- * @ingroup System
+ * @ingroup SystemTimer
  *
  * Contains the state and configuration for timer operations.
  */
@@ -46,7 +50,7 @@ typedef struct sys_timer_t {
 
 /**
  * @brief Initializes a new timer context.
- * @ingroup System
+ * @ingroup SystemTimer
  * @param interval_ms The periodic interval for the timer in milliseconds.
  * @param userdata Optional user data to pass to the callback.
  * @param callback The function to call on each timer event.
@@ -64,7 +68,7 @@ extern sys_timer_t sys_timer_init(uint32_t interval_ms, void *userdata,
 
 /**
  * @brief Starts a timer.
- * @ingroup System
+ * @ingroup SystemTimer
  * @param timer The timer context to start.
  * @return true on success, false on failure.
  *
@@ -75,7 +79,7 @@ extern bool sys_timer_start(sys_timer_t *timer);
 
 /**
  * @brief Cancels and finalizes a timer.
- * @ingroup System
+ * @ingroup SystemTimer
  * @param timer The timer context to finalize.
  * @return true on success, false on failure.
  * This function stops the timer and cleans up any resources associated with it.

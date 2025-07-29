@@ -2,10 +2,9 @@
  * @file sys.h
  * @brief Defines system management functions.
  * @defgroup System System Management
- *
- * System methods for managing memory, threads and resources.
  */
 #pragma once
+#include "date.h"
 #include "event.h"
 #include "hash.h"
 #include "memory.h"
@@ -13,7 +12,6 @@
 #include "random.h"
 #include "sync.h"
 #include "thread.h"
-#include "time.h"
 #include "timer.h"
 #include <stdint.h>
 
@@ -45,34 +43,23 @@ extern void sys_putch(const char ch);
 /**
  * @brief Initializes the system on startup.
  * @ingroup System
+ *
+ * This function must be called at the start of the program to initialize
+ * the system environment, including standard input/output streams and any
+ * necessary subsystems. It prepares the system for normal operation.
+ * It may include platform-specific initialization steps.
  */
 extern void sys_init(void);
 
 /**
  * @brief Cleans up the system on shutdown.
  * @ingroup System
+ *
+ * This function should be called at the end of the program to perform any
+ * necessary cleanup tasks, such as releasing resources and shutting down
+ * subsystems. It prepares the system for termination.
  */
 extern void sys_exit(void);
-
-/**
- * @brief Aborts the current process immediately.
- * @ingroup System
- * @note This function does not return to the caller.
- *
- *  This function terminates the current process abnormally and
- *  immediately. It does not perform any cleanup operations and
- *  does not call exit handlers or destructors.
- */
-extern void sys_abort(void);
-
-/**
- * @brief Prints a formatted panic message and aborts the process.
- * @ingroup System
- * @param fmt A printf-style format string specifying the panic message.
- * @param ... Additional arguments corresponding to format specifiers in fmt.
- * @note This function does not return to the caller.
- */
-extern void sys_panicf(const char *fmt, ...);
 
 #ifdef __cplusplus
 }

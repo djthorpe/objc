@@ -1,9 +1,11 @@
 /**
  * @file hash.h
- * @brief Defines the ability to create hashes from data.
+ * @brief Methods for hash generation from data.
+ * @defgroup SystemHashing Hashes
+ * @ingroup System
  *
- * This file declares various system methods for hash generation using OpenSSL.
- * Supports MD5 and SHA-256 algorithms with a simple, consistent API.
+ * Methods for hash generation, sometimes with hardware acceleration.
+ * Currently supports MD5 and SHA-256 algorithms.
  */
 #pragma once
 #include <stdbool.h>
@@ -16,7 +18,7 @@ extern "C" {
 
 /**
  * @brief Size of the hash.
- * @ingroup System
+ * @ingroup SystemHashing
  *
  * This defines the size of the hash value produced by the hash operations.
  * It should be large enough to hold any hash algorithm's output.
@@ -25,7 +27,7 @@ extern "C" {
 
 /**
  * @brief Size of the hash context buffer.
- * @ingroup System
+ * @ingroup SystemHashing
  *
  * This defines the size of the context buffer used for hash operations.
  * It should be large enough to hold any hash algorithm's context.
@@ -34,7 +36,7 @@ extern "C" {
 
 /**
  * @brief Hash algorithm identifiers.
- * @ingroup System
+ * @ingroup SystemHashing
  *
  * Enumeration of supported cryptographic hash algorithms.
  */
@@ -45,7 +47,7 @@ typedef enum {
 
 /**
  * @brief Hash context structure.
- * @ingroup System
+ * @ingroup SystemHashing
  *
  * Contains the state and result buffer for hash operations.
  */
@@ -63,7 +65,7 @@ typedef struct {
 
 /**
  * @brief Initializes a new hash context for the specified algorithm.
- * @ingroup System
+ * @ingroup SystemHashing
  * @param algorithm The hash algorithm to use.
  * @return A new sys_hash_t instance initialized for the specified algorithm.
  *
@@ -80,7 +82,7 @@ extern sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm);
 
 /**
  * @brief Returns the size of the hash in bytes.
- * @ingroup System
+ * @ingroup SystemHashing
  * @param hash The hash context to query.
  * @return The size of the hash in bytes.
  *
@@ -92,7 +94,7 @@ extern size_t sys_hash_size(sys_hash_t *hash);
 
 /**
  * @brief Updates the hash context with new data.
- * @ingroup System
+ * @ingroup SystemHashing
  * @param hash The hash context to update.
  * @param data The data to add to the hash.
  * @param size The size of the data in bytes.
@@ -102,7 +104,7 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
 
 /**
  * @brief Finalizes the hash computation and returns the hash value.
- * @ingroup System
+ * @ingroup SystemHashing
  * @param hash The hash context to finalize.
  * @return A pointer to the computed hash value, or NULL on failure.
  *

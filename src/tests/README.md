@@ -92,7 +92,7 @@ The tests are organized into three main categories:
 |-----------|---------|-------------|
 | sys_00 | Memory System Functions | Tests `sys_malloc()`, `sys_free()`, `sys_memset()`, `sys_memcpy()`, `sys_memmove()`, `sys_memcmp()`. |
 | sys_01 | Printf System Functions | Tests `sys_printf()`, `sys_sprintf()`, and `sys_vsprintf()` with 102 tests covering format specifiers, width modifiers, and buffer overflow. |
-| sys_02 | Time System Functions | Tests `sys_time_get_utc()` with validation and NULL handling. |
+| sys_02 | Date and Time System Functions | Tests `sys_date_*` functions: current date/time acquisition, UTC/local time conversion, date/time component extraction and setting, nanosecond precision comparison, timezone handling, parameter validation, gmtime/timegm integration. |
 | sys_03 | Thread System Functions | Tests `sys_thread_numcores()` with validation and boundary checks. |
 | sys_04 | Random Number Generation | Tests `sys_random_uint32()` and `sys_random_uint64()` with distribution testing. |
 | sys_05 | Hash Function Testing | Tests `sys_hash_*` functions with MD5/SHA-256 algorithms and test vectors. |
