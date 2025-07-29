@@ -109,7 +109,8 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for hash generation, sometimes with hardware acceleration. </p>
-<p>Currently supports MD5 and SHA-256 algorithms. </p>
+<p>This file declares types and functions for generating cryptographic hashes from data. It supports MD5 and SHA-256 hashing algorithms, the former of which (I have been told to tell you) is not secure, but is still widely used for checksums and non-security purposes. SHA-256 is a more secure algorithm and is recommended for security-sensitive applications, and often has hardware acceleration on modern platforms.</p>
+<p>In order to hash an arbitrary amount of data, you must first initialize a <a class="el" href="structsys__hash__t.html" title="Hash context structure. ">sys_hash_t</a> context using <a class="el" href="group__SystemHashing.html#ga11ae4ec7ba4ce8204080783ec4820165" title="Initializes a new hash context for the specified algorithm. ">sys_hash_init()</a>, then you can call <a class="el" href="group__SystemHashing.html#ga64b3413178b06e7e85604dd32f27d1a5" title="Updates the hash context with new data. ">sys_hash_update()</a> multiple times with chunks of data, and finally call <a class="el" href="group__SystemHashing.html#ga991bebea4457d3b1ee1fecc326e8186c" title="Finalizes the hash computation and returns the hash value. ">sys_hash_finalize()</a> to get the final hash value. The <a class="el" href="structsys__hash__t.html" title="Hash context structure. ">sys_hash_t</a> context can be reused for multiple hashes, but you must call <a class="el" href="group__SystemHashing.html#ga991bebea4457d3b1ee1fecc326e8186c" title="Finalizes the hash computation and returns the hash value. ">sys_hash_finalize()</a> to clean it up after each use. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga17b5573319cb8e7d1a7afdeae1a657a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga17b5573319cb8e7d1a7afdeae1a657a9">&#9670;&nbsp;</a></span>SYS_HASH_CTX_SIZE</h2>
@@ -126,7 +127,7 @@ Functions</h2></td></tr>
 <p>Size of the hash context buffer. </p>
 <p>This defines the size of the context buffer used for hash operations. It should be large enough to hold any hash algorithm's context. </p>
 
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00035">35</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00048">48</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -145,7 +146,7 @@ Functions</h2></td></tr>
 <p>Size of the hash. </p>
 <p>This defines the size of the hash value produced by the hash operations. It should be large enough to hold any hash algorithm's output. </p>
 
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00026">26</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00039">39</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -165,8 +166,8 @@ Functions</h2></td></tr>
 <p>Hash algorithm identifiers. </p>
 <p>Enumeration of supported cryptographic hash algorithms. </p>
 
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00043">43</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;             {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  sys_hash_md5 = 1, <span class="comment">// MD5 hash (128-bit)</span></div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  sys_hash_sha256,  <span class="comment">// SHA-256 hash (256-bit)</span></div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>;</div><div class="ttc" id="group__SystemHashing_html_ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><div class="ttname"><a href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a></div><div class="ttdeci">sys_hash_algorithm_t</div><div class="ttdoc">Hash algorithm identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00043">hash.h:43</a></div></div>
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00056">56</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  sys_hash_md5 = 1, <span class="comment">// MD5 hash (128-bit)</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  sys_hash_sha256,  <span class="comment">// SHA-256 hash (256-bit)</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <a class="code" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>;</div><div class="ttc" id="group__SystemHashing_html_ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><div class="ttname"><a href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a></div><div class="ttdeci">sys_hash_algorithm_t</div><div class="ttdoc">Hash algorithm identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00056">hash.h:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

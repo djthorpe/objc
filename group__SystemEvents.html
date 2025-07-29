@@ -56,7 +56,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>System methods for managing memory, threads and resources.  
+<p>Defines event queue functionality for producer/consumer patterns.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Events:</div>
@@ -123,8 +123,13 @@ Functions</h2></td></tr>
 <tr class="separator:gaebe7204ad57c101cbbb0eb1ccef42168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>System methods for managing memory, threads and resources. </p>
-<p>This file declares types and functions for thread-safe event queues that support multiple producers and consumers with peek-before-acquire semantics. </p>
+<p>Defines event queue functionality for producer/consumer patterns. </p>
+<p>This file declares types and functions for thread-safe event queues that support multiple producers and consumers with peek-before-acquire semantics.</p>
+<p>It is intended to support event channels, for a single producer and single consumer, all the way to multiple producers and consumers.</p>
+<p>The event type sys_event_t is a simple pointer type that can be used to hold any data, but that data is not managed by the queue itself; If you want to manage the data, you must do so outside the queue. The queue supports operations to push events, pop events, and peek at events without removing them.</p>
+<p>If you peek events you also need to acquire the queue lock before doing so, and release it after you are done. This is to ensure that the queue state is not modified while you are inspecting it.</p>
+<p>You set a queue capacity when you initialize it, and the queue will use a circular buffer to store events. When the buffer is full, new events will overwrite the oldest events if you use the <a class="el" href="group__SystemEvents.html#gaf3b1d50d0e78404ebd74355a474fb10b" title="Push an event to the queue (always succeeds) ">sys_event_queue_push()</a> function. If you want to avoid overwriting, you can use <a class="el" href="group__SystemEvents.html#gac876f605be4e2014ec50a51848d2bb21" title="Try to push an event without overwriting. ">sys_event_queue_try_push()</a> function instead, which will return false if the queue is full.</p>
+<p>When you wish to shutdown the queue, you can call <a class="el" href="group__SystemEvents.html#gab4f27a3c63a3d274f23d4111dc05315a" title="Finalize and cleanup an event queue. ">sys_event_queue_finalize()</a>. Consumers will be woken up and any further attempts to push events will fail, but existing events can still be popped, until the queue is empty. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga2bdd4be7e6e04b4ee95e0459ff001702"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga2bdd4be7e6e04b4ee95e0459ff001702">&#9670;&nbsp;</a></span>sys_event_t</h2>
@@ -141,7 +146,7 @@ Functions</h2></td></tr>
 <p>Event type for queue items. </p>
 <p>Simple event type that can hold any pointer data. This can be enhanced in the future to include metadata like timestamps, priorities, etc. </p>
 
-<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00036">36</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="event_8h_source.html#l00061">61</a> of file <a class="el" href="event_8h_source.html">event.h</a>.</p>
 
 </div>
 </div>
