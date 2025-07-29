@@ -13,7 +13,13 @@
  *
  * However, it really depends on the platform's capabilities and requirements.
  * as to whether you should call sys_thread_create() or
- * sys_thread_create_on_core().
+ * sys_thread_create_on_core(). On the Pico platform, for example,
+ * you should use sys_thread_create_on_core() to ensure the thread runs
+ * on a specific core. If you call this method when an existing thread is
+ * already running on that core, the core will be reset and the new thread
+ * will be scheduled to run on that core, so it's important to ensure
+ * that there isn't an existing thread already running on the specified core
+ * before calling this function.
  *
  * The implementation of threads is like Go's goroutines, where the
  * execution threads are "fire and forget" and do not require joining. If
