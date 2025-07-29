@@ -89,14 +89,25 @@ Functions</h2></td></tr>
 <p>The format specifiers supported are:</p><ul>
 <li><code>%c</code>: Character</li>
 <li><code>%s</code>: String</li>
-<li><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><code>%%@</code>: <a class="el" href="interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. ">NXObject</a> (Objective-C object)</dd></dl>
-</li>
+<li><code>%%@</code>: <a class="el" href="interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. ">NXObject</a> (Objective-C object)</li>
+<li><code>%d</code>: Signed integer</li>
+<li><code>%u</code>: Unsigned integer</li>
+<li><code>%x</code>: Unsigned hexadecimal integer</li>
+<li><code>%b</code>: Unsigned binary integer</li>
+<li><code>%o</code>: Unsigned octal integer</li>
+<li><code>%X</code>: Uppercase hexadecimal integer</li>
+<li><code>%t</code>: NXTimeInterval (Objective-C time interval)</li>
+<li><code>%p</code>: Pointer address</li>
+<li><code>%%%</code>: Literal percent sign</li>
 </ul>
 <p>The format specifiers can be modified with flags and width:</p><ul>
-<li>Width: Specifies the minimum width of the output (eg <code>%%5d</code>)</li>
-<li>Data Type<ul>
-<li>Long data type (eg <code>%ld</code>)</li>
-<li>Size_t data type (eg <code>%zu</code>)</li>
+<li>Width:<ul>
+<li><code>%%80d</code>: Number specifying the minimum width of the output</li>
+</ul>
+</li>
+<li>Data Type:<ul>
+<li><code>%ld</code> or <code>%lu</code> long data type</li>
+<li><code>%zu</code> size_t data type</li>
 </ul>
 </li>
 <li>Flags:<ul>
