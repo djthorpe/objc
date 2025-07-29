@@ -87,27 +87,27 @@ Functions</h2></td></tr>
 <p>The <a class="el" href="group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d" title="Prints formatted output to the system console. ">sys_printf()</a> function is the main entry point for formatted output, and it supports a wide range of format specifiers, including integers, strings, and characters. It also supports width modifiers for padding and alignment, as well as flags for zero-padding, left-alignment, and sign handling. There are also functions for formatted output of Objective-C objects and NXTimeInterval values.</p>
 <p>The <a class="el" href="group__SystemFormatting.html#ga340ab3d1b3e0cef587d52b580cd59d25" title="Prints formatted output to a string buffer. ">sys_sprintf()</a> function is similar to <a class="el" href="group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d" title="Prints formatted output to the system console. ">sys_printf()</a>, but it outputs the formatted string to a buffer instead of the console. It also supports the same format specifiers and flags, and it returns the number of characters that would have been written to the buffer, not counting the null terminator.</p>
 <p>The format specifiers supported are:</p><ul>
-<li>c: Character</li>
-<li>s: String</li>
-<li>%@: <a class="el" href="interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. ">NXObject</a> (Objective-C object) TODO</li>
-<li>d: Signed integer</li>
-<li>u: Unsigned integer</li>
-<li>x: Unsigned hexadecimal integer</li>
-<li>b: Unsigned binary integer</li>
-<li>o: Unsigned octal integer</li>
-<li>X: Uppercase hexadecimal integer</li>
-<li>t: NXTimeInterval (Objective-C time interval) TODO</li>
-<li>p: Pointer address</li>
-<li>%%: Literal percent sign</li>
+<li>%c: Character</li>
+<li>%s: String</li>
+<li>%%@: <a class="el" href="interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. ">NXObject</a> (Objective-C object) TODO</li>
+<li>%d: Signed integer</li>
+<li>%u: Unsigned integer</li>
+<li>%x: Unsigned hexadecimal integer</li>
+<li>%b: Unsigned binary integer</li>
+<li>%o: Unsigned octal integer</li>
+<li>%X: Uppercase hexadecimal integer</li>
+<li>%t: NXTimeInterval (Objective-C time interval) TODO</li>
+<li>%p: Pointer address</li>
+<li>%%%: Literal percent sign</li>
 </ul>
 <p>The format specifiers can be modified with flags and width:</p><ul>
-<li>Width: Specifies the minimum width of the output (eg %5d)</li>
-<li>Data Type: Specifies the data type length of the argument (eg ld for long, zu for size_t)</li>
+<li>Width: Specifies the minimum width of the output (eg %%5d)</li>
+<li>Data Type: Specifies the data type length of the argument (eg %ld for long, %zu for size_t)</li>
 <li>Flags:<ul>
-<li><code>-</code>: Left-aligned output (eg, %-10s)</li>
-<li><code>0</code>: Zero-padded output (eg, %05d)</li>
-<li><code>+</code>: Forces a sign for positive numbers (eg, %+d)</li>
-<li><code>#</code>: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0) formats (eg, %#x, %#b, %#o) </li>
+<li><code>-</code>: Left-aligned output (eg, %%-10s)</li>
+<li><code>0</code>: Zero-padded output (eg, %%05d)</li>
+<li><code>+</code>: Forces a sign for positive numbers (eg, %%+d)</li>
+<li><code>#</code>: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0) formats (eg, %%#x, %%#b, %%#o) </li>
 </ul>
 </li>
 </ul>
