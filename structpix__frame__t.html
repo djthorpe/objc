@@ -90,43 +90,39 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a18e73ed88ebb9715663f7532b007e511">stride</a></td></tr>
 <tr class="memdesc:a18e73ed88ebb9715663f7532b007e511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bytes per scanline. <br /></td></tr>
 <tr class="separator:a18e73ed88ebb9715663f7532b007e511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55531480f5f70f74bc4dee32f5f38b21"><td class="memItemLeft" align="right" valign="top"><a id="a55531480f5f70f74bc4dee32f5f38b21"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a55531480f5f70f74bc4dee32f5f38b21">buf_size</a></td></tr>
-<tr class="memdesc:a55531480f5f70f74bc4dee32f5f38b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total size of the buffer in bytes. <br /></td></tr>
-<tr class="separator:a55531480f5f70f74bc4dee32f5f38b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae50db38ccc83b73c066aa27e2cc43d4"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#aae50db38ccc83b73c066aa27e2cc43d4">drawable</a> )(void)</td></tr>
 <tr class="memdesc:aae50db38ccc83b73c066aa27e2cc43d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the framebuffer is currently drawable.  <a href="#aae50db38ccc83b73c066aa27e2cc43d4">More...</a><br /></td></tr>
 <tr class="separator:aae50db38ccc83b73c066aa27e2cc43d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af865da01d7501be12d9cf198cacc865e"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#af865da01d7501be12d9cf198cacc865e">clear_rect</a> )(<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td></tr>
-<tr class="memdesc:af865da01d7501be12d9cf198cacc865e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a rectangular region to a solid color.  <a href="#af865da01d7501be12d9cf198cacc865e">More...</a><br /></td></tr>
-<tr class="separator:af865da01d7501be12d9cf198cacc865e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae637344581e9d7502fb3945022844d37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#ae637344581e9d7502fb3945022844d37">get</a> )(<a class="el" href="structpix__point__t.html">pix_point_t</a> origin)</td></tr>
-<tr class="memdesc:ae637344581e9d7502fb3945022844d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a single pixel value at the specified point.  <a href="#ae637344581e9d7502fb3945022844d37">More...</a><br /></td></tr>
-<tr class="separator:ae637344581e9d7502fb3945022844d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a585ee1891cac087f2c8a9c919f1c6268"><td class="memItemLeft" align="right" valign="top">bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a585ee1891cac087f2c8a9c919f1c6268">set</a> )(<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td></tr>
-<tr class="memdesc:a585ee1891cac087f2c8a9c919f1c6268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single pixel value at the specified point.  <a href="#a585ee1891cac087f2c8a9c919f1c6268">More...</a><br /></td></tr>
-<tr class="separator:a585ee1891cac087f2c8a9c919f1c6268"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3898755cd9b678efd627d3e419dac702"><td class="memItemLeft" align="right" valign="top">size_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a3898755cd9b678efd627d3e419dac702">get_rect</a> )(<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *dst, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td></tr>
-<tr class="memdesc:a3898755cd9b678efd627d3e419dac702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a rectangular region of pixels.  <a href="#a3898755cd9b678efd627d3e419dac702">More...</a><br /></td></tr>
-<tr class="separator:a3898755cd9b678efd627d3e419dac702"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a563e4c47cbd46bdc484be29265263699"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a563e4c47cbd46bdc484be29265263699">set_rect</a> )(<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *src, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td></tr>
-<tr class="memdesc:a563e4c47cbd46bdc484be29265263699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a rectangular region of pixels from RGBA32 source data.  <a href="#a563e4c47cbd46bdc484be29265263699">More...</a><br /></td></tr>
-<tr class="separator:a563e4c47cbd46bdc484be29265263699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc36be17154d7d8af3c37d750f5efbe9"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#adc36be17154d7d8af3c37d750f5efbe9">clear_rect</a> )(struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td></tr>
+<tr class="memdesc:adc36be17154d7d8af3c37d750f5efbe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a rectangular region to a solid color.  <a href="#adc36be17154d7d8af3c37d750f5efbe9">More...</a><br /></td></tr>
+<tr class="separator:adc36be17154d7d8af3c37d750f5efbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f26dcd584f42d8bee43221a53f218ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a5f26dcd584f42d8bee43221a53f218ec">get</a> )(struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin)</td></tr>
+<tr class="memdesc:a5f26dcd584f42d8bee43221a53f218ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a single pixel value at the specified point.  <a href="#a5f26dcd584f42d8bee43221a53f218ec">More...</a><br /></td></tr>
+<tr class="separator:a5f26dcd584f42d8bee43221a53f218ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47889f8bd6ba7db33796e65be3e69ef3"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a47889f8bd6ba7db33796e65be3e69ef3">set</a> )(struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td></tr>
+<tr class="memdesc:a47889f8bd6ba7db33796e65be3e69ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a single pixel value at the specified point.  <a href="#a47889f8bd6ba7db33796e65be3e69ef3">More...</a><br /></td></tr>
+<tr class="separator:a47889f8bd6ba7db33796e65be3e69ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4391bf122aea57e8eb963740ede5c4c"><td class="memItemLeft" align="right" valign="top">size_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#ab4391bf122aea57e8eb963740ede5c4c">get_rect</a> )(struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *dst, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td></tr>
+<tr class="memdesc:ab4391bf122aea57e8eb963740ede5c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a rectangular region of pixels.  <a href="#ab4391bf122aea57e8eb963740ede5c4c">More...</a><br /></td></tr>
+<tr class="separator:ab4391bf122aea57e8eb963740ede5c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da1898282b2c185b97f21daaffc8f40"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html#a6da1898282b2c185b97f21daaffc8f40">set_rect</a> )(struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *src, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td></tr>
+<tr class="memdesc:a6da1898282b2c185b97f21daaffc8f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a rectangular region of pixels from RGBA32 source data.  <a href="#a6da1898282b2c185b97f21daaffc8f40">More...</a><br /></td></tr>
+<tr class="separator:a6da1898282b2c185b97f21daaffc8f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Frame structure containing pixel data and drawing operations. </p>
 <p>A frame represents a rectangular region of pixels with associated drawing functions. The frame is not thread-safe for performance reasons - callers must provide their own synchronization if needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00081">81</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00088">88</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a id="af865da01d7501be12d9cf198cacc865e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af865da01d7501be12d9cf198cacc865e">&#9670;&nbsp;</a></span>clear_rect</h2>
+<a id="adc36be17154d7d8af3c37d750f5efbe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc36be17154d7d8af3c37d750f5efbe9">&#9670;&nbsp;</a></span>clear_rect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* pix_frame_t::clear_rect) (<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td>
+          <td class="memname">void(* pix_frame_t::clear_rect) (struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -134,6 +130,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Clear a rectangular region to a solid color. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
     <tr><td class="paramname">color</td><td>Color to fill the rectangle with </td></tr>
     <tr><td class="paramname">origin</td><td>Top-left corner of the rectangle to clear </td></tr>
     <tr><td class="paramname">size</td><td>Dimensions of the rectangle to clear. If zero, clears the entire frame.</td></tr>
@@ -142,7 +139,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 <p>Completely overwrites existing pixel data in the specified region. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00108">108</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00115">115</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
@@ -162,18 +159,18 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>true if the framebuffer can be safely drawn to, false otherwise.</dd></dl>
 <p>This function is set by windowing or device systems that may be concurrently updating the rendered surface. If it is NULL, the frame is always considered drawable. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00097">97</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00103">103</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
-<a id="ae637344581e9d7502fb3945022844d37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae637344581e9d7502fb3945022844d37">&#9670;&nbsp;</a></span>get</h2>
+<a id="a5f26dcd584f42d8bee43221a53f218ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f26dcd584f42d8bee43221a53f218ec">&#9670;&nbsp;</a></span>get</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>(* pix_frame_t::get) (<a class="el" href="structpix__point__t.html">pix_point_t</a> origin)</td>
+          <td class="memname"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>(* pix_frame_t::get) (struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,24 +178,25 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Get a single pixel value at the specified point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
     <tr><td class="paramname">origin</td><td>Coordinates of the pixel to retrieve </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Color value of the pixel in RGBA32 format </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00115">115</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00124">124</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
-<a id="a3898755cd9b678efd627d3e419dac702"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3898755cd9b678efd627d3e419dac702">&#9670;&nbsp;</a></span>get_rect</h2>
+<a id="ab4391bf122aea57e8eb963740ede5c4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4391bf122aea57e8eb963740ede5c4c">&#9670;&nbsp;</a></span>get_rect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t(* pix_frame_t::get_rect) (<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *dst, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td>
+          <td class="memname">size_t(* pix_frame_t::get_rect) (struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *dst, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -206,6 +204,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Get a rectangular region of pixels. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
     <tr><td class="paramname">dst</td><td>Destination buffer for pixel data (can be NULL for size query) </td></tr>
     <tr><td class="paramname">origin</td><td>Top-left corner of the rectangle to retrieve </td></tr>
     <tr><td class="paramname">size</td><td>Dimensions of the rectangle to retrieve </td></tr>
@@ -215,18 +214,18 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>Size in bytes of the retrieved data, or required buffer size if dst is NULL</dd></dl>
 <p>If dst is NULL, only returns the expected buffer size needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00135">135</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00146">146</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
-<a id="a585ee1891cac087f2c8a9c919f1c6268"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a585ee1891cac087f2c8a9c919f1c6268">&#9670;&nbsp;</a></span>set</h2>
+<a id="a47889f8bd6ba7db33796e65be3e69ef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47889f8bd6ba7db33796e65be3e69ef3">&#9670;&nbsp;</a></span>set</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool(* pix_frame_t::set) (<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td>
+          <td class="memname">void(* pix_frame_t::set) (struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,26 +233,26 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Set a single pixel value at the specified point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
     <tr><td class="paramname">color</td><td>Color value to set (RGBA32 format) </td></tr>
     <tr><td class="paramname">origin</td><td>Coordinates of the pixel to set </td></tr>
     <tr><td class="paramname">op</td><td>Pixel operation to perform (e.g., set, blend, etc.) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the pixel was successfully set, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00124">124</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00133">133</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
-<a id="a563e4c47cbd46bdc484be29265263699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a563e4c47cbd46bdc484be29265263699">&#9670;&nbsp;</a></span>set_rect</h2>
+<a id="a6da1898282b2c185b97f21daaffc8f40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da1898282b2c185b97f21daaffc8f40">&#9670;&nbsp;</a></span>set_rect</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* pix_frame_t::set_rect) (<a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *src, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td>
+          <td class="memname">void(* pix_frame_t::set_rect) (struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> *src, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> <a class="el" href="structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa">size</a>, <a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> op)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -261,6 +260,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p>Set a rectangular region of pixels from RGBA32 source data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
     <tr><td class="paramname">src</td><td>Source buffer containing RGBA32 pixel data </td></tr>
     <tr><td class="paramname">origin</td><td>Top-left corner where the rectangle should be placed </td></tr>
     <tr><td class="paramname">size</td><td>Dimensions of the rectangle to set </td></tr>
@@ -269,7 +269,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00144">144</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00157">157</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>

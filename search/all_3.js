@@ -8,7 +8,7 @@ var searchData=
   ['class_5fgetsuperclass',['class_getSuperclass',['../group__objc.html#ga08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
   ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../group__objc.html#ga1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
   ['class_5frespondstoselector',['class_respondsToSelector',['../group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
-  ['clear_5frect',['clear_rect',['../structpix__frame__t.html#af865da01d7501be12d9cf198cacc865e',1,'pix_frame_t']]],
+  ['clear_5frect',['clear_rect',['../structpix__frame__t.html#adc36be17154d7d8af3c37d750f5efbe9',1,'pix_frame_t']]],
   ['collection_2bprotocol_2eh',['Collection+Protocol.h',['../Collection_09Protocol_8h.html',1,'']]],
   ['collectionprotocol_2dp',['CollectionProtocol-p',['../protocolCollectionProtocol-p.html',1,'']]],
   ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#af5014b9b35f1ce101b204e3f6af5d0f0',1,'NXString::compare:()']]],
