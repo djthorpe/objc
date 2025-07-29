@@ -54,6 +54,9 @@ $(function() {
 <div class="title">System Management</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This module (and submodules) declare types and functions for system management, including memory management, thread management, synchronization primitives, and timer management.  
+<a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for System Management:</div>
 <div class="dyncontent">
@@ -104,12 +107,6 @@ Modules</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
-<tr class="memdesc:ga4eced11c2352451c4ea6c7386e58342b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a string to the system console or standard output.  <a href="#ga4eced11c2352451c4ea6c7386e58342b">More...</a><br /></td></tr>
-<tr class="separator:ga4eced11c2352451c4ea6c7386e58342b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gae13dd8a6d75ee7e807c43ae84ec66dfd">sys_putch</a> (const char ch)</td></tr>
-<tr class="memdesc:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a character to the system console or standard output.  <a href="#gae13dd8a6d75ee7e807c43ae84ec66dfd">More...</a><br /></td></tr>
-<tr class="separator:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf411a8bc6b7ed4b0af9114e10c959448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448">sys_init</a> (void)</td></tr>
 <tr class="memdesc:gaf411a8bc6b7ed4b0af9114e10c959448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the system on startup.  <a href="#gaf411a8bc6b7ed4b0af9114e10c959448">More...</a><br /></td></tr>
 <tr class="separator:gaf411a8bc6b7ed4b0af9114e10c959448"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,6 +115,9 @@ Functions</h2></td></tr>
 <tr class="separator:gac8c2364fd51221e5ac983f174aeb289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>This module (and submodules) declare types and functions for system management, including memory management, thread management, synchronization primitives, and timer management. </p>
+<p>When developing for a new platform, you will need to implement the functions declared here. The implementation will depend on the specific platform's capabilities and requirements.</p>
+<p>When using this module, you should include this header file and link against the appropriate implementation for your platform. In your entrypoint file, you should call <code><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="Initializes the system on startup. ">sys_init()</a></code> to initialize the system, and <code><a class="el" href="group__System.html#gac8c2364fd51221e5ac983f174aeb289f" title="Cleans up the system on shutdown. ">sys_exit()</a></code> to clean up resources before exiting. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gac8c2364fd51221e5ac983f174aeb289f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac8c2364fd51221e5ac983f174aeb289f">&#9670;&nbsp;</a></span>sys_exit()</h2>
@@ -161,61 +161,6 @@ Functions</h2></td></tr>
 <p>This function must be called at the start of the program to initialize the system environment, including standard input/output streams and any necessary subsystems. It prepares the system for normal operation. It may include platform-specific initialization steps. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a12">clock/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a10">pico/multicore/main.c</a>, <a class="el" href="pico_2runloop_2main_8c-example.html#a20">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a15">pico/simplequeue/main.c</a>.</dd>
 </dl>
-</div>
-</div>
-<a id="gae13dd8a6d75ee7e807c43ae84ec66dfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae13dd8a6d75ee7e807c43ae84ec66dfd">&#9670;&nbsp;</a></span>sys_putch()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_putch </td>
-          <td>(</td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>ch</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Outputs a character to the system console or standard output. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ch</td><td>The character to be output.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function writes the specified character to the system's standard output stream, but does not flush the output buffer. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a3">clock/main.c</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="ga4eced11c2352451c4ea6c7386e58342b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4eced11c2352451c4ea6c7386e58342b">&#9670;&nbsp;</a></span>sys_puts()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_puts </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Outputs a string to the system console or standard output. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">str</td><td>A pointer to a null-terminated string to be output. If <code>str</code> is <code>NULL</code>, existing output is flushed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function writes the specified null-terminated string to the system's standard output stream, and flushes the output buffer. </p>
-
 </div>
 </div>
 </div><!-- contents -->

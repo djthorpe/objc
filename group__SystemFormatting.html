@@ -61,13 +61,19 @@ Collaboration diagram for String Formatting:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__SystemFormatting.png" border="0" alt="" usemap="#group____SystemFormatting"/>
 <map name="group____SystemFormatting" id="group____SystemFormatting">
-<area shape="rect" id="node2" href="group__System.html" title="System Management" alt="" coords="5,5,165,32"/>
+<area shape="rect" id="node2" href="group__System.html" title="This module (and submodules) declare types and functions for system management, including memory mana..." alt="" coords="5,5,165,32"/>
 </map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
+<tr class="memdesc:ga4eced11c2352451c4ea6c7386e58342b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a string to the system console or standard output.  <a href="#ga4eced11c2352451c4ea6c7386e58342b">More...</a><br /></td></tr>
+<tr class="separator:ga4eced11c2352451c4ea6c7386e58342b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#gae13dd8a6d75ee7e807c43ae84ec66dfd">sys_putch</a> (const char ch)</td></tr>
+<tr class="memdesc:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a character to the system console or standard output.  <a href="#gae13dd8a6d75ee7e807c43ae84ec66dfd">More...</a><br /></td></tr>
+<tr class="separator:gae13dd8a6d75ee7e807c43ae84ec66dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab6bda746d6b03c697ebcf468f83fdb6d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d">sys_printf</a> (const char *format,...)</td></tr>
 <tr class="memdesc:gab6bda746d6b03c697ebcf468f83fdb6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to the system console.  <a href="#gab6bda746d6b03c697ebcf468f83fdb6d">More...</a><br /></td></tr>
 <tr class="separator:gab6bda746d6b03c697ebcf468f83fdb6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +162,61 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The number of characters printed. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a2">clock/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a1">pico/multicore/main.c</a>, <a class="el" href="pico_2runloop_2main_8c-example.html#a2">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a1">pico/simplequeue/main.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a id="gae13dd8a6d75ee7e807c43ae84ec66dfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae13dd8a6d75ee7e807c43ae84ec66dfd">&#9670;&nbsp;</a></span>sys_putch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_putch </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Outputs a character to the system console or standard output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>The character to be output.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function writes the specified character to the system's standard output stream, but does not flush the output buffer. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a3">clock/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="ga4eced11c2352451c4ea6c7386e58342b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4eced11c2352451c4ea6c7386e58342b">&#9670;&nbsp;</a></span>sys_puts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_puts </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Outputs a string to the system console or standard output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>A pointer to a null-terminated string to be output. If <code>str</code> is <code>NULL</code>, existing output is flushed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function writes the specified null-terminated string to the system's standard output stream, and flushes the output buffer. </p>
+
 </div>
 </div>
 <a id="ga340ab3d1b3e0cef587d52b580cd59d25"></a>

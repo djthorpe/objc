@@ -1,6 +1,6 @@
 <map id="include/runtime&#45;sys/sync.h" name="include/runtime&#45;sys/sync.h">
 <area shape="rect" id="node2" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="137,95,288,136"/>
-<area shape="rect" id="node3" href="$sys_8h.html" title="Defines system management functions. " alt="" coords="193,184,344,225"/>
+<area shape="rect" id="node3" href="$sys_8h.html" title="System management functions. " alt="" coords="193,184,344,225"/>
 <area shape="rect" id="node4" href="$assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="12,273,163,315"/>
 <area shape="rect" id="node7" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="187,273,351,315"/>
 <area shape="rect" id="node8" href="$NXLog_8h.html" title="Defines a logging macro for printing formatted messages. " alt="" coords="375,273,539,315"/>

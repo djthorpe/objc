@@ -63,7 +63,7 @@ Collaboration diagram for Synchronization Primitives:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__SystemSync.png" border="0" alt="" usemap="#group____SystemSync"/>
 <map name="group____SystemSync" id="group____SystemSync">
-<area shape="rect" id="node2" href="group__System.html" title="System Management" alt="" coords="5,5,165,32"/>
+<area shape="rect" id="node2" href="group__System.html" title="This module (and submodules) declare types and functions for system management, including memory mana..." alt="" coords="5,5,165,32"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -145,6 +145,9 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Implements various synchronization methods for thread-safe operations. </p>
+<p>Three main synchronization primitives are provided. A mutual exclusion type (or "mutex") is used to protect shared resources from concurrent access. You will need one mutex for each shared resource that requires protection against concurrent access. You should always lock the mutex before accessing the shared resource, and unlock it after you are done.</p>
+<p>Condition variables allow threads to wait for certain conditions to be met before proceeding. One thread can signal a condition variable, and other threads can wait on it. This is useful for implementing producer/consumer patterns, where one thread produces data and another thread consumes it.</p>
+<p>Waitgroups allow one thread to wait for a collection of threads to finish executing. This is useful for synchronizing the completion of multiple threads before proceeding. You can add threads to a waitgroup, and then wait for all of them to complete. This is useful for ensuring that all threads have finished their work before proceeding. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gad2f90e7a405742e4b0b01e9379a5b001"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad2f90e7a405742e4b0b01e9379a5b001">&#9670;&nbsp;</a></span>sys_cond_broadcast()</h2>
