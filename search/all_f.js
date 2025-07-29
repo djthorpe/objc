@@ -27,7 +27,7 @@ var searchData=
   ['pix_5fyellow',['pix_yellow',['../pix_8h.html#ad31cb873da887eccf8e23db275c226e6',1,'pix.h']]],
   ['pix_5fzero_5fpoint',['pix_zero_point',['../pix_8h.html#ab3f8722f27f7b94222b12da79009f44d',1,'pix.h']]],
   ['pix_5fzero_5fsize',['pix_zero_size',['../pix_8h.html#ac308334fd13d5d66c07dd39d6b8e0e05',1,'pix.h']]],
-  ['pixel_20management',['Pixel Management',['../group__Pixel.html',1,'']]],
+  ['pixels',['Pixels',['../group__Pixel.html',1,'']]],
   ['printf_2eh',['printf.h',['../printf_8h.html',1,'']]],
   ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
   ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]],

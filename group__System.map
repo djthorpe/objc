@@ -5,7 +5,7 @@
 <area shape="rect" id="node4" href="$group__SystemEvents.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="284,157,351,184"/>
 <area shape="rect" id="node5" href="$group__SystemSync.html" title="Implements various synchronization methods for thread&#45;safe operations. " alt="" coords="219,208,415,235"/>
 <area shape="rect" id="node6" href="$group__SystemRandom.html" title="System methods for generating random numbers, sometimes using hardware to provide better entropy..." alt="" coords="213,259,421,285"/>
-<area shape="rect" id="node7" href="$group__Pixel.html" title="This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. " alt="" coords="246,309,389,336"/>
+<area shape="rect" id="node7" href="$group__Pixel.html" title="This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. " alt="" coords="287,309,348,336"/>
 <area shape="rect" id="node9" href="$group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="284,360,351,387"/>
 <area shape="rect" id="node10" href="$group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="282,411,353,437"/>
 <area shape="rect" id="node11" href="$group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="235,461,399,488"/>
