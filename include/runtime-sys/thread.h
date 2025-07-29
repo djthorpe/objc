@@ -1,8 +1,10 @@
 /**
  * @file thread.h
- * @brief Defines thread management functions.
+ * @brief Thread management and program execution.
+ * @defgroup SystemThread Threading
+ * @ingroup System
  *
- * This file declares various system methods for managing threads.
+ * Managing threads and program execution.
  *
  * @example pico/multicore/main.c
  * This is a complete example showing multicore programming with waitgroup
@@ -18,7 +20,7 @@ extern "C" {
 
 /**
  * @brief Thread function signature
- * @ingroup System
+ * @ingroup SystemThread
  *
  * Function signature for thread entry points. The function receives
  * a single void pointer argument and should not return a value.
@@ -28,7 +30,7 @@ typedef void (*sys_thread_func_t)(void *arg);
 
 /**
  * @brief Returns the number of CPU cores available on the host system.
- * @ingroup System
+ * @ingroup SystemThread
  * @return The number of CPU cores available on the system. Returns 1 if the
  *         number of cores cannot be determined or if the system has only one
  *         core.
@@ -40,7 +42,7 @@ extern uint8_t sys_thread_numcores(void);
 
 /**
  * @brief Create a thread on any available core
- * @ingroup System
+ * @ingroup SystemThread
  * @param func Function to execute in the new thread
  * @param arg Argument to pass to the thread function
  * @return true if thread was created successfully, false if no cores available
@@ -56,7 +58,7 @@ bool sys_thread_create(sys_thread_func_t func, void *arg);
 
 /**
  * @brief Create a thread on a specific core
- * @ingroup System
+ * @ingroup SystemThread
  * @param func Function to execute in the new thread
  * @param arg Argument to pass to the thread function
  * @param core Core number to run the thread on (0-based)
@@ -72,7 +74,7 @@ bool sys_thread_create_on_core(sys_thread_func_t func, void *arg, uint8_t core);
 
 /**
  * @brief Get the CPU core number the current thread is running on
- * @ingroup System
+ * @ingroup SystemThread
  * @return The core number (0-based) that the current thread is executing on.
  *         Returns 0 if the core cannot be determined or on single-core systems.
  *
@@ -84,10 +86,30 @@ extern uint8_t sys_thread_core(void);
 
 /**
  * @brief Pauses the execution of the current thread for a specified time.
- * @ingroup System
+ * @ingroup SystemThread
  * @param msec The number of milliseconds to sleep.
  */
 extern void sys_sleep(int32_t msec);
+
+/**
+ * @brief Aborts the current process immediately.
+ * @ingroup SystemThread
+ * @note This function does not return to the caller.
+ *
+ *  This function terminates the current process abnormally and
+ *  immediately. It does not perform any cleanup operations and
+ *  does not call exit handlers or destructors.
+ */
+extern void sys_abort(void);
+
+/**
+ * @brief Prints a formatted panic message and aborts the process.
+ * @ingroup SystemThread
+ * @param fmt A printf-style format string specifying the panic message.
+ * @param ... Additional arguments corresponding to format specifiers in fmt.
+ * @note This function does not return to the caller.
+ */
+extern void sys_panicf(const char *fmt, ...);
 
 #ifdef __cplusplus
 }

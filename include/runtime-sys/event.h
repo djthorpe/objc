@@ -1,7 +1,7 @@
 /**
  * @file event.h
  * @brief Defines event queue functionality for producer/consumer patterns.
- * @defgroup SystemEvents System Events
+ * @defgroup SystemEvents Events
  * @ingroup System
  *
  * System methods for managing memory, threads and resources.

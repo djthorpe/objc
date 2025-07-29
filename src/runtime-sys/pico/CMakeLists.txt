@@ -8,13 +8,13 @@ pico_sdk_init()
 add_library(${NAME} STATIC
     abort.c
     cond.c
+    date.c
     hash.c
     memory.c
     mutex.c
     puts.c
     random.c
     sys.c
-    timeget.c
     timer.c
     thread.c
     waitgroup.c
@@ -22,7 +22,7 @@ add_library(${NAME} STATIC
     ../all/panicf.c
     ../all/printf.c
     ../all/mutex.c
-    ../posix/time.c
+    ../all/date.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

@@ -6,6 +6,7 @@ include_directories(
 )
 
 # Pico Examples
+add_subdirectory(clock)
 add_subdirectory(pico/multicore)
 add_subdirectory(pico/simplequeue)
 add_subdirectory(pico/runloop)

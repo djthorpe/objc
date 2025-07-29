@@ -9,16 +9,16 @@ add_library(${NAME} STATIC
     sys.c
     timer.c
     ../openssl/hash.c
+    ../posix/date.c
     ../posix/memory.c
     ../posix/puts.c
     ../posix/random.c
     ../posix/sleep.c
-    ../posix/time.c
-    ../posix/timeget.c
     ../pthreads/mutex.c
     ../pthreads/cond.c
     ../pthreads/thread.c
     ../pthreads/waitgroup.c
+    ../all/date.c
     ../all/mutex.c
     ../all/event.c
     ../all/panicf.c
