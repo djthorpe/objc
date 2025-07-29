@@ -38,15 +38,15 @@
  *
  *
  * The format specifiers can be modified with flags and width:
- * - Width: Specifies the minimum width of the output (e.g., %5d)
- * - Length: Specifies the length of the argument (e.g., %ld for long, %zu for
- * size_t)
+ * - Width: Specifies the minimum width of the output (eg %5d)
+ * - Data Type: Specifies the data type length of the argument (eg %ld for
+ * long, %zu for size_t)
  * - Flags:
- *   - `-`: Left-aligned output
- *   - `0`: Zero-padded output
- *   - `+`: Forces a sign for positive numbers
+ *   - `-`: Left-aligned output (eg, %-10s)
+ *   - `0`: Zero-padded output (eg, %05d)
+ *   - `+`: Forces a sign for positive numbers (eg, %+d)
  *   - `#`: Forces a prefix for hexadecimal (0x), binary (0b) and octal (0)
- * formats
+ * formats (eg, %#x, %#b, %#o)
  */
 #pragma once
 #include <stdarg.h>
