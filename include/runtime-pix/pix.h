@@ -18,7 +18,7 @@
  * represented as structures with int16_t fields for coordinates, allowing
  * for values between -32768 and 32767.
  *
- * Frames do require a signiifcant amount of memory, so they should be
+ * Frames do require a significant amount of memory, so they should be
  * used judiciously. On embedded systems, PIX_FMT_RGB332 provides limited
  * color depth but is memory efficient.
  */
