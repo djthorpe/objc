@@ -61,7 +61,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Defines the ability to create and respond to timers.  
+<p>Creating periodic and one-shot timers.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
@@ -97,31 +97,30 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga208fc3368b9e3ed3d9d22e9be875731e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga208fc3368b9e3ed3d9d22e9be875731e">SYS_TIMER_CTX_SIZE</a>&#160;&#160;&#160;32</td></tr>
-<tr class="memdesc:ga208fc3368b9e3ed3d9d22e9be875731e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the timer context buffer.  <a href="group__System.html#ga208fc3368b9e3ed3d9d22e9be875731e">More...</a><br /></td></tr>
+<tr class="memitem:ga208fc3368b9e3ed3d9d22e9be875731e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#ga208fc3368b9e3ed3d9d22e9be875731e">SYS_TIMER_CTX_SIZE</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:ga208fc3368b9e3ed3d9d22e9be875731e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the timer context buffer.  <a href="group__SystemTimer.html#ga208fc3368b9e3ed3d9d22e9be875731e">More...</a><br /></td></tr>
 <tr class="separator:ga208fc3368b9e3ed3d9d22e9be875731e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga3533996feca2a9c8233da4b172f4c007"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__timer__t.html">sys_timer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga3533996feca2a9c8233da4b172f4c007">sys_timer_t</a></td></tr>
-<tr class="memdesc:ga3533996feca2a9c8233da4b172f4c007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer context structure.  <a href="group__System.html#ga3533996feca2a9c8233da4b172f4c007">More...</a><br /></td></tr>
+<tr class="memitem:ga3533996feca2a9c8233da4b172f4c007"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__timer__t.html">sys_timer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#ga3533996feca2a9c8233da4b172f4c007">sys_timer_t</a></td></tr>
+<tr class="memdesc:ga3533996feca2a9c8233da4b172f4c007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer context structure.  <a href="group__SystemTimer.html#ga3533996feca2a9c8233da4b172f4c007">More...</a><br /></td></tr>
 <tr class="separator:ga3533996feca2a9c8233da4b172f4c007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gac1368a749ee9713f5339cfc2b27dbdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__timer__t.html">sys_timer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gac1368a749ee9713f5339cfc2b27dbdcd">sys_timer_init</a> (uint32_t interval_ms, void *userdata, void(*callback)(<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *))</td></tr>
-<tr class="memdesc:gac1368a749ee9713f5339cfc2b27dbdcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new timer context.  <a href="group__System.html#gac1368a749ee9713f5339cfc2b27dbdcd">More...</a><br /></td></tr>
+<tr class="memitem:gac1368a749ee9713f5339cfc2b27dbdcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__timer__t.html">sys_timer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#gac1368a749ee9713f5339cfc2b27dbdcd">sys_timer_init</a> (uint32_t interval_ms, void *userdata, void(*callback)(<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *))</td></tr>
+<tr class="memdesc:gac1368a749ee9713f5339cfc2b27dbdcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new timer context.  <a href="group__SystemTimer.html#gac1368a749ee9713f5339cfc2b27dbdcd">More...</a><br /></td></tr>
 <tr class="separator:gac1368a749ee9713f5339cfc2b27dbdcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0aeeb7a38cc0c6e93ff30bf1ed6f4772"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772">sys_timer_start</a> (<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *timer)</td></tr>
-<tr class="memdesc:ga0aeeb7a38cc0c6e93ff30bf1ed6f4772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a timer.  <a href="group__System.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772">More...</a><br /></td></tr>
+<tr class="memitem:ga0aeeb7a38cc0c6e93ff30bf1ed6f4772"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772">sys_timer_start</a> (<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *timer)</td></tr>
+<tr class="memdesc:ga0aeeb7a38cc0c6e93ff30bf1ed6f4772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a timer.  <a href="group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772">More...</a><br /></td></tr>
 <tr class="separator:ga0aeeb7a38cc0c6e93ff30bf1ed6f4772"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga03c3073fd8f641e7cea076652bbe11dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga03c3073fd8f641e7cea076652bbe11dd">sys_timer_finalize</a> (<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *timer)</td></tr>
-<tr class="memdesc:ga03c3073fd8f641e7cea076652bbe11dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancels and finalizes a timer.  <a href="group__System.html#ga03c3073fd8f641e7cea076652bbe11dd">More...</a><br /></td></tr>
+<tr class="memitem:ga03c3073fd8f641e7cea076652bbe11dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd">sys_timer_finalize</a> (<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *timer)</td></tr>
+<tr class="memdesc:ga03c3073fd8f641e7cea076652bbe11dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancels and finalizes a timer.  <a href="group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd">More...</a><br /></td></tr>
 <tr class="separator:ga03c3073fd8f641e7cea076652bbe11dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines the ability to create and respond to timers. </p>
-<p>This file declares various system methods for timer management. Supports timers on all platforms with a simple, consistent API. </p>
+<div class="textblock"><p>Creating periodic and one-shot timers. </p>
 
 <p class="definition">Definition in file <a class="el" href="timer_8h_source.html">timer.h</a>.</p>
 </div></div><!-- contents -->

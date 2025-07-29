@@ -1,8 +1,9 @@
 var searchData=
 [
+  ['threading',['Threading',['../group__SystemThread.html',1,'']]],
+  ['timers',['Timers',['../group__SystemTimer.html',1,'']]],
   ['tail',['tail',['../structsys__event__queue__t.html#a626ef4b99797174041d55e64ef62cc6a',1,'sys_event_queue_t']]],
   ['thread_2eh',['thread.h',['../thread_8h.html',1,'']]],
-  ['time_2eh',['time.h',['../time_8h.html',1,'']]],
   ['timer_2eh',['timer.h',['../timer_8h.html',1,'']]],
   ['tolowercase',['toLowercase',['../interfaceNXString.html#aeeecc1e2a683aae2a7b25476deee8167',1,'NXString']]],
   ['touppercase',['toUppercase',['../interfaceNXString.html#a5837f08e476b546a89e26767571ed0f4',1,'NXString']]],

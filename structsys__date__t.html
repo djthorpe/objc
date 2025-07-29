@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: sys_time Struct Reference</title>
+<title>objc: sys_date_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -50,31 +50,35 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">sys_time Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Management</a></div></div>  </div>
+<div class="title">sys_date_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Management</a> &raquo; <a class="el" href="group__SystemDate.html">Date and Time</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a system time structure.  
- <a href="structsys__time.html#details">More...</a></p>
+<p>Represents a system date and time structure.  
+ <a href="structsys__date__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="time_8h_source.html">time.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="date_8h_source.html">date.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a19ba8f28fe6db6cfae3b11b00aee9b0a"><td class="memItemLeft" align="right" valign="top"><a id="a19ba8f28fe6db6cfae3b11b00aee9b0a"></a>
+<tr class="memitem:a59fb0884b94c95bec6be82257ee55515"><td class="memItemLeft" align="right" valign="top"><a id="a59fb0884b94c95bec6be82257ee55515"></a>
 int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>seconds</b></td></tr>
-<tr class="separator:a19ba8f28fe6db6cfae3b11b00aee9b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe12a9d8a4e4f9d0821f260480d5a083"><td class="memItemLeft" align="right" valign="top"><a id="afe12a9d8a4e4f9d0821f260480d5a083"></a>
+<tr class="separator:a59fb0884b94c95bec6be82257ee55515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11efe5ff6677a4198f7cb0e08bde904e"><td class="memItemLeft" align="right" valign="top"><a id="a11efe5ff6677a4198f7cb0e08bde904e"></a>
 int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>nanoseconds</b></td></tr>
-<tr class="separator:afe12a9d8a4e4f9d0821f260480d5a083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a11efe5ff6677a4198f7cb0e08bde904e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358069a870fd96acf25a6458d471c9c4"><td class="memItemLeft" align="right" valign="top"><a id="a358069a870fd96acf25a6458d471c9c4"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>tzoffset</b></td></tr>
+<tr class="separator:a358069a870fd96acf25a6458d471c9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a system time structure. </p>
-<p>This structure is used to represent time in the system, including the current UTC time with nanosecond precision. Timezones are not included in this structure at the moment. </p>
-
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00023">23</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+<div class="textblock"><p>Represents a system date and time structure. </p>
+<p>This structure is used to represent time in the system, including the current UTC time with nanosecond precision, and a timezone offset. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#_a0">clock/main.c</a>.</dd>
+</dl>
+<p class="definition">Definition at line <a class="el" href="date_8h_source.html#l00029">29</a> of file <a class="el" href="date_8h_source.html">date.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/runtime-sys/<a class="el" href="time_8h_source.html">time.h</a></li>
+<li>include/runtime-sys/<a class="el" href="date_8h_source.html">date.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
