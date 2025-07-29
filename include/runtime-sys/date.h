@@ -4,7 +4,22 @@
  * @defgroup SystemDate Date and Time
  * @ingroup System
  *
- * Methods for manipulating time and date.
+ * Methods for manipulating time and date. The structure sys_date_t
+ * represents a point in time with nanosecond precision, including
+ * timezone offset. It provides functions to get and set the current date
+ * and time, as well as to manipulate and format date and time values.
+ *
+ * The calculation of current timezone offset is not considered in this
+ * implementation, since that requires a lot of additional complexity
+ * around daylight saving time, leap seconds, and other factors that
+ * affect timekeeping.
+ *
+ * In addition, setting the system time is not supported on all platforms
+ * due to security and permission restrictions. However, on the Pico
+ * platform, it is possible to set the system time using the sys_date_set_now()
+ * function, and the current time can be retrieved using sys_date_get_now(),
+ * which offsets the time set with the number of seconds since the Pico
+ * was booted.
  *
  * @example clock/main.c
  * This is a complete example showing how to read the system date and time,
