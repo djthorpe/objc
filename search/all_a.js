@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['lastobject',['lastObject',['../interfaceNXArray.html#a45a9a6966fc06eb2daf7e5971013146b',1,'NXArray']]],
-  ['length',['length',['../protocolNXConstantStringProtocol-p.html#aad2fbd9b7c96ff2381d5e479ec191b40',1,'NXConstantStringProtocol-p::length()'],['../interfaceNXConstantString.html#ac008e5f6fa7b441d551761de3c0ac14e',1,'NXConstantString::length()'],['../interfaceNXString.html#ab1ec72b601d56d58f0d2f2d73ab42c57',1,'NXString::length()']]]
+  ['jsonbytes',['JSONBytes',['../protocolJSONProtocol-p.html#acaad3cde165fbef7b3d8a2bfae6f76c3',1,'JSONProtocol-p']]],
+  ['jsonprotocol_2dp',['JSONProtocol-p',['../protocolJSONProtocol-p.html',1,'']]],
+  ['jsonstring',['JSONString',['../protocolJSONProtocol-p.html#a38e57feae1d1aa1f72bc7b976e0fdd0d',1,'JSONProtocol-p::JSONString()'],['../interfaceNXString.html#a8760ac1f8566a0a61b39f633e074c47a',1,'NXString::JSONString()']]]
 ];

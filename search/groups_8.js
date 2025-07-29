@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['threading',['Threading',['../group__SystemThread.html',1,'']]],
-  ['timers',['Timers',['../group__SystemTimer.html',1,'']]]
+  ['system_20management',['System Management',['../group__System.html',1,'']]],
+  ['string_20formatting',['String Formatting',['../group__SystemFormatting.html',1,'']]],
+  ['synchronization_20primitives',['Synchronization Primitives',['../group__SystemSync.html',1,'']]]
 ];

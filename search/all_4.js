@@ -12,6 +12,7 @@ var searchData=
   ['defaultzone',['defaultZone',['../interfaceNXZone.html#ad5f817f5c094f3be72387fb5143bbe3e',1,'NXZone']]],
   ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
   ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
+  ['drawable',['drawable',['../structpix__frame__t.html#aae50db38ccc83b73c066aa27e2cc43d4',1,'pix_frame_t']]],
   ['dump',['dump',['../interfaceNXData.html#a3494f5d004da7bb9d2e15e6f7e8aaef8',1,'NXData::dump()'],['../interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e',1,'NXZone::dump()']]],
   ['date_20and_20time',['Date and Time',['../group__SystemDate.html',1,'']]]
 ];

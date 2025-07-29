@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['random_20number_20generation',['Random Number Generation',['../group__SystemRandom.html',1,'']]]
+  ['pixel_20management',['Pixel Management',['../group__Pixel.html',1,'']]]
 ];
