@@ -6,6 +6,17 @@
  *
  * Periodic and one-shot timers for scheduling tasks.
  *
+ * This module declares types and functions for creating and managing timers,
+ * which are created as periodic timers. A "callback" function is called
+ * when the timer matures, and the timer can be configured as a one-shot timer
+ * or otherwise cancelled by calling sys_timer_finalize() in the callback
+ * function.
+ *
+ * The core that the timer callback runs on is determined by the platform's
+ * implementation, but on the Pico platform, the timer callback should be
+ * implemented to run on the same core that the timer was started on (at the
+ * moment this isn't the case, but it will be in the future).
+ *
  * @example pico/runloop/main.c
  * An example of multiple producers and
  * consumers using the event queue in a runloop style on the Pico platform.

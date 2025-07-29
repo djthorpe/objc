@@ -46,7 +46,7 @@
  *   - `%%zu`: size_t data type
  * - Flags:
  *   - `%-10s`: Left-aligned output
- *   - `%05d`: Zero-padded outpu
+ *   - `%05d`: Zero-padded hexadecimal, decimal, octal, or binary output
  *   - `%+d`: Forces a sign for positive numbers
  *   - `%#x`, `%#b`, `%#o`: Forces a prefix for hexadecimal (0x), binary (0b)
  * and octal (0) formats

@@ -6,6 +6,25 @@
  *
  * Managing threads and program execution.
  *
+ * This module declares types and functions for thread management, including
+ * thread creation, synchronization, and communication. It is generally aware of
+ * the number of "cores" available on the system, and allows creating threads
+ * that can run on a specific core, or on any available core.
+ *
+ * However, it really depends on the platform's capabilities and requirements.
+ * as to whether you should call sys_thread_create() or
+ * sys_thread_create_on_core().
+ *
+ * The implementation of threads is like Go's goroutines, where the
+ * execution threads are "fire and forget" and do not require joining. If
+ * you wish to communicate between threads, use the event queue. If you wish
+ * to co-ordinate when threads are running or to synchronize their execution,
+ * you can use the provided synchronization primitives like waitgroups.
+ *
+ * There are also methods for suspending the current thread for a specified
+ * duration, and for halting execution of the process immediately, in case
+ * of catastrophic failure.
+ *
  * @example pico/multicore/main.c
  * This is a complete example showing multicore programming with waitgroup
  * synchronization on the Pico platform.
