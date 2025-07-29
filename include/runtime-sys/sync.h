@@ -6,6 +6,23 @@
  *
  * Implements various synchronization methods for thread-safe operations.
  *
+ * Three main synchronization primitives are provided. A mutual exclusion type
+ * (or "mutex") is used to protect shared resources from concurrent access. You
+ * will need one mutex for each shared resource that requires protection against
+ * concurrent access. You should always lock the mutex before accessing the
+ * shared resource, and unlock it after you are done.
+ *
+ * Condition variables allow threads to wait for certain conditions to be met
+ * before proceeding. One thread can signal a condition variable, and other
+ * threads can wait on it. This is useful for implementing producer/consumer
+ * patterns, where one thread produces data and another thread consumes it.
+ *
+ * Waitgroups allow one thread to wait for a collection of threads to finish
+ * executing. This is useful for synchronizing the completion of multiple
+ * threads before proceeding. You can add threads to a waitgroup, and then wait
+ * for all of them to complete. This is useful for ensuring that all threads
+ * have finished their work before proceeding.
+ *
  * @example pico/multicore/main.c
  * This is a complete example showing multicore programming with waitgroup
  * synchronization on the Pico platform.

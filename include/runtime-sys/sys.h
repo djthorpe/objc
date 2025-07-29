@@ -1,7 +1,21 @@
 /**
  * @file sys.h
- * @brief Defines system management functions.
+ * @brief System management functions.
  * @defgroup System System Management
+ *
+ *
+ * This module (and submodules) declare types and functions for system
+ * management, including memory management, thread management, synchronization
+ * primitives, and timer management.
+ *
+ * When developing for a new platform, you will need to implement the
+ * functions declared here. The implementation will depend on the specific
+ * platform's capabilities and requirements.
+ *
+ * When using this module, you should include this header file and link against
+ * the appropriate implementation for your platform. In your entrypoint file,
+ * you should call `sys_init()` to initialize the system, and `sys_exit()` to
+ * clean up resources before exiting.
  */
 #pragma once
 #include "date.h"
@@ -13,32 +27,10 @@
 #include "sync.h"
 #include "thread.h"
 #include "timer.h"
-#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/**
- * @brief Outputs a string to the system console or standard output.
- * @ingroup System
- * @param str A pointer to a null-terminated string to be output. If `str` is
- * `NULL`, existing output is flushed.
- *
- * This function writes the specified null-terminated string to the
- * system's standard output stream, and flushes the output buffer.
- */
-extern void sys_puts(const char *str);
-
-/**
- * @brief Outputs a character to the system console or standard output.
- * @param ch The character to be output.
- * @ingroup System
- *
- * This function writes the specified character to the
- * system's standard output stream, but does not flush the output buffer.
- */
-extern void sys_putch(const char ch);
 
 /**
  * @brief Initializes the system on startup.

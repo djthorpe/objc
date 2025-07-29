@@ -60,6 +60,27 @@ extern "C" {
 #endif
 
 /**
+ * @brief Outputs a string to the system console or standard output.
+ * @ingroup SystemFormatting
+ * @param str A pointer to a null-terminated string to be output. If `str` is
+ * `NULL`, existing output is flushed.
+ *
+ * This function writes the specified null-terminated string to the
+ * system's standard output stream, and flushes the output buffer.
+ */
+extern void sys_puts(const char *str);
+
+/**
+ * @brief Outputs a character to the system console or standard output.
+ * @param ch The character to be output.
+ * @ingroup SystemFormatting
+ *
+ * This function writes the specified character to the
+ * system's standard output stream, but does not flush the output buffer.
+ */
+extern void sys_putch(const char ch);
+
+/**
  * @brief Prints formatted output to the system console.
  * @ingroup SystemFormatting
  * @param format A printf-style format string that specifies how subsequent
