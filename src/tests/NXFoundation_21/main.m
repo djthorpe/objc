@@ -1173,6 +1173,96 @@ int test_array_methods(void) {
   printf("✓ Large arrays: correctly handles performance and difference "
          "detection\n");
 
+  // Test 27: stringWithObjectsJoinedByString: method testing
+  printf("\nTest 27: Testing stringWithObjectsJoinedByString: functionality...\n");
+
+  // Test 1: Empty array
+  NXArray *emptyJoinArray = [NXArray new];
+  NXString *emptyResult = [emptyJoinArray stringWithObjectsJoinedByString:@", "];
+  test_assert(emptyResult != nil);
+  test_assert(strcmp([emptyResult cStr], "") == 0);
+  printf("✓ Empty array: returns empty string\n");
+
+  // Test 2: Single object array with string
+  NXString *singleStr = [NXString stringWithCString:"Hello"];
+  NXArray *singleArray = [NXArray arrayWithObjects:singleStr, nil];
+  NXString *singleResult = [singleArray stringWithObjectsJoinedByString:@", "];
+  test_assert(singleResult != nil);
+  test_assert(strcmp([singleResult cStr], "Hello") == 0);
+  printf("✓ Single string object: returns object description without delimiter\n");
+
+  // Test 3: Single object array with non-string
+  NXNumber *singleNum = [NXNumber numberWithInt32:42];
+  NXArray *singleNumArray = [NXArray arrayWithObjects:singleNum, nil];
+  NXString *singleNumResult = [singleNumArray stringWithObjectsJoinedByString:@", "];
+  test_assert(singleNumResult != nil);
+  test_assert(strcmp([singleNumResult cStr], "42") == 0);
+  printf("✓ Single non-string object: returns object description without delimiter\n");
+
+  // Test 4: Multiple string objects
+  NXString *str1 = [NXString stringWithCString:"Apple"];
+  NXString *str2 = [NXString stringWithCString:"Banana"];
+  NXString *str3 = [NXString stringWithCString:"Cherry"];
+  NXArray *stringArray = [NXArray arrayWithObjects:str1, str2, str3, nil];
+  NXString *stringResult = [stringArray stringWithObjectsJoinedByString:@", "];
+  test_assert(stringResult != nil);
+  test_assert(strcmp([stringResult cStr], "Apple, Banana, Cherry") == 0);
+  printf("✓ Multiple strings: correctly joins with delimiter\n");
+
+  // Test 5: Multiple mixed objects (strings and numbers)
+  NXNumber *joinNum1 = [NXNumber numberWithInt32:1];
+  NXNumber *joinNum2 = [NXNumber numberWithInt32:2];
+  NXString *str4 = [NXString stringWithCString:"three"];
+  NXArray *joinMixedArray = [NXArray arrayWithObjects:joinNum1, str4, joinNum2, nil];
+  NXString *mixedResult = [joinMixedArray stringWithObjectsJoinedByString:@"-"];
+  test_assert(mixedResult != nil);
+  test_assert(strcmp([mixedResult cStr], "1-three-2") == 0);
+  printf("✓ Mixed objects: correctly joins numbers and strings\n");
+
+  // Test 6: Different delimiter
+  NXArray *delimArray = [NXArray arrayWithObjects:str1, str2, nil];
+  NXString *delimResult = [delimArray stringWithObjectsJoinedByString:@" | "];
+  test_assert(delimResult != nil);
+  test_assert(strcmp([delimResult cStr], "Apple | Banana") == 0);
+  printf("✓ Different delimiter: correctly uses custom delimiter\n");
+
+  // Test 7: Single character delimiter
+  NXString *charResult = [delimArray stringWithObjectsJoinedByString:@"/"];
+  test_assert(charResult != nil);
+  test_assert(strcmp([charResult cStr], "Apple/Banana") == 0);
+  printf("✓ Single character delimiter: works correctly\n");
+
+  // Test 8: Empty delimiter
+  NXString *emptyDelimResult = [delimArray stringWithObjectsJoinedByString:@""];
+  test_assert(emptyDelimResult != nil);
+  test_assert(strcmp([emptyDelimResult cStr], "AppleBanana") == 0);
+  printf("✓ Empty delimiter: concatenates without separator\n");
+
+  // Test 9: Many objects (performance test)
+  NXArray *manyArray = [NXArray new];
+  for (int i = 0; i < 10; i++) {
+    NXString *numStr = [NXString stringWithFormat:@"item%d", i];
+    [manyArray append:numStr];
+  }
+  NXString *manyResult = [manyArray stringWithObjectsJoinedByString:@","];
+  test_assert(manyResult != nil);
+  test_assert(strcmp([manyResult cStr], "item0,item1,item2,item3,item4,item5,item6,item7,item8,item9") == 0);
+  printf("✓ Many objects: correctly handles larger arrays\n");
+
+  // Test 10: Length validation - verify the result length matches expected
+  NXArray *lengthTestArray = [NXArray arrayWithObjects:
+    [NXString stringWithCString:"AB"], 
+    [NXString stringWithCString:"CD"], 
+    [NXString stringWithCString:"EF"], 
+    nil];
+  NXString *lengthResult = [lengthTestArray stringWithObjectsJoinedByString:@"XX"];
+  test_assert(lengthResult != nil);
+  test_assert(strcmp([lengthResult cStr], "ABXXCDXXEF") == 0);
+  test_assert([lengthResult length] == 10); // 2+2+2+2+2 = 10 characters
+  printf("✓ Length validation: result length matches expected calculation\n");
+
+  printf("✓ Test 27 completed: stringWithObjectsJoinedByString: works correctly\n");
+
   // Note: testStr1, testStr2, testStr3, testArray, nestedArray, outerArray,
   // emptyTestArray, appendArray are autoreleased No manual releases needed for
   // these objects
@@ -1186,7 +1276,7 @@ int test_array_methods(void) {
          "operations with comprehensive testing\n");
   printf("    ✅ Implemented: initWithObjects:, arrayWithObjects:, JSONString, "
          "JSONBytes, containsObject:, append:, insert:atIndex:, "
-         "indexForObject:, remove:, removeObjectAtIndex:, isEqual:\n");
+         "indexForObject:, remove:, removeObjectAtIndex:, isEqual:, stringWithObjectsJoinedByString:\n");
   printf("    ✅ Handles non-JSON-compliant objects via description method\n");
   printf("    ✅ Supports recursive collection search in containsObject:\n");
   printf(
@@ -1202,7 +1292,7 @@ int test_array_methods(void) {
   printf("    ✅ JSON serialization edge cases and accuracy verification\n");
   printf("    ⚠️  objectAtIndex: uses assertions for bounds checking\n");
 
-  printf("\n✅ All NXArray methods and edge cases tested comprehensively (26 "
+  printf("\n✅ All NXArray methods and edge cases tested comprehensively (27 "
          "test suites)!\n");
   return 0;
 }
