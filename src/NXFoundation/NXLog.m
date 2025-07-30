@@ -24,9 +24,6 @@ const char *_nxfoundation_format_handler(char format, va_list *va) {
     id desc = [obj description];
     if ([desc conformsTo:@protocol(NXConstantStringProtocol)]) {
       const char *result = [desc cStr];
-      // Debug: Check the result
-      // printf("DEBUG: Format handler returning desc: '%s' (len=%zu)\n",
-      // result, strlen(result));
       return result;
     }
   } else if (format == 't') {
