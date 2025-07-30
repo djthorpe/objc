@@ -1288,10 +1288,6 @@ int test_array_methods(void) {
   NXArray *singleDescArray = [NXArray arrayWithObjects:descStr1, nil];
   NXString *singleDescResult = [singleDescArray description];
   test_assert(singleDescResult != nil);
-  // printf("DEBUG: Actual single desc result: '%s' (length: %u)\n",
-  // [singleDescResult cStr], [singleDescResult length]); printf("DEBUG:
-  // Expected: '@[ Hello ]'\n");
-
   // For now, let's check what the format actually produces
   // The issue might be that our %@ handler is truncating the string
   // Let's be more lenient for debugging
