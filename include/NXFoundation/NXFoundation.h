@@ -2,6 +2,7 @@
  * @file NXFoundation.h
  * @brief Foundation framework header
  * @defgroup Foundation Foundation Framework
+ * @ingorup objc
  *
  * Implementation of the foundational classes and types, including strings,
  * numbers, dates, data and collections.

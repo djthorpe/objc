@@ -1,21 +1,24 @@
 /**
  * @file sys.h
  * @brief System management functions.
- * @defgroup System System Management
+ * @defgroup System System Runtime
  *
+ * These modules declare types and functions for the "system runtime" layer,
+ * which provides low-level system functionality such as date and time handling,
  *
- * This module (and submodules) declare types and functions for system
- * management, including memory management, thread management, synchronization
- * primitives, and timer management.
- *
- * When developing for a new platform, you will need to implement the
- * functions declared here. The implementation will depend on the specific
+ * The system runtime includes memory, process and thread management,
+ * synchronization primitives, hashes, string formatting, random numbers and
+ * timers. When developing for a new platform, you will need to implement the
+ * functions in these modules. The implementation will depend on the specific
  * platform's capabilities and requirements.
  *
  * When using this module, you should include this header file and link against
  * the appropriate implementation for your platform. In your entrypoint file,
  * you should call `sys_init()` to initialize the system, and `sys_exit()` to
  * clean up resources before exiting.
+ *
+ * There is a set of tests that can be run to verify the functionality of
+ * the system runtime. These tests can be found in the `tests` directory.
  */
 #pragma once
 #include "date.h"

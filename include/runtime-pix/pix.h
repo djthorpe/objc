@@ -4,9 +4,7 @@
  * @defgroup Pixel Pixels
  * @ingroup System
  *
- * This module declares types and functions for managing pixel data and
- * framebuffers, including pixel formats, drawing operations, and framebuffer
- * initialization and finalization.
+ * Managing pixel data, framebuffers, and drawing operations.
  *
  * Pixels are represented in various formats, but externally they are
  * typically represented in RGBA32 format (a uint32_t). If a frame is
