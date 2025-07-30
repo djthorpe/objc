@@ -21,15 +21,15 @@
  */
 @interface NXDate : NXObject <JSONProtocol> {
 @protected
-  sys_time_t _time; ///< Time representation
+  sys_date_t _date; ///< Date and time representation
 @private
-  uint16_t _year;   ///< Cached year component (1-9999)
-  uint8_t _month;   ///< Cached month component (1-12)
-  uint8_t _day;     ///< Cached day component (1-31)
-  uint8_t _weekday; ///< Cached weekday component (0-6, Sunday=0)
-  uint8_t _hours;   ///< Cached hours component (0-23)
-  uint8_t _minutes; ///< Cached minutes component (0-59)
-  uint8_t _seconds; ///< Cached seconds component (0-59)
+  uint16_t _year;   ///< Cached UTC year component (1-9999)
+  uint8_t _month;   ///< Cached UTC month component (1-12)
+  uint8_t _day;     ///< Cached UTC day component (1-31)
+  uint8_t _weekday; ///< Cached UTC weekday component (0-6, Sunday=0)
+  uint8_t _hours;   ///< Cached UTC hours component (0-23)
+  uint8_t _minutes; ///< Cached UTC minutes component (0-59)
+  uint8_t _seconds; ///< Cached UTC seconds component (0-59)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@
 // PROPERTIES
 
 /**
- * @brief Retrieves the date components from this date.
+ * @brief Retrieves the date components from this date, in universal time.
  * @param year Pointer to store the year (e.g., 2025). Can be NULL if not
  * needed.
  * @param month Pointer to store the month (1-12). Can be NULL if not needed.
@@ -70,7 +70,7 @@
      weekday:(uint8_t *)weekday;
 
 /**
- * @brief Retrieves the time components from this date.
+ * @brief Retrieves the time components from this date, in universal time.
  * @param hours Pointer to store the hours (0-23). Can be NULL if not needed.
  * @param minutes Pointer to store the minutes (0-59). Can be NULL if not
  * needed.
@@ -87,18 +87,19 @@
     nanoseconds:(uint32_t *)nanoseconds;
 
 /**
- * @brief Sets the date components for this date object.
+ * @brief Sets the date components for this date object, in universal time.
  * @param year The year to set (e.g., 2025).
  * @param month The month to set (1-12).
  * @param day The day of month to set (1-31).
  * @return YES if the date was set successfully, NO if the date is invalid.
+ * @note Date is set in UTC timezone.
  * @note Invalid dates (e.g., February 30th) will cause this method to return
  * NO.
  */
 - (BOOL)setYear:(uint16_t)year month:(uint8_t)month day:(uint8_t)day;
 
 /**
- * @brief Sets the time components for this date object.
+ * @brief Sets the time components for this date object, in universal time.
  * @param hours The hours to set (0-23).
  * @param minutes The minutes to set (0-59).
  * @param seconds The seconds to set (0-59).
