@@ -112,10 +112,13 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
+- [ ] `NXArray` sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:
+- [ ] `NXArray` filterWithFunction: filteredArrayWithFunction:
 - [ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on
 - [ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed
 - [ ] `NXRange` and `NXString` - substringWithRange and substringWithRange:options:
 - [ ] `NXString` - rangeOfSubstring and rangeOfSubstring:options:
+- [ ] `NXArray` - `subarrayWithRange:` and `subarrayWithRange:options:`
 - [ ] `NXString` - array methods - componentsSeparatedByString and componentsSeparatedByByte
 - [ ] `@synchronized` support
 - [ ] `NXApplication` and `NXRunLoop`
