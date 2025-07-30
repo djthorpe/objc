@@ -28,7 +28,7 @@ The tests are organized into three main categories:
 | NXFoundation_08 | Application Runner | Tests application execution with `[NXApplication run]`. |
 | NXFoundation_09 | Date and Time Operations | Tests NXDate creation, intervals, descriptions, and comparisons. |
 | NXFoundation_10 | Arena Allocator | Tests zone-based memory allocation and cleanup. |
-| NXFoundation_11 | Architecture Information | Tests system architecture detection (bits, endianness, cores). |
+| NXFoundation_11 | Architecture Information | Tests comprehensive system architecture detection (bits, endianness, cores, OS, processor). |
 | NXFoundation_12 | Random Number Generation | Tests random 32-bit integer generation and validation. |
 | NXFoundation_13 | Time Interval Operations | Tests time constants, arithmetic, conversions, and formatting. |
 | NXFoundation_14 | Date Edge Cases | Tests NXDate overflow and edge cases with large intervals. |

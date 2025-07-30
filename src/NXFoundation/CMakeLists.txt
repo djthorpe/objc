@@ -7,6 +7,7 @@ add_library(${NAME} STATIC
     NXAutoreleasePool.m
     NXData.m
     NXDate.m
+    NXLog.m
     NXNotFound.m
     NXNull.m
     NXNumber.m

@@ -25,6 +25,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
 
+# Lowercase processor name
+string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} PROCESSOR_NAME_LOWER)
+
 # Compile options
 add_compile_options(
     "-Wall"
@@ -32,6 +35,8 @@ add_compile_options(
     "$<$<CONFIG:DEBUG>:-DDEBUG>"
     "$<$<CONFIG:RELEASE>:-O3>"
     "-DSYSTEM_NAME_${SYSTEM_NAME_UPPER}"
+    "-DSYSTEM_NAME=\"${SYSTEM_NAME_LOWER}\""
+    "-DSYSTEM_PROCESSOR=\"${PROCESSOR_NAME_LOWER}\""
 )
 
 # Libraries
