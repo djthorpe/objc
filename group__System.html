@@ -55,7 +55,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>These modules declare types and functions for the "system runtime" layer, which provides low-level system functionality such as date and time handling,.  
+<p>The "system runtime" layer provides low-level functionality specific to the platform.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for System Runtime:</div>
@@ -119,7 +119,7 @@ Functions</h2></td></tr>
 <tr class="separator:gac8c2364fd51221e5ac983f174aeb289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>These modules declare types and functions for the "system runtime" layer, which provides low-level system functionality such as date and time handling,. </p>
+<p>The "system runtime" layer provides low-level functionality specific to the platform. </p>
 <p>The system runtime includes memory, process and thread management, synchronization primitives, hashes, string formatting, random numbers and timers. When developing for a new platform, you will need to implement the functions in these modules. The implementation will depend on the specific platform's capabilities and requirements.</p>
 <p>When using this module, you should include this header file and link against the appropriate implementation for your platform. In your entrypoint file, you should call <code><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="Initializes the system on startup. ">sys_init()</a></code> to initialize the system, and <code><a class="el" href="group__System.html#gac8c2364fd51221e5ac983f174aeb289f" title="Cleans up the system on shutdown. ">sys_exit()</a></code> to clean up resources before exiting.</p>
 <p>There is a set of tests that can be run to verify the functionality of the system runtime. These tests can be found in the <code>tests</code> directory. </p>
