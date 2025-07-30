@@ -32,26 +32,45 @@
  */
 typedef int64_t NXTimeInterval;
 
-/** @brief Base unit: 1 nanosecond */
+/**
+ * @brief Base unit: 1 nanosecond
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Nanosecond;
 
-/** @brief 1 millisecond = 1,000,000 nanoseconds */
+/**
+ * @brief 1 millisecond = 1,000,000 nanoseconds
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Millisecond;
 
-/** @brief 1 second = 1000 milliseconds */
+/**
+ * @brief 1 second = 1000 milliseconds
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Second;
 
-/** @brief 1 minute = 60 seconds */
+/**
+ * @brief 1 minute = 60 seconds
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Minute;
 
-/** @brief 1 hour = 60 minutes */
+/**
+ * @brief 1 hour = 60 minutes
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Hour;
 
-/** @brief 1 day = 24 hours */
+/**
+ * @brief 1 day = 24 hours
+ * @ingroup Foundation
+ */
 extern const NXTimeInterval Day;
 
 /**
  * @brief Converts a time interval to milliseconds.
+ * @ingroup Foundation
  *
  * This function converts a NXTimeInterval value to its milliseconds
  * representation, discarding any fractional nanoseconds.
@@ -63,6 +82,7 @@ extern int32_t NXTimeIntervalMilliseconds(NXTimeInterval interval);
 
 /**
  * @brief Converts a time interval to a string representation.
+ * @ingroup Foundation
  *
  * This function converts a NXTimeInterval value to its string
  * representation, including the appropriate time unit.

@@ -33,6 +33,26 @@ typedef enum {
 uint8_t NXArchBits(void);
 
 /**
+ * @brief Get the current operating system name.
+ * @ingroup Foundation
+ * @return A string containing the operating system name (e.g., "darwin",
+ * "linux", "pico").
+ *
+ * \headerfile NXArch.h NXFoundation/NXFoundation.h
+ */
+const char *NXArchOS(void);
+
+/**
+ * @brief Get the current processor/CPU type.
+ * @ingroup Foundation
+ * @return A string containing the processor name (e.g., "arm64", "x86-64",
+ * "aarch64", "cortex-m0plus").
+ *
+ * \headerfile NXArch.h NXFoundation/NXFoundation.h
+ */
+const char *NXArchProcessor(void);
+
+/**
  * @brief Get the current architecture endianness.
  * @ingroup Foundation
  * @return The architecture endianness, either NXLittleEndian or NXBigEndian.

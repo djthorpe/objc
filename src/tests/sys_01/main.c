@@ -80,7 +80,7 @@ int test_sys_01(void) {
   sys_puts("Test 9: sys_printf with NULL string\n");
   do {
     size_t len = sys_printf("Hello%s World!\n", NULL);
-    test_assert(len == 18);
+    test_assert(len == 19);
   } while (0);
 
   // Test 10: decimal format
@@ -688,8 +688,8 @@ int test_sys_01(void) {
   do {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "'%10s'", (char *)NULL);
-    test_cstrings_equal("'     <nil>'", buffer);
-    test_assert(len == 12); // quotes + 5 spaces + <nil> = 12
+    test_cstrings_equal("'    <null>'", buffer);
+    test_assert(len == 12); // quotes + 4 spaces + <null> = 12
   } while (0);
 
   // Test 81: escaped percent with width (shouldn't affect %%)
@@ -731,7 +731,9 @@ int test_sys_01(void) {
     char buffer[100];
     size_t len = sys_sprintf(buffer, sizeof(buffer), "null: %p", (void *)NULL);
     // Expected length: "null: 0x" + (2 * sizeof(void*)) hex digits
-    size_t expected_len = 8 + (2 * sizeof(void *)); // "null: 0x" is 8 characters (7 for "null: 0x" including the space) plus hex digits
+    size_t expected_len =
+        8 + (2 * sizeof(void *)); // "null: 0x" is 8 characters (7 for "null:
+                                  // 0x" including the space) plus hex digits
     if (sizeof(void *) == 4) {
       test_cstrings_equal("null: 0x00000000", buffer);
     } else {
@@ -928,7 +930,7 @@ int test_sys_01(void) {
       buffer[i] = 'X'; // Initialize
 
     size_t len = sys_sprintf(buffer, 8, "Hello %s World", (char *)NULL);
-    test_assert(len == 17);                 // "Hello <nil> World" = 17 chars
+    test_assert(len == 18);                 // "Hello <null> World" = 18 chars
     test_assert(buffer[7] == '\0');         // Should null-terminate
     test_cstrings_equal(buffer, "Hello <"); // Should truncate
   } while (0);

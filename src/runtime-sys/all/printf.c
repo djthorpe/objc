@@ -31,11 +31,12 @@ struct sys_printf_state {
   size_t pos;   /**< Current position in the buffer */
   size_t (*putch)(struct sys_printf_state *state,
                   char ch); /**< Function to output a character */
+  const char *(*custom)(char format, va_list *va); /**< Custom format handler */
   size_t width;             /**< Width specifier for padding */
   sys_printf_flags_t flags; /**< Current format flags */
 };
 
-static const char *_nullstr = "<nil>"; // Placeholder for NULL strings
+static const char *_nullstr = "<null>"; // Placeholder for NULL strings
 
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE  METHODS
@@ -300,6 +301,18 @@ size_t _sys_printf_put(struct sys_printf_state *state, char spec, va_list *va) {
     return result;
   }
   default:
+    // If there is a custom format handler, use it
+    if (state->custom) {
+      const char *custom_result = state->custom(spec, va);
+      if (custom_result) {
+        size_t len = 0;
+        while (custom_result[len]) {
+          state->putch(state, custom_result[len]);
+          len++;
+        }
+        return len; // Return length of custom formatted string
+      }
+    }
     sys_panicf("Unsupported format specifier: %c", spec);
     return 0;
   }
@@ -419,7 +432,7 @@ void _sys_printf_finalize(void) { sys_mutex_finalize(&printf_mutex); }
 
 size_t sys_vprintf(const char *format, va_list args) {
   sys_mutex_lock(&printf_mutex);
-  struct sys_printf_state state = {.putch = _sys_printf_putch};
+  struct sys_printf_state state = {.putch = _sys_printf_putch, .custom = NULL};
   va_list args_copy;
   va_copy(args_copy, args);
   size_t len = _sys_vprintf(&state, format, &args_copy);
@@ -430,7 +443,7 @@ size_t sys_vprintf(const char *format, va_list args) {
 
 size_t sys_vsprintf(char *buf, size_t sz, const char *format, va_list args) {
   struct sys_printf_state state = {
-      .putch = _sys_sprintf_putch, .buffer = buf, .size = sz};
+      .putch = _sys_sprintf_putch, .buffer = buf, .size = sz, .custom = NULL};
   va_list args_copy;
   va_copy(args_copy, args);
   size_t len = _sys_vprintf(&state, format, &args_copy);
@@ -456,7 +469,7 @@ size_t sys_sprintf(char *buf, size_t sz, const char *format, ...) {
   va_list va;
   va_start(va, format);
   struct sys_printf_state state = {
-      .putch = _sys_sprintf_putch, .buffer = buf, .size = sz};
+      .putch = _sys_sprintf_putch, .buffer = buf, .size = sz, .custom = NULL};
   va_list va_copy;
   va_copy(va_copy, va);
   size_t len = _sys_vprintf(&state, format, &va_copy);
@@ -468,5 +481,18 @@ size_t sys_sprintf(char *buf, size_t sz, const char *format, ...) {
     buf[state.pos < sz - 1 ? state.pos : sz - 1] = '\0';
   }
 
+  return len;
+}
+
+size_t sys_vprintf_ex(const char *format, va_list args,
+                      sys_printf_format_handler_t custom_handler) {
+  sys_mutex_lock(&printf_mutex);
+  struct sys_printf_state state = {.putch = _sys_printf_putch,
+                                   .custom = custom_handler};
+  va_list args_copy;
+  va_copy(args_copy, args);
+  size_t len = _sys_vprintf(&state, format, &args_copy);
+  va_end(args_copy);
+  sys_mutex_unlock(&printf_mutex);
   return len;
 }

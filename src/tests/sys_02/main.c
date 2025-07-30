@@ -66,9 +66,9 @@ int test_sys_02(void) {
     bool time_result = sys_date_get_time_utc(&date, &hours, &minutes, &seconds);
 
     test_assert(time_result == true);
-    test_assert(hours >= 0 && hours <= 23);
-    test_assert(minutes >= 0 && minutes <= 59);
-    test_assert(seconds >= 0 && seconds <= 59);
+    test_assert(hours <= 23);
+    test_assert(minutes <= 59);
+    test_assert(seconds <= 59);
 
     sys_printf("UTC Time: %02d:%02d:%02d\n", hours, minutes, seconds);
   } while (0);
@@ -84,7 +84,7 @@ int test_sys_02(void) {
     uint8_t hours;
     bool result2 = sys_date_get_time_utc(&date, &hours, NULL, NULL);
     test_assert(result2 == true);
-    test_assert(hours >= 0 && hours <= 23);
+    test_assert(hours <= 23);
 
     sys_printf("sys_date_get_time_utc with NULL parameters passed\n");
   } while (0);
@@ -95,9 +95,9 @@ int test_sys_02(void) {
     bool result = sys_date_get_time_utc(NULL, &hours, &minutes, &seconds);
 
     test_assert(result == true);
-    test_assert(hours >= 0 && hours <= 23);
-    test_assert(minutes >= 0 && minutes <= 59);
-    test_assert(seconds >= 0 && seconds <= 59);
+    test_assert(hours <= 23);
+    test_assert(minutes <= 59);
+    test_assert(seconds <= 59);
 
     sys_printf("sys_date_get_time_utc with NULL date passed\n");
   } while (0);
@@ -117,7 +117,7 @@ int test_sys_02(void) {
     test_assert(year >= 1970); // Should be after 1970
     test_assert(month >= 1 && month <= 12);
     test_assert(day >= 1 && day <= 31);
-    test_assert(weekday >= 0 && weekday <= 6);
+    test_assert(weekday <= 6);
 
     sys_printf("UTC Date: %04d-%02d-%02d (weekday %d)\n", year, month, day,
                weekday);
@@ -149,7 +149,7 @@ int test_sys_02(void) {
     test_assert(year >= 1970);
     test_assert(month >= 1 && month <= 12);
     test_assert(day >= 1 && day <= 31);
-    test_assert(weekday >= 0 && weekday <= 6);
+    test_assert(weekday <= 6);
 
     sys_printf("sys_date_get_date_utc with NULL date passed\n");
   } while (0);
@@ -636,11 +636,11 @@ int test_sys_02(void) {
   do {
     // Test various month boundaries to ensure proper month/day calculations
     struct tm test_dates[] = {
-        {0, 0, 0, 31, 0, 70, 0, 0, 0}, // Jan 31, 1970
-        {0, 0, 0, 1, 1, 70, 0, 0, 0},  // Feb 1, 1970
-        {0, 0, 0, 28, 1, 70, 0, 0, 0}, // Feb 28, 1970 (non-leap)
-        {0, 0, 0, 1, 2, 70, 0, 0, 0},  // Mar 1, 1970
-        {0, 0, 0, 31, 11, 70, 0, 0, 0} // Dec 31, 1970
+        {0, 0, 0, 31, 0, 70, 0, 0, 0, 0, NULL}, // Jan 31, 1970
+        {0, 0, 0, 1, 1, 70, 0, 0, 0, 0, NULL},  // Feb 1, 1970
+        {0, 0, 0, 28, 1, 70, 0, 0, 0, 0, NULL}, // Feb 28, 1970 (non-leap)
+        {0, 0, 0, 1, 2, 70, 0, 0, 0, 0, NULL},  // Mar 1, 1970
+        {0, 0, 0, 31, 11, 70, 0, 0, 0, 0, NULL} // Dec 31, 1970
     };
 
     for (int i = 0; i < 5; i++) {
