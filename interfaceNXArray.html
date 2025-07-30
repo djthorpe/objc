@@ -127,6 +127,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXArray.html#a8dce821e5ec9322fb43c60c04d75fa4f">removeAllObjects</a></td></tr>
 <tr class="memdesc:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all objects from the array.  <a href="#a8dce821e5ec9322fb43c60c04d75fa4f">More...</a><br /></td></tr>
 <tr class="separator:a8dce821e5ec9322fb43c60c04d75fa4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b332052c51d8dff414d078023568968"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXString.html">NXString</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXArray.html#a4b332052c51d8dff414d078023568968">stringWithObjectsJoinedByString:</a></td></tr>
+<tr class="memdesc:a4b332052c51d8dff414d078023568968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of the array, with each object separated by a delimiter.  <a href="#a4b332052c51d8dff414d078023568968">More...</a><br /></td></tr>
+<tr class="separator:a4b332052c51d8dff414d078023568968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceNXObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfaceNXObject')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interfaceNXObject.html">NXObject</a></td></tr>
 <tr class="memitem:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">retain</a></td></tr>
 <tr class="memdesc:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increases the retain count of the receiver.  <a href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">More...</a><br /></td></tr>
@@ -325,7 +328,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a> instance containing the specified objects, or nil on failure.</dd></dl>
-<p>This method takes a variadic list of objects terminated by nil. Objects are added to the array in the order they appear in the argument list. The returned array is autoreleased. </p>
+<p>Takes a variadic list of objects terminated by nil. Objects are added to the array in the order they appear in the argument list. The returned array is autoreleased. </p>
 
 </div>
 </div>
@@ -346,7 +349,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 <p>Returns the capacity of the array. </p>
 <dl class="section return"><dt>Returns</dt><dd>The total allocated size of the array, including any unused elements.</dd></dl>
-<p>This method returns the current capacity of the array's internal storage, which may be larger than the actual number of elements in the array. This is useful for understanding how much space is available for adding new elements without requiring reallocation. </p>
+<p>Returns the current capacity of the array's internal storage, which may be larger than the actual number of elements in the array. This is useful for understanding how much space is available for adding new elements without requiring reallocation. </p>
 
 </div>
 </div>
@@ -374,7 +377,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if the collection contains the specified object, NO otherwise.</dd></dl>
-<p>This method recursively checks each element in the collection for equality with the specified object. It will return YES if any element matches, including those in nested arrays and maps. If you wish to check for an object's presence as an element in the array, use the <code>indexForObject:</code> method instead. </p>
+<p>Recursively checks each element in the collection for equality with the specified object. It will return YES if any element matches, including those in nested arrays and maps. If you wish to check for an object's presence as an element in the array, use the <code>indexForObject:</code> method instead. </p>
 
 <p>Reimplemented from <a class="el" href="protocolCollectionProtocol-p.html#ab5da6b8ce9987eff807856d5b66283d5">&lt;CollectionProtocol&gt;</a>.</p>
 
@@ -483,7 +486,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An initialized <a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a> instance containing the specified objects, or nil on failure.</dd></dl>
-<p>This method takes a variadic list of objects terminated by nil. Objects are added to the array in the order they appear in the argument list. </p>
+<p>Takes a variadic list of objects terminated by nil. Objects are added to the array in the order they appear in the argument list. </p>
 
 </div>
 </div>
@@ -522,7 +525,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if the object was successfully inserted, NO otherwise.</dd></dl>
-<p>This method shifts existing elements at and after the specified index to make room for the new object. If the index is greater than the current count, an exception should be thrown. </p>
+<p>Shifts existing elements at and after the specified index to make room for the new object. If the index is greater than the current count, an exception should be thrown. </p>
 
 </div>
 </div>
@@ -570,7 +573,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the object in the array, or NXNotFound if the object</dd></dl>
-<p>This method searches the array from the beginning to the end and returns the lowest index for an object equivalent to the specified object. Two objects are considered equivalent if their <code>isEqual:</code> method returns YES. </p>
+<p>Searches the array from the beginning to the end and returns the lowest index for an object equivalent to the specified object. Two objects are considered equivalent if their <code>isEqual:</code> method returns YES. </p>
 
 </div>
 </div>
@@ -598,7 +601,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if the object was found and successfully removed, NO otherwise.</dd></dl>
-<p>This method searches the array from the beginning to find the first occurrence of an object that is equal to the specified object (using the <code>isEqual:</code> method). If found, the object is removed and all subsequent elements are shifted down to fill the gap. The array's count is decremented by one. If the object is not found in the array, the method returns NO and the array remains unchanged. </p>
+<p>Searches the array from the beginning to find the first occurrence of an object that is equal to the specified object (using the <code>isEqual:</code> method). If found, the object is removed and all subsequent elements are shifted down to fill the gap. The array's count is decremented by one. If the object is not found in the array, the method returns NO and the array remains unchanged. </p>
 
 </div>
 </div>
@@ -618,7 +621,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </div><div class="memdoc">
 
 <p>Removes all objects from the array. </p>
-<p>This method clears the array by releasing all objects and resetting the internal data structure. The array's count is set to zero and its capacity remains unchanged. </p>
+<p>Clears the array by releasing all objects and resetting the internal data structure. The array's count is set to zero and its capacity remains unchanged. </p>
 
 </div>
 </div>
@@ -646,7 +649,35 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>YES if the object was successfully removed, NO otherwise.</dd></dl>
-<p>This method removes the object at the specified index and shifts all subsequent elements down by one position to fill the gap. The array's count is decremented by one. </p>
+<p>Removes the object at the specified index and shifts all subsequent elements down by one position to fill the gap. The array's count is decremented by one. </p>
+
+</div>
+</div>
+<a id="a4b332052c51d8dff414d078023568968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b332052c51d8dff414d078023568968">&#9670;&nbsp;</a></span>stringWithObjectsJoinedByString:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceNXString.html">NXString</a> *) stringWithObjectsJoinedByString: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolNXConstantStringProtocol-p.html">NXConstantStringProtocol</a> &gt;)&#160;</td>
+          <td class="paramname"><em>delimiter</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a string representation of the array, with each object separated by a delimiter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delimiter</td><td>The string to use as a separator between objects. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the array.</dd></dl>
+<p>This method does not modify the array's contents or structure. </p>
 
 </div>
 </div>

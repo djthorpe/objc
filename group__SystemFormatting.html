@@ -96,6 +96,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54">sys_vprintf_ex</a> (const char *format, va_list args, <a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a> custom_handler)</td></tr>
 <tr class="memdesc:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output using a va_list argument with custom format handler support.  <a href="#ga6d2ff9ff8a32686d5d816aae03beae54">More...</a><br /></td></tr>
 <tr class="separator:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaffefde21882bb6fcba07496c611be673"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#gaffefde21882bb6fcba07496c611be673">sys_vsprintf_ex</a> (char *buf, size_t sz, const char *format, va_list args, <a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a> custom_handler)</td></tr>
+<tr class="memdesc:gaffefde21882bb6fcba07496c611be673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to a string buffer using a va_list argument with custom format handler support.  <a href="#gaffefde21882bb6fcba07496c611be673">More...</a><br /></td></tr>
+<tr class="separator:gaffefde21882bb6fcba07496c611be673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab90f3e476547c5b1da238633d6725662"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#gab90f3e476547c5b1da238633d6725662">sys_sprintf_ex</a> (char *buf, size_t sz, const char *format, <a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a> custom_handler,...)</td></tr>
+<tr class="memdesc:gab90f3e476547c5b1da238633d6725662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to a string buffer with custom format handler support.  <a href="#gab90f3e476547c5b1da238633d6725662">More...</a><br /></td></tr>
+<tr class="separator:gab90f3e476547c5b1da238633d6725662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for creating and outputting formatted strings. </p>
@@ -311,6 +317,66 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
+<a id="gab90f3e476547c5b1da238633d6725662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab90f3e476547c5b1da238633d6725662">&#9670;&nbsp;</a></span>sys_sprintf_ex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sys_sprintf_ex </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a>&#160;</td>
+          <td class="paramname"><em>custom_handler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints formatted output to a string buffer with custom format handler support. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Pointer to the destination buffer where the formatted string will be stored. If NULL, only the length is calculated. </td></tr>
+    <tr><td class="paramname">sz</td><td>Size of the destination buffer in bytes, including space for the null terminator. </td></tr>
+    <tr><td class="paramname">format</td><td>A printf-style format string. </td></tr>
+    <tr><td class="paramname">custom_handler</td><td>Custom format handler for unsupported format specifiers, or NULL. </td></tr>
+    <tr><td class="paramname">...</td><td>Additional arguments corresponding to format specifiers in format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters that would have been written if the buffer was sufficiently large, not counting the null terminator.</dd></dl>
+<p>This function is similar to <a class="el" href="group__SystemFormatting.html#ga340ab3d1b3e0cef587d52b580cd59d25" title="Prints formatted output to a string buffer. ">sys_sprintf()</a> but allows specifying a custom format handler that will be called for any format specifiers not handled by the built-in implementation. This enables support for custom format specifiers like '%@' for objects. </p>
+
+</div>
+</div>
 <a id="gaac71469c45207a063e75bf7e6c2dbb5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaac71469c45207a063e75bf7e6c2dbb5b">&#9670;&nbsp;</a></span>sys_vprintf()</h2>
 
@@ -444,6 +510,66 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of characters that would have been written if the buffer was sufficiently large, not counting the null terminator. </dd></dl>
+
+</div>
+</div>
+<a id="gaffefde21882bb6fcba07496c611be673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaffefde21882bb6fcba07496c611be673">&#9670;&nbsp;</a></span>sys_vsprintf_ex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sys_vsprintf_ex </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a>&#160;</td>
+          <td class="paramname"><em>custom_handler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints formatted output to a string buffer using a va_list argument with custom format handler support. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Pointer to the destination buffer where the formatted string will be stored. If NULL, only the length is calculated. </td></tr>
+    <tr><td class="paramname">sz</td><td>Size of the destination buffer in bytes, including space for the null terminator. </td></tr>
+    <tr><td class="paramname">format</td><td>A printf-style format string. </td></tr>
+    <tr><td class="paramname">args</td><td>A va_list containing the arguments for the format string. </td></tr>
+    <tr><td class="paramname">custom_handler</td><td>Custom format handler for unsupported format specifiers, or NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters that would have been written if the buffer was sufficiently large, not counting the null terminator.</dd></dl>
+<p>This function is similar to <a class="el" href="group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992" title="Prints formatted output to a string buffer using a va_list argument. ">sys_vsprintf()</a> but allows specifying a custom format handler that will be called for any format specifiers not handled by the built-in implementation. This enables support for custom format specifiers like '%@' for objects. </p>
 
 </div>
 </div>
