@@ -73,6 +73,7 @@ var searchData=
   ['sys_5ftimer_5finit',['sys_timer_init',['../group__SystemTimer.html#gac1368a749ee9713f5339cfc2b27dbdcd',1,'timer.h']]],
   ['sys_5ftimer_5fstart',['sys_timer_start',['../group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772',1,'timer.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../group__SystemFormatting.html#gaac71469c45207a063e75bf7e6c2dbb5b',1,'printf.h']]],
+  ['sys_5fvprintf_5fex',['sys_vprintf_ex',['../group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54',1,'printf.h']]],
   ['sys_5fvsprintf',['sys_vsprintf',['../group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992',1,'printf.h']]],
   ['sys_5fwaitgroup_5fadd',['sys_waitgroup_add',['../group__SystemSync.html#ga6fe6dc303b2686856f6496f8c3589eeb',1,'sync.h']]],
   ['sys_5fwaitgroup_5fdone',['sys_waitgroup_done',['../group__SystemSync.html#ga6bc3531da1d947e8b588749cecc2b692',1,'sync.h']]],

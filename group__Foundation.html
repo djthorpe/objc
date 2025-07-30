@@ -49,7 +49,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
@@ -110,12 +109,6 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A category that adds a description method to the <a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> class.  <a href="categoryObject_07Description_08.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga6af05e6dd8b6052f740e7384539d45ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga6af05e6dd8b6052f740e7384539d45ab">NXLog</a>(format, ...)</td></tr>
-<tr class="memdesc:ga6af05e6dd8b6052f740e7384539d45ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a formatted string to the standard error stream.  <a href="#ga6af05e6dd8b6052f740e7384539d45ab">More...</a><br /></td></tr>
-<tr class="separator:ga6af05e6dd8b6052f740e7384539d45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gacb415dcba0be032b662a4d117a80d5cf"><td class="memItemLeft" align="right" valign="top">typedef int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a></td></tr>
@@ -147,6 +140,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9b9cf616a3f4f8700b23e80c1a800e12"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga9b9cf616a3f4f8700b23e80c1a800e12">NXArchBits</a> (void)</td></tr>
 <tr class="memdesc:ga9b9cf616a3f4f8700b23e80c1a800e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current architecture bits (32 or 64).  <a href="#ga9b9cf616a3f4f8700b23e80c1a800e12">More...</a><br /></td></tr>
 <tr class="separator:ga9b9cf616a3f4f8700b23e80c1a800e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d911103836e6622e16f1906e298f693"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga7d911103836e6622e16f1906e298f693">NXArchOS</a> (void)</td></tr>
+<tr class="memdesc:ga7d911103836e6622e16f1906e298f693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current operating system name.  <a href="#ga7d911103836e6622e16f1906e298f693">More...</a><br /></td></tr>
+<tr class="separator:ga7d911103836e6622e16f1906e298f693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3dc5737bad94fc1a29d3ea389781a022"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga3dc5737bad94fc1a29d3ea389781a022">NXArchProcessor</a> (void)</td></tr>
+<tr class="memdesc:ga3dc5737bad94fc1a29d3ea389781a022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current processor/CPU type.  <a href="#ga3dc5737bad94fc1a29d3ea389781a022">More...</a><br /></td></tr>
+<tr class="separator:ga3dc5737bad94fc1a29d3ea389781a022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1202723bcfd796d7be93b8751fd32089"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Foundation.html#ga64a1cc18eff9f4a79f16c2bf56d7ad23">NXEndian</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga1202723bcfd796d7be93b8751fd32089">NXArchEndian</a> (void)</td></tr>
 <tr class="memdesc:ga1202723bcfd796d7be93b8751fd32089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current architecture endianness.  <a href="#ga1202723bcfd796d7be93b8751fd32089">More...</a><br /></td></tr>
 <tr class="separator:ga1202723bcfd796d7be93b8751fd32089"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,6 +158,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa883ed827a2c8aec90e77fec9036c430"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gaa883ed827a2c8aec90e77fec9036c430">NXRandUnsignedInt32</a> ()</td></tr>
 <tr class="memdesc:gaa883ed827a2c8aec90e77fec9036c430"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random unsigned 32-bit integer.  <a href="#gaa883ed827a2c8aec90e77fec9036c430">More...</a><br /></td></tr>
 <tr class="separator:gaa883ed827a2c8aec90e77fec9036c430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d50f8ca5b9c94686168145bd2c10b09"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09">NXTimeIntervalMilliseconds</a> (<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a> interval)</td></tr>
+<tr class="memdesc:ga9d50f8ca5b9c94686168145bd2c10b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a time interval to milliseconds.  <a href="#ga9d50f8ca5b9c94686168145bd2c10b09">More...</a><br /></td></tr>
+<tr class="separator:ga9d50f8ca5b9c94686168145bd2c10b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga49e3c3c4b120058925a19cb3b503bdf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceNXString.html">NXString</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga49e3c3c4b120058925a19cb3b503bdf4">NXTimeIntervalDescription</a> (<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a> interval, <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a> truncate)</td></tr>
+<tr class="memdesc:ga49e3c3c4b120058925a19cb3b503bdf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a time interval to a string representation.  <a href="#ga49e3c3c4b120058925a19cb3b503bdf4">More...</a><br /></td></tr>
+<tr class="separator:ga49e3c3c4b120058925a19cb3b503bdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -166,50 +171,33 @@ Variables</h2></td></tr>
 const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga832113a9df42038a2b5524e1fce176b6">NXNotFound</a></td></tr>
 <tr class="memdesc:ga832113a9df42038a2b5524e1fce176b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant representing "not found". <br /></td></tr>
 <tr class="separator:ga832113a9df42038a2b5524e1fce176b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf7a9849a085f5f99a1167524bd0b911"><td class="memItemLeft" align="right" valign="top"><a id="gaaf7a9849a085f5f99a1167524bd0b911"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gaaf7a9849a085f5f99a1167524bd0b911">Nanosecond</a></td></tr>
+<tr class="memdesc:gaaf7a9849a085f5f99a1167524bd0b911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base unit: 1 nanosecond. <br /></td></tr>
+<tr class="separator:gaaf7a9849a085f5f99a1167524bd0b911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae92c8d12ab345aad726d1e06da6f9489"><td class="memItemLeft" align="right" valign="top"><a id="gae92c8d12ab345aad726d1e06da6f9489"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gae92c8d12ab345aad726d1e06da6f9489">Millisecond</a></td></tr>
+<tr class="memdesc:gae92c8d12ab345aad726d1e06da6f9489"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 millisecond = 1,000,000 nanoseconds <br /></td></tr>
+<tr class="separator:gae92c8d12ab345aad726d1e06da6f9489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga153682f87f330828776f0feab035822f"><td class="memItemLeft" align="right" valign="top"><a id="ga153682f87f330828776f0feab035822f"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga153682f87f330828776f0feab035822f">Second</a></td></tr>
+<tr class="memdesc:ga153682f87f330828776f0feab035822f"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 second = 1000 milliseconds <br /></td></tr>
+<tr class="separator:ga153682f87f330828776f0feab035822f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d067ed42a6146a596017dd7cd348b2e"><td class="memItemLeft" align="right" valign="top"><a id="ga1d067ed42a6146a596017dd7cd348b2e"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#ga1d067ed42a6146a596017dd7cd348b2e">Minute</a></td></tr>
+<tr class="memdesc:ga1d067ed42a6146a596017dd7cd348b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 minute = 60 seconds <br /></td></tr>
+<tr class="separator:ga1d067ed42a6146a596017dd7cd348b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecb078459b2e66be89717219c59fa732"><td class="memItemLeft" align="right" valign="top"><a id="gaecb078459b2e66be89717219c59fa732"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gaecb078459b2e66be89717219c59fa732">Hour</a></td></tr>
+<tr class="memdesc:gaecb078459b2e66be89717219c59fa732"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 hour = 60 minutes <br /></td></tr>
+<tr class="separator:gaecb078459b2e66be89717219c59fa732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6e099b3347127ab2c726380f45aabd6"><td class="memItemLeft" align="right" valign="top"><a id="gab6e099b3347127ab2c726380f45aabd6"></a>
+const <a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Foundation.html#gab6e099b3347127ab2c726380f45aabd6">Day</a></td></tr>
+<tr class="memdesc:gab6e099b3347127ab2c726380f45aabd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">1 day = 24 hours <br /></td></tr>
+<tr class="separator:gab6e099b3347127ab2c726380f45aabd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Implementation of the foundational classes and types, including strings, numbers, dates, data and collections. </p>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ga6af05e6dd8b6052f740e7384539d45ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6af05e6dd8b6052f740e7384539d45ab">&#9670;&nbsp;</a></span>NXLog</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NXLog</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                                         \</div><div class="line">    sys_printf((<span class="keyword">const</span> <span class="keywordtype">char</span> *)[format cStr], ##__VA_ARGS__);                    \</div><div class="line">    sys_puts(<span class="stringliteral">&quot;\n&quot;</span>);                                                            \</div><div class="line">  } <span class="keywordflow">while</span> (0)</div></div><!-- fragment -->
-<p>Logs a formatted string to the standard error stream. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>An <code><a class="el" href="interfaceNXConstantString.html" title="A constant string class. ">NXConstantString</a></code> object that contains a C-style format string. </td></tr>
-    <tr><td class="paramname">...</td><td>A comma-separated list of arguments to be printed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This macro takes a format string and a variable number of arguments, formats them, and prints the result to <code>stderr</code>, followed by a newline character. </p>
-
-<p class="definition">Definition at line <a class="el" href="NXLog_8h_source.html#l00024">24</a> of file <a class="el" href="NXLog_8h_source.html">NXLog.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gacb415dcba0be032b662a4d117a80d5cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gacb415dcba0be032b662a4d117a80d5cf">&#9670;&nbsp;</a></span>NXTimeInterval</h2>
@@ -363,6 +351,48 @@ const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
+<a id="ga7d911103836e6622e16f1906e298f693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d911103836e6622e16f1906e298f693">&#9670;&nbsp;</a></span>NXArchOS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* NXArchOS </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current operating system name. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the operating system name (e.g., "darwin", "linux", "pico"). </dd></dl>
+
+</div>
+</div>
+<a id="ga3dc5737bad94fc1a29d3ea389781a022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3dc5737bad94fc1a29d3ea389781a022">&#9670;&nbsp;</a></span>NXArchProcessor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* NXArchProcessor </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current processor/CPU type. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the processor name (e.g., "arm64", "x86-64", "aarch64", "cortex-m0plus"). </dd></dl>
+
+</div>
+</div>
 <a id="ga3c5ce4190cd3e1aad68bb62c2ae70878"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3c5ce4190cd3e1aad68bb62c2ae70878">&#9670;&nbsp;</a></span>NXRandInt32()</h2>
 
@@ -402,6 +432,73 @@ const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <p>Generate a random unsigned 32-bit integer. </p>
 <p>This function generates a random unsigned integer value. </p><dl class="section return"><dt>Returns</dt><dd>A random unsigned integer value. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This function is not thread-safe. </dd></dl>
+
+</div>
+</div>
+<a id="ga49e3c3c4b120058925a19cb3b503bdf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga49e3c3c4b120058925a19cb3b503bdf4">&#9670;&nbsp;</a></span>NXTimeIntervalDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfaceNXString.html">NXString</a>* NXTimeIntervalDescription </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td>
+          <td class="paramname"><em>interval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td>
+          <td class="paramname"><em>truncate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a time interval to a string representation. </p>
+<p>This function converts a NXTimeInterval value to its string representation, including the appropriate time unit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interval</td><td>The time interval to convert. </td></tr>
+    <tr><td class="paramname">truncate</td><td>Truncate the interval based on the precision required. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string representation of the given time interval. </dd></dl>
+
+</div>
+</div>
+<a id="ga9d50f8ca5b9c94686168145bd2c10b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d50f8ca5b9c94686168145bd2c10b09">&#9670;&nbsp;</a></span>NXTimeIntervalMilliseconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t NXTimeIntervalMilliseconds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>&#160;</td>
+          <td class="paramname"><em>interval</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a time interval to milliseconds. </p>
+<p>This function converts a NXTimeInterval value to its milliseconds representation, discarding any fractional nanoseconds.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interval</td><td>The time interval to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The milliseconds equivalent of the given time interval. </dd></dl>
 
 </div>
 </div>

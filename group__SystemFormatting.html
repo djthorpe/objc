@@ -48,6 +48,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">String Formatting<div class="ingroups"><a class="el" href="group__System.html">System Management</a></div></div>  </div>
@@ -66,6 +67,12 @@ Collaboration diagram for String Formatting:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a>) (char format, va_list *va)</td></tr>
+<tr class="memdesc:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom format handler function type.  <a href="#ga3af0ba71482e0e94bfc62282d28a48e5">More...</a><br /></td></tr>
+<tr class="separator:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
@@ -86,6 +93,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga86745087b8aeeae5c0715896240ab992"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992">sys_vsprintf</a> (char *buf, size_t sz, const char *format, va_list args)</td></tr>
 <tr class="memdesc:ga86745087b8aeeae5c0715896240ab992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to a string buffer using a va_list argument.  <a href="#ga86745087b8aeeae5c0715896240ab992">More...</a><br /></td></tr>
 <tr class="separator:ga86745087b8aeeae5c0715896240ab992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54">sys_vprintf_ex</a> (const char *format, va_list args, <a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a> custom_handler)</td></tr>
+<tr class="memdesc:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output using a va_list argument with custom format handler support.  <a href="#ga6d2ff9ff8a32686d5d816aae03beae54">More...</a><br /></td></tr>
+<tr class="separator:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for creating and outputting formatted strings. </p>
@@ -126,6 +136,33 @@ Functions</h2></td></tr>
 </ul>
 <p>The <a class="el" href="group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d" title="Prints formatted output to the system console. ">sys_printf()</a> function is thread-safe and can be used from multiple threads simultaneously without additional synchronization. It was implemented to extend the use of printf to Objective-C objects and NXTimeInterval.</p>
 <p>At the moment floating point numbers are not supported, but they may be added in the future. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga3af0ba71482e0e94bfc62282d28a48e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3af0ba71482e0e94bfc62282d28a48e5">&#9670;&nbsp;</a></span>sys_printf_format_handler_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef const char*(* sys_printf_format_handler_t) (char format, va_list *va)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Custom format handler function type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>The format specifier character (e.g., '@' for '%@'). </td></tr>
+    <tr><td class="paramname">va</td><td>Pointer to the va_list containing the arguments. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of the formatted value, or NULL if the format specifier is not handled by this custom handler. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="printf_8h_source.html#l00146">146</a> of file <a class="el" href="printf_8h_source.html">printf.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gab6bda746d6b03c697ebcf468f83fdb6d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab6bda746d6b03c697ebcf468f83fdb6d">&#9670;&nbsp;</a></span>sys_printf()</h2>
@@ -309,6 +346,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of characters printed. </dd></dl>
+
+</div>
+</div>
+<a id="ga6d2ff9ff8a32686d5d816aae03beae54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6d2ff9ff8a32686d5d816aae03beae54">&#9670;&nbsp;</a></span>sys_vprintf_ex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t sys_vprintf_ex </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a>&#160;</td>
+          <td class="paramname"><em>custom_handler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints formatted output using a va_list argument with custom format handler support. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>A printf-style format string. </td></tr>
+    <tr><td class="paramname">args</td><td>A va_list containing the arguments for the format string. </td></tr>
+    <tr><td class="paramname">custom_handler</td><td>Custom format handler for unsupported format specifiers, or NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters printed.</dd></dl>
+<p>This function is similar to <a class="el" href="group__SystemFormatting.html#gaac71469c45207a063e75bf7e6c2dbb5b" title="Prints formatted output using a va_list argument. ">sys_vprintf()</a> but allows specifying a custom format handler that will be called for any format specifiers not handled by the built-in implementation. This enables support for custom format specifiers like '%@' for objects. </p>
 
 </div>
 </div>

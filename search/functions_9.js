@@ -13,8 +13,10 @@ var searchData=
   ['nxarchbits',['NXArchBits',['../group__Foundation.html#ga9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
   ['nxarchendian',['NXArchEndian',['../group__Foundation.html#ga1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],
   ['nxarchnumcores',['NXArchNumCores',['../group__Foundation.html#gae5ebb9b55da9e716c8d6c78437096a3b',1,'NXArch.h']]],
+  ['nxarchos',['NXArchOS',['../group__Foundation.html#ga7d911103836e6622e16f1906e298f693',1,'NXArch.h']]],
+  ['nxarchprocessor',['NXArchProcessor',['../group__Foundation.html#ga3dc5737bad94fc1a29d3ea389781a022',1,'NXArch.h']]],
   ['nxrandint32',['NXRandInt32',['../group__Foundation.html#ga3c5ce4190cd3e1aad68bb62c2ae70878',1,'NXNumber.h']]],
   ['nxrandunsignedint32',['NXRandUnsignedInt32',['../group__Foundation.html#gaa883ed827a2c8aec90e77fec9036c430',1,'NXNumber.h']]],
-  ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../NXTimeInterval_8h.html#a49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
-  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../NXTimeInterval_8h.html#a9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]]
+  ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../group__Foundation.html#ga49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
+  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]]
 ];

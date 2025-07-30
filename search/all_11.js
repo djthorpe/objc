@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['second',['Second',['../NXTimeInterval_8h.html#a153682f87f330828776f0feab035822f',1,'NXTimeInterval.h']]],
+  ['second',['Second',['../group__Foundation.html#ga153682f87f330828776f0feab035822f',1,'NXTimeInterval.h']]],
   ['sel',['SEL',['../group__objc.html#gacc50f82530a982adeb5979def1ca71fa',1,'runtime.h']]],
   ['sel_5fgetname',['sel_getName',['../group__objc.html#ga359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
   ['set',['set',['../structpix__frame__t.html#a47889f8bd6ba7db33796e65be3e69ef3',1,'pix_frame_t']]],
@@ -77,6 +77,7 @@ var searchData=
   ['sys_5fmutex_5funlock',['sys_mutex_unlock',['../group__SystemSync.html#ga7c24c3cfd80c2e2b8963aec0b895fe3d',1,'sync.h']]],
   ['sys_5fpanicf',['sys_panicf',['../group__SystemThread.html#ga795b667df1ea24eeb5045a9f625f8611',1,'thread.h']]],
   ['sys_5fprintf',['sys_printf',['../group__SystemFormatting.html#gab6bda746d6b03c697ebcf468f83fdb6d',1,'printf.h']]],
+  ['sys_5fprintf_5fformat_5fhandler_5ft',['sys_printf_format_handler_t',['../group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5',1,'printf.h']]],
   ['sys_5fputch',['sys_putch',['../group__SystemFormatting.html#gae13dd8a6d75ee7e807c43ae84ec66dfd',1,'printf.h']]],
   ['sys_5fputs',['sys_puts',['../group__SystemFormatting.html#ga4eced11c2352451c4ea6c7386e58342b',1,'printf.h']]],
   ['sys_5frandom_5fuint32',['sys_random_uint32',['../group__SystemRandom.html#ga39c02847b060cfe7b9c568a06bc7ad74',1,'random.h']]],
@@ -94,6 +95,7 @@ var searchData=
   ['sys_5ftimer_5fstart',['sys_timer_start',['../group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772',1,'timer.h']]],
   ['sys_5ftimer_5ft',['sys_timer_t',['../structsys__timer__t.html',1,'sys_timer_t'],['../group__SystemTimer.html#ga3533996feca2a9c8233da4b172f4c007',1,'sys_timer_t():&#160;timer.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../group__SystemFormatting.html#gaac71469c45207a063e75bf7e6c2dbb5b',1,'printf.h']]],
+  ['sys_5fvprintf_5fex',['sys_vprintf_ex',['../group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54',1,'printf.h']]],
   ['sys_5fvsprintf',['sys_vsprintf',['../group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992',1,'printf.h']]],
   ['sys_5fwaitgroup_5fadd',['sys_waitgroup_add',['../group__SystemSync.html#ga6fe6dc303b2686856f6496f8c3589eeb',1,'sync.h']]],
   ['sys_5fwaitgroup_5fctx_5fsize',['SYS_WAITGROUP_CTX_SIZE',['../group__SystemSync.html#ga673237ae11d9cdc3f4ae46b767de6254',1,'sync.h']]],

@@ -52,6 +52,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">printf.h File Reference</div>  </div>
@@ -74,17 +75,23 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="printf_8h__dep__incl.png" border="0" usemap="#include_2runtime-sys_2printf_8hdep" alt=""/></div>
 <map name="include_2runtime-sys_2printf_8hdep" id="include_2runtime-sys_2printf_8hdep">
-<area shape="rect" id="node2" href="sys_8h.html" title="System management functions. " alt="" coords="193,95,344,136"/>
-<area shape="rect" id="node3" href="assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="12,184,163,225"/>
-<area shape="rect" id="node6" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="187,184,351,225"/>
-<area shape="rect" id="node7" href="NXLog_8h.html" title="Defines a logging macro for printing formatted messages. " alt="" coords="375,184,539,225"/>
-<area shape="rect" id="node4" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="12,273,163,315"/>
+<area shape="rect" id="node2" href="sys_8h.html" title="System management functions. " alt="" coords="200,95,351,136"/>
+<area shape="rect" id="node3" href="assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="87,184,237,225"/>
+<area shape="rect" id="node6" href="NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="193,363,357,404"/>
+<area shape="rect" id="node7" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="313,184,477,225"/>
+<area shape="rect" id="node4" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="87,273,237,315"/>
 <area shape="rect" id="node5" href="NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="5,363,169,404"/>
 </map>
 </div>
 </div>
 <p><a href="printf_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="memItemLeft" align="right" valign="top">typedef const char *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a>) (char format, va_list *va)</td></tr>
+<tr class="memdesc:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom format handler function type.  <a href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">More...</a><br /></td></tr>
+<tr class="separator:ga3af0ba71482e0e94bfc62282d28a48e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga4eced11c2352451c4ea6c7386e58342b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga4eced11c2352451c4ea6c7386e58342b">sys_puts</a> (const char *str)</td></tr>
@@ -105,6 +112,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga86745087b8aeeae5c0715896240ab992"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992">sys_vsprintf</a> (char *buf, size_t sz, const char *format, va_list args)</td></tr>
 <tr class="memdesc:ga86745087b8aeeae5c0715896240ab992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output to a string buffer using a va_list argument.  <a href="group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992">More...</a><br /></td></tr>
 <tr class="separator:ga86745087b8aeeae5c0715896240ab992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54">sys_vprintf_ex</a> (const char *format, va_list args, <a class="el" href="group__SystemFormatting.html#ga3af0ba71482e0e94bfc62282d28a48e5">sys_printf_format_handler_t</a> custom_handler)</td></tr>
+<tr class="memdesc:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints formatted output using a va_list argument with custom format handler support.  <a href="group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54">More...</a><br /></td></tr>
+<tr class="separator:ga6d2ff9ff8a32686d5d816aae03beae54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functions for formatted strings output. </p>
