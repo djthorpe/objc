@@ -274,7 +274,7 @@
 - (NXDate *)dateByAddingTimeInterval:(NXTimeInterval)interval {
   NXDate *newDate = [[NXDate alloc] init];
   if (newDate) {
-    newDate->_date = _date;             // Copy the current date
+    newDate->_date = _date;             // Copy the current date and time
     [newDate addTimeInterval:interval]; // Add the interval
   }
   return [newDate autorelease];
