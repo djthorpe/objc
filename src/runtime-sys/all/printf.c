@@ -305,12 +305,13 @@ size_t _sys_printf_put(struct sys_printf_state *state, char spec, va_list *va) {
     if (state->custom) {
       const char *custom_result = state->custom(spec, va);
       if (custom_result) {
+        size_t total_chars = 0;
         size_t len = 0;
         while (custom_result[len]) {
-          state->putch(state, custom_result[len]);
+          total_chars += state->putch(state, custom_result[len]);
           len++;
         }
-        return len; // Return length of custom formatted string
+        return total_chars; // Return actual characters written
       }
     }
     sys_panicf("Unsupported format specifier: %c", spec);
@@ -494,5 +495,33 @@ size_t sys_vprintf_ex(const char *format, va_list args,
   size_t len = _sys_vprintf(&state, format, &args_copy);
   va_end(args_copy);
   sys_mutex_unlock(&printf_mutex);
+  return len;
+}
+
+size_t sys_vsprintf_ex(char *buf, size_t sz, const char *format, va_list args,
+                       sys_printf_format_handler_t custom_handler) {
+  struct sys_printf_state state = {.putch = _sys_sprintf_putch,
+                                   .buffer = buf,
+                                   .size = sz,
+                                   .custom = custom_handler};
+  va_list args_copy;
+  va_copy(args_copy, args);
+  size_t len = _sys_vprintf(&state, format, &args_copy);
+  va_end(args_copy);
+
+  // Null terminate the buffer
+  if (buf && sz > 0) {
+    buf[state.pos < sz - 1 ? state.pos : sz - 1] = '\0';
+  }
+
+  return len;
+}
+
+size_t sys_sprintf_ex(char *buf, size_t sz, const char *format,
+                      sys_printf_format_handler_t custom_handler, ...) {
+  va_list va;
+  va_start(va, custom_handler);
+  size_t len = sys_vsprintf_ex(buf, sz, format, va, custom_handler);
+  va_end(va);
   return len;
 }

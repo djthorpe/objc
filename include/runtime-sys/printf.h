@@ -163,6 +163,53 @@ typedef const char *(*sys_printf_format_handler_t)(char format, va_list *va);
 extern size_t sys_vprintf_ex(const char *format, va_list args,
                              sys_printf_format_handler_t custom_handler);
 
+/**
+ * @brief Prints formatted output to a string buffer using a va_list argument
+ * with custom format handler support.
+ * @ingroup SystemFormatting
+ * @param buf Pointer to the destination buffer where the formatted string
+ *            will be stored. If NULL, only the length is calculated.
+ * @param sz Size of the destination buffer in bytes, including space for
+ *           the null terminator.
+ * @param format A printf-style format string.
+ * @param args A va_list containing the arguments for the format string.
+ * @param custom_handler Custom format handler for unsupported format
+ * specifiers, or NULL.
+ * @return The number of characters that would have been written if the buffer
+ *         was sufficiently large, not counting the null terminator.
+ *
+ * This function is similar to sys_vsprintf() but allows specifying a custom
+ * format handler that will be called for any format specifiers not handled
+ * by the built-in implementation. This enables support for custom format
+ * specifiers like '%@' for objects.
+ */
+extern size_t sys_vsprintf_ex(char *buf, size_t sz, const char *format,
+                              va_list args,
+                              sys_printf_format_handler_t custom_handler);
+
+/**
+ * @brief Prints formatted output to a string buffer with custom format
+ * handler support.
+ * @ingroup SystemFormatting
+ * @param buf Pointer to the destination buffer where the formatted string
+ *            will be stored. If NULL, only the length is calculated.
+ * @param sz Size of the destination buffer in bytes, including space for
+ *           the null terminator.
+ * @param format A printf-style format string.
+ * @param custom_handler Custom format handler for unsupported format
+ * specifiers, or NULL.
+ * @param ... Additional arguments corresponding to format specifiers in format.
+ * @return The number of characters that would have been written if the buffer
+ *         was sufficiently large, not counting the null terminator.
+ *
+ * This function is similar to sys_sprintf() but allows specifying a custom
+ * format handler that will be called for any format specifiers not handled
+ * by the built-in implementation. This enables support for custom format
+ * specifiers like '%@' for objects.
+ */
+extern size_t sys_sprintf_ex(char *buf, size_t sz, const char *format,
+                             sys_printf_format_handler_t custom_handler, ...);
+
 #ifdef __cplusplus
 }
 #endif

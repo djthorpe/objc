@@ -42,7 +42,7 @@
  * @return An initialized NXArray instance containing the specified objects, or
  * nil on failure.
  *
- * This method takes a variadic list of objects terminated by nil. Objects are
+ * Takes a variadic list of objects terminated by nil. Objects are
  * added to the array in the order they appear in the argument list.
  */
 - (id)initWithObjects:(id<RetainProtocol>)firstObject, ...;
@@ -54,7 +54,7 @@
  * @return A new NXArray instance containing the specified objects, or nil on
  * failure.
  *
- * This method takes a variadic list of objects terminated by nil. Objects are
+ * Takes a variadic list of objects terminated by nil. Objects are
  * added to the array in the order they appear in the argument list. The
  * returned array is autoreleased.
  */
@@ -70,7 +70,7 @@
  * @brief Returns the capacity of the array.
  * @return The total allocated size of the array, including any unused elements.
  *
- * This method returns the current capacity of the array's internal storage,
+ * Returns the current capacity of the array's internal storage,
  * which may be larger than the actual number of elements in the array. This is
  * useful for understanding how much space is available for adding new elements
  * without requiring reallocation.
@@ -94,7 +94,7 @@
  * @param object The object to check for containment.
  * @return YES if the collection contains the specified object, NO otherwise.
  *
- * This method recursively checks each element in the collection for equality
+ * Recursively checks each element in the collection for equality
  * with the specified object. It will return YES if any element matches,
  * including those in nested arrays and maps. If you wish to check for an
  * object's presence as an element in the array, use the `indexForObject:`
@@ -108,7 +108,7 @@
  * @param index The object to find in the array.
  * @return The index of the object in the array, or NXNotFound if the object
  *
- * This method searches the array from the beginning to the end and returns the
+ * Searches the array from the beginning to the end and returns the
  * lowest index for an object equivalent to the specified object. Two objects
  * are considered equivalent if their `isEqual:` method returns YES.
  */
@@ -135,7 +135,7 @@
  * @param index The index at which to insert the object.
  * @return YES if the object was successfully inserted, NO otherwise.
  *
- * This method shifts existing elements at and after the specified index
+ * Shifts existing elements at and after the specified index
  * to make room for the new object. If the index is greater than the
  * current count, an exception should be thrown.
  */
@@ -147,7 +147,7 @@
  * @param object The object to remove from the array.
  * @return YES if the object was found and successfully removed, NO otherwise.
  *
- * This method searches the array from the beginning to find the first
+ * Searches the array from the beginning to find the first
  * occurrence of an object that is equal to the specified object (using the
  * `isEqual:` method). If found, the object is removed and all subsequent
  * elements are shifted down to fill the gap. The array's count is decremented
@@ -161,7 +161,7 @@
  * @param index The index of the object to remove.
  * @return YES if the object was successfully removed, NO otherwise.
  *
- * This method removes the object at the specified index and shifts all
+ * Removes the object at the specified index and shifts all
  * subsequent elements down by one position to fill the gap. The array's count
  * is decremented by one.
  */
@@ -171,10 +171,21 @@
  * @brief Removes all objects from the array.
  *
  *
- * This method clears the array by releasing all objects and resetting the
+ * Clears the array by releasing all objects and resetting the
  * internal data structure. The array's count is set to zero and its capacity
  * remains unchanged.
  */
 - (void)removeAllObjects;
+
+/**
+ * @brief Returns a string representation of the array, with each object
+ * separated by a delimiter.
+ * @param delimiter The string to use as a separator between objects.
+ * @return A string representation of the array.
+ *
+ * This method does not modify the array's contents or structure.
+ */
+- (NXString *)stringWithObjectsJoinedByString:
+    (id<NXConstantStringProtocol>)delimiter;
 
 @end

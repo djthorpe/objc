@@ -518,4 +518,83 @@
   return YES; // All objects are equal
 }
 
+/**
+ * @brief Returns a string representation of the array, with each object
+ * separated by a delimiter.
+ */
+- (NXString *)stringWithObjectsJoinedByString:
+    (id<NXConstantStringProtocol>)delimiter {
+  objc_assert(delimiter);
+
+  // Special case for empty array
+  if (_length == 0) {
+    return [NXString new]; // Return empty NXString for empty array
+  }
+
+  // Special case for single object
+  if (_length == 1) {
+    // If only one object, return its description
+    id firstObject = _data[0];
+    objc_assert(firstObject);
+    if ([firstObject conformsTo:@protocol(NXConstantStringProtocol)]) {
+      return [NXString stringWithString:firstObject];
+    } else {
+      return [firstObject description];
+    }
+  }
+
+  // Let's count the total length needed
+  size_t delimiterLength = [delimiter length];
+  size_t length = 0;
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id object = _data[i];
+    objc_assert(object);
+    if ([object conformsTo:@protocol(NXConstantStringProtocol)]) {
+      length += [object length];
+    } else {
+      // Use description for non-conforming objects
+      NXString *desc = [object description];
+      length += [desc length];
+    }
+  }
+
+  // Add space for delimiters (n-1 delimiters for n objects)
+  if (_length > 1) {
+    length += (_length - 1) * delimiterLength;
+  }
+
+  // Create a string with capacity for the total length
+  NXString *result = [NXString stringWithCapacity:length];
+  if (result == nil) {
+    return nil; // Failed to allocate string
+  }
+
+  // Append each object to the result string
+  for (i = 0; i < _length; i++) {
+    if (i > 0) {
+      [result append:delimiter]; // Append delimiter between objects
+    }
+
+    id object = _data[i];
+    objc_assert(object);
+    if ([object conformsTo:@protocol(NXConstantStringProtocol)]) {
+      [result append:object];
+    } else {
+      [result append:[object description]];
+    }
+  }
+
+  // Return the final string
+  return result;
+}
+
+/**
+ * @brief Returns a string representation of the array.
+ */
+- (NXString *)description {
+  NXString *joined = [self stringWithObjectsJoinedByString:@", "];
+  return [NXString stringWithFormat:@"@[ %@ ]", joined];
+}
+
 @end
