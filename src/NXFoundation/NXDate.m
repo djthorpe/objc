@@ -12,7 +12,7 @@
 - (id)init {
   self = [super init];
   if (self) {
-    bool success = sys_time_get_utc(&_time);
+    bool success = sys_date_get_now(&_date);
     if (!success) {
       [self release];
       self = nil;
@@ -31,12 +31,12 @@
   if (self) {
     int64_t s = interval / Second;
     int64_t ns = interval % Second;
-    _time.seconds += s;
-    _time.nanoseconds += ns;
-    if (_time.nanoseconds >= 1000000000) {
-      int64_t overflow = _time.nanoseconds / 1000000000;
-      _time.seconds += overflow;
-      _time.nanoseconds -= overflow * 1000000000;
+    _date.seconds += s;
+    _date.nanoseconds += ns;
+    if (_date.nanoseconds >= 1000000000) {
+      int64_t overflow = _date.nanoseconds / 1000000000;
+      _date.seconds += overflow;
+      _date.nanoseconds -= overflow * 1000000000;
     }
   }
   return self;
@@ -66,11 +66,11 @@
  */
 - (BOOL)_cacheComponents {
   if (_year == 0) {
-    if (!sys_time_get_date_utc(&_time, &_year, &_month, &_day, &_weekday)) {
+    if (!sys_date_get_date_utc(&_date, &_year, &_month, &_day, &_weekday)) {
       _year = 0;
       return NO;
     }
-    if (!sys_time_get_time_utc(&_time, &_hours, &_minutes, &_seconds)) {
+    if (!sys_date_get_time_utc(&_date, &_hours, &_minutes, &_seconds)) {
       _year = 0;
       return NO;
     }
@@ -147,7 +147,7 @@
     if (seconds)
       *seconds = _seconds;
     if (nanoseconds)
-      *nanoseconds = _time.nanoseconds;
+      *nanoseconds = _date.nanoseconds;
     return YES; // Components successfully cached
   }
   return NO; // Failed to cache components
@@ -163,7 +163,7 @@
   }
 
   // Set the date components in the underlying time structure
-  if (!sys_time_set_date_utc(&_time, year, month, day)) {
+  if (!sys_date_set_date_utc(&_date, year, month, day)) {
     return NO; // Failed to set date
   }
 
@@ -187,12 +187,12 @@
   }
 
   // Set the time components in the underlying time structure
-  if (!sys_time_set_time_utc(&_time, hours, minutes, seconds)) {
+  if (!sys_date_set_time_utc(&_date, hours, minutes, seconds)) {
     return NO; // Failed to set time
   }
 
   // Set nanoseconds directly
-  _time.nanoseconds = nanoseconds;
+  _date.nanoseconds = nanoseconds;
 
   // Mark components as uncached
   _year = 0;
@@ -206,7 +206,7 @@
  */
 - (NXTimeInterval)compare:(NXDate *)otherDate {
   objc_assert(otherDate != nil);
-  return sys_time_compare_ns(&otherDate->_time, &_time);
+  return sys_date_compare_ns(&otherDate->_date, &_date);
 }
 
 /**
@@ -214,7 +214,7 @@
  */
 - (BOOL)isEarlierThan:(NXDate *)otherDate {
   objc_assert(otherDate != nil);
-  return sys_time_compare_ns(&otherDate->_time, &_time) < 0;
+  return sys_date_compare_ns(&otherDate->_date, &_date) < 0;
 }
 
 /**
@@ -222,7 +222,7 @@
  */
 - (BOOL)isLaterThan:(NXDate *)otherDate {
   objc_assert(otherDate != nil);
-  return sys_time_compare_ns(&otherDate->_time, &_time) > 0;
+  return sys_date_compare_ns(&otherDate->_date, &_date) > 0;
 }
 
 /**
@@ -235,7 +235,7 @@
   if (other == nil || ![other isKindOfClass:[NXDate class]]) {
     return NO; // Not equal if other is nil or not a date
   }
-  return sys_time_compare_ns(&((NXDate *)other)->_time, &_time) == 0;
+  return sys_date_compare_ns(&((NXDate *)other)->_date, &_date) == 0;
 }
 
 /**
@@ -247,18 +247,18 @@
   int64_t ns = interval % Second;
 
   // Update the underlying time structure
-  _time.seconds += s;
-  _time.nanoseconds += ns;
+  _date.seconds += s;
+  _date.nanoseconds += ns;
 
   // Handle nanosecond overflow
-  if (_time.nanoseconds >= Second) {
-    int64_t overflow = _time.nanoseconds / Second;
-    _time.seconds += overflow;
-    _time.nanoseconds -= overflow * Second;
-  } else if (_time.nanoseconds < ns) { // Detect underflow
-    int64_t underflow = (ns - _time.nanoseconds + (Second - 1)) / Second;
-    _time.seconds -= underflow;
-    _time.nanoseconds += underflow * Second;
+  if (_date.nanoseconds >= Second) {
+    int64_t overflow = _date.nanoseconds / Second;
+    _date.seconds += overflow;
+    _date.nanoseconds -= overflow * Second;
+  } else if (_date.nanoseconds < ns) { // Detect underflow
+    int64_t underflow = (ns - _date.nanoseconds + (Second - 1)) / Second;
+    _date.seconds -= underflow;
+    _date.nanoseconds += underflow * Second;
   }
 
   // Mark components as uncached
@@ -274,7 +274,7 @@
 - (NXDate *)dateByAddingTimeInterval:(NXTimeInterval)interval {
   NXDate *newDate = [[NXDate alloc] init];
   if (newDate) {
-    newDate->_time = _time;             // Copy the current time
+    newDate->_date = _date;             // Copy the current date
     [newDate addTimeInterval:interval]; // Add the interval
   }
   return [newDate autorelease];

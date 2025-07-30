@@ -11,15 +11,15 @@ int main() {
   NXZone *zone = [NXZone zoneWithSize:1024];
   NXAutoreleasePool *pool = [[NXAutoreleasePool alloc] init];
 
-  // Test the underlying sys_time_get_utc function first
-  sys_time_t test_time;
-  bool time_success = sys_time_get_utc(&test_time);
-  printf("sys_time_get_utc success: %d\n", time_success);
-  if (time_success) {
-    printf("Current time: %lld seconds, %d nanoseconds\n",
-           (long long)test_time.seconds, test_time.nanoseconds);
+  // Test the underlying sys_date_get_now function first
+  sys_date_t test_date;
+  bool date_success = sys_date_get_now(&test_date);
+  printf("sys_date_get_now success: %d\n", date_success);
+  if (date_success) {
+    printf("Current date: %lld seconds, %d nanoseconds\n",
+           (long long)test_date.seconds, test_date.nanoseconds);
   }
-  test_assert(time_success);
+  test_assert(date_success);
 
   // Test 1: Create current date
   printf("\nTest 1: Creating current date...\n");
