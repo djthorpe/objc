@@ -26,9 +26,10 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
     // Handle NXTimeInterval formatting with %t
     NXTimeInterval interval = va_arg(*va, NXTimeInterval);
     NXString *desc = NXTimeIntervalDescription(interval, Millisecond);
-    if (desc != nil [desc conformsTo:@protocol(NXConstantStringProtocol)]) {
+    if (desc != nil && [desc conformsTo:@protocol(NXConstantStringProtocol)]) {
       return [desc cStr];
     }
+    return "<time>";
   }
 
   // Not handled by this custom handler or other error
