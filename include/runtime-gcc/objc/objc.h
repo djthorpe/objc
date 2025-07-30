@@ -3,8 +3,8 @@
  * @brief Defines the Objective-C runtime.
  * @defgroup objc Objective-C Runtime
  *
- * The underlying Objective-C runtime, providing class, object and protocol
- * introspection, and resolution of selectors to the method implementation.
+ * Objective-C runtime, providing class introspection, protocols and resolution
+ * of selectors to the methods.
  */
 #pragma once
 

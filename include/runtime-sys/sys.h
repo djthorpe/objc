@@ -3,8 +3,8 @@
  * @brief System management functions.
  * @defgroup System System Runtime
  *
- * These modules declare types and functions for the "system runtime" layer,
- * which provides low-level system functionality such as date and time handling,
+ * The "system runtime" layer provides low-level functionality specific to the
+ * platform
  *
  * The system runtime includes memory, process and thread management,
  * synchronization primitives, hashes, string formatting, random numbers and
