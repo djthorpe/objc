@@ -105,11 +105,11 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXData` - mutable binary data with Base64/hex encoding and append operations
 - [X] Hash functions - MD5 and SHA-256 hash computation through `sys_hash_*` API
 - [X] Pico toolchain - integrate with Pico SDK
+- [X] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
 - [ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on
 - [ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed
 - [ ] `NXString` - array methods - split, join, etc.
-- [ ] printf - `%@` format specifier for logging objects and `[Object description]`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] printf - `%T` format specifier for time intervals
 - [ ] `NXApplication` and `NXRunLoop`

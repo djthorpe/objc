@@ -135,6 +135,34 @@ extern size_t sys_sprintf(char *buf, size_t sz, const char *format, ...);
 extern size_t sys_vsprintf(char *buf, size_t sz, const char *format,
                            va_list args);
 
+/**
+ * @brief Custom format handler function type.
+ * @ingroup SystemFormatting
+ * @param format The format specifier character (e.g., '@' for '%@').
+ * @param va Pointer to the va_list containing the arguments.
+ * @return A string representation of the formatted value, or NULL if the
+ *         format specifier is not handled by this custom handler.
+ */
+typedef const char *(*sys_printf_format_handler_t)(char format, va_list *va);
+
+/**
+ * @brief Prints formatted output using a va_list argument with custom format
+ * handler support.
+ * @ingroup SystemFormatting
+ * @param format A printf-style format string.
+ * @param args A va_list containing the arguments for the format string.
+ * @param custom_handler Custom format handler for unsupported format
+ * specifiers, or NULL.
+ * @return The number of characters printed.
+ *
+ * This function is similar to sys_vprintf() but allows specifying a custom
+ * format handler that will be called for any format specifiers not handled
+ * by the built-in implementation. This enables support for custom format
+ * specifiers like '%@' for objects.
+ */
+extern size_t sys_vprintf_ex(const char *format, va_list args,
+                             sys_printf_format_handler_t custom_handler);
+
 #ifdef __cplusplus
 }
 #endif
