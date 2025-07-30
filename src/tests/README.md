@@ -8,9 +8,9 @@ The tests are organized into three main categories:
 
 ## Test Categories
 
-- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_22): Tests for the NXFoundation framework classes and functionality.
+- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_23): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_00 through sys_12): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, and event queues.
+- **System Tests** (sys_00 through sys_14): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, and cross-core communication.
 
 ---
 
@@ -40,6 +40,7 @@ The tests are organized into three main categories:
 | NXFoundation_20 | JSON Protocol Testing | Tests JSONProtocol conformance for core types with Base64 serialization. |
 | NXFoundation_21 | Array Testing | Tests NXArray creation, access, JSON serialization, and mutable operations. |
 | NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, and equality comparisons. |
+| NXFoundation_23 | NXLog Testing | Tests enhanced NXLog functionality with custom format handlers (%@ object formatting, %t time intervals), character count validation, nil handling, and mixed format specifiers. |
 
 ---
 
@@ -103,3 +104,5 @@ The tests are organized into three main categories:
 | sys_10 | Threading Stress Tests | High contention mutex, producer/consumer, race condition detection, extreme stress (21K ops), CPU affinity. |
 | sys_11 | Waitgroup Synchronization | Basic/delayed coordination, result collection, high-load stress (5K ops), error handling. |
 | sys_12 | Event Queue Operations | Basic ops, overflow/overwrite, threading, peek-before-acquire, shutdown, high volume (800 events), rapid shutdown, mixed operations. |
+| sys_13 | Event Queue Cross-Core Communication | Tests event queue initialization, basic push/pop operations, multicore producer-consumer patterns, timeout behavior, and error handling with bidirectional communication between cores. |
+| sys_14 | Dual-Core Event Queue with Timers | Tests dual-core event queue consumption with timer-driven event production, cross-core event mixing, high-load scenarios with atomic counters, and timer-based coordination. |
