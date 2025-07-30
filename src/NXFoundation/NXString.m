@@ -1,3 +1,4 @@
+#include "NXFoundation+format.h"
 #include "NXString+unicode.h"
 #include <NXFoundation/NXFoundation.h>
 #include <runtime-sys/sys.h>
@@ -105,22 +106,24 @@
     return self;
   }
 
-  // Create a copy since sys_vsprintf calls consume the va_list
+  // Create a copy since sys_vsprintf_ex calls consume the va_list
   va_list argsCopy;
   va_copy(argsCopy, args);
 
-  // Get the length of the formatted string
+  // Get the length of the formatted string using shared format handler
   const char *cFormat = [format cStr];
-  _length = sys_vsprintf(NULL, 0, cFormat, args);
+  _length =
+      sys_vsprintf_ex(NULL, 0, cFormat, args, _nxfoundation_format_handler);
   if (_length > 0) {
     // Allocate memory for the string
     objc_assert(_zone);
     _data = [_zone allocWithSize:_length + 1];
     if (_data) {
-      sys_vsprintf(_data, _length + 1, cFormat,
-                   argsCopy); // Format the string into the allocated memory
-      _value = _data;         // Set the value to the allocated data
-      _cap = _length + 1;     // Set capacity to length + null terminator
+      sys_vsprintf_ex(_data, _length + 1, cFormat, argsCopy,
+                      _nxfoundation_format_handler); // Format the string into
+                                                     // the allocated memory
+      _value = _data;     // Set the value to the allocated data
+      _cap = _length + 1; // Set capacity to length + null terminator
     } else {
       [self release];
       self = nil; // Allocation failed, set self to nil
@@ -491,13 +494,14 @@
   va_list args;
   va_start(args, format);
 
-  // Create a single copy since sys_vsprintf calls consume the va_list
+  // Create a single copy since sys_vsprintf_ex calls consume the va_list
   va_list argsCopy;
   va_copy(argsCopy, args);
 
-  // Get the length of the formatted string
+  // Get the length of the formatted string using shared format handler
   const char *cFormat = [format cStr];
-  size_t length = sys_vsprintf(NULL, 0, cFormat, args);
+  size_t length =
+      sys_vsprintf_ex(NULL, 0, cFormat, args, _nxfoundation_format_handler);
 
   if (length == 0) {
     va_end(argsCopy);
@@ -514,8 +518,9 @@
   }
 
   // Format the string directly into the allocated memory at the end of current
-  // string
-  sys_vsprintf(_data + _length, length + 1, cFormat, argsCopy);
+  // string using shared format handler
+  sys_vsprintf_ex(_data + _length, length + 1, cFormat, argsCopy,
+                  _nxfoundation_format_handler);
   _length += length; // Update length
 
   va_end(argsCopy);

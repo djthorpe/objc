@@ -589,4 +589,12 @@
   return result;
 }
 
+/**
+ * @brief Returns a string representation of the array.
+ */
+- (NXString *)description {
+  NXString *joined = [self stringWithObjectsJoinedByString:@", "];
+  return [NXString stringWithFormat:@"@[ %@ ]", joined];
+}
+
 @end

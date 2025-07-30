@@ -1,11 +1,13 @@
+#include "NXFoundation+format.h"
 #include <NXFoundation/NXFoundation.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
-// PRIVATE METHODS
+// SHARED FORMAT HANDLER
 
-// Custom handler for NXLog that supports %@ for objects
-static const char *nxlog_custom_handler(char format, va_list *va) {
+// Shared custom handler for NXFoundation that supports %@ for objects and %t
+// for time intervals
+const char *_nxfoundation_format_handler(char format, va_list *va) {
   if (format == '@') {
     id obj = va_arg(*va, id);
     if (obj == nil) {
@@ -14,13 +16,21 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
 
     // Check if the object directly conforms to NXConstantStringProtocol
     if ([obj conformsTo:@protocol(NXConstantStringProtocol)]) {
-      return [obj cStr];
+      const char *result = [obj cStr];
+      // Debug: Check the result
+      // printf("DEBUG: Format handler returning: '%s' (len=%zu)\n", result,
+      // strlen(result));
+      return result;
     }
 
     // Otherwise, call the object's description method and return the C string
     id desc = [obj description];
     if ([desc conformsTo:@protocol(NXConstantStringProtocol)]) {
-      return [desc cStr];
+      const char *result = [desc cStr];
+      // Debug: Check the result
+      // printf("DEBUG: Format handler returning desc: '%s' (len=%zu)\n",
+      // result, strlen(result));
+      return result;
     }
   } else if (format == 't') {
     // Handle NXTimeInterval formatting with %t
@@ -42,9 +52,10 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
 size_t NXLog(id<NXConstantStringProtocol> format, ...) {
   va_list args;
 
-  // Use custom handler for %@ and %t
+  // Use shared custom handler for %@ and %t
   va_start(args, format);
-  size_t result = sys_vprintf_ex([format cStr], args, nxlog_custom_handler);
+  size_t result =
+      sys_vprintf_ex([format cStr], args, _nxfoundation_format_handler);
   va_end(args);
 
   // Add newline like NSLog (but don't count it in the result)

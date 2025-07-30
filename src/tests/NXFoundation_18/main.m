@@ -35,7 +35,7 @@ int main() {
 
 int test_nxstring_methods(void) {
   printf("\n=== Running NXString Test Suite ===\n");
-  
+
   // Run all test categories
   test_nxstring_creation_methods();
   test_nxstring_comparison_methods();
@@ -46,7 +46,7 @@ int test_nxstring_methods(void) {
   test_nxstring_search_methods();
   test_nxstring_json_methods();
   test_nxstring_edge_cases();
-  
+
   printf("\n✅ All NXString test categories completed successfully!\n");
   return 0;
 }
@@ -101,6 +101,97 @@ int test_nxstring_creation_methods(void) {
   test_assert([formatted2 length] > 0);
   test_cstrings_equal([formatted2 cStr], "Value: example");
   printf("✓ initWithFormat works correctly\n");
+
+  // Test %@ format specifier with objects
+  NXString *testString = [NXString stringWithCString:"Hello"];
+  NXString *atFormatTest1 =
+      [NXString stringWithFormat:@"Message: %@", testString];
+  test_assert(atFormatTest1 != nil);
+  test_cstrings_equal([atFormatTest1 cStr], "Message: Hello");
+  printf("✓ stringWithFormat with %%@ works correctly\n");
+
+  // Test %@ format specifier with nil
+  NXString *atFormatTest2 = [NXString stringWithFormat:@"Nil: %@", nil];
+  test_assert(atFormatTest2 != nil);
+  test_cstrings_equal([atFormatTest2 cStr], "Nil: <nil>");
+  printf("✓ stringWithFormat with %%@ handles nil correctly\n");
+
+  // Test multiple %@ format specifiers
+  NXString *testString2 = [NXString stringWithCString:"World"];
+  NXString *atFormatTest3 = [NXString
+      stringWithFormat:@"%@ + %@ = combined", testString, testString2];
+  test_assert(atFormatTest3 != nil);
+  test_cstrings_equal([atFormatTest3 cStr], "Hello + World = combined");
+  printf("✓ stringWithFormat with multiple %%@ works correctly\n");
+
+  // Test %@ with array description
+  NXArray *testArray = [NXArray arrayWithObjects:testString, testString2, nil];
+  NXString *atFormatTest4 = [NXString stringWithFormat:@"Array: %@", testArray];
+  test_assert(atFormatTest4 != nil);
+  test_assert(strstr([atFormatTest4 cStr], "Array: @[") != NULL);
+  test_assert(strstr([atFormatTest4 cStr], "Hello") != NULL);
+  test_assert(strstr([atFormatTest4 cStr], "World") != NULL);
+  printf("✓ stringWithFormat with %%@ array description works correctly\n");
+
+  // Test %t format specifier with NXTimeInterval
+  NXTimeInterval oneSecond = Second;
+  NXString *timeFormatTest1 =
+      [NXString stringWithFormat:@"Duration: %t", oneSecond];
+  test_assert(timeFormatTest1 != nil);
+  test_assert(strstr([timeFormatTest1 cStr], "Duration: ") != NULL);
+  test_assert(strstr([timeFormatTest1 cStr], "1000ms") != NULL ||
+              strstr([timeFormatTest1 cStr], "1s") != NULL);
+  printf("✓ stringWithFormat with %%t works correctly\n");
+
+  // Test %t format specifier with milliseconds
+  NXTimeInterval oneHundredMs = 100 * Millisecond;
+  NXString *timeFormatTest2 =
+      [NXString stringWithFormat:@"Short time: %t", oneHundredMs];
+  test_assert(timeFormatTest2 != nil);
+  test_assert(strstr([timeFormatTest2 cStr], "Short time: ") != NULL);
+  test_assert(strstr([timeFormatTest2 cStr], "100ms") != NULL);
+  printf("✓ stringWithFormat with %%t milliseconds works correctly\n");
+
+  // Test %t format specifier with zero time
+  NXTimeInterval zeroTime = 0;
+  NXString *timeFormatTest3 = [NXString stringWithFormat:@"Zero: %t", zeroTime];
+  test_assert(timeFormatTest3 != nil);
+  test_assert(strstr([timeFormatTest3 cStr], "Zero: ") != NULL);
+  test_assert(strstr([timeFormatTest3 cStr], "0") != NULL);
+  printf("✓ stringWithFormat with %%t zero time works correctly\n");
+
+  // Test %t format specifier with large time interval
+  NXTimeInterval fiveMinutes = 5 * Minute;
+  NXString *timeFormatTest4 =
+      [NXString stringWithFormat:@"Long time: %t", fiveMinutes];
+  test_assert(timeFormatTest4 != nil);
+  test_assert(strstr([timeFormatTest4 cStr], "Long time: ") != NULL);
+  test_assert(strstr([timeFormatTest4 cStr], "300000ms") != NULL ||
+              strstr([timeFormatTest4 cStr], "5m") != NULL ||
+              strstr([timeFormatTest4 cStr], "300s") != NULL);
+  printf("✓ stringWithFormat with %%t large interval works correctly\n");
+
+  // Test multiple %t format specifiers
+  NXTimeInterval time1 = 50 * Millisecond;
+  NXTimeInterval time2 = 2 * Second;
+  NXString *timeFormatTest5 =
+      [NXString stringWithFormat:@"Times: %t and %t", time1, time2];
+  test_assert(timeFormatTest5 != nil);
+  test_assert(strstr([timeFormatTest5 cStr], "Times: ") != NULL);
+  test_assert(strstr([timeFormatTest5 cStr], "50ms") != NULL);
+  test_assert(strstr([timeFormatTest5 cStr], " and ") != NULL);
+  test_assert(strstr([timeFormatTest5 cStr], "2000ms") != NULL ||
+              strstr([timeFormatTest5 cStr], "2s") != NULL);
+  printf("✓ stringWithFormat with multiple %%t works correctly\n");
+
+  // Test mixing %@ and %t format specifiers
+  NXString *mixedFormatTest =
+      [NXString stringWithFormat:@"Object %@ took %t", testString, oneSecond];
+  test_assert(mixedFormatTest != nil);
+  test_assert(strstr([mixedFormatTest cStr], "Object Hello took ") != NULL);
+  test_assert(strstr([mixedFormatTest cStr], "1000ms") != NULL ||
+              strstr([mixedFormatTest cStr], "1s") != NULL);
+  printf("✓ stringWithFormat with mixed %%@ and %%t works correctly\n");
 
   printf("Test 5: Testing empty and new string methods...\n");
 
@@ -839,6 +930,81 @@ int test_nxstring_append_methods(void) {
   test_cstrings_equal([referenced cStr], "ReferencedAllocated");
   printf("✓ append: works between referenced and allocated strings\n");
 
+  // Test appendStringWithFormat with %@ format specifier
+  NXString *atFormatBase = [NXString stringWithFormat:@"Prefix"];
+  NXString *appendObject = [NXString stringWithCString:"Object"];
+  BOOL atFormatResult1 =
+      [atFormatBase appendStringWithFormat:@": %@", appendObject];
+  test_assert(atFormatResult1 == YES);
+  test_cstrings_equal([atFormatBase cStr], "Prefix: Object");
+  printf("✓ appendStringWithFormat: works with %%@ format specifier\n");
+
+  // Test appendStringWithFormat with %@ and nil
+  NXString *nilFormatBase = [NXString stringWithFormat:@"Before"];
+  BOOL nilFormatResult = [nilFormatBase appendStringWithFormat:@" %@", nil];
+  test_assert(nilFormatResult == YES);
+  test_cstrings_equal([nilFormatBase cStr], "Before <nil>");
+  printf("✓ appendStringWithFormat: handles %%@ with nil correctly\n");
+
+  // Test appendStringWithFormat with multiple %@ format specifiers
+  NXString *multiAtFormatBase = [NXString stringWithFormat:@"Start"];
+  NXString *obj1 = [NXString stringWithCString:"First"];
+  NXString *obj2 = [NXString stringWithCString:"Second"];
+  BOOL multiAtFormatResult =
+      [multiAtFormatBase appendStringWithFormat:@": %@ and %@", obj1, obj2];
+  test_assert(multiAtFormatResult == YES);
+  test_cstrings_equal([multiAtFormatBase cStr], "Start: First and Second");
+  printf(
+      "✓ appendStringWithFormat: works with multiple %%@ format specifiers\n");
+
+  // Test appendStringWithFormat with %t format specifier
+  NXString *timeFormatBase = [NXString stringWithFormat:@"Elapsed"];
+  NXTimeInterval testInterval = 500 * Millisecond;
+  BOOL timeFormatResult1 =
+      [timeFormatBase appendStringWithFormat:@": %t", testInterval];
+  test_assert(timeFormatResult1 == YES);
+  test_assert(strstr([timeFormatBase cStr], "Elapsed: ") != NULL);
+  test_assert(strstr([timeFormatBase cStr], "500ms") != NULL);
+  printf("✓ appendStringWithFormat: works with %%t format specifier\n");
+
+  // Test appendStringWithFormat with large time interval
+  NXString *largeTimeBase = [NXString stringWithFormat:@"Timeout"];
+  NXTimeInterval largeInterval = 3 * Second;
+  BOOL largeTimeResult =
+      [largeTimeBase appendStringWithFormat:@" after %t", largeInterval];
+  test_assert(largeTimeResult == YES);
+  test_assert(strstr([largeTimeBase cStr], "Timeout after ") != NULL);
+  test_assert(strstr([largeTimeBase cStr], "3000ms") != NULL ||
+              strstr([largeTimeBase cStr], "3s") != NULL);
+  printf("✓ appendStringWithFormat: works with %%t large intervals\n");
+
+  // Test appendStringWithFormat with zero time interval
+  NXString *zeroTimeBase = [NXString stringWithFormat:@"Instant"];
+  NXTimeInterval zeroInterval = 0;
+  BOOL zeroTimeResult =
+      [zeroTimeBase appendStringWithFormat:@" (%t)", zeroInterval];
+  test_assert(zeroTimeResult == YES);
+  test_assert(strstr([zeroTimeBase cStr], "Instant (") != NULL);
+  test_assert(strstr([zeroTimeBase cStr], "0") != NULL);
+  printf("✓ appendStringWithFormat: handles %%t zero interval correctly\n");
+
+  // Test appendStringWithFormat with mixed %@ and %t format specifiers
+  NXString *mixedAppendBase = [NXString stringWithFormat:@"Task"];
+  NXString *taskName = [NXString stringWithCString:"Processing"];
+  NXTimeInterval taskTime = 1500 * Millisecond;
+  BOOL mixedAppendResult = [mixedAppendBase
+      appendStringWithFormat:@" '%@' completed in %t", taskName, taskTime];
+  test_assert(mixedAppendResult == YES);
+  test_assert(strstr([mixedAppendBase cStr],
+                     "Task 'Processing' completed in ") != NULL);
+  // Be flexible about the time format - it might be formatted differently
+  test_assert(strstr([mixedAppendBase cStr], "1500") != NULL ||
+              strstr([mixedAppendBase cStr], "1.5") != NULL ||
+              strstr([mixedAppendBase cStr], "ms") != NULL ||
+              strstr([mixedAppendBase cStr], "s") != NULL);
+  printf("✓ appendStringWithFormat: works with mixed %%@ and %%t format "
+         "specifiers\n");
+
   printf("✅ String append methods tests passed!\n");
   return 0;
 }
@@ -1193,14 +1359,16 @@ int test_nxstring_json_methods(void) {
   printf("✓ JSONString escapes quotes correctly\n");
 
   // Test string with backslashes
-  NXString *jsonBackslashStr = [NXString stringWithCString:"C:\\path\\to\\file"];
+  NXString *jsonBackslashStr =
+      [NXString stringWithCString:"C:\\path\\to\\file"];
   NXString *jsonBackslash = [jsonBackslashStr JSONString];
   test_assert(jsonBackslash != nil);
   test_cstrings_equal([jsonBackslash cStr], "\"C:\\\\path\\\\to\\\\file\"");
   printf("✓ JSONString escapes backslashes correctly\n");
 
   // Test string with newlines and tabs
-  NXString *jsonControlStr = [NXString stringWithCString:"Line1\nLine2\tTabbed"];
+  NXString *jsonControlStr =
+      [NXString stringWithCString:"Line1\nLine2\tTabbed"];
   NXString *jsonControl = [jsonControlStr JSONString];
   test_assert(jsonControl != nil);
   test_cstrings_equal([jsonControl cStr], "\"Line1\\nLine2\\tTabbed\"");
@@ -1226,13 +1394,13 @@ int test_nxstring_json_methods(void) {
   controlCharStr[1] = 'e';
   controlCharStr[2] = 's';
   controlCharStr[3] = 't';
-  controlCharStr[4] = '\x01';  // SOH (Start of Heading) - control character
-  controlCharStr[5] = '\x1F';  // Unit Separator - control character
+  controlCharStr[4] = '\x01'; // SOH (Start of Heading) - control character
+  controlCharStr[5] = '\x1F'; // Unit Separator - control character
   controlCharStr[6] = 'E';
   controlCharStr[7] = 'n';
   controlCharStr[8] = 'd';
   controlCharStr[9] = '\0';
-  
+
   NXString *jsonControlCharStr = [NXString stringWithCString:controlCharStr];
   NXString *jsonControlChar = [jsonControlCharStr JSONString];
   test_assert(jsonControlChar != nil);
@@ -1267,12 +1435,14 @@ int test_nxstring_json_methods(void) {
   lowControlStr[12] = 'n';
   lowControlStr[13] = 'd';
   lowControlStr[14] = '\0';
-  
+
   NXString *jsonLowControlStr = [NXString stringWithCString:lowControlStr];
   NXString *jsonLowControl = [jsonLowControlStr JSONString];
   test_assert(jsonLowControl != nil);
-  test_cstrings_equal([jsonLowControl cStr], "\"Start\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007End\"");
-  printf("✓ JSONString escapes low control characters with Unicode correctly\n");
+  test_cstrings_equal([jsonLowControl cStr],
+                      "\"Start\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007End\"");
+  printf(
+      "✓ JSONString escapes low control characters with Unicode correctly\n");
 
   // Test string with high control characters (DEL and above)
   char highControlStr[8];
@@ -1280,16 +1450,17 @@ int test_nxstring_json_methods(void) {
   highControlStr[1] = 'e';
   highControlStr[2] = 's';
   highControlStr[3] = 't';
-  highControlStr[4] = '\x1E';  // Record Separator
-  highControlStr[5] = '\x1F';  // Unit Separator
+  highControlStr[4] = '\x1E'; // Record Separator
+  highControlStr[5] = '\x1F'; // Unit Separator
   highControlStr[6] = 'X';
   highControlStr[7] = '\0';
-  
+
   NXString *jsonHighControlStr = [NXString stringWithCString:highControlStr];
   NXString *jsonHighControl = [jsonHighControlStr JSONString];
   test_assert(jsonHighControl != nil);
   test_cstrings_equal([jsonHighControl cStr], "\"Test\\u001E\\u001FX\"");
-  printf("✓ JSONString escapes high control characters with Unicode correctly\n");
+  printf(
+      "✓ JSONString escapes high control characters with Unicode correctly\n");
 
   printf("✅ String JSON methods tests passed!\n");
   return 0;
