@@ -22,7 +22,6 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
     if ([desc conformsTo:@protocol(NXConstantStringProtocol)]) {
       return [desc cStr];
     }
-    return "<object>";
   } else if (format == 't') {
     // Handle NXTimeInterval formatting with %t
     NXTimeInterval interval = va_arg(*va, NXTimeInterval);
@@ -30,9 +29,10 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
     if (desc != nil [desc conformsTo:@protocol(NXConstantStringProtocol)]) {
       return [desc cStr];
     }
-    return "<time>";
   }
-  return NULL; // Not handled by this custom handler
+
+  // Not handled by this custom handler or other error
+  return NULL;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,6 +40,8 @@ static const char *nxlog_custom_handler(char format, va_list *va) {
 
 size_t NXLog(id<NXConstantStringProtocol> format, ...) {
   va_list args;
+
+  // Use custom handler for %@ and %t
   va_start(args, format);
   size_t result = sys_vprintf_ex([format cStr], args, nxlog_custom_handler);
   va_end(args);

@@ -36,7 +36,7 @@ struct sys_printf_state {
   sys_printf_flags_t flags; /**< Current format flags */
 };
 
-static const char *_nullstr = "<nil>"; // Placeholder for NULL strings
+static const char *_nullstr = "<null>"; // Placeholder for NULL strings
 
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE  METHODS
