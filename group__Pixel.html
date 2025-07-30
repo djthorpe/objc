@@ -53,18 +53,18 @@ $(function() {
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Pixels<div class="ingroups"><a class="el" href="group__System.html">System Management</a></div></div>  </div>
+<div class="title">Pixels<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization.  
+<p>Managing pixel data, framebuffers, and drawing operations.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Pixels:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__Pixel.png" border="0" alt="" usemap="#group____Pixel"/>
 <map name="group____Pixel" id="group____Pixel">
-<area shape="rect" id="node2" href="group__System.html" title="This module (and submodules) declare types and functions for system management, including memory mana..." alt="" coords="5,5,165,32"/>
+<area shape="rect" id="node2" href="group__System.html" title="These modules declare types and functions for the &quot;system runtime&quot; layer, which provides low&#45;level sy..." alt="" coords="5,5,135,32"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -114,7 +114,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga8023579543479aeac269df7b17bb45d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. </p>
+<p>Managing pixel data, framebuffers, and drawing operations. </p>
 <p>Pixels are represented in various formats, but externally they are typically represented in RGBA32 format (a uint32_t). If a frame is "drawable", it means it can be safely accessed and modified by drawing operations. The drawable state can be set by windowing or device systems that may update the rendered surface concurrently.</p>
 <p>Sizes are represented as structures with uint16_t fields for dimensions, allowing for values between 0 and 65535. Points are represented as structures with int16_t fields for coordinates, allowing for values between -32768 and 32767.</p>
 <p>Frames do require a significant amount of memory, so they should be used judiciously. On embedded systems, PIX_FMT_RGB332 provides limited color depth but is memory efficient. </p>
@@ -134,7 +134,7 @@ Functions</h2></td></tr>
 <p>Color value type for pixel operations. </p>
 <p>Represents a color value, typically in RGBA format depending on the pixel format. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00049">49</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00047">47</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
 
 </div>
 </div>
@@ -180,12 +180,12 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00073">73</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;             {</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3">PIX_FMT_RGBA32</a>, </div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba">PIX_FMT_RGB332</a>, </div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7">PIX_FMT_RGB565</a>, </div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1">PIX_FMT_GREY1</a>,  </div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <a class="code" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a>;</div><div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7">PIX_FMT_RGB565</a></div><div class="ttdoc">16-bit RGB format (5-6-5 bits) without alpha </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00076">pix.h:76</a></div></div>
-<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1">PIX_FMT_GREY1</a></div><div class="ttdoc">1-bit grayscale format (alpha mask) </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00077">pix.h:77</a></div></div>
-<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba">PIX_FMT_RGB332</a></div><div class="ttdoc">8-bit RGB format (3-3-2 bits) without alpha </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00075">pix.h:75</a></div></div>
-<div class="ttc" id="group__Pixel_html_ga4b3eef8af447e3f8a003cbc360710e8c"><div class="ttname"><a href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a></div><div class="ttdeci">pix_format_t</div><div class="ttdoc">Pixel format enumeration defining color depth and layout. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00073">pix.h:73</a></div></div>
-<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3">PIX_FMT_RGBA32</a></div><div class="ttdoc">32-bit RGBA format with alpha channel </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00074">pix.h:74</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00071">71</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;             {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3">PIX_FMT_RGBA32</a>, </div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba">PIX_FMT_RGB332</a>, </div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7">PIX_FMT_RGB565</a>, </div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1">PIX_FMT_GREY1</a>,  </div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <a class="code" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a>;</div><div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7">PIX_FMT_RGB565</a></div><div class="ttdoc">16-bit RGB format (5-6-5 bits) without alpha </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00074">pix.h:74</a></div></div>
+<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1">PIX_FMT_GREY1</a></div><div class="ttdoc">1-bit grayscale format (alpha mask) </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00075">pix.h:75</a></div></div>
+<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba">PIX_FMT_RGB332</a></div><div class="ttdoc">8-bit RGB format (3-3-2 bits) without alpha </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00073">pix.h:73</a></div></div>
+<div class="ttc" id="group__Pixel_html_ga4b3eef8af447e3f8a003cbc360710e8c"><div class="ttname"><a href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a></div><div class="ttdeci">pix_format_t</div><div class="ttdoc">Pixel format enumeration defining color depth and layout. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00071">pix.h:71</a></div></div>
+<div class="ttc" id="group__Pixel_html_gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3"><div class="ttname"><a href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3">PIX_FMT_RGBA32</a></div><div class="ttdoc">32-bit RGBA format with alpha channel </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00072">pix.h:72</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -207,9 +207,9 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00039">39</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;             {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="group__Pixel.html#gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d">PIX_SET</a> </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a>;</div><div class="ttc" id="group__Pixel_html_gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d"><div class="ttname"><a href="group__Pixel.html#gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d">PIX_SET</a></div><div class="ttdoc">Set pixel operation. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00040">pix.h:40</a></div></div>
-<div class="ttc" id="group__Pixel_html_ga05e25a72a624253d4dc389b2db1e6d1a"><div class="ttname"><a href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a></div><div class="ttdeci">pix_op_t</div><div class="ttdoc">Pixel operation types for drawing operations. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00039">pix.h:39</a></div></div>
+<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00037">37</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;             {</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="group__Pixel.html#gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d">PIX_SET</a> </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <a class="code" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a>;</div><div class="ttc" id="group__Pixel_html_gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d"><div class="ttname"><a href="group__Pixel.html#gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d">PIX_SET</a></div><div class="ttdoc">Set pixel operation. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00038">pix.h:38</a></div></div>
+<div class="ttc" id="group__Pixel_html_ga05e25a72a624253d4dc389b2db1e6d1a"><div class="ttname"><a href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a></div><div class="ttdeci">pix_op_t</div><div class="ttdoc">Pixel operation types for drawing operations. </div><div class="ttdef"><b>Definition:</b> <a href="pix_8h_source.html#l00037">pix.h:37</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -103,7 +103,7 @@ var searchData=
   ['sys_5fwaitgroup_5ffinalize',['sys_waitgroup_finalize',['../group__SystemSync.html#gabca9a01a0834ad14251f39c45a1120d6',1,'sync.h']]],
   ['sys_5fwaitgroup_5finit',['sys_waitgroup_init',['../group__SystemSync.html#ga054b7429932a28dd301dacca5adb97e5',1,'sync.h']]],
   ['sys_5fwaitgroup_5ft',['sys_waitgroup_t',['../structsys__waitgroup__t.html',1,'']]],
-  ['system_20management',['System Management',['../group__System.html',1,'']]],
+  ['system_20runtime',['System Runtime',['../group__System.html',1,'']]],
   ['string_20formatting',['String Formatting',['../group__SystemFormatting.html',1,'']]],
   ['synchronization_20primitives',['Synchronization Primitives',['../group__SystemSync.html',1,'']]]
 ];

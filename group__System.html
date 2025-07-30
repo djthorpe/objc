@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: System Management</title>
+<title>objc: System Runtime</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -51,27 +51,27 @@ $(function() {
 <a href="#groups">Modules</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">System Management</div>  </div>
+<div class="title">System Runtime</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This module (and submodules) declare types and functions for system management, including memory management, thread management, synchronization primitives, and timer management.  
+<p>These modules declare types and functions for the "system runtime" layer, which provides low-level system functionality such as date and time handling,.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
-Collaboration diagram for System Management:</div>
+Collaboration diagram for System Runtime:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__System.png" border="0" alt="" usemap="#group____System"/>
 <map name="group____System" id="group____System">
-<area shape="rect" id="node1" href="group__SystemThread.html" title="Managing threads and program execution. " alt="" coords="274,5,361,32"/>
-<area shape="rect" id="node2" href="group__SystemFormatting.html" title="Methods for creating and outputting formatted strings. " alt="" coords="250,56,385,83"/>
-<area shape="rect" id="node3" href="group__SystemDate.html" title="Methods for manipulating time and date. " alt="" coords="258,107,377,133"/>
-<area shape="rect" id="node4" href="group__SystemEvents.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="284,157,351,184"/>
-<area shape="rect" id="node5" href="group__SystemSync.html" title="Implements various synchronization methods for thread&#45;safe operations. " alt="" coords="219,208,415,235"/>
-<area shape="rect" id="node6" href="group__SystemRandom.html" title="System methods for generating random numbers, sometimes using hardware to provide better entropy..." alt="" coords="213,259,421,285"/>
-<area shape="rect" id="node7" href="group__Pixel.html" title="This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. " alt="" coords="287,309,348,336"/>
-<area shape="rect" id="node9" href="group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="284,360,351,387"/>
-<area shape="rect" id="node10" href="group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="282,411,353,437"/>
-<area shape="rect" id="node11" href="group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="235,461,399,488"/>
+<area shape="rect" id="node1" href="group__SystemThread.html" title="Managing threads and program execution. " alt="" coords="243,5,330,32"/>
+<area shape="rect" id="node2" href="group__SystemFormatting.html" title="Methods for creating and outputting formatted strings. " alt="" coords="219,56,354,83"/>
+<area shape="rect" id="node3" href="group__SystemDate.html" title="Methods for manipulating time and date. " alt="" coords="227,107,346,133"/>
+<area shape="rect" id="node4" href="group__SystemEvents.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="253,157,320,184"/>
+<area shape="rect" id="node5" href="group__SystemSync.html" title="Implements various synchronization methods for thread&#45;safe operations. " alt="" coords="189,208,385,235"/>
+<area shape="rect" id="node6" href="group__SystemRandom.html" title="System methods for generating random numbers, sometimes using hardware to provide better entropy..." alt="" coords="183,259,391,285"/>
+<area shape="rect" id="node7" href="group__Pixel.html" title="Managing pixel data, framebuffers, and drawing operations. " alt="" coords="256,309,317,336"/>
+<area shape="rect" id="node9" href="group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="253,360,320,387"/>
+<area shape="rect" id="node10" href="group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="251,411,322,437"/>
+<area shape="rect" id="node11" href="group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="205,461,369,488"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -106,7 +106,7 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__SystemTimer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Periodic and one-shot timers for scheduling tasks. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__Pixel"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html">Pixels</a></td></tr>
-<tr class="memdesc:group__Pixel"><td class="mdescLeft">&#160;</td><td class="mdescRight">This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. <br /></td></tr>
+<tr class="memdesc:group__Pixel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managing pixel data, framebuffers, and drawing operations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -119,9 +119,10 @@ Functions</h2></td></tr>
 <tr class="separator:gac8c2364fd51221e5ac983f174aeb289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>This module (and submodules) declare types and functions for system management, including memory management, thread management, synchronization primitives, and timer management. </p>
-<p>When developing for a new platform, you will need to implement the functions declared here. The implementation will depend on the specific platform's capabilities and requirements.</p>
-<p>When using this module, you should include this header file and link against the appropriate implementation for your platform. In your entrypoint file, you should call <code><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="Initializes the system on startup. ">sys_init()</a></code> to initialize the system, and <code><a class="el" href="group__System.html#gac8c2364fd51221e5ac983f174aeb289f" title="Cleans up the system on shutdown. ">sys_exit()</a></code> to clean up resources before exiting. </p>
+<p>These modules declare types and functions for the "system runtime" layer, which provides low-level system functionality such as date and time handling,. </p>
+<p>The system runtime includes memory, process and thread management, synchronization primitives, hashes, string formatting, random numbers and timers. When developing for a new platform, you will need to implement the functions in these modules. The implementation will depend on the specific platform's capabilities and requirements.</p>
+<p>When using this module, you should include this header file and link against the appropriate implementation for your platform. In your entrypoint file, you should call <code><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="Initializes the system on startup. ">sys_init()</a></code> to initialize the system, and <code><a class="el" href="group__System.html#gac8c2364fd51221e5ac983f174aeb289f" title="Cleans up the system on shutdown. ">sys_exit()</a></code> to clean up resources before exiting.</p>
+<p>There is a set of tests that can be run to verify the functionality of the system runtime. These tests can be found in the <code>tests</code> directory. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gac8c2364fd51221e5ac983f174aeb289f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac8c2364fd51221e5ac983f174aeb289f">&#9670;&nbsp;</a></span>sys_exit()</h2>

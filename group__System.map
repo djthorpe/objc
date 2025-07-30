@@ -1,12 +1,12 @@
-<map id="System Management" name="System Management">
-<area shape="rect" id="node1" href="$group__SystemThread.html" title="Managing threads and program execution. " alt="" coords="274,5,361,32"/>
-<area shape="rect" id="node2" href="$group__SystemFormatting.html" title="Methods for creating and outputting formatted strings. " alt="" coords="250,56,385,83"/>
-<area shape="rect" id="node3" href="$group__SystemDate.html" title="Methods for manipulating time and date. " alt="" coords="258,107,377,133"/>
-<area shape="rect" id="node4" href="$group__SystemEvents.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="284,157,351,184"/>
-<area shape="rect" id="node5" href="$group__SystemSync.html" title="Implements various synchronization methods for thread&#45;safe operations. " alt="" coords="219,208,415,235"/>
-<area shape="rect" id="node6" href="$group__SystemRandom.html" title="System methods for generating random numbers, sometimes using hardware to provide better entropy..." alt="" coords="213,259,421,285"/>
-<area shape="rect" id="node7" href="$group__Pixel.html" title="This module declares types and functions for managing pixel data and framebuffers, including pixel formats, drawing operations, and framebuffer initialization and finalization. " alt="" coords="287,309,348,336"/>
-<area shape="rect" id="node9" href="$group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="284,360,351,387"/>
-<area shape="rect" id="node10" href="$group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="282,411,353,437"/>
-<area shape="rect" id="node11" href="$group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="235,461,399,488"/>
+<map id="System Runtime" name="System Runtime">
+<area shape="rect" id="node1" href="$group__SystemThread.html" title="Managing threads and program execution. " alt="" coords="243,5,330,32"/>
+<area shape="rect" id="node2" href="$group__SystemFormatting.html" title="Methods for creating and outputting formatted strings. " alt="" coords="219,56,354,83"/>
+<area shape="rect" id="node3" href="$group__SystemDate.html" title="Methods for manipulating time and date. " alt="" coords="227,107,346,133"/>
+<area shape="rect" id="node4" href="$group__SystemEvents.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="253,157,320,184"/>
+<area shape="rect" id="node5" href="$group__SystemSync.html" title="Implements various synchronization methods for thread&#45;safe operations. " alt="" coords="189,208,385,235"/>
+<area shape="rect" id="node6" href="$group__SystemRandom.html" title="System methods for generating random numbers, sometimes using hardware to provide better entropy..." alt="" coords="183,259,391,285"/>
+<area shape="rect" id="node7" href="$group__Pixel.html" title="Managing pixel data, framebuffers, and drawing operations. " alt="" coords="256,309,317,336"/>
+<area shape="rect" id="node9" href="$group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="253,360,320,387"/>
+<area shape="rect" id="node10" href="$group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="251,411,322,437"/>
+<area shape="rect" id="node11" href="$group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="205,461,369,488"/>
 </map>
