@@ -17,9 +17,6 @@ const char *_nxfoundation_format_handler(char format, va_list *va) {
     // Check if the object directly conforms to NXConstantStringProtocol
     if ([obj conformsTo:@protocol(NXConstantStringProtocol)]) {
       const char *result = [obj cStr];
-      // Debug: Check the result
-      // printf("DEBUG: Format handler returning: '%s' (len=%zu)\n", result,
-      // strlen(result));
       return result;
     }
 
