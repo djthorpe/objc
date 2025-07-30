@@ -108,6 +108,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] printf - `%@` format specifier for logging objects and `[Object description]`
 - [X] printf - `%T` format specifier for time intervals
 - [X] `NXArray` - string methods - join
+- [ ] Number - `NXNumberByte` and `NXNumberInt8`
 - [ ] clang compatibility (probably fix with selectors)
 - [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
