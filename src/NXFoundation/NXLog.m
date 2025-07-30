@@ -5,8 +5,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 // SHARED FORMAT HANDLER
 
-// Shared custom handler for NXFoundation that supports %@ for objects and %t
-// for time intervals
+/**
+ * @brief Shared custom handler for NXFoundation that supports %@ for objects
+ * and %t for time intervals
+ */
 const char *_nxfoundation_format_handler(char format, va_list *va) {
   if (format == '@') {
     id obj = va_arg(*va, id);
@@ -43,6 +45,10 @@ const char *_nxfoundation_format_handler(char format, va_list *va) {
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
+/**
+ * @brief logging function that formats a string with objects and time
+ * intervals. Appends a newline and flushes the output.
+ */
 size_t NXLog(id<NXConstantStringProtocol> format, ...) {
   va_list args;
 
