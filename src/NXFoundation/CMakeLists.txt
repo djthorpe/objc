@@ -19,6 +19,8 @@ add_library(${NAME} STATIC
     NXNumberUnsignedInt32.m
     NXNumberUnsignedInt64.m
     NXNumberZero.m
+    NXMap.m
+    NXMap+hash.c
     NXObject.m
     NXString.m
     NXTimeInterval.m

@@ -20,6 +20,7 @@
 @class NXDate;
 @class NXNull;
 @class NXNumber;
+@class NXMap;
 @class NXObject;
 @class NXString;
 @class NXThread;
@@ -44,6 +45,7 @@
 #include "NXAutoreleasePool.h"
 #include "NXData.h"
 #include "NXDate.h"
+#include "NXMap.h"
 #include "NXNull.h"
 #include "NXNumber.h"
 #include "NXObject.h"
