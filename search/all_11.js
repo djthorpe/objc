@@ -6,6 +6,7 @@ var searchData=
   ['set',['set',['../structpix__frame__t.html#a47889f8bd6ba7db33796e65be3e69ef3',1,'pix_frame_t']]],
   ['set_5frect',['set_rect',['../structpix__frame__t.html#a6da1898282b2c185b97f21daaffc8f40',1,'pix_frame_t']]],
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
+  ['setobject_3aforkey_3a',['setObject:forKey:',['../interfaceNXMap.html#a926e5d8645f2904c22d3d2d8ce6a0886',1,'NXMap']]],
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
   ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../group__Foundation.html#gaaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
-  ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
+  ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
   ['nil',['Nil',['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
   ['no',['NO',['../group__objc.html#ga996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['not_5fempty',['not_empty',['../structsys__event__queue__t.html#a9935d71c6b1f05fc8f2140df012d2bfb',1,'sys_event_queue_t']]],
@@ -45,6 +45,8 @@ var searchData=
   ['nxhashalgorithm',['NXHashAlgorithm',['../group__Foundation.html#ga2a28eb8cf223fe2036c2b4da8734c2cb',1,'NXData.h']]],
   ['nxlittleendian',['NXLittleEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ae3ec7d49809ce50a2421b245165d5974',1,'NXArch.h']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
+  ['nxmap',['NXMap',['../interfaceNXMap.html',1,'']]],
+  ['nxmap_2eh',['NXMap.h',['../NXMap_8h.html',1,'']]],
   ['nxnotfound',['NXNotFound',['../group__Foundation.html#ga832113a9df42038a2b5524e1fce176b6',1,'NXNotFound.h']]],
   ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
   ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],

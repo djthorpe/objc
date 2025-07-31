@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['release',['release',['../interfaceNXObject.html#abccce59171d368454f3d1743ddfd805e',1,'NXObject::release()'],['../protocolRetainProtocol-p.html#af438695d0fd15a3e3d1beb6993baf6e0',1,'RetainProtocol-p::release()']]],
-  ['remove_3a',['remove:',['../interfaceNXArray.html#a2c970c9a999cdaef6c562d557c9eeccb',1,'NXArray']]],
-  ['removeallobjects',['removeAllObjects',['../interfaceNXArray.html#a8dce821e5ec9322fb43c60c04d75fa4f',1,'NXArray']]],
-  ['removeobjectatindex_3a',['removeObjectAtIndex:',['../interfaceNXArray.html#a2292dafda24a2529458ea8d8e12266e1',1,'NXArray']]],
-  ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]],
-  ['run',['run',['../interfaceNXApplication.html#ae843bb8728032b71f97006a5c9048c4b',1,'NXApplication']]]
+  ['pix_5fframe_5ffinalize',['pix_frame_finalize',['../group__Pixel.html#ga8023579543479aeac269df7b17bb45d0',1,'pix.h']]],
+  ['pix_5fframe_5finit',['pix_frame_init',['../group__Pixel.html#ga52782d4795f8fae800dc343e7881b273',1,'pix.h']]],
+  ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
+  ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]]
 ];

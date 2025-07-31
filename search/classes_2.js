@@ -7,6 +7,7 @@ var searchData=
   ['nxconstantstringprotocol_2dp',['NXConstantStringProtocol-p',['../protocolNXConstantStringProtocol-p.html',1,'']]],
   ['nxdata',['NXData',['../interfaceNXData.html',1,'']]],
   ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
+  ['nxmap',['NXMap',['../interfaceNXMap.html',1,'']]],
   ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],
   ['nxnumber',['NXNumber',['../interfaceNXNumber.html',1,'']]],
   ['nxobject',['NXObject',['../interfaceNXObject.html',1,'']]],

@@ -11,6 +11,7 @@ var searchData=
   ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
   ['nxfoundation_2eh',['NXFoundation.h',['../NXFoundation_8h.html',1,'']]],
   ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
+  ['nxmap_2eh',['NXMap.h',['../NXMap_8h.html',1,'']]],
   ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
   ['nxnull_2eh',['NXNull.h',['../NXNull_8h.html',1,'']]],
   ['nxnumber_2eh',['NXNumber.h',['../NXNumber_8h.html',1,'']]],

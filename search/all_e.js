@@ -23,6 +23,7 @@ var searchData=
   ['object_5fiskindofclass',['object_isKindOfClass',['../group__objc.html#ga435d6fc780b3f52b73013c71c9386f63',1,'runtime.h']]],
   ['object_5fsetclass',['object_setClass',['../group__objc.html#gad6763d930ab4a58f5d4e89542dfedf05',1,'runtime.h']]],
   ['objectatindex_3a',['objectAtIndex:',['../interfaceNXArray.html#a349dfba95888604ad749e91203595267',1,'NXArray']]],
+  ['objectforkey_3a',['objectForKey:',['../interfaceNXMap.html#a5e47835002a6b46549eec727fce7e25e',1,'NXMap']]],
   ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]],
   ['offset',['offset',['../structpix__frame__t.html#a118fed0a78dc4871202986966e480258',1,'pix_frame_t']]]
 ];
