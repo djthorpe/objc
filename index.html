@@ -120,10 +120,15 @@ $(function() {
 <li>[X] printf - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[X] printf - <code>T</code> format specifier for time intervals</li>
 <li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - string methods - join</li>
-<li>[ ] Number - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
-<li>[ ] clang compatibility (probably fix with selectors)</li>
-<li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>)</li>
+<li>[ ] Robust sys_hash functions which hash some void* data against an arbitrary key</li>
 <li>[ ] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
+<li>[ ] <code>@synchronized</code> support - use fixed-size table to store locks for objects, no allocations</li>
+<li>[ ] clang compatibility</li>
+<li>[ ] Number - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
+<li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>)</li>
+<li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning, parsing and tokenizing</li>
+<li>[ ] <code>NXURL</code> class - URL/filepath parsing and manipulation</li>
+<li>[ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data</li>
 <li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> filterWithFunction: filteredArrayWithFunction:</li>
@@ -133,13 +138,11 @@ $(function() {
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - rangeOfSubstring and rangeOfSubstring:options:</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - <code>subarrayWithRange:</code> and <code>subarrayWithRange:options:</code></li>
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - array methods - componentsSeparatedByString and componentsSeparatedByByte</li>
-<li>[ ] <code>@synchronized</code> support</li>
 <li>[ ] <code><a class="el" href="interfaceNXApplication.html" title="The main application class that coordinates application-wide functionality. ">NXApplication</a></code> and <code>NXRunLoop</code></li>
 <li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
 <li>[ ] More efficient method implementation lookup</li>
 <li>[ ] <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
-<li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning and tokenizing</li>
 <li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
 <li>[ ] Exception handling?</li>
