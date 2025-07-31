@@ -108,10 +108,15 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] printf - `%@` format specifier for logging objects and `[Object description]`
 - [X] printf - `%T` format specifier for time intervals
 - [X] `NXArray` - string methods - join
-- [ ] Number - `NXNumberByte` and `NXNumberInt8`
-- [ ] clang compatibility (probably fix with selectors)
-- [ ] `respondsToSelector:` (see test `runtime_14`)
+- [ ] Robust sys_hash functions which hash some void* data against an arbitrary key
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
+- [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
+- [ ] clang compatibility
+- [ ] Number - `NXNumberByte` and `NXNumberInt8`
+- [ ] `respondsToSelector:` (see test `runtime_14`)
+- [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing
+- [ ] `NXURL` class - URL/filepath parsing and manipulation
+- [ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data
 - [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
 - [ ] `NXArray` sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:
 - [ ] `NXArray` filterWithFunction: filteredArrayWithFunction:
@@ -121,13 +126,11 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `NXString` - rangeOfSubstring and rangeOfSubstring:options:
 - [ ] `NXArray` - `subarrayWithRange:` and `subarrayWithRange:options:`
 - [ ] `NXString` - array methods - componentsSeparatedByString and componentsSeparatedByByte
-- [ ] `@synchronized` support
 - [ ] `NXApplication` and `NXRunLoop`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] More efficient method implementation lookup
 - [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
-- [ ] `NXScanner`, `ReaderProtocol` - scanning and tokenizing
 - [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] Calling `+[initialise]` for categories
 - [ ] Exception handling?

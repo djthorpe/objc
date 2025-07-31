@@ -16,7 +16,11 @@ struct objc_hash_table {
   struct objc_hash_table *next;
   size_t size;
   struct objc_ptr_hash_entry *entries; ///< Pointer to the hash table entries
-};
+#if defined(__LP64__) || defined(_WIN64)
+} __attribute__((aligned(8))); // 64-bit systems: 8-byte alignment
+#else
+} __attribute__((aligned(4))); // 32-bit systems: 4-byte alignment
+#endif
 
 /** @brief Represents an entry in the pointer hash table.
  */
@@ -207,8 +211,7 @@ objc_hash_table_put_entry(struct objc_hash_table *root, uintptr_t key,
     if (slot) {
       // Found a slot (existing, deleted, or empty)
       // Check if this is an existing entry with a different value
-      if (slot->hash == key && !slot->deleted &&
-          slot->value != value) {
+      if (slot->hash == key && !slot->deleted && slot->value != value) {
         *overwritten_value = slot->value;
       }
       slot->hash = key;
