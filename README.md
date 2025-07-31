@@ -115,6 +115,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] clang compatibility
 - [ ] Number - `NXNumberByte` and `NXNumberInt8`
 - [ ] `respondsToSelector:` (see test `runtime_14`)
+- [ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications
 - [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing
 - [ ] `NXURL` class - URL/filepath parsing and manipulation
 - [ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data
