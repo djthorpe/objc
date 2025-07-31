@@ -108,8 +108,9 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] printf - `%@` format specifier for logging objects and `[Object description]`
 - [X] printf - `%T` format specifier for time intervals
 - [X] `NXArray` - string methods - join
-- [ ] Robust sys_hash functions which hash some void* data against an arbitrary key
+- [ ] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used
 - [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
+- [ ] `NXMap` - arbitary key sizes
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
 - [ ] clang compatibility
 - [ ] Number - `NXNumberByte` and `NXNumberInt8`
