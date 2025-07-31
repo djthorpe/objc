@@ -207,7 +207,7 @@ objc_hash_table_put_entry(struct objc_hash_table *root, uintptr_t key,
     if (slot) {
       // Found a slot (existing, deleted, or empty)
       // Check if this is an existing entry with a different value
-      if (slot->hash == key && !slot->deleted && slot->value != NULL &&
+      if (slot->hash == key && !slot->deleted &&
           slot->value != value) {
         *overwritten_value = slot->value;
       }
