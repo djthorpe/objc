@@ -94,4 +94,5 @@ add_subdirectory(NXFoundation_20)
 add_subdirectory(NXFoundation_21)
 add_subdirectory(NXFoundation_22)
 add_subdirectory(NXFoundation_23)
+add_subdirectory(NXFoundation_24)
 

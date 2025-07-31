@@ -8,7 +8,7 @@ The tests are organized into three main categories:
 
 ## Test Categories
 
-- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_23): Tests for the NXFoundation framework classes and functionality.
+- **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
 - **System Tests** (sys_00 through sys_14): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, and cross-core communication.
 
@@ -41,6 +41,7 @@ The tests are organized into three main categories:
 | NXFoundation_21 | Array Testing | Tests NXArray creation, access, JSON serialization, and mutable operations. |
 | NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, and equality comparisons. |
 | NXFoundation_23 | NXLog Testing | Tests enhanced NXLog functionality with custom format handlers (%@ object formatting, %t time intervals), character count validation, nil handling, and mixed format specifiers. |
+| NXFoundation_24 | NXMap Testing | Tests comprehensive NXMap functionality including lifecycle management (initWithCapacity, factory methods), core operations (setObject:forKey: with proper overwrite handling and same-object edge cases, objectForKey:, removeObjectForKey:, removeAllObjects), memory management with proper object release and retain, iterator operations, and edge case handling with null values and empty maps. |
 
 ---
 
