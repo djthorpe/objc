@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['objc_2eh',['objc.h',['../objc_8h.html',1,'']]],
-  ['object_2bdescription_2eh',['Object+Description.h',['../Object_09Description_8h.html',1,'']]],
-  ['object_2bprotocol_2eh',['Object+Protocol.h',['../Object_09Protocol_8h.html',1,'']]],
-  ['object_2eh',['Object.h',['../Object_8h.html',1,'']]]
+  ['pix_2eh',['pix.h',['../pix_8h.html',1,'']]],
+  ['printf_2eh',['printf.h',['../printf_8h.html',1,'']]],
+  ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]]
 ];

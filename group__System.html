@@ -49,6 +49,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">System Runtime</div>  </div>
@@ -72,6 +73,7 @@ Collaboration diagram for System Runtime:</div>
 <area shape="rect" id="node9" href="group__SystemTimer.html" title="Periodic and one&#45;shot timers for scheduling tasks. " alt="" coords="253,360,320,387"/>
 <area shape="rect" id="node10" href="group__SystemHashing.html" title="Methods for hash generation, sometimes with hardware acceleration. " alt="" coords="251,411,322,437"/>
 <area shape="rect" id="node11" href="group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="205,461,369,488"/>
+<area shape="rect" id="node12" href="group__SystemHashTable.html" title="Methods for hash table creation, insertion, deletion, and lookup. " alt="" coords="237,512,337,539"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -86,6 +88,9 @@ Modules</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__SystemHashing"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashing.html">Hashes</a></td></tr>
 <tr class="memdesc:group__SystemHashing"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methods for hash generation, sometimes with hardware acceleration. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__SystemHashTable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html">Hash Tables</a></td></tr>
+<tr class="memdesc:group__SystemHashTable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methods for hash table creation, insertion, deletion, and lookup. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__SystemMemory"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemMemory.html">Memory Management</a></td></tr>
 <tr class="memdesc:group__SystemMemory"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions for managing and manipulating memory. <br /></td></tr>
@@ -109,6 +114,12 @@ Modules</h2></td></tr>
 <tr class="memdesc:group__Pixel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managing pixel data, framebuffers, and drawing operations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga157ff22037cd92515eb20475d2ccf112"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#ga157ff22037cd92515eb20475d2ccf112">sys_assert</a>(condition)</td></tr>
+<tr class="memdesc:ga157ff22037cd92515eb20475d2ccf112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts that a condition is true.  <a href="#ga157ff22037cd92515eb20475d2ccf112">More...</a><br /></td></tr>
+<tr class="separator:ga157ff22037cd92515eb20475d2ccf112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaf411a8bc6b7ed4b0af9114e10c959448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448">sys_init</a> (void)</td></tr>
@@ -123,6 +134,36 @@ Functions</h2></td></tr>
 <p>The system runtime includes memory, process and thread management, synchronization primitives, hashes, string formatting, random numbers and timers. When developing for a new platform, you will need to implement the functions in these modules. The implementation will depend on the specific platform's capabilities and requirements.</p>
 <p>When using this module, you should include this header file and link against the appropriate implementation for your platform. In your entrypoint file, you should call <code><a class="el" href="group__System.html#gaf411a8bc6b7ed4b0af9114e10c959448" title="Initializes the system on startup. ">sys_init()</a></code> to initialize the system, and <code><a class="el" href="group__System.html#gac8c2364fd51221e5ac983f174aeb289f" title="Cleans up the system on shutdown. ">sys_exit()</a></code> to clean up resources before exiting.</p>
 <p>There is a set of tests that can be run to verify the functionality of the system runtime. These tests can be found in the <code>tests</code> directory. </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga157ff22037cd92515eb20475d2ccf112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga157ff22037cd92515eb20475d2ccf112">&#9670;&nbsp;</a></span>sys_assert</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define sys_assert</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">condition</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> (!(condition)) {                                                          \</div><div class="line">    sys_panicf(<span class="stringliteral">&quot;ASSERT FAIL: %s&quot;</span>, #condition);                                 \</div><div class="line">  }</div></div><!-- fragment -->
+<p>Asserts that a condition is true. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>The condition to check.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If the condition is false, it will call <code>panicf</code> with an assertion failure message, including the condition, file name, and line number. </p>
+
+<p class="definition">Definition at line <a class="el" href="runtime-sys_2assert_8h_source.html#l00026">26</a> of file <a class="el" href="runtime-sys_2assert_8h_source.html">assert.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gac8c2364fd51221e5ac983f174aeb289f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac8c2364fd51221e5ac983f174aeb289f">&#9670;&nbsp;</a></span>sys_exit()</h2>
