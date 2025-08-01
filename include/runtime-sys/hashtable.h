@@ -38,7 +38,7 @@ typedef struct {
 
 /** @brief Compare entry with a key.
  */
-typedef bool (*sys_hashtable_keyequals_t)(void *keyptr, size_t keylen,
+typedef bool (*sys_hashtable_keyequals_t)(void *keyptr,
                                           sys_hashtable_entry_t *entry);
 
 ///////////////////////////////////////////////////////////////////////////////
