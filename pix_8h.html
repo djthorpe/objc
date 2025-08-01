@@ -54,7 +54,6 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pix.h File Reference</div>  </div>
@@ -63,7 +62,9 @@ $(function() {
 
 <p>Pixel and framebuffer management functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="display_8h_source.html">display.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -71,6 +72,8 @@ Include dependency graph for pix.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="pix_8h__incl.png" border="0" usemap="#include_2runtime-pix_2pix_8h" alt=""/></div>
 <map name="include_2runtime-pix_2pix_8h" id="include_2runtime-pix_2pix_8h">
+<area shape="rect" id="node2" href="display_8h.html" title="Display functions. " alt="" coords="58,95,137,121"/>
+<area shape="rect" id="node3" href="types_8h.html" title="Common pixel types and structures. " alt="" coords="135,169,206,196"/>
 </map>
 </div>
 </div>
@@ -78,47 +81,39 @@ Include dependency graph for pix.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__point__t.html">pix_point_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Point structure representing X,Y coordinates.  <a href="structpix__point__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__size__t.html">pix_size_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size structure representing width and height dimensions.  <a href="structpix__size__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html">pix_frame_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame structure containing pixel data and drawing operations.  <a href="structpix__frame__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html">pix_display_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="structpix__display__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga48c75e649ecb0258928997ac51677996"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a></td></tr>
-<tr class="memdesc:ga48c75e649ecb0258928997ac51677996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Color value type for pixel operations.  <a href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">More...</a><br /></td></tr>
-<tr class="separator:ga48c75e649ecb0258928997ac51677996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae02007b01ac92fa7eb115ff692faead4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gae02007b01ac92fa7eb115ff692faead4">pix_frame_t</a></td></tr>
 <tr class="memdesc:gae02007b01ac92fa7eb115ff692faead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame structure containing pixel data and drawing operations.  <a href="group__Pixel.html#gae02007b01ac92fa7eb115ff692faead4">More...</a><br /></td></tr>
 <tr class="separator:gae02007b01ac92fa7eb115ff692faead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ga05e25a72a624253d4dc389b2db1e6d1a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">pix_op_t</a> { <a class="el" href="group__Pixel.html#gga05e25a72a624253d4dc389b2db1e6d1aa42075d3fae618070ce61f4bf2107be0d">PIX_SET</a>
- }<tr class="memdesc:ga05e25a72a624253d4dc389b2db1e6d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel operation types for drawing operations.  <a href="group__Pixel.html#ga05e25a72a624253d4dc389b2db1e6d1a">More...</a><br /></td></tr>
-</td></tr>
-<tr class="separator:ga05e25a72a624253d4dc389b2db1e6d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4b3eef8af447e3f8a003cbc360710e8c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a> { <a class="el" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca31c4933a45a0e48509de43116bc359c3">PIX_FMT_RGBA32</a>, 
-<a class="el" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca81348430bb18d81a88a00dd855d426ba">PIX_FMT_RGB332</a>, 
-<a class="el" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8cae9aa8da4d1afbd790343d3ea1b6f45f7">PIX_FMT_RGB565</a>, 
-<a class="el" href="group__Pixel.html#gga4b3eef8af447e3f8a003cbc360710e8ca7993d599e453cdc71f482d9431defcb1">PIX_FMT_GREY1</a>
- }<tr class="memdesc:ga4b3eef8af447e3f8a003cbc360710e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel format enumeration defining color depth and layout.  <a href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">More...</a><br /></td></tr>
-</td></tr>
-<tr class="separator:ga4b3eef8af447e3f8a003cbc360710e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaff09c8ae92c06919631e902f54babb"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#afaff09c8ae92c06919631e902f54babb">pix_display_t</a></td></tr>
+<tr class="memdesc:afaff09c8ae92c06919631e902f54babb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="#afaff09c8ae92c06919631e902f54babb">More...</a><br /></td></tr>
+<tr class="separator:afaff09c8ae92c06919631e902f54babb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gab4504a325929461cec72d6cc5db8055b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gab4504a325929461cec72d6cc5db8055b">pix_init</a> (void)</td></tr>
+<tr class="memdesc:gab4504a325929461cec72d6cc5db8055b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the pixel system on startup.  <a href="group__Pixel.html#gab4504a325929461cec72d6cc5db8055b">More...</a><br /></td></tr>
+<tr class="separator:gab4504a325929461cec72d6cc5db8055b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc7b893668e073d16da25320c3635b31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gadc7b893668e073d16da25320c3635b31">pix_exit</a> (void)</td></tr>
+<tr class="memdesc:gadc7b893668e073d16da25320c3635b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up the pixel system on shutdown.  <a href="group__Pixel.html#gadc7b893668e073d16da25320c3635b31">More...</a><br /></td></tr>
+<tr class="separator:gadc7b893668e073d16da25320c3635b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52782d4795f8fae800dc343e7881b273"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga52782d4795f8fae800dc343e7881b273">pix_frame_init</a> (<a class="el" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a> format, <a class="el" href="structpix__size__t.html">pix_size_t</a> size, size_t alignment)</td></tr>
 <tr class="memdesc:ga52782d4795f8fae800dc343e7881b273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new framebuffer with the specified format and size.  <a href="group__Pixel.html#ga52782d4795f8fae800dc343e7881b273">More...</a><br /></td></tr>
 <tr class="separator:ga52782d4795f8fae800dc343e7881b273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8023579543479aeac269df7b17bb45d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga8023579543479aeac269df7b17bb45d0">pix_frame_finalize</a> (<a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame)</td></tr>
 <tr class="memdesc:ga8023579543479aeac269df7b17bb45d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and free resources associated with a framebuffer.  <a href="group__Pixel.html#ga8023579543479aeac269df7b17bb45d0">More...</a><br /></td></tr>
 <tr class="separator:ga8023579543479aeac269df7b17bb45d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1703d0e837584923a6c9d24df75f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a4c1703d0e837584923a6c9d24df75f64">pix_frame_clear_rect</a> (<a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> size)</td></tr>
+<tr class="memdesc:a4c1703d0e837584923a6c9d24df75f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a rectangular region to a solid color.  <a href="#a4c1703d0e837584923a6c9d24df75f64">More...</a><br /></td></tr>
+<tr class="separator:a4c1703d0e837584923a6c9d24df75f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -180,7 +175,78 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Pixel and framebuffer management functions. </p>
 
 <p class="definition">Definition in file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="afaff09c8ae92c06919631e902f54babb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaff09c8ae92c06919631e902f54babb">&#9670;&nbsp;</a></span>pix_display_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>  <a class="el" href="structpix__display__t.html">pix_display_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display context structure. </p>
+<p>Contains the state for display operations. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a4c1703d0e837584923a6c9d24df75f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c1703d0e837584923a6c9d24df75f64">&#9670;&nbsp;</a></span>pix_frame_clear_rect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pix_frame_clear_rect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpix__frame__t.html">pix_frame_t</a> *&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpix__point__t.html">pix_point_t</a>&#160;</td>
+          <td class="paramname"><em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpix__size__t.html">pix_size_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear a rectangular region to a solid color. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
+    <tr><td class="paramname">color</td><td>Color to fill the rectangle with </td></tr>
+    <tr><td class="paramname">origin</td><td>Top-left corner of the rectangle to clear </td></tr>
+    <tr><td class="paramname">size</td><td>Dimensions of the rectangle to clear. If zero, clears the entire frame.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Completely overwrites existing pixel data in the specified region. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->

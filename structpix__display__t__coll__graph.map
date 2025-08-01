@@ -1,0 +1,5 @@
+<map id="pix_display_t" name="pix_display_t">
+<area shape="rect" id="node2" href="$structpix__frame__t.html" title="Frame structure containing pixel data and drawing operations. " alt="" coords="56,95,156,121"/>
+<area shape="rect" id="node3" href="$structpix__size__t.html" title="Size structure representing width and height dimensions. " alt="" coords="5,5,92,32"/>
+<area shape="rect" id="node4" href="$structpix__point__t.html" title="Point structure representing X,Y coordinates. " alt="" coords="116,5,211,32"/>
+</map>
