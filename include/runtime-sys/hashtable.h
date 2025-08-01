@@ -14,6 +14,11 @@
 
 #define SYS_HASHTABLE_KEY_SIZE 24 ///< Maximum key size in bytes
 
+// Entry flags
+#define SYS_HASHTABLE_ENTRY_DELETED 0x01 ///< Entry has been deleted (tombstone)
+#define SYS_HASHTABLE_ENTRY_MALLOCED                                           \
+  0x02 ///< Key memory was allocated with malloc
+
 /**
  * @brief Opaque type for hash table
  * @ingroup SystemHashTable
@@ -47,8 +52,8 @@ typedef struct sys_hashtable_iterator {
 typedef struct {
   uintptr_t hash;  ///< Hash key for the entry
   uintptr_t value; ///< Value associated with the entry
-  bool deleted; ///< Flag indicating if this entry has been deleted (tombstone)
-  void *keyptr; ///< Pointer to key data
+  uint8_t flags;   ///< Entry flags (deleted, malloced, etc.)
+  void *keyptr;    ///< Pointer to key data
   char keybuf[SYS_HASHTABLE_KEY_SIZE]; ///< Fixed-size key buffer, which can be
                                        ///< used to store keys directly in the
                                        ///< entry
@@ -109,19 +114,22 @@ sys_hashtable_entry_t *sys_hashtable_get_value(sys_hashtable_t *table,
                                                uintptr_t value);
 
 /**
- * @brief Put an entry into the hash table, replacing any existing entry.
+ * @brief Return a has table entry in which to put the value, and perhaps the
+ * key
  * @ingroup SystemHashTable
  * @param table The hash table to insert into
  * @param hash The hash key for the entry
  * @param keyptr Pointer to the key data
- * @param value The value to insert
- * @param replaced Callback for the replaced entry if it was replaced
- * @return Pointer to the inserted/updated entry, or NULL if allocation failed
+ * @param samekey Optional pointer to a boolean, indicating if the entry has
+ * the same key
+ * @return Pointer to an entry, or NULL if allocation failed
+ *
+ * The entry returned by this function can be used to insert or update
+ * a value in the hash table. If an entry with the same hash and key already
+ * exists, the value should be replaced.
  */
-sys_hashtable_entry_t *
-sys_hashtable_put(sys_hashtable_t *table, uintptr_t hash, void *keyptr,
-                  uintptr_t value,
-                  void (*replaced)(sys_hashtable_entry_t *entry));
+sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *table, uintptr_t hash,
+                                         void *keyptr, bool *samekey);
 
 /**
  * @brief Delete an entry into the hash table by key.
