@@ -10,6 +10,12 @@ struct sys_hashtable {
   struct sys_hashtable *next;
   size_t size;
   sys_hashtable_keyequals_t keyequals;
+  /** 
+   * @brief Points to the flexible array member containing the hash table buckets.
+   * 
+   * This field is initialized to point to the memory immediately following the
+   * `sys_hashtable` structure. Each bucket is represented as a `sys_hashtable_entry_t`.
+   */
   sys_hashtable_entry_t *entries;
 #if defined(__LP64__) || defined(_WIN64)
 } __attribute__((aligned(8))); // 64-bit systems: 8-byte alignment
