@@ -219,20 +219,7 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
     *samekey = false;
   }
 
-  // First, check if the key already exists in any table across the chain
-  sys_hashtable_entry_t *existing_entry =
-      sys_hashtable_get_key(root, hash, keyptr);
-  if (existing_entry != NULL) {
-    // Key exists - this is an overwrite
-    if (samekey) {
-      *samekey = true;
-    }
-    // Clear any deleted flag if present and return the existing entry
-    CLEAR_DELETED(existing_entry);
-    return existing_entry;
-  }
-
-  // Key doesn't exist - try to find an available slot in current tables
+  // Single-pass approach: search for existing key or available slot in one traversal
   sys_hashtable_t *table = root;
   sys_hashtable_t *prev = NULL;
   while (table != NULL) {
@@ -243,7 +230,17 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
       continue;
     }
 
-    // We found an available slot (empty or deleted)
+    // Check if this is an existing key (exact match found)
+    if (slot->hash == hash && !IS_DELETED(slot) && 
+        (table->keyequals == NULL || table->keyequals(keyptr, slot->keyptr))) {
+      // Key exists - this is an overwrite
+      if (samekey) {
+        *samekey = true;
+      }
+      return slot;
+    }
+
+    // We found an available slot (empty or deleted) for a new key
     slot->keyptr = keyptr;
     slot->hash = hash;
     CLEAR_DELETED(slot);
