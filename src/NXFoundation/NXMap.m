@@ -141,15 +141,21 @@ static uintptr_t _nxmap_hash(id<NXConstantStringProtocol> key) {
   size_t pairCount = 0;
   id currentArg = firstObject;
   while (currentArg != nil) {
-    currentArg = va_arg(args, id); // This should be the key
-    if (currentArg == nil ||
-        [currentArg conformsTo:@protocol(NXConstantStringProtocol)] == NO) {
-      // Odd number of arguments, or wrong key type - error case
+    // Get the key for this object
+    id keyArg = va_arg(args, id);
+    if (keyArg == nil) {
+      // Odd number of arguments - missing key for the last object
+      va_end(args);
+      return nil;
+    }
+    if ([keyArg conformsTo:@protocol(NXConstantStringProtocol)] == NO) {
+      // Key doesn't conform to required protocol
       va_end(args);
       return nil;
     }
     pairCount++;
-    currentArg = va_arg(args, id); // This should be the next object (or nil)
+    // Get the next object (or nil to terminate)
+    currentArg = va_arg(args, id);
   }
   va_end(args);
 
@@ -164,8 +170,15 @@ static uintptr_t _nxmap_hash(id<NXConstantStringProtocol> key) {
   id currentObject = firstObject;
   size_t i;
   for (i = 0; i < pairCount; i++) {
-    // Set the object for the key
+    // Get the key for this object
     id<NXConstantStringProtocol, RetainProtocol> key = va_arg(args, id);
+    if (key == nil) {
+      // This shouldn't happen if first pass was correct, but safety check
+      va_end(args);
+      [map release];
+      return nil;
+    }
+
     if ([map setObject:currentObject forKey:key] == NO) {
       va_end(args);
       [map release]; // Release on failure
