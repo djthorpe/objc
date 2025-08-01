@@ -23,57 +23,14 @@
  */
 #pragma once
 
+#include "display.h"
+#include "types.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 
 // Forward declaration
 struct pix_frame_t;
-
-/**
- * @brief Pixel operation types for drawing operations.
- * @ingroup Pixel
- */
-typedef enum {
-  PIX_SET ///< Set pixel operation
-} pix_op_t;
-
-/**
- * @brief Color value type for pixel operations.
- * @ingroup Pixel
- * @details Represents a color value, typically in RGBA format depending on the
- * pixel format.
- */
-typedef uint32_t pix_color_t;
-
-/**
- * @brief Point structure representing X,Y coordinates.
- * @ingroup Pixel
- */
-typedef struct {
-  int16_t x; ///< X coordinate
-  int16_t y; ///< Y coordinate
-} pix_point_t;
-
-/**
- * @brief Size structure representing width and height dimensions.
- * @ingroup Pixel
- */
-typedef struct {
-  uint16_t w; ///< Width in pixels
-  uint16_t h; ///< Height in pixels
-} pix_size_t;
-
-/**
- * @brief Pixel format enumeration defining color depth and layout.
- * @ingroup Pixel
- */
-typedef enum {
-  PIX_FMT_RGBA32, ///< 32-bit RGBA format with alpha channel
-  PIX_FMT_RGB332, ///< 8-bit RGB format (3-3-2 bits) without alpha
-  PIX_FMT_RGB565, ///< 16-bit RGB format (5-6-5 bits) without alpha
-  PIX_FMT_GREY1,  ///< 1-bit grayscale format (alpha mask)
-} pix_format_t;
 
 /**
  * @brief Frame structure containing pixel data and drawing operations.
@@ -157,6 +114,25 @@ typedef struct pix_frame_t {
 } pix_frame_t;
 
 ///////////////////////////////////////////////////////////////////////////////
+// DISPLAY TYPES
+
+/**
+ * @brief Display context structure.
+ * @ingroup Pixels
+ *
+ * Contains the state for display operations.
+ */
+typedef struct pix_display_t {
+  pix_frame_t frame;                 // Framebuffer for the display
+  pix_display_error_t error;         // Error code for last operation
+  uint32_t target_fps;               // Target frames per second (0 = no limit)
+  pix_display_callback_t callback;   // Optional callback for frame updates
+  uint64_t last_frame_time;          // Last frame timestamp (microseconds)
+  uint8_t ctx[PIX_DISPLAY_CTX_SIZE]; // Context buffer large enough for any
+                                     // display context
+} pix_display_t;
+
+///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 
 /**
@@ -181,6 +157,24 @@ extern pix_color_t pix_dark_gray;  ///< Dark gray (64,64,64,255)
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
+
+/**
+ * @brief Initializes the pixel system on startup.
+ * @ingroup Pixel
+ *
+ * This function must be called at the start of the program to initialize
+ * the pixel environment.
+ */
+extern void pix_init(void);
+
+/**
+ * @brief Cleans up the pixel system on shutdown.
+ * @ingroup Pixel
+ *
+ * This function should be called at the end of the program to perform any
+ * necessary cleanup tasks.
+ */
+extern void pix_exit(void);
 
 /**
  * @brief Initialize a new framebuffer with the specified format and size.
@@ -219,3 +213,16 @@ pix_frame_t pix_frame_init(pix_format_t format, pix_size_t size,
  * reused after finalization.
  */
 bool pix_frame_finalize(pix_frame_t *frame);
+
+/**
+ * @brief Clear a rectangular region to a solid color.
+ * @param frame Pointer to the frame to operate on
+ * @param color Color to fill the rectangle with
+ * @param origin Top-left corner of the rectangle to clear
+ * @param size Dimensions of the rectangle to clear. If zero, clears the
+ * entire frame.
+ *
+ * Completely overwrites existing pixel data in the specified region.
+ */
+bool pix_frame_clear_rect(pix_frame_t *frame, pix_color_t color,
+                          pix_point_t origin, pix_size_t size);

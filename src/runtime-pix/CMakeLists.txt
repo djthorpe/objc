@@ -1,12 +1,32 @@
 set(NAME "runtime-pix")
 
-add_library(${NAME} STATIC
+# Try to find SDL3 (optional)
+find_package(SDL3 QUIET)
+
+# Base source files (always included)
+set(SOURCES
     pix.c
     rgba32.c
 )
+
+# Add SDL3-specific sources if available
+if(SDL3_FOUND)
+    list(APPEND SOURCES sdl.c)
+endif()
+
+add_library(${NAME} STATIC ${SOURCES})
 target_include_directories(${NAME} PUBLIC
     ${CMAKE_SOURCE_DIR}/include
 )
 target_link_libraries(${NAME} PRIVATE
     runtime-sys
 )
+
+# If SDL3 is found, link it and set compiler definition
+if(SDL3_FOUND)
+    target_link_libraries(${NAME} PRIVATE SDL3::SDL3)
+    target_compile_definitions(${NAME} PRIVATE SUPPORTED_SDL3=1)
+    message(STATUS "SDL3 found - enabling SDL3 support in runtime-pix")
+else()
+    message(STATUS "SDL3 not found - building runtime-pix without SDL3 support")
+endif()

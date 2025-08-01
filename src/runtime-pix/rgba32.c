@@ -96,16 +96,65 @@ static void _pix_clear_rect_rgba32(pix_frame_t *frame, pix_color_t color,
   // Check drawable state
   if (frame == NULL || frame->buf == NULL) {
     return;
-  } else if (frame->drawable && frame->drawable() == false) {
-    return; // Frame is not drawable
   }
 
-  // Suppress unused parameter warnings
-  (void)color;
-  (void)origin;
-  (void)size;
+  // Handle zero size (clear entire frame)
+  if (size.w == 0) {
+    size.w = frame->size.w;
+    origin.x = 0;
+  }
+  if (size.h == 0) {
+    size.h = frame->size.h;
+    origin.y = 0;
+  }
 
-  // TODO
+  // Bounds clipping
+  if (origin.x < 0) {
+    size.w += origin.x;
+    origin.x = 0;
+  }
+  if (origin.y < 0) {
+    size.h += origin.y;
+    origin.y = 0;
+  }
+  if (origin.x + size.w > frame->size.w) {
+    size.w = frame->size.w - origin.x;
+  }
+  if (origin.y + size.h > frame->size.h) {
+    size.h = frame->size.h - origin.y;
+  }
+
+  // Early exit
+  if (size.w <= 0 || size.h <= 0) {
+    return;
+  }
+
+  // Perform drawing operation
+  const uint32_t *const buf = (uint32_t *)frame->buf;
+  const size_t row_stride = frame->stride / sizeof(uint32_t);
+  uint32_t *row_start = (uint32_t *)buf + origin.y * row_stride + origin.x;
+
+  // Optimize for common case where we're filling entire rows
+  if (size.w == frame->size.w && origin.x == 0) {
+    // Can fill contiguously if stride equals width
+    if (frame->stride == frame->size.w * sizeof(uint32_t)) {
+      uint32_t *pixel = row_start;
+      const int total_pixels = size.w * size.h;
+      for (int i = 0; i < total_pixels; i++) {
+        *pixel++ = color;
+      }
+      return;
+    }
+  }
+
+  // General case: fill row by row
+  for (int y = 0; y < size.h; y++) {
+    uint32_t *pixel = row_start;
+    for (int x = 0; x < size.w; x++) {
+      *pixel++ = color;
+    }
+    row_start += row_stride;
+  }
 }
 
 static pix_color_t _pix_get_rgba32(pix_frame_t *frame, pix_point_t origin) {
