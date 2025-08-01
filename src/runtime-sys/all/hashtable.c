@@ -259,7 +259,7 @@ sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash, void *keyptr,
     sys_panicf("Hash table too large for expansion");
   }
 
-  size_t new_size = ((root->size << 1) + root->size) >> 1;
+  size_t new_size = root->size + (root->size >> 1);
   sys_assert(new_size >= root->size); // Ensure we always grow
   table = _sys_hashtable_new(new_size, prev, root->keyequals);
   if (table == NULL) {
