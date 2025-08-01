@@ -4,11 +4,12 @@ This directory contains test coverage for the Objective-C runtime and NXFoundati
 
 The tests are designed to work correctly in both debug and release builds (`RELEASE=1`), with proper handling of assertions and error conditions.
 
-The tests are organized into three main categories:
+The tests are organized into four main categories:
 
 ## Test Categories
 
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
+- **Pixel Tests** (pix_01): Tests for the pixel and display system functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
 - **System Tests** (sys_00 through sys_15): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, and hash table operations.
 
@@ -42,6 +43,14 @@ The tests are organized into three main categories:
 | NXFoundation_22 | Data Operations | Tests NXData storage, encoding, append operations, and equality comparisons. |
 | NXFoundation_23 | NXLog Testing | Tests enhanced NXLog functionality with custom format handlers (%@ object formatting, %t time intervals), character count validation, nil handling, and mixed format specifiers. |
 | NXFoundation_24 | NXMap Testing | Tests comprehensive NXMap functionality including lifecycle management (initWithCapacity, factory methods), core operations (setObject:forKey: with proper overwrite handling and same-object edge cases, objectForKey:, removeObjectForKey:, removeAllObjects), memory management with proper object release and retain, iterator operations, and edge case handling with null values and empty maps. |
+
+---
+
+## Pixel Tests
+
+| Test Name | Purpose | Description |
+|-----------|---------|-------------|
+| pix_01 | SDL Display Creation | Tests SDL3 display initialization and finalization: `pix_sdl_display_init()` with valid window creation, parameter validation (NULL title, zero size), `pix_display_finalize()` with proper resource cleanup, and edge case handling. |
 
 ---
 

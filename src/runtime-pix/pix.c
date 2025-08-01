@@ -1,5 +1,9 @@
 #include "rgba32.h"
 #include <runtime-pix/pix.h>
+#include <runtime-sys/assert.h>
+#ifdef SUPPORTED_SDL3
+#include <SDL3/SDL.h>
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -20,6 +24,31 @@ pix_color_t pix_dark_gray = 0x404040FF;  ///< Dark gray (64,64,64,255)
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
+
+/**
+ * @brief Initializes the pixel system on startup.
+ * @ingroup Pixel
+ *
+ * This function must be called at the start of the program to initialize
+ * the pixel environment.
+ */
+void pix_init(void) {
+#ifdef SUPPORTED_SDL3
+  bool success = SDL_Init(SDL_INIT_VIDEO);
+  if (!success) {
+    sys_panicf("Failed to initialize SDL: %s", SDL_GetError());
+  }
+#endif
+}
+
+/**
+ * @brief Cleans up the pixel system on shutdown.
+ */
+void pix_exit(void) {
+#ifdef SUPPORTED_SDL3
+  SDL_Quit();
+#endif
+}
 
 /**
  * @brief Initialize a new frame with the specified format and size.
@@ -56,5 +85,29 @@ bool pix_frame_finalize(pix_frame_t *frame) {
   default:
     // Unsupported format
     return false;
+  }
+}
+
+/**
+ * @brief Clear a rectangular region to a solid color.
+ * @param frame Pointer to the frame to operate on
+ * @param color Color to fill the rectangle with
+ * @param origin Top-left corner of the rectangle to clear
+ * @param size Dimensions of the rectangle to clear. If zero, clears the
+ * entire frame.
+ *
+ * Completely overwrites existing pixel data in the specified region.
+ */
+bool pix_frame_clear_rect(pix_frame_t *frame, pix_color_t color,
+                          pix_point_t origin, pix_size_t size) {
+  sys_assert(frame);
+  if (frame->drawable && frame->drawable() == false) {
+    return false; // Frame is not drawable
+  }
+  if (frame->clear_rect) {
+    frame->clear_rect(frame, color, origin, size);
+    return true; // Clear operation successful
+  } else {
+    return false; // No clear_rect function defined
   }
 }

@@ -30,6 +30,18 @@ libobjc-gcc: dep-cc dep-cmake
 		-D TARGET=${TARGET}
 	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc
 
+
+# Create the libobjc-gcc runtime library
+.PHONY: runtime-pix
+runtime-pix: dep-cc dep-cmake
+	@echo
+	@echo make runtime-pix
+	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
+		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+		-D RUNTIME=gcc \
+		-D TARGET=runtime-pix
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-pix
+
 # Create the libobjc-gcc runtime library
 .PHONY: NXFoundation
 NXFoundation: libobjc-gcc

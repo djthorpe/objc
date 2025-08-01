@@ -33,6 +33,9 @@ add_subdirectory(sys_13)
 add_subdirectory(sys_14)
 add_subdirectory(sys_15)
 
+# Test cases - pix
+add_subdirectory(pix_01)
+
 # Test cases - runtime
 add_subdirectory(runtime_01)
 add_subdirectory(runtime_02)
