@@ -14,11 +14,6 @@
 
 #define SYS_HASHTABLE_KEY_SIZE 24 ///< Maximum key size in bytes
 
-// Entry flags
-#define SYS_HASHTABLE_ENTRY_DELETED 0x01 ///< Entry has been deleted (tombstone)
-#define SYS_HASHTABLE_ENTRY_MALLOCED                                           \
-  0x02 ///< Key memory was allocated with malloc
-
 /**
  * @brief Opaque type for hash table
  * @ingroup SystemHashTable
@@ -52,7 +47,7 @@ typedef struct sys_hashtable_iterator {
 typedef struct {
   uintptr_t hash;  ///< Hash key for the entry
   uintptr_t value; ///< Value associated with the entry
-  uint8_t flags;   ///< Entry flags (deleted, malloced, etc.)
+  uint8_t flags;   ///< Entry flags (implementation-specific)
   void *keyptr;    ///< Pointer to key data
   char keybuf[SYS_HASHTABLE_KEY_SIZE]; ///< Fixed-size key buffer, which can be
                                        ///< used to store keys directly in the

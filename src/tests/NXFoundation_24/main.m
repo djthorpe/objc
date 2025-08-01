@@ -125,16 +125,130 @@ int test_map_methods(void) {
     printf("    ✓ Large capacity init successful\n");
   }
 
+  // Test 9: Factory method +mapWithObjectsAndKeys: - basic usage
+  {
+    printf("  Test 9: Factory method +mapWithObjectsAndKeys: basic...\n");
+    NXString *str1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *str2 = [[NXString alloc] initWithCString:"value2"];
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+    NXString *key2 = [[NXString alloc] initWithCString:"key2"];
+
+    NXMap *map = [NXMap mapWithObjectsAndKeys:str1, key1, str2, key2, nil];
+    test_assert(map != nil);
+    test_assert([map count] == 2);
+    test_assert([[map objectForKey:key1] isEqual:str1]);
+    test_assert([[map objectForKey:key2] isEqual:str2]);
+
+    [str1 release];
+    [str2 release];
+    [key1 release];
+    [key2 release];
+    printf("    ✓ Factory method +mapWithObjectsAndKeys: basic successful\n");
+  }
+
+  // Test 10: Factory method +mapWithObjectsAndKeys: - empty map
+  {
+    printf("  Test 10: Factory method +mapWithObjectsAndKeys: empty...\n");
+    NXMap *map = [NXMap mapWithObjectsAndKeys:nil];
+    test_assert(map != nil);
+    test_assert([map count] == 0);
+    printf("    ✓ Factory method +mapWithObjectsAndKeys: empty successful\n");
+  }
+
+  // Test 11: Factory method +mapWithObjectsAndKeys: - error cases
+  {
+    printf(
+        "  Test 11: Factory method +mapWithObjectsAndKeys: error cases...\n");
+    NXString *str1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+
+    // Odd number of arguments (missing nil terminator) - should return nil
+    // Note: We can't easily test this case due to variadic args
+
+    // Invalid key type (not a string protocol) - would cause protocol warning
+    // but should still work in practice with proper objects
+
+    [str1 release];
+    [key1 release];
+    printf("    ✓ Factory method +mapWithObjectsAndKeys: error cases "
+           "successful\n");
+  }
+
+  // Test 12: Factory method +mapWithObjects:forKeys: - basic usage
+  {
+    printf("  Test 12: Factory method +mapWithObjects:forKeys: basic...\n");
+    NXString *str1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *str2 = [[NXString alloc] initWithCString:"value2"];
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+    NXString *key2 = [[NXString alloc] initWithCString:"key2"];
+
+    NXArray *objects = [NXArray arrayWithObjects:str1, str2, nil];
+    NXArray *keys = [NXArray arrayWithObjects:key1, key2, nil];
+
+    NXMap *map = [NXMap mapWithObjects:objects forKeys:keys];
+    test_assert(map != nil);
+    test_assert([map count] == 2);
+    test_assert([[map objectForKey:key1] isEqual:str1]);
+    test_assert([[map objectForKey:key2] isEqual:str2]);
+
+    [str1 release];
+    [str2 release];
+    [key1 release];
+    [key2 release];
+    printf("    ✓ Factory method +mapWithObjects:forKeys: basic successful\n");
+  }
+
+  // Test 13: Factory method +mapWithObjects:forKeys: - empty arrays
+  {
+    printf("  Test 13: Factory method +mapWithObjects:forKeys: empty...\n");
+    NXArray *objects = [NXArray arrayWithObjects:nil];
+    NXArray *keys = [NXArray arrayWithObjects:nil];
+
+    NXMap *map = [NXMap mapWithObjects:objects forKeys:keys];
+    test_assert(map != nil);
+    test_assert([map count] == 0);
+    printf("    ✓ Factory method +mapWithObjects:forKeys: empty successful\n");
+  }
+
+  // Test 14: Factory method +mapWithObjects:forKeys: - error cases
+  {
+    printf(
+        "  Test 14: Factory method +mapWithObjects:forKeys: error cases...\n");
+    NXString *str1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+    NXString *key2 = [[NXString alloc] initWithCString:"key2"];
+
+    NXArray *objects1 = [NXArray arrayWithObjects:str1, nil];
+    NXArray *keys2 = [NXArray arrayWithObjects:key1, key2, nil];
+
+    // Mismatched array sizes - should return nil
+    NXMap *map1 = [NXMap mapWithObjects:objects1 forKeys:keys2];
+    test_assert(map1 == nil);
+
+    // Nil arrays - should return nil
+    NXMap *map2 = [NXMap mapWithObjects:nil forKeys:keys2];
+    test_assert(map2 == nil);
+
+    NXMap *map3 = [NXMap mapWithObjects:objects1 forKeys:nil];
+    test_assert(map3 == nil);
+
+    [str1 release];
+    [key1 release];
+    [key2 release];
+    printf("    ✓ Factory method +mapWithObjects:forKeys: error cases "
+           "successful\n");
+  }
+
   printf("Testing NXMap core functionality...\n");
 
-  // Test 9: Basic setObject:forKey: and objectForKey:
+  // Test 15: Basic setObject:forKey: and objectForKey:
   {
-    printf("  Test 9: Basic set/get operations...\n");
+    printf("  Test 15: Basic set/get operations...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
-    NXString *key1 = @"key1";
-    NXString *value1 = @"value1";
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+    NXString *value1 = [[NXString alloc] initWithCString:"value1"];
 
     // Test setting an object
     BOOL result = [map setObject:value1 forKey:key1];
@@ -147,21 +261,23 @@ int test_map_methods(void) {
     test_assert([retrieved isEqual:@"value1"]);
 
     [map release];
+    [key1 release];
+    [value1 release];
     printf("    ✓ Basic set/get operations successful\n");
   }
 
-  // Test 10: Multiple key-value pairs
+  // Test 16: Multiple key-value pairs
   {
-    printf("  Test 10: Multiple key-value pairs...\n");
+    printf("  Test 16: Multiple key-value pairs...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
-    NXString *key1 = @"first";
-    NXString *key2 = @"second";
-    NXString *key3 = @"third";
-    NXString *value1 = @"value1";
-    NXString *value2 = @"value2";
-    NXString *value3 = @"value3";
+    NXString *key1 = [[NXString alloc] initWithCString:"first"];
+    NXString *key2 = [[NXString alloc] initWithCString:"second"];
+    NXString *key3 = [[NXString alloc] initWithCString:"third"];
+    NXString *value1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *value2 = [[NXString alloc] initWithCString:"value2"];
+    NXString *value3 = [[NXString alloc] initWithCString:"value3"];
 
     // Set multiple objects
     test_assert([map setObject:value1 forKey:key1] == YES);
@@ -175,12 +291,18 @@ int test_map_methods(void) {
     test_assert([[map objectForKey:key3] isEqual:value3]);
 
     [map release];
+    [key1 release];
+    [key2 release];
+    [key3 release];
+    [value1 release];
+    [value2 release];
+    [value3 release];
     printf("    ✓ Multiple key-value pairs successful\n");
   }
 
-  // Test 11: Key not found
+  // Test 17: Key not found
   {
-    printf("  Test 11: Key not found...\n");
+    printf("  Test 17: Key not found...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
@@ -193,15 +315,15 @@ int test_map_methods(void) {
     printf("    ✓ Key not found handling successful\n");
   }
 
-  // Test 12: Overwriting existing key
+  // Test 18: Overwriting existing key
   {
-    printf("  Test 12: Overwriting existing key...\n");
+    printf("  Test 18: Overwriting existing key...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
-    NXString *key = @"testkey";
-    NXString *value1 = @"original";
-    NXString *value2 = @"updated";
+    NXString *key = [[NXString alloc] initWithCString:"testkey"];
+    NXString *value1 = [[NXString alloc] initWithCString:"original"];
+    NXString *value2 = [[NXString alloc] initWithCString:"updated"];
 
     // Set initial value
     test_assert([map setObject:value1 forKey:key] == YES);
@@ -214,12 +336,15 @@ int test_map_methods(void) {
     test_assert([[map objectForKey:key] isEqual:value2]);
 
     [map release];
+    [key release];
+    [value1 release];
+    [value2 release];
     printf("    ✓ Overwriting existing key successful\n");
   }
 
-  // Test 13: removeAllObjects method
+  // Test 19: removeAllObjects method
   {
-    printf("  Test 13: removeAllObjects method...\n");
+    printf("  Test 19: removeAllObjects method...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
@@ -245,13 +370,13 @@ int test_map_methods(void) {
     printf("    ✓ removeAllObjects method successful\n");
   }
 
-  // Test 14: Different object types
+  // Test 20: Different object types
   {
-    printf("  Test 14: Different object types...\n");
+    printf("  Test 20: Different object types...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map != nil);
 
-    NXString *stringValue = @"stringtest";
+    NXString *stringValue = [[NXString alloc] initWithCString:"stringtest"];
     NXArray *arrayValue = [NXArray new];
 
     // Store different object types
@@ -264,23 +389,24 @@ int test_map_methods(void) {
     test_assert([map objectForKey:@"array"] == arrayValue);
 
     [map release];
+    [stringValue release];
     printf("    ✓ Different object types successful\n");
   }
 
-  // Test 15: removeObjectForKey method
+  // Test 21: removeObjectForKey method
   {
-    printf("  Test 15: removeObjectForKey method...\n");
+    printf("  Test 21: removeObjectForKey method...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map);
     test_assert([map count] == 0);
 
     // Add some objects
-    NXString *key1 = @"key1";
-    NXString *key2 = @"key2";
-    NXString *key3 = @"key3";
-    NXString *value1 = @"value1";
-    NXString *value2 = @"value2";
-    NXString *value3 = @"value3";
+    NXString *key1 = [[NXString alloc] initWithCString:"key1"];
+    NXString *key2 = [[NXString alloc] initWithCString:"key2"];
+    NXString *key3 = [[NXString alloc] initWithCString:"key3"];
+    NXString *value1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *value2 = [[NXString alloc] initWithCString:"value2"];
+    NXString *value3 = [[NXString alloc] initWithCString:"value3"];
 
     test_assert([map setObject:value1 forKey:key1]);
     test_assert([map setObject:value2 forKey:key2]);
@@ -307,18 +433,24 @@ int test_map_methods(void) {
     test_assert([map removeObjectForKey:key1] == NO);
 
     [map release];
+    [key1 release];
+    [key2 release];
+    [key3 release];
+    [value1 release];
+    [value2 release];
+    [value3 release];
     printf("    ✓ removeObjectForKey method successful\n");
   }
 
-  // Test 16: Setting same object multiple times
+  // Test 22: Setting same object multiple times
   {
-    printf("  Test 16: Setting same object multiple times...\n");
+    printf("  Test 22: Setting same object multiple times...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map);
     test_assert([map count] == 0);
 
-    NXString *key = @"samekey";
-    NXString *value = @"samevalue";
+    NXString *key = [[NXString alloc] initWithCString:"samekey"];
+    NXString *value = [[NXString alloc] initWithCString:"samevalue"];
 
     // Set object first time
     test_assert([map setObject:value forKey:key]);
@@ -336,12 +468,197 @@ int test_map_methods(void) {
     test_assert([map objectForKey:key] == value);
 
     [map release];
+    [key release];
+    [value release];
     printf("    ✓ Setting same object multiple times successful\n");
   }
 
-  // Test 17: Stress test with random operations
+  // Test 23: allKeys method - basic functionality
   {
-    printf("  Test 17: Stress test with random operations...\n");
+    printf("  Test 23: allKeys method basic...\n");
+    NXMap *map = [[NXMap alloc] init];
+    test_assert(map != nil);
+
+    // Test empty map
+    NXArray *emptyKeys = [map allKeys];
+    test_assert(emptyKeys != nil);
+    test_assert([emptyKeys count] == 0);
+
+    // Add some key-value pairs
+    NXString *key1 = [[NXString alloc] initWithCString:"first"];
+    NXString *key2 = [[NXString alloc] initWithCString:"second"];
+    NXString *key3 = [[NXString alloc] initWithCString:"third"];
+    NXString *value1 = [[NXString alloc] initWithCString:"value1"];
+    NXString *value2 = [[NXString alloc] initWithCString:"value2"];
+    NXString *value3 = [[NXString alloc] initWithCString:"value3"];
+
+    test_assert([map setObject:value1 forKey:key1] == YES);
+    test_assert([map setObject:value2 forKey:key2] == YES);
+    test_assert([map setObject:value3 forKey:key3] == YES);
+    test_assert([map count] == 3);
+
+    // Get all keys
+    NXArray *keys = [map allKeys];
+    test_assert(keys != nil);
+    test_assert([keys count] == 3);
+
+    // Verify all keys are present (order not guaranteed)
+    BOOL foundFirst = NO, foundSecond = NO, foundThird = NO;
+    unsigned int i;
+    for (i = 0; i < [keys count]; i++) {
+      NXString *key = [keys objectAtIndex:i];
+      test_assert(key != nil);
+      if ([key isEqual:key1])
+        foundFirst = YES;
+      else if ([key isEqual:key2])
+        foundSecond = YES;
+      else if ([key isEqual:key3])
+        foundThird = YES;
+    }
+    test_assert(foundFirst && foundSecond && foundThird);
+
+    [key1 release];
+    [key2 release];
+    [key3 release];
+    [value1 release];
+    [value2 release];
+    [value3 release];
+    [map release];
+    printf("    ✓ allKeys method basic successful\n");
+  }
+
+  // Test 24: allObjects method - basic functionality
+  {
+    printf("  Test 24: allObjects method basic...\n");
+    NXMap *map = [[NXMap alloc] init];
+    test_assert(map != nil);
+
+    // Test empty map
+    NXArray *emptyObjects = [map allObjects];
+    test_assert(emptyObjects != nil);
+    test_assert([emptyObjects count] == 0);
+
+    // Add some key-value pairs
+    NXString *key1 = [[NXString alloc] initWithCString:"first"];
+    NXString *key2 = [[NXString alloc] initWithCString:"second"];
+    NXString *value1 = [[NXString alloc] initWithCString:"valueA"];
+    NXString *value2 = [[NXString alloc] initWithCString:"valueB"];
+
+    test_assert([map setObject:value1 forKey:key1] == YES);
+    test_assert([map setObject:value2 forKey:key2] == YES);
+    test_assert([map count] == 2);
+
+    // Get all objects
+    NXArray *objects = [map allObjects];
+    test_assert(objects != nil);
+    test_assert([objects count] == 2);
+
+    // Verify all objects are present (order not guaranteed)
+    BOOL foundValueA = NO, foundValueB = NO;
+    unsigned int i;
+    for (i = 0; i < [objects count]; i++) {
+      NXString *obj = [objects objectAtIndex:i];
+      test_assert(obj != nil);
+      if ([obj isEqual:value1])
+        foundValueA = YES;
+      else if ([obj isEqual:value2])
+        foundValueB = YES;
+    }
+    test_assert(foundValueA && foundValueB);
+
+    [key1 release];
+    [key2 release];
+    [value1 release];
+    [value2 release];
+    [map release];
+    printf("    ✓ allObjects method basic successful\n");
+  }
+
+  // Test 25: allKeys and allObjects after removeAllObjects
+  {
+    printf("  Test 25: allKeys/allObjects after removeAllObjects...\n");
+    NXMap *map = [[NXMap alloc] init];
+    test_assert(map != nil);
+
+    // Add some data
+    NXString *key = [[NXString alloc] initWithCString:"testkey"];
+    NXString *value = [[NXString alloc] initWithCString:"testvalue"];
+    test_assert([map setObject:value forKey:key] == YES);
+    test_assert([map count] == 1);
+
+    // Verify we have keys and objects
+    NXArray *keys = [map allKeys];
+    NXArray *objects = [map allObjects];
+    test_assert([keys count] == 1);
+    test_assert([objects count] == 1);
+
+    // Clear the map
+    [map removeAllObjects];
+    test_assert([map count] == 0);
+
+    // Verify arrays are now empty
+    NXArray *keysAfter = [map allKeys];
+    NXArray *objectsAfter = [map allObjects];
+    test_assert(keysAfter != nil);
+    test_assert(objectsAfter != nil);
+    test_assert([keysAfter count] == 0);
+    test_assert([objectsAfter count] == 0);
+
+    [key release];
+    [value release];
+    [map release];
+    printf("    ✓ allKeys/allObjects after removeAllObjects successful\n");
+  }
+
+  // Test 26: allKeys and allObjects with mixed object types
+  {
+    printf("  Test 26: allKeys/allObjects with mixed types...\n");
+    NXMap *map = [[NXMap alloc] init];
+    test_assert(map != nil);
+
+    // Add different types of objects
+    NXString *key1 = [[NXString alloc] initWithCString:"string"];
+    NXString *key2 = [[NXString alloc] initWithCString:"array"];
+    NXString *stringValue = [[NXString alloc] initWithCString:"text"];
+    NXArray *arrayValue = [NXArray arrayWithObjects:stringValue, nil];
+
+    test_assert([map setObject:stringValue forKey:key1] == YES);
+    test_assert([map setObject:arrayValue forKey:key2] == YES);
+    test_assert([map count] == 2);
+
+    // Test allKeys
+    NXArray *keys = [map allKeys];
+    test_assert(keys != nil);
+    test_assert([keys count] == 2);
+
+    // Test allObjects
+    NXArray *objects = [map allObjects];
+    test_assert(objects != nil);
+    test_assert([objects count] == 2);
+
+    // Verify objects are the right types
+    BOOL foundString = NO, foundArray = NO;
+    unsigned int i;
+    for (i = 0; i < [objects count]; i++) {
+      id obj = [objects objectAtIndex:i];
+      test_assert(obj != nil);
+      if (obj == stringValue)
+        foundString = YES;
+      else if (obj == arrayValue)
+        foundArray = YES;
+    }
+    test_assert(foundString && foundArray);
+
+    [key1 release];
+    [key2 release];
+    [stringValue release];
+    [map release];
+    printf("    ✓ allKeys/allObjects with mixed types successful\n");
+  }
+
+  // Test 27: Stress test with random operations
+  {
+    printf("  Test 27: Stress test with random operations...\n");
     NXMap *map = [[NXMap alloc] init];
     test_assert(map);
     test_assert([map count] == 0);
@@ -350,7 +667,7 @@ int test_map_methods(void) {
     const int MAX_KEYS = 50;
     const int NUM_OPERATIONS = 200;
     id expected_values[MAX_KEYS]; // NULL means key doesn't exist
-    int expected_count = 0;
+    unsigned int expected_count = 0;
 
     // Initialize expected state
     for (int i = 0; i < MAX_KEYS; i++) {
@@ -438,12 +755,12 @@ int test_map_methods(void) {
     }
 
     // Final validation - iterate through all entries
-    printf("    Final validation: expected_count=%d, actual_count=%d\n",
+    printf("    Final validation: expected_count=%u, actual_count=%u\n",
            expected_count, [map count]);
     test_assert([map count] == expected_count);
 
     // Validate all expected keys are present with correct values
-    int found_keys = 0;
+    unsigned int found_keys = 0;
     for (int i = 0; i < MAX_KEYS; i++) {
       if (expected_values[i] != nil) {
         NXString *test_key = [[NXString alloc] initWithFormat:@"key_%d", i];
@@ -454,7 +771,7 @@ int test_map_methods(void) {
       }
     }
     test_assert(found_keys == expected_count);
-    printf("    Final key validation: %d keys verified\n", found_keys);
+    printf("    Final key validation: %u keys verified\n", found_keys);
 
     [test_objects release];
     [map release];

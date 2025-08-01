@@ -1,4 +1,4 @@
-#include "../../runtime-sys/all/hashtable_private.h"
+#include "../../runtime-sys/all/hashtable.h"
 #include <runtime-sys/sys.h>
 #include <stdatomic.h>
 #include <stdbool.h>

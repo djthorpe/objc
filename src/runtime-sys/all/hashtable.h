@@ -13,13 +13,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE MACROS
 
+// Entry flags (private implementation details)
+#define SYS_HASHTABLE_ENTRY_DELETED 0x01 ///< Entry has been deleted (tombstone)
+
 // Helper macros for entry flags
 #define IS_DELETED(entry) ((entry)->flags & SYS_HASHTABLE_ENTRY_DELETED)
-#define IS_MALLOCED(entry) ((entry)->flags & SYS_HASHTABLE_ENTRY_MALLOCED)
 #define SET_DELETED(entry) ((entry)->flags |= SYS_HASHTABLE_ENTRY_DELETED)
-#define SET_MALLOCED(entry) ((entry)->flags |= SYS_HASHTABLE_ENTRY_MALLOCED)
 #define CLEAR_DELETED(entry) ((entry)->flags &= ~SYS_HASHTABLE_ENTRY_DELETED)
-#define CLEAR_MALLOCED(entry) ((entry)->flags &= ~SYS_HASHTABLE_ENTRY_MALLOCED)
 
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE TYPES

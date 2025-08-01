@@ -29,7 +29,6 @@ int main() {
   // Test NXArchNumCores
   const uint8_t cores = NXArchNumCores();
   test_assert(cores >= 1);
-  test_assert(cores <= 255); // Should not exceed uint8_t max
   NXLog(@"Architecture cores: %u", cores);
 
   // Test cores consistency
@@ -39,7 +38,7 @@ int main() {
 
   // Test NXArchOS
   const char *os = NXArchOS();
-  test_assert(os != nil);
+  test_assert(os);
   test_assert(strlen(os) > 0);
   NXLog(@"Architecture OS: %s", os);
 
@@ -56,7 +55,7 @@ int main() {
 
   // Test NXArchProcessor
   const char *processor = NXArchProcessor();
-  test_assert(processor != nil);
+  test_assert(processor);
   test_assert(strlen(processor) > 0);
   NXLog(@"Architecture processor: %s", processor);
 

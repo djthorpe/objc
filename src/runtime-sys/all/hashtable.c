@@ -1,4 +1,4 @@
-#include "hashtable_private.h"
+#include "hashtable.h"
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -282,7 +282,9 @@ sys_hashtable_entry_t *sys_hashtable_delete_key(sys_hashtable_t *table,
     return NULL; // Not found
   }
   SET_DELETED(entry); // Mark as deleted
-  return entry;       // Return the deleted entry
+  // Note: We keep keyptr and value intact so the caller can release objects,
+  // but the slot will be reused for new entries
+  return entry; // Return the deleted entry
 }
 
 /** @brief Delete an entry into the hash table by value.

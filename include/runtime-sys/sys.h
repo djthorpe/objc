@@ -25,7 +25,6 @@
 #include "date.h"
 #include "event.h"
 #include "hash.h"
-#include "hashmap.h"
 #include "hashtable.h"
 #include "memory.h"
 #include "printf.h"
