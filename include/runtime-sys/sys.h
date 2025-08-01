@@ -21,9 +21,11 @@
  * the system runtime. These tests can be found in the `tests` directory.
  */
 #pragma once
+#include "assert.h"
 #include "date.h"
 #include "event.h"
 #include "hash.h"
+#include "hashtable.h"
 #include "memory.h"
 #include "printf.h"
 #include "random.h"

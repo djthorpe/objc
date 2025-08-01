@@ -19,6 +19,7 @@ add_library(${NAME} STATIC
     thread.c
     waitgroup.c
     ../all/event.c
+    ../all/hashtable.c
     ../all/panicf.c
     ../all/printf.c
     ../all/mutex.c
