@@ -127,19 +127,13 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
  */
 extern const uint8_t *sys_hash_finalize(sys_hash_t *hash);
 
-/** @brief djb2 hash function for strings
+/**
+ * @brief djb2 hash function for strings
  * @ingroup SystemHashing
+ * @param str The NULL-terminated string to hash.
+ * @return The computed hash value as a uintptr_t.
  */
-extern uintptr_t sys_hash_djb2(const char *str) {
-  objc_assert(str != NULL); // Protect against null string input
-
-  uintptr_t hash = 5381; // Standard djb2 initial value
-  uintptr_t c;
-  while ((c = *str++)) {
-    hash = ((hash << 5) + hash) + c; // hash * 33 + c
-  }
-  return hash;
-}
+extern uintptr_t sys_hash_djb2(const char *str);
 
 #ifdef __cplusplus
 }
