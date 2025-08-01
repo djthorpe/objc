@@ -87,7 +87,7 @@ const char *sys_hashmap_get_key(sys_hashtable_t *table, uintptr_t value) {
   sys_assert(value);
 
   sys_hashtable_entry_t *entry = sys_hashtable_get_value(table, value);
-  return entry ? entry->keyptr : 0;
+  return entry ? entry->keyptr : NULL;
 }
 
 /** @brief Insert or update an entry in the hash map with a string key.
