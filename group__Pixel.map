@@ -1,3 +1,5 @@
-<map id="Pixels" name="Pixels">
-<area shape="rect" id="node2" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,5,135,32"/>
+<map id="Pixel" name="Pixel">
+<area shape="rect" id="node1" href="$group__PixelDisplay.html" title="Functions for opening and closing pixel displays. " alt="" coords="285,5,400,32"/>
+<area shape="rect" id="node3" href="$group__PixelFrame.html" title="Functions for pixel frames. " alt="" coords="290,56,395,83"/>
+<area shape="rect" id="node4" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,31,135,57"/>
 </map>

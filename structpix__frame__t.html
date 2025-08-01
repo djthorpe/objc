@@ -50,14 +50,14 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">pix_frame_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Pixel.html">Pixels</a></div></div>  </div>
+<div class="title">pix_frame_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Pixel.html">Pixel</a> &raquo; <a class="el" href="group__PixelFrame.html">Pixel Frames</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Frame structure containing pixel data and drawing operations.  
  <a href="structpix__frame__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="pix_8h_source.html">pix.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="frame_8h_source.html">runtime-pix/pix.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for pix_frame_t:</div>
 <div class="dyncontent">
@@ -113,7 +113,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <div class="textblock"><p>Frame structure containing pixel data and drawing operations. </p>
 <p>A frame represents a rectangular region of pixels with associated drawing functions. The frame is not thread-safe for performance reasons - callers must provide their own synchronization if needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00043">43</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00021">21</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="adc36be17154d7d8af3c37d750f5efbe9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc36be17154d7d8af3c37d750f5efbe9">&#9670;&nbsp;</a></span>clear_rect</h2>
@@ -139,7 +139,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 <p>Completely overwrites existing pixel data in the specified region. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00070">70</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00048">48</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
@@ -159,7 +159,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>true if the framebuffer can be safely drawn to, false otherwise.</dd></dl>
 <p>This function is set by windowing or device systems that may be concurrently updating the rendered surface. If it is NULL, the frame is always considered drawable. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00058">58</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00036">36</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
@@ -185,7 +185,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Color value of the pixel in RGBA32 format </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00079">79</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00057">57</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +214,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <dl class="section return"><dt>Returns</dt><dd>Size in bytes of the retrieved data, or required buffer size if dst is NULL</dd></dl>
 <p>If dst is NULL, only returns the expected buffer size needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00101">101</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00079">79</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
@@ -241,7 +241,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00088">88</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00066">66</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
@@ -269,12 +269,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pix_8h_source.html#l00112">112</a> of file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8h_source.html#l00090">90</a> of file <a class="el" href="frame_8h_source.html">frame.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/runtime-pix/<a class="el" href="pix_8h_source.html">pix.h</a></li>
+<li>include/runtime-pix/<a class="el" href="frame_8h_source.html">frame.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->

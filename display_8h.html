@@ -52,9 +52,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">display.h File Reference</div>  </div>
@@ -63,7 +63,8 @@ $(function() {
 
 <p>Display functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="frame_8h_source.html">frame.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -71,7 +72,8 @@ Include dependency graph for display.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="display_8h__incl.png" border="0" usemap="#include_2runtime-pix_2display_8h" alt=""/></div>
 <map name="include_2runtime-pix_2display_8h" id="include_2runtime-pix_2display_8h">
-<area shape="rect" id="node2" href="types_8h.html" title="Common pixel types and structures. " alt="" coords="62,95,133,121"/>
+<area shape="rect" id="node2" href="frame_8h.html" title="Frame functions. " alt="" coords="5,95,79,121"/>
+<area shape="rect" id="node3" href="types_8h.html" title="Common pixel types and structures. " alt="" coords="59,169,129,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -79,12 +81,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="display_8h__dep__incl.png" border="0" usemap="#include_2runtime-pix_2display_8hdep" alt=""/></div>
 <map name="include_2runtime-pix_2display_8hdep" id="include_2runtime-pix_2display_8hdep">
-<area shape="rect" id="node2" href="pix_8h.html" title="Pixel and framebuffer management functions. " alt="" coords="5,95,155,136"/>
+<area shape="rect" id="node2" href="pix_8h.html" title="Pixel display and frame management functions. " alt="" coords="5,95,155,136"/>
 </map>
 </div>
 </div>
 <p><a href="display_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html">pix_display_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="structpix__display__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a79692b314663e7d4b28f1a6a05f29c5e"><td class="memItemLeft" align="right" valign="top"><a id="a79692b314663e7d4b28f1a6a05f29c5e"></a>
@@ -93,120 +101,32 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ac91bf39ac3ae78aea84ca77b565bc1ce"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8h.html#ac91bf39ac3ae78aea84ca77b565bc1ce">pix_display_callback_t</a>) (const struct <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:ac91bf39ac3ae78aea84ca77b565bc1ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display callback function type for frame updates.  <a href="#ac91bf39ac3ae78aea84ca77b565bc1ce">More...</a><br /></td></tr>
-<tr class="separator:ac91bf39ac3ae78aea84ca77b565bc1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac76dfdbefbba39f2cdb7301c791f181d"><td class="memItemLeft" align="right" valign="top"><a id="ac76dfdbefbba39f2cdb7301c791f181d"></a>
-typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pix_display_t</b></td></tr>
-<tr class="separator:ac76dfdbefbba39f2cdb7301c791f181d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:aa3bf89292d2c92929cd9eaa146162e36"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">pix_display_error_t</a> { <br />
-&#160;&#160;<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a8bf2781168ce5c2e2d76581330b8b562">PIX_DISPLAY_SUCCESS</a> = 0, 
-<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4fc0e15d5f57534c63b559473c3f8b19">PIX_DISPLAY_ERR_INVALID_PARAM</a>, 
-<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a027d8e7626ca4e8726a9eb2abdbe4ee9">PIX_DISPLAY_ERR_UNSUPPORTED</a>, 
-<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4d3904f984d5d815db028ce562a1b796">PIX_DISPLAY_ERR_INVALID_FORMAT</a>, 
-<br />
-&#160;&#160;<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4589e48e60d7090fc82775d7f28b609a">PIX_DISPLAY_ERR_SDL</a>
-<br />
- }<tr class="memdesc:aa3bf89292d2c92929cd9eaa146162e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes for display operations.  <a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">More...</a><br /></td></tr>
-</td></tr>
-<tr class="separator:aa3bf89292d2c92929cd9eaa146162e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7597e2e96865b35c5e778d30e37b3a9f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PixelDisplay.html#ga7597e2e96865b35c5e778d30e37b3a9f">pix_display_callback_t</a>) (const struct <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
+<tr class="memdesc:ga7597e2e96865b35c5e778d30e37b3a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display callback function type for frame updates.  <a href="group__PixelDisplay.html#ga7597e2e96865b35c5e778d30e37b3a9f">More...</a><br /></td></tr>
+<tr class="separator:ga7597e2e96865b35c5e778d30e37b3a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafaff09c8ae92c06919631e902f54babb"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PixelDisplay.html#gafaff09c8ae92c06919631e902f54babb">pix_display_t</a></td></tr>
+<tr class="memdesc:gafaff09c8ae92c06919631e902f54babb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="group__PixelDisplay.html#gafaff09c8ae92c06919631e902f54babb">More...</a><br /></td></tr>
+<tr class="separator:gafaff09c8ae92c06919631e902f54babb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad32f03c94861a76b6fe3430e22dcfea6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gad32f03c94861a76b6fe3430e22dcfea6">pix_sdl_display_init</a> (const char *title, <a class="el" href="structpix__size__t.html">pix_size_t</a> size, <a class="el" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a> format, uint32_t fps, <a class="el" href="display_8h.html#ac91bf39ac3ae78aea84ca77b565bc1ce">pix_display_callback_t</a> callback)</td></tr>
-<tr class="memdesc:gad32f03c94861a76b6fe3430e22dcfea6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new SDL display with the specified format, size, and FPS.  <a href="group__Pixel.html#gad32f03c94861a76b6fe3430e22dcfea6">More...</a><br /></td></tr>
-<tr class="separator:gad32f03c94861a76b6fe3430e22dcfea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab501ad9c6b2272bbdee56fa3f64a24d8"><td class="memItemLeft" align="right" valign="top">
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gab501ad9c6b2272bbdee56fa3f64a24d8">pix_display_finalize</a> (<a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:gab501ad9c6b2272bbdee56fa3f64a24d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and free resources associated with a framebuffer. <br /></td></tr>
-<tr class="separator:gab501ad9c6b2272bbdee56fa3f64a24d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab344b726d14782877de21e7992a03dae"><td class="memItemLeft" align="right" valign="top">
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gab344b726d14782877de21e7992a03dae">pix_display_runloop</a> (const <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:gab344b726d14782877de21e7992a03dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform operations in the runloop for the display. <br /></td></tr>
-<tr class="separator:gab344b726d14782877de21e7992a03dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59c3a4ad47199187945c33220327786a"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">pix_display_error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga59c3a4ad47199187945c33220327786a">pix_display_error</a> (const <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:ga59c3a4ad47199187945c33220327786a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an error code for the display. <br /></td></tr>
-<tr class="separator:ga59c3a4ad47199187945c33220327786a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae7aca19c29293b14dfde701984cbad39"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gae7aca19c29293b14dfde701984cbad39">pix_display_lock</a> (<a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:gae7aca19c29293b14dfde701984cbad39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the display for drawing operations.  <a href="group__Pixel.html#gae7aca19c29293b14dfde701984cbad39">More...</a><br /></td></tr>
-<tr class="separator:gae7aca19c29293b14dfde701984cbad39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga992984257bf98013560e98c9027ba3a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga992984257bf98013560e98c9027ba3a0">pix_display_unlock</a> (<a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:ga992984257bf98013560e98c9027ba3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the display and update the screen.  <a href="group__Pixel.html#ga992984257bf98013560e98c9027ba3a0">More...</a><br /></td></tr>
-<tr class="separator:ga992984257bf98013560e98c9027ba3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa3adb4bd768a532961e70d592789394"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PixelDisplay.html#gafa3adb4bd768a532961e70d592789394">pix_sdl_display_init</a> (const char *title, <a class="el" href="structpix__size__t.html">pix_size_t</a> size, <a class="el" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a> format, uint32_t interval_ms, <a class="el" href="group__PixelDisplay.html#ga7597e2e96865b35c5e778d30e37b3a9f">pix_display_callback_t</a> callback)</td></tr>
+<tr class="memdesc:gafa3adb4bd768a532961e70d592789394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new SDL display with the specified format, size, and interval.  <a href="group__PixelDisplay.html#gafa3adb4bd768a532961e70d592789394">More...</a><br /></td></tr>
+<tr class="separator:gafa3adb4bd768a532961e70d592789394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61dc2be9f8fe59d849668cdbcedb94fb"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PixelDisplay.html#ga61dc2be9f8fe59d849668cdbcedb94fb">pix_display_sdl_finalize</a> (<a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
+<tr class="memdesc:ga61dc2be9f8fe59d849668cdbcedb94fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and free resources associated with an SDL display. <br /></td></tr>
+<tr class="separator:ga61dc2be9f8fe59d849668cdbcedb94fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd3ddd6dbf7714642f2558f572f378c1"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PixelDisplay.html#gadd3ddd6dbf7714642f2558f572f378c1">pix_display_runloop</a> (<a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
+<tr class="memdesc:gadd3ddd6dbf7714642f2558f572f378c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform operations in the runloop for the display. <br /></td></tr>
+<tr class="separator:gadd3ddd6dbf7714642f2558f572f378c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Display functions. </p>
-<p>Functions for pixel displays </p>
 
 <p class="definition">Definition in file <a class="el" href="display_8h_source.html">display.h</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ac91bf39ac3ae78aea84ca77b565bc1ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac91bf39ac3ae78aea84ca77b565bc1ce">&#9670;&nbsp;</a></span>pix_display_callback_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef bool(* pix_display_callback_t) (const struct <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Display callback function type for frame updates. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">display</td><td>Pointer to the display that needs updating </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the callback was successful, false on error </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="display_8h_source.html#l00027">27</a> of file <a class="el" href="display_8h_source.html">display.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aa3bf89292d2c92929cd9eaa146162e36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3bf89292d2c92929cd9eaa146162e36">&#9670;&nbsp;</a></span>pix_display_error_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">pix_display_error_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Error codes for display operations. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3bf89292d2c92929cd9eaa146162e36a8bf2781168ce5c2e2d76581330b8b562"></a>PIX_DISPLAY_SUCCESS&#160;</td><td class="fielddoc"><p>Operation successful. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aa3bf89292d2c92929cd9eaa146162e36a4fc0e15d5f57534c63b559473c3f8b19"></a>PIX_DISPLAY_ERR_INVALID_PARAM&#160;</td><td class="fielddoc"><p>Invalid parameter. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aa3bf89292d2c92929cd9eaa146162e36a027d8e7626ca4e8726a9eb2abdbe4ee9"></a>PIX_DISPLAY_ERR_UNSUPPORTED&#160;</td><td class="fielddoc"><p>Unsupported pixel format. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aa3bf89292d2c92929cd9eaa146162e36a4d3904f984d5d815db028ce562a1b796"></a>PIX_DISPLAY_ERR_INVALID_FORMAT&#160;</td><td class="fielddoc"><p>Invalid format for frame initialization. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aa3bf89292d2c92929cd9eaa146162e36a4589e48e60d7090fc82775d7f28b609a"></a>PIX_DISPLAY_ERR_SDL&#160;</td><td class="fielddoc"><p>SDL error. </p>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="display_8h_source.html#l00033">33</a> of file <a class="el" href="display_8h_source.html">display.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;             {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a8bf2781168ce5c2e2d76581330b8b562">PIX_DISPLAY_SUCCESS</a> = 0,        </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4fc0e15d5f57534c63b559473c3f8b19">PIX_DISPLAY_ERR_INVALID_PARAM</a>,  </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a027d8e7626ca4e8726a9eb2abdbe4ee9">PIX_DISPLAY_ERR_UNSUPPORTED</a>,    </div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4d3904f984d5d815db028ce562a1b796">PIX_DISPLAY_ERR_INVALID_FORMAT</a>, </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4589e48e60d7090fc82775d7f28b609a">PIX_DISPLAY_ERR_SDL</a>,            </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <a class="code" href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">pix_display_error_t</a>;</div><div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36a8bf2781168ce5c2e2d76581330b8b562"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a8bf2781168ce5c2e2d76581330b8b562">PIX_DISPLAY_SUCCESS</a></div><div class="ttdoc">Operation successful. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00034">display.h:34</a></div></div>
-<div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36a027d8e7626ca4e8726a9eb2abdbe4ee9"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a027d8e7626ca4e8726a9eb2abdbe4ee9">PIX_DISPLAY_ERR_UNSUPPORTED</a></div><div class="ttdoc">Unsupported pixel format. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00036">display.h:36</a></div></div>
-<div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36">pix_display_error_t</a></div><div class="ttdeci">pix_display_error_t</div><div class="ttdoc">Error codes for display operations. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00033">display.h:33</a></div></div>
-<div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36a4fc0e15d5f57534c63b559473c3f8b19"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4fc0e15d5f57534c63b559473c3f8b19">PIX_DISPLAY_ERR_INVALID_PARAM</a></div><div class="ttdoc">Invalid parameter. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00035">display.h:35</a></div></div>
-<div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36a4d3904f984d5d815db028ce562a1b796"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4d3904f984d5d815db028ce562a1b796">PIX_DISPLAY_ERR_INVALID_FORMAT</a></div><div class="ttdoc">Invalid format for frame initialization. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00037">display.h:37</a></div></div>
-<div class="ttc" id="display_8h_html_aa3bf89292d2c92929cd9eaa146162e36a4589e48e60d7090fc82775d7f28b609a"><div class="ttname"><a href="display_8h.html#aa3bf89292d2c92929cd9eaa146162e36a4589e48e60d7090fc82775d7f28b609a">PIX_DISPLAY_ERR_SDL</a></div><div class="ttdoc">SDL error. </div><div class="ttdef"><b>Definition:</b> <a href="display_8h_source.html#l00038">display.h:38</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->

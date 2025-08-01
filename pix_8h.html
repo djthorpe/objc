@@ -52,51 +52,33 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pix.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Pixel and framebuffer management functions.  
+<p>Pixel display and frame management functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="display_8h_source.html">display.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="display_8h_source.html">display.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="frame_8h_source.html">frame.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pix.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="pix_8h__incl.png" border="0" usemap="#include_2runtime-pix_2pix_8h" alt=""/></div>
 <map name="include_2runtime-pix_2pix_8h" id="include_2runtime-pix_2pix_8h">
-<area shape="rect" id="node2" href="display_8h.html" title="Display functions. " alt="" coords="58,95,137,121"/>
-<area shape="rect" id="node3" href="types_8h.html" title="Common pixel types and structures. " alt="" coords="135,169,206,196"/>
+<area shape="rect" id="node5" href="display_8h.html" title="Display functions. " alt="" coords="181,95,260,121"/>
+<area shape="rect" id="node6" href="frame_8h.html" title="Frame functions. " alt="" coords="260,169,333,196"/>
+<area shape="rect" id="node7" href="types_8h.html" title="Common pixel types and structures. " alt="" coords="235,244,305,271"/>
 </map>
 </div>
 </div>
 <p><a href="pix_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__frame__t.html">pix_frame_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame structure containing pixel data and drawing operations.  <a href="structpix__frame__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html">pix_display_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="structpix__display__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gae02007b01ac92fa7eb115ff692faead4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gae02007b01ac92fa7eb115ff692faead4">pix_frame_t</a></td></tr>
-<tr class="memdesc:gae02007b01ac92fa7eb115ff692faead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frame structure containing pixel data and drawing operations.  <a href="group__Pixel.html#gae02007b01ac92fa7eb115ff692faead4">More...</a><br /></td></tr>
-<tr class="separator:gae02007b01ac92fa7eb115ff692faead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaff09c8ae92c06919631e902f54babb"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#afaff09c8ae92c06919631e902f54babb">pix_display_t</a></td></tr>
-<tr class="memdesc:afaff09c8ae92c06919631e902f54babb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display context structure.  <a href="#afaff09c8ae92c06919631e902f54babb">More...</a><br /></td></tr>
-<tr class="separator:afaff09c8ae92c06919631e902f54babb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gab4504a325929461cec72d6cc5db8055b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gab4504a325929461cec72d6cc5db8055b">pix_init</a> (void)</td></tr>
@@ -105,15 +87,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gadc7b893668e073d16da25320c3635b31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#gadc7b893668e073d16da25320c3635b31">pix_exit</a> (void)</td></tr>
 <tr class="memdesc:gadc7b893668e073d16da25320c3635b31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up the pixel system on shutdown.  <a href="group__Pixel.html#gadc7b893668e073d16da25320c3635b31">More...</a><br /></td></tr>
 <tr class="separator:gadc7b893668e073d16da25320c3635b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga52782d4795f8fae800dc343e7881b273"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga52782d4795f8fae800dc343e7881b273">pix_frame_init</a> (<a class="el" href="group__Pixel.html#ga4b3eef8af447e3f8a003cbc360710e8c">pix_format_t</a> format, <a class="el" href="structpix__size__t.html">pix_size_t</a> size, size_t alignment)</td></tr>
-<tr class="memdesc:ga52782d4795f8fae800dc343e7881b273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new framebuffer with the specified format and size.  <a href="group__Pixel.html#ga52782d4795f8fae800dc343e7881b273">More...</a><br /></td></tr>
-<tr class="separator:ga52782d4795f8fae800dc343e7881b273"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8023579543479aeac269df7b17bb45d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Pixel.html#ga8023579543479aeac269df7b17bb45d0">pix_frame_finalize</a> (<a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame)</td></tr>
-<tr class="memdesc:ga8023579543479aeac269df7b17bb45d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and free resources associated with a framebuffer.  <a href="group__Pixel.html#ga8023579543479aeac269df7b17bb45d0">More...</a><br /></td></tr>
-<tr class="separator:ga8023579543479aeac269df7b17bb45d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c1703d0e837584923a6c9d24df75f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a4c1703d0e837584923a6c9d24df75f64">pix_frame_clear_rect</a> (<a class="el" href="structpix__frame__t.html">pix_frame_t</a> *frame, <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a> color, <a class="el" href="structpix__point__t.html">pix_point_t</a> origin, <a class="el" href="structpix__size__t.html">pix_size_t</a> size)</td></tr>
-<tr class="memdesc:a4c1703d0e837584923a6c9d24df75f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a rectangular region to a solid color.  <a href="#a4c1703d0e837584923a6c9d24df75f64">More...</a><br /></td></tr>
-<tr class="separator:a4c1703d0e837584923a6c9d24df75f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -128,125 +101,54 @@ Variables</h2></td></tr>
 <tr class="separator:ac308334fd13d5d66c07dd39d6b8e0e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5304570e0b02de40983af6cdbc73f735"><td class="memItemLeft" align="right" valign="top"><a id="a5304570e0b02de40983af6cdbc73f735"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a5304570e0b02de40983af6cdbc73f735">pix_white</a></td></tr>
-<tr class="memdesc:a5304570e0b02de40983af6cdbc73f735"><td class="mdescLeft">&#160;</td><td class="mdescRight">White (255,255,255,255) <br /></td></tr>
+<tr class="memdesc:a5304570e0b02de40983af6cdbc73f735"><td class="mdescLeft">&#160;</td><td class="mdescRight">White (255,255,255,255) ARGB. <br /></td></tr>
 <tr class="separator:a5304570e0b02de40983af6cdbc73f735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a212f30d49ff4e59b44576ccef29acf90"><td class="memItemLeft" align="right" valign="top"><a id="a212f30d49ff4e59b44576ccef29acf90"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a212f30d49ff4e59b44576ccef29acf90">pix_black</a></td></tr>
-<tr class="memdesc:a212f30d49ff4e59b44576ccef29acf90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Black (0,0,0,255) <br /></td></tr>
+<tr class="memdesc:a212f30d49ff4e59b44576ccef29acf90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Black (0,0,0,255) ARGB. <br /></td></tr>
 <tr class="separator:a212f30d49ff4e59b44576ccef29acf90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a423ccff4008cdadf61c656b7a4a6a3e6"><td class="memItemLeft" align="right" valign="top"><a id="a423ccff4008cdadf61c656b7a4a6a3e6"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a423ccff4008cdadf61c656b7a4a6a3e6">pix_red</a></td></tr>
-<tr class="memdesc:a423ccff4008cdadf61c656b7a4a6a3e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Red (255,0,0,255) <br /></td></tr>
+<tr class="memdesc:a423ccff4008cdadf61c656b7a4a6a3e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Red (255,0,0,255) ARGB. <br /></td></tr>
 <tr class="separator:a423ccff4008cdadf61c656b7a4a6a3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa54cd34ea3e6820415ea73d25686aec"><td class="memItemLeft" align="right" valign="top"><a id="aaa54cd34ea3e6820415ea73d25686aec"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#aaa54cd34ea3e6820415ea73d25686aec">pix_green</a></td></tr>
-<tr class="memdesc:aaa54cd34ea3e6820415ea73d25686aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Green (0,255,0,255) <br /></td></tr>
+<tr class="memdesc:aaa54cd34ea3e6820415ea73d25686aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Green (0,255,0,255) ARGB. <br /></td></tr>
 <tr class="separator:aaa54cd34ea3e6820415ea73d25686aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a415f776f5ceb9e7bf893d7835a91ff6d"><td class="memItemLeft" align="right" valign="top"><a id="a415f776f5ceb9e7bf893d7835a91ff6d"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a415f776f5ceb9e7bf893d7835a91ff6d">pix_blue</a></td></tr>
-<tr class="memdesc:a415f776f5ceb9e7bf893d7835a91ff6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blue (0,0,255,255) <br /></td></tr>
+<tr class="memdesc:a415f776f5ceb9e7bf893d7835a91ff6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blue (0,0,255,255) ARGB. <br /></td></tr>
 <tr class="separator:a415f776f5ceb9e7bf893d7835a91ff6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad31cb873da887eccf8e23db275c226e6"><td class="memItemLeft" align="right" valign="top"><a id="ad31cb873da887eccf8e23db275c226e6"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#ad31cb873da887eccf8e23db275c226e6">pix_yellow</a></td></tr>
-<tr class="memdesc:ad31cb873da887eccf8e23db275c226e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yellow (255,255,0,255) <br /></td></tr>
+<tr class="memdesc:ad31cb873da887eccf8e23db275c226e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yellow (255,255,0,255) ARGB. <br /></td></tr>
 <tr class="separator:ad31cb873da887eccf8e23db275c226e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a917a672207054a7687b4ece6df27034b"><td class="memItemLeft" align="right" valign="top"><a id="a917a672207054a7687b4ece6df27034b"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a917a672207054a7687b4ece6df27034b">pix_cyan</a></td></tr>
-<tr class="memdesc:a917a672207054a7687b4ece6df27034b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyan (0,255,255,255) <br /></td></tr>
+<tr class="memdesc:a917a672207054a7687b4ece6df27034b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cyan (0,255,255,255) ARGB. <br /></td></tr>
 <tr class="separator:a917a672207054a7687b4ece6df27034b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a301a89ab5a6720e07c0e3e148309bb7a"><td class="memItemLeft" align="right" valign="top"><a id="a301a89ab5a6720e07c0e3e148309bb7a"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a301a89ab5a6720e07c0e3e148309bb7a">pix_magenta</a></td></tr>
-<tr class="memdesc:a301a89ab5a6720e07c0e3e148309bb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Magenta (255,0,255,255) <br /></td></tr>
+<tr class="memdesc:a301a89ab5a6720e07c0e3e148309bb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Magenta (255,0,255,255) ARGB. <br /></td></tr>
 <tr class="separator:a301a89ab5a6720e07c0e3e148309bb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbd3d1d79664e9c0958b0577dacca29f"><td class="memItemLeft" align="right" valign="top"><a id="abbd3d1d79664e9c0958b0577dacca29f"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#abbd3d1d79664e9c0958b0577dacca29f">pix_gray</a></td></tr>
-<tr class="memdesc:abbd3d1d79664e9c0958b0577dacca29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gray (128,128,128,255) <br /></td></tr>
+<tr class="memdesc:abbd3d1d79664e9c0958b0577dacca29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gray (128,128,128,255) ARGB. <br /></td></tr>
 <tr class="separator:abbd3d1d79664e9c0958b0577dacca29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2cad05497fd50d4bf2079966d9c2e62"><td class="memItemLeft" align="right" valign="top"><a id="ad2cad05497fd50d4bf2079966d9c2e62"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#ad2cad05497fd50d4bf2079966d9c2e62">pix_light_gray</a></td></tr>
-<tr class="memdesc:ad2cad05497fd50d4bf2079966d9c2e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Light gray (192,192,192,255) <br /></td></tr>
+<tr class="memdesc:ad2cad05497fd50d4bf2079966d9c2e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Light gray (192,192,192,255) ARGB. <br /></td></tr>
 <tr class="separator:ad2cad05497fd50d4bf2079966d9c2e62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a603c7e0f7e4162bb97d85b4b426b8111"><td class="memItemLeft" align="right" valign="top"><a id="a603c7e0f7e4162bb97d85b4b426b8111"></a>
 <a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pix_8h.html#a603c7e0f7e4162bb97d85b4b426b8111">pix_dark_gray</a></td></tr>
-<tr class="memdesc:a603c7e0f7e4162bb97d85b4b426b8111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dark gray (64,64,64,255) <br /></td></tr>
+<tr class="memdesc:a603c7e0f7e4162bb97d85b4b426b8111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dark gray (64,64,64,255) ARGB. <br /></td></tr>
 <tr class="separator:a603c7e0f7e4162bb97d85b4b426b8111"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Pixel and framebuffer management functions. </p>
+<div class="textblock"><p>Pixel display and frame management functions. </p>
 
 <p class="definition">Definition in file <a class="el" href="pix_8h_source.html">pix.h</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="afaff09c8ae92c06919631e902f54babb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaff09c8ae92c06919631e902f54babb">&#9670;&nbsp;</a></span>pix_display_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structpix__display__t.html">pix_display_t</a>  <a class="el" href="structpix__display__t.html">pix_display_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Display context structure. </p>
-<p>Contains the state for display operations. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a4c1703d0e837584923a6c9d24df75f64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c1703d0e837584923a6c9d24df75f64">&#9670;&nbsp;</a></span>pix_frame_clear_rect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool pix_frame_clear_rect </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structpix__frame__t.html">pix_frame_t</a> *&#160;</td>
-          <td class="paramname"><em>frame</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__Pixel.html#ga48c75e649ecb0258928997ac51677996">pix_color_t</a>&#160;</td>
-          <td class="paramname"><em>color</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structpix__point__t.html">pix_point_t</a>&#160;</td>
-          <td class="paramname"><em>origin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structpix__size__t.html">pix_size_t</a>&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clear a rectangular region to a solid color. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>Pointer to the frame to operate on </td></tr>
-    <tr><td class="paramname">color</td><td>Color to fill the rectangle with </td></tr>
-    <tr><td class="paramname">origin</td><td>Top-left corner of the rectangle to clear </td></tr>
-    <tr><td class="paramname">size</td><td>Dimensions of the rectangle to clear. If zero, clears the entire frame.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Completely overwrites existing pixel data in the specified region. </p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->
