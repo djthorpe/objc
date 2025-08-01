@@ -1,4 +1,3 @@
-#include <runtime-sys/assert.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10,11 +9,9 @@ struct sys_hashtable {
   struct sys_hashtable *next;
   size_t size;
   sys_hashtable_keyequals_t keyequals;
-  /** 
-   * @brief Points to the flexible array member containing the hash table buckets.
-   * 
-   * This field is initialized to point to the memory immediately following the
-   * `sys_hashtable` structure. Each bucket is represented as a `sys_hashtable_entry_t`.
+  /**
+   * @brief Points to the flexible array member containing the hash table
+   * buckets.
    */
   sys_hashtable_entry_t *entries;
 #if defined(__LP64__) || defined(_WIN64)
@@ -253,14 +250,7 @@ sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash, void *keyptr,
   }
 
   // All tables are full - create a new one with 1.5x growth
-  // Check for potential overflow in size calculation
-  if (root->size > (SIZE_MAX / 3)) {
-    // Size too large for safe 1.5x expansion
-    sys_panicf("Hash table too large for expansion");
-  }
-
   size_t new_size = root->size + (root->size >> 1);
-  sys_assert(new_size >= root->size); // Ensure we always grow
   table = _sys_hashtable_new(new_size, prev, root->keyequals);
   if (table == NULL) {
     return NULL; // Allocation failed

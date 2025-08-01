@@ -31,12 +31,14 @@ typedef struct {
   uintptr_t value; ///< Value associated with the entry
   bool deleted; ///< Flag indicating if this entry has been deleted (tombstone)
   void *keyptr; ///< Pointer to key data
-  char keybuf[SYS_HASHTABLE_KEY_SIZE]; ///< Fixed-size key buffer
+  char keybuf[SYS_HASHTABLE_KEY_SIZE]; ///< Fixed-size key buffer, which can be
+                                       ///< used to store keys directly in the
+                                       ///< entry
 } sys_hashtable_entry_t;
 
 /** @brief Compare entry with a key.
  */
-typedef bool (*sys_hashtable_keyequals_t)(void *keyptr,
+typedef bool (*sys_hashtable_keyequals_t)(void *keyptr, size_t keylen,
                                           sys_hashtable_entry_t *entry);
 
 ///////////////////////////////////////////////////////////////////////////////
