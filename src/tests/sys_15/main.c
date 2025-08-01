@@ -5,11 +5,13 @@
 #include <tests/tests.h>
 
 // Test helpers
-static bool test_key_equals(void *keyptr, sys_hashtable_entry_t *entry) {
+static bool test_key_equals(void *keyptr, size_t keylen, sys_hashtable_entry_t *entry) {
   char *key1 = (char *)keyptr;
   char *key2 = (char *)entry->keyptr;
   if (key1 == NULL || key2 == NULL)
     return false;
+  // keylen is currently unused but included to match the typedef
+  (void)keylen;
   return strcmp(key1, key2) == 0;
 }
 
