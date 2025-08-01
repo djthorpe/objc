@@ -9,11 +9,16 @@
 // TYPES
 
 struct _pix_sdl_context {
-  SDL_Window *window;        ///< SDL window for rendering
-  SDL_Renderer *renderer;    ///< SDL renderer for the window
-  SDL_Texture *texture;      ///< Main texture for pixel operations
-  pix_display_error_t error; ///< Error code for display operations
+  SDL_Window *window;     ///< SDL window for rendering
+  SDL_Renderer *renderer; ///< SDL renderer for the window
+  SDL_Texture *texture;   ///< Main texture for pixel operations
 };
+
+///////////////////////////////////////////////////////////////////////////////
+// FORWARD DECLARATIONS
+
+static bool _pix_sdl_display_lock(pix_display_t *display);
+static bool _pix_sdl_display_unlock(pix_display_t *display);
 
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
@@ -50,30 +55,36 @@ static inline Uint32 _pix_to_sdl_format(pix_format_t pix_format) {
 // LIFECYCLE
 
 /**
- * @brief Initialize a new SDL display with the specified format, size, and FPS.
- * @ingroup Pixel
+ * @brief Initialize a new SDL display with the specified format, size, and
+ * interval.
  */
 pix_display_t pix_sdl_display_init(const char *title, pix_size_t size,
-                                   pix_format_t format, uint32_t fps,
+                                   pix_format_t format, uint32_t interval_ms,
                                    pix_display_callback_t callback) {
   pix_display_t display = {0};
 
   // Validate parameters
   if (title == NULL || size.w == 0 || size.h == 0) {
-    display.error = PIX_DISPLAY_ERR_INVALID_PARAM;
+#ifdef DEBUG
+    sys_puts("pix_display_t: invalid parameters\n");
+#endif
     return display;
   }
 
   // Convert pix format to SDL format
   Uint32 sdl_format = _pix_to_sdl_format(format);
   if (sdl_format == SDL_PIXELFORMAT_UNKNOWN) {
-    display.error = PIX_DISPLAY_ERR_UNSUPPORTED;
+#ifdef DEBUG
+    sys_puts("pix_display_t: invalid pixel format\n");
+#endif
     return display;
   }
 
   // Ensure the context buffer is large enough for our structure
   if (sizeof(struct _pix_sdl_context) > PIX_DISPLAY_CTX_SIZE) {
-    display.error = PIX_DISPLAY_ERR_INVALID_PARAM;
+#ifdef DEBUG
+    sys_puts("pix_display_t: invalid parameters\n");
+#endif
     return display;
   }
 
@@ -81,26 +92,38 @@ pix_display_t pix_sdl_display_init(const char *title, pix_size_t size,
   struct _pix_sdl_context *ctx = (struct _pix_sdl_context *)display.ctx;
   SDL_Window *window = NULL;
   SDL_Renderer *renderer = NULL;
-  if (!SDL_CreateWindowAndRenderer(title, size.w, size.h, SDL_WINDOW_BORDERLESS,
+  if (!SDL_CreateWindowAndRenderer(title, size.w, size.h, SDL_WINDOW_RESIZABLE,
                                    &window, &renderer)) {
-    display.error = PIX_DISPLAY_ERR_SDL;
+#ifdef DEBUG
+    sys_puts(SDL_GetError());
+#endif
     return display;
   }
 
   // Enable vsync to prevent screen tearing
   if (!SDL_SetRenderVSync(renderer, 1)) {
-    // Vsync failed, but continue anyway - just log it
-    // Could optionally fail here if vsync is critical
+#ifdef DEBUG
+    sys_puts(SDL_GetError());
+#endif
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    return display;
   }
+
+  // Clear the renderer to black initially
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Black
+  SDL_RenderClear(renderer);
+  SDL_RenderPresent(renderer);
 
   // Create a texture for pixel operations with the requested format
   SDL_Texture *texture = SDL_CreateTexture(
       renderer, sdl_format, SDL_TEXTUREACCESS_STREAMING, size.w, size.h);
   if (texture == NULL) {
-    // Requested format not supported
+#ifdef DEBUG
+    sys_puts(SDL_GetError());
+#endif
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    display.error = PIX_DISPLAY_ERR_UNSUPPORTED;
     return display;
   }
 
@@ -109,31 +132,43 @@ pix_display_t pix_sdl_display_init(const char *title, pix_size_t size,
   ctx->renderer = renderer;
   ctx->texture = texture;
 
-  // Initialize FPS and callback settings
-  display.target_fps = fps;
-  display.callback = callback;
-  display.last_frame_time = 0;
-
   // Initialize the frame using the proper frame initialization function
   display.frame = pix_frame_init(format, size, 0);
   if (display.frame.buf == NULL) {
+#ifdef DEBUG
+    sys_puts("pix_display_t: unable to initialize frame buffer\n");
+#endif
     SDL_DestroyTexture(texture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    display.error = PIX_DISPLAY_ERR_INVALID_FORMAT;
     return display;
+  } else {
+    // Clear the frame buffer to black to ensure clean initial state
+    size_t total_bytes = display.frame.size.w * display.frame.size.h *
+                         4; // RGBA32 = 4 bytes per pixel
+    memset(display.frame.buf, 0, total_bytes);
+    // TODO: Set the 'drawable' function pointer
   }
+
+  // Initialize the display structure
+  display.callback = callback;
+  display.time_ms = 0;
+  display.interval_ms = interval_ms;
+  display.userdata = NULL; // Store context pointer in userdata
+  display.lock = _pix_sdl_display_lock;
+  display.unlock = _pix_sdl_display_unlock;
 
   // Return the display structure
   return display;
 }
 
 /**
- * @brief Finalize and free resources associated with a display.
+ * @brief Finalize and free resources associated with a SDL display.
  * @ingroup Pixel
  */
-bool pix_display_finalize(pix_display_t *display) {
+bool pix_display_sdl_finalize(pix_display_t *display) {
   sys_assert(display);
+  sys_assert(display->frame.buf);
 
   // Finalize the frame structure
   pix_frame_finalize(&display->frame);
@@ -158,42 +193,25 @@ bool pix_display_finalize(pix_display_t *display) {
 }
 
 /**
- * @brief Return an error code for display operations.
- * @ingroup Pixel
- */
-pix_display_error_t pix_display_error(const pix_display_t *display) {
-  sys_assert(display);
-  return display->error;
-}
-
-/**
- * @brief Perform operations in the runloop for the display.
- * @ingroup Pixel
- */
-void pix_display_runloop(const pix_display_t *display) {
-  sys_assert(display);
-  SDL_PumpEvents();
-}
-
-/**
  * @brief Lock the display for drawing operations.
  * @ingroup Pixel
  */
-bool pix_display_lock(pix_display_t *display) {
-  if (display == NULL) {
-    return false;
-  }
+static bool _pix_sdl_display_lock(pix_display_t *display) {
+  sys_assert(display);
 
-  // Lock the renderer for exclusive access during drawing operations
-  // This prevents other threads from interfering with rendering
-  return true;
+  struct _pix_sdl_context *ctx = (struct _pix_sdl_context *)display->ctx;
+  sys_assert(ctx);
+
+  // For SDL, we don't need to do much for locking, but we can ensure
+  // the renderer is ready and clear any previous state
+  return ctx->renderer != NULL;
 }
 
 /**
  * @brief Unlock the display and update the screen.
  * @ingroup Pixel
  */
-bool pix_display_unlock(pix_display_t *display) {
+static bool _pix_sdl_display_unlock(pix_display_t *display) {
   sys_assert(display);
   pix_frame_t *frame = &display->frame;
   sys_assert(frame && frame->buf);
@@ -201,20 +219,33 @@ bool pix_display_unlock(pix_display_t *display) {
   struct _pix_sdl_context *ctx = (struct _pix_sdl_context *)display->ctx;
   sys_assert(ctx);
 
+  // Clear the renderer first
+  if (!SDL_RenderClear(ctx->renderer)) {
+#ifdef DEBUG
+    sys_puts("SDL_RenderClear failed\n");
+#endif
+    return false;
+  }
+
   // Update the texture with our frame buffer data
-  bool success = true;
-  if (SDL_UpdateTexture(ctx->texture, NULL, frame->buf, frame->stride)) {
-    // SDL_UpdateTexture succeeded (returns true on success), now render the
-    // texture
-    success = SDL_RenderTexture(ctx->renderer, ctx->texture, NULL, NULL);
-  } else {
-    // SDL_UpdateTexture failed (returns false on failure)
-    success = false;
+  if (!SDL_UpdateTexture(ctx->texture, NULL, frame->buf, frame->stride)) {
+#ifdef DEBUG
+    sys_puts("SDL_UpdateTexture failed\n");
+#endif
+    return false;
+  }
+
+  // Render the texture to the back buffer
+  if (!SDL_RenderTexture(ctx->renderer, ctx->texture, NULL, NULL)) {
+#ifdef DEBUG
+    sys_puts("SDL_RenderTexture failed\n");
+#endif
+    return false;
   }
 
   // Present the final result to the screen
   SDL_RenderPresent(ctx->renderer);
 
   // Return success
-  return success;
+  return true;
 }

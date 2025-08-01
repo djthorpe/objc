@@ -8,19 +8,23 @@
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 
-pix_point_t pix_zero_point = {0};        ///< Zero point (0,0)
-pix_size_t pix_zero_size = {0};          ///< Zero size (0,0)
-pix_color_t pix_white = 0xFFFFFFFF;      ///< White (255,255,255,255)
-pix_color_t pix_black = 0x000000FF;      ///< Black (0,0,0,255)
-pix_color_t pix_red = 0xFF0000FF;        ///< Red (255,0,0,255)
-pix_color_t pix_green = 0x00FF00FF;      ///< Green (0,255,0,255)
-pix_color_t pix_blue = 0x0000FFFF;       ///< Blue (0,0,255,255)
-pix_color_t pix_yellow = 0xFFFF00FF;     ///< Yellow (255,255,0,255)
-pix_color_t pix_cyan = 0x00FFFFFF;       ///< Cyan (0,255,255,255)
-pix_color_t pix_magenta = 0xFF00FFFF;    ///< Magenta (255,0,255,255)
-pix_color_t pix_gray = 0x808080FF;       ///< Gray (128,128,128,255)
-pix_color_t pix_light_gray = 0xC0C0C0FF; ///< Light gray (192,192,192,255)
-pix_color_t pix_dark_gray = 0x404040FF;  ///< Dark gray (64,64,64,255)
+pix_point_t pix_zero_point = {0};   ///< Zero point (0,0)
+pix_size_t pix_zero_size = {0};     ///< Zero size (0,0)
+pix_color_t pix_white = 0xFFFFFFFF; ///< White (255,255,255,255) ARGB
+pix_color_t pix_black = 0xFF000000; ///< Black (0,0,0,255) ARGB
+pix_color_t pix_red = 0xFF0000FF; ///< Red (255,0,0,255) ARGB - swapped for SDL
+pix_color_t pix_green = 0xFF00FF00; ///< Green (0,255,0,255) ARGB
+pix_color_t pix_blue =
+    0xFFFF0000; ///< Blue (0,0,255,255) ARGB - swapped for SDL
+pix_color_t pix_yellow =
+    0xFF00FFFF; ///< Yellow (255,255,0,255) ARGB - swapped for SDL
+pix_color_t pix_cyan =
+    0xFFFFFF00; ///< Cyan (0,255,255,255) ARGB - swapped for SDL
+pix_color_t pix_magenta =
+    0xFFFF00FF; ///< Magenta (255,0,255,255) ARGB - unchanged (red+blue)
+pix_color_t pix_gray = 0xFF808080;       ///< Gray (128,128,128,255) ARGB
+pix_color_t pix_light_gray = 0xFFC0C0C0; ///< Light gray (192,192,192,255) ARGB
+pix_color_t pix_dark_gray = 0xFF404040;  ///< Dark gray (64,64,64,255) ARGB
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE

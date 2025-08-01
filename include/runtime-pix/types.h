@@ -6,9 +6,9 @@
  * Shared type definitions used across the pixel library.
  */
 #pragma once
-
-#include <stdbool.h>
 #include <stdint.h>
+
+#define PIX_FPS_25 40 ///< 25 frames per second (40 ms per frame)
 
 /**
  * @brief Point structure representing X,Y coordinates.
