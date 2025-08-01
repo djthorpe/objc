@@ -668,10 +668,12 @@ int test_map_methods(void) {
     const int NUM_OPERATIONS = 200;
     id expected_values[MAX_KEYS]; // NULL means key doesn't exist
     unsigned int expected_count = 0;
+    NXString *keys[MAX_KEYS];
 
-    // Initialize expected state
+    // Initialize expected state and keys
     for (int i = 0; i < MAX_KEYS; i++) {
       expected_values[i] = nil;
+      keys[i] = [[NXString alloc] initWithFormat:@"key_%d", i];
     }
 
     // Create a pool of test objects to use
@@ -686,7 +688,7 @@ int test_map_methods(void) {
     for (int op = 0; op < NUM_OPERATIONS; op++) {
       int key_index = abs(NXRandInt32()) % MAX_KEYS;
       int operation = abs(NXRandInt32()) % 100; // 0-99
-      NXString *key = [[NXString alloc] initWithFormat:@"key_%d", key_index];
+      NXString *key = keys[key_index];
 
       if (operation < 50) { // 50% chance: INSERT/UPDATE
         id new_value = [test_objects
@@ -694,7 +696,8 @@ int test_map_methods(void) {
         id old_value = expected_values[key_index];
 
         // Perform the operation
-        test_assert([map setObject:new_value forKey:key]);
+        BOOL insert_result = [map setObject:new_value forKey:key];
+        test_assert(insert_result == YES);
 
         // Update expected state
         if (old_value == nil) {
@@ -702,19 +705,28 @@ int test_map_methods(void) {
         }
         expected_values[key_index] = new_value;
 
-      } else if (operation < 80 &&
-                 expected_count >
-                     0) { // 30% chance: REMOVE (only if we have keys)
+      } else if (operation < 80) { // 30% chance: REMOVE
         id old_value = expected_values[key_index];
 
+        BOOL remove_result = [map removeObjectForKey:key];
         if (old_value != nil) {
           // Key exists, should succeed
-          test_assert([map removeObjectForKey:key] == YES);
+          if (remove_result != YES) {
+            printf(
+                "    ERROR: Failed to remove existing key_%d (operation %d)\n",
+                key_index, op);
+            test_assert(remove_result == YES);
+          }
           expected_values[key_index] = nil;
           expected_count--;
         } else {
           // Key doesn't exist, should fail
-          test_assert([map removeObjectForKey:key] == NO);
+          if (remove_result != NO) {
+            printf("    ERROR: Successfully removed non-existent key_%d "
+                   "(operation %d)\n",
+                   key_index, op);
+            test_assert(remove_result == NO);
+          }
         }
 
       } else { // 20% chance: LOOKUP
@@ -728,8 +740,35 @@ int test_map_methods(void) {
         }
       }
 
-      // Validate count after every operation
-      test_assert([map count] == expected_count);
+      // Validate count after every operation with detailed error info
+      unsigned int actual_count = [map count];
+      if (actual_count != expected_count) {
+        printf("    ERROR: Count mismatch at operation %d (key_index=%d, "
+               "operation=%d%%)\n",
+               op, key_index, operation);
+        printf("    Expected count: %u, Actual count: %u\n", expected_count,
+               actual_count);
+
+        // Dump current expected state
+        unsigned int manual_count = 0;
+        for (int i = 0; i < MAX_KEYS; i++) {
+          if (expected_values[i] != nil) {
+            printf("    Expected key_%d: exists\n", i);
+            manual_count++;
+          }
+        }
+        printf("    Manual count verification: %u\n", manual_count);
+
+        // Also check actual map contents
+        NXArray *actualKeys = [map allKeys];
+        printf("    Actual map keys count: %u\n", [actualKeys count]);
+        for (unsigned int i = 0; i < [actualKeys count]; i++) {
+          NXString *actualKey = [actualKeys objectAtIndex:i];
+          printf("    Actual key: %s\n", [actualKey cStr]);
+        }
+
+        test_assert(actual_count == expected_count);
+      }
 
       // Every 50 operations, do a full validation
       if ((op + 1) % 50 == 0) {
@@ -738,7 +777,7 @@ int test_map_methods(void) {
 
         // Check that all expected keys exist and have correct values
         for (int i = 0; i < MAX_KEYS; i++) {
-          NXString *test_key = [[NXString alloc] initWithFormat:@"key_%d", i];
+          NXString *test_key = keys[i];
           id expected_val = expected_values[i];
           id actual_val = [map objectForKey:test_key];
 
@@ -747,11 +786,8 @@ int test_map_methods(void) {
           } else {
             test_assert(actual_val == expected_val);
           }
-          [test_key release];
         }
       }
-
-      [key release];
     }
 
     // Final validation - iterate through all entries
@@ -763,19 +799,158 @@ int test_map_methods(void) {
     unsigned int found_keys = 0;
     for (int i = 0; i < MAX_KEYS; i++) {
       if (expected_values[i] != nil) {
-        NXString *test_key = [[NXString alloc] initWithFormat:@"key_%d", i];
+        NXString *test_key = keys[i];
         id actual_value = [map objectForKey:test_key];
         test_assert(actual_value == expected_values[i]);
         found_keys++;
-        [test_key release];
       }
     }
     test_assert(found_keys == expected_count);
     printf("    Final key validation: %u keys verified\n", found_keys);
 
+    // Release keys
+    for (int i = 0; i < MAX_KEYS; i++) {
+      [keys[i] release];
+    }
+
     [test_objects release];
     [map release];
     printf("    ✓ Stress test with random operations successful\n");
+  }
+
+  // Test 28: JSONString method - empty map
+  {
+    printf("  Test 28: JSONString method - empty map...\n");
+    NXMap *map = [[NXMap alloc] init];
+    test_assert(map != nil);
+
+    NXString *json = [map JSONString];
+    test_assert(json != nil);
+    test_assert(strcmp([json cStr], "{}") == 0);
+
+    [map release];
+    printf("    ✓ Empty map JSON generation successful\n");
+  }
+
+  // Test 29: JSONString method - single key-value pair
+  {
+    printf("  Test 29: JSONString method - single key-value pair...\n");
+    NXMap *map = [[NXMap alloc] init];
+    NXString *key = [NXString stringWithString:@"name"];
+    NXString *value = [NXString stringWithString:@"John"];
+
+    test_assert([map setObject:value forKey:key] == YES);
+    test_assert([map count] == 1);
+
+    NXString *json = [map JSONString];
+    test_assert(json != nil);
+
+    // JSON should contain the key-value pair
+    const char *jsonStr = [json cStr];
+    test_assert(jsonStr != NULL);
+    test_assert(strstr(jsonStr, "\"name\"") != NULL);
+    test_assert(strstr(jsonStr, "\"John\"") != NULL);
+    test_assert(strstr(jsonStr, ":") != NULL);
+    test_assert(jsonStr[0] == '{');
+    test_assert(jsonStr[strlen(jsonStr) - 1] == '}');
+
+    [map release];
+    printf("    ✓ Single pair JSON generation successful\n");
+  }
+
+  // Test 30: JSONString method - multiple key-value pairs
+  {
+    printf("  Test 30: JSONString method - multiple key-value pairs...\n");
+    NXMap *map = [[NXMap alloc] init];
+    NXString *key1 = [NXString stringWithString:@"name"];
+    NXString *value1 = [NXString stringWithString:@"Alice"];
+    NXString *key2 = [NXString stringWithString:@"age"];
+    NXString *value2 = [NXString stringWithString:@"25"];
+
+    test_assert([map setObject:value1 forKey:key1] == YES);
+    test_assert([map setObject:value2 forKey:key2] == YES);
+    test_assert([map count] == 2);
+
+    NXString *json = [map JSONString];
+    test_assert(json != nil);
+
+    // JSON should contain both key-value pairs
+    const char *jsonStr = [json cStr];
+    test_assert(jsonStr != NULL);
+    test_assert(strstr(jsonStr, "\"name\"") != NULL);
+    test_assert(strstr(jsonStr, "\"Alice\"") != NULL);
+    test_assert(strstr(jsonStr, "\"age\"") != NULL);
+    test_assert(strstr(jsonStr, "\"25\"") != NULL);
+    test_assert(strstr(jsonStr, ":") != NULL);
+    test_assert(strstr(jsonStr, ",") != NULL);
+    test_assert(jsonStr[0] == '{');
+    test_assert(jsonStr[strlen(jsonStr) - 1] == '}');
+
+    [map release];
+    printf("    ✓ Multiple pairs JSON generation successful\n");
+  }
+
+  // Test 31: JSONBytes method
+  {
+    printf("  Test 31: JSONBytes method...\n");
+    NXMap *map = [[NXMap alloc] init];
+
+    // Empty map
+    size_t emptyBytes = [map JSONBytes];
+    test_assert(emptyBytes >= 2); // At least "{}"
+
+    // Add some content
+    NXString *key = [NXString stringWithString:@"test"];
+    NXString *value = [NXString stringWithString:@"value"];
+    test_assert([map setObject:value forKey:key] == YES);
+
+    size_t populatedBytes = [map JSONBytes];
+    test_assert(populatedBytes > emptyBytes); // Should be larger
+
+    // Verify that JSONString fits within calculated bytes
+    NXString *json = [map JSONString];
+    test_assert(json != nil);
+    size_t actualBytes = strlen([json cStr]);
+    test_assert(actualBytes <= populatedBytes);
+
+    [map release];
+    printf("    ✓ JSONBytes calculation successful\n");
+  }
+
+  // Test 32: JSONString method - nested objects (if available)
+  {
+    printf("  Test 32: JSONString method - nested map objects...\n");
+    NXMap *outerMap =
+        [[NXMap alloc] init]; // Use alloc/init to avoid autorelease
+    NXMap *innerMap =
+        [[NXMap alloc] init]; // Use alloc/init to avoid autorelease
+
+    // Add content to inner map
+    NXString *innerKey = [NXString stringWithString:@"inner"];
+    NXString *innerValue = [NXString stringWithString:@"data"];
+    test_assert([innerMap setObject:innerValue forKey:innerKey] == YES);
+
+    // Add inner map to outer map
+    NXString *outerKey = [NXString stringWithString:@"nested"];
+    test_assert([outerMap setObject:innerMap forKey:outerKey] == YES);
+
+    // Release innerMap since outerMap now owns it
+    [innerMap release];
+
+    NXString *json = [outerMap JSONString];
+    test_assert(json != nil);
+
+    // Should contain nested structure
+    const char *jsonStr = [json cStr];
+    test_assert(jsonStr != NULL);
+    test_assert(strstr(jsonStr, "\"nested\"") != NULL);
+    test_assert(strstr(jsonStr, "\"inner\"") != NULL);
+    test_assert(strstr(jsonStr, "\"data\"") != NULL);
+    test_assert(jsonStr[0] == '{');
+    test_assert(jsonStr[strlen(jsonStr) - 1] == '}');
+
+    [outerMap release];
+    printf("    ✓ Nested objects JSON generation successful\n");
   }
 
   printf("All NXMap lifecycle and functionality tests passed!\n");

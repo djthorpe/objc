@@ -135,16 +135,6 @@
 - (NXArray *)allObjects;
 
 /**
- * @brief Removes all objects from the map.
- *
- * This method effectively clears all key-value pairs from the map.
- * All previously stored objects are released, and any references to them
- * become invalid. The map remains fully functional after this operation
- * and can accept new key-value pairs immediately.
- */
-- (void)removeAllObjects;
-
-/**
  * @brief Stores an object in the map with the specified key.
  * @param anObject The object to store in the map. Must be non-nil.
  * @param key The string key to associate with the object. Must be non-nil
@@ -180,5 +170,15 @@
  *       the map remains unchanged.
  */
 - (BOOL)removeObjectForKey:(id<NXConstantStringProtocol, RetainProtocol>)key;
+
+/**
+ * @brief Removes all objects from the map.
+ *
+ * This method effectively clears all key-value pairs from the map.
+ * All previously stored objects are released, and any references to them
+ * become invalid. The map remains fully functional after this operation
+ * and can accept new key-value pairs immediately.
+ */
+- (void)removeAllObjects;
 
 @end

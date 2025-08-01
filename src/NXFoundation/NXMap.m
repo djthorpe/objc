@@ -368,6 +368,19 @@ static uintptr_t _nxmap_hash(id<NXConstantStringProtocol> key) {
     return NO; // Map is in invalid state
   }
 
+  // Prevent direct self-reference
+  if (anObject == self) {
+    return NO;
+  }
+
+  // Prevent circular references: if the object being added is a collection
+  // that already contains this map (directly or indirectly), reject it to
+  // avoid infinite recursion during operations like containsObject: or dealloc
+  if ([anObject conformsTo:@protocol(CollectionProtocol)] &&
+      [(id<CollectionProtocol>)anObject containsObject:self]) {
+    return NO;
+  }
+
   // Use the generic hashtable functions with the key object as the key
   uintptr_t hash = _nxmap_hash(key);
   bool samekey = false;
@@ -443,27 +456,79 @@ static uintptr_t _nxmap_hash(id<NXConstantStringProtocol> key) {
   entry->keyptr = NULL;
   entry->value = 0;
 
+  // Decrement the count
   _count--;
 
+  // Successfully removed the object
   return YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // METHODS - COLLECTION PROTOCOL
 
-- (BOOL)containsObject:(id)object {
-  objc_assert(object);
-  return NO; // Not implemented for NXMap
+- (BOOL)containsObject:(id)anObject {
+  objc_assert(anObject);
+
+  // Check if map is in valid state
+  if (_data == nil || _count == 0) {
+    return NO;
+  }
+
+  // Iterate through the map to check if any value matches the given object
+  sys_hashtable_iterator_t iter = {0};
+  sys_hashtable_iterator_t *iterptr = &iter;
+  sys_hashtable_entry_t *entry;
+  while ((entry = sys_hashtable_iterator_next(_data, &iterptr))) {
+    id obj = (id)entry->value;
+    objc_assert(obj);
+
+    // Check for exact object identity first
+    if (obj == anObject) {
+      return YES;
+    }
+
+    // If the object conforms to CollectionProtocol, recursively check it
+    if ([obj conformsTo:@protocol(CollectionProtocol)]) {
+      if ([obj containsObject:anObject]) {
+        return YES; // Found in nested collection
+      }
+    }
+  }
+
+  return NO; // Object not found in map values or nested collections
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // METHODS - JSON PROTOCOL
 
 /**
- * @brief Returns a JSON representation of the instance.
+ * @brief Convert an object to the number of bytes required for its JSON
  */
-- (NXString *)JSONString {
-  return [NXString stringWithString:@"TODO"];
++ (size_t)_jsonbytes_for_object:(id)anObject {
+  objc_assert(anObject);
+
+  // Use JSONProtocol if available
+  if ([anObject conformsTo:@protocol(JSONProtocol)]) {
+    return [anObject JSONBytes];
+  }
+
+  // Else we use the description method
+  return [[NXString stringWithString:[anObject description]] JSONBytes];
+}
+
+/**
+ * @brief Convert an object to the number of bytes required for its JSON
+ */
++ (NXString *)_json_for_object:(id)anObject {
+  objc_assert(anObject);
+
+  // Use JSONProtocol if available
+  if ([anObject conformsTo:@protocol(JSONProtocol)]) {
+    return [anObject JSONString];
+  }
+
+  // Else we use the description method
+  return [[NXString stringWithString:[anObject description]] JSONString];
 }
 
 /**
@@ -471,7 +536,76 @@ static uintptr_t _nxmap_hash(id<NXConstantStringProtocol> key) {
  * representation of the instance.
  */
 - (size_t)JSONBytes {
-  return 0;
+  size_t count = 2; // For the opening and closing braces
+
+  sys_hashtable_iterator_t iter = {0};
+  sys_hashtable_iterator_t *iterptr = &iter;
+  sys_hashtable_entry_t *entry;
+  while ((entry = sys_hashtable_iterator_next(_data, &iterptr))) {
+    id key = (id)entry->keyptr;
+    id value = (id)entry->value;
+    objc_assert(key);
+    objc_assert(value);
+    count += [NXMap _jsonbytes_for_object:key];
+    count += [NXMap _jsonbytes_for_object:value];
+    count += 4; // For the colon, comma and space
+  }
+
+  return count;
+}
+
+/**
+ * @brief Returns a JSON representation of the instance.
+ */
+- (NXString *)JSONString {
+  // Handle empty map or invalid state
+  if (_data == nil || _count == 0) {
+    return [NXString stringWithString:@"{}"];
+  }
+
+  // Create string with calculated capacity
+  NXString *json = [NXString stringWithCapacity:[self JSONBytes] + 1];
+  if (json == nil) {
+    return nil; // Allocation failed
+  }
+
+  [json appendCString:"{"];
+
+  sys_hashtable_iterator_t iter = {0};
+  sys_hashtable_iterator_t *iterptr = &iter;
+  sys_hashtable_entry_t *entry;
+  BOOL firstElement = YES;
+
+  while ((entry = sys_hashtable_iterator_next(_data, &iterptr))) {
+    id key = (id)entry->keyptr;
+    objc_assert(key);
+    id value = (id)entry->value;
+    objc_assert(value);
+
+    // Add comma separator if not the first element
+    if (!firstElement) {
+      [json appendCString:", "];
+    }
+    firstElement = NO;
+
+    // Add key-value pair: "key": value
+    NXString *keyJSON = [NXMap _json_for_object:key];
+    NXString *valueJSON = [NXMap _json_for_object:value];
+    if (keyJSON == nil || valueJSON == nil) {
+      return nil; // JSON conversion failed
+    }
+
+    // Append key and value to JSON string
+    [json append:keyJSON];
+    [json appendCString:": "];
+    [json append:valueJSON];
+  }
+
+  // Append closing brace
+  [json appendCString:"}"];
+
+  // Return success
+  return json;
 }
 
 @end

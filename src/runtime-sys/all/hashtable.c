@@ -105,39 +105,42 @@ static sys_hashtable_entry_t *
 _sys_hashtable_find_slot(sys_hashtable_t *table, uintptr_t hash, void *keyptr) {
   sys_assert(table != NULL);
 
-  // Calculate the starting index based on the key hash
   size_t start_index = hash % table->size;
   size_t index = start_index;
   size_t probes = 0;
   sys_hashtable_entry_t *first_deleted = NULL;
+
   while (probes < table->size) {
     sys_hashtable_entry_t *entry = &table->entries[index];
 
-    // Exact match found (for updates)
+    // Case 1: Exact match found
     if (entry->hash == hash && !IS_DELETED(entry)) {
-      if (table->keyequals == NULL) {
-        return entry; // No key comparison function, just return if hashes match
-      } else if (table->keyequals(keyptr, entry)) {
-        return entry; // Exact match found using key comparison function
+      if (table->keyequals == NULL || table->keyequals(keyptr, entry)) {
+        return entry;
       }
     }
 
-    // Remember first deleted slot for potential reuse
-    if (IS_DELETED(entry) && first_deleted == NULL) {
-      first_deleted = entry;
-    }
-
-    // Empty slot found
+    // Case 2: Empty slot found
     if (entry->value == 0 && !IS_DELETED(entry)) {
-      // Return deleted slot if we found one earlier (better for fragmentation)
+      // The key is not in the table. Return the first deleted slot if we found
+      // one, otherwise return this empty slot. This is the insertion point.
       return first_deleted ? first_deleted : entry;
     }
 
+    // Case 3: Deleted slot found
+    if (IS_DELETED(entry) && first_deleted == NULL) {
+      // Remember this slot, but keep searching for an exact match.
+      first_deleted = entry;
+    }
+
+    // Continue probing
     index = (index + 1) % table->size;
     probes++;
   }
 
-  // Return deleted slot if available, NULL otherwise
+  // If we get here, the table is full. Return the first deleted slot if
+  // available. If first_deleted is NULL, the table is full of non-matching
+  // keys, so we can't insert.
   return first_deleted;
 }
 
@@ -227,23 +230,23 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
       continue;
     }
 
-    // Check if this is an existing entry
-    bool is_existing_entry = false;
-    if (slot->hash == hash && !IS_DELETED(slot)) {
-      if (samekey) {
-        *samekey = table->keyequals ? table->keyequals(keyptr, slot) : true;
-        is_existing_entry = *samekey;
-      }
+    // The slot returned by _sys_hashtable_find_slot is the correct one to use.
+    // We determine if it's an overwrite of an existing, active key.
+    bool is_overwrite = (slot->value != 0 && !IS_DELETED(slot));
+
+    if (samekey) {
+      *samekey = is_overwrite;
     }
 
-    // Set the new information other than the value
-    slot->hash = hash;
-    CLEAR_DELETED(slot);
-
-    // Only update keyptr for new entries, preserve it for existing entries
-    if (!is_existing_entry) {
+    // If it's a new insertion (into an empty or deleted slot), we must set the
+    // key.
+    if (!is_overwrite) {
       slot->keyptr = keyptr;
     }
+
+    // Set the new information
+    slot->hash = hash;
+    CLEAR_DELETED(slot);
 
     // Return the slot
     return slot;
