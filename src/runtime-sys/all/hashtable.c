@@ -79,7 +79,7 @@ _sys_hashtable_get_bykey_inner(sys_hashtable_t *table, uintptr_t hash,
       if (table->keyequals == NULL) {
         // No key comparison function, just return if hashes match
         return entry;
-      } else if (table->keyequals(keyptr, entry)) {
+      } else if (table->keyequals(keyptr, entry->keyptr)) {
         // Exact match found using key comparison function
         return entry;
       }
@@ -115,7 +115,7 @@ _sys_hashtable_find_slot(sys_hashtable_t *table, uintptr_t hash, void *keyptr) {
 
     // Case 1: Exact match found
     if (entry->hash == hash && !IS_DELETED(entry)) {
-      if (table->keyequals == NULL || table->keyequals(keyptr, entry)) {
+      if (table->keyequals == NULL || table->keyequals(keyptr, entry->keyptr)) {
         return entry;
       }
     }
@@ -219,7 +219,20 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
     *samekey = false;
   }
 
-  // Try to find existing entry or available slot in current tables
+  // First, check if the key already exists in any table across the chain
+  sys_hashtable_entry_t *existing_entry =
+      sys_hashtable_get_key(root, hash, keyptr);
+  if (existing_entry != NULL) {
+    // Key exists - this is an overwrite
+    if (samekey) {
+      *samekey = true;
+    }
+    // Clear any deleted flag if present and return the existing entry
+    CLEAR_DELETED(existing_entry);
+    return existing_entry;
+  }
+
+  // Key doesn't exist - try to find an available slot in current tables
   sys_hashtable_t *table = root;
   sys_hashtable_t *prev = NULL;
   while (table != NULL) {
@@ -230,25 +243,10 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
       continue;
     }
 
-    // The slot returned by _sys_hashtable_find_slot is the correct one to use.
-    // We determine if it's an overwrite of an existing, active key.
-    bool is_overwrite = (slot->value != 0 && !IS_DELETED(slot));
-
-    if (samekey) {
-      *samekey = is_overwrite;
-    }
-
-    // If it's a new insertion (into an empty or deleted slot), we must set the
-    // key.
-    if (!is_overwrite) {
-      slot->keyptr = keyptr;
-    }
-
-    // Set the new information
+    // We found an available slot (empty or deleted)
+    slot->keyptr = keyptr;
     slot->hash = hash;
     CLEAR_DELETED(slot);
-
-    // Return the slot
     return slot;
   }
 

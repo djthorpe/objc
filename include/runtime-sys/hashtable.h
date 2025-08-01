@@ -58,11 +58,10 @@ typedef struct {
  * @brief Compare entry with a key.
  * @ingroup SystemHashTable
  *
- * This callback function is used to compare a key with an entry in the hash
- * table. It should return true if the key matches the entry, false otherwise.
+ * This callback function is used to compare a key with another key from the
+ * hash table. It should return true if the keys match, false otherwise.
  */
-typedef bool (*sys_hashtable_keyequals_t)(void *keyptr,
-                                          sys_hashtable_entry_t *entry);
+typedef bool (*sys_hashtable_keyequals_t)(void *keyptr, void *other_keyptr);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE

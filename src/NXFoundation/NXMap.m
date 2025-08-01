@@ -14,9 +14,9 @@
  * @brief Key comparison function for NXMap - compares Objective-C string
  * objects
  */
-static bool _nxmap_keyequals(void *keyptr, sys_hashtable_entry_t *entry) {
+static bool _nxmap_keyequals(void *keyptr, void *other_keyptr) {
   id<NXConstantStringProtocol> key1 = (id)keyptr;
-  id<NXConstantStringProtocol> key2 = (id)entry->keyptr;
+  id<NXConstantStringProtocol> key2 = (id)other_keyptr;
 
   if (key1 == key2) {
     return true; // Same object
