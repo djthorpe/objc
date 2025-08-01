@@ -20,7 +20,7 @@ add_library(${NAME} STATIC
     waitgroup.c
     ../all/date.c
     ../all/event.c
-    ../all/hashmap.c
+    ../all/hash.c
     ../all/hashtable.c
     ../all/mutex.c
     ../all/panicf.c

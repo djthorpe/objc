@@ -1,4 +1,4 @@
-#include "../../runtime-sys/all/hashtable_private.h"
+#include "../../runtime-sys/all/hashtable.h"
 #include <runtime-sys/sys.h>
 #include <stdatomic.h>
 #include <stdbool.h>
@@ -6,9 +6,9 @@
 #include <tests/tests.h>
 
 // Test helpers
-static bool test_key_equals(void *keyptr, sys_hashtable_entry_t *entry) {
+static bool test_key_equals(void *keyptr, void *other_keyptr) {
   char *key1 = (char *)keyptr;
-  char *key2 = (char *)entry->keyptr;
+  char *key2 = (char *)other_keyptr;
   if (key1 == NULL || key2 == NULL)
     return false;
   return strcmp(key1, key2) == 0;
