@@ -6,8 +6,8 @@
  */
 
 #pragma once
-#include <runtime-sys/sys.h>
 
+void sys_panicf(const char *format, ...);
 /**
  * @def sys_assert(condition)
  * @ingroup System
