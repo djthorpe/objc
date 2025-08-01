@@ -667,7 +667,7 @@ int test_map_methods(void) {
     const int MAX_KEYS = 50;
     const int NUM_OPERATIONS = 200;
     id expected_values[MAX_KEYS]; // NULL means key doesn't exist
-    unsigned int expected_count = 0;
+    int expected_count = 0;
 
     // Initialize expected state
     for (int i = 0; i < MAX_KEYS; i++) {
