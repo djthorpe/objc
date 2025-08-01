@@ -68,12 +68,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="hashtable_8h__dep__incl.png" border="0" usemap="#include_2runtime-sys_2hashtable_8hdep" alt=""/></div>
 <map name="include_2runtime-sys_2hashtable_8hdep" id="include_2runtime-sys_2hashtable_8hdep">
-<area shape="rect" id="node2" href="sys_8h.html" title="System management functions. " alt="" coords="200,95,351,136"/>
-<area shape="rect" id="node3" href="runtime-gcc_2objc_2assert_8h_source.html" title="include/runtime&#45;gcc\l/objc/assert.h" alt="" coords="87,184,237,225"/>
-<area shape="rect" id="node6" href="NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="193,363,357,404"/>
-<area shape="rect" id="node7" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="313,184,477,225"/>
-<area shape="rect" id="node4" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="87,273,237,315"/>
-<area shape="rect" id="node5" href="NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="5,363,169,404"/>
+<area shape="rect" id="node2" href="hashmap_8h.html" title="Methods for hash map operations, using NULL&#45;terminated strings as the key. " alt="" coords="144,95,295,136"/>
+<area shape="rect" id="node3" href="sys_8h.html" title="System management functions. " alt="" coords="200,184,351,225"/>
+<area shape="rect" id="node4" href="runtime-gcc_2objc_2assert_8h_source.html" title="include/runtime&#45;gcc\l/objc/assert.h" alt="" coords="87,273,237,315"/>
+<area shape="rect" id="node7" href="NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="193,452,357,493"/>
+<area shape="rect" id="node8" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="313,273,477,315"/>
+<area shape="rect" id="node5" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="87,363,237,404"/>
+<area shape="rect" id="node6" href="NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="5,452,169,493"/>
 </map>
 </div>
 </div>
@@ -94,6 +95,14 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#af54bd186a37a1bc5536097b86aeeb51c">SYS_HASHTABLE_KEY_SIZE</a>&#160;&#160;&#160;24</td></tr>
 <tr class="memdesc:af54bd186a37a1bc5536097b86aeeb51c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum key size in bytes. <br /></td></tr>
 <tr class="separator:af54bd186a37a1bc5536097b86aeeb51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ac73339bc962197183d93a4e320b0c5"><td class="memItemLeft" align="right" valign="top"><a id="a9ac73339bc962197183d93a4e320b0c5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a9ac73339bc962197183d93a4e320b0c5">SYS_HASHTABLE_ENTRY_DELETED</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memdesc:a9ac73339bc962197183d93a4e320b0c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry has been deleted (tombstone) <br /></td></tr>
+<tr class="separator:a9ac73339bc962197183d93a4e320b0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494dfcf18f8e0be585e1ebfb85bd6378"><td class="memItemLeft" align="right" valign="top"><a id="a494dfcf18f8e0be585e1ebfb85bd6378"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a494dfcf18f8e0be585e1ebfb85bd6378">SYS_HASHTABLE_ENTRY_MALLOCED</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="memdesc:a494dfcf18f8e0be585e1ebfb85bd6378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key memory was allocated with malloc. <br /></td></tr>
+<tr class="separator:a494dfcf18f8e0be585e1ebfb85bd6378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -122,9 +131,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga25e38ea27c00a0fc724226db76288ef5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga25e38ea27c00a0fc724226db76288ef5">sys_hashtable_get_value</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
 <tr class="memdesc:ga25e38ea27c00a0fc724226db76288ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash table by hash value.  <a href="group__SystemHashTable.html#ga25e38ea27c00a0fc724226db76288ef5">More...</a><br /></td></tr>
 <tr class="separator:ga25e38ea27c00a0fc724226db76288ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga971a41a4317157aef673bf186e853c2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga971a41a4317157aef673bf186e853c2b">sys_hashtable_put</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr, uintptr_t value, void(*replaced)(<a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry))</td></tr>
-<tr class="memdesc:ga971a41a4317157aef673bf186e853c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put an entry into the hash table, replacing any existing entry.  <a href="group__SystemHashTable.html#ga971a41a4317157aef673bf186e853c2b">More...</a><br /></td></tr>
-<tr class="separator:ga971a41a4317157aef673bf186e853c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52cfabe25208e5c00a902bb0e445f0c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga52cfabe25208e5c00a902bb0e445f0c2">sys_hashtable_put</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr, bool *samekey)</td></tr>
+<tr class="memdesc:ga52cfabe25208e5c00a902bb0e445f0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a has table entry in which to put the value, and perhaps the key.  <a href="group__SystemHashTable.html#ga52cfabe25208e5c00a902bb0e445f0c2">More...</a><br /></td></tr>
+<tr class="separator:ga52cfabe25208e5c00a902bb0e445f0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf2066a977766ed8514f959785427806f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gaf2066a977766ed8514f959785427806f">sys_hashtable_delete_key</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr)</td></tr>
 <tr class="memdesc:gaf2066a977766ed8514f959785427806f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry into the hash table by key.  <a href="group__SystemHashTable.html#gaf2066a977766ed8514f959785427806f">More...</a><br /></td></tr>
 <tr class="separator:gaf2066a977766ed8514f959785427806f"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -106,6 +106,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga991bebea4457d3b1ee1fecc326e8186c"><td class="memItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashing.html#ga991bebea4457d3b1ee1fecc326e8186c">sys_hash_finalize</a> (<a class="el" href="structsys__hash__t.html">sys_hash_t</a> *hash)</td></tr>
 <tr class="memdesc:ga991bebea4457d3b1ee1fecc326e8186c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the hash computation and returns the hash value.  <a href="#ga991bebea4457d3b1ee1fecc326e8186c">More...</a><br /></td></tr>
 <tr class="separator:ga991bebea4457d3b1ee1fecc326e8186c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd09549e37d8b013e3ef3daabee008c2"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashing.html#gacd09549e37d8b013e3ef3daabee008c2">sys_hash_djb2</a> (const char *str)</td></tr>
+<tr class="memdesc:gacd09549e37d8b013e3ef3daabee008c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">djb2 hash function for strings  <a href="#gacd09549e37d8b013e3ef3daabee008c2">More...</a><br /></td></tr>
+<tr class="separator:gacd09549e37d8b013e3ef3daabee008c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for hash generation, sometimes with hardware acceleration. </p>
@@ -172,6 +175,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gacd09549e37d8b013e3ef3daabee008c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacd09549e37d8b013e3ef3daabee008c2">&#9670;&nbsp;</a></span>sys_hash_djb2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintptr_t sys_hash_djb2 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>djb2 hash function for strings </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The NULL-terminated string to hash. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The computed hash value as a uintptr_t. </dd></dl>
+
+</div>
+</div>
 <a id="ga991bebea4457d3b1ee1fecc326e8186c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga991bebea4457d3b1ee1fecc326e8186c">&#9670;&nbsp;</a></span>sys_hash_finalize()</h2>
 
