@@ -1,4 +1,3 @@
-#include <runtime-sys/event.h>
 #include <runtime-sys/sys.h>
 
 sys_event_queue_t sys_event_queue_init(size_t capacity) {
