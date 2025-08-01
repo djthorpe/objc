@@ -219,7 +219,8 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
     *samekey = false;
   }
 
-  // Single-pass approach: search for existing key or available slot in one traversal
+  // Single-pass approach: search for existing key or available slot in one
+  // traversal
   sys_hashtable_t *table = root;
   sys_hashtable_t *prev = NULL;
   while (table != NULL) {
@@ -231,9 +232,8 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
     }
 
     // Check if this is an existing key (exact match found)
-    if (slot->hash == hash
-        && !IS_DELETED(slot)
-        && (table->keyequals == NULL || table->keyequals(keyptr, slot->keyptr))) {
+    if (slot->hash == hash && !IS_DELETED(slot) &&
+        (table->keyequals == NULL || table->keyequals(keyptr, slot->keyptr))) {
       // Key exists - this is an overwrite
       if (samekey) {
         *samekey = true;
