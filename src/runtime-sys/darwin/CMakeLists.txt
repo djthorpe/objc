@@ -21,6 +21,7 @@ add_library(${NAME} STATIC
     ../all/date.c
     ../all/mutex.c
     ../all/event.c
+    ../all/hashtable.c
     ../all/panicf.c
     ../all/printf.c
 )

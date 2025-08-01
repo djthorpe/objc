@@ -10,7 +10,7 @@ The tests are organized into three main categories:
 
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_00 through sys_14): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, and cross-core communication.
+- **System Tests** (sys_00 through sys_15): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, and hash table operations.
 
 ---
 
@@ -107,3 +107,4 @@ The tests are organized into three main categories:
 | sys_12 | Event Queue Operations | Basic ops, overflow/overwrite, threading, peek-before-acquire, shutdown, high volume (800 events), rapid shutdown, mixed operations. |
 | sys_13 | Event Queue Cross-Core Communication | Tests event queue initialization, basic push/pop operations, multicore producer-consumer patterns, timeout behavior, and error handling with bidirectional communication between cores. |
 | sys_14 | Dual-Core Event Queue with Timers | Tests dual-core event queue consumption with timer-driven event production, cross-core event mixing, high-load scenarios with atomic counters, and timer-based coordination. |
+| sys_15 | Hash Table Operations | Tests comprehensive hash table functionality including basic operations (init, put, get by key/value), collision handling with linear probing, automatic chaining/growth, deletion operations, iteration, edge cases with replacement callbacks, and count/capacity tracking across chained tables. |
