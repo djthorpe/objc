@@ -10,8 +10,8 @@ struct sys_hashtable {
   size_t size;
   sys_hashtable_keyequals_t keyequals;
   /**
-   * @brief Points to the flexible array member containing the hash table
-   * buckets.
+   * @brief Points to memory allocated after the struct, which contains the
+   * hash table buckets.
    */
   sys_hashtable_entry_t *entries;
 #if defined(__LP64__) || defined(_WIN64)
