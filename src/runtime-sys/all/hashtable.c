@@ -1,24 +1,5 @@
+#include "hashtable_private.h"
 #include <runtime-sys/sys.h>
-
-///////////////////////////////////////////////////////////////////////////////
-// TYPES
-
-/** @brief Represents a hash table.
- */
-struct sys_hashtable {
-  struct sys_hashtable *next;
-  size_t size;
-  sys_hashtable_keyequals_t keyequals;
-  /**
-   * @brief Points to memory allocated after the struct, which contains the
-   * hash table buckets.
-   */
-  sys_hashtable_entry_t *entries;
-#if defined(__LP64__) || defined(_WIN64)
-} __attribute__((aligned(8))); // 64-bit systems: 8-byte alignment
-#else
-} __attribute__((aligned(4))); // 32-bit systems: 4-byte alignment
-#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -94,7 +75,7 @@ _sys_hashtable_get_bykey_inner(sys_hashtable_t *table, uintptr_t hash,
     sys_hashtable_entry_t *entry = &table->entries[index];
 
     // Found the hash and it's not deleted
-    if (entry->hash == hash && !entry->deleted) {
+    if (entry->hash == hash && !IS_DELETED(entry)) {
       if (table->keyequals == NULL) {
         // No key comparison function, just return if hashes match
         return entry;
@@ -105,7 +86,7 @@ _sys_hashtable_get_bykey_inner(sys_hashtable_t *table, uintptr_t hash,
     }
 
     // Empty slot found (never been used) - key definitely not in table
-    if (entry->value == 0 && !entry->deleted) {
+    if (entry->value == 0 && !IS_DELETED(entry)) {
       return NULL;
     }
 
@@ -133,7 +114,7 @@ _sys_hashtable_find_slot(sys_hashtable_t *table, uintptr_t hash, void *keyptr) {
     sys_hashtable_entry_t *entry = &table->entries[index];
 
     // Exact match found (for updates)
-    if (entry->hash == hash && !entry->deleted) {
+    if (entry->hash == hash && !IS_DELETED(entry)) {
       if (table->keyequals == NULL) {
         return entry; // No key comparison function, just return if hashes match
       } else if (table->keyequals(keyptr, entry)) {
@@ -142,12 +123,12 @@ _sys_hashtable_find_slot(sys_hashtable_t *table, uintptr_t hash, void *keyptr) {
     }
 
     // Remember first deleted slot for potential reuse
-    if (entry->deleted && first_deleted == NULL) {
+    if (IS_DELETED(entry) && first_deleted == NULL) {
       first_deleted = entry;
     }
 
     // Empty slot found
-    if (entry->value == 0 && !entry->deleted) {
+    if (entry->value == 0 && !IS_DELETED(entry)) {
       // Return deleted slot if we found one earlier (better for fragmentation)
       return first_deleted ? first_deleted : entry;
     }
@@ -200,7 +181,7 @@ sys_hashtable_entry_t *sys_hashtable_get_value(sys_hashtable_t *root,
       sys_hashtable_entry_t *entry = &table->entries[i];
 
       // Check if entry matches value and is not deleted
-      if (!entry->deleted && entry->value == value) {
+      if (!IS_DELETED(entry) && entry->value == value) {
         return entry; // Found matching value
       }
     }
@@ -211,14 +192,29 @@ sys_hashtable_entry_t *sys_hashtable_get_value(sys_hashtable_t *root,
   return NULL;
 }
 
-/** @brief Put an entry into the hash table, replacing any existing entry.
+/**
+ * @brief Return a has table entry in which to put the value, and perhaps the
+ * key
+ * @ingroup SystemHashTable
+ * @param table The hash table to insert into
+ * @param hash The hash key for the entry
+ * @param keyptr Pointer to the key data
+ * @param samekey Optional pointer to a boolean, indicating if the entry has
+ * the same key
+ * @return Pointer to an entry, or NULL if allocation failed
+ *
+ * The entry returned by this function can be used to insert or update
+ * a value in the hash table. If an entry with the same hash and key already
+ * exists, the value should be replaced.
  */
-sys_hashtable_entry_t *
-sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash, void *keyptr,
-                  uintptr_t value,
-                  void (*replaced)(sys_hashtable_entry_t *entry)) {
+sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
+                                         void *keyptr, bool *samekey) {
   sys_assert(root);
-  sys_assert(value);
+
+  // Initialize samekey to false by default
+  if (samekey) {
+    *samekey = false;
+  }
 
   // Try to find existing entry or available slot in current tables
   sys_hashtable_t *table = root;
@@ -231,26 +227,37 @@ sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash, void *keyptr,
       continue;
     }
 
-    // Check if this is an existing entry with a different value
-    if (slot->hash == hash && !slot->deleted) {
-      // Existing entry found - replace value
-      if (slot->value != value && replaced) {
-        replaced(slot); // Call replacement callback
+    // Check if this is an existing entry
+    bool is_existing_entry = false;
+    if (slot->hash == hash && !IS_DELETED(slot)) {
+      if (samekey) {
+        *samekey = table->keyequals ? table->keyequals(keyptr, slot) : true;
+        is_existing_entry = *samekey;
       }
     }
 
-    // Set the new value
+    // Set the new information other than the value
     slot->hash = hash;
-    slot->value = value;
-    slot->deleted = false;
-    slot->keyptr = keyptr;
+    CLEAR_DELETED(slot);
+
+    // Only update keyptr for new entries, preserve it for existing entries
+    if (!is_existing_entry) {
+      slot->keyptr = keyptr;
+    }
 
     // Return the slot
     return slot;
   }
 
   // All tables are full - create a new one with 1.5x growth
-  size_t new_size = root->size + (root->size >> 1);
+  // Check for potential overflow in size calculation
+  if (root->size > (SIZE_MAX / 3)) {
+    // Size too large for safe 1.5x expansion
+    sys_panicf("Hash table too large for expansion");
+  }
+
+  size_t new_size = (root->size == 0) ? 1 : root->size + (root->size >> 1);
+  sys_assert(new_size > 0 && new_size >= root->size); // Ensure we always grow
   table = _sys_hashtable_new(new_size, prev, root->keyequals);
   if (table == NULL) {
     return NULL; // Allocation failed
@@ -260,8 +267,7 @@ sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash, void *keyptr,
   sys_hashtable_entry_t *slot = _sys_hashtable_find_slot(table, hash, keyptr);
   sys_assert(slot);
   slot->hash = hash;
-  slot->value = value;
-  slot->deleted = false;
+  CLEAR_DELETED(slot);
   slot->keyptr = keyptr;
   return slot;
 }
@@ -275,8 +281,8 @@ sys_hashtable_entry_t *sys_hashtable_delete_key(sys_hashtable_t *table,
   if (entry == NULL) {
     return NULL; // Not found
   }
-  entry->deleted = true; // Mark as deleted
-  return entry;          // Return the deleted entry
+  SET_DELETED(entry); // Mark as deleted
+  return entry;       // Return the deleted entry
 }
 
 /** @brief Delete an entry into the hash table by value.
@@ -290,8 +296,8 @@ sys_hashtable_entry_t *sys_hashtable_delete_value(sys_hashtable_t *table,
   if (entry == NULL) {
     return NULL; // Not found
   }
-  entry->deleted = true; // Mark as deleted
-  return entry;          // Return the deleted entry
+  SET_DELETED(entry); // Mark as deleted
+  return entry;       // Return the deleted entry
 }
 
 /** @brief Get the next entry from the iterator
@@ -318,8 +324,9 @@ sys_hashtable_iterator_next(sys_hashtable_t *table,
       sys_hashtable_entry_t *entry = &iter->table->entries[iter->index];
       iter->index++;
 
-      // Return entries that are not deleted and have been used (non-zero value)
-      if (!entry->deleted && entry->value != 0) {
+      // Return entries that are not deleted and have been used (non-zero
+      // value)
+      if (!IS_DELETED(entry) && entry->value != 0) {
         return entry;
       }
     }
@@ -349,8 +356,9 @@ size_t sys_hashtable_count(sys_hashtable_t *table) {
     for (size_t i = 0; i < current->size; i++) {
       sys_hashtable_entry_t *entry = &current->entries[i];
 
-      // Count entries that are not deleted and have been used (non-zero value)
-      if (!entry->deleted && entry->value != 0) {
+      // Count entries that are not deleted and have been used (non-zero
+      // value)
+      if (!IS_DELETED(entry) && entry->value != 0) {
         count++;
       }
     }

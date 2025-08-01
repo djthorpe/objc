@@ -1,3 +1,4 @@
+#include "../../runtime-sys/all/hashtable_private.h"
 #include <runtime-sys/sys.h>
 #include <stdatomic.h>
 #include <stdbool.h>
@@ -62,14 +63,16 @@ int test_hashtable_basic_operations(void) {
   uintptr_t value2 = 200;
 
   sys_hashtable_entry_t *entry1 =
-      sys_hashtable_put(table, hash_string(key1), key1, value1, NULL);
+      sys_hashtable_put(table, hash_string(key1), key1, NULL);
   test_assert(entry1 != NULL);
+  entry1->value = value1;
   test_assert(entry1->value == value1);
   test_assert(entry1->keyptr == key1);
 
   sys_hashtable_entry_t *entry2 =
-      sys_hashtable_put(table, hash_string(key2), key2, value2, NULL);
+      sys_hashtable_put(table, hash_string(key2), key2, NULL);
   test_assert(entry2 != NULL);
+  entry2->value = value2;
   test_assert(entry2->value == value2);
   test_assert(entry2->keyptr == key2);
 
@@ -121,9 +124,10 @@ int test_hashtable_collisions(void) {
 
   // Insert multiple keys
   for (int i = 0; i < 4; i++) {
-    sys_hashtable_entry_t *entry = sys_hashtable_put(
-        table, hash_string(keys[i]), keys[i], values[i], NULL);
+    sys_hashtable_entry_t *entry =
+        sys_hashtable_put(table, hash_string(keys[i]), keys[i], NULL);
     test_assert(entry != NULL);
+    entry->value = values[i];
     test_assert(entry->value == values[i]);
   }
 
@@ -152,9 +156,10 @@ int test_hashtable_chaining(void) {
   uintptr_t values[] = {100, 200, 300, 400, 500};
 
   for (int i = 0; i < 5; i++) {
-    sys_hashtable_entry_t *entry = sys_hashtable_put(
-        table, hash_string(keys[i]), keys[i], values[i], NULL);
+    sys_hashtable_entry_t *entry =
+        sys_hashtable_put(table, hash_string(keys[i]), keys[i], NULL);
     test_assert(entry != NULL);
+    entry->value = values[i];
     test_assert(entry->value == values[i]);
   }
 
@@ -186,16 +191,17 @@ int test_hashtable_deletion(void) {
   uintptr_t values[] = {1, 2, 3, 4};
 
   for (int i = 0; i < 4; i++) {
-    sys_hashtable_entry_t *entry = sys_hashtable_put(
-        table, hash_string(keys[i]), keys[i], values[i], NULL);
+    sys_hashtable_entry_t *entry =
+        sys_hashtable_put(table, hash_string(keys[i]), keys[i], NULL);
     test_assert(entry != NULL);
+    entry->value = values[i];
   }
 
   // Test deletion by key
   sys_hashtable_entry_t *deleted =
       sys_hashtable_delete_key(table, hash_string(keys[1]), keys[1]);
   test_assert(deleted != NULL);
-  test_assert(deleted->deleted == true);
+  test_assert(IS_DELETED(deleted) == true);
 
   // Verify deleted item cannot be found
   sys_hashtable_entry_t *not_found =
@@ -206,7 +212,7 @@ int test_hashtable_deletion(void) {
   sys_hashtable_entry_t *deleted_by_value =
       sys_hashtable_delete_value(table, values[2]);
   test_assert(deleted_by_value != NULL);
-  test_assert(deleted_by_value->deleted == true);
+  test_assert(IS_DELETED(deleted_by_value) == true);
 
   // Verify deleted item cannot be found by value
   sys_hashtable_entry_t *not_found_by_value =
@@ -246,9 +252,10 @@ int test_hashtable_iteration(void) {
   uintptr_t values[] = {1, 2, 3};
 
   for (int i = 0; i < 3; i++) {
-    sys_hashtable_entry_t *entry = sys_hashtable_put(
-        table, hash_string(keys[i]), keys[i], values[i], NULL);
+    sys_hashtable_entry_t *entry =
+        sys_hashtable_put(table, hash_string(keys[i]), keys[i], NULL);
     test_assert(entry != NULL);
+    entry->value = values[i];
   }
 
   // Test iteration
@@ -299,48 +306,41 @@ int test_hashtable_iteration(void) {
 }
 
 int test_hashtable_edge_cases(void) {
-  sys_puts("Test 6: Edge cases and replacement callbacks\n");
+  sys_puts("Test 6: Edge cases and bool *samekey parameter\n");
 
   sys_hashtable_t *table = sys_hashtable_init(4, test_key_equals);
   test_assert(table != NULL);
 
-  // Test replacement callback
-  static bool replacement_called = false;
-  static sys_hashtable_entry_t *replaced_entry = NULL;
-
-  void replacement_callback(sys_hashtable_entry_t * entry) {
-    replacement_called = true;
-    replaced_entry = entry;
-  }
-
+  // Test samekey parameter
   char *key = "test_key";
   uintptr_t value1 = 100;
   uintptr_t value2 = 200;
 
   // Insert initial value
+  bool samekey1 = false;
   sys_hashtable_entry_t *entry1 =
-      sys_hashtable_put(table, hash_string(key), key, value1, NULL);
+      sys_hashtable_put(table, hash_string(key), key, &samekey1);
   test_assert(entry1 != NULL);
+  test_assert(samekey1 == false); // New key
+  entry1->value = value1;
 
-  // Replace with callback
-  replacement_called = false;
-  replaced_entry = NULL;
-
-  sys_hashtable_entry_t *entry2 = sys_hashtable_put(
-      table, hash_string(key), key, value2, replacement_callback);
+  // Replace with same key
+  bool samekey2 = false;
+  sys_hashtable_entry_t *entry2 =
+      sys_hashtable_put(table, hash_string(key), key, &samekey2);
   test_assert(entry2 != NULL);
-  test_assert(entry2 == entry1);        // Should be same slot
-  test_assert(entry2->value == value2); // Should have new value
-  test_assert(replacement_called == true);
-  test_assert(replaced_entry == entry1);
+  test_assert(entry2 == entry1); // Should be same slot
+  test_assert(samekey2 == true); // Existing key
+  uintptr_t old_value = entry2->value;
+  test_assert(old_value == value1); // Should have old value
+  entry2->value = value2;           // Update value
 
-  // Test updating with same value (should not call callback)
-  replacement_called = false;
-  sys_hashtable_entry_t *entry3 = sys_hashtable_put(
-      table, hash_string(key), key, value2, replacement_callback);
+  // Test duplicate insertion with same value
+  bool samekey3 = false;
+  sys_hashtable_entry_t *entry3 =
+      sys_hashtable_put(table, hash_string(key), key, &samekey3);
   test_assert(entry3 != NULL);
-  test_assert(replacement_called ==
-              false); // Should not call callback for same value
+  test_assert(samekey3 == true); // Existing key
 
   // Test without key comparison function (hash-only comparison)
   sys_hashtable_t *hash_only_table = sys_hashtable_init(4, NULL);
@@ -349,9 +349,12 @@ int test_hashtable_edge_cases(void) {
   uintptr_t test_hash = 12345;
   uintptr_t test_value = 999;
 
+  bool samekey_hash = false;
   sys_hashtable_entry_t *hash_entry =
-      sys_hashtable_put(hash_only_table, test_hash, NULL, test_value, NULL);
+      sys_hashtable_put(hash_only_table, test_hash, NULL, &samekey_hash);
   test_assert(hash_entry != NULL);
+  test_assert(samekey_hash == false); // New entry
+  hash_entry->value = test_value;
 
   sys_hashtable_entry_t *found_hash =
       sys_hashtable_get_key(hash_only_table, test_hash, NULL);
@@ -379,8 +382,9 @@ int test_hashtable_count_capacity(void) {
   char *key1 = "key1";
   uintptr_t value1 = 100;
   sys_hashtable_entry_t *entry1 =
-      sys_hashtable_put(table, hash_string(key1), key1, value1, NULL);
+      sys_hashtable_put(table, hash_string(key1), key1, NULL);
   test_assert(entry1 != NULL);
+  entry1->value = value1;
 
   // Test count and capacity after one entry
   test_assert(sys_hashtable_count(table) == 1);
@@ -390,8 +394,9 @@ int test_hashtable_count_capacity(void) {
   char *key2 = "key2";
   uintptr_t value2 = 200;
   sys_hashtable_entry_t *entry2 =
-      sys_hashtable_put(table, hash_string(key2), key2, value2, NULL);
+      sys_hashtable_put(table, hash_string(key2), key2, NULL);
   test_assert(entry2 != NULL);
+  entry2->value = value2;
 
   // Test count after adding second entry
   test_assert(sys_hashtable_count(table) == 2);
@@ -405,9 +410,10 @@ int test_hashtable_count_capacity(void) {
   uintptr_t values[] = {300, 400, 500};
 
   for (int i = 0; i < 3; i++) {
-    sys_hashtable_entry_t *entry = sys_hashtable_put(
-        table, hash_string(keys[i]), keys[i], values[i], NULL);
+    sys_hashtable_entry_t *entry =
+        sys_hashtable_put(table, hash_string(keys[i]), keys[i], NULL);
     test_assert(entry != NULL);
+    entry->value = values[i];
   }
 
   // Test final count

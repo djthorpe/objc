@@ -19,9 +19,10 @@ add_library(${NAME} STATIC
     ../pthreads/thread.c
     ../pthreads/waitgroup.c
     ../all/date.c
-    ../all/mutex.c
     ../all/event.c
+    ../all/hashmap.c
     ../all/hashtable.c
+    ../all/mutex.c
     ../all/panicf.c
     ../all/printf.c
 )

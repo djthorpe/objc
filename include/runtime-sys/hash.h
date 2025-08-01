@@ -127,6 +127,14 @@ extern bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size);
  */
 extern const uint8_t *sys_hash_finalize(sys_hash_t *hash);
 
+/**
+ * @brief djb2 hash function for strings
+ * @ingroup SystemHashing
+ * @param str The NULL-terminated string to hash.
+ * @return The computed hash value as a uintptr_t.
+ */
+extern uintptr_t sys_hash_djb2(const char *str);
+
 #ifdef __cplusplus
 }
 #endif
