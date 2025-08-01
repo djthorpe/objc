@@ -97,439 +97,55 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a084de79126a40ef359ca4fef1233dc17"><td class="memItemLeft" align="right" valign="top"><a id="a084de79126a40ef359ca4fef1233dc17"></a>
-typedef struct sys_hashtable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a></td></tr>
-<tr class="memdesc:a084de79126a40ef359ca4fef1233dc17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque type for hash table. <br /></td></tr>
-<tr class="separator:a084de79126a40ef359ca4fef1233dc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b1a3637de4ae560aff8276858f3c9c0"><td class="memItemLeft" align="right" valign="top"><a id="a2b1a3637de4ae560aff8276858f3c9c0"></a>
-typedef struct <a class="el" href="structsys__hashtable__iterator.html">sys_hashtable_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a></td></tr>
-<tr class="memdesc:a2b1a3637de4ae560aff8276858f3c9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator state for hash table traversal. <br /></td></tr>
-<tr class="separator:a2b1a3637de4ae560aff8276858f3c9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56ea0886a8e944877ec07441019d98cc"><td class="memItemLeft" align="right" valign="top"><a id="a56ea0886a8e944877ec07441019d98cc"></a>
-typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a>) (void *keyptr, <a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry)</td></tr>
-<tr class="memdesc:a56ea0886a8e944877ec07441019d98cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare entry with a key. <br /></td></tr>
-<tr class="separator:a56ea0886a8e944877ec07441019d98cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga084de79126a40ef359ca4fef1233dc17"><td class="memItemLeft" align="right" valign="top">
+typedef struct sys_hashtable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a></td></tr>
+<tr class="memdesc:ga084de79126a40ef359ca4fef1233dc17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque type for hash tableThis type represents a hash table that can store key-value pairs. <br /></td></tr>
+<tr class="separator:ga084de79126a40ef359ca4fef1233dc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__hashtable__iterator.html">sys_hashtable_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a></td></tr>
+<tr class="memdesc:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator state for hash table traversal.  <a href="group__SystemHashTable.html#ga2b1a3637de4ae560aff8276858f3c9c0">More...</a><br /></td></tr>
+<tr class="separator:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga56ea0886a8e944877ec07441019d98cc"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a>) (void *keyptr, <a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry)</td></tr>
+<tr class="memdesc:ga56ea0886a8e944877ec07441019d98cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare entry with a key.  <a href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">More...</a><br /></td></tr>
+<tr class="separator:ga56ea0886a8e944877ec07441019d98cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae07b8a35acf77a3a35a0f553a13caccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#ae07b8a35acf77a3a35a0f553a13caccd">sys_hashtable_init</a> (size_t size, <a class="el" href="hashtable_8h.html#a56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a> keyequals)</td></tr>
-<tr class="memdesc:ae07b8a35acf77a3a35a0f553a13caccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new hash table.  <a href="#ae07b8a35acf77a3a35a0f553a13caccd">More...</a><br /></td></tr>
-<tr class="separator:ae07b8a35acf77a3a35a0f553a13caccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1abe151ee91a58d590cb0994b6433566"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a1abe151ee91a58d590cb0994b6433566">sys_hashtable_finalize</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
-<tr class="memdesc:a1abe151ee91a58d590cb0994b6433566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all the hash tables in the chain.  <a href="#a1abe151ee91a58d590cb0994b6433566">More...</a><br /></td></tr>
-<tr class="separator:a1abe151ee91a58d590cb0994b6433566"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c180fa4b4f0db41b8314ee658531a78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a2c180fa4b4f0db41b8314ee658531a78">sys_hashtable_get_key</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *root, uintptr_t hash, void *keyptr)</td></tr>
-<tr class="memdesc:a2c180fa4b4f0db41b8314ee658531a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash table by hash key.  <a href="#a2c180fa4b4f0db41b8314ee658531a78">More...</a><br /></td></tr>
-<tr class="separator:a2c180fa4b4f0db41b8314ee658531a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25e38ea27c00a0fc724226db76288ef5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a25e38ea27c00a0fc724226db76288ef5">sys_hashtable_get_value</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
-<tr class="memdesc:a25e38ea27c00a0fc724226db76288ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash table by hash value.  <a href="#a25e38ea27c00a0fc724226db76288ef5">More...</a><br /></td></tr>
-<tr class="separator:a25e38ea27c00a0fc724226db76288ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8234bbcdd92cea79af1d191626c36110"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a8234bbcdd92cea79af1d191626c36110">sys_hashtable_put</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *root, uintptr_t hash, void *keyptr, uintptr_t value, void(*replaced)(<a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry))</td></tr>
-<tr class="memdesc:a8234bbcdd92cea79af1d191626c36110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put an entry into the hash table, replacing any existing entry.  <a href="#a8234bbcdd92cea79af1d191626c36110">More...</a><br /></td></tr>
-<tr class="separator:a8234bbcdd92cea79af1d191626c36110"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2066a977766ed8514f959785427806f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#af2066a977766ed8514f959785427806f">sys_hashtable_delete_key</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr)</td></tr>
-<tr class="memdesc:af2066a977766ed8514f959785427806f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry into the hash table by key.  <a href="#af2066a977766ed8514f959785427806f">More...</a><br /></td></tr>
-<tr class="separator:af2066a977766ed8514f959785427806f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52acb67d6144c35400e5df894b1d4acc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a52acb67d6144c35400e5df894b1d4acc">sys_hashtable_delete_value</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
-<tr class="memdesc:a52acb67d6144c35400e5df894b1d4acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry from the hash table by value.  <a href="#a52acb67d6144c35400e5df894b1d4acc">More...</a><br /></td></tr>
-<tr class="separator:a52acb67d6144c35400e5df894b1d4acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74650442ff57f51f2dde4d05e4c80bd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a74650442ff57f51f2dde4d05e4c80bd5">sys_hashtable_iterator_next</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, <a class="el" href="hashtable_8h.html#a2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a> **iterator)</td></tr>
-<tr class="memdesc:a74650442ff57f51f2dde4d05e4c80bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next entry from the iterator.  <a href="#a74650442ff57f51f2dde4d05e4c80bd5">More...</a><br /></td></tr>
-<tr class="separator:a74650442ff57f51f2dde4d05e4c80bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad1f5ac351af77a63e8bd864c5929ff3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#aad1f5ac351af77a63e8bd864c5929ff3">sys_hashtable_count</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
-<tr class="memdesc:aad1f5ac351af77a63e8bd864c5929ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of active entries in the hash table chain.  <a href="#aad1f5ac351af77a63e8bd864c5929ff3">More...</a><br /></td></tr>
-<tr class="separator:aad1f5ac351af77a63e8bd864c5929ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1195ed7b3535c352d01762b90d066674"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8h.html#a1195ed7b3535c352d01762b90d066674">sys_hashtable_capacity</a> (<a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
-<tr class="memdesc:a1195ed7b3535c352d01762b90d066674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total capacity of all tables in the chain.  <a href="#a1195ed7b3535c352d01762b90d066674">More...</a><br /></td></tr>
-<tr class="separator:a1195ed7b3535c352d01762b90d066674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae07b8a35acf77a3a35a0f553a13caccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gae07b8a35acf77a3a35a0f553a13caccd">sys_hashtable_init</a> (size_t size, <a class="el" href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a> keyequals)</td></tr>
+<tr class="memdesc:gae07b8a35acf77a3a35a0f553a13caccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new hash table.  <a href="group__SystemHashTable.html#gae07b8a35acf77a3a35a0f553a13caccd">More...</a><br /></td></tr>
+<tr class="separator:gae07b8a35acf77a3a35a0f553a13caccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1abe151ee91a58d590cb0994b6433566"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga1abe151ee91a58d590cb0994b6433566">sys_hashtable_finalize</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
+<tr class="memdesc:ga1abe151ee91a58d590cb0994b6433566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all the hash tables in the chain.  <a href="group__SystemHashTable.html#ga1abe151ee91a58d590cb0994b6433566">More...</a><br /></td></tr>
+<tr class="separator:ga1abe151ee91a58d590cb0994b6433566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbeb812a14dd82621bacd6b293320e28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gafbeb812a14dd82621bacd6b293320e28">sys_hashtable_get_key</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr)</td></tr>
+<tr class="memdesc:gafbeb812a14dd82621bacd6b293320e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash table by hash key.  <a href="group__SystemHashTable.html#gafbeb812a14dd82621bacd6b293320e28">More...</a><br /></td></tr>
+<tr class="separator:gafbeb812a14dd82621bacd6b293320e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25e38ea27c00a0fc724226db76288ef5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga25e38ea27c00a0fc724226db76288ef5">sys_hashtable_get_value</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
+<tr class="memdesc:ga25e38ea27c00a0fc724226db76288ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash table by hash value.  <a href="group__SystemHashTable.html#ga25e38ea27c00a0fc724226db76288ef5">More...</a><br /></td></tr>
+<tr class="separator:ga25e38ea27c00a0fc724226db76288ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga971a41a4317157aef673bf186e853c2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga971a41a4317157aef673bf186e853c2b">sys_hashtable_put</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr, uintptr_t value, void(*replaced)(<a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry))</td></tr>
+<tr class="memdesc:ga971a41a4317157aef673bf186e853c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put an entry into the hash table, replacing any existing entry.  <a href="group__SystemHashTable.html#ga971a41a4317157aef673bf186e853c2b">More...</a><br /></td></tr>
+<tr class="separator:ga971a41a4317157aef673bf186e853c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2066a977766ed8514f959785427806f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gaf2066a977766ed8514f959785427806f">sys_hashtable_delete_key</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t hash, void *keyptr)</td></tr>
+<tr class="memdesc:gaf2066a977766ed8514f959785427806f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry into the hash table by key.  <a href="group__SystemHashTable.html#gaf2066a977766ed8514f959785427806f">More...</a><br /></td></tr>
+<tr class="separator:gaf2066a977766ed8514f959785427806f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52acb67d6144c35400e5df894b1d4acc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga52acb67d6144c35400e5df894b1d4acc">sys_hashtable_delete_value</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
+<tr class="memdesc:ga52acb67d6144c35400e5df894b1d4acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry from the hash table by value.  <a href="group__SystemHashTable.html#ga52acb67d6144c35400e5df894b1d4acc">More...</a><br /></td></tr>
+<tr class="separator:ga52acb67d6144c35400e5df894b1d4acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74650442ff57f51f2dde4d05e4c80bd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga74650442ff57f51f2dde4d05e4c80bd5">sys_hashtable_iterator_next</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, <a class="el" href="group__SystemHashTable.html#ga2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a> **iterator)</td></tr>
+<tr class="memdesc:ga74650442ff57f51f2dde4d05e4c80bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next entry from the iterator.  <a href="group__SystemHashTable.html#ga74650442ff57f51f2dde4d05e4c80bd5">More...</a><br /></td></tr>
+<tr class="separator:ga74650442ff57f51f2dde4d05e4c80bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad1f5ac351af77a63e8bd864c5929ff3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gaad1f5ac351af77a63e8bd864c5929ff3">sys_hashtable_count</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
+<tr class="memdesc:gaad1f5ac351af77a63e8bd864c5929ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of active entries in the hash table chain.  <a href="group__SystemHashTable.html#gaad1f5ac351af77a63e8bd864c5929ff3">More...</a><br /></td></tr>
+<tr class="separator:gaad1f5ac351af77a63e8bd864c5929ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1195ed7b3535c352d01762b90d066674"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga1195ed7b3535c352d01762b90d066674">sys_hashtable_capacity</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
+<tr class="memdesc:ga1195ed7b3535c352d01762b90d066674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total capacity of all tables in the chain.  <a href="group__SystemHashTable.html#ga1195ed7b3535c352d01762b90d066674">More...</a><br /></td></tr>
+<tr class="separator:ga1195ed7b3535c352d01762b90d066674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A hash table implementation. </p>
 
 <p class="definition">Definition in file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a1195ed7b3535c352d01762b90d066674"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1195ed7b3535c352d01762b90d066674">&#9670;&nbsp;</a></span>sys_hashtable_capacity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t sys_hashtable_capacity </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the total capacity of all tables in the chain. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to get capacity for </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The total capacity (size) of all tables in the chain </dd></dl>
-
-</div>
-</div>
-<a id="aad1f5ac351af77a63e8bd864c5929ff3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad1f5ac351af77a63e8bd864c5929ff3">&#9670;&nbsp;</a></span>sys_hashtable_count()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t sys_hashtable_count </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the number of active entries in the hash table chain. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to count entries in </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The total number of active (non-deleted) entries across all tables in the chain </dd></dl>
-
-</div>
-</div>
-<a id="af2066a977766ed8514f959785427806f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2066a977766ed8514f959785427806f">&#9670;&nbsp;</a></span>sys_hashtable_delete_key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_delete_key </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>hash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>keyptr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete an entry into the hash table by key. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to delete from </td></tr>
-    <tr><td class="paramname">hash</td><td>The hash key for the entry </td></tr>
-    <tr><td class="paramname">keyptr</td><td>Pointer to the key data for comparison </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the deleted entry, or NULL if not found </dd></dl>
-
-</div>
-</div>
-<a id="a52acb67d6144c35400e5df894b1d4acc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52acb67d6144c35400e5df894b1d4acc">&#9670;&nbsp;</a></span>sys_hashtable_delete_value()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_delete_value </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete an entry from the hash table by value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to delete from </td></tr>
-    <tr><td class="paramname">value</td><td>The value to delete </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The deleted entry, or NULL if not found </dd></dl>
-
-</div>
-</div>
-<a id="a1abe151ee91a58d590cb0994b6433566"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1abe151ee91a58d590cb0994b6433566">&#9670;&nbsp;</a></span>sys_hashtable_finalize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_hashtable_finalize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Free all the hash tables in the chain. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>First hash table in the chain to free </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2c180fa4b4f0db41b8314ee658531a78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c180fa4b4f0db41b8314ee658531a78">&#9670;&nbsp;</a></span>sys_hashtable_get_key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_get_key </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>root</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>hash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>keyptr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Search for an entry in the hash table by hash key. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">root</td><td>The root hash table to search in </td></tr>
-    <tr><td class="paramname">hash</td><td>The hash key for the entry </td></tr>
-    <tr><td class="paramname">keyptr</td><td>Pointer to the key data for comparison </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the found entry, or NULL if not found </dd></dl>
-
-</div>
-</div>
-<a id="a25e38ea27c00a0fc724226db76288ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25e38ea27c00a0fc724226db76288ef5">&#9670;&nbsp;</a></span>sys_hashtable_get_value()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_get_value </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Search for an entry in the hash table by hash value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to search in </td></tr>
-    <tr><td class="paramname">value</td><td>The value to search for </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the found entry, or NULL if not found </dd></dl>
-
-</div>
-</div>
-<a id="ae07b8a35acf77a3a35a0f553a13caccd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae07b8a35acf77a3a35a0f553a13caccd">&#9670;&nbsp;</a></span>sys_hashtable_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a>* sys_hashtable_init </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a>&#160;</td>
-          <td class="paramname"><em>keyequals</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize a new hash table. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>Number of entries in the hash table (must be &gt; 0) </td></tr>
-    <tr><td class="paramname">equals</td><td>Function to compare two entries for equality </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to new hash table, or NULL if allocation failed </dd></dl>
-
-</div>
-</div>
-<a id="a74650442ff57f51f2dde4d05e4c80bd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74650442ff57f51f2dde4d05e4c80bd5">&#9670;&nbsp;</a></span>sys_hashtable_iterator_next()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_iterator_next </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a> **&#160;</td>
-          <td class="paramname"><em>iterator</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the next entry from the iterator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table being iterated </td></tr>
-    <tr><td class="paramname">iterator</td><td>Pointer to the iterator state (will be updated) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the next entry, or NULL if no more entries </dd></dl>
-
-</div>
-</div>
-<a id="a8234bbcdd92cea79af1d191626c36110"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8234bbcdd92cea79af1d191626c36110">&#9670;&nbsp;</a></span>sys_hashtable_put()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a>* sys_hashtable_put </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="hashtable_8h.html#a084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>root</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>hash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>keyptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(<a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry)&#160;</td>
-          <td class="paramname"><em>replaced</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Put an entry into the hash table, replacing any existing entry. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">root</td><td>The hash table to insert into </td></tr>
-    <tr><td class="paramname">hash</td><td>The hash key for the entry </td></tr>
-    <tr><td class="paramname">keyptr</td><td>Pointer to the key data </td></tr>
-    <tr><td class="paramname">value</td><td>The value to insert </td></tr>
-    <tr><td class="paramname">replaced</td><td>Callback for the replaced entry if it was replaced </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the inserted/updated entry, or NULL if allocation failed </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->
