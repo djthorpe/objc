@@ -256,8 +256,8 @@ sys_hashtable_entry_t *sys_hashtable_put(sys_hashtable_t *root, uintptr_t hash,
     sys_panicf("Hash table too large for expansion");
   }
 
-  size_t new_size = root->size + (root->size >> 1);
-  sys_assert(new_size >= root->size); // Ensure we always grow
+  size_t new_size = (root->size == 0) ? 1 : root->size + (root->size >> 1);
+  sys_assert(new_size > 0 && new_size >= root->size); // Ensure we always grow
   table = _sys_hashtable_new(new_size, prev, root->keyequals);
   if (table == NULL) {
     return NULL; // Allocation failed
