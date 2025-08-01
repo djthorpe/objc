@@ -48,7 +48,6 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -69,12 +68,6 @@ Collaboration diagram for Hash Tables:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:hashmap_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashmap_8h.html">hashmap.h</a></td></tr>
-<tr class="memdesc:hashmap_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methods for hash map operations, using NULL-terminated strings as the key. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hashtable__iterator.html">sys_hashtable_iterator</a></td></tr>
@@ -93,31 +86,13 @@ typedef struct sys_hashtable&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__hashtable__iterator.html">sys_hashtable_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga2b1a3637de4ae560aff8276858f3c9c0">sys_hashtable_iterator_t</a></td></tr>
 <tr class="memdesc:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator state for hash table traversal.  <a href="#ga2b1a3637de4ae560aff8276858f3c9c0">More...</a><br /></td></tr>
 <tr class="separator:ga2b1a3637de4ae560aff8276858f3c9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga56ea0886a8e944877ec07441019d98cc"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a>) (void *keyptr, <a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry)</td></tr>
-<tr class="memdesc:ga56ea0886a8e944877ec07441019d98cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare entry with a key.  <a href="#ga56ea0886a8e944877ec07441019d98cc">More...</a><br /></td></tr>
-<tr class="separator:ga56ea0886a8e944877ec07441019d98cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga605d89b487e711cf27787bc95fe0ed40"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga605d89b487e711cf27787bc95fe0ed40">sys_hashtable_keyequals_t</a>) (void *keyptr, void *other_keyptr)</td></tr>
+<tr class="memdesc:ga605d89b487e711cf27787bc95fe0ed40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare entry with a key.  <a href="#ga605d89b487e711cf27787bc95fe0ed40">More...</a><br /></td></tr>
+<tr class="separator:ga605d89b487e711cf27787bc95fe0ed40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga31c2a271bad5f6b6436321130a8ab6dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga31c2a271bad5f6b6436321130a8ab6dc">sys_hashmap_init</a> (size_t size)</td></tr>
-<tr class="memdesc:ga31c2a271bad5f6b6436321130a8ab6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new hash map for string keys.  <a href="#ga31c2a271bad5f6b6436321130a8ab6dc">More...</a><br /></td></tr>
-<tr class="separator:ga31c2a271bad5f6b6436321130a8ab6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab4c4ef53602dbb6ef64a0bee81837224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gab4c4ef53602dbb6ef64a0bee81837224">sys_hashmap_finalize</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
-<tr class="memdesc:gab4c4ef53602dbb6ef64a0bee81837224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize a hash map, freeing all malloc'd keys and the structure.  <a href="#gab4c4ef53602dbb6ef64a0bee81837224">More...</a><br /></td></tr>
-<tr class="separator:gab4c4ef53602dbb6ef64a0bee81837224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2f2e969c8841ed186017d667ca963eb7"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga2f2e969c8841ed186017d667ca963eb7">sys_hashmap_get_value</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, const char *key)</td></tr>
-<tr class="memdesc:ga2f2e969c8841ed186017d667ca963eb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash map by string key, and return the value.  <a href="#ga2f2e969c8841ed186017d667ca963eb7">More...</a><br /></td></tr>
-<tr class="separator:ga2f2e969c8841ed186017d667ca963eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae072e0de93391e858b49bc2c62196fb4"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gae072e0de93391e858b49bc2c62196fb4">sys_hashmap_get_key</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, uintptr_t value)</td></tr>
-<tr class="memdesc:gae072e0de93391e858b49bc2c62196fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an entry in the hash map by value, and return the key.  <a href="#gae072e0de93391e858b49bc2c62196fb4">More...</a><br /></td></tr>
-<tr class="separator:gae072e0de93391e858b49bc2c62196fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b1965c01bb59a7b3fc71a3dff41d811"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga8b1965c01bb59a7b3fc71a3dff41d811">sys_hashmap_put</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, const char *key, bool copy, uintptr_t value, uintptr_t *replaced)</td></tr>
-<tr class="memdesc:ga8b1965c01bb59a7b3fc71a3dff41d811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert or update an entry in the hash map with a string key.  <a href="#ga8b1965c01bb59a7b3fc71a3dff41d811">More...</a><br /></td></tr>
-<tr class="separator:ga8b1965c01bb59a7b3fc71a3dff41d811"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab9847898200336ac1ef4ed447d86689d"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gab9847898200336ac1ef4ed447d86689d">sys_hashmap_delete</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table, const char *key)</td></tr>
-<tr class="memdesc:gab9847898200336ac1ef4ed447d86689d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an entry from the hash map by string key.  <a href="#gab9847898200336ac1ef4ed447d86689d">More...</a><br /></td></tr>
-<tr class="separator:gab9847898200336ac1ef4ed447d86689d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae07b8a35acf77a3a35a0f553a13caccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gae07b8a35acf77a3a35a0f553a13caccd">sys_hashtable_init</a> (size_t size, <a class="el" href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a> keyequals)</td></tr>
+<tr class="memitem:gae07b8a35acf77a3a35a0f553a13caccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#gae07b8a35acf77a3a35a0f553a13caccd">sys_hashtable_init</a> (size_t size, <a class="el" href="group__SystemHashTable.html#ga605d89b487e711cf27787bc95fe0ed40">sys_hashtable_keyequals_t</a> keyequals)</td></tr>
 <tr class="memdesc:gae07b8a35acf77a3a35a0f553a13caccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a new hash table.  <a href="#gae07b8a35acf77a3a35a0f553a13caccd">More...</a><br /></td></tr>
 <tr class="separator:gae07b8a35acf77a3a35a0f553a13caccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1abe151ee91a58d590cb0994b6433566"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashTable.html#ga1abe151ee91a58d590cb0994b6433566">sys_hashtable_finalize</a> (<a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *table)</td></tr>
@@ -169,257 +144,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga56ea0886a8e944877ec07441019d98cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga56ea0886a8e944877ec07441019d98cc">&#9670;&nbsp;</a></span>sys_hashtable_keyequals_t</h2>
+<a id="ga605d89b487e711cf27787bc95fe0ed40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga605d89b487e711cf27787bc95fe0ed40">&#9670;&nbsp;</a></span>sys_hashtable_keyequals_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef bool(* sys_hashtable_keyequals_t) (void *keyptr, <a class="el" href="structsys__hashtable__entry__t.html">sys_hashtable_entry_t</a> *entry)</td>
+          <td class="memname">typedef bool(* sys_hashtable_keyequals_t) (void *keyptr, void *other_keyptr)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Compare entry with a key. </p>
-<p>This callback function is used to compare a key with an entry in the hash table. It should return true if the key matches the entry, false otherwise. </p>
+<p>This callback function is used to compare a key with another key from the hash table. It should return true if the keys match, false otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00069">69</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00064">64</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gab9847898200336ac1ef4ed447d86689d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab9847898200336ac1ef4ed447d86689d">&#9670;&nbsp;</a></span>sys_hashmap_delete()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uintptr_t sys_hashmap_delete </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete an entry from the hash map by string key. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to delete from </td></tr>
-    <tr><td class="paramname">key</td><td>The string key to delete (null-terminated) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the value associated with the deleted key, or 0 if not found. </dd></dl>
-
-</div>
-</div>
-<a id="gab4c4ef53602dbb6ef64a0bee81837224"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab4c4ef53602dbb6ef64a0bee81837224">&#9670;&nbsp;</a></span>sys_hashmap_finalize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sys_hashmap_finalize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Finalize a hash map, freeing all malloc'd keys and the structure. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash map to finalize</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function properly frees any malloc'd string keys before freeing the underlying hash table structure. </p>
-
-</div>
-</div>
-<a id="gae072e0de93391e858b49bc2c62196fb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae072e0de93391e858b49bc2c62196fb4">&#9670;&nbsp;</a></span>sys_hashmap_get_key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* sys_hashmap_get_key </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Search for an entry in the hash map by value, and return the key. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to search in </td></tr>
-    <tr><td class="paramname">value</td><td>The value to search for </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The returned key if found, or NULL otherwise.</dd></dl>
-<p>This function searches for the first entry with the specified value and returns the associated key. If no entry is found, it returns NULL. This is useful for reverse lookups in the hash map, but does a linear search through the entries, so it is not efficient for large hash maps. </p>
-
-</div>
-</div>
-<a id="ga2f2e969c8841ed186017d667ca963eb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2f2e969c8841ed186017d667ca963eb7">&#9670;&nbsp;</a></span>sys_hashmap_get_value()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uintptr_t sys_hashmap_get_value </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Search for an entry in the hash map by string key, and return the value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to search in </td></tr>
-    <tr><td class="paramname">key</td><td>The string key to search for (null-terminated) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value associated with the key, or 0 if not found </dd></dl>
-
-</div>
-</div>
-<a id="ga31c2a271bad5f6b6436321130a8ab6dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga31c2a271bad5f6b6436321130a8ab6dc">&#9670;&nbsp;</a></span>sys_hashmap_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a>* sys_hashmap_init </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize a new hash map for string keys. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td>Number of entries in the hash map (must be &gt; 0) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to new hash map, or NULL if allocation failed</dd></dl>
-<p>Create a new hash map, which can store uintptr_t values against NULL-terminated string keys of arbitrary length.</p>
-<p>The hash map uses a djb2 hash function and built-in string comparison function for keys. If the length of the key is larger than some pre-defined limit, it might allocate memory to copy the key otherwise the key could be copied directly into the hash map, to reduce the number of memory allocations.</p>
-<p>You should call <a class="el" href="group__SystemHashTable.html#gab4c4ef53602dbb6ef64a0bee81837224" title="Finalize a hash map, freeing all malloc&#39;d keys and the structure. ">sys_hashmap_finalize()</a> to free the hash map when done. </p>
-
-</div>
-</div>
-<a id="ga8b1965c01bb59a7b3fc71a3dff41d811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8b1965c01bb59a7b3fc71a3dff41d811">&#9670;&nbsp;</a></span>sys_hashmap_put()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sys_hashmap_put </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga084de79126a40ef359ca4fef1233dc17">sys_hashtable_t</a> *&#160;</td>
-          <td class="paramname"><em>table</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>copy</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uintptr_t *&#160;</td>
-          <td class="paramname"><em>replaced</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Insert or update an entry in the hash map with a string key. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">table</td><td>The hash table to insert into </td></tr>
-    <tr><td class="paramname">key</td><td>The string key (null-terminated) </td></tr>
-    <tr><td class="paramname">copy</td><td>Copy the string key if true, or use the pointer directly if false </td></tr>
-    <tr><td class="paramname">value</td><td>The value to associate with the key </td></tr>
-    <tr><td class="paramname">replaced</td><td>Optional pointer to store the previous value if key already existed, and was different from the new value. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if operation succeeded, false on failure (e.g., memory allocation) </dd></dl>
-
-</div>
-</div>
 <a id="ga1195ed7b3535c352d01762b90d066674"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1195ed7b3535c352d01762b90d066674">&#9670;&nbsp;</a></span>sys_hashtable_capacity()</h2>
 
@@ -681,7 +425,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga56ea0886a8e944877ec07441019d98cc">sys_hashtable_keyequals_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__SystemHashTable.html#ga605d89b487e711cf27787bc95fe0ed40">sys_hashtable_keyequals_t</a>&#160;</td>
           <td class="paramname"><em>keyequals</em>&#160;</td>
         </tr>
         <tr>
