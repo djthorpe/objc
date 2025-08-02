@@ -102,8 +102,6 @@ uint16_t hw_adc_read(hw_adc_t *adc) {
   adc_run(false);
   adc_select_input(adc->channel);
 
-  sys_printf("Reading ADC channel %d\n", adc->channel);
-
   // Read the ADC value
   return adc_read();
 }
