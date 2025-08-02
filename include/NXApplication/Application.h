@@ -9,6 +9,7 @@
  * @brief The main application class that coordinates application-wide
  * functionality.
  * @ingroup Application
+ * @headerfile Application.h NXApplication/NXApplication.h
  *
  * The Application class serves as the central hub for application management
  * in NXApplication. It follows the singleton pattern, providing a shared
