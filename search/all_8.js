@@ -39,6 +39,13 @@ var searchData=
   ['hw_5fgpio_5ft',['hw_gpio_t',['../structhw__gpio__t.html',1,'hw_gpio_t'],['../group__GPIO.html#gab5009dcd5db07cd39ff8fcc73b44e99d',1,'hw_gpio_t():&#160;gpio.h']]],
   ['hw_5fgpio_5fuart',['HW_GPIO_UART',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa6dbffffd5011ace8aac8579656f98464',1,'gpio.h']]],
   ['hw_5fgpio_5funknown',['HW_GPIO_UNKNOWN',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e',1,'gpio.h']]],
+  ['hw_5fi2c_5fcount',['hw_i2c_count',['../group__I2C.html#gab0643e64019f6690bc07eab226b0ee04',1,'i2c.h']]],
+  ['hw_5fi2c_5fdetect',['hw_i2c_detect',['../group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1',1,'i2c.h']]],
+  ['hw_5fi2c_5ffinalize',['hw_i2c_finalize',['../group__I2C.html#gaf551069998239cb4013124cf4810356b',1,'i2c.h']]],
+  ['hw_5fi2c_5finit',['hw_i2c_init',['../group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f',1,'i2c.h']]],
+  ['hw_5fi2c_5finit_5fdefault',['hw_i2c_init_default',['../group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56',1,'i2c.h']]],
+  ['hw_5fi2c_5ft',['hw_i2c_t',['../structhw__i2c__t.html',1,'hw_i2c_t'],['../group__I2C.html#gaea53482a8ae6c2808940757835f17302',1,'hw_i2c_t():&#160;i2c.h']]],
+  ['hw_5fi2c_5fxfr',['hw_i2c_xfr',['../group__I2C.html#ga8d8e0f4938bb2781291e08f8752c38a7',1,'i2c.h']]],
   ['hw_5finit',['hw_init',['../group__Hardware.html#gae58df14f30461cb37e8607aca5522846',1,'hw.h']]],
   ['hashes',['Hashes',['../group__SystemHashing.html',1,'']]],
   ['hash_20tables',['Hash Tables',['../group__SystemHashTable.html',1,'']]]
