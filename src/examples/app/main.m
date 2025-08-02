@@ -20,8 +20,8 @@
 @implementation MyAppDelegate
 
 - (void)applicationDidFinishLaunching:(id)application {
+  (void)application; // Cast to void to avoid unused parameter warning
   NXLog(@"Application did finish launching");
-  [application stop];
 }
 
 @end
@@ -32,3 +32,6 @@ int main(int argc, char *argv[]) {
   // Initialize the NXApplication framework
   return NXApplicationMain(argc, argv, [MyAppDelegate class]);
 }
+
+void *stdout = NULL; // Placeholder for standard output
+void *stderr = NULL; // Placeholder for standard error

@@ -8,9 +8,6 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
   sys_init();
   hw_init();
 
-  (void)argc; // Currently unused parameter
-  (void)argv; // Currently unused parameter
-
   // If there is no default zone, create one
   BOOL releaseZone = NO;
   NXZone *zone = [NXZone defaultZone];
@@ -56,6 +53,15 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
       [app setDelegate:appDelegate];
     }
   }
+
+#ifndef SYSTEM_NAME_PICO
+  NXArray *args = [NXArray arrayWithCapacity:argc];
+  objc_assert(args);
+  for (int i = 0; i < argc; i++) {
+    [args append:[NXString stringWithCString:argv[i]]];
+  }
+  [app setArgs:args];
+#endif
 
   // Call the run method on the shared application instance
   int returnValue = [app run];
