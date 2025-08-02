@@ -13,9 +13,6 @@
 extern "C" {
 #endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
  * @brief Returns a unique identifier for the current environment.
