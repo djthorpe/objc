@@ -62,7 +62,7 @@
 }
 
 /**
- * @brief Returns a GPIO input instance, with pull-up resistor enabled.
+ * @brief Returns a GPIO input instance, with pull-down resistor enabled.
  */
 + (GPIO *)pulldownWithPin:(uint8_t)pin {
   return [[[self alloc] initPin:pin mode:HW_GPIO_PULLDOWN] autorelease];
