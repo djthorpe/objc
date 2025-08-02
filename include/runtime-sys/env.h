@@ -13,9 +13,6 @@
 extern "C" {
 #endif
 
-/**
- * to provide better entropy.
- */
 #pragma once
 #include <stdint.h>
 
