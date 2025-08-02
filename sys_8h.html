@@ -62,6 +62,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;assert.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="date_8h_source.html">date.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="env_8h_source.html">env.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="event_8h_source.html">event.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hash_8h_source.html">hash.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hashtable_8h_source.html">hashtable.h</a>&quot;</code><br />
@@ -76,17 +77,18 @@ Include dependency graph for sys.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="sys_8h__incl.png" border="0" usemap="#include_2runtime-sys_2sys_8h" alt=""/></div>
 <map name="include_2runtime-sys_2sys_8h" id="include_2runtime-sys_2sys_8h">
-<area shape="rect" id="node2" href="runtime-sys_2assert_8h_source.html" title="assert.h" alt="" coords="63,95,138,121"/>
-<area shape="rect" id="node3" href="date_8h.html" title="Date and Time management functions. " alt="" coords="5,169,68,196"/>
-<area shape="rect" id="node6" href="event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="525,95,596,121"/>
-<area shape="rect" id="node7" href="sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="478,169,542,196"/>
-<area shape="rect" id="node9" href="hash_8h.html" title="Methods for hash generation from data. " alt="" coords="244,169,309,196"/>
-<area shape="rect" id="node10" href="hashtable_8h.html" title="A hash table implementation. " alt="" coords="827,95,926,121"/>
-<area shape="rect" id="node11" href="memory_8h.html" title="Memory management. " alt="" coords="668,169,755,196"/>
-<area shape="rect" id="node12" href="printf_8h.html" title="Functions for formatted strings output. " alt="" coords="735,95,803,121"/>
-<area shape="rect" id="node14" href="random_8h.html" title="Random number generation. " alt="" coords="315,95,399,121"/>
-<area shape="rect" id="node15" href="thread_8h.html" title="Thread management and program execution. " alt="" coords="92,169,168,196"/>
-<area shape="rect" id="node16" href="timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="385,169,453,196"/>
+<area shape="rect" id="node2" href="runtime-sys_2assert_8h_source.html" title="assert.h" alt="" coords="67,95,142,121"/>
+<area shape="rect" id="node3" href="date_8h.html" title="Date and Time management functions. " alt="" coords="105,169,168,196"/>
+<area shape="rect" id="node6" href="env_8h.html" title="Environment information. " alt="" coords="319,95,376,121"/>
+<area shape="rect" id="node7" href="event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="452,95,523,121"/>
+<area shape="rect" id="node8" href="sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="387,169,451,196"/>
+<area shape="rect" id="node10" href="hash_8h.html" title="Methods for hash generation from data. " alt="" coords="527,169,592,196"/>
+<area shape="rect" id="node11" href="hashtable_8h.html" title="A hash table implementation. " alt="" coords="887,95,986,121"/>
+<area shape="rect" id="node12" href="memory_8h.html" title="Memory management. " alt="" coords="719,169,805,196"/>
+<area shape="rect" id="node13" href="printf_8h.html" title="Functions for formatted strings output. " alt="" coords="795,95,863,121"/>
+<area shape="rect" id="node15" href="random_8h.html" title="Random number generation. " alt="" coords="599,95,683,121"/>
+<area shape="rect" id="node16" href="thread_8h.html" title="Thread management and program execution. " alt="" coords="5,169,81,196"/>
+<area shape="rect" id="node17" href="timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="244,169,312,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -94,13 +96,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="sys_8h__dep__incl.png" border="0" usemap="#include_2runtime-sys_2sys_8hdep" alt=""/></div>
 <map name="include_2runtime-sys_2sys_8hdep" id="include_2runtime-sys_2sys_8hdep">
-<area shape="rect" id="node2" href="runtime-gcc_2objc_2assert_8h_source.html" title="include/runtime&#45;gcc\l/objc/assert.h" alt="" coords="206,95,357,136"/>
-<area shape="rect" id="node7" href="NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="315,273,479,315"/>
-<area shape="rect" id="node8" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="433,95,597,136"/>
-<area shape="rect" id="node3" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="205,184,355,225"/>
-<area shape="rect" id="node4" href="NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="75,273,239,315"/>
-<area shape="rect" id="node6" href="NXApplication_8h.html" title="Application framework header. " alt="" coords="195,363,360,404"/>
-<area shape="rect" id="node5" href="Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,363,171,404"/>
+<area shape="rect" id="node2" href="runtime-gcc_2objc_2assert_8h_source.html" title="include/runtime&#45;gcc\l/objc/assert.h" alt="" coords="177,95,327,136"/>
+<area shape="rect" id="node5" href="Application_8h.html" title="The main application class for NXApplication. " alt="" coords="284,363,449,404"/>
+<area shape="rect" id="node7" href="NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="254,273,418,315"/>
+<area shape="rect" id="node8" href="NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="494,95,658,136"/>
+<area shape="rect" id="node3" href="objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="139,184,290,225"/>
+<area shape="rect" id="node4" href="NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="66,273,230,315"/>
+<area shape="rect" id="node6" href="NXApplication_8h.html" title="Application framework header. " alt="" coords="5,363,171,404"/>
 </map>
 </div>
 </div>

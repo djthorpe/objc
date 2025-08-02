@@ -84,6 +84,12 @@ Collaboration diagram for Application:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
+<tr class="memitem:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXArray.html">NXArray</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d">args</a></td></tr>
+<tr class="memdesc:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns command-line arguments passed to the application.  <a href="#ab16f3d1b2bfebfe629d5eb5b5057fd0d">More...</a><br /></td></tr>
+<tr class="separator:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627336c3a84bb6cacb8593727a4ef6ac"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a627336c3a84bb6cacb8593727a4ef6ac">setArgs:</a></td></tr>
+<tr class="memdesc:a627336c3a84bb6cacb8593727a4ef6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the command-line arguments passed to the application.  <a href="#a627336c3a84bb6cacb8593727a4ef6ac">More...</a><br /></td></tr>
+<tr class="separator:a627336c3a84bb6cacb8593727a4ef6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f47c20d68c8a31cb5909150f0ceade3"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolApplicationDelegate-p.html">ApplicationDelegate</a> &gt;)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3">delegate</a></td></tr>
 <tr class="memdesc:a2f47c20d68c8a31cb5909150f0ceade3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current application delegate.  <a href="#a2f47c20d68c8a31cb5909150f0ceade3">More...</a><br /></td></tr>
 <tr class="separator:a2f47c20d68c8a31cb5909150f0ceade3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,8 +198,29 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <div class="textblock"><p>The main application class that coordinates application-wide functionality. </p>
 <p>The <a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> class serves as the central hub for application management in NXApplication. It follows the singleton pattern, providing a shared instance that manages the application lifecycle, coordinates event processing, and maintains the main run loop. </p>
 
-<p class="definition">Definition at line <a class="el" href="Application_8h_source.html#l00019">19</a> of file <a class="el" href="Application_8h_source.html">Application.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Application_8h_source.html#l00020">20</a> of file <a class="el" href="Application_8h_source.html">Application.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="ab16f3d1b2bfebfe629d5eb5b5057fd0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab16f3d1b2bfebfe629d5eb5b5057fd0d">&#9670;&nbsp;</a></span>args()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="interfaceNXArray.html">NXArray</a> *) args </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns command-line arguments passed to the application. </p>
+<dl class="section return"><dt>Returns</dt><dd>An array of command-line arguments as strings.</dd></dl>
+<p>This method retrieves the command-line arguments that were passed to the application at startup. It returns an array containing the arguments, the first of which is typically the application name or path. </p>
+
+</div>
+</div>
 <a id="a2f47c20d68c8a31cb5909150f0ceade3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f47c20d68c8a31cb5909150f0ceade3">&#9670;&nbsp;</a></span>delegate()</h2>
 
@@ -236,6 +263,32 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <p>Starts the application's main run loop. </p>
 <p>This method begins the application's main execution cycle, processing events and maintaining the application state until a termination condition is met. The run loop continues executing until the application receives a termination signal or explicitly requests to stop.</p>
 <p>This method typically blocks the calling thread and should be called from the main thread after all application initialization is complete. </p>
+
+</div>
+</div>
+<a id="a627336c3a84bb6cacb8593727a4ef6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a627336c3a84bb6cacb8593727a4ef6ac">&#9670;&nbsp;</a></span>setArgs:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) setArgs: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXArray.html">NXArray</a> *)&#160;</td>
+          <td class="paramname"><em>args</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the command-line arguments passed to the application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>An array of command-line arguments as strings. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

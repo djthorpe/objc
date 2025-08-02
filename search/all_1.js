@@ -23,6 +23,7 @@ var searchData=
   ['applicationdelegate_2bprotocol_2eh',['ApplicationDelegate+Protocol.h',['../ApplicationDelegate_09Protocol_8h.html',1,'']]],
   ['applicationdelegate_2dp',['ApplicationDelegate-p',['../protocolApplicationDelegate-p.html',1,'']]],
   ['applicationdidfinishlaunching_3a',['applicationDidFinishLaunching:',['../protocolApplicationDelegate_01-p.html#a4150babf16cbd136cb405405b3179e0b',1,'ApplicationDelegate -p']]],
+  ['args',['args',['../interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d',1,'Application']]],
   ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
   ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],
   ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
