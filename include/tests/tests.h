@@ -1,4 +1,5 @@
 #pragma once
+#include <runtime-hw/hw.h>
 #include <runtime-pix/pix.h>
 #include <runtime-sys/sys.h>
 #include <string.h>
@@ -67,5 +68,19 @@ static inline int TestPixMain(const char *name, int (*test_func)(void)) {
   pix_init();                                  // Initialize the system
   int ReturnValue = TestMain(name, test_func); // Run the test function
   pix_exit();
+  return ReturnValue; // Return the test result
+}
+
+/**
+ * @brief Main test runner function that initializes the system, runs a test,
+ * and cleans up.
+ * @param name The name of the test being run (for logging/debugging purposes)
+ * @param test_func A pointer to the test function to execute.
+ * @return The return value from the test function
+ */
+static inline int TestHardwareMain(const char *name, int (*test_func)(void)) {
+  hw_init();                                   // Initialize the system
+  int ReturnValue = TestMain(name, test_func); // Run the test function
+  hw_exit();
   return ReturnValue; // Return the test result
 }
