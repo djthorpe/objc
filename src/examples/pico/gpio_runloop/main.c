@@ -60,8 +60,17 @@ void gpio_callback(uint8_t pin, hw_gpio_event_t event, void *userdata) {
   if (!event_data) {
     return;
   } else {
-    sys_sprintf(event_data, 50, "gpio(core=%d pin=%d state=%s)", core, pin,
-                (event == HW_GPIO_RISING ? "RISING" : "FALLING"));
+    const char *state_str = NULL;
+    if ((event & HW_GPIO_RISING) && (event & HW_GPIO_FALLING)) {
+      state_str = "RISING|FALLING";
+    } else if (event & HW_GPIO_RISING) {
+      state_str = "RISING";
+    } else if (event & HW_GPIO_FALLING) {
+      state_str = "FALLING";
+    } else {
+      state_str = "UNKNOWN";
+    }
+    sys_sprintf(event_data, 50, "gpio(core=%d pin=%d state=%s)", core, pin, state_str);
   }
 
   // Push the event into the queue
