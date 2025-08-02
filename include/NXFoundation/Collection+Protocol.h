@@ -8,8 +8,7 @@
  * @protocol CollectionProtocol
  * @ingroup Foundation
  * @brief A protocol that defines collection methods for an Object.
- *
- * \headerfile Collection+Collection.h NXFoundation/NXFoundation.h
+ * @headerfile Collection+Protocol.h NXFoundation/NXFoundation.h
  */
 @protocol CollectionProtocol
 @required
