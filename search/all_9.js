@@ -9,7 +9,7 @@ var searchData=
   ['init',['init',['../structsys__mutex__t.html#acaaec752ea29455ef89715a3676dfea4',1,'sys_mutex_t::init()'],['../structsys__cond__t.html#ac258836bbd687b37754300f527119591',1,'sys_cond_t::init()'],['../structsys__waitgroup__t.html#aa99c0b8a94f428e3afb8478b40ac4ca9',1,'sys_waitgroup_t::init()'],['../interfaceObject.html#ad5f41da394dd6fff8a0de38dfa370420',1,'Object::init()']]],
   ['initialize',['initialize',['../interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5',1,'Object']]],
   ['initwithbytes_3asize_3a',['initWithBytes:size:',['../interfaceNXData.html#ad154aa21e981a48d66745ec7483c6ab0',1,'NXData']]],
-  ['initwithcapacity_3a',['initWithCapacity:',['../interfaceNXData.html#af660ff3cab27af0aff2de108fa2f821f',1,'NXData::initWithCapacity:()'],['../interfaceNXString.html#a8c061b9494c5bb9003eed8ea24896eb8',1,'NXString::initWithCapacity:()']]],
+  ['initwithcapacity_3a',['initWithCapacity:',['../interfaceNXArray.html#ac7df981e616a8ade97f396d2042eb120',1,'NXArray::initWithCapacity:()'],['../interfaceNXData.html#af660ff3cab27af0aff2de108fa2f821f',1,'NXData::initWithCapacity:()'],['../interfaceNXString.html#a8c061b9494c5bb9003eed8ea24896eb8',1,'NXString::initWithCapacity:()']]],
   ['initwithcstring_3a',['initWithCString:',['../interfaceNXString.html#aeb374c44599158565750c46e4927f3bb',1,'NXString']]],
   ['initwithformat_3a',['initWithFormat:',['../interfaceNXString.html#a278ddef64290c1f05cb77cff96d49373',1,'NXString']]],
   ['initwithformat_3aarguments_3a',['initWithFormat:arguments:',['../interfaceNXString.html#a04814ca0fd486fdf6cb32fc14daad810',1,'NXString']]],

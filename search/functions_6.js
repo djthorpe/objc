@@ -4,7 +4,7 @@ var searchData=
   ['init',['init',['../interfaceObject.html#ad5f41da394dd6fff8a0de38dfa370420',1,'Object']]],
   ['initialize',['initialize',['../interfaceObject.html#a0c86d32a270331881ebd5785d4c6f3f5',1,'Object']]],
   ['initwithbytes_3asize_3a',['initWithBytes:size:',['../interfaceNXData.html#ad154aa21e981a48d66745ec7483c6ab0',1,'NXData']]],
-  ['initwithcapacity_3a',['initWithCapacity:',['../interfaceNXData.html#af660ff3cab27af0aff2de108fa2f821f',1,'NXData::initWithCapacity:()'],['../interfaceNXString.html#a8c061b9494c5bb9003eed8ea24896eb8',1,'NXString::initWithCapacity:()']]],
+  ['initwithcapacity_3a',['initWithCapacity:',['../interfaceNXArray.html#ac7df981e616a8ade97f396d2042eb120',1,'NXArray::initWithCapacity:()'],['../interfaceNXData.html#af660ff3cab27af0aff2de108fa2f821f',1,'NXData::initWithCapacity:()'],['../interfaceNXString.html#a8c061b9494c5bb9003eed8ea24896eb8',1,'NXString::initWithCapacity:()']]],
   ['initwithcstring_3a',['initWithCString:',['../interfaceNXString.html#aeb374c44599158565750c46e4927f3bb',1,'NXString']]],
   ['initwithformat_3a',['initWithFormat:',['../interfaceNXString.html#a278ddef64290c1f05cb77cff96d49373',1,'NXString']]],
   ['initwithformat_3aarguments_3a',['initWithFormat:arguments:',['../interfaceNXString.html#a04814ca0fd486fdf6cb32fc14daad810',1,'NXString']]],

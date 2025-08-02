@@ -120,9 +120,9 @@ $(function() {
 <li>[X] printf - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[X] printf - <code>T</code> format specifier for time intervals</li>
 <li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - string methods - join</li>
-<li>[ ] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used</li>
-<li>[ ] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
-<li>[ ] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - arbitary key sizes</li>
+<li>[X] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used</li>
+<li>[X] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
+<li>[X] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - arbitary key sizes</li>
 <li>[ ] <code>@synchronized</code> support - use fixed-size table to store locks for objects, no allocations</li>
 <li>[ ] clang compatibility</li>
 <li>[ ] Number - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
@@ -148,6 +148,9 @@ $(function() {
 <li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
 <li>[ ] Exception handling?</li>
+<li>[ ] runtime-hw SPI support</li>
+<li>[ ] runtime-hw PWM support</li>
+<li>[ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.</li>
 </ul>
 <h2>References</h2>
 <p>Here are some references that may be useful for understanding the Objective C runtime and its implementation:</p>
