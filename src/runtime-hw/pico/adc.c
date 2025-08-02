@@ -26,7 +26,7 @@ uint8_t hw_adc_count(void) { return NUM_ADC_CHANNELS; }
  */
 hw_adc_t hw_adc_init_pin(uint8_t pin) {
   sys_assert(pin < hw_gpio_count());
-  // Ping must be within the valid ADC channel range. Last channel is
+  // Pin must be within the valid ADC channel range. Last channel is
   // reserved for temperature sensor.
   sys_assert(pin >= ADC_CHANNEL_OFFSET &&
              pin < ADC_CHANNEL_OFFSET + NUM_ADC_CHANNELS - 1);
