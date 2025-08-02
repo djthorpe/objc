@@ -4,6 +4,7 @@
  */
 #pragma once
 #include <NXFoundation/NXFoundation.h>
+#include <runtime-sys/sys.h>
 
 /**
  * @brief The main application class that coordinates application-wide
@@ -18,16 +19,32 @@
  */
 @interface Application : NXObject {
 @private
-  void *_data;                       ///< Pointer to the application data
+  sys_event_queue_t _queue;          ///< Event queue
   id<ApplicationDelegate> _delegate; ///< The application delegate
-  BOOL _run;  ///< Flag to indicate if the application is running
-  BOOL _stop; ///< Flag to indicate if the run loop should stop
+  BOOL _run;      ///< Flag to indicate if the application is running
+  NXArray *_args; ///< Command-line arguments passed to the application
 }
 
 /**
  * @brief Returns the shared application instance.
  */
 + (id)sharedApplication;
+
+/**
+ * @brief Returns command-line arguments passed to the application.
+ * @return An array of command-line arguments as strings.
+ *
+ * This method retrieves the command-line arguments that were passed to the
+ * application at startup. It returns an array containing the arguments,
+ * the first of which is typically the application name or path.
+ */
+- (NXArray *)args;
+
+/**
+ * @brief Sets the command-line arguments passed to the application.
+ * @param args An array of command-line arguments as strings.
+ */
+- (void)setArgs:(NXArray *)args;
 
 /**
  * @brief Gets the current application delegate.
