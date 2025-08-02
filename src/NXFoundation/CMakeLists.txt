@@ -1,7 +1,6 @@
 set(NAME "NXFoundation")
 
 add_library(${NAME} STATIC
-    NXApplication.m
     NXArch.m
     NXArray.m
     NXAutoreleasePool.m
