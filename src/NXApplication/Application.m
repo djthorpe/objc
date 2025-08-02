@@ -98,7 +98,7 @@ static id sharedApplication = nil;
 - (NXArray *)args {
   if (_args == nil) {
     // If args are not set, return an empty array
-    return [NXArray new];
+    return [[[NXArray alloc] init] autorelease];
   }
   return _args; // Return the command-line arguments
 }
@@ -173,4 +173,3 @@ static id sharedApplication = nil;
 
 /////////////////////////////////////////////////////////////////////
 // RUNLOOP
-
