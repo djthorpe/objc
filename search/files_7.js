@@ -1,7 +1,23 @@
 var searchData=
 [
-  ['objc_2eh',['objc.h',['../objc_8h.html',1,'']]],
-  ['object_2bdescription_2eh',['Object+Description.h',['../Object_09Description_8h.html',1,'']]],
-  ['object_2bprotocol_2eh',['Object+Protocol.h',['../Object_09Protocol_8h.html',1,'']]],
-  ['object_2eh',['Object.h',['../Object_8h.html',1,'']]]
+  ['nxapplication_2eh',['NXApplication.h',['../NXApplication_8h.html',1,'']]],
+  ['nxarch_2eh',['NXArch.h',['../NXArch_8h.html',1,'']]],
+  ['nxarray_2eh',['NXArray.h',['../NXArray_8h.html',1,'']]],
+  ['nxautoreleasepool_2eh',['NXAutoreleasePool.h',['../NXAutoreleasePool_8h.html',1,'']]],
+  ['nxcomparisonresult_2eh',['NXComparisonResult.h',['../NXComparisonResult_8h.html',1,'']]],
+  ['nxconstantstring_2bprotocol_2eh',['NXConstantString+Protocol.h',['../NXConstantString_09Protocol_8h.html',1,'']]],
+  ['nxconstantstring_2eh',['NXConstantString.h',['../NXConstantString_8h.html',1,'']]],
+  ['nxdata_2eh',['NXData.h',['../NXData_8h.html',1,'']]],
+  ['nxdate_2eh',['NXDate.h',['../NXDate_8h.html',1,'']]],
+  ['nxfoundation_2eh',['NXFoundation.h',['../NXFoundation_8h.html',1,'']]],
+  ['nxlog_2eh',['NXLog.h',['../NXLog_8h.html',1,'']]],
+  ['nxmap_2eh',['NXMap.h',['../NXMap_8h.html',1,'']]],
+  ['nxnotfound_2eh',['NXNotFound.h',['../NXNotFound_8h.html',1,'']]],
+  ['nxnull_2eh',['NXNull.h',['../NXNull_8h.html',1,'']]],
+  ['nxnumber_2eh',['NXNumber.h',['../NXNumber_8h.html',1,'']]],
+  ['nxobject_2eh',['NXObject.h',['../NXObject_8h.html',1,'']]],
+  ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
+  ['nxthread_2eh',['NXThread.h',['../NXThread_8h.html',1,'']]],
+  ['nxtimeinterval_2eh',['NXTimeInterval.h',['../NXTimeInterval_8h.html',1,'']]],
+  ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]
 ];

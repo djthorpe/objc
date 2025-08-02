@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nxtimeinterval',['NXTimeInterval',['../group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf',1,'NXTimeInterval.h']]]
+  ['method',['Method',['../group__objc.html#ga167b310fc29ca0d888a72600171b968a',1,'runtime.h']]]
 ];

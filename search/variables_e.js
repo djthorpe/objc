@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['pin',['pin',['../structhw__gpio__t.html#a82a80a1fd9c2484ef2db3b5e57182c85',1,'hw_gpio_t']]],
   ['pix_5fblack',['pix_black',['../pix_8h.html#a212f30d49ff4e59b44576ccef29acf90',1,'pix.h']]],
   ['pix_5fblue',['pix_blue',['../pix_8h.html#a415f776f5ceb9e7bf893d7835a91ff6d',1,'pix.h']]],
   ['pix_5fcyan',['pix_cyan',['../pix_8h.html#a917a672207054a7687b4ece6df27034b',1,'pix.h']]],
