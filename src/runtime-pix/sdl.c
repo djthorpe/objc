@@ -219,14 +219,6 @@ static bool _pix_sdl_display_unlock(pix_display_t *display) {
   struct _pix_sdl_context *ctx = (struct _pix_sdl_context *)display->ctx;
   sys_assert(ctx);
 
-  // Clear the renderer first
-  if (!SDL_RenderClear(ctx->renderer)) {
-#ifdef DEBUG
-    sys_puts("SDL_RenderClear failed\n");
-#endif
-    return false;
-  }
-
   // Update the texture with our frame buffer data
   if (!SDL_UpdateTexture(ctx->texture, NULL, frame->buf, frame->stride)) {
 #ifdef DEBUG
