@@ -42,7 +42,7 @@
  *
  * @code
  * int main(int argc, char *argv[]) {
- *     return NXApplicationMain(argc, argv);
+ *     return NXApplicationMain(argc, argv, MyAppDelegateClass);
  * }
  * @endcode
  */
