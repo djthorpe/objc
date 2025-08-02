@@ -7,6 +7,7 @@
  * Managing hardware resources, peripherals, and low-level operations.
  */
 #pragma once
+#include "adc.h"
 #include "gpio.h"
 #include "i2c.h"
 
