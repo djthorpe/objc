@@ -6,6 +6,7 @@ include(../../../third_party/pico-sdk/pico_sdk_init.cmake)
 pico_sdk_init()
 
 add_library(${NAME} STATIC
+    adc.c
     gpio.c
     hw.c
     i2c.c

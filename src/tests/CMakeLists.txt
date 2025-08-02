@@ -39,6 +39,7 @@ add_subdirectory(pix_01)
 # Test cases - hw
 add_subdirectory(hw_01)
 add_subdirectory(hw_02)
+add_subdirectory(hw_03)
 
 # Test cases - runtime
 add_subdirectory(runtime_01)

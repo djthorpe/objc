@@ -5,9 +5,11 @@
  * @ingroup Hardware
  *
  * Inter-Integrated Circuit (I2C) interface for hardware platforms.
- * This module provides functions to initialize I2C peripherals.
+ * This module provides functions to initialize I2C peripherals,
+ * and bi-directional data transfer with I2C devicesin master mode.
  */
 #pragma once
+#include "gpio.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -16,7 +18,7 @@
 // TYPES
 
 /**
- * @brief GPIO logical pin structure.
+ * @brief I2C adapter.
  * @ingroup I2C
  */
 typedef struct hw_i2c_t {
