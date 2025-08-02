@@ -15,7 +15,11 @@ bool pix_display_runloop(pix_display_t *display) {
 #endif
 
   // Check if enough time has passed for the next frame
+#ifdef SUPPORTED_SDL3
   uint64_t now = SDL_GetTicks();
+#else
+  uint64_t now = 0;
+#endif
   if (display->time_ms != 0 && display->time_ms + display->interval_ms > now) {
     // Not enough time has passed, skip this frame
     return false;
