@@ -12,6 +12,7 @@ var searchData=
   ['hw_5fgpio_5fget_5fmode',['hw_gpio_get_mode',['../group__GPIO.html#gafe836ee1bde15d8834b0d6382470e10b',1,'gpio.h']]],
   ['hw_5fgpio_5finit',['hw_gpio_init',['../group__GPIO.html#gabecec555c0a6d624d2e9a3588e96bbe7',1,'gpio.h']]],
   ['hw_5fgpio_5fset',['hw_gpio_set',['../group__GPIO.html#gaea3fcdca3b0a1fd8bfe019958870b223',1,'gpio.h']]],
+  ['hw_5fgpio_5fset_5fcallback',['hw_gpio_set_callback',['../group__GPIO.html#ga718d76b63624f4d2e6c5d6643396c298',1,'gpio.h']]],
   ['hw_5fgpio_5fset_5fmode',['hw_gpio_set_mode',['../group__GPIO.html#ga330bddb4ed59712369d2a63fbd4d833b',1,'gpio.h']]],
   ['hw_5finit',['hw_init',['../group__Hardware.html#gae58df14f30461cb37e8607aca5522846',1,'hw.h']]]
 ];
