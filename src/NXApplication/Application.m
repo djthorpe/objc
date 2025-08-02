@@ -174,24 +174,3 @@ static id sharedApplication = nil;
 /////////////////////////////////////////////////////////////////////
 // RUNLOOP
 
-static void _app_runloop(sys_event_queue_t *queue) {
-  int core = sys_thread_core();
-  sys_printf("Starting runloop on core %d...\n", core);
-
-  // Process events until the queue is empty
-  while (true) {
-    sys_event_t event = sys_event_queue_pop(queue);
-    if (event == NULL) {
-      // No more events to process
-      break;
-    }
-
-    // Simulate processing the event
-    sys_printf("core %d: Processing event: %s (queue size=%d)\n", core,
-               (char *)event, sys_event_queue_size(queue));
-
-    // Free the allocated string
-    sys_free(event);
-  }
-  sys_printf("core %d: Runloop finished.\n", core);
-}
