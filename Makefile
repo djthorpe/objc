@@ -17,7 +17,7 @@ else
 endif
 
 .PHONY: all
-all: NXFoundation
+all: NXApplication
 
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
@@ -56,6 +56,13 @@ NXFoundation: libobjc-gcc
 	@echo
 	@echo make NXFoundation
 	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
+
+# Create the NXApplication library
+.PHONY: NXApplication
+NXApplication: NXFoundation runtime-hw
+	@echo
+	@echo make NXApplication
+	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
 
 # Run the tests
 .PHONY: tests

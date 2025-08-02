@@ -108,9 +108,9 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] printf - `%@` format specifier for logging objects and `[Object description]`
 - [X] printf - `%T` format specifier for time intervals
 - [X] `NXArray` - string methods - join
-- [ ] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used
-- [ ] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
-- [ ] `NXMap` - arbitary key sizes
+- [X] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used
+- [X] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
+- [X] `NXMap` - arbitary key sizes
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
 - [ ] clang compatibility
 - [ ] Number - `NXNumberByte` and `NXNumberInt8`
@@ -136,6 +136,9 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `make install` will compile the libraries and install them to a prefix path
 - [ ] Calling `+[initialise]` for categories
 - [ ] Exception handling?
+- [ ] runtime-hw SPI support
+- [ ] runtime-hw PWM support
+- [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
 
 ## References
 

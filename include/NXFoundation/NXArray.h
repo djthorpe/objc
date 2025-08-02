@@ -1,4 +1,3 @@
-
 /**
  * @file NXArray.h
  * @brief Defines an array class for storing ordered objects.
@@ -22,6 +21,13 @@
   size_t _length; ///< Current number of elements in the array
   size_t _cap;    ///< Capacity of the array data
 }
+
+/**
+ * @brief Initializes a new NXArray instance with the specified capacity.
+ * @param capacity The initial capacity of the array.
+ * @return An initialized NXArray instance with the specified capacity.
+ */
+- (id)initWithCapacity:(size_t)capacity;
 
 /**
  * @brief Returns a new empty NXArray instance.
