@@ -16,7 +16,14 @@ bool pix_display_runloop(pix_display_t *display) {
 
   // Check if enough time has passed for the next frame
 #ifdef SUPPORTED_SDL3
-  uint64_t now = SDL_GetTicks();
+  uint64_t now;
+#ifdef SUPPORTED_SDL3
+  now = SDL_GetTicks();
+#else
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  now = (uint64_t)tv.tv_sec * 1000 + (uint64_t)tv.tv_usec / 1000;
+#endif
 #else
   uint64_t now = 0;
 #endif
