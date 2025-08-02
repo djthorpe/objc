@@ -48,7 +48,9 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
     appDelegate = [[delegate allocWithZone:zone] init];
     if (appDelegate == nil) {
       sys_panicf("Failed to create application delegate");
-      [zone release];
+      if (releaseZone) {
+        [zone release];
+      }
       return -1;
     } else {
       [app setDelegate:appDelegate];
