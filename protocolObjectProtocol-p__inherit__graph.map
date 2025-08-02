@@ -3,8 +3,8 @@
 <area shape="rect" id="node3" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="304,233,440,260"/>
 <area shape="rect" id="node4" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="331,284,413,311"/>
 <area shape="rect" id="node17" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="335,335,409,361"/>
-<area shape="rect" id="node5" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="534,5,589,32"/>
-<area shape="rect" id="node6" href="$interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="504,56,619,83"/>
+<area shape="rect" id="node5" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="514,5,609,32"/>
+<area shape="rect" id="node6" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="534,56,589,83"/>
 <area shape="rect" id="node7" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="523,107,599,133"/>
 <area shape="rect" id="node8" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="488,157,635,184"/>
 <area shape="rect" id="node9" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="525,208,597,235"/>

@@ -1,14 +1,16 @@
 var searchData=
 [
   ['sel_5fgetname',['sel_getName',['../group__objc.html#ga359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
+  ['setdelegate_3a',['setDelegate:',['../interfaceApplication.html#a052ea8edf1a93705d65336d66c204469',1,'Application']]],
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
   ['setobject_3aforkey_3a',['setObject:forKey:',['../interfaceNXMap.html#a785f068025907a812fc2ed79c9db43d6',1,'NXMap']]],
   ['setstate_3a',['setState:',['../interfaceGPIO.html#a8ec6226af6503f4e7066b889e169a890',1,'GPIO']]],
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
-  ['sharedapplication',['sharedApplication',['../interfaceNXApplication.html#a851304846421d47ed6f0bbfdf73c5a94',1,'NXApplication']]],
+  ['sharedapplication',['sharedApplication',['../interfaceApplication.html#a0ed5bc4e87ba981941621cfaca79deb7',1,'Application']]],
   ['size',['size',['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
   ['state',['state',['../interfaceGPIO.html#a3105f3f6dbe6735a2d9e7af4d66af2b7',1,'GPIO']]],
+  ['stop',['stop',['../interfaceApplication.html#a2e5dee1fbe413783d3500fe8da567ad4',1,'Application']]],
   ['stringwithcapacity_3a',['stringWithCapacity:',['../interfaceNXString.html#ac74475849c328fd46525a6be18a916fb',1,'NXString']]],
   ['stringwithcstring_3a',['stringWithCString:',['../interfaceNXString.html#ab391fe0fb40f1e8fc4478159fc787c2b',1,'NXString']]],
   ['stringwithformat_3a',['stringWithFormat:',['../interfaceNXString.html#a1c2b80633ce694dbd218dc665e99de02',1,'NXString']]],

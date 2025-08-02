@@ -6,5 +6,5 @@ var searchData=
   ['removeobjectatindex_3a',['removeObjectAtIndex:',['../interfaceNXArray.html#a2292dafda24a2529458ea8d8e12266e1',1,'NXArray']]],
   ['removeobjectforkey_3a',['removeObjectForKey:',['../interfaceNXMap.html#aa61a5aa67a7d62c61eb28d3f570709f1',1,'NXMap']]],
   ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]],
-  ['run',['run',['../interfaceNXApplication.html#ae843bb8728032b71f97006a5c9048c4b',1,'NXApplication']]]
+  ['run',['run',['../interfaceApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]]
 ];

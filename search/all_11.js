@@ -9,7 +9,7 @@ var searchData=
   ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]],
   ['retain_2bprotocol_2eh',['Retain+Protocol.h',['../Retain_09Protocol_8h.html',1,'']]],
   ['retainprotocol_2dp',['RetainProtocol-p',['../protocolRetainProtocol-p.html',1,'']]],
-  ['run',['run',['../interfaceNXApplication.html#ae843bb8728032b71f97006a5c9048c4b',1,'NXApplication']]],
+  ['run',['run',['../interfaceApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]],
   ['runtime_2eh',['runtime.h',['../runtime_8h.html',1,'']]],
   ['random_20number_20generation',['Random Number Generation',['../group__SystemRandom.html',1,'']]]
 ];

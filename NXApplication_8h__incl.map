@@ -1,0 +1,20 @@
+<map id="include/NXApplication/NXApplication.h" name="include/NXApplication/NXApplication.h">
+<area shape="rect" id="node2" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="227,95,447,121"/>
+<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="216,169,308,196"/>
+<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h_source.html" title="assert.h" alt="" coords="311,244,386,271"/>
+<area shape="rect" id="node21" href="$malloc_8h.html" title="Memory allocation functions for the Objective&#45;C runtime. " alt="" coords="813,319,892,345"/>
+<area shape="rect" id="node22" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="61,244,137,271"/>
+<area shape="rect" id="node23" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="193,468,278,495"/>
+<area shape="rect" id="node5" href="$sys_8h.html" title="System management functions. " alt="" coords="415,319,554,345"/>
+<area shape="rect" id="node6" href="$runtime-sys_2assert_8h_source.html" title="assert.h" alt="" coords="263,393,338,420"/>
+<area shape="rect" id="node7" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="5,468,68,495"/>
+<area shape="rect" id="node10" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="413,393,484,420"/>
+<area shape="rect" id="node11" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="353,468,417,495"/>
+<area shape="rect" id="node13" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="492,468,557,495"/>
+<area shape="rect" id="node14" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="669,393,767,420"/>
+<area shape="rect" id="node15" href="$memory_8h.html" title="Memory management. " alt="" coords="777,468,864,495"/>
+<area shape="rect" id="node16" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="893,393,961,420"/>
+<area shape="rect" id="node18" href="$random_8h.html" title="Random number generation. " alt="" coords="560,393,644,420"/>
+<area shape="rect" id="node19" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="92,468,168,495"/>
+<area shape="rect" id="node20" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="633,468,701,495"/>
+</map>

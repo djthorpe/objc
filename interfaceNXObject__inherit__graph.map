@@ -1,6 +1,6 @@
 <map id="NXObject" name="NXObject">
-<area shape="rect" id="node5" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="555,5,610,32"/>
-<area shape="rect" id="node6" href="$interfaceNXApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="525,56,640,83"/>
+<area shape="rect" id="node5" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="535,5,630,32"/>
+<area shape="rect" id="node6" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="555,56,610,83"/>
 <area shape="rect" id="node7" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="545,107,621,133"/>
 <area shape="rect" id="node8" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="509,157,656,184"/>
 <area shape="rect" id="node9" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="547,208,619,235"/>

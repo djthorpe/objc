@@ -48,7 +48,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Application Framework<div class="ingroups"><a class="el" href="group__objc.html">Objective-C Runtime</a></div></div>  </div>
 </div><!--header-->
@@ -71,9 +72,78 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceGPIO.html">GPIO</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> class.  <a href="interfaceGPIO.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolApplicationDelegate-p.html">&lt;ApplicationDelegate&gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A protocol that defines the methods required for an application delegate.  <a href="protocolApplicationDelegate-p.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gabc34bf0215facc5913444e51c006ca97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a> (int argc, char *argv[], <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> delegate)</td></tr>
+<tr class="memdesc:gabc34bf0215facc5913444e51c006ca97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point for NXApplication-based programs.  <a href="#gabc34bf0215facc5913444e51c006ca97">More...</a><br /></td></tr>
+<tr class="separator:gabc34bf0215facc5913444e51c006ca97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Application-related classes and types, including application lifecycle, event handling, display and frames, and hardware interfaces. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gabc34bf0215facc5913444e51c006ca97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabc34bf0215facc5913444e51c006ca97">&#9670;&nbsp;</a></span>NXApplicationMain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NXApplicationMain </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
+          <td class="paramname"><em>delegate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Main entry point for NXApplication-based programs. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of command-line arguments passed to the program. </td></tr>
+    <tr><td class="paramname">argv</td><td>An array of command-line argument strings. </td></tr>
+    <tr><td class="paramname">delegate</td><td>The class to use as the application delegate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the application (0 for success, non-zero for error).</dd></dl>
+<p>This function serves as the main entry point for applications built with the NXApplication framework. It initializes the application runtime, sets up the event loop, and manages the application lifecycle from startup to shutdown.</p>
+<p>The function handles:</p><ul>
+<li>Runtime initialization and configuration</li>
+<li>Command-line argument processing</li>
+<li><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> instance creation and setup</li>
+<li>Main event loop execution</li>
+<li>Cleanup and resource deallocation on exit</li>
+</ul>
+<p>This function should be called from your program's main() function, typically by simply returning the result of <a class="el" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97" title="Main entry point for NXApplication-based programs. ">NXApplicationMain()</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>This function does not return until the application terminates. </dd>
+<dd>
+Command-line arguments are processed according to application configuration. </dd>
+<dd>
+The return value should be used as the program's exit status.</dd></dl>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv);</div><div class="line">}</div></div><!-- fragment --> 
+</div>
+</div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
