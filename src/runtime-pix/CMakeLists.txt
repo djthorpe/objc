@@ -5,6 +5,7 @@ find_package(SDL3 QUIET)
 
 # Base source files (always included)
 set(SOURCES
+    display.c
     pix.c
     rgba32.c
 )
@@ -27,6 +28,4 @@ if(SDL3_FOUND)
     target_link_libraries(${NAME} PRIVATE SDL3::SDL3)
     target_compile_definitions(${NAME} PRIVATE SUPPORTED_SDL3=1)
     message(STATUS "SDL3 found - enabling SDL3 support in runtime-pix")
-else()
-    message(STATUS "SDL3 not found - building runtime-pix without SDL3 support")
 endif()

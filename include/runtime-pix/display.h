@@ -1,45 +1,54 @@
 /**
  * @file display.h
  * @brief Display functions.
- * @ingroup Pixels
+ * @defgroup PixelDisplay Pixel Displays
+ * @ingroup Pixel
  *
- * Functions for pixel displays
+ * Functions for opening and closing pixel displays.
  */
 #pragma once
+#include "frame.h"
 #include "types.h"
 #include <stdbool.h>
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
-// TYPES
+// FORWARD DECLARATIONS
 
-// Forward declarations to avoid circular dependency
-struct pix_frame_t;
+struct pix_display_t;
 
 #define PIX_DISPLAY_CTX_SIZE 64
 
+///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
 /**
  * @brief Display callback function type for frame updates.
- * @ingroup Pixels
+ * @ingroup PixelDisplay
  * @param display Pointer to the display that needs updating
  * @return true if the callback was successful, false on error
  */
-typedef bool (*pix_display_callback_t)(const struct pix_display_t *display);
+typedef void (*pix_display_callback_t)(const struct pix_display_t *display);
 
 /**
- * @brief Error codes for display operations.
- * @ingroup Pixels
+ * @brief Display context structure.
+ * @ingroup PixelDisplay
+ * @headerfile display.h runtime-pix/pix.h
+ *
+ * Contains the state for display operations.
  */
-typedef enum {
-  PIX_DISPLAY_SUCCESS = 0,        ///< Operation successful
-  PIX_DISPLAY_ERR_INVALID_PARAM,  ///< Invalid parameter
-  PIX_DISPLAY_ERR_UNSUPPORTED,    ///< Unsupported pixel format
-  PIX_DISPLAY_ERR_INVALID_FORMAT, ///< Invalid format for frame initialization
-  PIX_DISPLAY_ERR_SDL,            ///< SDL error
-} pix_display_error_t;
-
-// Forward declaration of display structure (defined in pix.h)
-typedef struct pix_display_t pix_display_t;
+typedef struct pix_display_t {
+  pix_frame_t frame;                 // Framebuffer for the display
+  pix_display_callback_t callback;   // Optional callback for frame updates
+  uint64_t time_ms;                  // Last frame timestamp (milliseconds)
+  uint64_t interval_ms;              // Frame interval (milliseconds)
+  void *userdata;                    // User data pointer for callbacks
+  uint8_t ctx[PIX_DISPLAY_CTX_SIZE]; // Context buffer large enough for any
+                                     // display context
+  bool (*lock)(struct pix_display_t *display); ///< Lock the display for drawing
+  bool (*unlock)(
+      struct pix_display_t *display); ///< Unlock the display after drawing
+} pix_display_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -49,59 +58,32 @@ extern "C" {
 #endif
 
 /**
- * @brief Initialize a new SDL display with the specified format, size, and FPS.
- * @ingroup Pixel
+ * @brief Initialize a new SDL display with the specified format, size, and
+ * interval.
+ * @ingroup PixelDisplay
  * @param title Window title
  * @param size Display dimensions
  * @param format Pixel format
- * @param fps Target frames per second (0 = no limit)
- * @param callback Optional callback function called at the target FPS
+ * @param interval_ms Frame interval in milliseconds (0 = no limit)
+ * @param callback Optional callback function called at the target interval
+ * @param userdata User context pointer for the callback
+ * @return Initialized display structure, or empty if initialization failed
  */
 pix_display_t pix_sdl_display_init(const char *title, pix_size_t size,
-                                   pix_format_t format, uint32_t fps,
+                                   pix_format_t format, uint32_t interval_ms,
                                    pix_display_callback_t callback);
 
 /**
- * @brief Finalize and free resources associated with a framebuffer.
- * @ingroup Pixel
+ * @brief Finalize and free resources associated with an SDL display
+ * @ingroup PixelDisplay
  */
-bool pix_display_finalize(pix_display_t *display);
+bool pix_display_sdl_finalize(pix_display_t *display);
 
 /**
  * @brief Perform operations in the runloop for the display.
- * @ingroup Pixel
+ * @ingroup PixelDisplay
  */
-void pix_display_runloop(const pix_display_t *display);
-
-/**
- * @brief Return an error code for the display.
- * @ingroup Pixel
- */
-pix_display_error_t pix_display_error(const pix_display_t *display);
-
-/**
- * @brief Lock the display for drawing operations.
- * @ingroup Pixel
- * @param display Pointer to the display to lock
- * @return true if successfully locked, false on error
- *
- * This function must be called before performing any drawing operations
- * on the display's frame buffer. It ensures exclusive access and may
- * prepare the underlying graphics system for pixel operations.
- */
-bool pix_display_lock(pix_display_t *display);
-
-/**
- * @brief Unlock the display and update the screen.
- * @ingroup Pixel
- * @param display Pointer to the display to unlock
- * @return true if successfully unlocked and updated, false on error
- *
- * This function must be called after completing drawing operations.
- * It releases the lock and may trigger a screen update to show
- * the changes made to the frame buffer.
- */
-bool pix_display_unlock(pix_display_t *display);
+bool pix_display_runloop(pix_display_t *display);
 
 #ifdef __cplusplus
 }
