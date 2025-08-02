@@ -11,10 +11,10 @@
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
-#define GPIO_BOOTSEL 23 // Pin used for BOOTSEL button
-#define GPIO_A 12       // Pin A
-#define GPIO_B 13       // Pin B
-#define GPIO_C 14       // Pin C
+#define GPIO_BOOTSEL 23 // BOOTSEL Button
+#define GPIO_A 12       // Button A
+#define GPIO_B 13       // Button B
+#define GPIO_C 14       // Button C
 
 /////////////////////////////////////////////////////////////////////
 // RUNLOOP
@@ -70,7 +70,8 @@ void gpio_callback(uint8_t pin, hw_gpio_event_t event, void *userdata) {
     } else {
       state_str = "UNKNOWN";
     }
-    sys_sprintf(event_data, 50, "gpio(core=%d pin=%d state=%s)", core, pin, state_str);
+    sys_sprintf(event_data, 50, "gpio(core=%d pin=%d state=%s)", core, pin,
+                state_str);
   }
 
   // Push the event into the queue
