@@ -84,7 +84,8 @@ bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr) {
   }
 
   // Perform a zero-length write to check if the device is present
-  return hw_i2c_xfr(i2c, addr, NULL, 0, 0, 1000) == 0;
+  uint8_t dummy;
+  return hw_i2c_xfr(i2c, addr, &dummy, 0, 1, 100) > 0;
 }
 
 /**
