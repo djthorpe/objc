@@ -25,7 +25,7 @@ hw_adc_t hw_adc_init_pin(uint8_t pin) {
 }
 
 /**
- * @brief Initialize an ADC interface on which the temperature sensor is
+ * @brief Initialize an ADC interface on which the temperature sensor is connected.
  */
 hw_adc_t hw_adc_init_temperature() {
   // ADC not implemented in stub
