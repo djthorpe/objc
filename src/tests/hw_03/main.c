@@ -16,7 +16,7 @@ int test_hw_03(void) {
     sys_printf("Temperature: %d C, Battery Voltage: %d V\n",
                (int)(temp_value * 1000.0f), (int)(battery_value * 1000.0f));
 
-    sys_sleep(1000); // Sleep for 1 second between readings
+    sys_sleep(100); // Sleep for 100 milliseconds between readings
   }
 
   hw_adc_finalize(&temp);

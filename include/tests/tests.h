@@ -84,3 +84,40 @@ static inline int TestHardwareMain(const char *name, int (*test_func)(void)) {
   hw_exit();
   return ReturnValue; // Return the test result
 }
+
+#ifdef __OBJC__
+#include <NXFoundation/NXFoundation.h>
+
+/**
+ * @brief Application test runner function that initializes the system, runs a
+ * test, and cleans up.
+ * @param name The name of the test being run (for logging/debugging purposes)
+ * @param test_func A pointer to the test function to execute.
+ * @return The return value from the test function
+ */
+static inline int TestAppMain(const char *name, int (*test_func)(void)) {
+  hw_init(); // Initialize the system
+
+  // Create a zone
+  NXZone *zone = [NXZone zoneWithSize:1024];
+  test_assert(zone != nil);
+  test_assert([NXZone defaultZone] == zone);
+
+  // Create an autorelease pool
+  NXAutoreleasePool *pool = [[NXAutoreleasePool alloc] init];
+  test_assert(pool != nil);
+
+  // Run the test function
+  int ReturnValue = TestMain(name, test_func);
+
+  // Drain the autorelease pool, freeing any objects created during the test
+  [pool release];
+  [zone release];
+
+  // Clean up the hardware
+  hw_exit();
+
+  // Return the test result
+  return ReturnValue;
+}
+#endif

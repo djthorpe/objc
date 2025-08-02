@@ -1,7 +1,7 @@
 #include "hash.h"
 #include <objc/objc.h>
-#include <string.h>
 #include <runtime-sys/sys.h>
+#include <string.h>
 
 #define HASH_TABLE_SIZE 512
 struct objc_hashitem hash_table[HASH_TABLE_SIZE + 1];
@@ -63,14 +63,22 @@ struct objc_hashitem *__objc_hash_register(objc_class_t *cls,
 }
 
 /*
- * Return YES if the hash item matches the class, method, and types
+ * Return YES if the hash item matches the class and method
+ * it will also return NO if types is not null and the types
+ * do not match
  */
 inline static BOOL __objc_hash_match(struct objc_hashitem *item,
                                      objc_class_t *cls, const char *method,
                                      const char *types) {
-  return item->cls == cls && item->method != NULL && method != NULL &&
-         strcmp(item->method, method) == 0 && item->types != NULL &&
-         types != NULL && strcmp(item->types, types) == 0;
+  if (types) {
+    // Prefer to match types if provided
+    return item->cls == cls && item->method != NULL && method != NULL &&
+           strcmp(item->method, method) == 0 && item->types != NULL &&
+           strcmp(item->types, types) == 0;
+  } else {
+    return item->cls == cls && item->method != NULL && method != NULL &&
+           strcmp(item->method, method) == 0;
+  }
 }
 
 /*
