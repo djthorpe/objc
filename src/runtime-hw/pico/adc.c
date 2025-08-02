@@ -31,7 +31,7 @@ hw_adc_t hw_adc_init_pin(uint8_t pin) {
   sys_assert(pin >= ADC_CHANNEL_OFFSET &&
              pin < ADC_CHANNEL_OFFSET + NUM_ADC_CHANNELS - 1);
 
-  // Intialize the ADC for the specified pin
+  // Initialize the ADC for the specified pin
   hw_adc_t adc = {0};
   adc.gpio = hw_gpio_init(pin, HW_GPIO_ADC);
   adc.channel = pin - ADC_CHANNEL_OFFSET;
