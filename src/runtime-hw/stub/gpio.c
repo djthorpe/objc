@@ -77,9 +77,3 @@ void hw_gpio_set(hw_gpio_t *gpio, bool value) {
   sys_assert(gpio);
   (void)value; // Suppress unused parameter warning
 }
-
-void hw_gpio_set_callback(hw_gpio_callback_t callback) {
-  // GPIO not implemented in stub
-  sys_assert(callback != NULL);
-  (void)callback; // Suppress unused parameter warning
-}
