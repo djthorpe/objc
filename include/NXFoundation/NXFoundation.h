@@ -13,7 +13,6 @@
 #if __OBJC__
 
 // Forward Declaration of classes
-@class NXApplication;
 @class NXArray;
 @class NXAutoreleasePool;
 @class NXData;
@@ -40,7 +39,6 @@
 #include "Retain+Protocol.h"
 
 // Class Definitions
-#include "NXApplication.h"
 #include "NXArray.h"
 #include "NXAutoreleasePool.h"
 #include "NXData.h"

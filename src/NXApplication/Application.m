@@ -1,10 +1,11 @@
+#include <NXApplication/NXApplication.h>
 #include <NXFoundation/NXFoundation.h>
 #include <runtime-sys/sys.h>
 
 // Define the shared application instance
 static id sharedApplication = nil;
 
-@implementation NXApplication
+@implementation Application
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -14,6 +15,12 @@ static id sharedApplication = nil;
   if (self == nil) {
     return nil;
   }
+
+  // Initialize the application data
+  _data = NULL;
+  _delegate = nil;
+  _run = NO;
+  _stop = NO;
 
   // Return success
   return self;
@@ -26,26 +33,70 @@ static id sharedApplication = nil;
       sharedApplication = nil; // Set to nil to avoid dangling pointer
     }
   }
+
+  _delegate = nil; // Clear the delegate reference
   [super release]; // Call superclass release
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PROPERTIES
+
+/**
+ * @brief Gets the current application delegate.
+ */
+- (id<ApplicationDelegate>)delegate {
+  return _delegate; // Return the current delegate
+}
+
+/**
+ * @brief Sets the application delegate.
+ */
+- (void)setDelegate:(id<ApplicationDelegate>)delegate {
+  _delegate = delegate;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // INSTANCE METHODS
 
 - (int)run {
+  if (_run) {
+    NXLog(@"Application is already running.");
+    return 0; // Already running
+  }
+
   // Start the main run loop
-  while (YES) {
+  while (_stop == NO) {
     NXLog(@"NXApplication is running...");
+
+    // Notify the delegate that the application has finished launching
+    if (_run == NO && _delegate != nil) {
+      [_delegate applicationDidFinishLaunching:self];
+      _run = YES; // Set the run flag to true
+    }
+
     // Process events and maintain application state
     // This is a placeholder for actual event processing logic
     // In a real application, this would handle user input, timers, etc.
 
-    // For now, we just break to avoid an infinite loop in this example
-    break;
+    // For now, we just sleep a while
+    if (_run) {
+      NXLog(@"Processing events...");
+      // Simulate event processing
+      sys_sleep(100); // Sleep for 100 milliseconds
+    }
   }
+
+  // Reset the flags
+  _run = NO;  // Reset the run flag
+  _stop = NO; // Reset the stop flag
 
   // Return success
   return 0;
+}
+
+- (void)stop {
+  _stop = YES; // Set the stop flag to true to exit the run loop
+  NXLog(@"NXApplication is stopping...");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -68,38 +119,6 @@ static id sharedApplication = nil;
     // Return the shared application instance
     return sharedApplication;
   }
-}
-
-+ (int)run {
-  // If there is no default zone, create one
-  NXZone *zone = [NXZone defaultZone];
-  if (zone == nil) {
-    // Default zone size is set to 64KB
-    zone = [NXZone zoneWithSize:64 * 1024];
-    if (zone == nil) {
-      sys_panicf("Failed to create default zone for NXApplication");
-      return -1;
-    }
-  }
-
-  // Get the shared application instance
-  NXApplication *app = [self sharedApplication];
-  if (app == nil) {
-    sys_panicf("No shared application instance available");
-    return -1;
-  }
-
-  // Call the run method on the shared application instance
-  int returnValue = [app run];
-
-  // Release the application instance
-  [app release];
-
-  // Release the zone
-  [zone release];
-
-  // Return the result of the run method
-  return returnValue;
 }
 
 @end

@@ -5,7 +5,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../include/runtime-${RUNTIME}
 )
 
-# Pico Examples
+add_subdirectory(app)
 add_subdirectory(clock)
 add_subdirectory(pico/multicore)
 add_subdirectory(pico/simplequeue)

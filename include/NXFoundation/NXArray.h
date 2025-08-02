@@ -3,6 +3,7 @@
  * @brief Defines an array class for storing ordered objects.
  */
 #pragma once
+#include "NXObject.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // CLASS DEFINITIONS
