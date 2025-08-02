@@ -3,6 +3,15 @@
  * @brief GPIO (General Purpose Input/Output) interface
  * @defgroup GPIO GPIO
  * @ingroup Hardware
+ *
+ * General Purpose Input/Output (GPIO) interface for hardware platforms.
+ * This module provides functions to initialize GPIO pins, set their modes,
+ * and handle interrupts.
+ *
+ * @example pico/gpio_runloop/main.c
+ * An example of injecting GPIO events into a runloop, and handling those
+ * events from multiple producers and consumers using the event queue in a
+ * runloop style on the Pico platform.
  */
 #pragma once
 #include <stdbool.h>
@@ -47,7 +56,23 @@ typedef struct hw_gpio_t {
   uint8_t pin;   ///< GPIO logical pin number
 } hw_gpio_t;
 
-typedef void (*hw_gpio_callback_t)(hw_gpio_t *gpio, bool value);
+/**
+ * @brief GPIO interrupt callback function pointer.
+ * @ingroup GPIO
+ * @param pin The logical pin number that triggered the event.
+ * @param event The type of GPIO event that occurred (rising or falling edge).
+ * @param userdata User-defined data pointer passed when setting the callback.
+ *
+ * This callback function is called when a GPIO interrupt occurs on a pin
+ * that has been configured for interrupt detection. The callback is executed
+ * in interrupt context, so it should be kept short and avoid blocking
+ * operations.
+ *
+ * @see hw_gpio_set_callback() for setting up the callback handler.
+ * @see hw_gpio_event_t for available event types.
+ */
+typedef void (*hw_gpio_callback_t)(uint8_t pin, hw_gpio_event_t event,
+                                   void *userdata);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -56,8 +81,27 @@ typedef void (*hw_gpio_callback_t)(hw_gpio_t *gpio, bool value);
  * @brief Get the total number of available GPIO pins.
  * @ingroup GPIO
  * @return The number of GPIO pins available on the hardware platform.
+ *
+ * Returns the number of logical GPIO pins that can be used in the system.
+ * These are usually numbered from 0 to hw_gpio_count() - 1.
+ * If zero is returned, it indicates that GPIO functionality is not available.
  */
 uint8_t hw_gpio_count(void);
+
+/**
+ * @brief Set the global GPIO interrupt callback handler.
+ * @ingroup GPIO
+ * @param callback Pointer to the callback function to handle GPIO interrupts,
+ *                 or NULL to disable interrupt handling.
+ * @param userdata User-defined data pointer to pass to the callback.
+ *
+ * This function registers a global callback handler that will be invoked
+ * whenever a GPIO interrupt occurs on any pin that has been configured
+ * for interrupt detection. Only one callback can be active at a time.
+ *
+ * @see hw_gpio_callback_t for callback function signature requirements.
+ */
+void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata);
 
 /**
  * @brief Initialize a GPIO pin with the specified mode.

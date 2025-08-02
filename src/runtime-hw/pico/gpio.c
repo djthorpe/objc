@@ -8,7 +8,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
 
-static void _hw_gpio_callback(uint gpio, uint32_t events);
+static void _hw_gpio_callback(uint pin, uint32_t events);
+
+///////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+
+hw_gpio_callback_t _hw_gpio_callback_func =
+    NULL;                       ///< Global GPIO callback handler
+void *_hw_gpio_userdata = NULL; ///< User data for the GPIO callback
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -168,12 +175,27 @@ void hw_gpio_set(hw_gpio_t *gpio, bool value) {
   gpio_put(gpio->pin, value);
 }
 
+/**
+ * @brief Set the global GPIO interrupt callback handler.
+ */
+void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata) {
+  _hw_gpio_callback_func = callback;
+  _hw_gpio_userdata = userdata;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
-static void _hw_gpio_callback(uint gpio, uint32_t events) {
-  // Handle GPIO events (e.g., interrupts)
-  // This is a stub implementation; actual handling would depend on the
-  // application
-  sys_puts("GPIO event\n");
+static void _hw_gpio_callback(uint pin, uint32_t events) {
+  hw_gpio_event_t event = 0;
+  if (_hw_gpio_callback_func == NULL) {
+    return; // No callback set, do nothing
+  }
+  if (events & GPIO_IRQ_EDGE_RISE) {
+    event |= HW_GPIO_RISING;
+  }
+  if (events & GPIO_IRQ_EDGE_FALL) {
+    event |= HW_GPIO_FALLING;
+  }
+  _hw_gpio_callback_func(pin, event, _hw_gpio_userdata);
 }

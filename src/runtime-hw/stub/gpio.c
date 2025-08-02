@@ -15,6 +15,14 @@ uint8_t hw_gpio_count(void) {
 }
 
 /**
+ * @brief Set the global GPIO interrupt callback handler.
+ */
+void hw_gpio_set_callback(hw_gpio_callback_t callback) {
+  // GPIO not implemented in stub
+  (void)callback; // Suppress unused parameter warning
+}
+
+/**
  * @brief Initialize a GPIO pin with the specified mode.
  */
 hw_gpio_t hw_gpio_init(uint8_t pin, hw_gpio_mode_t mode) {
@@ -44,6 +52,15 @@ hw_gpio_mode_t hw_gpio_get_mode(hw_gpio_t *gpio) {
 }
 
 /**
+ * @brief Set the current mode configuration of a GPIO pin.
+ */
+void hw_gpio_set_mode(hw_gpio_t *gpio, hw_gpio_mode_t mode) {
+  // GPIO not implemented in stub
+  sys_assert(gpio);
+  (void)mode; // Suppress unused parameter warning
+}
+
+/**
  * @brief Read the current state of a GPIO pin.
  */
 bool hw_gpio_get(hw_gpio_t *gpio) {
@@ -59,4 +76,10 @@ void hw_gpio_set(hw_gpio_t *gpio, bool value) {
   // GPIO not implemented in stub
   sys_assert(gpio);
   (void)value; // Suppress unused parameter warning
+}
+
+void hw_gpio_set_callback(hw_gpio_callback_t callback) {
+  // GPIO not implemented in stub
+  sys_assert(callback != NULL);
+  (void)callback; // Suppress unused parameter warning
 }
