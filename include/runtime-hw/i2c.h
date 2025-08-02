@@ -17,7 +17,7 @@
 
 /**
  * @brief GPIO logical pin structure.
- * @ingroup GPIO
+ * @ingroup I2C
  */
 typedef struct hw_i2c_t {
   uint8_t adapter;   ///< I2C adapter number (0, 1, etc.)
