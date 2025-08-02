@@ -86,6 +86,7 @@ static inline int TestHardwareMain(const char *name, int (*test_func)(void)) {
 }
 
 #ifdef __OBJC__
+#ifdef NXApplicationTest
 #include <NXFoundation/NXFoundation.h>
 
 /**
@@ -120,4 +121,5 @@ static inline int TestAppMain(const char *name, int (*test_func)(void)) {
   // Return the test result
   return ReturnValue;
 }
+#endif
 #endif

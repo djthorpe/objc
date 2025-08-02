@@ -111,10 +111,10 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used
 - [X] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [X] `NXMap` - arbitary key sizes
+- [X] clang compatibility
+- [X] `respondsToSelector:` (see test `runtime_14`)
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
-- [ ] clang compatibility
 - [ ] Number - `NXNumberByte` and `NXNumberInt8`
-- [ ] `respondsToSelector:` (see test `runtime_14`)
 - [ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications
 - [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing
 - [ ] `NXURL` class - URL/filepath parsing and manipulation
