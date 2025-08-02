@@ -1,6 +1,6 @@
 /**
  * @file main.m
- * @brief An application how to create a simple application that stops after
+ * @brief Example showing how to create a simple application that stops after
  * launching.
  *
  * This example demonstrates how to read the system date and time,
