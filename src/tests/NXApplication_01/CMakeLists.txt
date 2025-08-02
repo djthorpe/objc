@@ -9,6 +9,11 @@ target_link_libraries(${NAME} PRIVATE
     NXFoundation
     NXApplication
 )
+target_compile_definitions(${NAME} PRIVATE
+    NXApplicationTest
+)
+
+# Add test
 add_test(NAME ${NAME} COMMAND ${NAME})
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Pico")
