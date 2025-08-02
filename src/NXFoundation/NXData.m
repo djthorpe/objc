@@ -474,7 +474,8 @@
   if (self == anObject) {
     return YES; // Same instance
   }
-  if (anObject == nil || object_isKindOfClass(anObject, isa) == NO) {
+  if (anObject == nil ||
+      object_isKindOfClass(anObject, object_getClass(self)) == NO) {
     return NO; // Not the same class
   }
   NXData *other = (NXData *)anObject;
