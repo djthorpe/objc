@@ -37,7 +37,7 @@ hw_adc_t hw_adc_init_temperature(void) {
  * @brief Initialize an ADC interface on which the battery level sensor is
  * connected.
  */
-hw_adc_t hw_adc_init_battery() {
+hw_adc_t hw_adc_init_battery(void) {
   // ADC not implemented in stub
   hw_adc_t adc = {0};
   return adc;
