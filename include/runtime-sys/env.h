@@ -13,7 +13,6 @@
 extern "C" {
 #endif
 
-#pragma once
 #include <stdint.h>
 
 #ifdef __cplusplus
