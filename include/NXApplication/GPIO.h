@@ -33,7 +33,7 @@
 + (GPIO *)pullupWithPin:(uint8_t)pin;
 
 /**
- * @brief Returns a GPIO input instance, with pull-up resistor enabled.
+ * @brief Returns a GPIO input instance, with pull-down resistor enabled.
  */
 + (GPIO *)pulldownWithPin:(uint8_t)pin;
 
