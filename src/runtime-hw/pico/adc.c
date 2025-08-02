@@ -139,6 +139,6 @@ float hw_adc_read_temperature(hw_adc_t *adc) {
   //        0.706V is the voltage at 27°C
   //        0.001721 V/°C is the temperature coefficient
   float value = hw_adc_read_voltage(adc);
-  float celcius = 27.0f - (value - 0.706f) / 0.001721f;
-  return celcius;
+  float celsius = 27.0f - (value - 0.706f) / 0.001721f;
+  return celsius;
 }
