@@ -1,4 +1,5 @@
 <map id="include/runtime&#45;hw/hw.h" name="include/runtime&#45;hw/hw.h">
-<area shape="rect" id="node2" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="28,80,91,107"/>
-<area shape="rect" id="node5" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="115,80,169,107"/>
+<area shape="rect" id="node2" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="95,80,152,107"/>
+<area shape="rect" id="node3" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="25,155,88,181"/>
+<area shape="rect" id="node7" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="177,80,230,107"/>
 </map>

@@ -1,6 +1,8 @@
 var searchData=
 [
   ['adapter',['adapter',['../structhw__i2c__t.html#af31d691b0c113361e04e6c442cfbc4cc',1,'hw_i2c_t']]],
+  ['adc',['ADC',['../group__ADC.html',1,'']]],
+  ['adc_2eh',['adc.h',['../adc_8h.html',1,'']]],
   ['addobject_3a',['addObject:',['../interfaceNXAutoreleasePool.html#a317e96662bcf86e0224fdf9f1ef5935d',1,'NXAutoreleasePool']]],
   ['addtimeinterval_3a',['addTimeInterval:',['../interfaceNXDate.html#a03eff6845726d2b2bb7b80997ec0ae6d',1,'NXDate']]],
   ['align',['align',['../structsys__mutex__t.html#a037d3b54819dc1dee2ac0e8237034fd6',1,'sys_mutex_t::align()'],['../structsys__cond__t.html#afe6282d531a9fb95f8ea2f727f0bc42b',1,'sys_cond_t::align()'],['../structsys__waitgroup__t.html#a8f2b73370272284539debb93951f65e5',1,'sys_waitgroup_t::align()']]],

@@ -1,5 +1,6 @@
 <map id="Hardware Interfaces" name="Hardware Interfaces">
 <area shape="rect" id="node1" href="$group__I2C.html" title="Inter&#45;Integrated Circuit (I2C) interface for hardware platforms. " alt="" coords="391,5,434,32"/>
-<area shape="rect" id="node2" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,31,135,57"/>
-<area shape="rect" id="node4" href="$group__GPIO.html" title="General Purpose Input/Output (GPIO) interface for hardware platforms. " alt="" coords="385,56,440,83"/>
+<area shape="rect" id="node2" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,56,135,83"/>
+<area shape="rect" id="node3" href="$group__ADC.html" title="Analog&#45;to&#45;Digital Converter (ADC) interface for hardware platforms. " alt="" coords="387,56,438,83"/>
+<area shape="rect" id="node5" href="$group__GPIO.html" title="General Purpose Input/Output (GPIO) interface for hardware platforms. " alt="" coords="385,107,440,133"/>
 </map>
