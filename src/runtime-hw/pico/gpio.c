@@ -78,8 +78,8 @@ void hw_gpio_set_mode(hw_gpio_t *gpio, hw_gpio_mode_t mode) {
     gpio_set_irq_enabled_with_callback(gpio->pin,
                                        GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
                                        true, &_hw_gpio_callback);
+    break;
   case HW_GPIO_PULLUP:
-    gpio_set_dir(gpio->pin, GPIO_IN);
     gpio_set_pulls(gpio->pin, true, false);
     gpio_set_irq_enabled_with_callback(gpio->pin,
                                        GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
