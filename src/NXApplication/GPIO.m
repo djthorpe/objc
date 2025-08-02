@@ -112,4 +112,13 @@
   hw_gpio_set(pin, state);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// OBJECT PROTOCOLS
+
+- (NXString *)description {
+  objc_assert(_data);
+  hw_gpio_t *pin = (hw_gpio_t *)_data;
+  return [NXString stringWithFormat:@"(gpio pin=%d)", pin->pin];
+}
+
 @end

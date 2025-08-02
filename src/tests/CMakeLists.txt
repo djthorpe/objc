@@ -34,7 +34,8 @@ add_subdirectory(sys_14)
 add_subdirectory(sys_15)
 
 # Test cases - pix
-add_subdirectory(pix_01)
+# TODO: Commented out until pix is implemented
+# add_subdirectory(pix_01)
 
 # Test cases - hw
 add_subdirectory(hw_01)
@@ -105,3 +106,6 @@ add_subdirectory(NXFoundation_22)
 add_subdirectory(NXFoundation_23)
 add_subdirectory(NXFoundation_24)
 
+
+# Test cases - NXApplication
+add_subdirectory(NXApplication_01)

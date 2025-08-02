@@ -3,8 +3,8 @@
 #include "hash.h"
 #include "protocol.h"
 #include <objc/objc.h>
-#include <string.h>
 #include <runtime-sys/sys.h>
+#include <string.h>
 
 #define CLASS_TABLE_SIZE 32
 objc_class_t *class_table[CLASS_TABLE_SIZE + 1];
@@ -93,8 +93,17 @@ void __objc_class_register_method_list(objc_class_t *cls,
                cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
                method->name, method->types, method->imp);
 #endif
+    // We register the version WITH the type
     struct objc_hashitem *item =
         __objc_hash_register(cls, method->name, method->types, method->imp);
+    if (item == NULL) {
+      sys_panicf("TODO: Failed to register method %s in class %s\n",
+                 method->name, cls->name);
+      return;
+    }
+
+    // We register the version WITHOUT the type
+    item = __objc_hash_register(cls, method->name, NULL, method->imp);
     if (item == NULL) {
       sys_panicf("TODO: Failed to register method %s in class %s\n",
                  method->name, cls->name);

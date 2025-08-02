@@ -17,9 +17,10 @@ uint8_t hw_gpio_count(void) {
 /**
  * @brief Set the global GPIO interrupt callback handler.
  */
-void hw_gpio_set_callback(hw_gpio_callback_t callback) {
+void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata) {
   // GPIO not implemented in stub
   (void)callback; // Suppress unused parameter warning
+  (void)userdata; // Suppress unused parameter warning
 }
 
 /**
