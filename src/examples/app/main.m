@@ -1,5 +1,5 @@
 /**
- * @file main.c
+ * @file main.m
  * @brief An application how to create a simple application that stops after
  * launching.
  *
