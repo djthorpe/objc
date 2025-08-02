@@ -29,7 +29,9 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
   NXAutoreleasePool *pool = [[NXAutoreleasePool allocWithZone:zone] init];
   if (pool == nil) {
     sys_panicf("Failed to create autorelease pool");
-    [zone release];
+    if (releaseZone) {
+      [zone release];
+    }
     return -1;
   }
 
