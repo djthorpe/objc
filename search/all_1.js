@@ -17,6 +17,7 @@ var searchData=
   ['appenddata_3a',['appendData:',['../interfaceNXData.html#a4a36ba7ac8b1441c2b2f1bc8372a1000',1,'NXData']]],
   ['appendstring_3a',['appendString:',['../interfaceNXData.html#a2b33cd2bd10120876e4691aeac33ed1f',1,'NXData']]],
   ['appendstringwithformat_3a',['appendStringWithFormat:',['../interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75',1,'NXString']]],
+  ['application_20framework',['Application Framework',['../group__Application.html',1,'']]],
   ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
   ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],
   ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]

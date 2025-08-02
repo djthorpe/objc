@@ -15,6 +15,7 @@ var searchData=
   ['initwithformat_3aarguments_3a',['initWithFormat:arguments:',['../interfaceNXString.html#a04814ca0fd486fdf6cb32fc14daad810',1,'NXString']]],
   ['initwithobjects_3a',['initWithObjects:',['../interfaceNXArray.html#a4f44e672eab815de7af01f067ae91aab',1,'NXArray']]],
   ['initwithstring_3a',['initWithString:',['../interfaceNXData.html#af0ddffef4f93250a85301fd5c14ce8d8',1,'NXData::initWithString:()'],['../interfaceNXString.html#addee4e6e812fc8f39cccc51edb204f1b',1,'NXString::initWithString:()']]],
+  ['inputwithpin_3a',['inputWithPin:',['../interfaceGPIO.html#ad1b7bdc6316a22045f431f9dc5c38086',1,'GPIO']]],
   ['insert_3aatindex_3a',['insert:atIndex:',['../interfaceNXArray.html#ae49c62332902dc0a3cec42eb118905dc',1,'NXArray']]],
   ['int16value',['int16Value',['../interfaceNXNumber.html#a45f7d544fbe3ffc47489072a90ba7621',1,'NXNumber']]],
   ['int32value',['int32Value',['../interfaceNXNumber.html#ae1e38ca9c66330ab50a76321c4f4eb50',1,'NXNumber']]],

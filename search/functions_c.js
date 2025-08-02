@@ -9,5 +9,7 @@ var searchData=
   ['pix_5finit',['pix_init',['../group__Pixel.html#gab4504a325929461cec72d6cc5db8055b',1,'pix.h']]],
   ['pix_5fsdl_5fdisplay_5finit',['pix_sdl_display_init',['../group__PixelDisplay.html#gafa3adb4bd768a532961e70d592789394',1,'display.h']]],
   ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
-  ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]]
+  ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]],
+  ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
+  ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]]
 ];

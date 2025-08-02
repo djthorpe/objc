@@ -57,7 +57,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>General Purpose Input/Output (GPIO) interface for hardware platforms.  
+<p>General Purpose Input/Output (<a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>) interface for hardware platforms.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for GPIO:</div>
@@ -72,17 +72,17 @@ Collaboration diagram for GPIO:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__gpio__t.html">hw_gpio_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO logical pin structure.  <a href="structhw__gpio__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> logical pin structure.  <a href="structhw__gpio__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gab5009dcd5db07cd39ff8fcc73b44e99d"><td class="memItemLeft" align="right" valign="top"><a id="gab5009dcd5db07cd39ff8fcc73b44e99d"></a>
 typedef struct <a class="el" href="structhw__gpio__t.html">hw_gpio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gab5009dcd5db07cd39ff8fcc73b44e99d">hw_gpio_t</a></td></tr>
-<tr class="memdesc:gab5009dcd5db07cd39ff8fcc73b44e99d"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO logical pin structure. <br /></td></tr>
+<tr class="memdesc:gab5009dcd5db07cd39ff8fcc73b44e99d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> logical pin structure. <br /></td></tr>
 <tr class="separator:gab5009dcd5db07cd39ff8fcc73b44e99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7fe241ada48d1652491a9cfc6679e7f0"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#ga7fe241ada48d1652491a9cfc6679e7f0">hw_gpio_callback_t</a>) (uint8_t pin, <a class="el" href="group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb">hw_gpio_event_t</a> event, void *userdata)</td></tr>
-<tr class="memdesc:ga7fe241ada48d1652491a9cfc6679e7f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO interrupt callback function pointer.  <a href="#ga7fe241ada48d1652491a9cfc6679e7f0">More...</a><br /></td></tr>
+<tr class="memdesc:ga7fe241ada48d1652491a9cfc6679e7f0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt callback function pointer.  <a href="#ga7fe241ada48d1652491a9cfc6679e7f0">More...</a><br /></td></tr>
 <tr class="separator:ga7fe241ada48d1652491a9cfc6679e7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -102,45 +102,45 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aab795f40a9233710024d6c1b55ea4fa42">HW_GPIO_ADC</a>, 
 <a class="el" href="group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e">HW_GPIO_UNKNOWN</a>
 <br />
- }<tr class="memdesc:gac7525666288cb654655ebdbf8d63167a"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO mode flags for configuring GPIO pins.  <a href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a">More...</a><br /></td></tr>
+ }<tr class="memdesc:gac7525666288cb654655ebdbf8d63167a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode flags for configuring <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins.  <a href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:gac7525666288cb654655ebdbf8d63167a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b48f29b91217a86a1da7e718156eafb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb">hw_gpio_event_t</a> { <a class="el" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a> = (1 &lt;&lt; 0), 
 <a class="el" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a> = (1 &lt;&lt; 1)
- }<tr class="memdesc:ga7b48f29b91217a86a1da7e718156eafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO mode flags for configuring GPIO pins.  <a href="group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb">More...</a><br /></td></tr>
+ }<tr class="memdesc:ga7b48f29b91217a86a1da7e718156eafb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode flags for configuring <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins.  <a href="group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga7b48f29b91217a86a1da7e718156eafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga05833c210f2ae683fd2b32d5634c75d0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0">hw_gpio_count</a> (void)</td></tr>
-<tr class="memdesc:ga05833c210f2ae683fd2b32d5634c75d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available GPIO pins.  <a href="#ga05833c210f2ae683fd2b32d5634c75d0">More...</a><br /></td></tr>
+<tr class="memdesc:ga05833c210f2ae683fd2b32d5634c75d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins.  <a href="#ga05833c210f2ae683fd2b32d5634c75d0">More...</a><br /></td></tr>
 <tr class="separator:ga05833c210f2ae683fd2b32d5634c75d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga718d76b63624f4d2e6c5d6643396c298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#ga718d76b63624f4d2e6c5d6643396c298">hw_gpio_set_callback</a> (<a class="el" href="group__GPIO.html#ga7fe241ada48d1652491a9cfc6679e7f0">hw_gpio_callback_t</a> callback, void *userdata)</td></tr>
-<tr class="memdesc:ga718d76b63624f4d2e6c5d6643396c298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the global GPIO interrupt callback handler.  <a href="#ga718d76b63624f4d2e6c5d6643396c298">More...</a><br /></td></tr>
+<tr class="memdesc:ga718d76b63624f4d2e6c5d6643396c298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the global <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt callback handler.  <a href="#ga718d76b63624f4d2e6c5d6643396c298">More...</a><br /></td></tr>
 <tr class="separator:ga718d76b63624f4d2e6c5d6643396c298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabecec555c0a6d624d2e9a3588e96bbe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__gpio__t.html">hw_gpio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gabecec555c0a6d624d2e9a3588e96bbe7">hw_gpio_init</a> (uint8_t pin, <a class="el" href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a">hw_gpio_mode_t</a> mode)</td></tr>
-<tr class="memdesc:gabecec555c0a6d624d2e9a3588e96bbe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a GPIO pin with the specified mode.  <a href="#gabecec555c0a6d624d2e9a3588e96bbe7">More...</a><br /></td></tr>
+<tr class="memdesc:gabecec555c0a6d624d2e9a3588e96bbe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin with the specified mode.  <a href="#gabecec555c0a6d624d2e9a3588e96bbe7">More...</a><br /></td></tr>
 <tr class="separator:gabecec555c0a6d624d2e9a3588e96bbe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab52795b43f48476be06940bbfe955290"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gab52795b43f48476be06940bbfe955290">hw_gpio_finalize</a> (<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a> *gpio)</td></tr>
-<tr class="memdesc:gab52795b43f48476be06940bbfe955290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a GPIO pin.  <a href="#gab52795b43f48476be06940bbfe955290">More...</a><br /></td></tr>
+<tr class="memdesc:gab52795b43f48476be06940bbfe955290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gab52795b43f48476be06940bbfe955290">More...</a><br /></td></tr>
 <tr class="separator:gab52795b43f48476be06940bbfe955290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafe836ee1bde15d8834b0d6382470e10b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a">hw_gpio_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gafe836ee1bde15d8834b0d6382470e10b">hw_gpio_get_mode</a> (<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a> *gpio)</td></tr>
-<tr class="memdesc:gafe836ee1bde15d8834b0d6382470e10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current mode configuration of a GPIO pin.  <a href="#gafe836ee1bde15d8834b0d6382470e10b">More...</a><br /></td></tr>
+<tr class="memdesc:gafe836ee1bde15d8834b0d6382470e10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current mode configuration of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gafe836ee1bde15d8834b0d6382470e10b">More...</a><br /></td></tr>
 <tr class="separator:gafe836ee1bde15d8834b0d6382470e10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga330bddb4ed59712369d2a63fbd4d833b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#ga330bddb4ed59712369d2a63fbd4d833b">hw_gpio_set_mode</a> (<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a> *gpio, <a class="el" href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a">hw_gpio_mode_t</a> mode)</td></tr>
-<tr class="memdesc:ga330bddb4ed59712369d2a63fbd4d833b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current mode configuration of a GPIO pin.  <a href="#ga330bddb4ed59712369d2a63fbd4d833b">More...</a><br /></td></tr>
+<tr class="memdesc:ga330bddb4ed59712369d2a63fbd4d833b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current mode configuration of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#ga330bddb4ed59712369d2a63fbd4d833b">More...</a><br /></td></tr>
 <tr class="separator:ga330bddb4ed59712369d2a63fbd4d833b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabeebffc53653a36e44a6e8bdf576b278"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gabeebffc53653a36e44a6e8bdf576b278">hw_gpio_get</a> (<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a> *gpio)</td></tr>
-<tr class="memdesc:gabeebffc53653a36e44a6e8bdf576b278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current state of a GPIO pin.  <a href="#gabeebffc53653a36e44a6e8bdf576b278">More...</a><br /></td></tr>
+<tr class="memdesc:gabeebffc53653a36e44a6e8bdf576b278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current state of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gabeebffc53653a36e44a6e8bdf576b278">More...</a><br /></td></tr>
 <tr class="separator:gabeebffc53653a36e44a6e8bdf576b278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaea3fcdca3b0a1fd8bfe019958870b223"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GPIO.html#gaea3fcdca3b0a1fd8bfe019958870b223">hw_gpio_set</a> (<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a> *gpio, bool value)</td></tr>
-<tr class="memdesc:gaea3fcdca3b0a1fd8bfe019958870b223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of a GPIO pin.  <a href="#gaea3fcdca3b0a1fd8bfe019958870b223">More...</a><br /></td></tr>
+<tr class="memdesc:gaea3fcdca3b0a1fd8bfe019958870b223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gaea3fcdca3b0a1fd8bfe019958870b223">More...</a><br /></td></tr>
 <tr class="separator:gaea3fcdca3b0a1fd8bfe019958870b223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>General Purpose Input/Output (GPIO) interface for hardware platforms. </p>
-<p>This module provides functions to initialize GPIO pins, set their modes, and handle interrupts. </p>
+<p>General Purpose Input/Output (<a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>) interface for hardware platforms. </p>
+<p>This module provides functions to initialize <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins, set their modes, and handle interrupts. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga7fe241ada48d1652491a9cfc6679e7f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7fe241ada48d1652491a9cfc6679e7f0">&#9670;&nbsp;</a></span>hw_gpio_callback_t</h2>
@@ -154,16 +154,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>GPIO interrupt callback function pointer. </p>
+<p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt callback function pointer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin</td><td>The logical pin number that triggered the event. </td></tr>
-    <tr><td class="paramname">event</td><td>The type of GPIO event that occurred (rising or falling edge). </td></tr>
+    <tr><td class="paramname">event</td><td>The type of <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> event that occurred (rising or falling edge). </td></tr>
     <tr><td class="paramname">userdata</td><td>User-defined data pointer passed when setting the callback.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This callback function is called when a GPIO interrupt occurs on a pin that has been configured for interrupt detection. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
+<p>This callback function is called when a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt occurs on a pin that has been configured for interrupt detection. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__GPIO.html#ga718d76b63624f4d2e6c5d6643396c298" title="Set the global GPIO interrupt callback handler. ">hw_gpio_set_callback()</a> for setting up the callback handler. </dd>
 <dd>
 <a class="el" href="group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb" title="GPIO mode flags for configuring GPIO pins. ">hw_gpio_event_t</a> for available event types. </dd></dl>
@@ -185,11 +185,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>GPIO mode flags for configuring GPIO pins. </p>
+<p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode flags for configuring <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67"></a>HW_GPIO_RISING&#160;</td><td class="fielddoc"><p>GPIO pin rising edge interrupt. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67"></a>HW_GPIO_RISING&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin rising edge interrupt. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3"></a>HW_GPIO_FALLING&#160;</td><td class="fielddoc"><p>GPIO pin falling edge interrupt. </p>
+<tr><td class="fieldname"><a id="gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3"></a>HW_GPIO_FALLING&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin falling edge interrupt. </p>
 </td></tr>
 </table>
 
@@ -212,29 +212,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>GPIO mode flags for configuring GPIO pins. </p>
+<p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode flags for configuring <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa048c1ab72ee1c6b02e116e8e9799af01"></a>HW_GPIO_NONE&#160;</td><td class="fielddoc"><p>No GPIO mode set. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa048c1ab72ee1c6b02e116e8e9799af01"></a>HW_GPIO_NONE&#160;</td><td class="fielddoc"><p>No <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode set. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa4a98e38e3047a30d9109c1809612e135"></a>HW_GPIO_INPUT&#160;</td><td class="fielddoc"><p>GPIO pin floating input. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa4a98e38e3047a30d9109c1809612e135"></a>HW_GPIO_INPUT&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin floating input. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa9629eb1bc9b8b3ed27d50e4144c72149"></a>HW_GPIO_PULLUP&#160;</td><td class="fielddoc"><p>GPIO pin input with pull-up resistor. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa9629eb1bc9b8b3ed27d50e4144c72149"></a>HW_GPIO_PULLUP&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin input with pull-up resistor. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa544df03802b190451ab72f9ac33ff066"></a>HW_GPIO_PULLDOWN&#160;</td><td class="fielddoc"><p>GPIO pin input with pull-down resistor. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa544df03802b190451ab72f9ac33ff066"></a>HW_GPIO_PULLDOWN&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin input with pull-down resistor. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aaef0e16d7f4a1d9e15bfd05d0cc43869c"></a>HW_GPIO_OUTPUT&#160;</td><td class="fielddoc"><p>GPIO pin configured as output. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aaef0e16d7f4a1d9e15bfd05d0cc43869c"></a>HW_GPIO_OUTPUT&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured as output. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa2dedca04226fdf562d2a9f73cf1dcfb7"></a>HW_GPIO_SPI&#160;</td><td class="fielddoc"><p>GPIO pin configured for SPI. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa2dedca04226fdf562d2a9f73cf1dcfb7"></a>HW_GPIO_SPI&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured for SPI. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa677ad28492c29c4c27468224ba1cf31b"></a>HW_GPIO_I2C&#160;</td><td class="fielddoc"><p>GPIO pin configured for I2C. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa677ad28492c29c4c27468224ba1cf31b"></a>HW_GPIO_I2C&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured for I2C. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa6dbffffd5011ace8aac8579656f98464"></a>HW_GPIO_UART&#160;</td><td class="fielddoc"><p>GPIO pin configured for UART. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa6dbffffd5011ace8aac8579656f98464"></a>HW_GPIO_UART&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured for UART. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa9f2a6030f00da87a4f2737ecb3d177d1"></a>HW_GPIO_PWM&#160;</td><td class="fielddoc"><p>GPIO pin configured for PWM. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa9f2a6030f00da87a4f2737ecb3d177d1"></a>HW_GPIO_PWM&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured for PWM. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aab795f40a9233710024d6c1b55ea4fa42"></a>HW_GPIO_ADC&#160;</td><td class="fielddoc"><p>GPIO pin configured for analog input. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aab795f40a9233710024d6c1b55ea4fa42"></a>HW_GPIO_ADC&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin configured for analog input. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e"></a>HW_GPIO_UNKNOWN&#160;</td><td class="fielddoc"><p>GPIO pin mode is not implemented. </p>
+<tr><td class="fieldname"><a id="ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e"></a>HW_GPIO_UNKNOWN&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin mode is not implemented. </p>
 </td></tr>
 </table>
 
@@ -271,9 +271,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the total number of available GPIO pins. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of GPIO pins available on the hardware platform.</dd></dl>
-<p>Returns the number of logical GPIO pins that can be used in the system. These are usually numbered from 0 to <a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0" title="Get the total number of available GPIO pins. ">hw_gpio_count()</a> - 1. If zero is returned, it indicates that GPIO functionality is not available. </p>
+<p>Get the total number of available <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins available on the hardware platform.</dd></dl>
+<p>Returns the number of logical <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins that can be used in the system. These are usually numbered from 0 to <a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0" title="Get the total number of available GPIO pins. ">hw_gpio_count()</a> - 1. If zero is returned, it indicates that <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> functionality is not available. </p>
 
 </div>
 </div>
@@ -293,14 +293,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finalize and release a GPIO pin. </p>
+<p>Finalize and release a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>Pointer to the GPIO structure to finalize. </td></tr>
+    <tr><td class="paramname">gpio</td><td>Pointer to the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure to finalize. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>After calling this function, the GPIO pin is released and should not be used. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After calling this function, the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin is released and should not be used. </dd></dl>
 
 </div>
 </div>
@@ -320,10 +320,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read the current state of a GPIO pin. </p>
+<p>Read the current state of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>Pointer to the GPIO structure. </td></tr>
+    <tr><td class="paramname">gpio</td><td>Pointer to the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -348,14 +348,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the current mode configuration of a GPIO pin. </p>
+<p>Get the current mode configuration of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>Pointer to the GPIO structure. </td></tr>
+    <tr><td class="paramname">gpio</td><td>Pointer to the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The current GPIO mode configuration. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The current <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode configuration. </dd></dl>
 
 </div>
 </div>
@@ -385,15 +385,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize a GPIO pin with the specified mode. </p>
+<p>Initialize a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin with the specified mode. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pin</td><td>The logical GPIO pin number to initialize. </td></tr>
-    <tr><td class="paramname">mode</td><td>The GPIO mode configuration (input, output, pull-up, etc.). </td></tr>
+    <tr><td class="paramname">pin</td><td>The logical <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to initialize. </td></tr>
+    <tr><td class="paramname">mode</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode configuration (input, output, pull-up, etc.). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A GPIO structure representing the initialized pin. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure representing the initialized pin. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The pin number should be valid (0 to <a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0" title="Get the total number of available GPIO pins. ">hw_gpio_count()</a>-1). </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a" title="GPIO mode flags for configuring GPIO pins. ">hw_gpio_mode_t</a> for available mode options. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a14">pico/gpio_runloop/main.c</a>.</dd>
@@ -426,10 +426,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the state of a GPIO pin. </p>
+<p>Set the state of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>Pointer to the GPIO structure. </td></tr>
+    <tr><td class="paramname">gpio</td><td>Pointer to the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure. </td></tr>
     <tr><td class="paramname">value</td><td>true to set the pin high (logical 1), false to set low (logical 0).</td></tr>
   </table>
   </dd>
@@ -464,15 +464,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the global GPIO interrupt callback handler. </p>
+<p>Set the global <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt callback handler. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">callback</td><td>Pointer to the callback function to handle GPIO interrupts, or NULL to disable interrupt handling. </td></tr>
+    <tr><td class="paramname">callback</td><td>Pointer to the callback function to handle <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupts, or NULL to disable interrupt handling. </td></tr>
     <tr><td class="paramname">userdata</td><td>User-defined data pointer to pass to the callback.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function registers a global callback handler that will be invoked whenever a GPIO interrupt occurs on any pin that has been configured for interrupt detection. Only one callback can be active at a time.</p>
+<p>This function registers a global callback handler that will be invoked whenever a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt occurs on any pin that has been configured for interrupt detection. Only one callback can be active at a time.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__GPIO.html#ga7fe241ada48d1652491a9cfc6679e7f0" title="GPIO interrupt callback function pointer. ">hw_gpio_callback_t</a> for callback function signature requirements. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a17">pico/gpio_runloop/main.c</a>.</dd>
 </dl>
@@ -504,11 +504,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the current mode configuration of a GPIO pin. </p>
+<p>Set the current mode configuration of a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>Pointer to the GPIO structure. </td></tr>
-    <tr><td class="paramname">mode</td><td>The new GPIO mode configuration to set.</td></tr>
+    <tr><td class="paramname">gpio</td><td>Pointer to the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure. </td></tr>
+    <tr><td class="paramname">mode</td><td>The new <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> mode configuration to set.</td></tr>
   </table>
   </dd>
 </dl>

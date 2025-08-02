@@ -15,7 +15,6 @@ var searchData=
   ['numberwithunsignedint32_3a',['numberWithUnsignedInt32:',['../interfaceNXNumber.html#a138cbfffeab84815f061005037029f7c',1,'NXNumber']]],
   ['numberwithunsignedint64_3a',['numberWithUnsignedInt64:',['../interfaceNXNumber.html#a84283d5fd779f493afcce5c2d74b3381',1,'NXNumber']]],
   ['nxapplication',['NXApplication',['../interfaceNXApplication.html',1,'']]],
-  ['nxapplication_2eh',['NXApplication.h',['../NXApplication_8h.html',1,'']]],
   ['nxarch_2eh',['NXArch.h',['../NXArch_8h.html',1,'']]],
   ['nxarchbits',['NXArchBits',['../group__Foundation.html#ga9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
   ['nxarchendian',['NXArchEndian',['../group__Foundation.html#ga1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],

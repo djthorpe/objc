@@ -1,6 +1,17 @@
 var searchData=
 [
-  ['object',['Object',['../interfaceObject.html',1,'']]],
-  ['object_28description_29',['Object(Description)',['../categoryObject_07Description_08.html',1,'']]],
-  ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]]
+  ['nxapplication',['NXApplication',['../interfaceNXApplication.html',1,'']]],
+  ['nxarray',['NXArray',['../interfaceNXArray.html',1,'']]],
+  ['nxautoreleasepool',['NXAutoreleasePool',['../interfaceNXAutoreleasePool.html',1,'']]],
+  ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
+  ['nxconstantstringprotocol_2dp',['NXConstantStringProtocol-p',['../protocolNXConstantStringProtocol-p.html',1,'']]],
+  ['nxdata',['NXData',['../interfaceNXData.html',1,'']]],
+  ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
+  ['nxmap',['NXMap',['../interfaceNXMap.html',1,'']]],
+  ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],
+  ['nxnumber',['NXNumber',['../interfaceNXNumber.html',1,'']]],
+  ['nxobject',['NXObject',['../interfaceNXObject.html',1,'']]],
+  ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
+  ['nxthread',['NXThread',['../interfaceNXThread.html',1,'']]],
+  ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]]
 ];

@@ -44,5 +44,7 @@ var searchData=
   ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
   ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]],
   ['protocol',['Protocol',['../interfaceProtocol.html',1,'']]],
-  ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]]
+  ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]],
+  ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
+  ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]]
 ];

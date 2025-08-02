@@ -26,5 +26,6 @@ var searchData=
   ['objectatindex_3a',['objectAtIndex:',['../interfaceNXArray.html#a349dfba95888604ad749e91203595267',1,'NXArray']]],
   ['objectforkey_3a',['objectForKey:',['../interfaceNXMap.html#a102483115fd967d326962ce22c5dc58b',1,'NXMap']]],
   ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]],
-  ['offset',['offset',['../structpix__frame__t.html#a118fed0a78dc4871202986966e480258',1,'pix_frame_t']]]
+  ['offset',['offset',['../structpix__frame__t.html#a118fed0a78dc4871202986966e480258',1,'pix_frame_t']]],
+  ['outputwithpin_3a',['outputWithPin:',['../interfaceGPIO.html#ad032dc8d15dbcb998081aeecf4c5a5fd',1,'GPIO']]]
 ];
