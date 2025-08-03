@@ -10,6 +10,7 @@ add_library(${NAME} STATIC
     gpio.c
     hw.c
     i2c.c
+    pwm.c
     spi.c
 )
 target_include_directories(${NAME} PRIVATE
@@ -17,7 +18,9 @@ target_include_directories(${NAME} PRIVATE
 )
 target_link_libraries(${NAME} 
     hardware_adc
+    hardware_clocks
     hardware_gpio
     hardware_i2c
+    hardware_pwm
     hardware_spi
 )

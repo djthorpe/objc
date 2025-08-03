@@ -14,3 +14,6 @@ add_subdirectory(pico/multicore)
 add_subdirectory(pico/simplequeue)
 add_subdirectory(pico/runloop)
 add_subdirectory(pico/gpio_runloop)
+add_subdirectory(pico/pwm_blink)
+
+
