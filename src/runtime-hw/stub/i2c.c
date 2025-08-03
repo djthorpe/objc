@@ -63,8 +63,8 @@ bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr) {
 /**
  * @brief Perform an I2C transfer operation (read, write, or combined).
  */
-size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, uint8_t *data, size_t tx,
-                  size_t rx, uint32_t timeout_ms) {
+size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
+                  uint32_t timeout_ms) {
   sys_assert(i2c);
   // I2C not implemented in stub
   (void)addr;       // Suppress unused parameter warning

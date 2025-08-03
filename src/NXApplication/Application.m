@@ -1,11 +1,25 @@
 #include <NXApplication/NXApplication.h>
 #include <NXFoundation/NXFoundation.h>
+#include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
 
-static void _app_runloop(sys_event_queue_t *queue);
+static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
+                               void *userdata) {
+  sys_event_queue_t *queue = (sys_event_queue_t *)userdata;
+  objc_assert(queue);
+
+  // Create a sys_event_t for the GPIO event
+  const char *payload = sys_malloc(sizeof(uint8_t) * 64);
+  if (payload != NULL) {
+    sys_sprintf((char *)payload, 64, "GPIO %d: %d", (int)pin, (int)event);
+    if (sys_event_queue_try_push(queue, (void *)payload) == false) {
+      sys_free((void *)payload); // Free the payload if it cannot be pushed
+    }
+  }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
@@ -26,8 +40,13 @@ static id sharedApplication = nil;
 
   // Create an event queue for the application
   _queue = sys_event_queue_init(capacity);
+
+  // Initialize properties
   _delegate = nil;
   _run = NO;
+
+  // Set the GPIO callback for the application
+  hw_gpio_set_callback(_app_gpio_callback, &_queue);
 
   // Return success
   return self;
@@ -52,6 +71,9 @@ static id sharedApplication = nil;
       sharedApplication = nil; // Set to nil to avoid dangling pointer
     }
   }
+
+  // Remove the GPIO callback for the application
+  hw_gpio_set_callback(NULL, NULL);
 
   // Release retained resources (delegates are not retained)
   [_args release];
@@ -170,6 +192,3 @@ static id sharedApplication = nil;
 }
 
 @end
-
-/////////////////////////////////////////////////////////////////////
-// RUNLOOP

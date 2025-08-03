@@ -10,6 +10,11 @@
  */
 #include <NXApplication/NXApplication.h>
 
+#define GPIO_BOOTSEL 23 // BOOTSEL Button
+#define GPIO_A 12       // Button A
+#define GPIO_B 13       // Button B
+#define GPIO_C 14       // Button C
+
 //////////////////////////////////////////////////////////////////////////
 
 @interface MyAppDelegate : NXObject <ApplicationDelegate>
@@ -22,6 +27,12 @@
 - (void)applicationDidFinishLaunching:(id)application {
   (void)application; // Cast to void to avoid unused parameter warning
   NXLog(@"Application did finish launching");
+
+  // Initialize a GPIO pin for input
+  [GPIO pullupWithPin:GPIO_A];
+  [GPIO pullupWithPin:GPIO_B];
+  [GPIO pullupWithPin:GPIO_C];
+  [GPIO inputWithPin:GPIO_BOOTSEL];
 }
 
 @end

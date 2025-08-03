@@ -3,5 +3,4 @@ build
 .DS_Store
 Testing
 docs
-third_party
 .cache

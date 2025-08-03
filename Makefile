@@ -50,6 +50,17 @@ runtime-hw: dep-cc dep-cmake
 		-D TARGET=runtime-hw
 	@${CMAKE} --build ${BUILD_DIR} --target runtime-hw
 
+
+# Create the libdrivers runtime library
+.PHONY: drivers
+drivers: dep-cc dep-cmake
+	@echo
+	@echo make drivers
+	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
+		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+		-D TARGET=drivers
+	@${CMAKE} --build ${BUILD_DIR} --target drivers
+
 # Create the NXFoundation library
 .PHONY: NXFoundation
 NXFoundation: libobjc-gcc
@@ -59,7 +70,7 @@ NXFoundation: libobjc-gcc
 
 # Create the NXApplication library
 .PHONY: NXApplication
-NXApplication: NXFoundation runtime-hw
+NXApplication: NXFoundation runtime-hw drivers
 	@echo
 	@echo make NXApplication
 	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
@@ -95,7 +106,7 @@ pico: submodule dep-cmake
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		-D TARGET=armv6m-none-eabi
-	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
+	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
 
 # Create the picotool binary
 .PHONY: picotool

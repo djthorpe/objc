@@ -22,25 +22,15 @@
  * @ingroup I2C
  */
 typedef struct hw_i2c_t {
-  uint8_t adapter;   ///< I2C adapter number (0, 1, etc.)
-  hw_gpio_t sda;     ///< I2C data pin number
-  hw_gpio_t scl;     ///< I2C clock pin number
-  uint32_t baudrate; ///< I2C baud rate in Hz
+  uint8_t adapter;     ///< I2C adapter number (0, 1, etc.)
+  hw_gpio_t sda;       ///< I2C data pin number
+  hw_gpio_t scl;       ///< I2C clock pin number
+  uint32_t baudrate;   ///< I2C baud rate in Hz
+  uint8_t reserved[3]; ///< Reserved for user data
 } hw_i2c_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
-
-/**
- * @brief Get the total number of available I2C adapters.
- * @ingroup I2C
- * @return The number of I2C adapters available on the hardware platform.
- *
- * Returns the number of logical I2C adapters that can be used in the system.
- * These are usually numbered from 0 to hw_i2c_count() - 1.
- * If zero is returned, it indicates that I2C functionality is not available.
- */
-uint8_t hw_i2c_count(void);
 
 /**
  * @brief Initialize an I2C interface using default pins and adapter.
@@ -85,6 +75,32 @@ hw_i2c_t hw_i2c_init(uint8_t adapter, uint8_t sda, uint8_t scl,
 void hw_i2c_finalize(hw_i2c_t *i2c);
 
 ///////////////////////////////////////////////////////////////////////////////
+// PROPERTIES
+
+/**
+ * @brief Get the total number of available I2C adapters.
+ * @ingroup I2C
+ * @return The number of I2C adapters available on the hardware platform.
+ *
+ * Returns the number of logical I2C adapters that can be used in the system.
+ * These are usually numbered from 0 to hw_i2c_count() - 1.
+ * If zero is returned, it indicates that I2C functionality is not available.
+ */
+uint8_t hw_i2c_count(void);
+
+/**
+ * @brief Get true if the I2C interface is valid.
+ * @ingroup I2C
+ * @return True if the I2C interface is valid, false otherwise.
+ *
+ * The result of hw_i2c_init can return an empty I2C structure if the
+ * initialization fails. This function checks if the I2C interface is valid.
+ */
+static inline bool hw_i2c_valid(hw_i2c_t *i2c) {
+  return i2c && i2c->baudrate > 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // METHODS
 
 /**
@@ -122,12 +138,38 @@ bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr);
  * For combined operations, the function first transmits 'tx' bytes from the
  * data buffer, then receives 'rx' bytes into the same buffer starting at
  * offset 'tx'. The total buffer size should be at least (tx + rx) bytes.
- *
- * @note The i2c pointer should not be NULL.
- * @note The data pointer should not be NULL if tx > 0 or rx > 0.
- * @note The address should be a valid 7-bit I2C address (0x08-0x77).
- * @note Buffer size must be at least (tx + rx) bytes for combined operations.
- * @note Timeout of 0 means no timeout (may block indefinitely).
  */
-size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, uint8_t *data, size_t tx,
-                  size_t rx, uint32_t timeout_ms);
+size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
+                  uint32_t timeout_ms);
+
+/**
+ * @brief Read data from a specific register of an I2C device.
+ * @ingroup I2C
+ * @param i2c Pointer to the I2C structure representing the interface.
+ * @param addr The 7-bit I2C slave device address (without R/W bit).
+ * @param reg The register address to read from.
+ * @param data Pointer to the buffer where read data will be stored.
+ * @param len Number of bytes to read from the register.
+ * @param timeout_ms Timeout value in milliseconds for the operation. Set to 0
+ * for no timeout.
+ * @return Number of bytes successfully read. Returns zero if the operation
+ * failed or timed out.
+ */
+size_t hw_i2c_read(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, void *data,
+                   size_t len, uint32_t timeout_ms);
+
+/**
+ * @brief Write data to a specific register of an I2C device.
+ * @ingroup I2C
+ * @param i2c Pointer to the I2C structure representing the interface.
+ * @param addr The 7-bit I2C slave device address (without R/W bit).
+ * @param reg The register address to write to.
+ * @param data Pointer to the buffer containing data to write.
+ * @param len Number of bytes to write to the register.
+ * @param timeout_ms Timeout value in milliseconds for the operation. Set to 0
+ * for no timeout.
+ * @return Number of bytes successfully written. Returns zero if the operation
+ * failed or timed out.
+ */
+size_t hw_i2c_write(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, const void *data,
+                    size_t len, uint32_t timeout_ms);
