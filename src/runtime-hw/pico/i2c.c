@@ -91,8 +91,8 @@ bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr) {
 /**
  * @brief Perform an I2C transfer operation (read, write, or combined).
  */
-size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, uint8_t *data, size_t tx,
-                  size_t rx, uint32_t timeout_ms) {
+size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
+                  uint32_t timeout_ms) {
   sys_assert(i2c);
   sys_assert(addr >= 0x08 && addr <= 0x77);
   sys_assert(!i2c_reserved_addr(addr));
@@ -138,4 +138,53 @@ size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, uint8_t *data, size_t tx,
   }
 
   return bytes_transferred;
+}
+
+/**
+ * @brief Read data from a specific register of an I2C device.
+ */
+size_t hw_i2c_read(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, void *data,
+                   size_t len, uint32_t timeout_ms) {
+  sys_assert(i2c);
+  sys_assert(addr >= 0x08 && addr <= 0x77);
+  sys_assert(!i2c_reserved_addr(addr));
+  sys_assert(data);
+  sys_assert(len > 0);
+
+  // Write the register to the bus
+  size_t bytes_written =
+      hw_i2c_xfr(i2c, addr, &reg, sizeof(uint8_t), 0, timeout_ms);
+  if (bytes_written == 0) {
+    return 0; // Failed to write register address
+  }
+
+  // Read the data from the bus
+  return hw_i2c_xfr(i2c, addr, data, 0, len, timeout_ms);
+}
+
+/**
+ * @brief Write data to a specific register of an I2C device.
+ */
+size_t hw_i2c_write(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, const void *data,
+                    size_t len, uint32_t timeout_ms) {
+  sys_assert(i2c);
+  sys_assert(addr >= 0x08 && addr <= 0x77);
+  sys_assert(!i2c_reserved_addr(addr));
+  sys_assert(data || (len == 0));
+
+  // Write the register to the bus
+  int ret;
+  if (timeout_ms == 0) {
+    ret = i2c_write_blocking(I2C_INSTANCE(i2c->adapter), addr & 0x7F, &reg,
+                             sizeof(uint8_t), true);
+  } else {
+    ret = i2c_write_timeout_us(I2C_INSTANCE(i2c->adapter), addr & 0x7F, &reg,
+                               sizeof(uint8_t), true, timeout_ms * 1000);
+  }
+  if (ret == 0 || ret == PICO_ERROR_TIMEOUT || ret == PICO_ERROR_GENERIC) {
+    return 0;
+  }
+
+  // Read the data from the register
+  return hw_i2c_xfr(i2c, addr, (void *)data, len, 0, timeout_ms);
 }

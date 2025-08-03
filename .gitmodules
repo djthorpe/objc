@@ -3,7 +3,7 @@
 	url = https://github.com/raspberrypi/pico-sdk.git
 [submodule "third_party/picotool"]
 	path = third_party/picotool
-	url = git@github.com:raspberrypi/picotool.git
+	url = https://github.com/raspberrypi/picotool
 [submodule "third_party/BME280_SensorAPI"]
 	path = third_party/BME280_SensorAPI
 	url = https://github.com/boschsensortec/BME280_SensorAPI

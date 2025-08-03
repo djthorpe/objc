@@ -44,12 +44,15 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Pico")
     set(picotool_DIR "${CMAKE_SOURCE_DIR}/third_party/picotool")
 endif()
 
-# Libraries
+# Runtime Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-pix")
 add_subdirectory("src/runtime-hw/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
+add_subdirectory("src/drivers")
+
+# Objective-C Libraries
 add_subdirectory("src/NXFoundation")
 add_subdirectory("src/NXApplication")
 

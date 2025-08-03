@@ -57,7 +57,8 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
 #ifndef SYSTEM_NAME_PICO
   NXArray *args = [NXArray arrayWithCapacity:argc];
   objc_assert(args);
-  for (int i = 0; i < argc; i++) {
+  int i = 0;
+  for (i = 0; i < argc; i++) {
     [args append:[NXString stringWithCString:argv[i]]];
   }
   [app setArgs:args];
