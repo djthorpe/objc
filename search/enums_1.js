@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['nxcomparisonresult',['NXComparisonResult',['../group__Foundation.html#gad8cd3aa20b406ea96f21007d88380a1d',1,'NXComparisonResult.h']]],
-  ['nxendian',['NXEndian',['../group__Foundation.html#ga64a1cc18eff9f4a79f16c2bf56d7ad23',1,'NXArch.h']]],
-  ['nxhashalgorithm',['NXHashAlgorithm',['../group__Foundation.html#ga2a28eb8cf223fe2036c2b4da8734c2cb',1,'NXData.h']]]
+  ['hw_5fgpio_5fevent_5ft',['hw_gpio_event_t',['../group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb',1,'gpio.h']]],
+  ['hw_5fgpio_5fmode_5ft',['hw_gpio_mode_t',['../group__GPIO.html#gac7525666288cb654655ebdbf8d63167a',1,'gpio.h']]]
 ];

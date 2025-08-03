@@ -52,12 +52,21 @@ $(function() {
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">BME280</div>  </div>
+<div class="title">BME280<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Drivers.html">Hardware Devices</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>BME280 sensor interface for reading temperature, humidity, and pressure.  
 <a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for BME280:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="group__BME280.png" border="0" alt="" usemap="#group____BME280"/>
+<map name="group____BME280" id="group____BME280">
+<area shape="rect" id="node1" href="group__Drivers.html" title="Drivers for external hardware devices. " alt="" coords="5,5,147,32"/>
+</map>
+</td></tr></table></center>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
@@ -79,10 +88,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga9d586c3953ed927f6b2ff8130d2e10ba">driver_bme280_finalize</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
 <tr class="memdesc:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a BME280 sensor driver.  <a href="#ga9d586c3953ed927f6b2ff8130d2e10ba">More...</a><br /></td></tr>
 <tr class="separator:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0c164f47501aa36d89c885ff573b577"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577">driver_bme280_set_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280, driver_bme280_mode_t mode)</td></tr>
+<tr class="memitem:gaa0c164f47501aa36d89c885ff573b577"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577">driver_bme280_set_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280, <a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> mode)</td></tr>
 <tr class="memdesc:gaa0c164f47501aa36d89c885ff573b577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operating mode of the BME280 sensor.  <a href="#gaa0c164f47501aa36d89c885ff573b577">More...</a><br /></td></tr>
 <tr class="separator:gaa0c164f47501aa36d89c885ff573b577"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="memItemLeft" align="right" valign="top">driver_bme280_mode_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e">driver_bme280_get_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
+<tr class="memitem:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e">driver_bme280_get_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
 <tr class="memdesc:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current operating mode of the BME280 sensor.  <a href="#gac0961f2d7118d33d4c7b6099c052eb7e">More...</a><br /></td></tr>
 <tr class="separator:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae4a15c2cfc249ab949d785d4728c8c0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gae4a15c2cfc249ab949d785d4728c8c0d">driver_bme280_reset</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
@@ -247,7 +256,7 @@ This function does not finalize the underlying I2C interface. </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">driver_bme280_mode_t driver_bme280_get_mode </td>
+          <td class="memname"><a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> driver_bme280_get_mode </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
           <td class="paramname"><em>bme280</em></td><td>)</td>
@@ -273,7 +282,7 @@ The function returns 0 if an error occurs during communication. </dd>
 In forced mode, the sensor may have already returned to sleep mode when this is called. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577" title="Set the operating mode of the BME280 sensor. ">driver_bme280_set_mode()</a> for setting the operating mode. </dd>
 <dd>
-driver_bme280_mode_t for available operating modes. </dd></dl>
+<a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> for available operating modes. </dd></dl>
 
 </div>
 </div>
@@ -509,7 +518,7 @@ driver_bme280_mode_t for available operating modes. </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">driver_bme280_mode_t&#160;</td>
+          <td class="paramtype"><a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a>&#160;</td>
           <td class="paramname"><em>mode</em>&#160;</td>
         </tr>
         <tr>
@@ -541,7 +550,7 @@ driver_bme280_mode_t for available operating modes. </dd></dl>
 In forced mode, measurements should be read before the sensor returns to sleep. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e" title="Get the current operating mode of the BME280 sensor. ">driver_bme280_get_mode()</a> for reading the current operating mode. </dd>
 <dd>
-driver_bme280_mode_t for available operating modes. </dd></dl>
+<a class="el" href="drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> for available operating modes. </dd></dl>
 
 </div>
 </div>

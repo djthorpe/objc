@@ -6,9 +6,9 @@ var indexSectionsWithContent =
   3: "_abcdfhijlmnoprstuyz",
   4: "_abcdfghiklmnoprstuvwxy",
   5: "bcdhimnops",
-  6: "hnps",
-  7: "hnp",
-  8: "ps",
+  6: "dhnps",
+  7: "dhnp",
+  8: "dps",
   9: "abdefghimoprst",
   10: "o"
 };

@@ -1,9 +1,16 @@
 var searchData=
 [
-  ['nxbigendian',['NXBigEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23aeeca89ca8f48a3c0bb4150232b6a1072',1,'NXArch.h']]],
-  ['nxcomparisonascending',['NXComparisonAscending',['../group__Foundation.html#ggad8cd3aa20b406ea96f21007d88380a1da39c14fa2f5d10ae300be829c4030601a',1,'NXComparisonResult.h']]],
-  ['nxcomparisondescending',['NXComparisonDescending',['../group__Foundation.html#ggad8cd3aa20b406ea96f21007d88380a1da66687acb8fd9cd54d041e236fc26ae67',1,'NXComparisonResult.h']]],
-  ['nxcomparisonsame',['NXComparisonSame',['../group__Foundation.html#ggad8cd3aa20b406ea96f21007d88380a1da4926f4a1faf77b1057dcd5e81d85cf85',1,'NXComparisonResult.h']]],
-  ['nxlittleendian',['NXLittleEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ae3ec7d49809ce50a2421b245165d5974',1,'NXArch.h']]],
-  ['nxunknownendian',['NXUnknownEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]]
+  ['hw_5fgpio_5fadc',['HW_GPIO_ADC',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aab795f40a9233710024d6c1b55ea4fa42',1,'gpio.h']]],
+  ['hw_5fgpio_5ffalling',['HW_GPIO_FALLING',['../group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3',1,'gpio.h']]],
+  ['hw_5fgpio_5fi2c',['HW_GPIO_I2C',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa677ad28492c29c4c27468224ba1cf31b',1,'gpio.h']]],
+  ['hw_5fgpio_5finput',['HW_GPIO_INPUT',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa4a98e38e3047a30d9109c1809612e135',1,'gpio.h']]],
+  ['hw_5fgpio_5fnone',['HW_GPIO_NONE',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa048c1ab72ee1c6b02e116e8e9799af01',1,'gpio.h']]],
+  ['hw_5fgpio_5foutput',['HW_GPIO_OUTPUT',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aaef0e16d7f4a1d9e15bfd05d0cc43869c',1,'gpio.h']]],
+  ['hw_5fgpio_5fpulldown',['HW_GPIO_PULLDOWN',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa544df03802b190451ab72f9ac33ff066',1,'gpio.h']]],
+  ['hw_5fgpio_5fpullup',['HW_GPIO_PULLUP',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa9629eb1bc9b8b3ed27d50e4144c72149',1,'gpio.h']]],
+  ['hw_5fgpio_5fpwm',['HW_GPIO_PWM',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa9f2a6030f00da87a4f2737ecb3d177d1',1,'gpio.h']]],
+  ['hw_5fgpio_5frising',['HW_GPIO_RISING',['../group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67',1,'gpio.h']]],
+  ['hw_5fgpio_5fspi',['HW_GPIO_SPI',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa2dedca04226fdf562d2a9f73cf1dcfb7',1,'gpio.h']]],
+  ['hw_5fgpio_5fuart',['HW_GPIO_UART',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa6dbffffd5011ace8aac8579656f98464',1,'gpio.h']]],
+  ['hw_5fgpio_5funknown',['HW_GPIO_UNKNOWN',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e',1,'gpio.h']]]
 ];
