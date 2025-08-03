@@ -7,3 +7,6 @@
 [submodule "third_party/BME280_SensorAPI"]
 	path = third_party/BME280_SensorAPI
 	url = https://github.com/boschsensortec/BME280_SensorAPI
+[submodule "third_party/lsm6ds3tr"]
+	path = third_party/LSM6DS3TR-C
+	url = https://github.com/STMicroelectronics/lsm6ds3tr-c-pid
