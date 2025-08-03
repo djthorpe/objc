@@ -1,6 +1,7 @@
 #include <runtime-pix/pix.h>
 #include <runtime-sys/sys.h>
 #include <stddef.h>
+#include <runtime-pix/mono.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
