@@ -74,7 +74,7 @@ size_t hw_spi_xfr(hw_spi_t *spi, void *data, size_t tx, size_t rx) {
  */
 size_t hw_spi_read(hw_spi_t *spi, uint8_t reg, void *data, size_t len) {
   sys_assert(spi);
-  sys_assert(data);
+  sys_assert(data || len == 0);
   // SPI not implemented in stub
   (void)reg;  // Suppress unused parameter warning
   (void)data; // Suppress unused parameter warning
