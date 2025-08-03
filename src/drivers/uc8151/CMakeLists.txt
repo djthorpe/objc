@@ -1,9 +1,8 @@
 
-# BME280 Temperature and Humidity Sensor Driver
+# UC8151 E-Paper Display Driver
 # Append source files to the parent DRIVER_SOURCES list
 list(APPEND DRIVER_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/../../../third_party/BME280_SensorAPI/bme280.c
-    ${CMAKE_CURRENT_LIST_DIR}/bme280.c
+    ${CMAKE_CURRENT_LIST_DIR}/uc8151.c
 )
 
 # Propagate the updated list to parent scope

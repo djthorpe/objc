@@ -5,6 +5,8 @@
 #include <stdbool.h>
 
 int NXApplicationMain(int argc, char *argv[], Class delegate) {
+  (void)argc; // Unused parameter
+  (void)argv; // Unused parameter
   sys_init();
   hw_init();
 

@@ -8,6 +8,7 @@ include_directories(
 add_subdirectory(app)
 add_subdirectory(clock)
 add_subdirectory(bme280)
+add_subdirectory(uc8151)
 add_subdirectory(pico/multicore)
 add_subdirectory(pico/simplequeue)
 add_subdirectory(pico/runloop)

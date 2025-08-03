@@ -51,6 +51,11 @@ hw_spi_t hw_spi_init(uint8_t adapter, uint8_t sck, uint8_t tx, uint8_t rx,
   spi.adapter = adapter;
   spi.baudrate = spi_init(SPI_INSTANCE(adapter), baudrate);
 
+  // Configure SPI mode for e-paper displays (Mode 0: CPOL=0, CPHA=0)
+  // This is critical for UC8151 and similar display controllers
+  spi_set_format(SPI_INSTANCE(adapter), 8, SPI_CPOL_0, SPI_CPHA_0,
+                 SPI_MSB_FIRST);
+
   // Return the initialized SPI structure
   return spi;
 }
