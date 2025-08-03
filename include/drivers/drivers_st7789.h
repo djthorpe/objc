@@ -77,7 +77,6 @@ typedef struct driver_st7789_t {
  * @ingroup ST7789
  * @param spi Pointer to an initialized SPI interface for display communication.
  * @param dc_pin GPIO pin number for Data/Command control.
- * @param cs_pin GPIO pin number for Chip Select.
  * @param reset_pin GPIO pin number for display reset (optional, use
  * HW_GPIO_INVALID if not used).
  * @param backlight_pin GPIO pin number for backlight control (optional, use
