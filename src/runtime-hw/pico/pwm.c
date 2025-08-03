@@ -116,15 +116,6 @@ hw_pwm_t hw_pwm_init(uint8_t gpio_x, uint8_t gpio_y, hw_pwm_config_t *config) {
     pwm.wrap = 65535; // Default wrap value
   }
 
-  sys_printf("Initializing PWM slice %d with GPIO %d and %s\n", slice, gpio_x,
-             (gpio_y != 0) ? "and GPIO" : "no second GPIO");
-
-  // Calculate the frequency based on the wrap value
-  uint32_t sys_clk = clock_get_hz(clk_sys);
-  sys_assert(sys_clk > 0);
-  float frequency = (float)sys_clk / (divider * (wrap + 1));
-  sys_printf("Calculated frequency: %d Hz\n", (int)frequency);
-
   // Now initialize the slice
   pwm_init(slice, &pico_config, false);
   pwm.slice = slice;
