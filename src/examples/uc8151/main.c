@@ -338,9 +338,8 @@ bool init_display(void) {
              UC8151_PIN_RESET, UC8151_PIN_BUSY);
   sys_printf("  Display size: %dx%d pixels\n", DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
-  display =
-      driver_uc8151_spi_init(&spi, UC8151_PIN_DC, UC8151_PIN_RESET,
-                             UC8151_PIN_BUSY, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+  display = driver_uc8151_init(&spi, UC8151_PIN_DC, UC8151_PIN_RESET,
+                               UC8151_PIN_BUSY, DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
   if (!driver_uc8151_valid(&display)) {
     hw_spi_finalize(&spi);

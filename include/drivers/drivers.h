@@ -8,4 +8,5 @@
  */
 #pragma once
 #include "drivers_bme280.h"
+#include "drivers_st7789.h"
 #include "drivers_uc8151.h"
