@@ -6,6 +6,7 @@ find_package(SDL3 QUIET)
 # Base source files (always included)
 set(SOURCES
     display.c
+    mono.c
     pix.c
     rgba32.c
 )
