@@ -6,6 +6,7 @@ set(DRIVER_SOURCES "")
 # Add subdirectories - each will append to DRIVER_SOURCES
 add_subdirectory("bme280") # BME280 Temperature and Humidity Sensor
 add_subdirectory("uc8151") # UC8151 E-Paper Display Driver
+add_subdirectory("st7789") # ST7789 TFT LCD Display Driver
 
 # Create the drivers library with all collected sources
 add_library(${NAME} STATIC ${DRIVER_SOURCES})

@@ -93,9 +93,9 @@ typedef struct driver_uc8151_t {
  * @see hw_spi_init() for SPI interface initialization.
  * @see driver_uc8151_finalize() for cleanup and resource release.
  */
-driver_uc8151_t driver_uc8151_spi_init(hw_spi_t *spi, uint8_t dc_pin,
-                                       uint8_t reset_pin, uint8_t busy_pin,
-                                       uint16_t width, uint16_t height);
+driver_uc8151_t driver_uc8151_init(hw_spi_t *spi, uint8_t dc_pin,
+                                   uint8_t reset_pin, uint8_t busy_pin,
+                                   uint16_t width, uint16_t height);
 
 /**
  * @brief Finalize and release a UC8151 display driver.

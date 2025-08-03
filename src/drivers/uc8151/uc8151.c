@@ -439,9 +439,9 @@ static bool _driver_uc8151_setup(driver_uc8151_t *uc8151) {
 /**
  * @brief Initialize a UC8151 display driver using the SPI interface.
  */
-driver_uc8151_t driver_uc8151_spi_init(hw_spi_t *spi, uint8_t dc_pin,
-                                       uint8_t reset_pin, uint8_t busy_pin,
-                                       uint16_t width, uint16_t height) {
+driver_uc8151_t driver_uc8151_init(hw_spi_t *spi, uint8_t dc_pin,
+                                   uint8_t reset_pin, uint8_t busy_pin,
+                                   uint16_t width, uint16_t height) {
   sys_assert(spi);
   sys_assert(hw_spi_valid(spi));
   sys_assert(width > 0 && height > 0);
