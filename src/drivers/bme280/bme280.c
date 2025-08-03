@@ -358,7 +358,7 @@ static struct bme280_dev *_driver_bme280_dev(driver_bme280_t *bme280) {
   sys_assert(bme280);
   struct bme280_dev *dev = (struct bme280_dev *)bme280->reserved;
   hw_i2c_t *i2c = dev->intf_ptr;
-  i2c->reserved[0] = bme280->address;
-  i2c->reserved[1] = bme280->timeout_ms;
+  i2c->reserved[HW_I2C_RESERVED_ADDR_IDX] = bme280->address;
+  i2c->reserved[HW_I2C_RESERVED_TIMEOUT_IDX] = bme280->timeout_ms;
   return dev;
 }
