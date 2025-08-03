@@ -15,7 +15,7 @@ const char *get_binary_info_string(uint32_t id) {
   binary_info_t **end = (binary_info_t **)&__binary_info_end;
 
   // Safety check for valid range
-  if (start >= end) {
+  if (start == NULL || end == NULL || start >= end) {
     return NULL;
   }
 
