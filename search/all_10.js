@@ -44,5 +44,7 @@ var searchData=
   ['protocol',['Protocol',['../interfaceProtocol.html',1,'']]],
   ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]],
   ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
-  ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]]
+  ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]],
+  ['pwm',['PWM',['../group__PWM.html',1,'']]],
+  ['pwm_2eh',['pwm.h',['../pwm_8h.html',1,'']]]
 ];

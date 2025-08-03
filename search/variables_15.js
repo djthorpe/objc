@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['x',['x',['../structpix__point__t.html#a0c4fa756d5bca32fb13a63d9ddd819df',1,'pix_point_t::x()'],['../structdriver__st7789__rect__t.html#a41f0077844707d06695e6e45fd35d2cd',1,'driver_st7789_rect_t::x()'],['../structdriver__uc8151__rect__t.html#a69c4b64e42bae2130dace4f9c7d0dcd3',1,'driver_uc8151_rect_t::x()']]]
+  ['w',['w',['../structpix__size__t.html#a7780ec89967a5c4240878d69ce2ca684',1,'pix_size_t']]],
+  ['width',['width',['../structdriver__st7789__rect__t.html#ab6e9b86a46937eae683a7cfdc7a70201',1,'driver_st7789_rect_t::width()'],['../structdriver__st7789__t.html#aa55aa01825c9f85e9a7c86549e115ec9',1,'driver_st7789_t::width()'],['../structdriver__uc8151__rect__t.html#a0e3f8d02e6718e69eaeca0070435c17c',1,'driver_uc8151_rect_t::width()'],['../structdriver__uc8151__t.html#a4565ee2bf8f0b6c860ec51485d0f8b7d',1,'driver_uc8151_t::width()']]],
+  ['wrap',['wrap',['../structhw__pwm__config__t.html#a98783f45b701be49eddeb86a0eeeb1df',1,'hw_pwm_config_t::wrap()'],['../structhw__pwm__t.html#ac674c25f1e2b2d16cc0c7546795621c0',1,'hw_pwm_t::wrap()']]]
 ];

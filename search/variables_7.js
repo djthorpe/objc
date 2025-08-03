@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['h',['h',['../structpix__size__t.html#a348edb74447778ee8462b63ff2911238',1,'pix_size_t']]],
-  ['hash',['hash',['../structsys__hashtable__entry__t.html#ac64b0608092acc842eabaaa574bf47e6',1,'sys_hashtable_entry_t']]],
-  ['head',['head',['../structsys__event__queue__t.html#a8816e56f5f052377870b755cc2134ebb',1,'sys_event_queue_t']]],
-  ['height',['height',['../structdriver__st7789__rect__t.html#a0add803ee3dad2085416740013ffedf1',1,'driver_st7789_rect_t::height()'],['../structdriver__st7789__t.html#a3a2a663d88380b19b8fba15679feb7d8',1,'driver_st7789_t::height()'],['../structdriver__uc8151__rect__t.html#af29b38cd43338c2c09e9af8733cc851b',1,'driver_uc8151_rect_t::height()'],['../structdriver__uc8151__t.html#a3395689bb1c0971bae255326a848163b',1,'driver_uc8151_t::height()']]],
-  ['hour',['Hour',['../group__Foundation.html#gaecb078459b2e66be89717219c59fa732',1,'NXTimeInterval.h']]]
+  ['get',['get',['../structpix__frame__t.html#a5f26dcd584f42d8bee43221a53f218ec',1,'pix_frame_t']]],
+  ['get_5frect',['get_rect',['../structpix__frame__t.html#ab4391bf122aea57e8eb963740ede5c4c',1,'pix_frame_t']]],
+  ['gpio',['gpio',['../structhw__adc__t.html#a0a0d156f08a59503ab0909a5a357e243',1,'hw_adc_t']]],
+  ['gpio_5fa',['gpio_a',['../structhw__pwm__t.html#a8816054a0c83d6378fb9e4b2c31377ee',1,'hw_pwm_t']]],
+  ['gpio_5fb',['gpio_b',['../structhw__pwm__t.html#a9bc435698b68b44626de64349edbf0f8',1,'hw_pwm_t']]]
 ];

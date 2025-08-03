@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['sck',['sck',['../structhw__spi__t.html#a83f2b2c34df2357ab3588ee7ecdc9881',1,'hw_spi_t']]],
-  ['scl',['scl',['../structhw__i2c__t.html#a7850e8573777809b441bd93a698d9b82',1,'hw_i2c_t']]],
-  ['sda',['sda',['../structhw__i2c__t.html#a4e5beaff2eb2abbf612b7ba9be4e1452',1,'hw_i2c_t']]],
-  ['second',['Second',['../group__Foundation.html#ga153682f87f330828776f0feab035822f',1,'NXTimeInterval.h']]],
-  ['set',['set',['../structpix__frame__t.html#a47889f8bd6ba7db33796e65be3e69ef3',1,'pix_frame_t']]],
-  ['set_5frect',['set_rect',['../structpix__frame__t.html#a6da1898282b2c185b97f21daaffc8f40',1,'pix_frame_t']]],
-  ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],
-  ['size',['size',['../structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa',1,'pix_frame_t']]],
-  ['spi',['spi',['../structdriver__st7789__t.html#a5dc65ca1d7c547e35ccae0db4094cb13',1,'driver_st7789_t::spi()'],['../structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede',1,'driver_uc8151_t::spi()']]],
-  ['stride',['stride',['../structpix__frame__t.html#a18e73ed88ebb9715663f7532b007e511',1,'pix_frame_t']]]
+  ['reserved',['reserved',['../structhw__i2c__t.html#a512071529ea76a0100c49477ec630c59',1,'hw_i2c_t::reserved()'],['../structhw__spi__t.html#a30b86b36f1f696bf2775f7a7704d0b0f',1,'hw_spi_t::reserved()']]],
+  ['reset',['reset',['../structdriver__st7789__t.html#a02e360c25dbe212023881ebcf2fc6f4c',1,'driver_st7789_t::reset()'],['../structdriver__uc8151__t.html#af23444ec9847ec2d040bd72c4b912a15',1,'driver_uc8151_t::reset()']]],
+  ['rotation',['rotation',['../structdriver__st7789__t.html#a5b3afcb5705c34f07d8fb3e390e51499',1,'driver_st7789_t::rotation()'],['../structdriver__uc8151__t.html#aa31e268c1918adc0ceec83e37ede15d6',1,'driver_uc8151_t::rotation()']]],
+  ['round',['round',['../structdriver__st7789__t.html#ac1dfd14f5e22f5ce5fb1271533d3c4ed',1,'driver_st7789_t']]],
+  ['rx',['rx',['../structhw__spi__t.html#a7507b816e8896e362a5a9752cf30ab81',1,'hw_spi_t']]]
 ];

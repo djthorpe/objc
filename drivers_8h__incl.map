@@ -1,10 +1,11 @@
 <map id="include/drivers/drivers.h" name="include/drivers/drivers.h">
-<area shape="rect" id="node2" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="131,80,269,107"/>
-<area shape="rect" id="node11" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="451,80,581,107"/>
-<area shape="rect" id="node12" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="293,80,427,107"/>
-<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="295,155,425,181"/>
-<area shape="rect" id="node4" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="233,229,290,256"/>
-<area shape="rect" id="node5" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="297,304,359,331"/>
-<area shape="rect" id="node9" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="443,229,496,256"/>
-<area shape="rect" id="node10" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="365,229,419,256"/>
+<area shape="rect" id="node2" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="523,80,662,107"/>
+<area shape="rect" id="node12" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="211,80,342,107"/>
+<area shape="rect" id="node13" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="366,80,499,107"/>
+<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="367,155,498,181"/>
+<area shape="rect" id="node4" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="260,229,317,256"/>
+<area shape="rect" id="node5" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="398,304,461,331"/>
+<area shape="rect" id="node9" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="342,229,395,256"/>
+<area shape="rect" id="node10" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="536,304,603,331"/>
+<area shape="rect" id="node11" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="470,229,523,256"/>
 </map>
