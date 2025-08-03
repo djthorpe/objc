@@ -242,16 +242,6 @@ float driver_bme280_calculate_altitude(float pressure_pa, float sea_level_pa);
 float driver_bme280_calculate_sea_level_pressure(float pressure_pa,
                                                  float altitude_m);
 
-/**
- * @brief Perform a self-test of the BME280 sensor.
- * @ingroup BME280
- * @param bme280 Pointer to the BME280 driver structure.
- * @return true if self-test passed, false on failure.
- *
- * Performs basic communication test and validates chip ID.
- */
-bool driver_bme280_self_test(driver_bme280_t *bme280);
-
 // Default sea level pressure constant
 #define DRIVER_BME280_SEA_LEVEL_PRESSURE_PA                                    \
   101325.0f ///< Standard sea level pressure in Pascals
