@@ -1,24 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$protocolCollectionProtocol-p.html" title="A protocol that defines collection methods for an Object. " alt="" coords="459,31,622,57"/>
-<area shape="rect" id="node2" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="714,5,790,32"/>
-<area shape="rect" id="node3" href="$interfaceNXMap.html" title="The NXMap class. " alt="" coords="718,56,786,83"/>
+<area shape="rect" id="node1" href="$protocolCollectionProtocol-p.html" title="A protocol that defines collection methods for an Object. " alt="" coords="459,81,622,108"/>
+<area shape="rect" id="node2" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="714,56,790,83"/>
+<area shape="rect" id="node3" href="$interfaceNXMap.html" title="The NXMap class. " alt="" coords="718,107,786,133"/>
 <area shape="rect" id="node4" href="$protocolJSONProtocol-p.html" title="A protocol that defines JSON methods for an Object. " alt="" coords="476,157,605,184"/>
-<area shape="rect" id="node5" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="716,208,788,235"/>
-<area shape="rect" id="node6" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="716,259,788,285"/>
-<area shape="rect" id="node7" href="$interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. " alt="" coords="719,309,785,336"/>
-<area shape="rect" id="node8" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="705,157,799,184"/>
-<area shape="rect" id="node9" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="713,107,791,133"/>
-<area shape="rect" id="node10" href="$protocolNXConstantStringProtocol-p.html" title="Protocol for constant string objects. " alt="" coords="192,157,403,184"/>
+<area shape="rect" id="node5" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="716,157,788,184"/>
+<area shape="rect" id="node6" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="716,208,788,235"/>
+<area shape="rect" id="node7" href="$interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. " alt="" coords="719,259,785,285"/>
+<area shape="rect" id="node8" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="705,309,799,336"/>
+<area shape="rect" id="node9" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="713,5,791,32"/>
+<area shape="rect" id="node10" href="$protocolNXConstantStringProtocol-p.html" title="Protocol for constant string objects. " alt="" coords="192,113,403,140"/>
 <area shape="rect" id="node11" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="473,208,609,235"/>
 <area shape="rect" id="node12" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="5,259,144,285"/>
 <area shape="rect" id="node13" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="265,259,329,285"/>
 <area shape="rect" id="node14" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="499,309,582,336"/>
-<area shape="rect" id="node20" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="503,259,578,285"/>
-<area shape="rect" id="node15" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="705,411,799,437"/>
-<area shape="rect" id="node16" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="725,461,779,488"/>
-<area shape="rect" id="node17" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="679,512,825,539"/>
-<area shape="rect" id="node18" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="709,563,795,589"/>
-<area shape="rect" id="node19" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="715,360,789,387"/>
-<area shape="rect" id="node21" href="$protocolRetainProtocol-p.html" title="Protocol for retaining and releasing objects. " alt="" coords="228,335,367,361"/>
-<area shape="rect" id="node22" href="$protocolApplicationDelegate_01-p.html" title="\&lt;ApplicationDelegate \&gt;" alt="" coords="451,360,631,387"/>
+<area shape="rect" id="node21" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="503,259,578,285"/>
+<area shape="rect" id="node15" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="705,512,799,539"/>
+<area shape="rect" id="node16" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="725,563,779,589"/>
+<area shape="rect" id="node17" href="$interfaceGPIOEvent.html" title="The GPIO Event class. " alt="" coords="707,613,797,640"/>
+<area shape="rect" id="node18" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="679,360,825,387"/>
+<area shape="rect" id="node19" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="709,411,795,437"/>
+<area shape="rect" id="node20" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="715,461,789,488"/>
+<area shape="rect" id="node22" href="$protocolRetainProtocol-p.html" title="Protocol for retaining and releasing objects. " alt="" coords="228,335,367,361"/>
+<area shape="rect" id="node23" href="$protocolApplicationDelegate_01-p.html" title="\&lt;ApplicationDelegate \&gt;" alt="" coords="451,360,631,387"/>
 </map>

@@ -100,9 +100,6 @@ typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gab0643e64019f6690bc07eab226b0ee04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">hw_i2c_count</a> (void)</td></tr>
-<tr class="memdesc:gab0643e64019f6690bc07eab226b0ee04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available I2C adapters.  <a href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">More...</a><br /></td></tr>
-<tr class="separator:gab0643e64019f6690bc07eab226b0ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56">hw_i2c_init_default</a> (uint32_t baudrate)</td></tr>
 <tr class="memdesc:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface using default pins and adapter.  <a href="group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56">More...</a><br /></td></tr>
 <tr class="separator:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,12 +109,21 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf551069998239cb4013124cf4810356b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf551069998239cb4013124cf4810356b">hw_i2c_finalize</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
 <tr class="memdesc:gaf551069998239cb4013124cf4810356b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release an I2C interface.  <a href="group__I2C.html#gaf551069998239cb4013124cf4810356b">More...</a><br /></td></tr>
 <tr class="separator:gaf551069998239cb4013124cf4810356b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0643e64019f6690bc07eab226b0ee04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">hw_i2c_count</a> (void)</td></tr>
+<tr class="memdesc:gab0643e64019f6690bc07eab226b0ee04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available I2C adapters.  <a href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">More...</a><br /></td></tr>
+<tr class="separator:gab0643e64019f6690bc07eab226b0ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1">hw_i2c_detect</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr)</td></tr>
 <tr class="memdesc:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect if an I2C device is present at the specified address.  <a href="group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1">More...</a><br /></td></tr>
 <tr class="separator:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d8e0f4938bb2781291e08f8752c38a7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga8d8e0f4938bb2781291e08f8752c38a7">hw_i2c_xfr</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr, uint8_t *data, size_t tx, size_t rx, uint32_t timeout_ms)</td></tr>
-<tr class="memdesc:ga8d8e0f4938bb2781291e08f8752c38a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform an I2C transfer operation (read, write, or combined).  <a href="group__I2C.html#ga8d8e0f4938bb2781291e08f8752c38a7">More...</a><br /></td></tr>
-<tr class="separator:ga8d8e0f4938bb2781291e08f8752c38a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5287dc8cc0893d147b727d080da0d629"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga5287dc8cc0893d147b727d080da0d629">hw_i2c_xfr</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr, void *data, size_t tx, size_t rx, uint32_t timeout_ms)</td></tr>
+<tr class="memdesc:ga5287dc8cc0893d147b727d080da0d629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform an I2C transfer operation (read, write, or combined).  <a href="group__I2C.html#ga5287dc8cc0893d147b727d080da0d629">More...</a><br /></td></tr>
+<tr class="separator:ga5287dc8cc0893d147b727d080da0d629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c167afad49d6fd3216a873ecd4754c2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga9c167afad49d6fd3216a873ecd4754c2">hw_i2c_read</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr, uint8_t reg, void *data, size_t len, uint32_t timeout_ms)</td></tr>
+<tr class="memdesc:ga9c167afad49d6fd3216a873ecd4754c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from a specific register of an I2C device.  <a href="group__I2C.html#ga9c167afad49d6fd3216a873ecd4754c2">More...</a><br /></td></tr>
+<tr class="separator:ga9c167afad49d6fd3216a873ecd4754c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9eab9855e0e724930af0a16b67e83186"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga9eab9855e0e724930af0a16b67e83186">hw_i2c_write</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr, uint8_t reg, const void *data, size_t len, uint32_t timeout_ms)</td></tr>
+<tr class="memdesc:ga9eab9855e0e724930af0a16b67e83186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data to a specific register of an I2C device.  <a href="group__I2C.html#ga9eab9855e0e724930af0a16b67e83186">More...</a><br /></td></tr>
+<tr class="separator:ga9eab9855e0e724930af0a16b67e83186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>I2C (Inter-Integrated Circuit) interface. </p>

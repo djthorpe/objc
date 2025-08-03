@@ -53,8 +53,10 @@ var searchData=
   ['hw_5fi2c_5ffinalize',['hw_i2c_finalize',['../group__I2C.html#gaf551069998239cb4013124cf4810356b',1,'i2c.h']]],
   ['hw_5fi2c_5finit',['hw_i2c_init',['../group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f',1,'i2c.h']]],
   ['hw_5fi2c_5finit_5fdefault',['hw_i2c_init_default',['../group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56',1,'i2c.h']]],
+  ['hw_5fi2c_5fread',['hw_i2c_read',['../group__I2C.html#ga9c167afad49d6fd3216a873ecd4754c2',1,'i2c.h']]],
   ['hw_5fi2c_5ft',['hw_i2c_t',['../structhw__i2c__t.html',1,'hw_i2c_t'],['../group__I2C.html#gaea53482a8ae6c2808940757835f17302',1,'hw_i2c_t():&#160;i2c.h']]],
-  ['hw_5fi2c_5fxfr',['hw_i2c_xfr',['../group__I2C.html#ga8d8e0f4938bb2781291e08f8752c38a7',1,'i2c.h']]],
+  ['hw_5fi2c_5fwrite',['hw_i2c_write',['../group__I2C.html#ga9eab9855e0e724930af0a16b67e83186',1,'i2c.h']]],
+  ['hw_5fi2c_5fxfr',['hw_i2c_xfr',['../group__I2C.html#ga5287dc8cc0893d147b727d080da0d629',1,'i2c.h']]],
   ['hw_5finit',['hw_init',['../group__Hardware.html#gae58df14f30461cb37e8607aca5522846',1,'hw.h']]],
   ['hashes',['Hashes',['../group__SystemHashing.html',1,'']]],
   ['hash_20tables',['Hash Tables',['../group__SystemHashTable.html',1,'']]]
