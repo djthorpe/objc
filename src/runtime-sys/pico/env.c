@@ -14,9 +14,7 @@ const char *get_binary_info_string(uint32_t id) {
   }
 
   // Iterate through binary info entries
-  for (binary_info_t **info_ptr = (binary_info_t **)&__binary_info_start;
-       info_ptr < (binary_info_t **)&__binary_info_end; info_ptr++) {
-    binary_info_t *info = *info_ptr;
+  for (binary_info_t *info = __binary_info_start; info < __binary_info_end; info++) {
     if (!info) {
       continue;
     }
