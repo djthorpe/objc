@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['backlight',['backlight',['../structdriver__st7789__t.html#af5d329563ab61fcce6c722d5383f7c85',1,'driver_st7789_t']]],
+  ['backlight_5fbrightness',['backlight_brightness',['../structdriver__st7789__t.html#abce058e5c402b1d2153374119298b905',1,'driver_st7789_t']]],
   ['base64string',['base64String',['../interfaceNXData.html#ad4213bc61f2571ce0f886cae3d2ec101',1,'NXData']]],
   ['baudrate',['baudrate',['../structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c',1,'hw_i2c_t::baudrate()'],['../structhw__spi__t.html#aa89c8b0a8741f90f4d17be4007a6aefa',1,'hw_spi_t::baudrate()']]],
   ['blocking',['blocking',['../structdriver__uc8151__t.html#aef18d9177a630a9050f0707934b76d90',1,'driver_uc8151_t']]],

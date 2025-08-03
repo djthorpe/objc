@@ -101,9 +101,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga225b61c08bf10a1dc6622663b7986e48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#ga225b61c08bf10a1dc6622663b7986e48">driver_uc8151_spi_init</a> (<a class="el" href="structhw__spi__t.html">hw_spi_t</a> *spi, uint8_t dc_pin, uint8_t reset_pin, uint8_t busy_pin, uint16_t width, uint16_t height)</td></tr>
-<tr class="memdesc:ga225b61c08bf10a1dc6622663b7986e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a UC8151 display driver using the SPI interface.  <a href="#ga225b61c08bf10a1dc6622663b7986e48">More...</a><br /></td></tr>
-<tr class="separator:ga225b61c08bf10a1dc6622663b7986e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga988ede5ecc3da84f872dc70d16cea43f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#ga988ede5ecc3da84f872dc70d16cea43f">driver_uc8151_init</a> (<a class="el" href="structhw__spi__t.html">hw_spi_t</a> *spi, uint8_t dc_pin, uint8_t reset_pin, uint8_t busy_pin, uint16_t width, uint16_t height)</td></tr>
+<tr class="memdesc:ga988ede5ecc3da84f872dc70d16cea43f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a UC8151 display driver using the SPI interface.  <a href="#ga988ede5ecc3da84f872dc70d16cea43f">More...</a><br /></td></tr>
+<tr class="separator:ga988ede5ecc3da84f872dc70d16cea43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#gab1dfef265b5fefd1fbf6a2a45b78ef22">driver_uc8151_finalize</a> (<a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> *uc8151)</td></tr>
 <tr class="memdesc:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a UC8151 display driver.  <a href="#gab1dfef265b5fefd1fbf6a2a45b78ef22">More...</a><br /></td></tr>
 <tr class="separator:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -301,6 +301,77 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Estimated update time in milliseconds. </dd></dl>
+
+</div>
+</div>
+<a id="ga988ede5ecc3da84f872dc70d16cea43f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga988ede5ecc3da84f872dc70d16cea43f">&#9670;&nbsp;</a></span>driver_uc8151_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> driver_uc8151_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhw__spi__t.html">hw_spi_t</a> *&#160;</td>
+          <td class="paramname"><em>spi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>dc_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reset_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>busy_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize a UC8151 display driver using the SPI interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spi</td><td>Pointer to an initialized SPI interface for display communication. </td></tr>
+    <tr><td class="paramname">dc_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for Data/Command control. </td></tr>
+    <tr><td class="paramname">reset_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for display reset. </td></tr>
+    <tr><td class="paramname">busy_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for busy status. </td></tr>
+    <tr><td class="paramname">width</td><td>Display width in pixels. </td></tr>
+    <tr><td class="paramname">height</td><td>Display height in pixels. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A UC8151 driver structure representing the initialized display.</dd></dl>
+<p>This function initializes a UC8151 e-paper display driver for communication over SPI. The display requires several control pins and supports various resolutions.</p>
+<dl class="section note"><dt>Note</dt><dd>The spi pointer must be valid and the SPI interface must be properly initialized with appropriate speed and mode. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__SPI.html#ga7b191073e6e0f6e8c4c5d0a0a3e6778f" title="Initialize a SPI interface with specific adapter and pins. ">hw_spi_init()</a> for <a class="el" href="group__SPI.html" title="Serial Peripheral Interface (SPI) interface. ">SPI</a> interface initialization. </dd>
+<dd>
+<a class="el" href="group__UC8151.html#gab1dfef265b5fefd1fbf6a2a45b78ef22" title="Finalize and release a UC8151 display driver. ">driver_uc8151_finalize()</a> for cleanup and resource release. </dd></dl>
 
 </div>
 </div>
@@ -584,77 +655,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the speed was set successfully, false otherwise. </dd></dl>
-
-</div>
-</div>
-<a id="ga225b61c08bf10a1dc6622663b7986e48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga225b61c08bf10a1dc6622663b7986e48">&#9670;&nbsp;</a></span>driver_uc8151_spi_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> driver_uc8151_spi_init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structhw__spi__t.html">hw_spi_t</a> *&#160;</td>
-          <td class="paramname"><em>spi</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dc_pin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>reset_pin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>busy_pin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize a UC8151 display driver using the SPI interface. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">spi</td><td>Pointer to an initialized SPI interface for display communication. </td></tr>
-    <tr><td class="paramname">dc_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for Data/Command control. </td></tr>
-    <tr><td class="paramname">reset_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for display reset. </td></tr>
-    <tr><td class="paramname">busy_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for busy status. </td></tr>
-    <tr><td class="paramname">width</td><td>Display width in pixels. </td></tr>
-    <tr><td class="paramname">height</td><td>Display height in pixels. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A UC8151 driver structure representing the initialized display.</dd></dl>
-<p>This function initializes a UC8151 e-paper display driver for communication over SPI. The display requires several control pins and supports various resolutions.</p>
-<dl class="section note"><dt>Note</dt><dd>The spi pointer must be valid and the SPI interface must be properly initialized with appropriate speed and mode. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__SPI.html#ga7b191073e6e0f6e8c4c5d0a0a3e6778f" title="Initialize a SPI interface with specific adapter and pins. ">hw_spi_init()</a> for <a class="el" href="group__SPI.html" title="Serial Peripheral Interface (SPI) interface. ">SPI</a> interface initialization. </dd>
-<dd>
-<a class="el" href="group__UC8151.html#gab1dfef265b5fefd1fbf6a2a45b78ef22" title="Finalize and release a UC8151 display driver. ">driver_uc8151_finalize()</a> for cleanup and resource release. </dd></dl>
 
 </div>
 </div>

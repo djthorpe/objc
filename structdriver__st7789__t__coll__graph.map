@@ -1,0 +1,4 @@
+<map id="driver_st7789_t" name="driver_st7789_t">
+<area shape="rect" id="node2" href="$structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="23,5,111,32"/>
+<area shape="rect" id="node3" href="$structhw__spi__t.html" title="SPI adapter. " alt="" coords="135,147,214,174"/>
+</map>
