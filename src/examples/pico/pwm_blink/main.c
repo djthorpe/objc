@@ -52,7 +52,7 @@ int main() {
 
   // Set the wrap callback function
   hw_pwm_set_callback(pwm_wrap_callback,
-                      &pwm); // No callback for this simple test
+                      &pwm); // Set callback to update PWM duty cycle
   hw_pwm_set_irq_enabled(&pwm, true);
 
   // Start PWM
