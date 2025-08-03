@@ -8,5 +8,6 @@ var searchData=
   ['set_5frect',['set_rect',['../structpix__frame__t.html#a6da1898282b2c185b97f21daaffc8f40',1,'pix_frame_t']]],
   ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],
   ['size',['size',['../structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa',1,'pix_frame_t']]],
+  ['spi',['spi',['../structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede',1,'driver_uc8151_t']]],
   ['stride',['stride',['../structpix__frame__t.html#a18e73ed88ebb9715663f7532b007e511',1,'pix_frame_t']]]
 ];

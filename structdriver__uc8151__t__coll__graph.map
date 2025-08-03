@@ -1,0 +1,4 @@
+<map id="driver_uc8151_t" name="driver_uc8151_t">
+<area shape="rect" id="node2" href="$structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="25,5,113,32"/>
+<area shape="rect" id="node3" href="$structhw__spi__t.html" title="SPI adapter. " alt="" coords="109,147,188,174"/>
+</map>

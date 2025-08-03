@@ -22,5 +22,18 @@ var searchData=
   ['driver_5fbme280_5fread_5ftemperature',['driver_bme280_read_temperature',['../group__BME280.html#gaf608792aab543f8dea4bf762e7fc2bfa',1,'drivers_bme280.h']]],
   ['driver_5fbme280_5freset',['driver_bme280_reset',['../group__BME280.html#gae4a15c2cfc249ab949d785d4728c8c0d',1,'drivers_bme280.h']]],
   ['driver_5fbme280_5fset_5fmode',['driver_bme280_set_mode',['../group__BME280.html#gaa0c164f47501aa36d89c885ff573b577',1,'drivers_bme280.h']]],
+  ['driver_5fuc8151_5fbusy_5fwait',['driver_uc8151_busy_wait',['../group__UC8151.html#ga6a180621c4a6ad7c18190375b7a51172',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5ffinalize',['driver_uc8151_finalize',['../group__UC8151.html#gab1dfef265b5fefd1fbf6a2a45b78ef22',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fget_5fupdate_5ftime',['driver_uc8151_get_update_time',['../group__UC8151.html#ga9b8dbd024395df22d224dddd7017fc4d',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fis_5fbusy',['driver_uc8151_is_busy',['../group__UC8151.html#gaeff4f7840fc6961711f04aafc9f2f145',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fpartial_5fupdate',['driver_uc8151_partial_update',['../group__UC8151.html#ga11ed7ddd9313fe581ecff152b5bb80cb',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fpower_5foff',['driver_uc8151_power_off',['../group__UC8151.html#ga468df428183d6fdd4a43582921cc02ef',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5freset',['driver_uc8151_reset',['../group__UC8151.html#gac4aec1f3b10f900e314f457032971db8',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fset_5fblocking',['driver_uc8151_set_blocking',['../group__UC8151.html#gad08c265fe4a38f36904a80b6803bfb29',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fset_5finverted',['driver_uc8151_set_inverted',['../group__UC8151.html#gab08050b7de2126338050ddef6a9361ea',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fset_5frotation',['driver_uc8151_set_rotation',['../group__UC8151.html#ga46b94107e3a77d35b29781657cafc96d',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fset_5fupdate_5fspeed',['driver_uc8151_set_update_speed',['../group__UC8151.html#gab31b31571e9eb238826567179cd5561e',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fspi_5finit',['driver_uc8151_spi_init',['../group__UC8151.html#ga225b61c08bf10a1dc6622663b7986e48',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fupdate',['driver_uc8151_update',['../group__UC8151.html#ga26ca81f0eb1dc49f654a112e33c6978e',1,'drivers_uc8151.h']]],
   ['dump',['dump',['../interfaceNXData.html#a3494f5d004da7bb9d2e15e6f7e8aaef8',1,'NXData::dump()'],['../interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e',1,'NXZone::dump()']]]
 ];
