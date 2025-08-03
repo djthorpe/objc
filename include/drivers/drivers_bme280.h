@@ -14,6 +14,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
+#define DRIVER_BME280_RESERVED_SIZE 96 ///< Reserved size for internal use
+
 /**
  * @brief BME280 sensor driver structure.
  * @ingroup BME280
@@ -23,9 +25,12 @@
  * temperature sensor from Bosch Sensortec.
  */
 typedef struct driver_bme280_t {
-  hw_i2c_t *i2c; ///< Pointer to the I2C interface used for communication
-  uint8_t
-      address; ///< I2C address of the BME280 sensor (typically 0x76 or 0x77)
+  hw_i2c_t *i2c;       ///< Pointer to the I2C interface used for communication
+  uint8_t address;     ///< I2C address of the BME280 sensor
+  uint8_t timeout_ms;  ///< Read/write timeout in milliseconds
+  uint8_t _padding[6]; ///< Padding to ensure proper alignment
+  uint8_t reserved[DRIVER_BME280_RESERVED_SIZE]
+      __attribute__((aligned(8))); ///< Reserved for internal use
 } driver_bme280_t;
 
 typedef enum {
@@ -129,8 +134,7 @@ bool driver_bme280_set_mode(driver_bme280_t *bme280, driver_bme280_mode_t mode);
  * @brief Get the current operating mode of the BME280 sensor.
  * @ingroup BME280
  * @param bme280 Pointer to the BME280 driver structure.
- * @return The current operating mode of the sensor, or 0
- * on error.
+ * @return The current operating mode of the sensor, or 0 on error.
  *
  * This function reads the sensor's control register to determine the current
  * operating mode. The returned mode indicates how the sensor is currently
@@ -140,6 +144,10 @@ bool driver_bme280_set_mode(driver_bme280_t *bme280, driver_bme280_mode_t mode);
  * mode after completing a measurement cycle, so the returned mode may be
  * DRIVER_BME280_MODE_SLEEP even if forced mode was recently set.
  *
+ * @note The bme280 pointer should not be NULL and must be properly initialized.
+ * @note The function returns 0 if an error occurs during communication.
+ * @note In forced mode, the sensor may have already returned to sleep mode when
+ * this is called.
  * @see driver_bme280_set_mode() for setting the operating mode.
  * @see driver_bme280_mode_t for available operating modes.
  */
@@ -168,3 +176,82 @@ driver_bme280_mode_t driver_bme280_get_mode(driver_bme280_t *bme280);
  * standby times) will need to be reconfigured.
  */
 bool driver_bme280_reset(driver_bme280_t *bme280);
+
+/**
+ * @brief Read temperature, pressure, and humidity data from the BME280 sensor.
+ * @ingroup BME280
+ * @param bme280 Pointer to the BME280 driver structure.
+ * @param temperature Pointer to store temperature in degrees Celsius (can be
+ * NULL if not needed).
+ * @param pressure Pointer to store pressure in Pascals (can be NULL if not
+ * needed).
+ * @param humidity Pointer to store relative humidity in % (can be NULL if not
+ * needed).
+ * @return true if data was successfully read, false on error.
+ *
+ * This function reads the current sensor values. If the sensor is in SLEEP
+ * mode, it will automatically switch to FORCED mode, take a measurement, then
+ * return to SLEEP. For NORMAL mode, it reads the most recent measurement.
+ */
+bool driver_bme280_read_data(driver_bme280_t *bme280, float *temperature,
+                             float *pressure, float *humidity);
+
+/**
+ * @brief Read only temperature from the BME280 sensor.
+ * @ingroup BME280
+ * @param bme280 Pointer to the BME280 driver structure.
+ * @return Temperature in degrees Celsius, or NaN on error.
+ */
+float driver_bme280_read_temperature(driver_bme280_t *bme280);
+
+/**
+ * @brief Read only pressure from the BME280 sensor.
+ * @ingroup BME280
+ * @param bme280 Pointer to the BME280 driver structure.
+ * @return Pressure in Pascals, or NaN on error.
+ */
+float driver_bme280_read_pressure(driver_bme280_t *bme280);
+
+/**
+ * @brief Read only humidity from the BME280 sensor.
+ * @ingroup BME280
+ * @param bme280 Pointer to the BME280 driver structure.
+ * @return Relative humidity in %, or NaN on error.
+ */
+float driver_bme280_read_humidity(driver_bme280_t *bme280);
+
+/**
+ * @brief Calculate altitude from pressure measurement.
+ * @ingroup BME280
+ * @param pressure_pa Current pressure in Pascals.
+ * @param sea_level_pa Sea level pressure in Pascals (default: 101325).
+ * @return Altitude in meters.
+ *
+ * Uses the barometric formula to estimate altitude. Accuracy depends on
+ * knowing the current sea level pressure for your location.
+ */
+float driver_bme280_calculate_altitude(float pressure_pa, float sea_level_pa);
+
+/**
+ * @brief Calculate sea level pressure from current pressure and altitude.
+ * @ingroup BME280
+ * @param pressure_pa Current pressure in Pascals.
+ * @param altitude_m Known altitude in meters.
+ * @return Estimated sea level pressure in Pascals.
+ */
+float driver_bme280_calculate_sea_level_pressure(float pressure_pa,
+                                                 float altitude_m);
+
+/**
+ * @brief Perform a self-test of the BME280 sensor.
+ * @ingroup BME280
+ * @param bme280 Pointer to the BME280 driver structure.
+ * @return true if self-test passed, false on failure.
+ *
+ * Performs basic communication test and validates chip ID.
+ */
+bool driver_bme280_self_test(driver_bme280_t *bme280);
+
+// Default sea level pressure constant
+#define DRIVER_BME280_SEA_LEVEL_PRESSURE_PA                                    \
+  101325.0f ///< Standard sea level pressure in Pascals
