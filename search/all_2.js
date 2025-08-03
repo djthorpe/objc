@@ -1,7 +1,7 @@
 var searchData=
 [
   ['base64string',['base64String',['../interfaceNXData.html#ad4213bc61f2571ce0f886cae3d2ec101',1,'NXData']]],
-  ['baudrate',['baudrate',['../structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c',1,'hw_i2c_t']]],
+  ['baudrate',['baudrate',['../structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c',1,'hw_i2c_t::baudrate()'],['../structhw__spi__t.html#aa89c8b0a8741f90f4d17be4007a6aefa',1,'hw_spi_t::baudrate()']]],
   ['bme280',['BME280',['../group__BME280.html',1,'']]],
   ['bool',['BOOL',['../group__objc.html#gab40a1f154aa44511af7f97b88296f7d3',1,'runtime.h']]],
   ['boolvalue',['boolValue',['../interfaceNXNumber.html#afdb83b0383b30ab9e7df1edf8c3aa212',1,'NXNumber']]],

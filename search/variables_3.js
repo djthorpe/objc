@@ -4,5 +4,7 @@ var searchData=
   ['channel',['channel',['../structhw__adc__t.html#ac054ceffabaa7224f345e0c104958f5a',1,'hw_adc_t']]],
   ['clear_5frect',['clear_rect',['../structpix__frame__t.html#adc36be17154d7d8af3c37d750f5efbe9',1,'pix_frame_t']]],
   ['count',['count',['../structsys__event__queue__t.html#aefcfba7add9fc4c679af1abcd7d9f8e0',1,'sys_event_queue_t']]],
+  ['cs',['cs',['../structhw__spi__t.html#a55e9598a47c1bb99bf83f36a2ce9d1e9',1,'hw_spi_t']]],
+  ['cs_5factive',['cs_active',['../structhw__spi__t.html#ace89c8421065116b1db939ebb4803fbb',1,'hw_spi_t']]],
   ['ctx',['ctx',['../structsys__mutex__t.html#a61c39b2c784acc6b4325b7e7ade762d3',1,'sys_mutex_t::ctx()'],['../structsys__cond__t.html#a386505ebba884eb5ea366d317d9cb2cd',1,'sys_cond_t::ctx()'],['../structsys__waitgroup__t.html#ad0b72946c28d02f8fbaec3b130851687',1,'sys_waitgroup_t::ctx()']]]
 ];

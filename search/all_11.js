@@ -6,11 +6,12 @@ var searchData=
   ['removeallobjects',['removeAllObjects',['../interfaceNXArray.html#a8dce821e5ec9322fb43c60c04d75fa4f',1,'NXArray::removeAllObjects()'],['../interfaceNXMap.html#a71565dba3ceea27d17ba7b44ee0225ec',1,'NXMap::removeAllObjects()']]],
   ['removeobjectatindex_3a',['removeObjectAtIndex:',['../interfaceNXArray.html#a2292dafda24a2529458ea8d8e12266e1',1,'NXArray']]],
   ['removeobjectforkey_3a',['removeObjectForKey:',['../interfaceNXMap.html#aa61a5aa67a7d62c61eb28d3f570709f1',1,'NXMap']]],
-  ['reserved',['reserved',['../structhw__i2c__t.html#a512071529ea76a0100c49477ec630c59',1,'hw_i2c_t']]],
+  ['reserved',['reserved',['../structhw__i2c__t.html#a512071529ea76a0100c49477ec630c59',1,'hw_i2c_t::reserved()'],['../structhw__spi__t.html#a30b86b36f1f696bf2775f7a7704d0b0f',1,'hw_spi_t::reserved()']]],
   ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]],
   ['retain_2bprotocol_2eh',['Retain+Protocol.h',['../Retain_09Protocol_8h.html',1,'']]],
   ['retainprotocol_2dp',['RetainProtocol-p',['../protocolRetainProtocol-p.html',1,'']]],
   ['run',['run',['../interfaceApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]],
   ['runtime_2eh',['runtime.h',['../runtime_8h.html',1,'']]],
+  ['rx',['rx',['../structhw__spi__t.html#a7507b816e8896e362a5a9752cf30ab81',1,'hw_spi_t']]],
   ['random_20number_20generation',['Random Number Generation',['../group__SystemRandom.html',1,'']]]
 ];

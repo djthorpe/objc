@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['adapter',['adapter',['../structhw__i2c__t.html#af31d691b0c113361e04e6c442cfbc4cc',1,'hw_i2c_t']]],
+  ['adapter',['adapter',['../structhw__i2c__t.html#af31d691b0c113361e04e6c442cfbc4cc',1,'hw_i2c_t::adapter()'],['../structhw__spi__t.html#a3ce21fbcfc4c4f6aebe82e793450fcbc',1,'hw_spi_t::adapter()']]],
   ['adc',['ADC',['../group__ADC.html',1,'']]],
   ['adc_2eh',['adc.h',['../adc_8h.html',1,'']]],
   ['addobject_3a',['addObject:',['../interfaceNXAutoreleasePool.html#a317e96662bcf86e0224fdf9f1ef5935d',1,'NXAutoreleasePool']]],

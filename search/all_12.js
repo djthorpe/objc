@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sck',['sck',['../structhw__spi__t.html#a83f2b2c34df2357ab3588ee7ecdc9881',1,'hw_spi_t']]],
   ['scl',['scl',['../structhw__i2c__t.html#a7850e8573777809b441bd93a698d9b82',1,'hw_i2c_t']]],
   ['sda',['sda',['../structhw__i2c__t.html#a4e5beaff2eb2abbf612b7ba9be4e1452',1,'hw_i2c_t']]],
   ['second',['Second',['../group__Foundation.html#ga153682f87f330828776f0feab035822f',1,'NXTimeInterval.h']]],
@@ -17,6 +18,8 @@ var searchData=
   ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],
   ['size',['size',['../structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa',1,'pix_frame_t::size()'],['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData::size()']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
+  ['spi',['SPI',['../group__SPI.html',1,'']]],
+  ['spi_2eh',['spi.h',['../spi_8h.html',1,'']]],
   ['state',['state',['../interfaceGPIO.html#a3105f3f6dbe6735a2d9e7af4d66af2b7',1,'GPIO']]],
   ['stop',['stop',['../interfaceApplication.html#a2e5dee1fbe413783d3500fe8da567ad4',1,'Application']]],
   ['stride',['stride',['../structpix__frame__t.html#a18e73ed88ebb9715663f7532b007e511',1,'pix_frame_t']]],
@@ -73,7 +76,7 @@ var searchData=
   ['sys_5fhash_5fdjb2',['sys_hash_djb2',['../group__SystemHashing.html#gacd09549e37d8b013e3ef3daabee008c2',1,'hash.h']]],
   ['sys_5fhash_5ffinalize',['sys_hash_finalize',['../group__SystemHashing.html#ga991bebea4457d3b1ee1fecc326e8186c',1,'hash.h']]],
   ['sys_5fhash_5finit',['sys_hash_init',['../group__SystemHashing.html#ga11ae4ec7ba4ce8204080783ec4820165',1,'hash.h']]],
-  ['sys_5fhash_5fsize',['sys_hash_size',['../group__SystemHashing.html#gad03b5376d31a464be04db43aa371413b',1,'sys_hash_size(sys_hash_t *hash):&#160;hash.h'],['../group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab',1,'SYS_HASH_SIZE():&#160;hash.h']]],
+  ['sys_5fhash_5fsize',['SYS_HASH_SIZE',['../group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab',1,'SYS_HASH_SIZE():&#160;hash.h'],['../group__SystemHashing.html#gad03b5376d31a464be04db43aa371413b',1,'sys_hash_size(sys_hash_t *hash):&#160;hash.h']]],
   ['sys_5fhash_5ft',['sys_hash_t',['../structsys__hash__t.html',1,'']]],
   ['sys_5fhash_5fupdate',['sys_hash_update',['../group__SystemHashing.html#ga64b3413178b06e7e85604dd32f27d1a5',1,'hash.h']]],
   ['sys_5fhashtable_5fcapacity',['sys_hashtable_capacity',['../group__SystemHashTable.html#ga1195ed7b3535c352d01762b90d066674',1,'hashtable.h']]],

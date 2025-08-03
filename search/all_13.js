@@ -12,5 +12,6 @@ var searchData=
   ['trimprefix_3asuffix_3a',['trimPrefix:suffix:',['../interfaceNXString.html#a0f2fd67750213341bccd2f22a94fd324',1,'NXString']]],
   ['trimwhitespace',['trimWhitespace',['../interfaceNXString.html#a3eb033a2797d7c94ae51e030b94f0648',1,'NXString']]],
   ['truevalue',['trueValue',['../interfaceNXNumber.html#a09d785a02139d2620348ef839ef88dad',1,'NXNumber']]],
+  ['tx',['tx',['../structhw__spi__t.html#afc987ce3998d6b522fc334125973cd36',1,'hw_spi_t']]],
   ['types_2eh',['types.h',['../types_8h.html',1,'']]]
 ];

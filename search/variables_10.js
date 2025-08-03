@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['sck',['sck',['../structhw__spi__t.html#a83f2b2c34df2357ab3588ee7ecdc9881',1,'hw_spi_t']]],
   ['scl',['scl',['../structhw__i2c__t.html#a7850e8573777809b441bd93a698d9b82',1,'hw_i2c_t']]],
   ['sda',['sda',['../structhw__i2c__t.html#a4e5beaff2eb2abbf612b7ba9be4e1452',1,'hw_i2c_t']]],
   ['second',['Second',['../group__Foundation.html#ga153682f87f330828776f0feab035822f',1,'NXTimeInterval.h']]],
