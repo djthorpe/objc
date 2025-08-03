@@ -16,14 +16,14 @@ void pwm_wrap_callback(uint8_t slice, void *userdata) {
   static bool going_up = true;
   if (going_up) {
     ++duty;
-    if (duty > 100) {
-      duty = 100;
+    if (duty >= 100) {
+      duty = 99;
       going_up = false;
     }
   } else {
     --duty;
-    if (duty < 0) {
-      duty = 0;
+    if (duty < 1) {
+      duty = 1;
       going_up = true;
     }
   }
@@ -38,7 +38,7 @@ int main() {
   hw_init();
   sys_printf("PWM Blink Test\n");
 
-  // User 100Hz
+  // Use 100Hz for fading the LED - then the fade frequency is 1Hz
   hw_pwm_config_t config = hw_pwm_get_config(100);
 
   sys_printf("Starting PWM on pin %d\n", PWM_PIN);
@@ -57,7 +57,6 @@ int main() {
 
   // Start PWM
   hw_pwm_start(&pwm);
-
 
   // Never stop
   while (1) {
