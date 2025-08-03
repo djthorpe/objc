@@ -4,7 +4,7 @@
  * @defgroup I2C I2C
  * @ingroup Hardware
  *
- * Inter-Integrated Circuit (I2C) interface for hardware platforms.
+ * Inter-Integrated Circuit (I2C) interface.
  * This module provides functions to initialize I2C peripherals,
  * and bi-directional data transfer with I2C devicesin master mode.
  */

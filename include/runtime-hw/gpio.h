@@ -89,6 +89,18 @@ typedef void (*hw_gpio_callback_t)(uint8_t pin, hw_gpio_event_t event,
 uint8_t hw_gpio_count(void);
 
 /**
+ * @brief Validate the GPIO pin.
+ * @ingroup GPIO
+ * @return True if the GPIO pin is valid, false otherwise.
+ *
+ * The result of hw_gpio_init can return an empty GPIO structure if the
+ * initialization fails. This function checks if the GPIO pin is valid.
+ */
+static inline bool hw_gpio_valid(hw_gpio_t *gpio) {
+  return gpio && gpio->mask > 0;
+}
+
+/**
  * @brief Set the global GPIO interrupt callback handler.
  * @ingroup GPIO
  * @param callback Pointer to the callback function to handle GPIO interrupts,
