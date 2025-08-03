@@ -70,7 +70,7 @@ NXFoundation: libobjc-gcc
 
 # Create the NXApplication library
 .PHONY: NXApplication
-NXApplication: NXFoundation runtime-hw
+NXApplication: NXFoundation runtime-hw drivers
 	@echo
 	@echo make NXApplication
 	@${CMAKE} --build ${BUILD_DIR} --target NXApplication

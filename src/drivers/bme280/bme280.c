@@ -5,6 +5,12 @@
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
+#define HW_I2C_RESERVED_ADDR_IDX 0
+#define HW_I2C_RESERVED_TIMEOUT_IDX 1
+
+///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
 
 BME280_INTF_RET_TYPE _driver_bme280_i2c_read(uint8_t reg, uint8_t *data,
@@ -322,8 +328,8 @@ BME280_INTF_RET_TYPE _driver_bme280_i2c_read(uint8_t reg, uint8_t *data,
   sys_assert(data || len == 0);
 
   hw_i2c_t *i2c = (hw_i2c_t *)userdata;
-  uint8_t addr = i2c->reserved[I2C_RESERVED_ADDR_IDX];
-  uint8_t timeout_ms = i2c->reserved[I2C_RESERVED_TIMEOUT_IDX];
+  uint8_t addr = i2c->reserved[HW_I2C_RESERVED_ADDR_IDX];
+  uint8_t timeout_ms = i2c->reserved[HW_I2C_RESERVED_TIMEOUT_IDX];
   size_t bytes_read = hw_i2c_read(i2c, addr, reg, data, len, timeout_ms);
   return (bytes_read == len) ? BME280_OK : BME280_E_COMM_FAIL;
 }
