@@ -6,7 +6,7 @@
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
-// Pin - use LED pink definitions
+// Pin - use LED pin definitions
 #define PWM_PIN 25
 
 void pwm_wrap_callback(uint8_t slice, void *userdata) {
