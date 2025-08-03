@@ -89,12 +89,12 @@ void hw_spi_finalize(hw_spi_t *spi);
 // PROPERTIES
 
 /**
- * @brief Get the total number of available I2C adapters.
- * @ingroup I2C
- * @return The number of I2C adapters available on the hardware platform.
+ * @brief Get the total number of available SPI adapters.
+ * @ingroup SPI
+ * @return The number of SPI adapters available on the hardware platform.
  *
- * Returns the number of logical I2C adapters that can be used in the system.
- * These are usually numbered from 0 to hw_i2c_count() - 1.
+ * Returns the number of logical SPI adapters that can be used in the system.
+ * These are usually numbered from 0 to hw_spi_count() - 1.
  * If zero is returned, it indicates that SPI functionality is not available.
  */
 uint8_t hw_spi_count(void);
