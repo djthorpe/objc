@@ -1,4 +1,4 @@
-set(NAME "uc8151")
+set(NAME "pwm_blink")
 add_executable(${NAME}
     main.c
 )
