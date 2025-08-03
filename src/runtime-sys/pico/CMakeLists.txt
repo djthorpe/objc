@@ -41,5 +41,4 @@ target_link_libraries(${NAME}
     pico_mbedtls
     pico_multicore
     pico_standard_binary_info
-    pico_stdio
 )

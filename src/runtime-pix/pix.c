@@ -68,6 +68,11 @@ pix_frame_t pix_frame_init(pix_format_t format, pix_size_t size,
       return (pix_frame_t){0}; // Initialization failed, return empty frame
     }
     break;
+  case PIX_FMT_MONO:
+    if (_pix_frame_init_mono(&frame, size, alignment) == false) {
+      return (pix_frame_t){0}; // Initialization failed, return empty frame
+    }
+    break;
   default:
     // Unsupported format, return zero-sized frame
   }
@@ -86,6 +91,8 @@ bool pix_frame_finalize(pix_frame_t *frame) {
   switch (frame->format) {
   case PIX_FMT_RGBA32:
     return _pix_frame_finalize_rgba32(frame);
+  case PIX_FMT_MONO:
+    return _pix_frame_finalize_mono(frame);
   default:
     // Unsupported format
     return false;
