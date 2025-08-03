@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['falsevalue',['falseValue',['../interfaceNXNumber.html#aff095790cd8c3b6baf1992ec484394fd',1,'NXNumber']]],
-  ['firstobject',['firstObject',['../interfaceNXArray.html#a82970951a09d10bcf0693be60eed456b',1,'NXArray']]],
-  ['free_3a',['free:',['../interfaceNXZone.html#a0024dde7d17851ccd24a029e876530df',1,'NXZone']]]
+  ['datawithbytes_3asize_3a',['dataWithBytes:size:',['../interfaceNXData.html#a8f2e0b95748541aa3934d86fbf38a2c7',1,'NXData']]],
+  ['datawithcapacity_3a',['dataWithCapacity:',['../interfaceNXData.html#acedebd7588ba090db61c4c950a5faddb',1,'NXData']]],
+  ['datawithstring_3a',['dataWithString:',['../interfaceNXData.html#a409dcbd86bc81a83f8e812ccc9b5fd0e',1,'NXData']]],
+  ['date',['date',['../interfaceNXDate.html#a6c471e1e80ab07f3761c98f4cd3e555c',1,'NXDate']]],
+  ['datebyaddingtimeinterval_3a',['dateByAddingTimeInterval:',['../interfaceNXDate.html#ae1caa03b1fb65a5c63c9dffa400f4a11',1,'NXDate']]],
+  ['datewithtimeintervalsincenow_3a',['dateWithTimeIntervalSinceNow:',['../interfaceNXDate.html#a38231abcaa61f00846e897a9779ff1ae',1,'NXDate']]],
+  ['dealloc',['dealloc',['../interfaceObject.html#adf3fa5ae7a69cf4caf37a8377a0a24b1',1,'Object::dealloc()'],['../interfaceNXZone.html#a2c314408f20b40ae9e8f7225c0719463',1,'NXZone::dealloc()']]],
+  ['defaultzone',['defaultZone',['../interfaceNXZone.html#ad5f817f5c094f3be72387fb5143bbe3e',1,'NXZone']]],
+  ['delegate',['delegate',['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application']]],
+  ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
+  ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
+  ['driver_5fbme280_5fcalculate_5faltitude',['driver_bme280_calculate_altitude',['../group__BME280.html#gac8c12d391f07c6eedce45886f027a0e5',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fcalculate_5fsea_5flevel_5fpressure',['driver_bme280_calculate_sea_level_pressure',['../group__BME280.html#gad0b6004c094660e9cf94b85e5abe24d7',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5ffinalize',['driver_bme280_finalize',['../group__BME280.html#ga9d586c3953ed927f6b2ff8130d2e10ba',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fget_5fmode',['driver_bme280_get_mode',['../group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fi2c_5finit',['driver_bme280_i2c_init',['../group__BME280.html#ga4865a224e166bd0a4015029e04a85d02',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fread_5fdata',['driver_bme280_read_data',['../group__BME280.html#ga8a9376048cba6c83a3bfbb9799d192a2',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fread_5fhumidity',['driver_bme280_read_humidity',['../group__BME280.html#ga147ad37c45fdf8eb5e19d4bf87ea914a',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fread_5fpressure',['driver_bme280_read_pressure',['../group__BME280.html#ga63a955e1a84050e40b5a515df27a82ad',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fread_5ftemperature',['driver_bme280_read_temperature',['../group__BME280.html#gaf608792aab543f8dea4bf762e7fc2bfa',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5freset',['driver_bme280_reset',['../group__BME280.html#gae4a15c2cfc249ab949d785d4728c8c0d',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fset_5fmode',['driver_bme280_set_mode',['../group__BME280.html#gaa0c164f47501aa36d89c885ff573b577',1,'drivers_bme280.h']]],
+  ['dump',['dump',['../interfaceNXData.html#a3494f5d004da7bb9d2e15e6f7e8aaef8',1,'NXData::dump()'],['../interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e',1,'NXZone::dump()']]]
 ];

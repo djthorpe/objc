@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['base64string',['base64String',['../interfaceNXData.html#ad4213bc61f2571ce0f886cae3d2ec101',1,'NXData']]],
-  ['boolvalue',['boolValue',['../interfaceNXNumber.html#afdb83b0383b30ab9e7df1edf8c3aa212',1,'NXNumber']]],
-  ['bytes',['bytes',['../interfaceNXData.html#a91df11b0b8d03ad6e447137e91c8d886',1,'NXData::bytes()'],['../interfaceNXString.html#a58f928cc59a56e54cc247ab2535b0707',1,'NXString::bytes()']]],
-  ['bytesfree',['bytesFree',['../interfaceNXZone.html#a960a9feaacf84515efae6c2f855421a4',1,'NXZone']]],
-  ['bytestotal',['bytesTotal',['../interfaceNXZone.html#ae47539252f6f96845d6c38c0a319db82',1,'NXZone']]],
-  ['bytesused',['bytesUsed',['../interfaceNXZone.html#a0b72d68fb1f91683c8825cb4db6bae1a',1,'NXZone']]]
+  ['addobject_3a',['addObject:',['../interfaceNXAutoreleasePool.html#a317e96662bcf86e0224fdf9f1ef5935d',1,'NXAutoreleasePool']]],
+  ['addtimeinterval_3a',['addTimeInterval:',['../interfaceNXDate.html#a03eff6845726d2b2bb7b80997ec0ae6d',1,'NXDate']]],
+  ['allkeys',['allKeys',['../interfaceNXMap.html#a81cc00d0c7440fba4a24df50fcba1236',1,'NXMap']]],
+  ['allobjects',['allObjects',['../interfaceNXMap.html#a10b248d48835f48a187b51d4fd302811',1,'NXMap']]],
+  ['alloc',['alloc',['../interfaceObject.html#a57b94628f4a28ffa19da4cf50199cbaa',1,'Object']]],
+  ['allocwithsize_3a',['allocWithSize:',['../interfaceNXZone.html#ad790e31d4c78534b5ceff67caee2f5f1',1,'NXZone']]],
+  ['allocwithzone_3a',['allocWithZone:',['../interfaceNXObject.html#a07c1150dddd0486576a9c9af00244db5',1,'NXObject']]],
+  ['append_3a',['append:',['../interfaceNXArray.html#a32f640a601a23cb5b095a71ab55b8dbe',1,'NXArray::append:()'],['../interfaceNXString.html#a6173efb724785281af7e37a77026f2d8',1,'NXString::append:()']]],
+  ['appendbytes_3asize_3a',['appendBytes:size:',['../interfaceNXData.html#a87286751098dad11932893d85903827e',1,'NXData']]],
+  ['appendcstring_3a',['appendCString:',['../interfaceNXString.html#a23292b71d529573fa606c2b043788e7d',1,'NXString']]],
+  ['appenddata_3a',['appendData:',['../interfaceNXData.html#a4a36ba7ac8b1441c2b2f1bc8372a1000',1,'NXData']]],
+  ['appendstring_3a',['appendString:',['../interfaceNXData.html#a2b33cd2bd10120876e4691aeac33ed1f',1,'NXData']]],
+  ['appendstringwithformat_3a',['appendStringWithFormat:',['../interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75',1,'NXString']]],
+  ['applicationdidfinishlaunching_3a',['applicationDidFinishLaunching:',['../protocolApplicationDelegate_01-p.html#a4150babf16cbd136cb405405b3179e0b',1,'ApplicationDelegate -p']]],
+  ['args',['args',['../interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d',1,'Application']]],
+  ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
+  ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],
+  ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
 ];

@@ -1,0 +1,4 @@
+<map id="driver_bme280_t" name="driver_bme280_t">
+<area shape="rect" id="node2" href="$structhw__i2c__t.html" title="I2C adapter. " alt="" coords="32,109,111,136"/>
+<area shape="rect" id="node3" href="$structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="27,5,115,32"/>
+</map>

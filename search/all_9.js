@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i2c',['I2C',['../group__I2C.html',1,'']]],
+  ['i2c',['i2c',['../structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe',1,'driver_bme280_t::i2c()'],['../group__I2C.html',1,'(Global Namespace)']]],
   ['i2c_2eh',['i2c.h',['../i2c_8h.html',1,'']]],
   ['id',['id',['../group__objc.html#ga0332efe4206b49a80b5028908f36de0c',1,'runtime.h']]],
   ['imp',['IMP',['../group__objc.html#gacd98b3996b82623e9e28e3cd4507a575',1,'runtime.h']]],

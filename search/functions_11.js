@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['year_3amonth_3aday_3aweekday_3a',['year:month:day:weekday:',['../interfaceNXDate.html#aa25b8e59c322dc527767a6c175852b74',1,'NXDate']]]
+  ['unsignedint16value',['unsignedInt16Value',['../interfaceNXNumber.html#a260a7e75de90d9e5b575504dee5a344a',1,'NXNumber']]],
+  ['unsignedint32value',['unsignedInt32Value',['../interfaceNXNumber.html#a27011b5a99c56bfefee102cf7ff53ec9',1,'NXNumber']]],
+  ['unsignedint64value',['unsignedInt64Value',['../interfaceNXNumber.html#ac1dc60d6c166ab4dcb7a982763035de4',1,'NXNumber']]]
 ];

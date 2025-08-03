@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['datawithbytes_3asize_3a',['dataWithBytes:size:',['../interfaceNXData.html#a8f2e0b95748541aa3934d86fbf38a2c7',1,'NXData']]],
-  ['datawithcapacity_3a',['dataWithCapacity:',['../interfaceNXData.html#acedebd7588ba090db61c4c950a5faddb',1,'NXData']]],
-  ['datawithstring_3a',['dataWithString:',['../interfaceNXData.html#a409dcbd86bc81a83f8e812ccc9b5fd0e',1,'NXData']]],
-  ['date',['date',['../interfaceNXDate.html#a6c471e1e80ab07f3761c98f4cd3e555c',1,'NXDate']]],
-  ['datebyaddingtimeinterval_3a',['dateByAddingTimeInterval:',['../interfaceNXDate.html#ae1caa03b1fb65a5c63c9dffa400f4a11',1,'NXDate']]],
-  ['datewithtimeintervalsincenow_3a',['dateWithTimeIntervalSinceNow:',['../interfaceNXDate.html#a38231abcaa61f00846e897a9779ff1ae',1,'NXDate']]],
-  ['dealloc',['dealloc',['../interfaceObject.html#adf3fa5ae7a69cf4caf37a8377a0a24b1',1,'Object::dealloc()'],['../interfaceNXZone.html#a2c314408f20b40ae9e8f7225c0719463',1,'NXZone::dealloc()']]],
-  ['defaultzone',['defaultZone',['../interfaceNXZone.html#ad5f817f5c094f3be72387fb5143bbe3e',1,'NXZone']]],
-  ['delegate',['delegate',['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application']]],
-  ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
-  ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
-  ['dump',['dump',['../interfaceNXData.html#a3494f5d004da7bb9d2e15e6f7e8aaef8',1,'NXData::dump()'],['../interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e',1,'NXZone::dump()']]]
+  ['capacity',['capacity',['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXMap.html#aade1a65e9718f40e184ab698116943b7',1,'NXMap::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
+  ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()']]],
+  ['class_5fconformsto',['class_conformsTo',['../group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
+  ['class_5fgetinstancesize',['class_getInstanceSize',['../group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],
+  ['class_5fgetname',['class_getName',['../group__objc.html#ga07ce1ddc081be789fbb88d8a0beeded0',1,'runtime.h']]],
+  ['class_5fgetsuperclass',['class_getSuperclass',['../group__objc.html#ga08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
+  ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../group__objc.html#ga1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
+  ['class_5frespondstoselector',['class_respondsToSelector',['../group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
+  ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#af5014b9b35f1ce101b204e3f6af5d0f0',1,'NXString::compare:()']]],
+  ['conformsto_3a',['conformsTo:',['../protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df',1,'ObjectProtocol-p::conformsTo:()'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
+  ['containsobject_3a',['containsObject:',['../protocolCollectionProtocol-p.html#ab5da6b8ce9987eff807856d5b66283d5',1,'CollectionProtocol-p::containsObject:()'],['../interfaceNXArray.html#a678c21d8e6dc8d74e6b90e3c9309129f',1,'NXArray::containsObject:()']]],
+  ['containsstring_3a',['containsString:',['../interfaceNXString.html#a87abf6b4ab5c3cf25502964a6a4bf084',1,'NXString']]],
+  ['count',['count',['../protocolCollectionProtocol-p.html#ad324c20c667623d5db39bb92bb2b64a3',1,'CollectionProtocol-p::count()'],['../interfaceNXArray.html#a646cc48310aa5bc75ca8acd44e13b56c',1,'NXArray::count()'],['../interfaceNXMap.html#a4296185de245e0997de1152baf6bb650',1,'NXMap::count()'],['../interfaceGPIO.html#a62a67445716b99160972e3f2ac60c99f',1,'GPIO::count()']]],
+  ['countoccurrencesofbyte_3a',['countOccurrencesOfByte:',['../interfaceNXString.html#aaf83c02e39bb9542243bf558eb3be495',1,'NXString']]],
+  ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()'],['../interfaceNXString.html#ac08eac6f81ec96730cbe93a88c6e31e4',1,'NXString::cStr()']]],
+  ['currentpool',['currentPool',['../interfaceNXAutoreleasePool.html#a69a65f8bbdea0ef542382fa496dbdba8',1,'NXAutoreleasePool']]]
 ];

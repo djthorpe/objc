@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['pin',['pin',['../interfaceGPIOEvent.html#a4bd65e9b84abb81537ae3a6bd122fc80',1,'GPIOEvent']]],
-  ['pix_5fdisplay_5frunloop',['pix_display_runloop',['../group__PixelDisplay.html#gadd3ddd6dbf7714642f2558f572f378c1',1,'display.h']]],
-  ['pix_5fdisplay_5fsdl_5ffinalize',['pix_display_sdl_finalize',['../group__PixelDisplay.html#ga61dc2be9f8fe59d849668cdbcedb94fb',1,'display.h']]],
-  ['pix_5fexit',['pix_exit',['../group__Pixel.html#gadc7b893668e073d16da25320c3635b31',1,'pix.h']]],
-  ['pix_5fframe_5fclear_5frect',['pix_frame_clear_rect',['../group__PixelFrame.html#ga4c1703d0e837584923a6c9d24df75f64',1,'frame.h']]],
-  ['pix_5fframe_5ffinalize',['pix_frame_finalize',['../group__PixelFrame.html#ga8023579543479aeac269df7b17bb45d0',1,'frame.h']]],
-  ['pix_5fframe_5finit',['pix_frame_init',['../group__PixelFrame.html#ga52782d4795f8fae800dc343e7881b273',1,'frame.h']]],
-  ['pix_5finit',['pix_init',['../group__Pixel.html#gab4504a325929461cec72d6cc5db8055b',1,'pix.h']]],
-  ['pix_5fsdl_5fdisplay_5finit',['pix_sdl_display_init',['../group__PixelDisplay.html#gafa3adb4bd768a532961e70d592789394',1,'display.h']]],
-  ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
-  ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]],
-  ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
-  ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]]
+  ['objc_5ffree',['objc_free',['../group__objc.html#ga8f8e2ee1df5b130d4c96555fff909fdd',1,'malloc.h']]],
+  ['objc_5flookupclass',['objc_lookupClass',['../group__objc.html#gad60fc60359e0c7b9a6751f835f5537a2',1,'runtime.h']]],
+  ['objc_5fmalloc',['objc_malloc',['../group__objc.html#ga12b32d3d80a37f14adc2bc963eb0bde7',1,'malloc.h']]],
+  ['objc_5fsync_5fenter',['objc_sync_enter',['../group__objc.html#gab912f47eca33ff595b0270360079ff38',1,'mutex.h']]],
+  ['objc_5fsync_5fexit',['objc_sync_exit',['../group__objc.html#ga9acbff2a0268bf1fece869d50ae54426',1,'mutex.h']]],
+  ['object_5fgetclass',['object_getClass',['../group__objc.html#ga0a52026f8341ccd035d68c2fdb091491',1,'runtime.h']]],
+  ['object_5fgetclassname',['object_getClassName',['../group__objc.html#ga17b085d44512c2db39ae4ba4e53ae748',1,'runtime.h']]],
+  ['object_5fgetsuperclass',['object_getSuperclass',['../group__objc.html#ga45c1ac82472fb1e16043e0f03037e64b',1,'runtime.h']]],
+  ['object_5fiskindofclass',['object_isKindOfClass',['../group__objc.html#ga435d6fc780b3f52b73013c71c9386f63',1,'runtime.h']]],
+  ['object_5fsetclass',['object_setClass',['../group__objc.html#gad6763d930ab4a58f5d4e89542dfedf05',1,'runtime.h']]],
+  ['objectatindex_3a',['objectAtIndex:',['../interfaceNXArray.html#a349dfba95888604ad749e91203595267',1,'NXArray']]],
+  ['objectforkey_3a',['objectForKey:',['../interfaceNXMap.html#a102483115fd967d326962ce22c5dc58b',1,'NXMap']]],
+  ['outputwithpin_3a',['outputWithPin:',['../interfaceGPIO.html#ad032dc8d15dbcb998081aeecf4c5a5fd',1,'GPIO']]]
 ];

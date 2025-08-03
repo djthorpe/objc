@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['zerovalue',['zeroValue',['../interfaceNXNumber.html#af6cd5f43912e7d4f44d24bb8e82ba844',1,'NXNumber']]],
-  ['zonewithsize_3a',['zoneWithSize:',['../interfaceNXZone.html#ab115b9cb7e7bdad6d719b4421f53d143',1,'NXZone']]]
+  ['year_3amonth_3aday_3aweekday_3a',['year:month:day:weekday:',['../interfaceNXDate.html#aa25b8e59c322dc527767a6c175852b74',1,'NXDate']]]
 ];
