@@ -58,7 +58,6 @@ int main() {
   // Start PWM
   hw_pwm_start(&pwm);
 
-  sys_printf("Starting PWM on pin %d\n", PWM_PIN);
 
   // Never stop
   while (1) {
