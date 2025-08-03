@@ -5,6 +5,7 @@ add_library(${NAME} STATIC
     ../stub/gpio.c
     ../stub/hw.c
     ../stub/i2c.c
+    ../stub/spi.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

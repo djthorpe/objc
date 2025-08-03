@@ -10,6 +10,7 @@ add_library(${NAME} STATIC
     gpio.c
     hw.c
     i2c.c
+    spi.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
@@ -18,4 +19,5 @@ target_link_libraries(${NAME}
     hardware_adc
     hardware_gpio
     hardware_i2c
+    hardware_spi
 )
