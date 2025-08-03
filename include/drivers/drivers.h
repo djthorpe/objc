@@ -1,7 +1,7 @@
 /**
  * @file drivers.h
  * @brief Drivers header
- * @defgroup Drivers Hardware Device Drivers
+ * @defgroup Drivers Hardware Devices
  * @ingroup System
  *
  * Drivers for external hardware devices.

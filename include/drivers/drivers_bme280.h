@@ -1,8 +1,8 @@
 /**
- * @file bme280.h
+ * @file drivers_bme280.h
  * @brief BME280 sensor interface
  * @defgroup BME280 BME280
- * @ingroup Sensors
+ * @ingroup Drivers
  *
  * BME280 sensor interface for reading temperature, humidity, and pressure.
  */
@@ -19,6 +19,7 @@
 /**
  * @brief BME280 sensor driver structure.
  * @ingroup BME280
+ * @headerfile drivers_bme280.h drivers/drivers.h
  *
  * This structure contains the configuration and state information for a BME280
  * sensor instance. The BME280 is a combined digital humidity, pressure and
