@@ -9,15 +9,24 @@ extern binary_info_t *__binary_info_end;
 // PRIVATE FUNCTIONS
 
 const char *get_binary_info_string(uint32_t id) {
-  if (__binary_info_start == NULL || __binary_info_end == NULL) {
-    return NULL; // No binary info available
+  // The symbols are addresses, not pointers that can be NULL
+  // Cast them properly to get the array bounds
+  binary_info_t **start = (binary_info_t **)&__binary_info_start;
+  binary_info_t **end = (binary_info_t **)&__binary_info_end;
+
+  // Safety check for valid range
+  if (start >= end) {
+    return NULL;
   }
 
   // Iterate through binary info entries
-  for (binary_info_t *info = __binary_info_start; info < __binary_info_end; info++) {
+  for (binary_info_t **info_ptr = start; info_ptr < end; info_ptr++) {
+    binary_info_t *info = *info_ptr;
     if (!info) {
       continue;
     }
+
+    // Check if this is a string type with the requested ID
     if (info->type == BINARY_INFO_TYPE_ID_AND_STRING) {
       binary_info_id_and_string_t *string_info =
           (binary_info_id_and_string_t *)info;
@@ -32,13 +41,33 @@ const char *get_binary_info_string(uint32_t id) {
 
 const char *get_program_name(void) {
   const char *name = get_binary_info_string(BINARY_INFO_ID_RP_PROGRAM_NAME);
-  return name ? name : "unknown";
+  if (name) {
+    return name;
+  }
+
+  // Fallback to compile-time macro if binary info fails
+#ifdef PICO_PROGRAM_NAME
+  return PICO_PROGRAM_NAME;
+#elif defined(PICO_TARGET_NAME)
+  return PICO_TARGET_NAME;
+#else
+  return "unknown";
+#endif
 }
 
 const char *get_program_version(void) {
   const char *version =
       get_binary_info_string(BINARY_INFO_ID_RP_PROGRAM_VERSION_STRING);
-  return version ? version : "unknown";
+  if (version) {
+    return version;
+  }
+
+  // Fallback to compile-time macro if binary info fails
+#ifdef PICO_PROGRAM_VERSION_STRING
+  return PICO_PROGRAM_VERSION_STRING;
+#else
+  return "unknown";
+#endif
 }
 
 const char *get_program_description(void) {
