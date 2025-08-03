@@ -9,6 +9,7 @@ add_library(${NAME} STATIC
     abort.c
     cond.c
     date.c
+    env.c
     hash.c
     memory.c
     mutex.c
@@ -39,4 +40,5 @@ target_link_libraries(${NAME}
     pico_time
     pico_mbedtls
     pico_multicore
+    pico_standard_binary_info
 )

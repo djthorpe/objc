@@ -13,7 +13,6 @@
 extern "C" {
 #endif
 
-
 /**
  * @brief Returns a unique identifier for the current environment.
  * @ingroup SystemEnv
@@ -28,6 +27,14 @@ extern const char *sys_env_serial(void);
  * the name of the program or application that is running.
  */
 extern const char *sys_env_name(void);
+
+/**
+ * @brief Returns the version of the current environment.
+ * @ingroup SystemEnv
+ * @return The version of the current environment as a string, which is
+ * typically the version of the program or application that is running.
+ */
+extern const char *sys_env_version(void);
 
 #ifdef __cplusplus
 }

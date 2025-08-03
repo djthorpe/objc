@@ -11,7 +11,7 @@ The tests are organized into four main categories:
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
 - **Pixel Tests** (pix_01): Tests for the pixel and display system functionality.
 - **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_00 through sys_15): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, and hash table operations.
+- **System Tests** (sys_00 through sys_16): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, hash table operations, and environment information.
 
 ---
 
@@ -117,3 +117,4 @@ The tests are organized into four main categories:
 | sys_13 | Event Queue Cross-Core Communication | Tests event queue initialization, basic push/pop operations, multicore producer-consumer patterns, timeout behavior, and error handling with bidirectional communication between cores. |
 | sys_14 | Dual-Core Event Queue with Timers | Tests dual-core event queue consumption with timer-driven event production, cross-core event mixing, high-load scenarios with atomic counters, and timer-based coordination. |
 | sys_15 | Hash Table Operations | Tests comprehensive hash table functionality including basic operations (init, put, get by key/value), collision handling with linear probing, automatic chaining/growth, deletion operations, iteration, edge cases with replacement callbacks, and count/capacity tracking across chained tables. |
+| sys_16 | Environment Information | Tests environment information functions including `sys_env_serial()`, `sys_env_name()`, and `sys_env_version()` with validation of non-null return values, non-empty strings, and consistency across multiple calls. |
