@@ -112,7 +112,7 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
-static void _app_handle_signal(sys_env_signal_t signal) {
+__attribute__((used)) static void _app_handle_signal(sys_env_signal_t signal) {
   // Although we may only get one signal at a time, we handle all
   // signals by or'ing them together, just in case....
   NXApplicationSignal appSignal = NXApplicationSignalNone;

@@ -112,8 +112,10 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXMap` - unordered collections with string-keys (what about `NXDictionary`?)
 - [X] `NXMap` - arbitary key sizes
 - [X] clang compatibility
-- [X] `respondsToSelector:` (see test `runtime_14`)
 - [X] runtime-hw SPI support
+- [ ] runtime-hw watchdog support
+- [ ] runtime-hw PWM support - make tying to a GPIO pin a function
+- [ ] runtime-hw LED support
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
 - [ ] Number - `NXNumberByte` and `NXNumberInt8`
 - [ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications
@@ -135,10 +137,9 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] More efficient method implementation lookup
 - [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
 - [ ] `make install` will compile the libraries and install them to a prefix path
+- [ ] `respondsToSelector:` (see test `runtime_14`) and lots of tests
 - [ ] Calling `+[initialise]` for categories
 - [ ] Exception handling?
-- [ ] runtime-hw PWM support
-- [ ] runtime-hw watchdog support
 - [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
 
 ## References

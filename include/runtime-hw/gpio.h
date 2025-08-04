@@ -9,9 +9,6 @@
  * and handle interrupts.
  *
  * @example pico/gpio_runloop/main.c
- * An example of injecting GPIO events into a runloop, and handling those
- * events from multiple producers and consumers using the event queue in a
- * runloop style on the Pico platform.
  */
 #pragma once
 #include <stdbool.h>
