@@ -18,11 +18,7 @@
  * moment this isn't the case, but it will be in the future).
  *
  * @example pico/runloop/main.c
- * An example of multiple producers and
- * consumers using the event queue in a runloop style on the Pico platform.
- *
  * @example clock/main.c
- * Uses a timer to print out the current system time
  */
 #pragma once
 #include <stdbool.h>
@@ -49,14 +45,15 @@ extern "C" {
  * Contains the state and configuration for timer operations.
  */
 typedef struct sys_timer_t {
-  void (*callback)(struct sys_timer_t *);
-  uint32_t interval; // Timer interval in milliseconds
-  void *userdata;
+  void (*callback)(
+      struct sys_timer_t *); ///< Function called when timer expires
+  uint32_t interval;         ///< Timer interval in milliseconds
+  void *userdata;            ///< User-defined data passed to callback
   union {
-    void *ptr; // Pointer to the timer context (platform-specific)
+    void *ptr; ///< Pointer to external timer context (platform-specific)
     uint8_t
-        ctx[SYS_TIMER_CTX_SIZE]; // Context buffer large enough for any platform
-  } ctx;
+        ctx[SYS_TIMER_CTX_SIZE]; ///< Internal context buffer for timer state
+  } ctx; ///< Union holding either external pointer or internal context buffer
 } sys_timer_t;
 
 /**

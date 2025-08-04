@@ -24,11 +24,7 @@
  * have finished their work before proceeding.
  *
  * @example pico/multicore/main.c
- * This is a complete example showing multicore programming with waitgroup
- * synchronization on the Pico platform.
- *
  * @example clock/main.c
- * Uses a waitgroup to co-ordinate the exit from a timer.
  */
 #pragma once
 #include <stdbool.h>

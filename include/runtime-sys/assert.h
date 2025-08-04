@@ -1,5 +1,5 @@
 /**
- * @file assert.h
+ * @file runtime-sys/assert.h
  * @brief Defines a custom assertion macro.
  * @details This file provides an `sys_assert` macro that can be used for
  * debugging purposes.

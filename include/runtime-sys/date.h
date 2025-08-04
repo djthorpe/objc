@@ -42,9 +42,10 @@ extern "C" {
  * the current UTC time with nanosecond precision, and a timezone offset.
  */
 typedef struct sys_date_t {
-  int64_t seconds;     // Seconds since January 1, 1970 00:00:00 UTC
-  int32_t nanoseconds; // Nanoseconds (0-999999999)
-  int32_t tzoffset;    // Timezone offset in seconds from UTC
+  int64_t seconds; ///< Seconds since Unix epoch (January 1, 1970 00:00:00 UTC)
+  int32_t nanoseconds; ///< Fractional seconds in nanoseconds (0-999999999)
+  int32_t tzoffset; ///< Timezone offset in seconds from UTC (positive = east of
+                    ///< UTC)
 } sys_date_t;
 
 /**

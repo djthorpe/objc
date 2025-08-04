@@ -34,6 +34,13 @@ typedef struct driver_bme280_t {
       __attribute__((aligned(8))); ///< Reserved for internal use
 } driver_bme280_t;
 
+/**
+ * @brief BME280 sensor modes.
+ * @ingroup BME280
+ * @headerfile drivers_bme280.h drivers/drivers.h
+ *
+ * This enumeration defines the operating modes for the BME280 sensor.
+ */
 typedef enum {
   DRIVER_BME280_MODE_SLEEP = 1, ///< Sleep mode
   DRIVER_BME280_MODE_FORCED,    ///< Forced mode

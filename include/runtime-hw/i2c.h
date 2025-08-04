@@ -20,6 +20,7 @@
 /**
  * @brief I2C adapter.
  * @ingroup I2C
+ * @headerfile i2c.h runtime-hw/hw.h
  */
 typedef struct hw_i2c_t {
   uint8_t adapter;     ///< I2C adapter number (0, 1, etc.)

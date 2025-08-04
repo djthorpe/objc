@@ -32,8 +32,6 @@
  * of catastrophic failure.
  *
  * @example pico/multicore/main.c
- * This is a complete example showing multicore programming with waitgroup
- * synchronization on the Pico platform.
  */
 #pragma once
 #include <stdbool.h>

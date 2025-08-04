@@ -22,11 +22,11 @@
  */
 @interface NXZone : NXObject {
 @protected
-  size_t _size;  //< Default size of the memory zone in bytes
-  size_t _count; //< Number of allocations in the zone
+  size_t _size;  ///< Initial allocated size of the memory zone in bytes
+  size_t _count; ///< Current number of active allocations in the zone
 @private
-  void *_root; //< Root arena data pointer
-  void *_cur;  //< Current arena data pointer
+  void *_root; ///< Root arena data pointer
+  void *_cur;  ///< Current arena data pointer
 }
 
 /**

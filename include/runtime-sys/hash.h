@@ -54,8 +54,10 @@ extern "C" {
  * Enumeration of supported cryptographic hash algorithms.
  */
 typedef enum {
-  sys_hash_md5 = 1, // MD5 hash (128-bit)
-  sys_hash_sha256,  // SHA-256 hash (256-bit)
+  sys_hash_md5 =
+      1, ///< MD5 hash algorithm (128-bit output, not cryptographically secure)
+  sys_hash_sha256, ///< SHA-256 hash algorithm (256-bit output,
+                   ///< cryptographically secure)
 } sys_hash_algorithm_t;
 
 /**
@@ -65,15 +67,16 @@ typedef enum {
  * Contains the state and result buffer for hash operations.
  */
 typedef struct {
-  sys_hash_algorithm_t algorithm; // The hash algorithm used
-  uint8_t hash[SYS_HASH_SIZE]; // Buffer to hold the hash value = max is SHA-256
-                               // (32 bytes)
-  size_t size;                 // Size of the hash in bytes
+  sys_hash_algorithm_t
+      algorithm; ///< The hash algorithm being used for this context
+  uint8_t hash[SYS_HASH_SIZE]; ///< Buffer to hold the computed hash value (max
+                               ///< 32 bytes for SHA-256)
+  size_t size;                 ///< Actual size of the computed hash in bytes
   union {
-    void *ptr; // Pointer to the hash context (OpenSSL EVP_MD_CTX)
-    uint8_t ctx[SYS_HASH_CTX_SIZE]; // Context buffer large enough for any hash
-                                    // algorithm
-  } ctx; // Union to hold either a pointer or a fixed-size context buffer
+    void *ptr; ///< Pointer to external hash context (e.g., OpenSSL EVP_MD_CTX)
+    uint8_t ctx[SYS_HASH_CTX_SIZE]; ///< Internal context buffer for hash
+                                    ///< algorithm state
+  } ctx; ///< Union holding either external pointer or internal context buffer
 } sys_hash_t;
 
 /**

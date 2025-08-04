@@ -1,7 +1,7 @@
+#include <runtime-pix/mono.h>
 #include <runtime-pix/pix.h>
 #include <runtime-sys/sys.h>
 #include <stddef.h>
-#include <runtime-pix/mono.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
@@ -16,6 +16,14 @@ static size_t _pix_get_rect_mono(pix_frame_t *frame, pix_color_t *dst,
 static void _pix_set_rect_mono(pix_frame_t *frame, pix_color_t *src,
                                pix_point_t origin, pix_size_t size,
                                pix_op_t op);
+
+static inline uint8_t rgb32_to_mono_luminance_int(uint32_t rgb32) {
+  uint8_t r = (rgb32 >> 16) & 0xFF;
+  uint8_t g = (rgb32 >> 8) & 0xFF;
+  uint8_t b = rgb32 & 0xFF;
+  // Using integer approximation: 0.299*R + 0.587*G + 0.114*B
+  return (uint8_t)((77 * r + 150 * g + 29 * b) >> 8);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE

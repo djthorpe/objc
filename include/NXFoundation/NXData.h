@@ -28,9 +28,9 @@ typedef enum {
  * \headerfile NXData.h NXFoundation/NXFoundation.h
  */
 @interface NXData : NXObject <JSONProtocol> {
-  void *_data;  // Raw data buffer
-  size_t _size; // Current size in bytes
-  size_t _cap;  // Total capacity in bytes
+  void *_data;  ///< Raw data buffer storing the binary content
+  size_t _size; ///< Current size of valid data in bytes
+  size_t _cap;  ///< Total allocated capacity in bytes
 }
 
 /**

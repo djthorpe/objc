@@ -1,5 +1,5 @@
 /**
- * @file JSONProtocol.h
+ * @file JSON+Protocol.h
  * @brief Defines a protocol that adds JSON methods for an Object.
  */
 #pragma once
@@ -7,9 +7,9 @@
 /**
  * @protocol JSONProtocol
  * @ingroup Foundation
+ * @headerfile JSON+Protocol.h NXFoundation/NXFoundation.h
  * @brief A protocol that defines JSON methods for an Object.
  *
- * \headerfile Object+JSON.h NXFoundation/NXFoundation.h
  */
 @protocol JSONProtocol
 

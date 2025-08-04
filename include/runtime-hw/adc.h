@@ -19,6 +19,7 @@
 /**
  * @brief ADC channel.
  * @ingroup ADC
+ * @headerfile adc.h runtime-hw/hw.h
  */
 typedef struct hw_adc_t {
   uint8_t channel; ///< ADC channel number (0, 1, etc.)

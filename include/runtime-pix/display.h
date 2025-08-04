@@ -17,6 +17,17 @@
 
 struct pix_display_t;
 
+///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
+/**
+ * @brief Size of the display context buffer.
+ * @ingroup PixelDisplay
+ *
+ * This defines the size in bytes of the internal context buffer used for
+ * display operations. The buffer must be large enough to hold any
+ * display-specific state data required by different display implementations.
+ */
 #define PIX_DISPLAY_CTX_SIZE 64
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -38,16 +49,18 @@ typedef void (*pix_display_callback_t)(const struct pix_display_t *display);
  * Contains the state for display operations.
  */
 typedef struct pix_display_t {
-  pix_frame_t frame;                 // Framebuffer for the display
-  pix_display_callback_t callback;   // Optional callback for frame updates
-  uint64_t time_ms;                  // Last frame timestamp (milliseconds)
-  uint64_t interval_ms;              // Frame interval (milliseconds)
-  void *userdata;                    // User data pointer for callbacks
-  uint8_t ctx[PIX_DISPLAY_CTX_SIZE]; // Context buffer large enough for any
-                                     // display context
-  bool (*lock)(struct pix_display_t *display); ///< Lock the display for drawing
-  bool (*unlock)(
-      struct pix_display_t *display); ///< Unlock the display after drawing
+  pix_frame_t frame; ///< Framebuffer containing pixel data for the display
+  pix_display_callback_t
+      callback;         ///< Optional callback function for frame updates
+  uint64_t time_ms;     ///< Timestamp of last frame update in milliseconds
+  uint64_t interval_ms; ///< Target frame interval in milliseconds
+  void *userdata;       ///< User-defined data pointer passed to callbacks
+  uint8_t ctx[PIX_DISPLAY_CTX_SIZE]; ///< Internal context buffer for
+                                     ///< display-specific state
+  bool (*lock)(struct pix_display_t
+                   *display); ///< Function pointer to lock display for drawing
+  bool (*unlock)(struct pix_display_t *display); ///< Function pointer to unlock
+                                                 ///< display after drawing
 } pix_display_t;
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -50,6 +50,7 @@ typedef enum {
 /**
  * @brief GPIO logical pin structure.
  * @ingroup GPIO
+ * @headerfile gpio.h runtime-hw/hw.h
  */
 typedef struct hw_gpio_t {
   uint64_t mask; ///< GPIO pin mask for multiple pins

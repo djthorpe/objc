@@ -70,7 +70,7 @@ typedef bool (*sys_hashtable_keyequals_t)(void *keyptr, void *other_keyptr);
  * @brief Initialize a new hash table
  * @ingroup SystemHashTable
  * @param size Number of entries in the hash table (must be > 0)
- * @param equals Function to compare a key pointer to an entry for equality
+ * @param keyequals Function to compare a key pointer to an entry for equality
  * @return Pointer to new hash table, or NULL if allocation failed
  */
 sys_hashtable_t *sys_hashtable_init(size_t size,

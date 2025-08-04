@@ -1,5 +1,5 @@
 /**
- * @file assert.h
+ * @file runtime-gcc/objc/assert.h
  * @brief Defines a custom assertion macro.
  * @details This file provides an `assert` macro that can be used for debugging
  * purposes. The assertion is only active when the `DEBUG` preprocessor macro is
@@ -11,7 +11,7 @@
 
 /**
  * @def objc_assert(condition)
- * @ingroup objc   
+ * @ingroup objc
  * @brief Asserts that a condition is true.
  * @param condition The condition to check.
  * @details If the `DEBUG` macro is defined, this macro will check the given

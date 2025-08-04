@@ -20,6 +20,7 @@
 /**
  * @brief SPI adapter.
  * @ingroup SPI
+ * @headerfile spi.h runtime-hw/hw.h
  */
 typedef struct hw_spi_t {
   uint8_t adapter;     ///< SPI adapter (0, 1, etc.)

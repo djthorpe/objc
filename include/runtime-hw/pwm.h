@@ -11,9 +11,6 @@
  * The PWM implementation supports multiple slices, each with two channels (A
  * and B). On the Raspberry Pi Pico, there are 8 PWM slices (16 channels total)
  * on RP2040 and 12 PWM slices (24 channels total) on RP2350.
- *
- * @example pico/pwm_demo/main.c
- * An example of using PWM to control LED brightness and servo motors.
  */
 #pragma once
 #include <stdbool.h>
@@ -25,6 +22,7 @@
 /**
  * @brief PWM configuration structure for setup parameters.
  * @ingroup PWM
+ * @headerfile pwm.h runtime-hw/hw.h
  */
 typedef struct {
   uint32_t wrap; ///< Counter wrap value (TOP), determines PWM period
@@ -34,6 +32,7 @@ typedef struct {
 /**
  * @brief PWM slice structure representing a PWM instance.
  * @ingroup PWM
+ * @headerfile pwm.h runtime-hw/hw.h
  */
 typedef struct hw_pwm_t {
   uint8_t slice;    ///< PWM slice number
