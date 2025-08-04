@@ -1,3 +1,4 @@
+#include "Application+Private.h"
 #include <NXApplication/NXApplication.h>
 #include <runtime-sys/sys.h>
 
@@ -7,9 +8,7 @@
 static void _timer_callback(sys_timer_t *timer) {
   objc_assert(timer);
   if (sys_timer_valid(timer)) {
-    // TODO: Put an event into the event queue with the
-    // delegate and userdata
-    sys_printf("Timer fired with userdata: %p\n", timer->userdata);
+    _app_timer_callback(timer);
   }
 
   // If the timer is not repeating, invalidate it
@@ -55,10 +54,8 @@ static void _timer_callback(sys_timer_t *timer) {
 
   // Initialize the timer with the specified interval and repeat flag
   uint32_t ms = NXTimeIntervalMilliseconds(interval);
-  sys_printf("initialize timer with interval: %u ms\n", (unsigned int)ms);
   _timer = sys_timer_init(ms, self, _timer_callback);
   if (!sys_timer_valid(&_timer)) {
-    sys_printf("ERR initialize timer with interval: %u ms\n", (unsigned int)ms);
     [self release];
     return nil;
   } else {

@@ -6,6 +6,11 @@
 #include <NXApplication/NXApplication.h>
 
 /**
+ * @brief Callback function for application timer events.
+ */
+void _app_timer_callback(sys_timer_t *timer);
+
+/**
  * @brief Category for private methods of the Application class.
  */
 @interface Application (Private)

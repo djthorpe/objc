@@ -1,4 +1,5 @@
 #include <NXFoundation/NXFoundation.h>
+#include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
@@ -28,7 +29,16 @@ const NXTimeInterval Day = 24 * Hour;
  * @brief Converts a time interval to milliseconds.
  */
 int32_t NXTimeIntervalMilliseconds(NXTimeInterval interval) {
-  return (int32_t)(interval / Millisecond);
+  // Convert nanoseconds to milliseconds
+  int64_t ms = interval / Millisecond;
+
+  // Clamp to int32_t range to prevent overflow
+  if (ms > INT32_MAX) {
+    return INT32_MAX;
+  } else if (ms < INT32_MIN) {
+    return INT32_MIN;
+  }
+  return (int32_t)ms;
 }
 
 /**
@@ -44,7 +54,9 @@ NXString *NXTimeIntervalDescription(NXTimeInterval interval,
   }
 
   // Truncate the interval to the specified precision
-  interval = interval - (interval % truncate);
+  if (truncate > 0) {
+    interval = interval - (interval % truncate);
+  }
   if (interval == 0) {
     return [NXString stringWithCString:"0s"];
   }

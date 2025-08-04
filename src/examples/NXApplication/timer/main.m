@@ -18,7 +18,7 @@
   (void)application; // Unused parameter
 
   // Create a repeating timer that fires every second
-  NXTimer *timer = [NXTimer timerWithInterval:1.0 repeats:YES];
+  NXTimer *timer = [NXTimer timerWithInterval:Second repeats:YES];
   objc_assert(timer);
 
   // Set the timer's delegate to start the timer

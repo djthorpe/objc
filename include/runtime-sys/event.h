@@ -234,6 +234,27 @@ bool sys_event_queue_lock(sys_event_queue_t *queue);
  */
 bool sys_event_queue_unlock(sys_event_queue_t *queue);
 
+/**
+ * @brief Check if the queue is valid and usable for operations
+ * @ingroup SystemEvents
+ * @param queue Pointer to the event queue
+ * @return true if the queue is valid, false otherwise
+ */
+static inline bool sys_event_queue_valid(sys_event_queue_t *queue) {
+  // Check if the queue pointer is valid and has a non-zero capacity
+  if (queue == NULL) {
+    return false;
+  }
+  if (queue->items == NULL || queue->capacity == 0) {
+    return false;
+  }
+  // Ensure the queue is not in a shutdown state
+  if (queue->shutdown == true) {
+    return false;
+  }
+  return true;
+}
+
 #ifdef __cplusplus
 }
 #endif
