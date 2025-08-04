@@ -94,6 +94,7 @@ var searchData=
   ['sys_5ftimer_5ffinalize',['sys_timer_finalize',['../group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd',1,'timer.h']]],
   ['sys_5ftimer_5finit',['sys_timer_init',['../group__SystemTimer.html#gac1368a749ee9713f5339cfc2b27dbdcd',1,'timer.h']]],
   ['sys_5ftimer_5fstart',['sys_timer_start',['../group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772',1,'timer.h']]],
+  ['sys_5ftimer_5fvalid',['sys_timer_valid',['../group__SystemTimer.html#ga05a6f524085c458d63d1421908812e71',1,'timer.h']]],
   ['sys_5fvprintf',['sys_vprintf',['../group__SystemFormatting.html#gaac71469c45207a063e75bf7e6c2dbb5b',1,'printf.h']]],
   ['sys_5fvprintf_5fex',['sys_vprintf_ex',['../group__SystemFormatting.html#ga6d2ff9ff8a32686d5d816aae03beae54',1,'printf.h']]],
   ['sys_5fvsprintf',['sys_vsprintf',['../group__SystemFormatting.html#ga86745087b8aeeae5c0715896240ab992',1,'printf.h']]],

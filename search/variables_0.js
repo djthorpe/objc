@@ -5,6 +5,7 @@ var searchData=
   ['_5fdata',['_data',['../interfaceNXData.html#a46475e45d32c3d9955b74a23d34ac2e1',1,'NXData']]],
   ['_5fdate',['_date',['../interfaceNXDate.html#ac230fd83d4133054acf7c3aab80b91c8',1,'NXDate']]],
   ['_5fdelegate',['_delegate',['../interfaceNXTimer.html#a8a80acc3118658d8f0ac91168368c3eb',1,'NXTimer']]],
+  ['_5finterval',['_interval',['../interfaceNXTimer.html#a81718f945423b7a081b8911c29519333',1,'NXTimer']]],
   ['_5fnext',['_next',['../interfaceNXObject.html#a87615c3015f40cb3b4112c0d5cc5183a',1,'NXObject']]],
   ['_5fpadding',['_padding',['../structdriver__bme280__t.html#a8a0b7e357f31a396530256d930e87272',1,'driver_bme280_t']]],
   ['_5frepeats',['_repeats',['../interfaceNXTimer.html#a15b8c1a8adf9e51bf45d227f5f5a05be',1,'NXTimer']]],
