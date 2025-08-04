@@ -45,10 +45,9 @@ extern "C" {
  * Contains the state and configuration for timer operations.
  */
 typedef struct sys_timer_t {
-  void (*callback)(
-      struct sys_timer_t *); ///< Function called when timer expires
-  uint32_t interval;         ///< Timer interval in milliseconds
-  void *userdata;            ///< User-defined data passed to callback
+  void (*callback)(struct sys_timer_t *); ///< Function called when timer fires
+  uint32_t interval;                      ///< Timer interval in milliseconds
+  void *userdata; ///< User-defined data passed to callback
   union {
     void *ptr; ///< Pointer to external timer context (platform-specific)
     uint8_t
@@ -96,6 +95,18 @@ extern bool sys_timer_start(sys_timer_t *timer);
  * timer using sys_timer_init().
  */
 extern bool sys_timer_finalize(sys_timer_t *timer);
+
+/**
+ * @brief Checks if a timer is valid and properly configured.
+ * @ingroup SystemTimer
+ * @param timer The timer context to validate.
+ * @return true if the timer is valid and can be used, false otherwise.
+ *
+ * Use this function to verify timer validity before calling sys_timer_start().
+ * A timer is also considered invalid if sys_timer_finalize() has been
+ * called on it, or if it was never initialized properly.
+ */
+extern bool sys_timer_valid(sys_timer_t *timer);
 
 #ifdef __cplusplus
 }

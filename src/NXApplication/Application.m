@@ -1,5 +1,4 @@
 #include <NXApplication/NXApplication.h>
-#include <NXFoundation/NXFoundation.h>
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 

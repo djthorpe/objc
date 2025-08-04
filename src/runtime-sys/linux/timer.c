@@ -114,3 +114,17 @@ bool sys_timer_finalize(sys_timer_t *timer) {
 
   return true; // Return true on success
 }
+
+/**
+ * @brief Checks if a timer is valid and properly configured.
+ */
+bool sys_timer_valid(sys_timer_t *timer) {
+  if (timer == NULL) {
+    return false; // Invalid timer context
+  }
+  timer_t *timer_id = (timer_t *)timer->ctx.ctx;
+  if (*timer_id == 0) {
+    return false; // Timer not running or already finalized
+  }
+  return true;
+}

@@ -22,6 +22,7 @@
   id<TimerDelegate> _delegate; ///< The timer delegate
   BOOL _repeats; ///< Flag to indicate if the timer should be canceled on
                  ///< firing
+  NXTimeInterval _interval; ///< The time interval
 }
 
 /**
@@ -36,8 +37,7 @@
  * specified interval and repeat behavior. The timer is not automatically
  * scheduled - you must set a delegate to ensure the timer is properly managed.
  */
-+ (NXTimer *)timerWithTimeInterval:(NXTimeInterval)interval
-                           repeats:(BOOL)repeats;
++ (NXTimer *)timerWithInterval:(NXTimeInterval)interval repeats:(BOOL)repeats;
 
 /**
  * @brief Gets the current timer delegate.
@@ -98,5 +98,11 @@
  * The interval cannot be changed after timer creation.
  */
 - (NXTimeInterval)timeInterval;
+
+/**
+ * @brief Returns whether the timer is set to repeat.
+ * @return YES if the timer is repeating, NO if it is a one-shot timer.
+ */
+- (BOOL)repeats;
 
 @end

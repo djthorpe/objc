@@ -19,3 +19,4 @@ add_subdirectory(pico/pwm_blink)
 # NXApplication examples
 add_subdirectory(NXApplication/helloworld)
 add_subdirectory(NXApplication/gpio)
+add_subdirectory(NXApplication/timer)
