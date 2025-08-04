@@ -5,7 +5,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../include/runtime-${RUNTIME}
 )
 
-add_subdirectory(app)
+# Unorganized examples - to be organized later!
 add_subdirectory(clock)
 add_subdirectory(bme280)
 add_subdirectory(uc8151)
@@ -16,4 +16,6 @@ add_subdirectory(pico/runloop)
 add_subdirectory(pico/gpio_runloop)
 add_subdirectory(pico/pwm_blink)
 
-
+# NXApplication examples
+add_subdirectory(NXApplication/helloworld)
+add_subdirectory(NXApplication/gpio)

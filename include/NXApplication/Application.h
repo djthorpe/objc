@@ -16,6 +16,9 @@
  * in NXApplication. It follows the singleton pattern, providing a shared
  * instance that manages the application lifecycle, coordinates event
  * processing, and maintains the main run loop.
+ *
+ * @example examples/NXApplication/helloworld/main.m
+ * @example examples/NXApplication/gpio/main.m
  */
 @interface Application : NXObject {
 @private

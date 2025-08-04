@@ -1,12 +1,10 @@
 /**
- * @file main.m
- * @brief Example showing how to create a simple application that stops after
- * launching.
+ * @file  examples/NXApplication/gpio/main.m
+ * @brief Example showing how to respond to GPIO events in an NXApplication
+ * application.
  *
- * This example demonstrates how to read the system date and time,
- * format it, and print it to the console. It uses the sys_date_t structure
- * to represent the current date and time, and sys_date_get_now() to retrieve
- * the current date and time.
+ * This example demonstrates how to read the state of GPIO pins and respond to
+ * button presses.
  */
 #include <NXApplication/NXApplication.h>
 
@@ -25,8 +23,12 @@
 @implementation MyAppDelegate
 
 - (void)applicationDidFinishLaunching:(id)application {
-  (void)application; // Cast to void to avoid unused parameter warning
-  NXLog(@"Application did finish launching");
+  // If GPIO is not supported, log a warning and stop the application
+  if ([GPIO count] == 0) {
+    NXLog(@"GPIO is not supported on this platform");
+    [application stop];
+    return;
+  }
 
   // Initialize a GPIO pin for input
   [GPIO pullupWithPin:GPIO_A];
