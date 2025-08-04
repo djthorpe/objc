@@ -54,4 +54,30 @@
  */
 - (void)applicationWillTerminate:(id)application;
 
+/**
+ * @brief Called when the application receives a system signal.
+ * @param signal The type of signal that was received.
+ *
+ * This method is invoked when the application receives system signals such as
+ * termination requests (SIGTERM), interrupt signals (SIGINT/Ctrl+C), or quit
+ * signals (SIGQUIT). Implement this method to handle signals gracefully by
+ * performing cleanup operations, saving state, or initiating shutdown
+ * procedures.
+ *
+ * If this method is not implemented, the application will terminate
+ * with a -1 exit status when it receives a NXApplicationSignalTerm or
+ * NXApplicationSignalQuit signal. Other signals may be ignored.
+ *
+ * In the future, this method may be called for power management events,
+ * such as low or empty battery conditions, or sleep conditions, allowing
+ * applications to respond appropriately to changes in power status.
+ *
+ * @note This method may be called from a signal handler context on some
+ * platforms. Keep the implementation simple and avoid blocking operations,
+ * memory allocation, or complex system calls.
+ *
+ * @see NXApplicationSignal for available signal types.
+ */
+- (void)applicationReceivedSignal:(NXApplicationSignal)signal;
+
 @end

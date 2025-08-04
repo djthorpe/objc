@@ -5,6 +5,14 @@
 #include <runtime-sys/sys.h>
 #include <stdbool.h>
 
+///////////////////////////////////////////////////////////////////////////////
+// FORWARD DECLARATIONS
+
+static void _app_handle_signal(sys_env_signal_t signal);
+
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
+
 int NXApplicationMain(int argc, char *argv[], Class delegate) {
   (void)argc; // Unused parameter
   (void)argv; // Unused parameter
@@ -72,8 +80,18 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
   [app setArgs:args];
 #endif
 
+#ifndef SYSTEM_NAME_PICO
+  // Try and set signal handlers
+  sys_env_signalhandler(0, _app_handle_signal);
+#endif
+
   // Call the run method on the shared application instance
   int returnValue = [app run];
+
+#ifndef SYSTEM_NAME_PICO
+  // Try and clear signal handlers
+  sys_env_signalhandler(0, NULL);
+#endif
 
   // Release the application delegate, instance, pool and zone
   [app release];
@@ -89,4 +107,28 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
 
   // Return the result of the run method
   return returnValue;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+static void _app_handle_signal(sys_env_signal_t signal) {
+  // Although we may only get one signal at a time, we handle all
+  // signals by or'ing them together, just in case....
+  NXApplicationSignal appSignal = NXApplicationSignalNone;
+  if (signal & SYS_ENV_SIGNAL_INT) {
+    appSignal |= NXApplicationSignalInt;
+  }
+  if (signal & SYS_ENV_SIGNAL_TERM) {
+    appSignal |= NXApplicationSignalTerm;
+  }
+  if (signal & SYS_ENV_SIGNAL_QUIT) {
+    appSignal |= NXApplicationSignalQuit;
+  }
+
+  // Call the application's signal handler
+  Application *app = [Application sharedApplication];
+  if (app) {
+    [app signal:appSignal];
+  }
 }

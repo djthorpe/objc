@@ -82,6 +82,7 @@ void _app_timer_callback(sys_timer_t *timer) {
   // Initialize properties
   _delegate = nil;
   _run = NO;
+  _exitstatus = 0;
 
   // Set the GPIO callback for the application, with the application instance as
   // userdata
@@ -169,7 +170,7 @@ void _app_timer_callback(sys_timer_t *timer) {
 
 - (int)run {
   if (_run) {
-    return 0; // Already running
+    return -1; // Already running
   }
 
   // Run the loop until the stop flag is set
@@ -205,15 +206,44 @@ void _app_timer_callback(sys_timer_t *timer) {
   _run = NO;
 
   // Return success
-  return 0;
+  return _exitstatus;
 }
 
-- (void)stop {
+/**
+ * @brief This method notifies the app that you want to exit the run loop.
+ */
+- (void)terminate {
   objc_assert(sys_event_queue_valid(&_app_queue));
 
   // Shutdown the event queue
   // The run loop will exit on the next iteration
   sys_event_queue_shutdown(&_app_queue);
+}
+
+/**
+ * @brief This method notifies the app that you want to exit the run loop,
+ * with a specific exit status.
+ */
+- (void)terminateWithExitStatus:(int)status {
+  _exitstatus = status;
+  [self terminate];
+}
+
+/**
+ * @brief Handles application signals.
+ * @param signal The signal received from the environment.
+ */
+- (void)signal:(NXApplicationSignal)signal {
+  id<ApplicationDelegate, ObjectProtocol> delegate =
+      (id<ApplicationDelegate, ObjectProtocol>)_delegate;
+  if (delegate &&
+      [delegate respondsToSelector:@selector(applicationReceivedSignal:)]) {
+    [delegate applicationReceivedSignal:signal];
+  } else if (signal & NXApplicationSignalTerm ||
+             signal & NXApplicationSignalQuit ||
+             signal & NXApplicationSignalInt) {
+    [self terminateWithExitStatus:-1];
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////

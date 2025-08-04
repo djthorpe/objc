@@ -171,6 +171,23 @@ BOOL class_respondsToSelector(Class cls, SEL selector) {
              : YES; // Check if the class responds to the selector
 }
 
+BOOL object_respondsToSelector(id object, SEL selector) {
+  if (object == NULL) {
+    return NO; // If the object is nil, it cannot respond to any selector
+  }
+  if (selector == NULL) {
+    sys_panicf("object_respondsToSelector: SEL is NULL");
+    return NO;
+  }
+  Class cls = object_getClass(object);
+#ifdef DEBUG
+  sys_printf("object_respondsToSelector %c[%s %s] types=%s\n",
+             cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
+             sel_getName(selector), selector->sel_type);
+#endif
+  return __objc_msg_lookup(cls, selector) == NULL ? NO : YES;
+}
+
 BOOL class_metaclassRespondsToSelector(Class cls, SEL selector) {
   if (cls == Nil) {
     return NO;

@@ -56,6 +56,9 @@ int NXApplicationMain(int argc, char *argv[], Class delegate);
 @class Application;
 @class GPIO;
 
+// Types and Enums
+#import "NXApplicationTypes.h"
+
 // Protocols and Category Definitions
 #include "ApplicationDelegate+Protocol.h"
 #include "TimerDelegate+Protocol.h"

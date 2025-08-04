@@ -118,3 +118,14 @@ const char *sys_env_name(void) { return get_program_name(); }
  * @brief Returns the version of the current environment.
  */
 const char *sys_env_version(void) { return get_program_version(); }
+
+/**
+ * @brief Sets a handler for environment signals.
+ */
+bool sys_env_signalhandler(sys_env_signal_t mask,
+                           sys_env_signal_callback_t callback) {
+  // PICO does not support signals, so we cannot set handlers
+  (void)mask;     // Suppress unused parameter warning
+  (void)callback; // Suppress unused parameter warning
+  return false;
+}

@@ -23,7 +23,7 @@
         [application args]);
 
   // Stop the application immediately after launching
-  [application stop];
+  [application terminate];
 }
 
 @end

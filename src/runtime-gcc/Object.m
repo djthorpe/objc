@@ -66,4 +66,11 @@
                           (objc_protocol_t *)aProtocolObject);
 }
 
+/**
+ * @brief Checks if the receiver responds to a selector.
+ */
+- (BOOL)respondsToSelector:(SEL)aSelector {
+  return object_respondsToSelector(self, aSelector);
+}
+
 @end

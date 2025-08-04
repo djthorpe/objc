@@ -30,6 +30,12 @@
   NXLog(@"Timer fired = %@", timer);
 }
 
+- (void)applicationReceivedSignal:(NXApplicationSignal)signal {
+  // Handle the received signal
+  NXLog(@"Application received signal: %d", (int)signal);
+  [[Application sharedApplication] terminateWithExitStatus:0];
+}
+
 @end
 
 //////////////////////////////////////////////////////////////////////////
