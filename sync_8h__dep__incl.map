@@ -1,12 +1,12 @@
 <map id="include/runtime&#45;sys/sync.h" name="include/runtime&#45;sys/sync.h">
-<area shape="rect" id="node2" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="405,95,555,136"/>
-<area shape="rect" id="node3" href="$sys_8h.html" title="System management functions. " alt="" coords="347,184,498,225"/>
-<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="233,273,383,315"/>
-<area shape="rect" id="node7" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,541,171,583"/>
-<area shape="rect" id="node9" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="428,541,593,583"/>
-<area shape="rect" id="node10" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="341,452,505,493"/>
-<area shape="rect" id="node11" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="581,273,745,315"/>
-<area shape="rect" id="node5" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="231,363,382,404"/>
-<area shape="rect" id="node6" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="101,452,265,493"/>
-<area shape="rect" id="node8" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="207,541,372,583"/>
+<area shape="rect" id="node2" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="354,95,505,136"/>
+<area shape="rect" id="node3" href="$sys_8h.html" title="System management functions. " alt="" coords="410,184,561,225"/>
+<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="218,273,369,315"/>
+<area shape="rect" id="node9" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="408,541,573,583"/>
+<area shape="rect" id="node10" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="314,452,478,493"/>
+<area shape="rect" id="node11" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="554,273,718,315"/>
+<area shape="rect" id="node5" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="199,363,350,404"/>
+<area shape="rect" id="node6" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="126,452,290,493"/>
+<area shape="rect" id="node8" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="5,541,171,583"/>
+<area shape="rect" id="node7" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="195,541,360,583"/>
 </map>
