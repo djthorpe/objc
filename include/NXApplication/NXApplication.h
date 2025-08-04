@@ -7,6 +7,8 @@
  *
  * Application-related classes and types, including application lifecycle,
  * event handling, display and frames, and hardware interfaces.
+ *
+ * @example examples/NXApplication/helloworld/main.m
  */
 #pragma once
 #include <NXFoundation/NXFoundation.h>

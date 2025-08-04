@@ -1,10 +1,7 @@
 /**
- * @file examples/NXApplication/helloworld/main.m
- * @brief Example showing how to create a simple application that stops after
- * launching.
- *
- * This example demonstrates how to start an NXApplication application
- * with a custom delegate.
+ * @file examples/NXApplication/timer/main.m
+ * @brief Example showing how to create a simple application that
+ * uses a timer to perform periodic actions.
  */
 #include <NXApplication/NXApplication.h>
 
