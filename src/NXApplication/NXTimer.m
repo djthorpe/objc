@@ -54,7 +54,7 @@ static void _timer_callback(sys_timer_t *timer) {
   }
 
   // Initialize the timer with the specified interval and repeat flag
-  uint32_t ms = 1000; // NXTimeIntervalMilliseconds(interval);
+  uint32_t ms = NXTimeIntervalMilliseconds(interval);
   sys_printf("initialize timer with interval: %u ms\n", (unsigned int)ms);
   _timer = sys_timer_init(ms, self, _timer_callback);
   if (!sys_timer_valid(&_timer)) {
