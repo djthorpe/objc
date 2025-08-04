@@ -16,9 +16,15 @@
  * @headerfile Application.h NXApplication/NXApplication.h
  *
  * The Application class serves as the central hub for application management
- * in NXApplication. It follows the singleton pattern, providing a shared
- * instance that manages the application lifecycle, coordinates event
- * processing, and maintains the main run loop.
+ * in NXApplication. The Application class is created automatically by invoking
+ * the NXApplicationMain function, which initializes the application and
+ * starts the main run loop.
+ *
+ * You don't create instances of this class directly; instead, you use the
+ * sharedApplication method to access the singleton instance. The Application
+ * class is responsible for handling command-line arguments, setting the
+ * application delegate, starting the main run loop, handling events and then
+ * terminating the application gracefully.
  */
 @interface Application : NXObject {
 @private
@@ -38,7 +44,8 @@
  *
  * This method retrieves the command-line arguments that were passed to the
  * application at startup. It returns an array containing the arguments,
- * the first of which is typically the application name or path.
+ * the first of which is typically the application name or path to the
+ * executable.
  */
 - (NXArray *)args;
 
@@ -48,13 +55,18 @@
  *
  * This method returns the object that serves as the application's delegate.
  *
- * @see setDelegate: for setting the application delegate.
  * @see ApplicationDelegate protocol for delegate methods.
  */
 - (id<ApplicationDelegate>)delegate;
 
 /**
  * @brief This method notifies the app that you want to exit the run loop.
+ *
+ * The remaining events in the run loop will be processed, and then the
+ * application will terminate gracefully.
+ *
+ * @note This method does not immediately terminate the application; it
+ * simply sets a flag that will be checked in the run loop.
  */
 - (void)stop;
 

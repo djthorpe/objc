@@ -5,7 +5,11 @@
  * The ApplicationDelegate protocol defines methods that are called by the
  * Application object at key moments in the application's lifecycle. By
  * implementing these methods, objects can respond to application state
- * changes and customize application behavior.
+ * changes and customize application behaviour.
+ *
+ * @example examples/NXApplication/helloworld/main.m
+ * @example examples/NXApplication/gpio/main.m
+ * @example examples/NXApplication/timer/main.m
  */
 #pragma once
 
@@ -20,7 +24,7 @@
  * this protocol can be set as the application's delegate to handle these
  * events.
  */
-@protocol ApplicationDelegate <RetainProtocol>
+@protocol ApplicationDelegate
 
 @required
 

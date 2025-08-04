@@ -3,9 +3,6 @@ add_executable(${NAME}
     main.m
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-sys
-    runtime-hw
-    NXFoundation
     NXApplication
 )
 

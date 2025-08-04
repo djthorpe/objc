@@ -43,7 +43,7 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
   }
 
   // Create and set the application delegate
-  id<ApplicationDelegate> appDelegate = nil;
+  id<ApplicationDelegate, RetainProtocol> appDelegate = nil;
   if (delegate != nil) {
     appDelegate = [[delegate allocWithZone:zone] init];
     if (appDelegate == nil) {
