@@ -96,7 +96,8 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Watchdog timer abstraction, which can be used to respond to dead processes. </p>
-<p>The watchdog timer is a critical safety mechanism that can automatically restart the system if software becomes unresponsive. Applications must periodically "feed" the watchdog to prevent automatic system reset. </p>
+<p>The watchdog timer is a critical safety mechanism that can automatically restart the system if software becomes unresponsive. Applications must periodically "feed" the watchdog to prevent automatic system reset.</p>
+<p>Typically you would use a periodic timer to call <a class="el" href="group__Watchdog.html#ga9e0c93b1e98a36c20d9c18e1a45eb8df" title="Ping the watchdog (reset the timeout counter) ">hw_watchdog_ping()</a> and keep your fingers crossed that the timer fires on time. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga87ca2aceb1f697b7b5ef19293b93fd1a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga87ca2aceb1f697b7b5ef19293b93fd1a">&#9670;&nbsp;</a></span>hw_watchdog_did_reset()</h2>
