@@ -12,6 +12,7 @@ add_library(${NAME} STATIC
     i2c.c
     pwm.c
     spi.c
+    watchdog.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

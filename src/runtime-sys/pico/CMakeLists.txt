@@ -17,7 +17,6 @@ add_library(${NAME} STATIC
     random.c
     sys.c
     timer.c
-    timestamp.c
     thread.c
     waitgroup.c
     ../all/date.c

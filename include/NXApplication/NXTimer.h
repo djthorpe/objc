@@ -98,7 +98,7 @@
  * This returns the interval that was set when the timer was created.
  * The interval cannot be changed after timer creation.
  */
-- (NXTimeInterval)timeInterval;
+- (NXTimeInterval)interval;
 
 /**
  * @brief Returns whether the timer is set to repeat.

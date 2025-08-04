@@ -120,7 +120,7 @@ static void _timer_callback(sys_timer_t *timer) {
 /**
  * @brief Gets the timer's configured time interval.
  */
-- (NXTimeInterval)timeInterval {
+- (NXTimeInterval)interval {
   return _interval;
 }
 

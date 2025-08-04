@@ -1,5 +1,6 @@
 #include <pico/binary_info.h>
 #include <pico/unique_id.h>
+#include <runtime-sys/sys.h>
 
 // External symbols provided by the linker
 extern binary_info_t *__binary_info_start;
