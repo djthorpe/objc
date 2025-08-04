@@ -18,11 +18,16 @@ You will minimally need the following tools to build the runtime:
 
 ## Building the libraries
 
-Three static libraries are currently built:
+Several static libraries are currently built:
 
 - `objc-gcc` - the Objective C runtime library using the ancient GCC ABI
-- `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
 - `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).
+- `runtime-hw` - hardware interfaces like SPI, I2C, GPIO. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.
+- `drivers` and `runtime-pix` have a long way to go but should provide hardware driver and display support eventually.
+- `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
+- `NXApplicatiom` - the application framework, which provides a runloop and handles input, display, power and sensors.
+
+A lot of this code is in development still. See the "examples" or documentation on what's been implemented so far.
 
 Download the source code from GitHub:
 
