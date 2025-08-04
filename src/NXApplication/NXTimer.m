@@ -34,7 +34,7 @@ static void _timer_callback(sys_timer_t *timer) {
     return nil;
   }
 
-  // Intialize the timer with default values
+  // Initialize the timer with default values
   _delegate = nil;
   _repeats = NO;
   _interval = 0;
