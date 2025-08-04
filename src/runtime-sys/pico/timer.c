@@ -108,3 +108,18 @@ bool sys_timer_finalize(sys_timer_t *timer) {
 
   return true; // Return true on success
 }
+
+/**
+ * @brief Checks if a timer is valid and properly configured.
+ */
+bool sys_timer_valid(sys_timer_t *timer) {
+  if (timer == NULL) {
+    return false; // Invalid timer context
+  }
+  pico_timer_ctx_t *ctx = (pico_timer_ctx_t *)timer->ctx.ctx;
+  // Check if timer is actually running (alarm_id != 0 means it's active)
+  if (ctx->repeating_timer.alarm_id == 0) {
+    return false; // Timer not running or already finalized
+  }
+  return true;
+}

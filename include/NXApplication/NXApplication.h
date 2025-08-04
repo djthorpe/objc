@@ -56,6 +56,7 @@ int NXApplicationMain(int argc, char *argv[], Class delegate);
 
 // Protocols and Category Definitions
 #include "ApplicationDelegate+Protocol.h"
+#include "TimerDelegate+Protocol.h"
 
 // Class Definitions
 #include "Application.h"

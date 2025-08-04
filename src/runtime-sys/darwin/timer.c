@@ -91,5 +91,19 @@ bool sys_timer_finalize(sys_timer_t *timer) {
   dispatch_source_cancel(ctx);
 
   timer->ctx.ptr = NULL; // Clear the context pointer
+  timer->interval = 0;   // Clear the interval
   return true;           // Return true on success
+}
+
+/**
+ * @brief Checks if a timer is valid and properly configured.
+ */
+bool sys_timer_valid(sys_timer_t *timer) {
+  if (timer == NULL) {
+    return false; // Invalid timer context
+  }
+  if (timer->interval == 0) {
+    return false; // Invalid timer context (already finalized)
+  }
+  return true;
 }
