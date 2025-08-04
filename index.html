@@ -67,12 +67,16 @@ $(function() {
 <li><b>Cross-Compilation</b> For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
 </ul>
 <h2>Building the libraries</h2>
-<p>Three static libraries are currently built:</p>
+<p>Several static libraries are currently built:</p>
 <ul>
 <li><code>objc-gcc</code> - the Objective C runtime library using the ancient GCC ABI</li>
-<li><code>NXFoundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
 <li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).</li>
+<li><code>runtime-hw</code> - hardware interfaces like SPI, I2C, <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.</li>
+<li><code>drivers</code> and <code>runtime-pix</code> have a long way to go but should provide hardware driver and display support eventually.</li>
+<li><code>NXFoundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
+<li><code>NXApplicatiom</code> - the application framework, which provides a runloop and handles input, display, power and sensors.</li>
 </ul>
+<p>A lot of this code is in development still. See the "examples" or documentation on what's been implemented so far.</p>
 <p>Download the source code from GitHub:</p>
 <div class="fragment"><div class="line">git clone git@github.com:djthorpe/objc.git</div><div class="line">cd objc</div></div><!-- fragment --><p>The <code>TOOLCHAIN_PATH</code> environment variable should point to the directory where the toolchain is installed. For Macintosh, you can use Homebrew to install the GCC toolchain, which is required for compiling the runtime on MacOS:</p>
 <div class="fragment"><div class="line"># Compile with GCC 15 for MacOS</div><div class="line">brew install gcc@15</div><div class="line">TOOLCHAIN_PATH=/opt/homebrew RELEASE=1 CC=gcc-15 make</div></div><!-- fragment --><p>Once you've made the libraries, use the <code>make tests</code> target to run the unit tests. There is information about test coverage in the tests directory.</p>
