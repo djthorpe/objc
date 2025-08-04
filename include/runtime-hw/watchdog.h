@@ -52,7 +52,6 @@ void hw_watchdog_finalize(hw_watchdog_t *watchdog);
 /**
  * @brief Return the maximum supported watchdog timeout
  * @ingroup Watchdog
- * @param timeout_ms Watchdog timeout in milliseconds
  * @return The maximum supported watchdog timeout in milliseconds, or 0 if
  * watchdogs are not supported on this platform.
  */
