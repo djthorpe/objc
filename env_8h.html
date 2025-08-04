@@ -52,6 +52,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">env.h File Reference</div>  </div>
@@ -87,8 +89,27 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="env_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga144401bf3ba81f3374a36049792f44d9"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">sys_env_signal_callback_t</a>) (<a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> signal)</td></tr>
+<tr class="memdesc:ga144401bf3ba81f3374a36049792f44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for handling environment signals.  <a href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">More...</a><br /></td></tr>
+<tr class="separator:ga144401bf3ba81f3374a36049792f44d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> { <a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3">SYS_ENV_SIGNAL_NONE</a> = 0, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595">SYS_ENV_SIGNAL_TERM</a>, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a">SYS_ENV_SIGNAL_INT</a>, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f">SYS_ENV_SIGNAL_QUIT</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Environment signal types.  <a href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gab44448926e1ea073267df724fcd18054"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#gab44448926e1ea073267df724fcd18054">sys_env_signalhandler</a> (<a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> mask, <a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">sys_env_signal_callback_t</a> callback)</td></tr>
+<tr class="memdesc:gab44448926e1ea073267df724fcd18054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a handler for environment signals.  <a href="group__SystemEnv.html#gab44448926e1ea073267df724fcd18054">More...</a><br /></td></tr>
+<tr class="separator:gab44448926e1ea073267df724fcd18054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga30de96d6d0d97e1c961dde47608ec137"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga30de96d6d0d97e1c961dde47608ec137">sys_env_serial</a> (void)</td></tr>
 <tr class="memdesc:ga30de96d6d0d97e1c961dde47608ec137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a unique identifier for the current environment.  <a href="group__SystemEnv.html#ga30de96d6d0d97e1c961dde47608ec137">More...</a><br /></td></tr>
 <tr class="separator:ga30de96d6d0d97e1c961dde47608ec137"><td class="memSeparator" colspan="2">&#160;</td></tr>

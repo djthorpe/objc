@@ -24,6 +24,7 @@ var searchData=
   ['applicationdelegate_2bprotocol_2eh',['ApplicationDelegate+Protocol.h',['../ApplicationDelegate_09Protocol_8h.html',1,'']]],
   ['applicationdelegate_2dp',['ApplicationDelegate-p',['../protocolApplicationDelegate-p.html',1,'']]],
   ['applicationdidfinishlaunching_3a',['applicationDidFinishLaunching:',['../protocolApplicationDelegate-p.html#ad999917340637f929b23a3f596335f20',1,'ApplicationDelegate-p']]],
+  ['applicationreceivedsignal_3a',['applicationReceivedSignal:',['../protocolApplicationDelegate-p.html#a7cbb8ee2995d64558d1d9fe57737a5a5',1,'ApplicationDelegate-p']]],
   ['applicationwillterminate_3a',['applicationWillTerminate:',['../protocolApplicationDelegate-p.html#a40c6edf0d8039ca3130eaf23597540ba',1,'ApplicationDelegate-p']]],
   ['args',['args',['../interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d',1,'Application']]],
   ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],

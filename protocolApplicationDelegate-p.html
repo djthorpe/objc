@@ -67,6 +67,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a40c6edf0d8039ca3130eaf23597540ba"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolApplicationDelegate-p.html#a40c6edf0d8039ca3130eaf23597540ba">applicationWillTerminate:</a></td></tr>
 <tr class="memdesc:a40c6edf0d8039ca3130eaf23597540ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called immediately before the application terminates.  <a href="#a40c6edf0d8039ca3130eaf23597540ba">More...</a><br /></td></tr>
 <tr class="separator:a40c6edf0d8039ca3130eaf23597540ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cbb8ee2995d64558d1d9fe57737a5a5"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolApplicationDelegate-p.html#a7cbb8ee2995d64558d1d9fe57737a5a5">applicationReceivedSignal:</a></td></tr>
+<tr class="memdesc:a7cbb8ee2995d64558d1d9fe57737a5a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the application receives a system signal.  <a href="#a7cbb8ee2995d64558d1d9fe57737a5a5">More...</a><br /></td></tr>
+<tr class="separator:a7cbb8ee2995d64558d1d9fe57737a5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A protocol that defines the methods for an application delegate. </p>
@@ -110,6 +113,45 @@ Instance Methods</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This method is called from the main run loop thread. </dd>
 <dd>
 The application's run loop will begin processing events after this method returns. </dd></dl>
+
+</div>
+</div>
+<a id="a7cbb8ee2995d64558d1d9fe57737a5a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cbb8ee2995d64558d1d9fe57737a5a5">&#9670;&nbsp;</a></span>applicationReceivedSignal:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) applicationReceivedSignal: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a>)&#160;</td>
+          <td class="paramname"><em>signal</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the application receives a system signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>The type of signal that was received.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method is invoked when the application receives system signals such as termination requests (SIGTERM), interrupt signals (SIGINT/Ctrl+C), or quit signals (SIGQUIT). Implement this method to handle signals gracefully by performing cleanup operations, saving state, or initiating shutdown procedures.</p>
+<p>If this method is not implemented, the application will terminate with a -1 exit status when it receives a NXApplicationSignalTerm or NXApplicationSignalQuit signal. Other signals may be ignored.</p>
+<p>In the future, this method may be called for power management events, such as low or empty battery conditions, or sleep conditions, allowing applications to respond appropriately to changes in power status.</p>
+<dl class="section note"><dt>Note</dt><dd>This method may be called from a signal handler context on some platforms. Keep the implementation simple and avoid blocking operations, memory allocation, or complex system calls.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5" title="Application signal types for handling system events. ">NXApplicationSignal</a> for available signal types. </dd></dl>
 
 </div>
 </div>

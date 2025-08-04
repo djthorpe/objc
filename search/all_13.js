@@ -4,6 +4,8 @@ var searchData=
   ['timers',['Timers',['../group__SystemTimer.html',1,'']]],
   ['table',['table',['../structsys__hashtable__iterator.html#ac1d4d45e5f23e46a0c2d20cbb9391bb0',1,'sys_hashtable_iterator']]],
   ['tail',['tail',['../structsys__event__queue__t.html#a626ef4b99797174041d55e64ef62cc6a',1,'sys_event_queue_t']]],
+  ['terminate',['terminate',['../interfaceApplication.html#a5974dc3b4e119641d425ad88723d4489',1,'Application']]],
+  ['terminatewithexitstatus_3a',['terminateWithExitStatus:',['../interfaceApplication.html#a1f8b5bda9baed18aa00b8731c64dd92f',1,'Application']]],
   ['thread_2eh',['thread.h',['../thread_8h.html',1,'']]],
   ['time_5fms',['time_ms',['../structpix__display__t.html#a920bf770f5d9863d13c7f2e8cfca495a',1,'pix_display_t']]],
   ['timeinterval',['timeInterval',['../interfaceNXTimer.html#aab91e9d479fd2b439e3950f3a62f8da2',1,'NXTimer']]],

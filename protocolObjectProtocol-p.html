@@ -96,6 +96,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df">conformsTo:</a></td></tr>
 <tr class="memdesc:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the receiver's class conforms to a protocol.  <a href="#a1d2cf5c8b18a1e5021427eb6b33e21df">More...</a><br /></td></tr>
 <tr class="separator:a1d2cf5c8b18a1e5021427eb6b33e21df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaee135bb8aaf2eb10c0a9654154ae20"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolObjectProtocol-p.html#adaee135bb8aaf2eb10c0a9654154ae20">respondsToSelector:</a></td></tr>
+<tr class="memdesc:adaee135bb8aaf2eb10c0a9654154ae20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the receiver responds to a selector.  <a href="#adaee135bb8aaf2eb10c0a9654154ae20">More...</a><br /></td></tr>
+<tr class="separator:adaee135bb8aaf2eb10c0a9654154ae20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
@@ -248,6 +251,41 @@ Class Methods</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A C-string containing the name of the class. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="interfaceObject.html#a81428c9198d7756c61b0d4c33969e186">Object</a>, and <a class="el" href="interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a">Protocol</a>.</p>
+
+</div>
+</div>
+<a id="adaee135bb8aaf2eb10c0a9654154ae20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaee135bb8aaf2eb10c0a9654154ae20">&#9670;&nbsp;</a></span>respondsToSelector:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) respondsToSelector: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>)&#160;</td>
+          <td class="paramname"><em>aSelector</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">required</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the receiver responds to a selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">aSelector</td><td>The selector to check for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the receiver responds to the specified selector, NO otherwise. </dd></dl>
 
 </div>
 </div>

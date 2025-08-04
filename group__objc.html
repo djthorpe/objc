@@ -189,6 +189,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gad6763d930ab4a58f5d4e89542dfedf05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gad6763d930ab4a58f5d4e89542dfedf05">object_setClass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> object, <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> cls)</td></tr>
 <tr class="memdesc:gad6763d930ab4a58f5d4e89542dfedf05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the class of an object.  <a href="#gad6763d930ab4a58f5d4e89542dfedf05">More...</a><br /></td></tr>
 <tr class="separator:gad6763d930ab4a58f5d4e89542dfedf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafaa34826528e97119da1fdd8ad5ad68a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#gafaa34826528e97119da1fdd8ad5ad68a">object_respondsToSelector</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> object, <a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a> sel)</td></tr>
+<tr class="memdesc:gafaa34826528e97119da1fdd8ad5ad68a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an instance's class responds to a selector.  <a href="#gafaa34826528e97119da1fdd8ad5ad68a">More...</a><br /></td></tr>
+<tr class="separator:gafaa34826528e97119da1fdd8ad5ad68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga45c1ac82472fb1e16043e0f03037e64b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__objc.html#ga45c1ac82472fb1e16043e0f03037e64b">object_getSuperclass</a> (<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a> obj)</td></tr>
 <tr class="memdesc:ga45c1ac82472fb1e16043e0f03037e64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the superclass of an object.  <a href="#ga45c1ac82472fb1e16043e0f03037e64b">More...</a><br /></td></tr>
 <tr class="separator:ga45c1ac82472fb1e16043e0f03037e64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -756,6 +759,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>YES</code> if <code>object</code> class matches or is a subclass of <code>cls</code>, <code>NO</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="gafaa34826528e97119da1fdd8ad5ad68a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafaa34826528e97119da1fdd8ad5ad68a">&#9670;&nbsp;</a></span>object_respondsToSelector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a> object_respondsToSelector </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__objc.html#gacc50f82530a982adeb5979def1ca71fa">SEL</a>&#160;</td>
+          <td class="paramname"><em>sel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an instance's class responds to a selector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>The object to inspect. </td></tr>
+    <tr><td class="paramname">sel</td><td>The selector to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>YES</code> if instances of the class respond to the selector, <code>NO</code> otherwise. </dd></dl>
 
 </div>
 </div>

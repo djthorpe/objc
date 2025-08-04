@@ -48,7 +48,9 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Application Framework<div class="ingroups"><a class="el" href="group__objc.html">Objective-C Runtime</a></div></div>  </div>
@@ -67,6 +69,12 @@ Collaboration diagram for Application Framework:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:NXApplicationTypes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NXApplicationTypes_8h.html">NXApplicationTypes.h</a></td></tr>
+<tr class="memdesc:NXApplicationTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework typesApplication-related classes and types. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceApplication.html">Application</a></td></tr>
@@ -88,6 +96,16 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A protocol that defines the methods for a timer delegate.  <a href="protocolTimerDelegate-p.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a>, 
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a>, 
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> signal types for handling system events.  <a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gabc34bf0215facc5913444e51c006ca97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a> (int argc, char *argv[], <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> delegate)</td></tr>
@@ -96,6 +114,40 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Application-related classes and types, including application lifecycle, event handling, display and frames, and hardware interfaces. </p>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gaf744a07ee475ab59cd80c6fd7daf98b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf744a07ee475ab59cd80c6fd7daf98b5">&#9670;&nbsp;</a></span>NXApplicationSignal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> signal types for handling system events. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff"></a>NXApplicationSignalNone&#160;</td><td class="fielddoc"><p>No signal. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde"></a>NXApplicationSignalTerm&#160;</td><td class="fielddoc"><p>Termination signal (SIGTERM equivalent) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685"></a>NXApplicationSignalInt&#160;</td><td class="fielddoc"><p>Interrupt signal (SIGINT/Ctrl+C equivalent) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668"></a>NXApplicationSignalQuit&#160;</td><td class="fielddoc"><p>Quit signal (SIGQUIT equivalent) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="NXApplicationTypes_8h_source.html#l00014">14</a> of file <a class="el" href="NXApplicationTypes_8h_source.html">NXApplicationTypes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;             {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, </div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a> =</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      (1 &lt;&lt; 0), </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a> =</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      (1 &lt;&lt; 1), </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2), </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a>;</div><div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a></div><div class="ttdoc">Quit signal (SIGQUIT equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00020">NXApplicationTypes.h:20</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a></div><div class="ttdoc">Termination signal (SIGTERM equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00016">NXApplicationTypes.h:16</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a></div><div class="ttdoc">No signal. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00015">NXApplicationTypes.h:15</a></div></div>
+<div class="ttc" id="group__Application_html_gaf744a07ee475ab59cd80c6fd7daf98b5"><div class="ttname"><a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a></div><div class="ttdeci">NXApplicationSignal</div><div class="ttdoc">Application signal types for handling system events. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00014">NXApplicationTypes.h:14</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a></div><div class="ttdoc">Interrupt signal (SIGINT/Ctrl+C equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00018">NXApplicationTypes.h:18</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gabc34bf0215facc5913444e51c006ca97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gabc34bf0215facc5913444e51c006ca97">&#9670;&nbsp;</a></span>NXApplicationMain()</h2>

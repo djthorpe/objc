@@ -2,6 +2,7 @@ var searchData=
 [
   ['sel',['SEL',['../group__objc.html#gacc50f82530a982adeb5979def1ca71fa',1,'runtime.h']]],
   ['sys_5fdate_5ft',['sys_date_t',['../group__SystemDate.html#gad0e2b399d7b34c3360cd8c9d5e2f5b4e',1,'date.h']]],
+  ['sys_5fenv_5fsignal_5fcallback_5ft',['sys_env_signal_callback_t',['../group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9',1,'env.h']]],
   ['sys_5fevent_5ft',['sys_event_t',['../group__SystemEvents.html#ga2bdd4be7e6e04b4ee95e0459ff001702',1,'event.h']]],
   ['sys_5fhashtable_5fiterator_5ft',['sys_hashtable_iterator_t',['../group__SystemHashTable.html#ga2b1a3637de4ae560aff8276858f3c9c0',1,'hashtable.h']]],
   ['sys_5fhashtable_5fkeyequals_5ft',['sys_hashtable_keyequals_t',['../group__SystemHashTable.html#ga605d89b487e711cf27787bc95fe0ed40',1,'hashtable.h']]],

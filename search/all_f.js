@@ -22,6 +22,7 @@ var searchData=
   ['object_5fgetclassname',['object_getClassName',['../group__objc.html#ga17b085d44512c2db39ae4ba4e53ae748',1,'runtime.h']]],
   ['object_5fgetsuperclass',['object_getSuperclass',['../group__objc.html#ga45c1ac82472fb1e16043e0f03037e64b',1,'runtime.h']]],
   ['object_5fiskindofclass',['object_isKindOfClass',['../group__objc.html#ga435d6fc780b3f52b73013c71c9386f63',1,'runtime.h']]],
+  ['object_5frespondstoselector',['object_respondsToSelector',['../group__objc.html#gafaa34826528e97119da1fdd8ad5ad68a',1,'runtime.h']]],
   ['object_5fsetclass',['object_setClass',['../group__objc.html#gad6763d930ab4a58f5d4e89542dfedf05',1,'runtime.h']]],
   ['objectatindex_3a',['objectAtIndex:',['../interfaceNXArray.html#a349dfba95888604ad749e91203595267',1,'NXArray']]],
   ['objectforkey_3a',['objectForKey:',['../interfaceNXMap.html#a102483115fd967d326962ce22c5dc58b',1,'NXMap']]],

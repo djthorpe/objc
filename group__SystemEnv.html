@@ -48,6 +48,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Environment<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a></div></div>  </div>
@@ -66,8 +68,27 @@ Collaboration diagram for Environment:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga144401bf3ba81f3374a36049792f44d9"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">sys_env_signal_callback_t</a>) (<a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> signal)</td></tr>
+<tr class="memdesc:ga144401bf3ba81f3374a36049792f44d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function type for handling environment signals.  <a href="#ga144401bf3ba81f3374a36049792f44d9">More...</a><br /></td></tr>
+<tr class="separator:ga144401bf3ba81f3374a36049792f44d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> { <a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3">SYS_ENV_SIGNAL_NONE</a> = 0, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595">SYS_ENV_SIGNAL_TERM</a>, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a">SYS_ENV_SIGNAL_INT</a>, 
+<a class="el" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f">SYS_ENV_SIGNAL_QUIT</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Environment signal types.  <a href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga33ec5a65e8cd1818422d292b9095b7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gab44448926e1ea073267df724fcd18054"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#gab44448926e1ea073267df724fcd18054">sys_env_signalhandler</a> (<a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> mask, <a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">sys_env_signal_callback_t</a> callback)</td></tr>
+<tr class="memdesc:gab44448926e1ea073267df724fcd18054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a handler for environment signals.  <a href="#gab44448926e1ea073267df724fcd18054">More...</a><br /></td></tr>
+<tr class="separator:gab44448926e1ea073267df724fcd18054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga30de96d6d0d97e1c961dde47608ec137"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemEnv.html#ga30de96d6d0d97e1c961dde47608ec137">sys_env_serial</a> (void)</td></tr>
 <tr class="memdesc:ga30de96d6d0d97e1c961dde47608ec137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a unique identifier for the current environment.  <a href="#ga30de96d6d0d97e1c961dde47608ec137">More...</a><br /></td></tr>
 <tr class="separator:ga30de96d6d0d97e1c961dde47608ec137"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -80,6 +101,67 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>System methods for reading information about the environment. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga144401bf3ba81f3374a36049792f44d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga144401bf3ba81f3374a36049792f44d9">&#9670;&nbsp;</a></span>sys_env_signal_callback_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* sys_env_signal_callback_t) (<a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a> signal)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function type for handling environment signals. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>The type of signal that was received.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This typedef defines the signature for callback functions that handle environment signals. The callback receives a signal type parameter indicating which signal was received. </p>
+
+<p class="definition">Definition at line <a class="el" href="env_8h_source.html#l00042">42</a> of file <a class="el" href="env_8h_source.html">env.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga33ec5a65e8cd1818422d292b9095b7ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga33ec5a65e8cd1818422d292b9095b7ec">&#9670;&nbsp;</a></span>sys_env_signal_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Environment signal types. </p>
+<p>Enumeration of signal types that can be received from the environment or operating system. These signals typically indicate termination or interrupt requests that applications should handle gracefully. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3"></a>SYS_ENV_SIGNAL_NONE&#160;</td><td class="fielddoc"><p>No signal. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595"></a>SYS_ENV_SIGNAL_TERM&#160;</td><td class="fielddoc"><p>Termination signal (termination request from OS) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a"></a>SYS_ENV_SIGNAL_INT&#160;</td><td class="fielddoc"><p>Interrupt signal (interrupt request from user) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f"></a>SYS_ENV_SIGNAL_QUIT&#160;</td><td class="fielddoc"><p>Quit signal (quit request from user) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="env_8h_source.html#l00024">24</a> of file <a class="el" href="env_8h_source.html">env.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;             {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3">SYS_ENV_SIGNAL_NONE</a> = 0, </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595">SYS_ENV_SIGNAL_TERM</a> =</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      (1 &lt;&lt; 0), </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a">SYS_ENV_SIGNAL_INT</a> =</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      (1 &lt;&lt; 1), </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f">SYS_ENV_SIGNAL_QUIT</a> = (1 &lt;&lt; 2), </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <a class="code" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a>;</div><div class="ttc" id="group__SystemEnv_html_gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a"><div class="ttname"><a href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecadae13d6c67f63034a903555bc3b16e3a">SYS_ENV_SIGNAL_INT</a></div><div class="ttdoc">Interrupt signal (interrupt request from user) </div><div class="ttdef"><b>Definition:</b> <a href="env_8h_source.html#l00028">env.h:28</a></div></div>
+<div class="ttc" id="group__SystemEnv_html_gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3"><div class="ttname"><a href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca8c78901f8f07b10fd51a2bf5918fc3c3">SYS_ENV_SIGNAL_NONE</a></div><div class="ttdoc">No signal. </div><div class="ttdef"><b>Definition:</b> <a href="env_8h_source.html#l00025">env.h:25</a></div></div>
+<div class="ttc" id="group__SystemEnv_html_ga33ec5a65e8cd1818422d292b9095b7ec"><div class="ttname"><a href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a></div><div class="ttdeci">sys_env_signal_t</div><div class="ttdoc">Environment signal types. </div><div class="ttdef"><b>Definition:</b> <a href="env_8h_source.html#l00024">env.h:24</a></div></div>
+<div class="ttc" id="group__SystemEnv_html_gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f"><div class="ttname"><a href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7eca6f2759fd128b3f806f60cf0a0a0bb68f">SYS_ENV_SIGNAL_QUIT</a></div><div class="ttdoc">Quit signal (quit request from user) </div><div class="ttdef"><b>Definition:</b> <a href="env_8h_source.html#l00030">env.h:30</a></div></div>
+<div class="ttc" id="group__SystemEnv_html_gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595"><div class="ttname"><a href="group__SystemEnv.html#gga33ec5a65e8cd1818422d292b9095b7ecaf41739fbb98a5ce18e8bbdeefe2ed595">SYS_ENV_SIGNAL_TERM</a></div><div class="ttdoc">Termination signal (termination request from OS) </div><div class="ttdef"><b>Definition:</b> <a href="env_8h_source.html#l00026">env.h:26</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaa2277724c269b71f56849adce760de5b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa2277724c269b71f56849adce760de5b">&#9670;&nbsp;</a></span>sys_env_name()</h2>
@@ -120,6 +202,49 @@ Functions</h2></td></tr>
 
 <p>Returns a unique identifier for the current environment. </p>
 <dl class="section return"><dt>Returns</dt><dd>A serial number or unique identifier as a string. </dd></dl>
+
+</div>
+</div>
+<a id="gab44448926e1ea073267df724fcd18054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab44448926e1ea073267df724fcd18054">&#9670;&nbsp;</a></span>sys_env_signalhandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sys_env_signalhandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec">sys_env_signal_t</a>&#160;</td>
+          <td class="paramname"><em>mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9">sys_env_signal_callback_t</a>&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a handler for environment signals. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mask</td><td>Bitmask of sys_env_signal_t values indicating which signals to handle. If zero, all signals are handled. </td></tr>
+    <tr><td class="paramname">callback</td><td>The callback function to handle signals, or NULL to disable signal handling. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the handler was set or cleared successfully, false if signals are not supported on this platform.</dd></dl>
+<p>This function registers a callback function that will be invoked when the application receives environment signals such as termination requests (SIGTERM), interrupt signals (SIGINT), or quit signals (SIGQUIT). The callback allows applications to perform graceful shutdown procedures when requested.</p>
+<p>Only one signal handler can be active at a time. Setting a new handler will replace any previously registered handler.</p>
+<p>Not all platforms support all signal types. Embedded platforms may have limited or no signal support.</p>
+<p>The signal handler may be called from interrupt context on some platforms. Keep the implementation simple and avoid blocking operations, memory allocation, or complex system calls within the callback.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__SystemEnv.html#ga144401bf3ba81f3374a36049792f44d9" title="Callback function type for handling environment signals. ">sys_env_signal_callback_t</a> for callback function signature requirements. </dd></dl>
 
 </div>
 </div>
