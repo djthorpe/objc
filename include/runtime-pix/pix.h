@@ -1,7 +1,7 @@
 /**
  * @file pix.h
  * @brief Pixel display and frame management functions.
- * @defgroup Pixel
+ * @defgroup Pixel Pixels
  * @ingroup System
  *
  * Managing pixel data, framebuffers, and drawing operations.

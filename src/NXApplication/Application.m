@@ -130,7 +130,6 @@ static id sharedApplication = nil;
 
 - (int)run {
   if (_run) {
-    NXLog(@"Application is already running.");
     return 0; // Already running
   }
 
@@ -165,7 +164,6 @@ static id sharedApplication = nil;
 }
 
 - (void)stop {
-  NXLog(@"NXApplication is stopping...");
   sys_event_queue_shutdown(&_queue); // Shutdown the event queue
 }
 

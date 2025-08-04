@@ -74,3 +74,33 @@ size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
   (void)timeout_ms; // Suppress unused parameter warning
   return 0;         // Always return 0 since transfer is not implemented
 }
+
+/**
+ * @brief Read data from a specific register of an I2C device.
+ */
+size_t hw_i2c_read(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, void *data,
+                   size_t len, uint32_t timeout_ms) {
+  sys_assert(i2c);
+  // I2C not implemented in stub
+  (void)addr;       // Suppress unused parameter warning
+  (void)reg;        // Suppress unused parameter warning
+  (void)data;       // Suppress unused parameter warning
+  (void)len;        // Suppress unused parameter warning
+  (void)timeout_ms; // Suppress unused parameter warning
+  return 0;         // Always return 0 since read is not implemented
+}
+
+/**
+ * @brief Write data to a specific register of an I2C device.
+ */
+size_t hw_i2c_write(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, const void *data,
+                    size_t len, uint32_t timeout_ms) {
+  sys_assert(i2c);
+  // I2C not implemented in stub
+  (void)addr;       // Suppress unused parameter warning
+  (void)reg;        // Suppress unused parameter warning
+  (void)data;       // Suppress unused parameter warning
+  (void)len;        // Suppress unused parameter warning
+  (void)timeout_ms; // Suppress unused parameter warning
+  return 0;         // Always return 0 since write is not implemented
+}

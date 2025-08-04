@@ -57,7 +57,12 @@ int NXApplicationMain(int argc, char *argv[], Class delegate) {
     }
   }
 
-#ifndef SYSTEM_NAME_PICO
+#ifdef SYSTEM_NAME_PICO
+  // For Pico, we set the program name as the first argument
+  NXString *programName = [NXString stringWithCString:sys_env_name()];
+  [app setArgs:[NXArray arrayWithObjects:programName, nil]];
+#else
+  // For other systems, we create an array of arguments from argc and argv
   NXArray *args = [NXArray arrayWithCapacity:argc];
   objc_assert(args);
   int i = 0;

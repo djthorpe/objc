@@ -1,11 +1,8 @@
-set(NAME "app")
+set(NAME "nxapplication_helloworld")
 add_executable(${NAME}
     main.m
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-sys
-    runtime-hw
-    NXFoundation
     NXApplication
 )
 
