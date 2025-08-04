@@ -1,6 +1,7 @@
 /**
  * @file NXTimer.h
  * @brief Defines a class for controlling timers.
+ * @example examples/NXApplication/timer/main.m
  */
 #pragma once
 #include <NXFoundation/NXFoundation.h>
@@ -58,7 +59,6 @@
  * fires. The delegate should conform to the TimerDelegate protocol.
  *
  * @see delegate for getting the current timer delegate.
- * @example examples/NXApplication/timer/main.m
  */
 - (void)setDelegate:(id<TimerDelegate>)delegate;
 
