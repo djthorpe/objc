@@ -242,8 +242,17 @@ bool sys_event_queue_unlock(sys_event_queue_t *queue);
  */
 static inline bool sys_event_queue_valid(sys_event_queue_t *queue) {
   // Check if the queue pointer is valid and has a non-zero capacity
-  return queue && queue->items && queue->capacity > 0 &&
-         queue->shutdown != true;
+  if (queue == NULL) {
+    return false;
+  }
+  if (queue->items == NULL || queue->capacity == 0) {
+    return false;
+  }
+  // Ensure the queue is not in a shutdown state
+  if (queue->shutdown == true) {
+    return false;
+  }
+  return true;
 }
 
 #ifdef __cplusplus

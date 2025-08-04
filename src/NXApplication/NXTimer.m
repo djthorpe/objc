@@ -56,8 +56,6 @@ static void _timer_callback(sys_timer_t *timer) {
   uint32_t ms = NXTimeIntervalMilliseconds(interval);
   _timer = sys_timer_init(ms, self, _timer_callback);
   if (!sys_timer_valid(&_timer)) {
-    sys_printf("ERR initialize timer with interval: %lu ms interval %lld\n", ms,
-               interval);
     [self release];
     return nil;
   } else {
