@@ -1,5 +1,5 @@
 /**
- * @file examples/runtime/watchdog/main.m
+ * @file examples/runtime/watchdog/main.c
  * @brief Watchdog reboot example
  *
  * This example demonstrates how to use the hardware watchdog timer to
