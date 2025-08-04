@@ -5,5 +5,6 @@ var searchData=
   ['hw_5fi2c_5ft',['hw_i2c_t',['../structhw__i2c__t.html',1,'']]],
   ['hw_5fpwm_5fconfig_5ft',['hw_pwm_config_t',['../structhw__pwm__config__t.html',1,'']]],
   ['hw_5fpwm_5ft',['hw_pwm_t',['../structhw__pwm__t.html',1,'']]],
-  ['hw_5fspi_5ft',['hw_spi_t',['../structhw__spi__t.html',1,'']]]
+  ['hw_5fspi_5ft',['hw_spi_t',['../structhw__spi__t.html',1,'']]],
+  ['hw_5fwatchdog_5ft',['hw_watchdog_t',['../structhw__watchdog__t.html',1,'']]]
 ];

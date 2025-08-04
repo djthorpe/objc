@@ -62,12 +62,13 @@ Collaboration diagram for Hardware Interfaces:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__Hardware.png" border="0" alt="" usemap="#group____Hardware"/>
 <map name="group____Hardware" id="group____Hardware">
-<area shape="rect" id="node1" href="group__I2C.html" title="Inter&#45;Integrated Circuit (I2C) interface. " alt="" coords="391,5,434,32"/>
-<area shape="rect" id="node2" href="group__SPI.html" title="Serial Peripheral Interface (SPI) interface. " alt="" coords="391,56,434,83"/>
-<area shape="rect" id="node3" href="group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,107,135,133"/>
-<area shape="rect" id="node4" href="group__ADC.html" title="Analog&#45;to&#45;Digital Converter (ADC) interface for hardware platforms. " alt="" coords="387,107,438,133"/>
-<area shape="rect" id="node6" href="group__PWM.html" title="Pulse Width Modulation (PWM) interface for hardware platforms. " alt="" coords="385,157,440,184"/>
-<area shape="rect" id="node7" href="group__GPIO.html" title="General Purpose Input/Output (GPIO) interface for hardware platforms. " alt="" coords="385,208,440,235"/>
+<area shape="rect" id="node1" href="group__Watchdog.html" title="Watchdog timer abstraction, which can be used to respond to dead processes. " alt="" coords="385,5,472,32"/>
+<area shape="rect" id="node2" href="group__I2C.html" title="Inter&#45;Integrated Circuit (I2C) interface. " alt="" coords="407,56,450,83"/>
+<area shape="rect" id="node3" href="group__SPI.html" title="Serial Peripheral Interface (SPI) interface. " alt="" coords="407,107,450,133"/>
+<area shape="rect" id="node4" href="group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,132,135,159"/>
+<area shape="rect" id="node5" href="group__ADC.html" title="Analog&#45;to&#45;Digital Converter (ADC) interface for hardware platforms. " alt="" coords="403,157,454,184"/>
+<area shape="rect" id="node7" href="group__PWM.html" title="Pulse Width Modulation (PWM) interface for hardware platforms. " alt="" coords="401,208,456,235"/>
+<area shape="rect" id="node8" href="group__GPIO.html" title="General Purpose Input/Output (GPIO) interface for hardware platforms. " alt="" coords="401,259,456,285"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -88,6 +89,9 @@ Modules</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__SPI"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SPI.html">SPI</a></td></tr>
 <tr class="memdesc:group__SPI"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial Peripheral Interface (SPI) interface. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__Watchdog"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Watchdog.html">Watchdog</a></td></tr>
+<tr class="memdesc:group__Watchdog"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watchdog timer abstraction, which can be used to respond to dead processes. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -120,7 +124,7 @@ Functions</h2></td></tr>
 
 <p>Cleans up the hardware system on shutdown. </p>
 <p>This function should be called at the end of the program to perform any necessary cleanup tasks. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a20">pico/gpio_runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a18">examples/runtime/watchdog/main.c</a>, and <a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a20">pico/gpio_runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -142,7 +146,7 @@ Functions</h2></td></tr>
 
 <p>Initializes the hardware system on startup. </p>
 <p>This function must be called at the start of the program to initialize the hardware environment. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a19">pico/gpio_runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a17">examples/runtime/watchdog/main.c</a>, and <a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a19">pico/gpio_runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>

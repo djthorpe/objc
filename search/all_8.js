@@ -80,6 +80,13 @@ var searchData=
   ['hw_5fspi_5ft',['hw_spi_t',['../structhw__spi__t.html',1,'hw_spi_t'],['../group__SPI.html#ga73bb1ed8fc8d79e3d54eb0551037f318',1,'hw_spi_t():&#160;spi.h']]],
   ['hw_5fspi_5fwrite',['hw_spi_write',['../group__SPI.html#gac27e41e21c7edca256ce1f32b0f5efc0',1,'spi.h']]],
   ['hw_5fspi_5fxfr',['hw_spi_xfr',['../group__SPI.html#ga4b81730fe863e422ad062979fb981a63',1,'spi.h']]],
+  ['hw_5fwatchdog_5fdid_5freset',['hw_watchdog_did_reset',['../group__Watchdog.html#ga87ca2aceb1f697b7b5ef19293b93fd1a',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5fenable',['hw_watchdog_enable',['../group__Watchdog.html#gac712c0893f3710c1c9255f9706800115',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5ffinalize',['hw_watchdog_finalize',['../group__Watchdog.html#ga6868f5da841a55439e29ea065049a44e',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5finit',['hw_watchdog_init',['../group__Watchdog.html#ga4ab9d4688a2994da03559efa3ca0eeb1',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5fmaxtimeout',['hw_watchdog_maxtimeout',['../group__Watchdog.html#ga245259fd46ac4252e9e7f575b865f521',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5fping',['hw_watchdog_ping',['../group__Watchdog.html#ga9e0c93b1e98a36c20d9c18e1a45eb8df',1,'watchdog.h']]],
+  ['hw_5fwatchdog_5ft',['hw_watchdog_t',['../structhw__watchdog__t.html',1,'']]],
   ['hashes',['Hashes',['../group__SystemHashing.html',1,'']]],
   ['hash_20tables',['Hash Tables',['../group__SystemHashTable.html',1,'']]]
 ];

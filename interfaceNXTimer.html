@@ -101,9 +101,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a00531fdc442342b4bf667bda3900d083"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#a00531fdc442342b4bf667bda3900d083">valid</a></td></tr>
 <tr class="memdesc:a00531fdc442342b4bf667bda3900d083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the timer is still valid and active.  <a href="#a00531fdc442342b4bf667bda3900d083">More...</a><br /></td></tr>
 <tr class="separator:a00531fdc442342b4bf667bda3900d083"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab91e9d479fd2b439e3950f3a62f8da2"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#aab91e9d479fd2b439e3950f3a62f8da2">timeInterval</a></td></tr>
-<tr class="memdesc:aab91e9d479fd2b439e3950f3a62f8da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the timer's configured time interval.  <a href="#aab91e9d479fd2b439e3950f3a62f8da2">More...</a><br /></td></tr>
-<tr class="separator:aab91e9d479fd2b439e3950f3a62f8da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484e6cd2b8d812068f65304b206a51fb"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#a484e6cd2b8d812068f65304b206a51fb">interval</a></td></tr>
+<tr class="memdesc:a484e6cd2b8d812068f65304b206a51fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the timer's configured time interval.  <a href="#a484e6cd2b8d812068f65304b206a51fb">More...</a><br /></td></tr>
+<tr class="separator:a484e6cd2b8d812068f65304b206a51fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac001625c338668044c95172792fe6769"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#ac001625c338668044c95172792fe6769">repeats</a></td></tr>
 <tr class="memdesc:ac001625c338668044c95172792fe6769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the timer is set to repeat.  <a href="#ac001625c338668044c95172792fe6769">More...</a><br /></td></tr>
 <tr class="separator:ac001625c338668044c95172792fe6769"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -267,6 +267,27 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
+<a id="a484e6cd2b8d812068f65304b206a51fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a484e6cd2b8d812068f65304b206a51fb">&#9670;&nbsp;</a></span>interval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>) interval </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the timer's configured time interval. </p>
+<dl class="section return"><dt>Returns</dt><dd>The time interval in seconds between timer firings.</dd></dl>
+<p>This returns the interval that was set when the timer was created. The interval cannot be changed after timer creation. </p>
+
+</div>
+</div>
 <a id="a488a712a73bac050bd1e45db0d320a13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a488a712a73bac050bd1e45db0d320a13">&#9670;&nbsp;</a></span>invalidate()</h2>
 
@@ -332,27 +353,6 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </dl>
 <p>The delegate object will receive timer-related callbacks when the timer fires. The delegate should conform to the <a class="el" href="protocolTimerDelegate-p.html" title="A protocol that defines the methods for a timer delegate. ">TimerDelegate</a> protocol.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a> for getting the current timer <a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a>. </dd></dl>
-
-</div>
-</div>
-<a id="aab91e9d479fd2b439e3950f3a62f8da2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab91e9d479fd2b439e3950f3a62f8da2">&#9670;&nbsp;</a></span>timeInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (<a class="el" href="group__Foundation.html#gacb415dcba0be032b662a4d117a80d5cf">NXTimeInterval</a>) timeInterval </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the timer's configured time interval. </p>
-<dl class="section return"><dt>Returns</dt><dd>The time interval in seconds between timer firings.</dd></dl>
-<p>This returns the interval that was set when the timer was created. The interval cannot be changed after timer creation. </p>
 
 </div>
 </div>

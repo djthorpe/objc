@@ -1,0 +1,7 @@
+<map id="include/runtime&#45;hw/watchdog.h" name="include/runtime&#45;hw/watchdog.h">
+<area shape="rect" id="node2" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="188,95,371,121"/>
+<area shape="rect" id="node3" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,169,172,211"/>
+<area shape="rect" id="node5" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,169,363,211"/>
+<area shape="rect" id="node6" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,169,553,211"/>
+<area shape="rect" id="node4" href="$drivers_8h.html" title="Drivers header. " alt="" coords="190,259,369,285"/>
+</map>

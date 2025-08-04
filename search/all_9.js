@@ -21,7 +21,7 @@ var searchData=
   ['int32value',['int32Value',['../interfaceNXNumber.html#ae1e38ca9c66330ab50a76321c4f4eb50',1,'NXNumber']]],
   ['int64value',['int64Value',['../interfaceNXNumber.html#aa4675dea0334164edab8d92740c1f4d7',1,'NXNumber']]],
   ['interface',['interface',['../structdriver__st7789__t.html#ab19d7dfe3966a085882890d56edf2708',1,'driver_st7789_t']]],
-  ['interval',['interval',['../structsys__timer__t.html#afa33d0d4af0ac467a27025cc74da0ef8',1,'sys_timer_t']]],
+  ['interval',['interval',['../structsys__timer__t.html#afa33d0d4af0ac467a27025cc74da0ef8',1,'sys_timer_t::interval()'],['../interfaceNXTimer.html#a484e6cd2b8d812068f65304b206a51fb',1,'NXTimer::interval()']]],
   ['interval_5fms',['interval_ms',['../structpix__display__t.html#a82f0b7f2fd573a6daa673a9c11856cfb',1,'pix_display_t']]],
   ['invalidate',['invalidate',['../interfaceNXTimer.html#a488a712a73bac050bd1e45db0d320a13',1,'NXTimer']]],
   ['inverted',['inverted',['../structdriver__uc8151__t.html#a5c845b74b63c446357f232dde2945723',1,'driver_uc8151_t']]],
