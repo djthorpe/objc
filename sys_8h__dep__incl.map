@@ -1,9 +1,10 @@
 <map id="include/runtime&#45;sys/sys.h" name="include/runtime&#45;sys/sys.h">
-<area shape="rect" id="node2" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="177,95,327,136"/>
-<area shape="rect" id="node5" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="284,363,449,404"/>
-<area shape="rect" id="node7" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="254,273,418,315"/>
-<area shape="rect" id="node8" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="494,95,658,136"/>
-<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="139,184,290,225"/>
-<area shape="rect" id="node4" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="66,273,230,315"/>
-<area shape="rect" id="node6" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="5,363,171,404"/>
+<area shape="rect" id="node2" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="233,95,383,136"/>
+<area shape="rect" id="node5" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,363,171,404"/>
+<area shape="rect" id="node7" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="428,363,593,404"/>
+<area shape="rect" id="node8" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="341,273,505,315"/>
+<area shape="rect" id="node9" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="581,95,745,136"/>
+<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="231,184,382,225"/>
+<area shape="rect" id="node4" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="101,273,265,315"/>
+<area shape="rect" id="node6" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="207,363,372,404"/>
 </map>

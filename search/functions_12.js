@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['year_3amonth_3aday_3aweekday_3a',['year:month:day:weekday:',['../interfaceNXDate.html#aa25b8e59c322dc527767a6c175852b74',1,'NXDate']]]
+  ['valid',['valid',['../interfaceNXTimer.html#a00531fdc442342b4bf667bda3900d083',1,'NXTimer']]]
 ];

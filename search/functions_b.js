@@ -19,5 +19,6 @@ var searchData=
   ['nxrandint32',['NXRandInt32',['../group__Foundation.html#ga3c5ce4190cd3e1aad68bb62c2ae70878',1,'NXNumber.h']]],
   ['nxrandunsignedint32',['NXRandUnsignedInt32',['../group__Foundation.html#gaa883ed827a2c8aec90e77fec9036c430',1,'NXNumber.h']]],
   ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../group__Foundation.html#ga49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
-  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]]
+  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]],
+  ['nxtimeintervaltimestamp',['NXTimeIntervalTimestamp',['../group__Foundation.html#gad1757f6168dd13629e4eda3ca5083e7e',1,'NXTimeInterval.h']]]
 ];

@@ -109,6 +109,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gad104568d77069651912630c851339b40"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#gad104568d77069651912630c851339b40">sys_date_compare_ns</a> (const <a class="el" href="structsys__date__t.html">sys_date_t</a> *start, const <a class="el" href="structsys__date__t.html">sys_date_t</a> *end)</td></tr>
 <tr class="memdesc:gad104568d77069651912630c851339b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the difference in nanoseconds between two <a class="el" href="structsys__date__t.html" title="Represents a system date and time structure. ">sys_date_t</a> structures.  <a href="#gad104568d77069651912630c851339b40">More...</a><br /></td></tr>
 <tr class="separator:gad104568d77069651912630c851339b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae05670c1e93c5c0a3e4938e030da8a07"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#gae05670c1e93c5c0a3e4938e030da8a07">sys_date_get_timestamp</a> ()</td></tr>
+<tr class="memdesc:gae05670c1e93c5c0a3e4938e030da8a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of milliseconds since the process started.  <a href="#gae05670c1e93c5c0a3e4938e030da8a07">More...</a><br /></td></tr>
+<tr class="separator:gae05670c1e93c5c0a3e4938e030da8a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Methods for manipulating time and date. </p>
@@ -425,6 +428,26 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true on success, false on error.</dd></dl>
 <p>This function extracts the time components from a <a class="el" href="structsys__date__t.html" title="Represents a system date and time structure. ">sys_date_t</a> structure, in universal time (UTC). The timezone offset is not applied to the extracted time. </p>
+
+</div>
+</div>
+<a id="gae05670c1e93c5c0a3e4938e030da8a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae05670c1e93c5c0a3e4938e030da8a07">&#9670;&nbsp;</a></span>sys_date_get_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sys_date_get_timestamp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the number of milliseconds since the process started. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of milliseconds since the process started, or zero on error. </dd></dl>
 
 </div>
 </div>

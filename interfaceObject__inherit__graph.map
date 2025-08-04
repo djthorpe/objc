@@ -1,8 +1,8 @@
 <map id="Object" name="Object">
-<area shape="rect" id="node3" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="304,259,440,285"/>
-<area shape="rect" id="node4" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="331,309,413,336"/>
-<area shape="rect" id="node18" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="335,360,409,387"/>
-<area shape="rect" id="node2" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="5,309,144,336"/>
+<area shape="rect" id="node3" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="304,284,440,311"/>
+<area shape="rect" id="node4" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="331,335,413,361"/>
+<area shape="rect" id="node19" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="335,385,409,412"/>
+<area shape="rect" id="node2" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="5,335,144,361"/>
 <area shape="rect" id="node5" href="$interfaceApplication.html" title="Application" alt="" coords="514,5,609,32"/>
 <area shape="rect" id="node6" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="534,56,589,83"/>
 <area shape="rect" id="node7" href="$interfaceGPIOEvent.html" title="The GPIO Event class. " alt="" coords="516,107,607,133"/>
@@ -15,5 +15,6 @@
 <area shape="rect" id="node14" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="515,461,608,488"/>
 <area shape="rect" id="node15" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="522,512,601,539"/>
 <area shape="rect" id="node16" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="518,563,605,589"/>
-<area shape="rect" id="node17" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="524,613,599,640"/>
+<area shape="rect" id="node17" href="$interfaceNXTimer.html" title="The NXTimer class. " alt="" coords="522,613,601,640"/>
+<area shape="rect" id="node18" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="524,664,599,691"/>
 </map>

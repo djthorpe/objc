@@ -19,5 +19,6 @@ var searchData=
   ['nxstring_2eh',['NXString.h',['../NXString_8h.html',1,'']]],
   ['nxthread_2eh',['NXThread.h',['../NXThread_8h.html',1,'']]],
   ['nxtimeinterval_2eh',['NXTimeInterval.h',['../NXTimeInterval_8h.html',1,'']]],
+  ['nxtimer_2eh',['NXTimer.h',['../NXTimer_8h.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]
 ];

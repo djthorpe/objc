@@ -66,6 +66,9 @@ var searchData=
   ['nxtimeinterval_2eh',['NXTimeInterval.h',['../NXTimeInterval_8h.html',1,'']]],
   ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../group__Foundation.html#ga49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
   ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]],
+  ['nxtimeintervaltimestamp',['NXTimeIntervalTimestamp',['../group__Foundation.html#gad1757f6168dd13629e4eda3ca5083e7e',1,'NXTimeInterval.h']]],
+  ['nxtimer',['NXTimer',['../interfaceNXTimer.html',1,'']]],
+  ['nxtimer_2eh',['NXTimer.h',['../NXTimer_8h.html',1,'']]],
   ['nxunknownendian',['NXUnknownEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]],
   ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]

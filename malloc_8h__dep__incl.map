@@ -1,7 +1,8 @@
 <map id="include/runtime&#45;gcc/objc/malloc.h" name="include/runtime&#45;gcc/objc/malloc.h">
-<area shape="rect" id="node2" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="202,95,353,136"/>
-<area shape="rect" id="node3" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="75,184,239,225"/>
-<area shape="rect" id="node5" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="195,273,360,315"/>
-<area shape="rect" id="node6" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="315,184,479,225"/>
+<area shape="rect" id="node2" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="374,95,525,136"/>
+<area shape="rect" id="node3" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="230,184,394,225"/>
+<area shape="rect" id="node5" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="384,273,549,315"/>
+<area shape="rect" id="node7" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="487,184,651,225"/>
 <area shape="rect" id="node4" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,273,171,315"/>
+<area shape="rect" id="node6" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="195,273,360,315"/>
 </map>

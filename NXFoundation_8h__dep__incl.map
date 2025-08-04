@@ -1,4 +1,5 @@
 <map id="include/NXFoundation/NXFoundation.h" name="include/NXFoundation/NXFoundation.h">
 <area shape="rect" id="node2" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,95,171,136"/>
 <area shape="rect" id="node3" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="195,95,360,136"/>
+<area shape="rect" id="node4" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="384,95,549,136"/>
 </map>
