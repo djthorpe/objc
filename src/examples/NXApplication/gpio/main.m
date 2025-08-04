@@ -26,7 +26,7 @@
   // If GPIO is not supported, log a warning and stop the application
   if ([GPIO count] == 0) {
     NXLog(@"GPIO is not supported on this platform");
-    [application stop];
+    [application terminateWithExitStatus:-1];
     return;
   }
 

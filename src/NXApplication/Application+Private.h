@@ -22,6 +22,12 @@ void _app_timer_callback(sys_timer_t *timer);
 - (void)setArgs:(NXArray *)args;
 
 /**
+ * @brief Handles application signals.
+ * @param signal The signal received from the environment.
+ */
+- (void)signal:(NXApplicationSignal)signal;
+
+/**
  * @brief Sets the application delegate.
  * @param delegate The object to serve as the application delegate, or nil to
  * remove the current delegate.
@@ -43,6 +49,8 @@ void _app_timer_callback(sys_timer_t *timer);
 
 /**
  * @brief Starts the application's main run loop.
+ * @return An integer exit status code, which can be set with
+ * terminateWithExitStatus:
  *
  * This method begins the application's main execution cycle,
  * processing events and maintaining the application state until a

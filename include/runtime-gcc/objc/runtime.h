@@ -151,6 +151,16 @@ Class object_getClass(id object);
 void object_setClass(id object, Class cls);
 
 /**
+ * @brief Checks if an instance's class responds to a selector.
+ * @ingroup objc
+ * @param object The object to inspect.
+ * @param sel The selector to check.
+ * @return `YES` if instances of the class respond to the selector, `NO`
+ * otherwise.
+ */
+BOOL object_respondsToSelector(id object, SEL sel);
+
+/**
  * @brief Returns the superclass of an object.
  * @ingroup objc
  * @param obj The object to inspect.

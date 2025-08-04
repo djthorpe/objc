@@ -9,7 +9,7 @@
 /**
  * @brief Protocol for objects.
  * @headerfile Object+Protocol.h objc/objc.h
- * @ingroup objc 
+ * @ingroup objc
  *
  * The ObjectProtocol defines the minimal interface that objects must
  * implement to provide basic object introspection functionality.
@@ -48,5 +48,12 @@
  * otherwise.
  */
 - (BOOL)conformsTo:(Protocol *)aProtocolObject;
+
+/**
+ * @brief Checks if the receiver responds to a selector.
+ * @param aSelector The selector to check for.
+ * @return YES if the receiver responds to the specified selector, NO otherwise.
+ */
+- (BOOL)respondsToSelector:(SEL)aSelector;
 
 @end

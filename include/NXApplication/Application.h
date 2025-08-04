@@ -29,8 +29,9 @@
 @interface Application : NXObject {
 @private
   id<ApplicationDelegate> _delegate; ///< The application delegate
-  BOOL _run;      ///< Flag to indicate if the application is running
-  NXArray *_args; ///< Command-line arguments passed to the application
+  BOOL _run;       ///< Flag to indicate if the application is running
+  int _exitstatus; ///< Exit status of the application
+  NXArray *_args;  ///< Command-line arguments passed to the application
 }
 
 /**
@@ -68,6 +69,19 @@
  * @note This method does not immediately terminate the application; it
  * simply sets a flag that will be checked in the run loop.
  */
-- (void)stop;
+- (void)terminate;
+
+/**
+ * @brief This method notifies the app that you want to exit the run loop,
+ * with a specific exit status.
+ *
+ * The remaining events in the run loop will be processed, and then the
+ * application will terminate gracefully.
+ *
+ * @note This method does not immediately terminate the application; it
+ * simply sets a flag that will be checked in the run loop. The process
+ * will exit with the specified status code.
+ */
+- (void)terminateWithExitStatus:(int)status;
 
 @end
