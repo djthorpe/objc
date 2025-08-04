@@ -89,8 +89,8 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a923c6f2f18557570f50b0c3f1b318023"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolTimerDelegate-p.html">TimerDelegate</a> &gt;)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023">delegate</a></td></tr>
 <tr class="memdesc:a923c6f2f18557570f50b0c3f1b318023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current timer delegate.  <a href="#a923c6f2f18557570f50b0c3f1b318023">More...</a><br /></td></tr>
 <tr class="separator:a923c6f2f18557570f50b0c3f1b318023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0daaeca0afbe86f37e3d0828f0bdf11b"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b">setDelegate:</a></td></tr>
-<tr class="memdesc:a0daaeca0afbe86f37e3d0828f0bdf11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the timer delegate.  <a href="#a0daaeca0afbe86f37e3d0828f0bdf11b">More...</a><br /></td></tr>
+<tr class="memitem:a0daaeca0afbe86f37e3d0828f0bdf11b"><td class="memItemLeft" align="right" valign="top"><a id="a0daaeca0afbe86f37e3d0828f0bdf11b"></a>
+(void)&#160;</td><td class="memItemRight" valign="bottom">- <b>setDelegate:</b></td></tr>
 <tr class="separator:a0daaeca0afbe86f37e3d0828f0bdf11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a4eee46828091bcac2f054decfa23c"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXTimer.html#a52a4eee46828091bcac2f054decfa23c">fire</a></td></tr>
 <tr class="memdesc:a52a4eee46828091bcac2f054decfa23c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually fires the timer.  <a href="#a52a4eee46828091bcac2f054decfa23c">More...</a><br /></td></tr>
@@ -216,7 +216,8 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="interfaceNXTimer.html" title="The NXTimer class. ">NXTimer</a> class. </p>
 <p><a class="el" href="interfaceNXTimer.html" title="The NXTimer class. ">NXTimer</a> represents a class for controlling timers. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2NXApplication_2timer_2main_8m-example.html#_a3">examples/NXApplication/timer/main.m</a>.</dd>
+</dl>
 <p class="definition">Definition at line <a class="el" href="NXTimer_8h_source.html#l00019">19</a> of file <a class="el" href="NXTimer_8h_source.html">NXTimer.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a id="a923c6f2f18557570f50b0c3f1b318023"></a>
@@ -237,7 +238,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <p>Gets the current timer delegate. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current timer delegate, or nil if no delegate is set.</dd></dl>
 <p>This method returns the object that serves as the timer's delegate.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b" title="Sets the timer delegate. ">- setDelegate:</a> for setting the timer <a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>setDelegate: for setting the timer <a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a>. </dd></dl>
 
 </div>
 </div>
@@ -299,34 +300,6 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 <p>Returns whether the timer is set to repeat. </p>
 <dl class="section return"><dt>Returns</dt><dd>YES if the timer is repeating, NO if it is a one-shot timer. </dd></dl>
-
-</div>
-</div>
-<a id="a0daaeca0afbe86f37e3d0828f0bdf11b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0daaeca0afbe86f37e3d0828f0bdf11b">&#9670;&nbsp;</a></span>setDelegate:()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) setDelegate: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolTimerDelegate-p.html">TimerDelegate</a> &gt;)&#160;</td>
-          <td class="paramname"><em>delegate</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the timer delegate. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">delegate</td><td>The object to set as the timer delegate, or nil to remove the current delegate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The delegate object will receive timer-related callbacks when the timer fires. The delegate should conform to the <a class="el" href="protocolTimerDelegate-p.html" title="A protocol that defines the methods for a timer delegate. ">TimerDelegate</a> protocol.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a> for getting the current timer <a class="el" href="interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023" title="Gets the current timer delegate. ">- delegate</a>. </dd></dl>
 
 </div>
 </div>
