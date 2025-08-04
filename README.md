@@ -113,11 +113,17 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] `NXMap` - arbitary key sizes
 - [X] clang compatibility
 - [X] runtime-hw SPI support
-- [ ] runtime-hw watchdog support
-- [ ] runtime-hw PWM support - make tying to a GPIO pin a function
+- [X] runtime-hw watchdog support
+- [ ] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices
 - [ ] runtime-hw LED support
+- [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
+- [ ] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
+- [ ] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
+- [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
+- [ ] `NXInputManager` - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.
+- [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
-- [ ] Number - `NXNumberByte` and `NXNumberInt8`
+- [ ] NXNumber - `NXNumberByte` and `NXNumberInt8`
 - [ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications
 - [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing
 - [ ] `NXURL` class - URL/filepath parsing and manipulation
@@ -140,7 +146,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `respondsToSelector:` (see test `runtime_14`) and lots of tests
 - [ ] Calling `+[initialise]` for categories
 - [ ] Exception handling?
-- [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
+- [ ] Raspberry Pi support - GPIO, SPI, I2C, PWM, ADC, etc.
 
 ## References
 
