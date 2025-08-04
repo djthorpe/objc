@@ -1,6 +1,10 @@
 /**
  * @file Application.h
  * @brief The main application class for NXApplication.
+ *
+ * @example examples/NXApplication/helloworld/main.m
+ * @example examples/NXApplication/gpio/main.m
+ * @example examples/NXApplication/timer/main.m
  */
 #pragma once
 #include <NXFoundation/NXFoundation.h>
@@ -15,9 +19,6 @@
  * in NXApplication. It follows the singleton pattern, providing a shared
  * instance that manages the application lifecycle, coordinates event
  * processing, and maintains the main run loop.
- *
- * @example examples/NXApplication/helloworld/main.m
- * @example examples/NXApplication/gpio/main.m
  */
 @interface Application : NXObject {
 @private
