@@ -10,6 +10,9 @@
  * restart the system if software becomes unresponsive. Applications must
  * periodically "feed" the watchdog to prevent automatic system reset.
  *
+ * Typically you would use a periodic timer to call hw_watchdog_ping()
+ * and keep your fingers crossed that the timer fires on time.
+ *
  * @example examples/runtime/watchdog/main.c
  */
 #pragma once
