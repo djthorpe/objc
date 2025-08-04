@@ -87,18 +87,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interfaceNXArray.html">NXArray</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d">args</a></td></tr>
 <tr class="memdesc:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns command-line arguments passed to the application.  <a href="#ab16f3d1b2bfebfe629d5eb5b5057fd0d">More...</a><br /></td></tr>
 <tr class="separator:ab16f3d1b2bfebfe629d5eb5b5057fd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627336c3a84bb6cacb8593727a4ef6ac"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a627336c3a84bb6cacb8593727a4ef6ac">setArgs:</a></td></tr>
-<tr class="memdesc:a627336c3a84bb6cacb8593727a4ef6ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the command-line arguments passed to the application.  <a href="#a627336c3a84bb6cacb8593727a4ef6ac">More...</a><br /></td></tr>
-<tr class="separator:a627336c3a84bb6cacb8593727a4ef6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f47c20d68c8a31cb5909150f0ceade3"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolApplicationDelegate-p.html">ApplicationDelegate</a> &gt;)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3">delegate</a></td></tr>
 <tr class="memdesc:a2f47c20d68c8a31cb5909150f0ceade3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current application delegate.  <a href="#a2f47c20d68c8a31cb5909150f0ceade3">More...</a><br /></td></tr>
 <tr class="separator:a2f47c20d68c8a31cb5909150f0ceade3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a052ea8edf1a93705d65336d66c204469"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a052ea8edf1a93705d65336d66c204469">setDelegate:</a></td></tr>
-<tr class="memdesc:a052ea8edf1a93705d65336d66c204469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the application delegate.  <a href="#a052ea8edf1a93705d65336d66c204469">More...</a><br /></td></tr>
-<tr class="separator:a052ea8edf1a93705d65336d66c204469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cf8941c8db90117d3735bce5ae1fdf4"><td class="memItemLeft" align="right" valign="top">(int)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4">run</a></td></tr>
-<tr class="memdesc:a8cf8941c8db90117d3735bce5ae1fdf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the application's main run loop.  <a href="#a8cf8941c8db90117d3735bce5ae1fdf4">More...</a><br /></td></tr>
-<tr class="separator:a8cf8941c8db90117d3735bce5ae1fdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e5dee1fbe413783d3500fe8da567ad4"><td class="memItemLeft" align="right" valign="top"><a id="a2e5dee1fbe413783d3500fe8da567ad4"></a>
 (void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceApplication.html#a2e5dee1fbe413783d3500fe8da567ad4">stop</a></td></tr>
 <tr class="memdesc:a2e5dee1fbe413783d3500fe8da567ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method notifies the app that you want to exit the run loop. <br /></td></tr>
@@ -239,90 +230,9 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <p>Gets the current application delegate. </p>
 <dl class="section return"><dt>Returns</dt><dd>The current application delegate, or nil if no delegate is set.</dd></dl>
 <p>This method returns the object that serves as the application's delegate.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceApplication.html#a052ea8edf1a93705d65336d66c204469" title="Sets the application delegate. ">- setDelegate:</a> for setting the application <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a>. </dd>
+<dl class="section see"><dt>See also</dt><dd>setDelegate: for setting the application <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a>. </dd>
 <dd>
-<a class="el" href="protocolApplicationDelegate-p.html" title="A protocol that defines the methods required for an application delegate. ">ApplicationDelegate</a> protocol for <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a> methods. </dd></dl>
-
-</div>
-</div>
-<a id="a8cf8941c8db90117d3735bce5ae1fdf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cf8941c8db90117d3735bce5ae1fdf4">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (int) run </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Starts the application's main run loop. </p>
-<p>This method begins the application's main execution cycle, processing events and maintaining the application state until a termination condition is met. The run loop continues executing until the application receives a termination signal or explicitly requests to stop.</p>
-<p>This method typically blocks the calling thread and should be called from the main thread after all application initialization is complete. </p>
-
-</div>
-</div>
-<a id="a627336c3a84bb6cacb8593727a4ef6ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627336c3a84bb6cacb8593727a4ef6ac">&#9670;&nbsp;</a></span>setArgs:()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) setArgs: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interfaceNXArray.html">NXArray</a> *)&#160;</td>
-          <td class="paramname"><em>args</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the command-line arguments passed to the application. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">args</td><td>An array of command-line arguments as strings. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a052ea8edf1a93705d65336d66c204469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a052ea8edf1a93705d65336d66c204469">&#9670;&nbsp;</a></span>setDelegate:()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) setDelegate: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolApplicationDelegate-p.html">ApplicationDelegate</a> &gt;)&#160;</td>
-          <td class="paramname"><em>delegate</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the application delegate. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">delegate</td><td>The object to serve as the application delegate, or nil to remove the current delegate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This method assigns an object to serve as the application's delegate. The delegate object should conform to the <a class="el" href="protocolApplicationDelegate-p.html" title="A protocol that defines the methods required for an application delegate. ">ApplicationDelegate</a> protocol and will receive notifications about application lifecycle events.</p>
-<p>The application does not retain the delegate object, so the caller is responsible for ensuring the delegate remains valid for the lifetime of the application or until a new delegate is set.</p>
-<dl class="section note"><dt>Note</dt><dd>Setting a new delegate replaces any previously set delegate. </dd>
-<dd>
-It is safe to pass nil to remove the current delegate. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a> for getting the current application <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a>. </dd>
-<dd>
-<a class="el" href="protocolApplicationDelegate-p.html" title="A protocol that defines the methods required for an application delegate. ">ApplicationDelegate</a> protocol for <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a> methods. </dd></dl>
+<a class="el" href="protocolApplicationDelegate-p.html" title="A protocol that defines the methods for an application delegate. ">ApplicationDelegate</a> protocol for <a class="el" href="interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3" title="Gets the current application delegate. ">- delegate</a> methods. </dd></dl>
 
 </div>
 </div>

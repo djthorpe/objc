@@ -14,6 +14,7 @@ var searchData=
   ['appendstring_3a',['appendString:',['../interfaceNXData.html#a2b33cd2bd10120876e4691aeac33ed1f',1,'NXData']]],
   ['appendstringwithformat_3a',['appendStringWithFormat:',['../interfaceNXString.html#a6e7b80cd6c4940f2946bbfc8a5e31b75',1,'NXString']]],
   ['applicationdidfinishlaunching_3a',['applicationDidFinishLaunching:',['../protocolApplicationDelegate_01-p.html#a4150babf16cbd136cb405405b3179e0b',1,'ApplicationDelegate -p']]],
+  ['applicationwillterminate_3a',['applicationWillTerminate:',['../protocolApplicationDelegate_01-p.html#a7fdeb99bf69c5121c3591d62b1d1f4dc',1,'ApplicationDelegate -p']]],
   ['args',['args',['../interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d',1,'Application']]],
   ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
   ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],

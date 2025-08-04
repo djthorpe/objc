@@ -109,6 +109,7 @@ var menudata={children:[
 {text:"d",url:"globals_eval.html#index_d"},
 {text:"h",url:"globals_eval.html#index_h"},
 {text:"n",url:"globals_eval.html#index_n"},
-{text:"p",url:"globals_eval.html#index_p"}]},
+{text:"p",url:"globals_eval.html#index_p"},
+{text:"s",url:"globals_eval.html#index_s"}]},
 {text:"Macros",url:"globals_defs.html"}]}]},
 {text:"Examples",url:"examples.html"}]}

@@ -13,7 +13,6 @@ var searchData=
   ['retainprotocol_2dp',['RetainProtocol-p',['../protocolRetainProtocol-p.html',1,'']]],
   ['rotation',['rotation',['../structdriver__st7789__t.html#a5b3afcb5705c34f07d8fb3e390e51499',1,'driver_st7789_t::rotation()'],['../structdriver__uc8151__t.html#aa31e268c1918adc0ceec83e37ede15d6',1,'driver_uc8151_t::rotation()']]],
   ['round',['round',['../structdriver__st7789__t.html#ac1dfd14f5e22f5ce5fb1271533d3c4ed',1,'driver_st7789_t']]],
-  ['run',['run',['../interfaceApplication.html#a8cf8941c8db90117d3735bce5ae1fdf4',1,'Application']]],
   ['runtime_2eh',['runtime.h',['../runtime_8h.html',1,'']]],
   ['rx',['rx',['../structhw__spi__t.html#a7507b816e8896e362a5a9752cf30ab81',1,'hw_spi_t']]],
   ['random_20number_20generation',['Random Number Generation',['../group__SystemRandom.html',1,'']]]

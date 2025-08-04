@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['driver_5fbme280_5fmode_5fforced',['DRIVER_BME280_MODE_FORCED',['../drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38',1,'drivers_bme280.h']]],
-  ['driver_5fbme280_5fmode_5fnormal',['DRIVER_BME280_MODE_NORMAL',['../drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e',1,'drivers_bme280.h']]],
-  ['driver_5fbme280_5fmode_5fsleep',['DRIVER_BME280_MODE_SLEEP',['../drivers__bme280_8h.html#a3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fmode_5fforced',['DRIVER_BME280_MODE_FORCED',['../group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fmode_5fnormal',['DRIVER_BME280_MODE_NORMAL',['../group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fmode_5fsleep',['DRIVER_BME280_MODE_SLEEP',['../group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65',1,'drivers_bme280.h']]],
   ['driver_5fst7789_5finterface_5fparallel',['DRIVER_ST7789_INTERFACE_PARALLEL',['../group__ST7789.html#gga3865eafd4eff81c7798beea2a816ed7ca7f6ff212f08924598e29d91c68f77ee7',1,'drivers_st7789.h']]],
   ['driver_5fst7789_5finterface_5fspi',['DRIVER_ST7789_INTERFACE_SPI',['../group__ST7789.html#gga3865eafd4eff81c7798beea2a816ed7caea961553c6d7d7d80639666eeb605937',1,'drivers_st7789.h']]],
   ['driver_5fst7789_5frotation_5f0',['DRIVER_ST7789_ROTATION_0',['../group__ST7789.html#gga581c95b1f25c7207db43d62202e3073ba7e42a8043819ba1587e7c580c2527631',1,'drivers_st7789.h']]],

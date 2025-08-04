@@ -1,8 +1,6 @@
 var searchData=
 [
   ['sel_5fgetname',['sel_getName',['../group__objc.html#ga359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
-  ['setargs_3a',['setArgs:',['../interfaceApplication.html#a627336c3a84bb6cacb8593727a4ef6ac',1,'Application']]],
-  ['setdelegate_3a',['setDelegate:',['../interfaceApplication.html#a052ea8edf1a93705d65336d66c204469',1,'Application']]],
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
   ['setobject_3aforkey_3a',['setObject:forKey:',['../interfaceNXMap.html#a785f068025907a812fc2ed79c9db43d6',1,'NXMap']]],
   ['setstate_3a',['setState:',['../interfaceGPIO.html#a8ec6226af6503f4e7066b889e169a890',1,'GPIO']]],

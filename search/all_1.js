@@ -6,6 +6,7 @@ var searchData=
   ['addobject_3a',['addObject:',['../interfaceNXAutoreleasePool.html#a317e96662bcf86e0224fdf9f1ef5935d',1,'NXAutoreleasePool']]],
   ['address',['address',['../structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc',1,'driver_bme280_t']]],
   ['addtimeinterval_3a',['addTimeInterval:',['../interfaceNXDate.html#a03eff6845726d2b2bb7b80997ec0ae6d',1,'NXDate']]],
+  ['algorithm',['algorithm',['../structsys__hash__t.html#a09351f7610737ad991ca31a77d25c3f8',1,'sys_hash_t']]],
   ['align',['align',['../structsys__mutex__t.html#a037d3b54819dc1dee2ac0e8237034fd6',1,'sys_mutex_t::align()'],['../structsys__cond__t.html#afe6282d531a9fb95f8ea2f727f0bc42b',1,'sys_cond_t::align()'],['../structsys__waitgroup__t.html#a8f2b73370272284539debb93951f65e5',1,'sys_waitgroup_t::align()']]],
   ['allkeys',['allKeys',['../interfaceNXMap.html#a81cc00d0c7440fba4a24df50fcba1236',1,'NXMap']]],
   ['allobjects',['allObjects',['../interfaceNXMap.html#a10b248d48835f48a187b51d4fd302811',1,'NXMap']]],
@@ -24,8 +25,10 @@ var searchData=
   ['applicationdelegate_2bprotocol_2eh',['ApplicationDelegate+Protocol.h',['../ApplicationDelegate_09Protocol_8h.html',1,'']]],
   ['applicationdelegate_2dp',['ApplicationDelegate-p',['../protocolApplicationDelegate-p.html',1,'']]],
   ['applicationdidfinishlaunching_3a',['applicationDidFinishLaunching:',['../protocolApplicationDelegate_01-p.html#a4150babf16cbd136cb405405b3179e0b',1,'ApplicationDelegate -p']]],
+  ['applicationwillterminate_3a',['applicationWillTerminate:',['../protocolApplicationDelegate_01-p.html#a7fdeb99bf69c5121c3591d62b1d1f4dc',1,'ApplicationDelegate -p']]],
   ['args',['args',['../interfaceApplication.html#ab16f3d1b2bfebfe629d5eb5b5057fd0d',1,'Application']]],
   ['arraywithcapacity_3a',['arrayWithCapacity:',['../interfaceNXArray.html#a786f2b0711989eeb102790a3aaf0629b',1,'NXArray']]],
   ['arraywithobjects_3a',['arrayWithObjects:',['../interfaceNXArray.html#abcadf7235f66fbb1575b4c1b02734c21',1,'NXArray']]],
+  ['assert_2eh',['assert.h',['../runtime-sys_2assert_8h.html',1,'(Global Namespace)'],['../runtime-gcc_2objc_2assert_8h.html',1,'(Global Namespace)']]],
   ['autorelease',['autorelease',['../interfaceNXObject.html#a343832a14602dc015c936ff00922cead',1,'NXObject']]]
 ];

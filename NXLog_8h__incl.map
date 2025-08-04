@@ -1,11 +1,11 @@
 <map id="include/NXFoundation/NXLog.h" name="include/NXFoundation/NXLog.h">
 <area shape="rect" id="node2" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="784,95,876,121"/>
 <area shape="rect" id="node4" href="$sys_8h.html" title="System management functions. " alt="" coords="449,244,587,271"/>
-<area shape="rect" id="node3" href="$runtime-gcc_2objc_2assert_8h_source.html" title="assert.h" alt="" coords="678,169,753,196"/>
+<area shape="rect" id="node3" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="678,169,753,196"/>
 <area shape="rect" id="node21" href="$malloc_8h.html" title="Memory allocation functions for the Objective&#45;C runtime. " alt="" coords="944,244,1023,271"/>
 <area shape="rect" id="node22" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="868,169,944,196"/>
 <area shape="rect" id="node23" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="858,393,943,420"/>
-<area shape="rect" id="node5" href="$runtime-sys_2assert_8h_source.html" title="assert.h" alt="" coords="347,319,422,345"/>
+<area shape="rect" id="node5" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="347,319,422,345"/>
 <area shape="rect" id="node6" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="136,393,199,420"/>
 <area shape="rect" id="node9" href="$env_8h.html" title="Environment information. " alt="" coords="113,319,171,345"/>
 <area shape="rect" id="node10" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="447,319,517,345"/>

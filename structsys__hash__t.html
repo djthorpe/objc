@@ -62,30 +62,36 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a09351f7610737ad991ca31a77d25c3f8"><td class="memItemLeft" align="right" valign="top"><a id="a09351f7610737ad991ca31a77d25c3f8"></a>
-<a class="el" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>algorithm</b></td></tr>
+<a class="el" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hash__t.html#a09351f7610737ad991ca31a77d25c3f8">algorithm</a></td></tr>
+<tr class="memdesc:a09351f7610737ad991ca31a77d25c3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hash algorithm being used for this context. <br /></td></tr>
 <tr class="separator:a09351f7610737ad991ca31a77d25c3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6517b592a75fed186ee9dd4c3e6e2efd"><td class="memItemLeft" align="right" valign="top"><a id="a6517b592a75fed186ee9dd4c3e6e2efd"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b> [<a class="el" href="group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab">SYS_HASH_SIZE</a>]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hash__t.html#a6517b592a75fed186ee9dd4c3e6e2efd">hash</a> [<a class="el" href="group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab">SYS_HASH_SIZE</a>]</td></tr>
+<tr class="memdesc:a6517b592a75fed186ee9dd4c3e6e2efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer to hold the computed hash value (max 32 bytes for SHA-256) <br /></td></tr>
 <tr class="separator:a6517b592a75fed186ee9dd4c3e6e2efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23a4936ac2b8f5cde697d140e901bcfb"><td class="memItemLeft" align="right" valign="top"><a id="a23a4936ac2b8f5cde697d140e901bcfb"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hash__t.html#a23a4936ac2b8f5cde697d140e901bcfb">size</a></td></tr>
+<tr class="memdesc:a23a4936ac2b8f5cde697d140e901bcfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual size of the computed hash in bytes. <br /></td></tr>
 <tr class="separator:a23a4936ac2b8f5cde697d140e901bcfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f1dcdca195ec85ace54345e2d77a154"><td class="memItemLeft" ><a id="a6f1dcdca195ec85ace54345e2d77a154"></a>
 union {</td></tr>
 <tr class="memitem:a12a0cf31eaca714494180a1b33dcbbdc"><td class="memItemLeft" >
-&#160;&#160;&#160;void *&#160;&#160;&#160;<b>ptr</b></td></tr>
+&#160;&#160;&#160;void *&#160;&#160;&#160;<a class="el" href="structsys__hash__t.html#a07a4c29b46a846a79652e35a56f9b3fa">ptr</a></td></tr>
+<tr class="memdesc:a12a0cf31eaca714494180a1b33dcbbdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to external hash context (e.g., OpenSSL EVP_MD_CTX) <br /></td></tr>
 <tr class="separator:a12a0cf31eaca714494180a1b33dcbbdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81450f564d076ba2b71269a8bfd5c694"><td class="memItemLeft" >
-&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<b>ctx</b> [<a class="el" href="group__SystemHashing.html#ga17b5573319cb8e7d1a7afdeae1a657a9">SYS_HASH_CTX_SIZE</a>]</td></tr>
+&#160;&#160;&#160;uint8_t&#160;&#160;&#160;<a class="el" href="structsys__hash__t.html#a919018abdcc415556eadf75b773d280d">ctx</a> [<a class="el" href="group__SystemHashing.html#ga17b5573319cb8e7d1a7afdeae1a657a9">SYS_HASH_CTX_SIZE</a>]</td></tr>
+<tr class="memdesc:a81450f564d076ba2b71269a8bfd5c694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal context buffer for hash algorithm state. <br /></td></tr>
 <tr class="separator:a81450f564d076ba2b71269a8bfd5c694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f1dcdca195ec85ace54345e2d77a154"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><b>ctx</b></td></tr>
+<tr class="memitem:a6f1dcdca195ec85ace54345e2d77a154"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__hash__t.html#a6f1dcdca195ec85ace54345e2d77a154">ctx</a></td></tr>
+<tr class="memdesc:a6f1dcdca195ec85ace54345e2d77a154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union holding either external pointer or internal context buffer. <br /></td></tr>
 <tr class="separator:a6f1dcdca195ec85ace54345e2d77a154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Hash context structure. </p>
 <p>Contains the state and result buffer for hash operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00067">67</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00069">69</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-sys/<a class="el" href="hash_8h_source.html">hash.h</a></li>
 </ul>

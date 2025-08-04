@@ -86,8 +86,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a> { <b>sys_hash_md5</b> = 1, 
-<b>sys_hash_sha256</b>
+<tr class="memitem:ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a> { <a class="el" href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072">sys_hash_md5</a>, 
+<a class="el" href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0">sys_hash_sha256</a>
  }<tr class="memdesc:ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash algorithm identifiers.  <a href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,9 +168,17 @@ Functions</h2></td></tr>
 
 <p>Hash algorithm identifiers. </p>
 <p>Enumeration of supported cryptographic hash algorithms. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072"></a>sys_hash_md5&#160;</td><td class="fielddoc"><p>MD5 hash algorithm (128-bit output, not cryptographically secure) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0"></a>sys_hash_sha256&#160;</td><td class="fielddoc"><p>SHA-256 hash algorithm (256-bit output, cryptographically secure) </p>
+</td></tr>
+</table>
 
 <p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00056">56</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  sys_hash_md5 = 1, <span class="comment">// MD5 hash (128-bit)</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  sys_hash_sha256,  <span class="comment">// SHA-256 hash (256-bit)</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <a class="code" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>;</div><div class="ttc" id="group__SystemHashing_html_ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><div class="ttname"><a href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a></div><div class="ttdeci">sys_hash_algorithm_t</div><div class="ttdoc">Hash algorithm identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00056">hash.h:56</a></div></div>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             {</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072">sys_hash_md5</a> =</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      1, </div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0">sys_hash_sha256</a>, </div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a>;</div><div class="ttc" id="group__SystemHashing_html_ga3d01ed00e5a4f0a1c2ea0bbf5233e899"><div class="ttname"><a href="group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899">sys_hash_algorithm_t</a></div><div class="ttdeci">sys_hash_algorithm_t</div><div class="ttdoc">Hash algorithm identifiers. </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00056">hash.h:56</a></div></div>
+<div class="ttc" id="group__SystemHashing_html_gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072"><div class="ttname"><a href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072">sys_hash_md5</a></div><div class="ttdoc">MD5 hash algorithm (128-bit output, not cryptographically secure) </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00057">hash.h:57</a></div></div>
+<div class="ttc" id="group__SystemHashing_html_gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0"><div class="ttname"><a href="group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0">sys_hash_sha256</a></div><div class="ttdoc">SHA-256 hash algorithm (256-bit output, cryptographically secure) </div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00059">hash.h:59</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -72,37 +72,43 @@ Collaboration diagram for pix_display_t:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:af2aef789d8c5e2285c95699e46923616"><td class="memItemLeft" align="right" valign="top"><a id="af2aef789d8c5e2285c95699e46923616"></a>
-<a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
+<a class="el" href="structpix__frame__t.html">pix_frame_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#af2aef789d8c5e2285c95699e46923616">frame</a></td></tr>
+<tr class="memdesc:af2aef789d8c5e2285c95699e46923616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Framebuffer containing pixel data for the display. <br /></td></tr>
 <tr class="separator:af2aef789d8c5e2285c95699e46923616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fc3d29c0aa890b82cbe18f1bad5fc1"><td class="memItemLeft" align="right" valign="top"><a id="a68fc3d29c0aa890b82cbe18f1bad5fc1"></a>
-<a class="el" href="group__PixelDisplay.html#ga7597e2e96865b35c5e778d30e37b3a9f">pix_display_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>callback</b></td></tr>
+<a class="el" href="group__PixelDisplay.html#ga7597e2e96865b35c5e778d30e37b3a9f">pix_display_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#a68fc3d29c0aa890b82cbe18f1bad5fc1">callback</a></td></tr>
+<tr class="memdesc:a68fc3d29c0aa890b82cbe18f1bad5fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional callback function for frame updates. <br /></td></tr>
 <tr class="separator:a68fc3d29c0aa890b82cbe18f1bad5fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a920bf770f5d9863d13c7f2e8cfca495a"><td class="memItemLeft" align="right" valign="top"><a id="a920bf770f5d9863d13c7f2e8cfca495a"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>time_ms</b></td></tr>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#a920bf770f5d9863d13c7f2e8cfca495a">time_ms</a></td></tr>
+<tr class="memdesc:a920bf770f5d9863d13c7f2e8cfca495a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of last frame update in milliseconds. <br /></td></tr>
 <tr class="separator:a920bf770f5d9863d13c7f2e8cfca495a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82f0b7f2fd573a6daa673a9c11856cfb"><td class="memItemLeft" align="right" valign="top"><a id="a82f0b7f2fd573a6daa673a9c11856cfb"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>interval_ms</b></td></tr>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#a82f0b7f2fd573a6daa673a9c11856cfb">interval_ms</a></td></tr>
+<tr class="memdesc:a82f0b7f2fd573a6daa673a9c11856cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Target frame interval in milliseconds. <br /></td></tr>
 <tr class="separator:a82f0b7f2fd573a6daa673a9c11856cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6fbb94c2033ea4888c2a60fe4e199eb"><td class="memItemLeft" align="right" valign="top"><a id="ad6fbb94c2033ea4888c2a60fe4e199eb"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>userdata</b></td></tr>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#ad6fbb94c2033ea4888c2a60fe4e199eb">userdata</a></td></tr>
+<tr class="memdesc:ad6fbb94c2033ea4888c2a60fe4e199eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">User-defined data pointer passed to callbacks. <br /></td></tr>
 <tr class="separator:ad6fbb94c2033ea4888c2a60fe4e199eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25a4ab3c5caad352239eed512f2cddae"><td class="memItemLeft" align="right" valign="top"><a id="a25a4ab3c5caad352239eed512f2cddae"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>ctx</b> [PIX_DISPLAY_CTX_SIZE]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#a25a4ab3c5caad352239eed512f2cddae">ctx</a> [<a class="el" href="group__PixelDisplay.html#ga79692b314663e7d4b28f1a6a05f29c5e">PIX_DISPLAY_CTX_SIZE</a>]</td></tr>
+<tr class="memdesc:a25a4ab3c5caad352239eed512f2cddae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal context buffer for display-specific state. <br /></td></tr>
 <tr class="separator:a25a4ab3c5caad352239eed512f2cddae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0ad2fe6a5a5b967127b92ece179fa77"><td class="memItemLeft" align="right" valign="top"><a id="ad0ad2fe6a5a5b967127b92ece179fa77"></a>
 bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#ad0ad2fe6a5a5b967127b92ece179fa77">lock</a> )(struct <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:ad0ad2fe6a5a5b967127b92ece179fa77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the display for drawing. <br /></td></tr>
+<tr class="memdesc:ad0ad2fe6a5a5b967127b92ece179fa77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to lock display for drawing. <br /></td></tr>
 <tr class="separator:ad0ad2fe6a5a5b967127b92ece179fa77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49414fc1c96b542865869e89da5d9b52"><td class="memItemLeft" align="right" valign="top"><a id="a49414fc1c96b542865869e89da5d9b52"></a>
 bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpix__display__t.html#a49414fc1c96b542865869e89da5d9b52">unlock</a> )(struct <a class="el" href="structpix__display__t.html">pix_display_t</a> *display)</td></tr>
-<tr class="memdesc:a49414fc1c96b542865869e89da5d9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the display after drawing. <br /></td></tr>
+<tr class="memdesc:a49414fc1c96b542865869e89da5d9b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to unlock display after drawing. <br /></td></tr>
 <tr class="separator:a49414fc1c96b542865869e89da5d9b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Display context structure. </p>
 <p>Contains the state for display operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="display_8h_source.html#l00040">40</a> of file <a class="el" href="display_8h_source.html">display.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="display_8h_source.html#l00051">51</a> of file <a class="el" href="display_8h_source.html">display.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-pix/<a class="el" href="display_8h_source.html">display.h</a></li>
 </ul>

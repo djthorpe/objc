@@ -1,0 +1,15 @@
+<map id="include/runtime&#45;gcc/objc/assert.h" name="include/runtime&#45;gcc/objc/assert.h">
+<area shape="rect" id="node2" href="$sys_8h.html" title="System management functions. " alt="" coords="381,95,519,121"/>
+<area shape="rect" id="node3" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="67,169,142,196"/>
+<area shape="rect" id="node4" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="105,244,168,271"/>
+<area shape="rect" id="node7" href="$env_8h.html" title="Environment information. " alt="" coords="319,169,376,196"/>
+<area shape="rect" id="node8" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="452,169,523,196"/>
+<area shape="rect" id="node9" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="387,244,451,271"/>
+<area shape="rect" id="node11" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="527,244,592,271"/>
+<area shape="rect" id="node12" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="887,169,986,196"/>
+<area shape="rect" id="node13" href="$memory_8h.html" title="Memory management. " alt="" coords="719,244,805,271"/>
+<area shape="rect" id="node14" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="795,169,863,196"/>
+<area shape="rect" id="node16" href="$random_8h.html" title="Random number generation. " alt="" coords="599,169,683,196"/>
+<area shape="rect" id="node17" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="5,244,81,271"/>
+<area shape="rect" id="node18" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="244,244,312,271"/>
+</map>
