@@ -14,6 +14,7 @@
  * @brief Time interval type representing nanoseconds as a 64-bit signed
  * integer.
  * @ingroup Foundation
+ * @headerfile NXTimeInterval.h NXFoundation/NXFoundation.h
  *
  * NXTimeInterval stores time durations in nanoseconds using a signed
  * 64-bit integer. This provides sufficient precision for most timing
@@ -25,10 +26,7 @@
  * - Resolution: 1 nanosecond
  *
  * @warning Values exceeding the 64-bit range will overflow. Always validate
- *          duration calculations in applications requiring extended time
- * ranges.
- *
- * \headerfile NXTimeInterval.h NXFoundation/NXFoundation.h
+ * duration calculations in applications requiring extended time ranges.
  */
 typedef int64_t NXTimeInterval;
 
@@ -93,3 +91,10 @@ extern int32_t NXTimeIntervalMilliseconds(NXTimeInterval interval);
  */
 extern NXString *NXTimeIntervalDescription(NXTimeInterval interval,
                                            NXTimeInterval truncate);
+
+/**
+ * @brief Get the time interval since the application started.
+ * @ingroup Foundation
+ * @return The time interval since the application started.
+ */
+NXTimeInterval NXTimeIntervalTimestamp(void);

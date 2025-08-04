@@ -14,6 +14,7 @@ add_library(${NAME} STATIC
     ../posix/puts.c
     ../posix/random.c
     ../posix/sleep.c
+    ../posix/timestamp.c
     ../pthreads/mutex.c
     ../pthreads/cond.c
     ../pthreads/thread.c
