@@ -36,7 +36,7 @@ var searchData=
   ['pix_5fyellow',['pix_yellow',['../pix_8h.html#ad31cb873da887eccf8e23db275c226e6',1,'pix.h']]],
   ['pix_5fzero_5fpoint',['pix_zero_point',['../pix_8h.html#ab3f8722f27f7b94222b12da79009f44d',1,'pix.h']]],
   ['pix_5fzero_5fsize',['pix_zero_size',['../pix_8h.html#ac308334fd13d5d66c07dd39d6b8e0e05',1,'pix.h']]],
-  ['pixel',['Pixel',['../group__Pixel.html',1,'']]],
+  ['pixels',['Pixels',['../group__Pixel.html',1,'']]],
   ['pixel_20displays',['Pixel Displays',['../group__PixelDisplay.html',1,'']]],
   ['pixel_20frames',['Pixel Frames',['../group__PixelFrame.html',1,'']]],
   ['printf_2eh',['printf.h',['../printf_8h.html',1,'']]],

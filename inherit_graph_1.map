@@ -14,7 +14,7 @@
 <area shape="rect" id="node13" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="265,259,329,285"/>
 <area shape="rect" id="node14" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="499,309,582,336"/>
 <area shape="rect" id="node21" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="503,259,578,285"/>
-<area shape="rect" id="node15" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="705,512,799,539"/>
+<area shape="rect" id="node15" href="$interfaceApplication.html" title="Application" alt="" coords="705,512,799,539"/>
 <area shape="rect" id="node16" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="725,563,779,589"/>
 <area shape="rect" id="node17" href="$interfaceGPIOEvent.html" title="The GPIO Event class. " alt="" coords="707,613,797,640"/>
 <area shape="rect" id="node18" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="679,360,825,387"/>

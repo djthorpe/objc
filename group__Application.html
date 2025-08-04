@@ -69,9 +69,6 @@ Collaboration diagram for Application Framework:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceApplication.html">Application</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main application class that coordinates application-wide functionality.  <a href="interfaceApplication.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceGPIO.html">GPIO</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> class.  <a href="interfaceGPIO.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +134,7 @@ Functions</h2></td></tr>
 <p>The function handles:</p><ul>
 <li>Runtime initialization and configuration</li>
 <li>Command-line argument processing</li>
-<li><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> instance creation and setup</li>
+<li><a class="el" href="interfaceApplication.html">Application</a> instance creation and setup</li>
 <li>Main event loop execution</li>
 <li>Cleanup and resource deallocation on exit</li>
 </ul>
@@ -147,7 +144,8 @@ Functions</h2></td></tr>
 Command-line arguments are processed according to application configuration. </dd>
 <dd>
 The return value should be used as the program's exit status.</dd></dl>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv, MyAppDelegateClass);</div><div class="line">}</div></div><!-- fragment --> 
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv, MyAppDelegateClass);</div><div class="line">}</div></div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2NXApplication_2gpio_2main_8m-example.html#a3">examples/NXApplication/gpio/main.m</a>, and <a class="el" href="examples_2NXApplication_2helloworld_2main_8m-example.html#a2">examples/NXApplication/helloworld/main.m</a>.</dd>
+</dl>
 </div>
 </div>
 </div><!-- contents -->
