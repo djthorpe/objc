@@ -4,7 +4,6 @@
  */
 #pragma once
 #include <NXFoundation/NXFoundation.h>
-#include <runtime-sys/sys.h>
 
 /**
  * @brief The main application class that coordinates application-wide
@@ -22,7 +21,6 @@
  */
 @interface Application : NXObject {
 @private
-  sys_event_queue_t _queue;          ///< Event queue
   id<ApplicationDelegate> _delegate; ///< The application delegate
   BOOL _run;      ///< Flag to indicate if the application is running
   NXArray *_args; ///< Command-line arguments passed to the application

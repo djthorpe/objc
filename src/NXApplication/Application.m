@@ -3,14 +3,33 @@
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
-// FORWARD DECLARATIONS
+// GLOBALS
+
+// Define the shared application instance
+static id sharedApplication = nil;
+
+// Define the shared queue for events
+static sys_event_queue_t _app_queue = {0};
+
+///////////////////////////////////////////////////////////////////////////////
+// CALLBACKS
 
 static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
                                void *userdata) {
-  sys_event_queue_t *queue = (sys_event_queue_t *)userdata;
+  (void)userdata; // Unused parameter - NXApplication
+
+  // Get the queue
+  sys_event_queue_t *queue = &_app_queue;
   objc_assert(queue);
 
+  // If the queue is not valid, return early
+  if (!sys_event_queue_valid(queue)) {
+    return;
+  }
+
   // Create a sys_event_t for the GPIO event
+  // Sender from pin
+  // We also want to include the event type (rising|falling) in the payload
   const char *payload = sys_malloc(sizeof(uint8_t) * 64);
   if (payload != NULL) {
     sys_sprintf((char *)payload, 64, "GPIO %d: %d", (int)pin, (int)event);
@@ -20,11 +39,30 @@ static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// GLOBALS
+/**
+ * @brief Callback function for application timer events.
+ */
+void _app_timer_callback(sys_timer_t *timer) {
+  objc_assert(timer);
 
-// Define the shared application instance
-static id sharedApplication = nil;
+  sys_event_queue_t *queue = &_app_queue;
+  objc_assert(queue);
+
+  // If the queue is not valid, return early
+  if (!sys_event_queue_valid(queue)) {
+    return;
+  }
+
+  // Create a sys_event_t for the Timer event
+  // sender=timer->userdata (NXTimer)
+  const char *payload = sys_malloc(sizeof(uint8_t) * 64);
+  if (payload != NULL) {
+    sys_sprintf((char *)payload, 64, "Timer %p", (void *)timer->userdata);
+    if (sys_event_queue_try_push(queue, (void *)payload) == false) {
+      sys_free((void *)payload); // Free the payload if it cannot be pushed
+    }
+  }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -38,14 +76,16 @@ static id sharedApplication = nil;
   }
 
   // Create an event queue for the application
-  _queue = sys_event_queue_init(capacity);
+  objc_assert(sys_event_queue_valid(&_app_queue) == false);
+  _app_queue = sys_event_queue_init(capacity);
 
   // Initialize properties
   _delegate = nil;
   _run = NO;
 
-  // Set the GPIO callback for the application
-  hw_gpio_set_callback(_app_gpio_callback, &_queue);
+  // Set the GPIO callback for the application, with the application instance as
+  // userdata
+  hw_gpio_set_callback(_app_gpio_callback, self);
 
   // Return success
   return self;
@@ -78,7 +118,7 @@ static id sharedApplication = nil;
   [_args release];
 
   // Finalize the event queue
-  sys_event_queue_finalize(&_queue);
+  sys_event_queue_finalize(&_app_queue);
 
   // Clear the properties
   _delegate = nil;
@@ -140,8 +180,13 @@ static id sharedApplication = nil;
       _run = YES; // Set the run flag to true
     }
 
+    // TODO: Drain the autorelease pool occasionally
+    // In our semantics, we likely have one pool which is used across threads?
+    // or do we have one pool per thread?
+
     // Get an event from the queue
-    sys_event_t event = sys_event_queue_pop(&_queue);
+    // The queue might be invalid, as it's been shutdown
+    sys_event_t event = sys_event_queue_pop(&_app_queue);
     if (event == NULL) {
       // No more events to process
       break;
@@ -149,9 +194,10 @@ static id sharedApplication = nil;
 
     // Simulate processing the event
     sys_printf("core %d: Processing event: %s (queue size=%d)\n",
-               sys_thread_core(), (char *)event, sys_event_queue_size(&_queue));
+               sys_thread_core(), (char *)event,
+               sys_event_queue_size(&_app_queue));
 
-    // Free the allocated string
+    // Free the allocated event - release it
     sys_free(event);
   }
 
@@ -163,7 +209,11 @@ static id sharedApplication = nil;
 }
 
 - (void)stop {
-  sys_event_queue_shutdown(&_queue); // Shutdown the event queue
+  objc_assert(sys_event_queue_valid(&_app_queue));
+
+  // Shutdown the event queue
+  // The run loop will exit on the next iteration
+  sys_event_queue_shutdown(&_app_queue);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
