@@ -92,3 +92,10 @@ NXString *NXTimeIntervalDescription(NXTimeInterval interval,
   [desc trimWhitespace];
   return desc;
 }
+
+/**
+ * @brief Get the time interval since the application started.
+ */
+NXTimeInterval NXTimeIntervalTimestamp(void) {
+  return sys_date_get_timestamp() * Millisecond;
+}

@@ -190,6 +190,15 @@ bool sys_date_set_date_utc(sys_date_t *date, uint16_t year, uint8_t month,
  */
 int64_t sys_date_compare_ns(const sys_date_t *start, const sys_date_t *end);
 
+/**
+ * @brief Gets the number of milliseconds since the process
+ * started.
+ * @ingroup SystemDate
+ * @return The number of milliseconds since the process started, or zero on
+ * error.
+ */
+uint64_t sys_date_get_timestamp();
+
 #ifdef __cplusplus
 }
 #endif

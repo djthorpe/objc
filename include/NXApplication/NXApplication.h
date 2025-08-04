@@ -60,5 +60,6 @@ int NXApplicationMain(int argc, char *argv[], Class delegate);
 // Class Definitions
 #include "Application.h"
 #include "GPIO.h"
+#include "NXTimer.h"
 
 #endif // __OBJC__
