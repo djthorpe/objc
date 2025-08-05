@@ -195,7 +195,7 @@ void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config);
  * This function attaches the specified GPIO pin to the PWM channel,
  * starts the PWM output, sets the duty cycle for the specified PWM channel.
  *
- * If the duty_percent is less than or equal to  0, the PWM output will always
+ * If the duty_percent is less than or equal to 0, the PWM output will always
  * be low. If the duty_percent is 100 or greater, the PWM output will always be
  * high. If the duty_percent is between 0 and 100, the PWM output will toggle
  * between high and low at the specified frequency, with the duty cycle
