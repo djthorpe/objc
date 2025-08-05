@@ -230,8 +230,8 @@ bool hw_pwm_start(hw_pwm_t *pwm, uint8_t gpio, float duty_percent) {
   } else if (duty_percent >= 100.0f) {
     level = pwm->wrap; // Set to HIGH
   } else {
-    uint32_t level_calc = ((float)(pwm->wrap + 1) * duty_percent) / 100.0f;
-    level = (uint16_t)level_calc;
+    uint64_t level_calc = (uint64_t)(pwm->wrap + 1) * (uint64_t)(duty_percent * 10000.0f);
+    level = (uint16_t)(level_calc / (100 * 10000));
     sys_assert(level <= pwm->wrap); // Ensure level is within bounds
   }
 
