@@ -21,86 +21,14 @@ void *_hw_pwm_userdata = NULL; ///< User data for the PWM callback
 // LIFECYCLE
 
 /**
- * @brief Initialize a PWM slice from a GPIO pin.
+ * @brief Initialize a PWM unit.
  */
-hw_pwm_t hw_pwm_init(uint8_t gpio_x, uint8_t gpio_y, hw_pwm_config_t *config) {
-  sys_assert(gpio_x < hw_gpio_count());
+hw_pwm_t hw_pwm_init(uint8_t unit, hw_pwm_config_t *config) {
+  sys_assert(unit < hw_pwm_count());
 
   // Set up invalid PWM structure
   hw_pwm_t pwm = {0};
-  pwm.slice = 0xFF;
-
-  uint8_t slice = pwm_gpio_to_slice_num(gpio_x);
-  if (gpio_y != 0 && gpio_y != gpio_x) {
-    sys_assert(gpio_y < hw_gpio_count());
-    if (pwm_gpio_to_slice_num(gpio_y) != slice) {
-      return pwm; // Invalid GPIO pins for PWM
-    }
-  }
-
-  // Set GPIO-X
-  switch (pwm_gpio_to_channel(gpio_x)) {
-  case PWM_CHAN_A:
-    pwm.gpio_a = hw_gpio_init(gpio_x, HW_GPIO_PWM);
-    if (!hw_gpio_valid(&pwm.gpio_a)) {
-      return pwm; // Failed to initialize GPIO
-    }
-    break;
-  case PWM_CHAN_B:
-    pwm.gpio_b = hw_gpio_init(gpio_x, HW_GPIO_PWM);
-    if (!hw_gpio_valid(&pwm.gpio_b)) {
-      return pwm; // Failed to initialize GPIO
-    }
-    break;
-  default:
-    return pwm; // Invalid channel for PWM
-  }
-
-  // Set GPIO-Y if provided and different from gpio_x
-  if (gpio_y != 0 && gpio_y != gpio_x) {
-    uint8_t gpio_y_channel = pwm_gpio_to_channel(gpio_y);
-    uint8_t gpio_x_channel = pwm_gpio_to_channel(gpio_x);
-
-    // Prevent overwriting existing channel assignment
-    if ((gpio_y_channel == PWM_CHAN_A && gpio_x_channel == PWM_CHAN_A) ||
-        (gpio_y_channel == PWM_CHAN_B && gpio_x_channel == PWM_CHAN_B)) {
-      // GPIO pins conflict - both map to same channel
-      hw_gpio_finalize(&pwm.gpio_a);
-      hw_gpio_finalize(&pwm.gpio_b);
-      return pwm;
-    }
-
-    switch (gpio_y_channel) {
-    case PWM_CHAN_A:
-      pwm.gpio_a = hw_gpio_init(gpio_y, HW_GPIO_PWM);
-      if (!hw_gpio_valid(&pwm.gpio_a)) {
-        // Cleanup already initialized GPIO
-        if (gpio_x_channel == PWM_CHAN_B) {
-          hw_gpio_finalize(&pwm.gpio_b);
-        }
-        return pwm; // Failed to initialize GPIO
-      }
-      break;
-    case PWM_CHAN_B:
-      pwm.gpio_b = hw_gpio_init(gpio_y, HW_GPIO_PWM);
-      if (!hw_gpio_valid(&pwm.gpio_b)) {
-        // Cleanup already initialized GPIO
-        if (gpio_x_channel == PWM_CHAN_A) {
-          hw_gpio_finalize(&pwm.gpio_a);
-        }
-        return pwm; // Failed to initialize GPIO
-      }
-      break;
-    default:
-      // Cleanup already initialized GPIO
-      if (gpio_x_channel == PWM_CHAN_A) {
-        hw_gpio_finalize(&pwm.gpio_a);
-      } else {
-        hw_gpio_finalize(&pwm.gpio_b);
-      }
-      return pwm; // Invalid channel for PWM
-    }
-  }
+  pwm.unit = 0xFF;
 
   pwm_config pico_config = pwm_get_default_config();
   if (config) {
@@ -110,70 +38,104 @@ hw_pwm_t hw_pwm_init(uint8_t gpio_x, uint8_t gpio_y, hw_pwm_config_t *config) {
     pwm_config_set_clkdiv_mode(&pico_config, PWM_DIV_FREE_RUNNING);
     pwm_config_set_phase_correct(&pico_config, false);
     pwm_config_set_output_polarity(&pico_config, false, false);
-    pwm.wrap = config->wrap;
-  } else {
-    // Use default wrap value
-    pwm.wrap = 65535; // Default wrap value
   }
 
-  // Now initialize the slice
-  pwm_init(slice, &pico_config, false);
-  pwm.slice = slice;
+  // Now initialize the unit - don't start it yet
+  pwm_init(unit, &pico_config, false);
+  pwm.unit = unit;
+  pwm.wrap = config ? config->wrap : 0xFFFF;     // Default wrap value
+  pwm.divider = config ? config->divider : 1.0f; // Default divider if not set
   pwm.enabled = false;
 
-  // Return the initialized PWM structure
   return pwm;
 }
 
 /**
- * @brief Finalize and release a PWM slice.
+ * @brief Finalize and release a PWM unit.
  */
 void hw_pwm_finalize(hw_pwm_t *pwm) {
-  sys_assert(pwm && hw_pwm_valid(pwm));
+  sys_assert(pwm);
+  if (!hw_pwm_valid(pwm)) {
+    return;
+  }
 
-  // Disable the PWM slice
+  // Remove the callback if it was set
+  if (_hw_pwm_callback_func) {
+    hw_pwm_set_irq_enabled(pwm, false);
+  }
+
+  // Disable the PWM output on the GPIO pins
+  uint8_t gpio;
+  for (gpio = 0; gpio < hw_gpio_count(); gpio++) {
+    if (hw_pwm_gpio_unit(gpio) == pwm->unit) {
+      if (gpio_get_function(gpio) == GPIO_FUNC_PWM) {
+        gpio_deinit(gpio);
+      }
+    }
+  }
+
+  // Disable the PWM unit
   hw_pwm_stop(pwm);
 
-  // TODO: Disable interrupts for this slice
-
-  // Reset GPIO pins if assigned
-  if (hw_gpio_valid(&pwm->gpio_a)) {
-    hw_gpio_finalize(&pwm->gpio_a);
-  }
-  if (hw_gpio_valid(&pwm->gpio_b)) {
-    hw_gpio_finalize(&pwm->gpio_b);
-  }
-
-  // Reset the PWM structure
+  // Mark as invalid
   sys_memset(pwm, 0, sizeof(hw_pwm_t));
+  pwm->unit = 0xFF;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// PROPERTIES
+// CONFIGURATION
 
 /**
- * @brief Get PWM configuration for a frequency
+ * @brief Get the number of PWM units.
+ */
+uint8_t hw_pwm_count() {
+  return NUM_PWM_SLICES; // Number of PWM slices available
+}
+
+/**
+ * @brief Get the PWM unit for a GPIO pin
  * @ingroup PWM
- * @return Default PWM configuration structure.
+ * @param gpio The GPIO pin number.
+ * @return The PWM unit number associated with the GPIO pin
+ *
+ * This function retrieves the PWM unit number associated with a GPIO pin.
+ * The GPIO pin must be less than the total number of GPIO pins available.
+ */
+uint8_t hw_pwm_gpio_unit(uint8_t gpio) {
+  sys_assert(gpio < hw_gpio_count());
+
+  int unit = pwm_gpio_to_slice_num(gpio);
+  sys_assert(unit >= 0 && unit < hw_pwm_count());
+  return unit;
+}
+
+/**
+ * @brief Get PWM configuration for a specific frequency.
  */
 hw_pwm_config_t hw_pwm_get_config(float freq) {
-  sys_assert(freq > 0.0f && freq <= (float)clock_get_hz(clk_sys));
+  sys_assert(freq > 0.0f);
 
   // Get system clock frequency
   uint32_t sys_clk = clock_get_hz(clk_sys);
   sys_assert(sys_clk > 0);
 
+  // If frequency is too high, clamp it to the maximum
+  if (freq > (float)sys_clk / 2.0f) {
+    freq = (float)sys_clk / 2.0f;
+  }
+
   // Calculate target counts using floating point for better precision
-  double target_counts_f = (double)sys_clk / (double)freq;
+  float target_counts_f = (float)sys_clk / freq;
   uint32_t target_counts =
       (uint32_t)(target_counts_f + 0.5); // Round to nearest
   if (target_counts == 0) {
     target_counts = 1;
   }
 
-  // Find best divider (1.0 to 256.0) and wrap (1 to 65536)
+  // Find best divider (1.0 to 256.0) and wrap (0 to 65535)
+  // Note: wrap value N means counter counts 0 to N (N+1 total counts)
   float best_divider = 1.0f;
-  uint32_t best_wrap = target_counts;
+  uint32_t best_wrap = target_counts - 1; // Convert from counts to wrap value
 
   // If target_counts > 65536, we need to use a divider
   if (target_counts > 65536) {
@@ -182,29 +144,45 @@ hw_pwm_config_t hw_pwm_get_config(float freq) {
     if (best_divider > 256.0f) {
       best_divider = 256.0f; // Clamp to max
     }
-    best_wrap = (uint32_t)((double)target_counts / best_divider +
-                           0.5); // Round to nearest
-    if (best_wrap == 0)
-      best_wrap = 1; // Ensure non-zero
-    if (best_wrap > 65536)
-      best_wrap = 65536; // Clamp to max
+    uint32_t adjusted_counts =
+        (uint32_t)((float)target_counts / best_divider + 0.5f);
+    best_wrap =
+        adjusted_counts > 0 ? adjusted_counts - 1 : 0; // Convert to wrap value
   }
 
-  hw_pwm_config_t config = {.wrap = (best_wrap > 0) ? (best_wrap - 1)
-                                                    : 0, // TOP value is wrap-1
-                            .divider = best_divider};
+  // Clamp wrap to maximum value (0-65535)
+  if (best_wrap > 0xFFFF) {
+    best_wrap = 0xFFFF;
+  }
+
+  // Return the best configuration
+  hw_pwm_config_t config = {.wrap = best_wrap, .divider = best_divider};
   return config;
 }
 
 /**
- * @brief Apply configuration to a PWM slice.
+ * @brief Returns the frequency configured for a PWM unit.
  */
-void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config,
-                       bool start) {
-  sys_assert(pwm && hw_pwm_valid(pwm) && config);
+float hw_pwm_get_freq(hw_pwm_t *pwm) {
+  sys_assert(pwm && hw_pwm_valid(pwm));
+
+  // Get the system clock frequency
+  uint32_t sys_clk = clock_get_hz(clk_sys);
+  sys_assert(sys_clk > 0);
+
+  // Calculate frequency based on wrap and divider
+  return (float)sys_clk / ((float)(pwm->wrap + 1) * pwm->divider);
+}
+
+/**
+ * @brief Apply configuration to a PWM unit.
+ */
+void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config) {
+  sys_assert(pwm && hw_pwm_valid(pwm));
+  sys_assert(config);
 
   // Validate configuration parameters
-  sys_assert(config->wrap <= 65535); // 16-bit wrap value limit
+  sys_assert(config->wrap <= 0xFFFF); // 16-bit wrap value limit
   sys_assert(config->divider >= 1.0f &&
              config->divider <= 256.0f); // Valid divider range
 
@@ -213,33 +191,65 @@ void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config,
     hw_pwm_stop(pwm);
   }
 
-  pwm_config pico_config = pwm_get_default_config();
   // Apply custom configuration
+  pwm_config pico_config = pwm_get_default_config();
   pwm_config_set_wrap(&pico_config, config->wrap);
   pwm_config_set_clkdiv(&pico_config, config->divider);
   pwm_config_set_clkdiv_mode(&pico_config, PWM_DIV_FREE_RUNNING);
   pwm_config_set_phase_correct(&pico_config, false);
   pwm_config_set_output_polarity(&pico_config, false, false);
+
+  // Update the PWM structure
+  pwm->divider = config->divider;
   pwm->wrap = config->wrap;
 
-  // Apply the configuration
-  pwm_init(pwm->slice, &pico_config, start);
-  pwm->enabled = start;
+  // Apply the configuration, restarting the PWM if it was previously enabled
+  pwm_init(pwm->unit, &pico_config, pwm->enabled);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // CONTROL
 
 /**
- * @brief Start PWM output.
+ * @brief Start PWM output on a specific GPIO pin.
  */
-void hw_pwm_start(hw_pwm_t *pwm) {
+bool hw_pwm_start(hw_pwm_t *pwm, uint8_t gpio, float duty_percent) {
   sys_assert(pwm && hw_pwm_valid(pwm));
+  sys_assert(gpio < hw_gpio_count());
 
-  sys_printf("Starting PWM slice %d\n", pwm->slice);
+  // Check GPIO is valid for this PWM unit
+  if (pwm_gpio_to_slice_num(gpio) != pwm->unit) {
+    return false;
+  }
 
-  pwm_set_enabled(pwm->slice, true);
+  // Calculate the level based on the wrap value using 32-bit arithmetic to
+  // avoid overflow
+  uint16_t level;
+  if (duty_percent <= 0.0f) {
+    level = 0; // Set to LOW
+  } else if (duty_percent >= 100.0f) {
+    level = pwm->wrap; // Set to HIGH
+  } else {
+    uint64_t level_calc = (uint64_t)(pwm->wrap + 1) * (uint64_t)(duty_percent * 10000.0f);
+    level = (uint16_t)(level_calc / (100 * 10000));
+    sys_assert(level <= pwm->wrap); // Ensure level is within bounds
+  }
+
+  // Set the level for the GPIO
+  pwm_set_chan_level(pwm->unit, pwm_gpio_to_channel(gpio), level);
+
+  // Set the GPIO function to PWM if not already set
+  if (gpio_get_function(gpio) != GPIO_FUNC_PWM) {
+    gpio_init(gpio);
+    gpio_set_function(gpio, GPIO_FUNC_PWM);
+  }
+
+  // Enable the PWM output on the specified GPIO pin
+  pwm_set_enabled(pwm->unit, true);
   pwm->enabled = true;
+
+  // Return success
+  return true;
 }
 
 /**
@@ -247,46 +257,15 @@ void hw_pwm_start(hw_pwm_t *pwm) {
  */
 void hw_pwm_stop(hw_pwm_t *pwm) {
   sys_assert(pwm && hw_pwm_valid(pwm));
-  pwm_set_enabled(pwm->slice, false);
+  pwm_set_enabled(pwm->unit, false);
   pwm->enabled = false;
 }
 
-/**
- * @brief Set PWM duty cycle
- * @ingroup PWM
- * @param pwm Pointer to the PWM structure.
- * @param ch Channel to configure (0 for A, 1 for B)
- * @param duty_percent Duty cycle as a percentage (0 to 100).
- */
-void hw_pwm_set_duty(hw_pwm_t *pwm, uint8_t ch, uint8_t duty_percent) {
-  sys_assert(pwm && hw_pwm_valid(pwm));
-  sys_assert(duty_percent <= 100);
-  sys_assert(ch == 0 || ch == 1);
-
-  // Calculate the level based on the wrap value using 32-bit arithmetic to
-  // avoid overflow
-  uint32_t level_calc = ((uint32_t)(pwm->wrap + 1) * duty_percent) / 100;
-  uint16_t level = (uint16_t)level_calc;
-
-  if (ch == 0) {
-    pwm_set_chan_level(pwm->slice, PWM_CHAN_A, level);
-  } else {
-    pwm_set_chan_level(pwm->slice, PWM_CHAN_B, level);
-  }
-}
+///////////////////////////////////////////////////////////////////////////////
+// INTERRUPT HANDLING
 
 /**
  * @brief Set the PWM interrupt callback handler.
- * @ingroup PWM
- * @param callback Pointer to the callback function to handle PWM interrupts,
- *                 or NULL to disable interrupt handling.
- * @param userdata User-defined data pointer to pass to the callback.
- *
- * This function registers a global callback handler that will be invoked
- * whenever a PWM wrap interrupt occurs on any slice that has been configured
- * for interrupt detection. Only one callback can be active at a time.
- *
- * @see hw_pwm_callback_t for callback function signature requirements.
  */
 void hw_pwm_set_callback(hw_pwm_callback_t callback, void *userdata) {
   _hw_pwm_callback_func = callback;
@@ -304,17 +283,10 @@ void hw_pwm_set_callback(hw_pwm_callback_t callback, void *userdata) {
 
 /**
  * @brief Enable or disable PWM wrap interrupt for a slice.
- * @ingroup PWM
- * @param pwm Pointer to the PWM structure.
- * @param enabled True to enable interrupt, false to disable.
- *
- * This function enables or disables the wrap interrupt for the specified
- * PWM slice. The interrupt fires when the counter reaches the wrap value.
- * A callback must be set using hw_pwm_set_callback() to handle interrupts.
  */
 void hw_pwm_set_irq_enabled(hw_pwm_t *pwm, bool enabled) {
   sys_assert(pwm && hw_pwm_valid(pwm));
-  pwm_set_irq_enabled(pwm->slice, enabled);
+  pwm_set_irq_enabled(pwm->unit, enabled);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

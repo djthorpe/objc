@@ -119,7 +119,7 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] clang compatibility
 - [X] runtime-hw SPI support
 - [X] runtime-hw watchdog support
-- [ ] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices
+- [X] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices
 - [ ] runtime-hw LED support
 - [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
 - [ ] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery

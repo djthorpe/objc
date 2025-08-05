@@ -5,12 +5,31 @@
  * @ingroup Hardware
  *
  * Pulse Width Modulation (PWM) interface for hardware platforms.
- * This module provides functions to initialize PWM channels, configure
- * frequency and duty cycle, and control PWM output.
+ * This module provides functions to initialize PWM units,
+ * configure frequency and duty cycle, and control PWM output.
  *
- * The PWM implementation supports multiple slices, each with two channels (A
- * and B). On the Raspberry Pi Pico, there are 8 PWM slices (16 channels total)
- * on RP2040 and 12 PWM slices (24 channels total) on RP2350.
+ * The PWM implementation supports multiple units (slices), each with one or
+ * more GPIO outputs. On the Raspberry Pi Pico, there are 8 PWM units on
+ * the RP2040 and 12 PWM units on the RP2350.
+ *
+ * Interrupts can be configured to trigger on PWM wrap events, allowing
+ * for precise timing and control in applications such as motor control,
+ * LED dimming, and audio generation.
+ *
+ * There is one global PWM callback, which is called when a PWM wrap
+ * interrupt occurs on any unit. The callback is executed in interrupt context,
+ * so it should be kept short and avoid blocking operations.
+ *
+ * The frequency of the PWM output is platform-dependent, but on the Pico
+ * this can range from approximately 8 Hz to 60 MHz. The value that is set
+ * in the PWM configuration is not necessarily the exact frequency,
+ * but rather the closest achievable frequency based on the hardware
+ * capabilities.
+ *
+ * Similarly the duty cycle (the ratio of HIGH vs LOW for each PWM period)
+ * is set as a percentage (0-100) of the PWM period.
+ * The actual duty cycle may not be exact due to hardware limitations,
+ * but it will be as close as possible to the requested value.
  */
 #pragma once
 #include <stdbool.h>
@@ -30,73 +49,89 @@ typedef struct {
 } hw_pwm_config_t;
 
 /**
- * @brief PWM slice structure representing a PWM instance.
+ * @brief PWM structure representing a PWM instance.
  * @ingroup PWM
  * @headerfile pwm.h runtime-hw/hw.h
  */
 typedef struct hw_pwm_t {
-  uint8_t slice;    ///< PWM slice number
-  hw_gpio_t gpio_a; ///< GPIO Channel A
-  hw_gpio_t gpio_b; ///< GPIO Channel B
-  uint32_t wrap;    ///< Current wrap value for duty cycle calculations
-  bool enabled;     ///< PWM slice enabled state
+  uint8_t unit;  ///< PWM unit number
+  uint32_t wrap; ///< Current wrap value for duty cycle calculations
+  float divider; ///< Clock divider
+  bool enabled;  ///< PWM unit enabled state
 } hw_pwm_t;
 
 /**
  * @brief PWM interrupt callback function pointer.
  * @ingroup PWM
- * @param slice The PWM slice number that triggered the interrupt.
+ * @param unit The PWM unit that triggered the interrupt.
  * @param userdata User-defined data pointer passed when setting the callback.
  *
- * This callback function is called when a PWM wrap interrupt occurs on a slice
+ * This callback function is called when a PWM wrap interrupt occurs on a unit
  * that has been configured for interrupt detection. The callback is executed
  * in interrupt context, so it should be kept short and avoid blocking
  * operations.
  *
  * @see hw_pwm_set_callback() for setting up the callback handler.
  */
-typedef void (*hw_pwm_callback_t)(uint8_t slice, void *userdata);
+typedef void (*hw_pwm_callback_t)(uint8_t unit, void *userdata);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
- * @brief Initialize PWM for one or two GPIO pins.
+ * @brief Initialize a PWM unit.
  * @ingroup PWM
- * @param gpio_x The first GPIO pin number to configure for PWM output.
- * @param gpio_y The second GPIO pin number to configure for PWM output. If
- * zero, only the first pin will be used, which could be channel A or B
+ * @param unit The PWM unit number to initialize.
  * @param config Optional pointer to a configuration structure. If NULL, default
  * configuration will be used.
- * @return A PWM structure representing the initialized slice.
+ * @return A PWM structure representing the initialized unit.
  *
- * This function determines which PWM slice and channel(s) the GPIO pin belongs
- * to, initializes the slice with default settings, and configures the GPIO pin
- * for PWM output. The PWM slice is not started automatically.
+ * This function initializes the PWM unit and channel(s) the GPIO pin belongs
+ * to and initializes the unit with default settings. The PWM unit is not
+ * started and is set to the disabled state.
  */
-hw_pwm_t hw_pwm_init(uint8_t gpio_x, uint8_t gpio_y, hw_pwm_config_t *config);
+hw_pwm_t hw_pwm_init(uint8_t unit, hw_pwm_config_t *config);
 
 /**
- * @brief Validate the PWM slice.
+ * @brief Get the number of PWM units.
+ * @ingroup PWM
+ * @return Number of PWM units available.
+ *
+ * This function returns the total number of PWM units that can be used. It
+ * will return zero if PWM is not supported on the platform.
+ */
+uint8_t hw_pwm_count();
+
+/**
+ * @brief Validate the PWM unit.
  * @ingroup PWM
  * @param pwm Pointer to the PWM structure.
- * @return True if the PWM slice is valid, false otherwise.
+ * @return True if the PWM unit is valid, false otherwise.
  *
  * The result of hw_pwm_init can return an empty PWM structure if the
- * initialization fails. This function checks if the PWM slice is valid.
+ * initialization fails. This function checks if the PWM unit is valid.
  */
 static inline bool hw_pwm_valid(hw_pwm_t *pwm) {
-  return pwm && pwm->slice != 0xFF;
+  if (pwm == NULL) {
+    return false;
+  }
+  if (pwm->unit == 0xFF) {
+    return false;
+  }
+  if (pwm->unit >= hw_pwm_count()) {
+    return false;
+  }
+  return true;
 }
 
 /**
- * @brief Finalize and release a PWM slice.
+ * @brief Finalize and release a PWM unit.
  * @ingroup PWM
  * @param pwm Pointer to the PWM structure to finalize.
  *
- * This function disables the PWM slice, resets its configuration,
+ * This function disables the PWM unit, resets its configuration,
  * and releases any associated GPIO pins. After calling this function,
- * the PWM slice should not be used until re-initialized.
+ * the PWM unit should not be used until re-initialized.
  */
 void hw_pwm_finalize(hw_pwm_t *pwm);
 
@@ -104,59 +139,84 @@ void hw_pwm_finalize(hw_pwm_t *pwm);
 // CONFIGURATION
 
 /**
+ * @brief Get the PWM unit for a GPIO pin
+ * @ingroup PWM
+ * @param gpio The GPIO pin number.
+ * @return The PWM unit number associated with the GPIO pin
+ *
+ * This function retrieves the PWM unit number associated with a GPIO pin.
+ * The GPIO pin must be less than the total number of GPIO pins available.
+ */
+uint8_t hw_pwm_gpio_unit(uint8_t gpio);
+
+/**
  * @brief Get PWM configuration.
  * @ingroup PWM
  * @param freq Desired frequency in Hz.
- * @return Default PWM configuration structure.
+ * @return Default PWM configuration structure, with the frequency set to the
+ * specified value.
  */
 hw_pwm_config_t hw_pwm_get_config(float freq);
 
 /**
- * @brief Apply configuration to a PWM slice.
+ * @brief Returns the frequency configured for a PWM unit.
+ * @ingroup PWM
+ * @param pwm Pointer to the PWM structure.
+ * @return The frequency configured for the PWM unit, or 0 if not valid.
+ *
+ * This function retrieves the frequency value from the PWM configuration.
+ */
+float hw_pwm_get_freq(hw_pwm_t *pwm);
+
+/**
+ * @brief Apply configuration to a PWM unit.
  * @ingroup PWM
  * @param pwm Pointer to the PWM structure.
  * @param config Pointer to the configuration to apply.
- * @param start If true, the PWM will be started after configuration.
  *
- * This function applies the specified configuration to the PWM slice.
- * The PWM slice will be stopped before configuration and optionally
- * restarted if the start parameter is true.
+ * This function applies the specified configuration to the PWM unit.
+ * If the PWM unit is currently enabled, it will be stopped before applying
+ * the new configuration, and then restarted.
  */
-void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config,
-                       bool start);
+void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config);
 
 ///////////////////////////////////////////////////////////////////////////////
 // CONTROL
 
 /**
- * @brief Start PWM output.
+ * @brief Start PWM output on a specific GPIO pin.
  * @ingroup PWM
  * @param pwm Pointer to the PWM structure.
+ * @param gpio GPIO pin number to attach.
+ * @param duty_percent Duty cycle as a percentage, between 0 and 100.
+ * @return True if the PWM was started successfully, false if the GPIO pin is
+ * invalid.
  *
- * This function enables the PWM slice to start generating output.
- * The PWM will begin counting from its current counter value.
+ * This function attaches the specified GPIO pin to the PWM channel,
+ * starts the PWM output, sets the duty cycle for the specified PWM channel.
+ *
+ * If the duty_percent is less than or equal to 0, the PWM output will always
+ * be low. If the duty_percent is 100 or greater, the PWM output will always be
+ * high. If the duty_percent is between 0 and 100, the PWM output will toggle
+ * between high and low at the specified frequency, with the duty cycle
+ * determining the proportion of time the output is high.
  */
-void hw_pwm_start(hw_pwm_t *pwm);
+bool hw_pwm_start(hw_pwm_t *pwm, uint8_t gpio, float duty_percent);
 
 /**
  * @brief Stop PWM output.
  * @ingroup PWM
  * @param pwm Pointer to the PWM structure.
  *
- * This function disables the PWM slice, stopping output generation.
+ * This function disables the PWM unit, stopping output generation.
  * The counter value is preserved and will resume from this point
  * when the PWM is restarted.
+ *
+ * The IRQ state is not affected by this function, so if the PWM was
+ * configured to generate interrupts, the interrupt handler will still be
+ * called when the PWM is restarted.
  */
 void hw_pwm_stop(hw_pwm_t *pwm);
-
-/**
- * @brief Set PWM duty cycle
- * @ingroup PWM
- * @param pwm Pointer to the PWM structure.
- * @param ch Channel to configure (0 for A, 1 for B)
- * @param duty_percent Duty cycle as a percentage (0 to 100).
- */
-void hw_pwm_set_duty(hw_pwm_t *pwm, uint8_t ch, uint8_t duty_percent);
 
 ///////////////////////////////////////////////////////////////////////////////
 // INTERRUPT HANDLING
