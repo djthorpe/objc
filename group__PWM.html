@@ -74,43 +74,49 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM configuration structure for setup parameters.  <a href="structhw__pwm__config__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM slice structure representing a PWM instance.  <a href="structhw__pwm__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM structure representing a PWM instance.  <a href="structhw__pwm__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga4aadf9beac1597e1477c5cd80d96fc58"><td class="memItemLeft" align="right" valign="top"><a id="ga4aadf9beac1597e1477c5cd80d96fc58"></a>
 typedef struct <a class="el" href="structhw__pwm__t.html">hw_pwm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga4aadf9beac1597e1477c5cd80d96fc58">hw_pwm_t</a></td></tr>
-<tr class="memdesc:ga4aadf9beac1597e1477c5cd80d96fc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM slice structure representing a PWM instance. <br /></td></tr>
+<tr class="memdesc:ga4aadf9beac1597e1477c5cd80d96fc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM structure representing a PWM instance. <br /></td></tr>
 <tr class="separator:ga4aadf9beac1597e1477c5cd80d96fc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97f5fa011cd118bd7bfec2bd27723955"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga97f5fa011cd118bd7bfec2bd27723955">hw_pwm_callback_t</a>) (uint8_t slice, void *userdata)</td></tr>
-<tr class="memdesc:ga97f5fa011cd118bd7bfec2bd27723955"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM interrupt callback function pointer.  <a href="#ga97f5fa011cd118bd7bfec2bd27723955">More...</a><br /></td></tr>
-<tr class="separator:ga97f5fa011cd118bd7bfec2bd27723955"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ac23a9b5a297738666fa8cbd23fc502"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga6ac23a9b5a297738666fa8cbd23fc502">hw_pwm_callback_t</a>) (uint8_t unit, void *userdata)</td></tr>
+<tr class="memdesc:ga6ac23a9b5a297738666fa8cbd23fc502"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM interrupt callback function pointer.  <a href="#ga6ac23a9b5a297738666fa8cbd23fc502">More...</a><br /></td></tr>
+<tr class="separator:ga6ac23a9b5a297738666fa8cbd23fc502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga51ca26884ac45e5fd00411bc9be42cc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga51ca26884ac45e5fd00411bc9be42cc4">hw_pwm_init</a> (uint8_t gpio_x, uint8_t gpio_y, <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config)</td></tr>
-<tr class="memdesc:ga51ca26884ac45e5fd00411bc9be42cc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize PWM for one or two <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins.  <a href="#ga51ca26884ac45e5fd00411bc9be42cc4">More...</a><br /></td></tr>
-<tr class="separator:ga51ca26884ac45e5fd00411bc9be42cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c87125504da145b708f4276694e44c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gaf6c87125504da145b708f4276694e44c">hw_pwm_init</a> (uint8_t unit, <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config)</td></tr>
+<tr class="memdesc:gaf6c87125504da145b708f4276694e44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a PWM unit.  <a href="#gaf6c87125504da145b708f4276694e44c">More...</a><br /></td></tr>
+<tr class="separator:gaf6c87125504da145b708f4276694e44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9630e5c05482120ad45286949612992"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gad9630e5c05482120ad45286949612992">hw_pwm_count</a> ()</td></tr>
+<tr class="memdesc:gad9630e5c05482120ad45286949612992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of PWM units.  <a href="#gad9630e5c05482120ad45286949612992">More...</a><br /></td></tr>
+<tr class="separator:gad9630e5c05482120ad45286949612992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga9055b1ee0b674d9ece4c211a7e6e0345">hw_pwm_finalize</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
-<tr class="memdesc:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a PWM slice.  <a href="#ga9055b1ee0b674d9ece4c211a7e6e0345">More...</a><br /></td></tr>
+<tr class="memdesc:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a PWM unit.  <a href="#ga9055b1ee0b674d9ece4c211a7e6e0345">More...</a><br /></td></tr>
 <tr class="separator:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77b11f9964d179c54f3abcf23365b7ab"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga77b11f9964d179c54f3abcf23365b7ab">hw_pwm_gpio_unit</a> (uint8_t gpio)</td></tr>
+<tr class="memdesc:ga77b11f9964d179c54f3abcf23365b7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM unit for a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#ga77b11f9964d179c54f3abcf23365b7ab">More...</a><br /></td></tr>
+<tr class="separator:ga77b11f9964d179c54f3abcf23365b7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">hw_pwm_get_config</a> (float freq)</td></tr>
 <tr class="memdesc:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get PWM configuration.  <a href="#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">More...</a><br /></td></tr>
 <tr class="separator:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3969e91bd092db7e2a12af2027bf430e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga3969e91bd092db7e2a12af2027bf430e">hw_pwm_set_config</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, const <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config, bool start)</td></tr>
-<tr class="memdesc:ga3969e91bd092db7e2a12af2027bf430e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply configuration to a PWM slice.  <a href="#ga3969e91bd092db7e2a12af2027bf430e">More...</a><br /></td></tr>
-<tr class="separator:ga3969e91bd092db7e2a12af2027bf430e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad5291814b63e9b4aa7385f2bfe1f072b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gad5291814b63e9b4aa7385f2bfe1f072b">hw_pwm_start</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
-<tr class="memdesc:gad5291814b63e9b4aa7385f2bfe1f072b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start PWM output.  <a href="#gad5291814b63e9b4aa7385f2bfe1f072b">More...</a><br /></td></tr>
-<tr class="separator:gad5291814b63e9b4aa7385f2bfe1f072b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga46adaf5d3f4eb432ad0ec1c41e37aeac">hw_pwm_get_freq</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
+<tr class="memdesc:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the frequency configured for a PWM unit.  <a href="#ga46adaf5d3f4eb432ad0ec1c41e37aeac">More...</a><br /></td></tr>
+<tr class="separator:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga7b08376ac8e6ae95c950419fc4b8cfc5">hw_pwm_set_config</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, const <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config)</td></tr>
+<tr class="memdesc:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply configuration to a PWM unit.  <a href="#ga7b08376ac8e6ae95c950419fc4b8cfc5">More...</a><br /></td></tr>
+<tr class="separator:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gaa48ab7f0c9e993f987cb26a4e5632517">hw_pwm_start</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, uint8_t gpio, float duty_percent)</td></tr>
+<tr class="memdesc:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start PWM output on a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gaa48ab7f0c9e993f987cb26a4e5632517">More...</a><br /></td></tr>
+<tr class="separator:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9c7aadc7493e00ce39d899f709142cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gad9c7aadc7493e00ce39d899f709142cc">hw_pwm_stop</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
 <tr class="memdesc:gad9c7aadc7493e00ce39d899f709142cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop PWM output.  <a href="#gad9c7aadc7493e00ce39d899f709142cc">More...</a><br /></td></tr>
 <tr class="separator:gad9c7aadc7493e00ce39d899f709142cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4da7d94e775912862b6c0ee709554684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga4da7d94e775912862b6c0ee709554684">hw_pwm_set_duty</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, uint8_t ch, uint8_t duty_percent)</td></tr>
-<tr class="memdesc:ga4da7d94e775912862b6c0ee709554684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set PWM duty cycle.  <a href="#ga4da7d94e775912862b6c0ee709554684">More...</a><br /></td></tr>
-<tr class="separator:ga4da7d94e775912862b6c0ee709554684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21febf970d882e555f39d87a49da389f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga21febf970d882e555f39d87a49da389f">hw_pwm_set_callback</a> (<a class="el" href="group__PWM.html#ga97f5fa011cd118bd7bfec2bd27723955">hw_pwm_callback_t</a> callback, void *userdata)</td></tr>
+<tr class="memitem:ga21febf970d882e555f39d87a49da389f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga21febf970d882e555f39d87a49da389f">hw_pwm_set_callback</a> (<a class="el" href="group__PWM.html#ga6ac23a9b5a297738666fa8cbd23fc502">hw_pwm_callback_t</a> callback, void *userdata)</td></tr>
 <tr class="memdesc:ga21febf970d882e555f39d87a49da389f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PWM interrupt callback handler.  <a href="#ga21febf970d882e555f39d87a49da389f">More...</a><br /></td></tr>
 <tr class="separator:ga21febf970d882e555f39d87a49da389f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9b798897918057c425a4dce786201b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga9b798897918057c425a4dce786201b6a">hw_pwm_set_irq_enabled</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, bool enabled)</td></tr>
@@ -119,17 +125,21 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Pulse Width Modulation (PWM) interface for hardware platforms. </p>
-<p>This module provides functions to initialize PWM channels, configure frequency and duty cycle, and control PWM output.</p>
-<p>The PWM implementation supports multiple slices, each with two channels (A and B). On the Raspberry Pi Pico, there are 8 PWM slices (16 channels total) on RP2040 and 12 PWM slices (24 channels total) on RP2350. </p>
+<p>This module provides functions to initialize PWM units, configure frequency and duty cycle, and control PWM output.</p>
+<p>The PWM implementation supports multiple units (slices), each with one or more <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> outputs. On the Raspberry Pi Pico, there are 8 PWM units on the RP2040 and 12 PWM units on the RP2350.</p>
+<p>Interrupts can be configured to trigger on PWM wrap events, allowing for precise timing and control in applications such as motor control, LED dimming, and audio generation.</p>
+<p>There is one global PWM callback, which is called when a PWM wrap interrupt occurs on any unit. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
+<p>The frequency of the PWM output is platform-dependent, but on the Pico this can range from approximately 8 Hz to 60 MHz. The value that is set in the PWM configuration is not necessarily the exact frequency, but rather the closest achievable frequency based on the hardware capabilities.</p>
+<p>Similarly the duty cycle (the ratio of HIGH vs LOW for each PWM period) is set as a percentage (0-100) of the PWM period. The actual duty cycle may not be exact due to hardware limitations, but it will be as close as possible to the requested value. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga97f5fa011cd118bd7bfec2bd27723955"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga97f5fa011cd118bd7bfec2bd27723955">&#9670;&nbsp;</a></span>hw_pwm_callback_t</h2>
+<a id="ga6ac23a9b5a297738666fa8cbd23fc502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6ac23a9b5a297738666fa8cbd23fc502">&#9670;&nbsp;</a></span>hw_pwm_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* hw_pwm_callback_t) (uint8_t slice, void *userdata)</td>
+          <td class="memname">typedef void(* hw_pwm_callback_t) (uint8_t unit, void *userdata)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -137,19 +147,40 @@ Functions</h2></td></tr>
 <p>PWM interrupt callback function pointer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">slice</td><td>The PWM slice number that triggered the interrupt. </td></tr>
+    <tr><td class="paramname">unit</td><td>The PWM unit that triggered the interrupt. </td></tr>
     <tr><td class="paramname">userdata</td><td>User-defined data pointer passed when setting the callback.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This callback function is called when a PWM wrap interrupt occurs on a slice that has been configured for interrupt detection. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
+<p>This callback function is called when a PWM wrap interrupt occurs on a unit that has been configured for interrupt detection. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__PWM.html#ga21febf970d882e555f39d87a49da389f" title="Set the PWM interrupt callback handler. ">hw_pwm_set_callback()</a> for setting up the callback handler. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00058">58</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00076">76</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gad9630e5c05482120ad45286949612992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad9630e5c05482120ad45286949612992">&#9670;&nbsp;</a></span>hw_pwm_count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hw_pwm_count </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of PWM units. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of PWM units available.</dd></dl>
+<p>This function returns the total number of PWM units that can be used. It will return zero if PWM is not supported on the platform. </p>
+
+</div>
+</div>
 <a id="ga9055b1ee0b674d9ece4c211a7e6e0345"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga9055b1ee0b674d9ece4c211a7e6e0345">&#9670;&nbsp;</a></span>hw_pwm_finalize()</h2>
 
@@ -166,14 +197,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finalize and release a PWM slice. </p>
+<p>Finalize and release a PWM unit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure to finalize.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function disables the PWM slice, resets its configuration, and releases any associated <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. After calling this function, the PWM slice should not be used until re-initialized. </p>
+<p>This function disables the PWM unit, resets its configuration, and releases any associated <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. After calling this function, the PWM unit should not be used until re-initialized. </p>
 
 </div>
 </div>
@@ -200,12 +231,68 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Default PWM configuration structure. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Default PWM configuration structure, with the frequency set to the specified value. </dd></dl>
 
 </div>
 </div>
-<a id="ga51ca26884ac45e5fd00411bc9be42cc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga51ca26884ac45e5fd00411bc9be42cc4">&#9670;&nbsp;</a></span>hw_pwm_init()</h2>
+<a id="ga46adaf5d3f4eb432ad0ec1c41e37aeac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga46adaf5d3f4eb432ad0ec1c41e37aeac">&#9670;&nbsp;</a></span>hw_pwm_get_freq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float hw_pwm_get_freq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *&#160;</td>
+          <td class="paramname"><em>pwm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the frequency configured for a PWM unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The frequency configured for the PWM unit, or 0 if not valid.</dd></dl>
+<p>This function retrieves the frequency value from the PWM configuration. </p>
+
+</div>
+</div>
+<a id="ga77b11f9964d179c54f3abcf23365b7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga77b11f9964d179c54f3abcf23365b7ab">&#9670;&nbsp;</a></span>hw_pwm_gpio_unit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t hw_pwm_gpio_unit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>gpio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the PWM unit for a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The PWM unit number associated with the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin</dd></dl>
+<p>This function retrieves the PWM unit number associated with a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin must be less than the total number of <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins available. </p>
+
+</div>
+</div>
+<a id="gaf6c87125504da145b708f4276694e44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf6c87125504da145b708f4276694e44c">&#9670;&nbsp;</a></span>hw_pwm_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,13 +301,7 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> hw_pwm_init </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>gpio_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>gpio_y</em>, </td>
+          <td class="paramname"><em>unit</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -236,17 +317,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize PWM for one or two <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. </p>
+<p>Initialize a PWM unit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_x</td><td>The first <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to configure for PWM output. </td></tr>
-    <tr><td class="paramname">gpio_y</td><td>The second <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to configure for PWM output. If zero, only the first pin will be used, which could be channel A or B </td></tr>
+    <tr><td class="paramname">unit</td><td>The PWM unit number to initialize. </td></tr>
     <tr><td class="paramname">config</td><td>Optional pointer to a configuration structure. If NULL, default configuration will be used. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A PWM structure representing the initialized slice.</dd></dl>
-<p>This function determines which PWM slice and channel(s) the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin belongs to, initializes the slice with default settings, and configures the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin for PWM output. The PWM slice is not started automatically. </p>
+<dl class="section return"><dt>Returns</dt><dd>A PWM structure representing the initialized unit.</dd></dl>
+<p>This function initializes the PWM unit and channel(s) the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin belongs to and initializes the unit with default settings. The PWM unit is not started and is set to the disabled state. </p>
 
 </div>
 </div>
@@ -259,7 +339,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void hw_pwm_set_callback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__PWM.html#ga97f5fa011cd118bd7bfec2bd27723955">hw_pwm_callback_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__PWM.html#ga6ac23a9b5a297738666fa8cbd23fc502">hw_pwm_callback_t</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -285,12 +365,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>This function registers a global callback handler that will be invoked whenever a PWM wrap interrupt occurs on any slice that has been configured for interrupt detection. Only one callback can be active at a time.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__PWM.html#ga97f5fa011cd118bd7bfec2bd27723955" title="PWM interrupt callback function pointer. ">hw_pwm_callback_t</a> for callback function signature requirements. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__PWM.html#ga6ac23a9b5a297738666fa8cbd23fc502" title="PWM interrupt callback function pointer. ">hw_pwm_callback_t</a> for callback function signature requirements. </dd></dl>
 
 </div>
 </div>
-<a id="ga3969e91bd092db7e2a12af2027bf430e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3969e91bd092db7e2a12af2027bf430e">&#9670;&nbsp;</a></span>hw_pwm_set_config()</h2>
+<a id="ga7b08376ac8e6ae95c950419fc4b8cfc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7b08376ac8e6ae95c950419fc4b8cfc5">&#9670;&nbsp;</a></span>hw_pwm_set_config()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,13 +385,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *&#160;</td>
-          <td class="paramname"><em>config</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>start</em>&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -321,60 +395,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Apply configuration to a PWM slice. </p>
+<p>Apply configuration to a PWM unit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
-    <tr><td class="paramname">config</td><td>Pointer to the configuration to apply. </td></tr>
-    <tr><td class="paramname">start</td><td>If true, the PWM will be started after configuration.</td></tr>
+    <tr><td class="paramname">config</td><td>Pointer to the configuration to apply.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function applies the specified configuration to the PWM slice. The PWM slice will be stopped before configuration and optionally restarted if the start parameter is true. </p>
-
-</div>
-</div>
-<a id="ga4da7d94e775912862b6c0ee709554684"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4da7d94e775912862b6c0ee709554684">&#9670;&nbsp;</a></span>hw_pwm_set_duty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void hw_pwm_set_duty </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *&#160;</td>
-          <td class="paramname"><em>pwm</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>ch</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>duty_percent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set PWM duty cycle. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
-    <tr><td class="paramname">ch</td><td>Channel to configure (0 for A, 1 for B) </td></tr>
-    <tr><td class="paramname">duty_percent</td><td>Duty cycle as a percentage (0 to 100). </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>This function applies the specified configuration to the PWM unit. If the PWM unit is currently enabled, it will be stopped before applying the new configuration, and then restarted. </p>
 
 </div>
 </div>
@@ -416,30 +445,50 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gad5291814b63e9b4aa7385f2bfe1f072b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad5291814b63e9b4aa7385f2bfe1f072b">&#9670;&nbsp;</a></span>hw_pwm_start()</h2>
+<a id="gaa48ab7f0c9e993f987cb26a4e5632517"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa48ab7f0c9e993f987cb26a4e5632517">&#9670;&nbsp;</a></span>hw_pwm_start()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void hw_pwm_start </td>
+          <td class="memname">bool hw_pwm_start </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *&#160;</td>
-          <td class="paramname"><em>pwm</em></td><td>)</td>
+          <td class="paramname"><em>pwm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>gpio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>duty_percent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start PWM output. </p>
+<p>Start PWM output on a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure.</td></tr>
+    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
+    <tr><td class="paramname">gpio</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to attach. </td></tr>
+    <tr><td class="paramname">duty_percent</td><td>Duty cycle as a percentage, between 0 and 100. </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function enables the PWM slice to start generating output. The PWM will begin counting from its current counter value. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the PWM was started successfully, false if the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin is invalid.</dd></dl>
+<p>This function attaches the specified <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin to the PWM channel, starts the PWM output, sets the duty cycle for the specified PWM channel.</p>
+<p>If the duty_percent is less than or equal to 0, the PWM output will always be low. If the duty_percent is 100 or greater, the PWM output will always be high. If the duty_percent is between 0 and 100, the PWM output will toggle between high and low at the specified frequency, with the duty cycle determining the proportion of time the output is high. </p>
 
 </div>
 </div>
@@ -466,7 +515,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function disables the PWM slice, stopping output generation. The counter value is preserved and will resume from this point when the PWM is restarted. </p>
+<p>This function disables the PWM unit, stopping output generation. The counter value is preserved and will resume from this point when the PWM is restarted.</p>
+<p>The IRQ state is not affected by this function, so if the PWM was configured to generate interrupts, the interrupt handler will still be called when the PWM is restarted. </p>
 
 </div>
 </div>

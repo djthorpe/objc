@@ -14,7 +14,7 @@ var searchData=
   ['delegate',['delegate',['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application::delegate()'],['../interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023',1,'NXTimer::delegate()']]],
   ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
   ['display_2eh',['display.h',['../display_8h.html',1,'']]],
-  ['divider',['divider',['../structhw__pwm__config__t.html#ac22872bf90335f126ef232cd59d4f46a',1,'hw_pwm_config_t']]],
+  ['divider',['divider',['../structhw__pwm__config__t.html#ac22872bf90335f126ef232cd59d4f46a',1,'hw_pwm_config_t::divider()'],['../structhw__pwm__t.html#a7328499f5940baffee1557dd3d989c68',1,'hw_pwm_t::divider()']]],
   ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
   ['drawable',['drawable',['../structpix__frame__t.html#aae50db38ccc83b73c066aa27e2cc43d4',1,'pix_frame_t']]],
   ['driver_5fbme280_5fcalculate_5faltitude',['driver_bme280_calculate_altitude',['../group__BME280.html#gac8c12d391f07c6eedce45886f027a0e5',1,'drivers_bme280.h']]],

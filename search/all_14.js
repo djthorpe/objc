@@ -1,6 +1,7 @@
 var searchData=
 [
   ['uc8151',['UC8151',['../group__UC8151.html',1,'']]],
+  ['unit',['unit',['../structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4',1,'hw_pwm_t']]],
   ['unlock',['unlock',['../structpix__display__t.html#a49414fc1c96b542865869e89da5d9b52',1,'pix_display_t']]],
   ['unsignedint16value',['unsignedInt16Value',['../interfaceNXNumber.html#a260a7e75de90d9e5b575504dee5a344a',1,'NXNumber']]],
   ['unsignedint32value',['unsignedInt32Value',['../interfaceNXNumber.html#a27011b5a99c56bfefee102cf7ff53ec9',1,'NXNumber']]],

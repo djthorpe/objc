@@ -18,7 +18,6 @@ var searchData=
   ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],
   ['size',['size',['../structsys__hash__t.html#a23a4936ac2b8f5cde697d140e901bcfb',1,'sys_hash_t::size()'],['../structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa',1,'pix_frame_t::size()'],['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData::size()']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
-  ['slice',['slice',['../structhw__pwm__t.html#aee8187f8ab7f13cf28f18e8103382892',1,'hw_pwm_t']]],
   ['spi',['spi',['../structdriver__st7789__t.html#a5dc65ca1d7c547e35ccae0db4094cb13',1,'driver_st7789_t::spi()'],['../structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede',1,'driver_uc8151_t::spi()'],['../group__SPI.html',1,'(Global Namespace)']]],
   ['spi_2eh',['spi.h',['../spi_8h.html',1,'']]],
   ['st7789',['ST7789',['../group__ST7789.html',1,'']]],

@@ -54,46 +54,34 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>PWM slice structure representing a PWM instance.  
+<p>PWM structure representing a PWM instance.  
  <a href="structhw__pwm__t.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="pwm_8h_source.html">runtime-hw/hw.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for hw_pwm_t:</div>
-<div class="dyncontent">
-<div class="center"><img src="structhw__pwm__t__coll__graph.png" border="0" usemap="#hw__pwm__t_coll__map" alt="Collaboration graph"/></div>
-<map name="hw__pwm__t_coll__map" id="hw__pwm__t_coll__map">
-<area shape="rect" id="node2" href="structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="7,5,95,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:aee8187f8ab7f13cf28f18e8103382892"><td class="memItemLeft" align="right" valign="top"><a id="aee8187f8ab7f13cf28f18e8103382892"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#aee8187f8ab7f13cf28f18e8103382892">slice</a></td></tr>
-<tr class="memdesc:aee8187f8ab7f13cf28f18e8103382892"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM slice number. <br /></td></tr>
-<tr class="separator:aee8187f8ab7f13cf28f18e8103382892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8816054a0c83d6378fb9e4b2c31377ee"><td class="memItemLeft" align="right" valign="top"><a id="a8816054a0c83d6378fb9e4b2c31377ee"></a>
-<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#a8816054a0c83d6378fb9e4b2c31377ee">gpio_a</a></td></tr>
-<tr class="memdesc:a8816054a0c83d6378fb9e4b2c31377ee"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> Channel A. <br /></td></tr>
-<tr class="separator:a8816054a0c83d6378fb9e4b2c31377ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bc435698b68b44626de64349edbf0f8"><td class="memItemLeft" align="right" valign="top"><a id="a9bc435698b68b44626de64349edbf0f8"></a>
-<a class="el" href="structhw__gpio__t.html">hw_gpio_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#a9bc435698b68b44626de64349edbf0f8">gpio_b</a></td></tr>
-<tr class="memdesc:a9bc435698b68b44626de64349edbf0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> Channel B. <br /></td></tr>
-<tr class="separator:a9bc435698b68b44626de64349edbf0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7181dcbed0ffc068ca9c4952ea8cf7f4"><td class="memItemLeft" align="right" valign="top"><a id="a7181dcbed0ffc068ca9c4952ea8cf7f4"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4">unit</a></td></tr>
+<tr class="memdesc:a7181dcbed0ffc068ca9c4952ea8cf7f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM unit number. <br /></td></tr>
+<tr class="separator:a7181dcbed0ffc068ca9c4952ea8cf7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac674c25f1e2b2d16cc0c7546795621c0"><td class="memItemLeft" align="right" valign="top"><a id="ac674c25f1e2b2d16cc0c7546795621c0"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#ac674c25f1e2b2d16cc0c7546795621c0">wrap</a></td></tr>
 <tr class="memdesc:ac674c25f1e2b2d16cc0c7546795621c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current wrap value for duty cycle calculations. <br /></td></tr>
 <tr class="separator:ac674c25f1e2b2d16cc0c7546795621c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7328499f5940baffee1557dd3d989c68"><td class="memItemLeft" align="right" valign="top"><a id="a7328499f5940baffee1557dd3d989c68"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#a7328499f5940baffee1557dd3d989c68">divider</a></td></tr>
+<tr class="memdesc:a7328499f5940baffee1557dd3d989c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock divider. <br /></td></tr>
+<tr class="separator:a7328499f5940baffee1557dd3d989c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc6caf3e29ed35fe312f9bf8a5fcfa88"><td class="memItemLeft" align="right" valign="top"><a id="adc6caf3e29ed35fe312f9bf8a5fcfa88"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__pwm__t.html#adc6caf3e29ed35fe312f9bf8a5fcfa88">enabled</a></td></tr>
-<tr class="memdesc:adc6caf3e29ed35fe312f9bf8a5fcfa88"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM slice enabled state. <br /></td></tr>
+<tr class="memdesc:adc6caf3e29ed35fe312f9bf8a5fcfa88"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM unit enabled state. <br /></td></tr>
 <tr class="separator:adc6caf3e29ed35fe312f9bf8a5fcfa88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>PWM slice structure representing a PWM instance. </p>
+<div class="textblock"><p>PWM structure representing a PWM instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00037">37</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00056">56</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-hw/<a class="el" href="pwm_8h_source.html">pwm.h</a></li>
 </ul>
