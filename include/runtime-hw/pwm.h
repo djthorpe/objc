@@ -5,12 +5,31 @@
  * @ingroup Hardware
  *
  * Pulse Width Modulation (PWM) interface for hardware platforms.
- * This module provides functions to initialize PWM units and channels,
+ * This module provides functions to initialize PWM units,
  * configure frequency and duty cycle, and control PWM output.
  *
  * The PWM implementation supports multiple units (slices), each with one or
- * more channels. On the Raspberry Pi Pico, there are 8 PWM units (16
- * channels total) on RP2040 and 12 PWM units (24 channels total) on RP2350.
+ * more GPIO outputs. On the Raspberry Pi Pico, there are 8 PWM units on
+ * the RP2040 and 12 PWM units on the RP2350.
+ *
+ * Interrupts can be configured to trigger on PWM wrap events, allowing
+ * for precise timing and control in applications such as motor control,
+ * LED dimming, and audio generation.
+ *
+ * There is one global PWM callback, which is called when a PWM wrap
+ * interrupt occurs on any unit. The callback is executed in interrupt context,
+ * so it should be kept short and avoid blocking operations.
+ *
+ * The frequency of the PWM output is platform-dependent, but on the Pico
+ * this can range from approximately 8 Hz to 60 MHz. The value that is set
+ * in the PWM configuration is not necessarily the exact frequency,
+ * but rather the closest achievable frequency based on the hardware
+ * capabilities.
+ *
+ * Similarly the duty cycle (the ratio of HIGH vs LOW for each PWM period)
+ * is set as a percentage (0-100) of the PWM period.
+ * The actual duty cycle may not be exact due to hardware limitations,
+ * but it will be as close as possible to the requested value.
  */
 #pragma once
 #include <stdbool.h>
