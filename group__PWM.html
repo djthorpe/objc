@@ -104,9 +104,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">hw_pwm_get_config</a> (float freq)</td></tr>
 <tr class="memdesc:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get PWM configuration.  <a href="#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">More...</a><br /></td></tr>
 <tr class="separator:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga46adaf5d3f4eb432ad0ec1c41e37aeac">hw_pwm_get_freq</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
-<tr class="memdesc:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the frequency configured for a PWM unit.  <a href="#ga46adaf5d3f4eb432ad0ec1c41e37aeac">More...</a><br /></td></tr>
-<tr class="separator:ga46adaf5d3f4eb432ad0ec1c41e37aeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4fe3a7f333e32717193d2148b4cbb81d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga4fe3a7f333e32717193d2148b4cbb81d">hw_pwm_get_freq</a> (<a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config)</td></tr>
+<tr class="memdesc:ga4fe3a7f333e32717193d2148b4cbb81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the frequency for a configuration.  <a href="#ga4fe3a7f333e32717193d2148b4cbb81d">More...</a><br /></td></tr>
+<tr class="separator:ga4fe3a7f333e32717193d2148b4cbb81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga7b08376ac8e6ae95c950419fc4b8cfc5">hw_pwm_set_config</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, const <a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *config)</td></tr>
 <tr class="memdesc:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply configuration to a PWM unit.  <a href="#ga7b08376ac8e6ae95c950419fc4b8cfc5">More...</a><br /></td></tr>
 <tr class="separator:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,7 +155,7 @@ Functions</h2></td></tr>
 <p>This callback function is called when a PWM wrap interrupt occurs on a unit that has been configured for interrupt detection. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__PWM.html#ga21febf970d882e555f39d87a49da389f" title="Set the PWM interrupt callback handler. ">hw_pwm_set_callback()</a> for setting up the callback handler. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00076">76</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00075">75</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
 
 </div>
 </div>
@@ -231,12 +231,12 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Default PWM configuration structure, with the frequency set to the specified value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Default PWM configuration structure, with the frequency set to the specified value. If frequency is zero, the maximum frequency supported by the platform will be used. </dd></dl>
 
 </div>
 </div>
-<a id="ga46adaf5d3f4eb432ad0ec1c41e37aeac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga46adaf5d3f4eb432ad0ec1c41e37aeac">&#9670;&nbsp;</a></span>hw_pwm_get_freq()</h2>
+<a id="ga4fe3a7f333e32717193d2148b4cbb81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4fe3a7f333e32717193d2148b4cbb81d">&#9670;&nbsp;</a></span>hw_pwm_get_freq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,22 +244,22 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">float hw_pwm_get_freq </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *&#160;</td>
-          <td class="paramname"><em>pwm</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a> *&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the frequency configured for a PWM unit. </p>
+<p>Returns the frequency for a configuration. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
+    <tr><td class="paramname">config</td><td>Pointer to the PWM configuration structure. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The frequency configured for the PWM unit, or 0 if not valid.</dd></dl>
-<p>This function retrieves the frequency value from the PWM configuration. </p>
+<dl class="section return"><dt>Returns</dt><dd>The frequency for the configuration.</dd></dl>
+<p>This function retrieves the actual frequency value from the PWM configuration, which is calculated based on the wrap value and divider. </p>
 
 </div>
 </div>

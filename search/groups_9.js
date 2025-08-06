@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['objective_2dc_20runtime',['Objective-C Runtime',['../group__objc.html',1,'']]]
+  ['memory_20management',['Memory Management',['../group__SystemMemory.html',1,'']]]
 ];

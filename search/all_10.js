@@ -47,6 +47,6 @@ var searchData=
   ['ptr',['ptr',['../structsys__hash__t.html#a07a4c29b46a846a79652e35a56f9b3fa',1,'sys_hash_t::ptr()'],['../structsys__timer__t.html#a291903b26eb7053568dc59a8ee8c8c7f',1,'sys_timer_t::ptr()']]],
   ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
   ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]],
-  ['pwm',['PWM',['../group__PWM.html',1,'']]],
+  ['pwm',['pwm',['../structhw__led__t.html#ab036cad0d5a9c350ea15a79d31092e98',1,'hw_led_t::pwm()'],['../group__PWM.html',1,'(Global Namespace)']]],
   ['pwm_2eh',['pwm.h',['../pwm_8h.html',1,'']]]
 ];

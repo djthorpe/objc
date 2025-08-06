@@ -14,5 +14,6 @@ var searchData=
   ['pix_5fyellow',['pix_yellow',['../pix_8h.html#ad31cb873da887eccf8e23db275c226e6',1,'pix.h']]],
   ['pix_5fzero_5fpoint',['pix_zero_point',['../pix_8h.html#ab3f8722f27f7b94222b12da79009f44d',1,'pix.h']]],
   ['pix_5fzero_5fsize',['pix_zero_size',['../pix_8h.html#ac308334fd13d5d66c07dd39d6b8e0e05',1,'pix.h']]],
-  ['ptr',['ptr',['../structsys__hash__t.html#a07a4c29b46a846a79652e35a56f9b3fa',1,'sys_hash_t::ptr()'],['../structsys__timer__t.html#a291903b26eb7053568dc59a8ee8c8c7f',1,'sys_timer_t::ptr()']]]
+  ['ptr',['ptr',['../structsys__hash__t.html#a07a4c29b46a846a79652e35a56f9b3fa',1,'sys_hash_t::ptr()'],['../structsys__timer__t.html#a291903b26eb7053568dc59a8ee8c8c7f',1,'sys_timer_t::ptr()']]],
+  ['pwm',['pwm',['../structhw__led__t.html#ab036cad0d5a9c350ea15a79d31092e98',1,'hw_led_t']]]
 ];
