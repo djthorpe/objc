@@ -17,9 +17,13 @@
 #define HW_LED_CTX_SIZE 32 ///< Size of the LED context buffer
 
 /**
- * @brief PWM configuration structure for setup parameters.
- * @ingroup PWM
- * @headerfile pwm.h runtime-hw/hw.h
+ * @brief LED structure definition for hardware control.
+ * @ingroup LED
+ * @headerfile led.h runtime-hw/led.h
+ *
+ * This structure represents an LED unit, including its GPIO pin,
+ * optional PWM control for brightness, and internal context buffer
+ * for maintaining LED state.
  */
 typedef struct {
   uint8_t gpio;  ///< GPIO pin number for the LED
