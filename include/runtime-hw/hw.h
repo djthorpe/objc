@@ -10,6 +10,7 @@
 #include "adc.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "led.h"
 #include "pwm.h"
 #include "spi.h"
 #include "watchdog.h"

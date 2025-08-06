@@ -5,6 +5,7 @@ add_library(${NAME} STATIC
     ../stub/gpio.c
     ../stub/hw.c
     ../stub/i2c.c
+    ../stub/led.c
     ../stub/pwm.c
     ../stub/spi.c
     ../stub/watchdog.c
