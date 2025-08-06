@@ -66,7 +66,7 @@ uint8_t hw_led_status_gpio();
  * @param led Pointer to the LED structure to finalize.
  *
  * This function disables the LED unit. If a PWM structure was used,
- * it will not stop the PWM output, but it will release the GPIO pin
+ * it will stop the PWM output and release the GPIO pin
  * associated with the LED.
  */
 void hw_led_finalize(hw_led_t *led);
