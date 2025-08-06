@@ -226,7 +226,7 @@ bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
  * @brief Blink the LED continuously.
  */
 bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats) {
-  // LED not implemented in stub
+  // Blink functionality not yet implemented for Pico
   sys_assert(led);
   (void)led;       // Suppress unused parameter warning
   (void)period_ms; // Suppress unused parameter warning
