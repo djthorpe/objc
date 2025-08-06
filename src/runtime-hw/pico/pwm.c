@@ -43,8 +43,7 @@ hw_pwm_t hw_pwm_init(uint8_t unit, hw_pwm_config_t *config) {
   // Now initialize the unit - don't start it yet
   pwm_init(unit, &pico_config, false);
   pwm.unit = unit;
-  pwm.wrap = config ? config->wrap : 0xFFFF;     // Default wrap value
-  pwm.divider = config ? config->divider : 1.0f; // Default divider if not set
+  pwm.wrap = config ? config->wrap : 0xFFFF; // Default wrap value
   pwm.enabled = false;
 
   return pwm;
@@ -113,7 +112,13 @@ uint8_t hw_pwm_gpio_unit(uint8_t gpio) {
  * @brief Get PWM configuration for a specific frequency.
  */
 hw_pwm_config_t hw_pwm_get_config(float freq) {
-  sys_assert(freq > 0.0f);
+  sys_assert(freq >= 0.0f);
+
+  // If frequency is zero, use the maximum frequency supported by the platform
+  if (freq == 0.0f) {
+    hw_pwm_config_t config = {.wrap = 0xFFFF, .divider = 1.0f};
+    return config;
+  }
 
   // Get system clock frequency
   uint32_t sys_clk = clock_get_hz(clk_sys);
@@ -161,17 +166,17 @@ hw_pwm_config_t hw_pwm_get_config(float freq) {
 }
 
 /**
- * @brief Returns the frequency configured for a PWM unit.
+ * @brief Returns the frequency configured.
  */
-float hw_pwm_get_freq(hw_pwm_t *pwm) {
-  sys_assert(pwm && hw_pwm_valid(pwm));
+float hw_pwm_get_freq(hw_pwm_config_t *config) {
+  sys_assert(config);
 
   // Get the system clock frequency
   uint32_t sys_clk = clock_get_hz(clk_sys);
   sys_assert(sys_clk > 0);
 
   // Calculate frequency based on wrap and divider
-  return (float)sys_clk / ((float)(pwm->wrap + 1) * pwm->divider);
+  return (float)sys_clk / ((float)(config->wrap + 1) * config->divider);
 }
 
 /**
@@ -200,7 +205,6 @@ void hw_pwm_set_config(hw_pwm_t *pwm, const hw_pwm_config_t *config) {
   pwm_config_set_output_polarity(&pico_config, false, false);
 
   // Update the PWM structure
-  pwm->divider = config->divider;
   pwm->wrap = config->wrap;
 
   // Apply the configuration, restarting the PWM if it was previously enabled
@@ -230,7 +234,8 @@ bool hw_pwm_start(hw_pwm_t *pwm, uint8_t gpio, float duty_percent) {
   } else if (duty_percent >= 100.0f) {
     level = pwm->wrap; // Set to HIGH
   } else {
-    uint64_t level_calc = (uint64_t)(pwm->wrap + 1) * (uint64_t)(duty_percent * 10000.0f);
+    uint64_t level_calc =
+        (uint64_t)(pwm->wrap + 1) * (uint64_t)(duty_percent * 10000.0f);
     level = (uint16_t)(level_calc / (100 * 10000));
     sys_assert(level <= pwm->wrap); // Ensure level is within bounds
   }

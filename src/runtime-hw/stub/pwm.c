@@ -50,11 +50,11 @@ uint8_t hw_pwm_gpio_unit(uint8_t gpio) {
 /**
  * @brief Get PWM configuration.
  */
-hw_pwm_config_t hw_pwm_get_config(float freq) {
+float hw_pwm_get_freq(hw_pwm_config_t *config) {
   // PWM not implemented in stub
-  (void)freq; // Suppress unused parameter warning
-  hw_pwm_config_t config = {0};
-  return config;
+  sys_assert(config);
+  (void)config; // Suppress unused parameter warning
+  return 0.0f;
 }
 
 /**

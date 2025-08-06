@@ -56,7 +56,6 @@ typedef struct {
 typedef struct hw_pwm_t {
   uint8_t unit;  ///< PWM unit number
   uint32_t wrap; ///< Current wrap value for duty cycle calculations
-  float divider; ///< Clock divider
   bool enabled;  ///< PWM unit enabled state
 } hw_pwm_t;
 
@@ -154,19 +153,21 @@ uint8_t hw_pwm_gpio_unit(uint8_t gpio);
  * @ingroup PWM
  * @param freq Desired frequency in Hz.
  * @return Default PWM configuration structure, with the frequency set to the
- * specified value.
+ * specified value. If frequency is zero, the maximum frequency
+ * supported by the platform will be used.
  */
 hw_pwm_config_t hw_pwm_get_config(float freq);
 
 /**
- * @brief Returns the frequency configured for a PWM unit.
+ * @brief Returns the frequency for a configuration.
  * @ingroup PWM
- * @param pwm Pointer to the PWM structure.
- * @return The frequency configured for the PWM unit, or 0 if not valid.
+ * @param config Pointer to the PWM configuration structure.
+ * @return The frequency for the configuration.
  *
- * This function retrieves the frequency value from the PWM configuration.
+ * This function retrieves the actual frequency value from the PWM
+ * configuration, which is calculated based on the wrap value and divider.
  */
-float hw_pwm_get_freq(hw_pwm_t *pwm);
+float hw_pwm_get_freq(hw_pwm_config_t *config);
 
 /**
  * @brief Apply configuration to a PWM unit.

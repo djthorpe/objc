@@ -10,6 +10,7 @@ add_library(${NAME} STATIC
     gpio.c
     hw.c
     i2c.c
+    led.c
     pwm.c
     spi.c
     watchdog.c
