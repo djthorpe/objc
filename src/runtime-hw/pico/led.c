@@ -238,7 +238,7 @@ bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats) {
  * @brief Fade the LED continuously.
  */
 bool hw_led_fade(hw_led_t *led, uint8_t period_ms, bool repeats) {
-  // LED not implemented in stub
+  // Fade functionality not yet implemented for Pico
   sys_assert(led);
   (void)led;       // Suppress unused parameter warning
   (void)period_ms; // Suppress unused parameter warning
