@@ -31,7 +31,7 @@ void timer_callback(sys_timer_t *timer) {
   case 2:
     if (capabilities & HW_LED_CAP_LINEAR) {
       sys_printf("  Setting LED brightness to 20%%\n");
-      hw_led_set_brightness(led, 50); // Set to 20% brightness
+      hw_led_set_brightness(led, 51); // Set to 20% brightness
     }
     break;
   case 3:
