@@ -54,6 +54,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">led.h File Reference</div>  </div>
@@ -97,9 +98,19 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a501249ee31d381cbae8eecd6bfb835ac"><td class="memItemLeft" align="right" valign="top"><a id="a501249ee31d381cbae8eecd6bfb835ac"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a501249ee31d381cbae8eecd6bfb835ac">HW_LED_CTX_SIZE</a>&#160;&#160;&#160;32</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="led_8h.html#a501249ee31d381cbae8eecd6bfb835ac">HW_LED_CTX_SIZE</a>&#160;&#160;&#160;64</td></tr>
 <tr class="memdesc:a501249ee31d381cbae8eecd6bfb835ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the LED context buffer. <br /></td></tr>
 <tr class="separator:a501249ee31d381cbae8eecd6bfb835ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gac58a71ec207383491bdb61c7f91a6e28"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#gac58a71ec207383491bdb61c7f91a6e28">hw_led_cap_t</a> { <a class="el" href="group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a10792eb258cfe84cee9d1698c8d4025d">HW_LED_CAP_NONE</a> = 0, 
+<a class="el" href="group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a33ffb7a2bef83d17fd21ebcac31f62ed">HW_LED_CAP_BINARY</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a216927b46077a86278f9bcd4979dfbbd">HW_LED_CAP_LINEAR</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28ab793c2d4fc7ffe42bb66490c15b68a96">HW_LED_CAP_GPIO</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:gac58a71ec207383491bdb61c7f91a6e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">LED capabilities flags.  <a href="group__LED.html#gac58a71ec207383491bdb61c7f91a6e28">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:gac58a71ec207383491bdb61c7f91a6e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -115,6 +126,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaeab9594e1463b54b98420728847b3edb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#gaeab9594e1463b54b98420728847b3edb">hw_led_valid</a> (<a class="el" href="structhw__led__t.html">hw_led_t</a> *led)</td></tr>
 <tr class="memdesc:gaeab9594e1463b54b98420728847b3edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an LED is valid.  <a href="group__LED.html#gaeab9594e1463b54b98420728847b3edb">More...</a><br /></td></tr>
 <tr class="separator:gaeab9594e1463b54b98420728847b3edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45ce530f2865804114aa5d8d6c4c6cc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__LED.html#gac58a71ec207383491bdb61c7f91a6e28">hw_led_cap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#ga45ce530f2865804114aa5d8d6c4c6cc7">hw_led_capabilities</a> (<a class="el" href="structhw__led__t.html">hw_led_t</a> *led)</td></tr>
+<tr class="memdesc:ga45ce530f2865804114aa5d8d6c4c6cc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return LED capabilities.  <a href="group__LED.html#ga45ce530f2865804114aa5d8d6c4c6cc7">More...</a><br /></td></tr>
+<tr class="separator:ga45ce530f2865804114aa5d8d6c4c6cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae752a4e72a902d61640ab1d4e7c509aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#gae752a4e72a902d61640ab1d4e7c509aa">hw_led_set_state</a> (<a class="el" href="structhw__led__t.html">hw_led_t</a> *led, bool on)</td></tr>
 <tr class="memdesc:gae752a4e72a902d61640ab1d4e7c509aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the LED state.  <a href="group__LED.html#gae752a4e72a902d61640ab1d4e7c509aa">More...</a><br /></td></tr>
 <tr class="separator:gae752a4e72a902d61640ab1d4e7c509aa"><td class="memSeparator" colspan="2">&#160;</td></tr>

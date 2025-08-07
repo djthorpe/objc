@@ -12,5 +12,9 @@ var searchData=
   ['hw_5fgpio_5frising',['HW_GPIO_RISING',['../group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67',1,'gpio.h']]],
   ['hw_5fgpio_5fspi',['HW_GPIO_SPI',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa2dedca04226fdf562d2a9f73cf1dcfb7',1,'gpio.h']]],
   ['hw_5fgpio_5fuart',['HW_GPIO_UART',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa6dbffffd5011ace8aac8579656f98464',1,'gpio.h']]],
-  ['hw_5fgpio_5funknown',['HW_GPIO_UNKNOWN',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e',1,'gpio.h']]]
+  ['hw_5fgpio_5funknown',['HW_GPIO_UNKNOWN',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa16e7bf65b1d1dd738b200ff8d9b0db1e',1,'gpio.h']]],
+  ['hw_5fled_5fcap_5fbinary',['HW_LED_CAP_BINARY',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a33ffb7a2bef83d17fd21ebcac31f62ed',1,'led.h']]],
+  ['hw_5fled_5fcap_5fgpio',['HW_LED_CAP_GPIO',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28ab793c2d4fc7ffe42bb66490c15b68a96',1,'led.h']]],
+  ['hw_5fled_5fcap_5flinear',['HW_LED_CAP_LINEAR',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a216927b46077a86278f9bcd4979dfbbd',1,'led.h']]],
+  ['hw_5fled_5fcap_5fnone',['HW_LED_CAP_NONE',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a10792eb258cfe84cee9d1698c8d4025d',1,'led.h']]]
 ];

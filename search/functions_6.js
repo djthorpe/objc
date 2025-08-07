@@ -32,6 +32,7 @@ var searchData=
   ['hw_5fi2c_5fxfr',['hw_i2c_xfr',['../group__I2C.html#ga5287dc8cc0893d147b727d080da0d629',1,'i2c.h']]],
   ['hw_5finit',['hw_init',['../group__Hardware.html#gae58df14f30461cb37e8607aca5522846',1,'hw.h']]],
   ['hw_5fled_5fblink',['hw_led_blink',['../group__LED.html#gacdb69bd6c6e0519b3631a808de72c57d',1,'led.h']]],
+  ['hw_5fled_5fcapabilities',['hw_led_capabilities',['../group__LED.html#ga45ce530f2865804114aa5d8d6c4c6cc7',1,'led.h']]],
   ['hw_5fled_5ffade',['hw_led_fade',['../group__LED.html#gaa47d39283fa418208c4731bfaa59837f',1,'led.h']]],
   ['hw_5fled_5ffinalize',['hw_led_finalize',['../group__LED.html#gad9d5a43c3dc353f285dbf737588ff1bc',1,'led.h']]],
   ['hw_5fled_5finit',['hw_led_init',['../group__LED.html#ga9ec405198f2a522ab4611684a395e60d',1,'led.h']]],
