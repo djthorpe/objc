@@ -144,7 +144,7 @@ bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness);
  * This function blinks the LED continuously with the specified period.
  * The LED will turn on and off at the specified interval.
  */
-bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats);
+bool hw_led_blink(hw_led_t *led, uint32_t period_ms, bool repeats);
 
 /**
  * @brief Fade the LED continuously.
@@ -159,4 +159,4 @@ bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats);
  * if it supports linear control through PWM. Otherwise, it will blink
  * instead.
  */
-bool hw_led_fade(hw_led_t *led, uint8_t period_ms, bool repeats);
+bool hw_led_fade(hw_led_t *led, uint32_t period_ms, bool repeats);
