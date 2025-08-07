@@ -12,6 +12,7 @@ add_subdirectory(NXApplication/timer)
 
 # Runtime examples
 add_subdirectory(runtime/watchdog)
+add_subdirectory(runtime/led)
 
 # Unorganized examples - to be organized later!
 add_subdirectory(clock)
