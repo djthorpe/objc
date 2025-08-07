@@ -5,6 +5,8 @@
  * @ingroup Hardware
  *
  * LED control interface for hardware platforms.
+ *
+ * @example examples/runtime/led/main.c
  */
 #pragma once
 #include "pwm.h"

@@ -164,12 +164,31 @@ bool hw_led_set_state_wifi(bool on) {
 // PUBLIC METHODS
 
 /**
+ * @brief Return LED capabilities.
+ */
+hw_led_cap_t hw_led_capabilities(hw_led_t *led) {
+  sys_assert(led && hw_led_valid(led));
+  hw_led_cap_t capabilities = HW_LED_CAP_BINARY; // Default to binary control
+
+  if (led->pwm && hw_pwm_valid(led->pwm)) {
+    capabilities |= HW_LED_CAP_LINEAR; // Supports PWM control
+  }
+  if (led->gpio != 0xFF && !hw_led_status_is_wifi()) {
+    capabilities |= HW_LED_CAP_GPIO; // Supports GPIO control
+  }
+  return capabilities;
+}
+
+/**
  * @brief Set the LED state.
  */
 bool hw_led_set_state(hw_led_t *led, bool on) {
   sys_assert(led && hw_led_valid(led));
 
-  // TODO: Cancel any ongoing fade or blink operations
+  // Cancel any ongoing fade or blink operations
+  if (led->pwm && hw_pwm_valid(led->pwm)) {
+    hw_pwm_set_irq_enabled(led->pwm, false);
+  }
 
   // Binary control
   if (led->pwm == NULL) {
@@ -192,28 +211,15 @@ bool hw_led_set_state(hw_led_t *led, bool on) {
 }
 
 /**
- * @brief Return LED capabilities.
- */
-hw_led_cap_t hw_led_capabilities(hw_led_t *led) {
-  sys_assert(led && hw_led_valid(led));
-  hw_led_cap_t capabilities = HW_LED_CAP_BINARY; // Default to binary control
-
-  if (led->pwm && hw_pwm_valid(led->pwm)) {
-    capabilities |= HW_LED_CAP_LINEAR; // Supports PWM control
-  }
-  if (led->gpio != 0xFF && !hw_led_status_is_wifi()) {
-    capabilities |= HW_LED_CAP_GPIO; // Supports GPIO control
-  }
-  return capabilities;
-}
-
-/**
  * @brief Set the LED brightness.
  */
 bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
   sys_assert(led && hw_led_valid(led));
 
-  // TODO: Cancel any ongoing fade or blink operations
+  // Cancel any ongoing fade or blink operations
+  if (led->pwm && hw_pwm_valid(led->pwm)) {
+    hw_pwm_set_irq_enabled(led->pwm, false);
+  }
 
   // Binary control
   if (led->pwm == NULL) {
@@ -242,11 +248,21 @@ bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
  * @brief Blink the LED continuously.
  */
 bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats) {
-  // Blink functionality not yet implemented for Pico
-  sys_assert(led);
-  (void)led;       // Suppress unused parameter warning
-  (void)period_ms; // Suppress unused parameter warning
-  (void)repeats;   // Suppress unused parameter warning
+  sys_assert(led && hw_led_valid(led));
+
+  // PWM is required for blinking
+  if (led->pwm == NULL || !hw_pwm_valid(led->pwm)) {
+    return false; // Cannot blink without PWM
+  } else {
+    hw_pwm_set_irq_enabled(led->pwm, true);
+    // Half on / half off
+    if (hw_pwm_start(led->pwm, led->gpio, 50.0f)) {
+      // Successfully started PWM for blinking
+      return true;
+    }
+  }
+
+  // Enable interrupts for the PWM channel
   return false;
 }
 
