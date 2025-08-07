@@ -192,6 +192,22 @@ bool hw_led_set_state(hw_led_t *led, bool on) {
 }
 
 /**
+ * @brief Return LED capabilities.
+ */
+hw_led_cap_t hw_led_capabilities(hw_led_t *led) {
+  sys_assert(led && hw_led_valid(led));
+  hw_led_cap_t capabilities = HW_LED_CAP_BINARY; // Default to binary control
+
+  if (led->pwm && hw_pwm_valid(led->pwm)) {
+    capabilities |= HW_LED_CAP_LINEAR; // Supports PWM control
+  }
+  if (led->gpio != 0xFF && !hw_led_status_is_wifi()) {
+    capabilities |= HW_LED_CAP_GPIO; // Supports GPIO control
+  }
+  return capabilities;
+}
+
+/**
  * @brief Set the LED brightness.
  */
 bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {

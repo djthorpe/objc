@@ -48,6 +48,16 @@ bool hw_led_valid(hw_led_t *led) {
 }
 
 /**
+ * @brief Return LED capabilities.
+ */
+hw_led_cap_t hw_led_capabilities(hw_led_t *led) {
+  // LED not implemented in stub
+  sys_assert(led);
+  (void)led; // Suppress unused parameter warning
+  return HW_LED_CAP_NONE;
+}
+
+/**
  * @brief Set the LED state.
  */
 bool hw_led_set_state(hw_led_t *led, bool on) {

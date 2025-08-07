@@ -14,7 +14,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
-#define HW_LED_CTX_SIZE 32 ///< Size of the LED context buffer
+#define HW_LED_CTX_SIZE 64 ///< Size of the LED context buffer
 
 /**
  * @brief LED structure definition for hardware control.
@@ -30,6 +30,20 @@ typedef struct {
   hw_pwm_t *pwm; ///< Optional pointer to a PWM structure for linear control
   uint8_t ctx[HW_LED_CTX_SIZE]; ///< Internal context buffer for LED state
 } hw_led_t;
+
+/**
+ * @brief LED capabilities flags.
+ * @ingroup LED
+ *
+ * This enum defines the capabilities of an LED unit, such as whether it
+ * supports binary on/off control or linear brightness control via PWM.
+ */
+typedef enum {
+  HW_LED_CAP_NONE = 0,          ///< No capabilities
+  HW_LED_CAP_BINARY = (1 << 0), ///< Supports binary on/off control
+  HW_LED_CAP_LINEAR = (1 << 1), ///< Supports linear brightness control via PWM
+  HW_LED_CAP_GPIO = (1 << 2),   ///< GPIO pin control
+} hw_led_cap_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -81,6 +95,15 @@ void hw_led_finalize(hw_led_t *led);
  * @return True if the LED is valid, false otherwise.
  */
 bool hw_led_valid(hw_led_t *led);
+
+/**
+ * @brief Return LED capabilities.
+ * @ingroup LED
+ * @param led Pointer to the LED structure to check.
+ * @return The capabilities of the LED, such as whether it supports
+ * linear control through PWM or binary control.
+ */
+hw_led_cap_t hw_led_capabilities(hw_led_t *led);
 
 /**
  * @brief Set the LED state.
