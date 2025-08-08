@@ -4,18 +4,10 @@
  * @defgroup Power Power
  * @ingroup Hardware
  *
- * Minimal cross‑platform power management abstraction providing:
- *  - Detection of active power source(s) (USB / battery)
- *  - Approximate battery state of charge reporting (0–100%) when supported
- *  - Optional asynchronous callback notification on source / status changes
- *
- * Design goals:
- *  - Header‑only public contract with opaque internal state (ctx buffer)
- *  - Tiny footprint: no dynamic allocation; caller owns the struct
- *  - Graceful degradation: platforms lacking measurement return defaults
- *
- * Unless otherwise stated, functions are NOT thread‑safe; external
- * serialization is required if accessed concurrently from multiple contexts.
+ * This file implements power management providing detection of active power
+ * source, approximate battery state of charge reporting (0–100%) when
+ * supported, the ability to reset the device and optional asynchronous callback
+ * notification on power changes.
  */
 #pragma once
 #include <stdbool.h>
@@ -49,17 +41,18 @@ typedef enum {
   HW_POWER_UNKNOWN = 0,        ///< Unknown power source
   HW_POWER_USB = (1 << 0),     ///< USB (VBUS) power
   HW_POWER_BATTERY = (1 << 1), ///< Battery power
-} hw_power_cap_t;
+  HW_POWER_RESET = (1 << 2),   ///< Hardware will reset
+} hw_power_flag_t;
 
 /**
  * @brief Power status callback prototype.
  * @ingroup Power
  * @param power          Pointer to the associated power handle
- * @param source_change  True if the power source bitmask changed since the
- *                       last callback. If battery power source, the callback
- *                       may be invoked on battery level changes.
+ * @param flags          Bitmask of power source flags that changed since the
+ *                       last callback. If HW_POWER_BATTERY flag is set,
+ *                       the callback may be invoked on battery level changes.
  */
-typedef void (*hw_power_callback_t)(hw_power_t *power, bool source_change);
+typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -114,17 +107,20 @@ uint8_t hw_power_battery_percent(hw_power_t *power);
  * @brief Current detected power source(s).
  * @ingroup Power
  * @param power Power handle
- * @return Bitmask of @ref hw_power_cap_t flags; HW_POWER_UNKNOWN if unknown.
+ * @return Bitmask of @ref hw_power_flag_t flags; HW_POWER_UNKNOWN if unknown.
  */
-hw_power_cap_t hw_power_source(hw_power_t *power);
+hw_power_flag_t hw_power_source(hw_power_t *power);
 
 /**
  * @brief Reset the process or hardware.
  * @ingroup Power
  * @param power Power handle
+ * @param delay_ms Delay in milliseconds before the reset
  * @return True if the reset operation was successful; false otherwise.
  *
  * If it's possible to reset the hardware, this function will attempt to do so
- * and return the result. If not, it will return false.
+ * and return the result. If not, it will return false. The callback will be
+ * called with the HW_POWER_RESET flag set, giving the application a chance
+ * to react to the reset event.
  */
-bool hw_power_reset(hw_power_t *power);
+bool hw_power_reset(hw_power_t *power, uint32_t delay_ms);
