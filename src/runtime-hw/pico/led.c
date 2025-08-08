@@ -241,9 +241,12 @@ bool hw_led_set_state(hw_led_t *led, bool on) {
     return false;
   }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  bool internal = ctx ? ctx->internal_update : false;
+  if (!ctx || !ctx->valid) {
+    return false; // Must have been initialized and not finalized
+  }
 
   // Cancel any ongoing fade or blink operations unless internal update
+  bool internal = ctx ? ctx->internal_update : false;
   if (!internal) {
     if (led->pwm && hw_pwm_valid(led->pwm)) {
       hw_pwm_set_irq_enabled(led->pwm, false);
@@ -264,9 +267,12 @@ bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
     return false;
   }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  bool internal = ctx ? ctx->internal_update : false;
+  if (!ctx || !ctx->valid) {
+    return false; // Must have been initialized and not finalized
+  }
 
   // Cancel any ongoing fade or blink operations unless internal update
+  bool internal = ctx ? ctx->internal_update : false;
   if (!internal) {
     if (led->pwm && hw_pwm_valid(led->pwm)) {
       hw_pwm_set_irq_enabled(led->pwm, false);
@@ -326,7 +332,9 @@ bool hw_led_blink(hw_led_t *led, uint32_t period_ms, bool repeats) {
 
   // Cancel any existing PWM fade/blink IRQ and timer
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  sys_assert(ctx);
+  if (!ctx || !ctx->valid) {
+    return false; // Must have been initialized and not finalized
+  }
   if (led->pwm && hw_pwm_valid(led->pwm)) {
     hw_pwm_set_irq_enabled(led->pwm, false);
   }
@@ -373,8 +381,8 @@ bool hw_led_fade(hw_led_t *led, uint32_t period_ms, bool repeats) {
   // Cancel any existing PWM IRQ and timer
   hw_pwm_set_irq_enabled(led->pwm, false);
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  if (ctx == NULL) {
-    return false;
+  if (!ctx || !ctx->valid) {
+    return false; // Must have been initialized and not finalized
   }
   if (sys_timer_valid(&ctx->timer)) {
     sys_timer_finalize(&ctx->timer);
@@ -417,11 +425,12 @@ static void _hw_led_blink_callback(sys_timer_t *timer) {
     return;
   }
   hw_led_t *led = (hw_led_t *)timer->userdata;
-  if (!hw_led_valid(led)) {
-    return;
-  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  if (ctx == NULL) {
+  if (!hw_led_valid(led) || !ctx || !ctx->valid) {
+    // Stop further callbacks if LED became invalid mid-operation
+    if (ctx) {
+      sys_timer_finalize(&ctx->timer);
+    }
     return;
   }
 
@@ -443,11 +452,11 @@ static void _hw_led_fade_callback(sys_timer_t *timer) {
     return;
   }
   hw_led_t *led = (hw_led_t *)timer->userdata;
-  if (!hw_led_valid(led)) {
-    return;
-  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
-  if (ctx == NULL) {
+  if (!hw_led_valid(led) || !ctx || !ctx->valid) {
+    if (ctx) {
+      sys_timer_finalize(&ctx->timer);
+    }
     return;
   }
   if (led->pwm == NULL || !hw_pwm_valid(led->pwm)) {
