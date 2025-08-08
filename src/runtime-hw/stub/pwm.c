@@ -48,22 +48,25 @@ uint8_t hw_pwm_gpio_unit(uint8_t gpio) {
 }
 
 /**
- * @brief Get PWM configuration.
+ * @brief Get PWM configuration for a desired frequency.
+ * Matches hw_pwm_get_config() in the public API.
+ */
+hw_pwm_config_t hw_pwm_get_config(float freq) {
+  // PWM not implemented in stub
+  (void)freq; // Suppress unused parameter warning
+  hw_pwm_config_t config = {0};
+  config.wrap = 0;
+  config.divider = 1.0f;
+  return config;
+}
+
+/**
+ * @brief Returns the frequency for a configuration (stub always 0).
  */
 float hw_pwm_get_freq(hw_pwm_config_t *config) {
   // PWM not implemented in stub
   sys_assert(config);
   (void)config; // Suppress unused parameter warning
-  return 0.0f;
-}
-
-/**
- * @brief Returns the frequency configured for a PWM unit.
- */
-float hw_pwm_get_freq(hw_pwm_t *pwm) {
-  // PWM not implemented in stub
-  sys_assert(pwm);
-  (void)pwm; // Suppress unused parameter warning
   return 0.0f;
 }
 
