@@ -82,7 +82,7 @@ bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
 /**
  * @brief Blink the LED continuously.
  */
-bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats) {
+bool hw_led_blink(hw_led_t *led, uint32_t period_ms, bool repeats) {
   // LED not implemented in stub
   sys_assert(led);
   (void)led;       // Suppress unused parameter warning
@@ -94,7 +94,7 @@ bool hw_led_blink(hw_led_t *led, uint8_t period_ms, bool repeats) {
 /**
  * @brief Fade the LED continuously.
  */
-bool hw_led_fade(hw_led_t *led, uint8_t period_ms, bool repeats) {
+bool hw_led_fade(hw_led_t *led, uint32_t period_ms, bool repeats) {
   // LED not implemented in stub
   sys_assert(led);
   (void)led;       // Suppress unused parameter warning
