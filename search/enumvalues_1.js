@@ -17,7 +17,8 @@ var searchData=
   ['hw_5fled_5fcap_5fgpio',['HW_LED_CAP_GPIO',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28ab793c2d4fc7ffe42bb66490c15b68a96',1,'led.h']]],
   ['hw_5fled_5fcap_5flinear',['HW_LED_CAP_LINEAR',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a216927b46077a86278f9bcd4979dfbbd',1,'led.h']]],
   ['hw_5fled_5fcap_5fnone',['HW_LED_CAP_NONE',['../group__LED.html#ggac58a71ec207383491bdb61c7f91a6e28a10792eb258cfe84cee9d1698c8d4025d',1,'led.h']]],
-  ['hw_5fpower_5fbattery',['HW_POWER_BATTERY',['../group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9a017f5baf1f9614bd776c3de32b9ca992',1,'power.h']]],
-  ['hw_5fpower_5funknown',['HW_POWER_UNKNOWN',['../group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9a0ee85aad30995d428e5f7f8cdc65b91f',1,'power.h']]],
-  ['hw_5fpower_5fusb',['HW_POWER_USB',['../group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9ae85fa439c865c2dfd0b88875978e34ee',1,'power.h']]]
+  ['hw_5fpower_5fbattery',['HW_POWER_BATTERY',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a017f5baf1f9614bd776c3de32b9ca992',1,'power.h']]],
+  ['hw_5fpower_5freset',['HW_POWER_RESET',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a919a6667678fe87be74b2bd496e0f21f',1,'power.h']]],
+  ['hw_5fpower_5funknown',['HW_POWER_UNKNOWN',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a0ee85aad30995d428e5f7f8cdc65b91f',1,'power.h']]],
+  ['hw_5fpower_5fusb',['HW_POWER_USB',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4ae85fa439c865c2dfd0b88875978e34ee',1,'power.h']]]
 ];

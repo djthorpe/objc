@@ -91,22 +91,23 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gab58c532812a4682d32fc0f81c0d2c848"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab58c532812a4682d32fc0f81c0d2c848">hw_power_callback_t</a>) (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power, bool source_change)</td></tr>
-<tr class="memdesc:gab58c532812a4682d32fc0f81c0d2c848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#gab58c532812a4682d32fc0f81c0d2c848">More...</a><br /></td></tr>
-<tr class="separator:gab58c532812a4682d32fc0f81c0d2c848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">hw_power_callback_t</a>) (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags)</td></tr>
+<tr class="memdesc:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">More...</a><br /></td></tr>
+<tr class="separator:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gab125a33e3c37ee32b94d4427503f20d9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab125a33e3c37ee32b94d4427503f20d9">hw_power_cap_t</a> { <a class="el" href="group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9a0ee85aad30995d428e5f7f8cdc65b91f">HW_POWER_UNKNOWN</a> = 0, 
-<a class="el" href="group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9ae85fa439c865c2dfd0b88875978e34ee">HW_POWER_USB</a> = (1 &lt;&lt; 0), 
-<a class="el" href="group__Power.html#ggab125a33e3c37ee32b94d4427503f20d9a017f5baf1f9614bd776c3de32b9ca992">HW_POWER_BATTERY</a> = (1 &lt;&lt; 1)
- }<tr class="memdesc:gab125a33e3c37ee32b94d4427503f20d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power source capability / status flags.  <a href="group__Power.html#gab125a33e3c37ee32b94d4427503f20d9">More...</a><br /></td></tr>
+<tr class="memitem:ga146f43ba4b648c7e71a79b792510b4d4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> { <a class="el" href="group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a0ee85aad30995d428e5f7f8cdc65b91f">HW_POWER_UNKNOWN</a> = 0, 
+<a class="el" href="group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4ae85fa439c865c2dfd0b88875978e34ee">HW_POWER_USB</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a017f5baf1f9614bd776c3de32b9ca992">HW_POWER_BATTERY</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a919a6667678fe87be74b2bd496e0f21f">HW_POWER_RESET</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:ga146f43ba4b648c7e71a79b792510b4d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power source capability / status flags.  <a href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">More...</a><br /></td></tr>
 </td></tr>
-<tr class="separator:gab125a33e3c37ee32b94d4427503f20d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga146f43ba4b648c7e71a79b792510b4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaefefa637d400623e8306262d8aa113b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__power__t.html">hw_power_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gaefefa637d400623e8306262d8aa113b5">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#gab58c532812a4682d32fc0f81c0d2c848">hw_power_callback_t</a> callback)</td></tr>
+<tr class="memitem:gaefefa637d400623e8306262d8aa113b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__power__t.html">hw_power_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gaefefa637d400623e8306262d8aa113b5">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">hw_power_callback_t</a> callback)</td></tr>
 <tr class="memdesc:gaefefa637d400623e8306262d8aa113b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="group__Power.html#gaefefa637d400623e8306262d8aa113b5">More...</a><br /></td></tr>
 <tr class="separator:gaefefa637d400623e8306262d8aa113b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad923af18b1a36e77a020cd90ea846bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">hw_power_valid</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
@@ -118,12 +119,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga51e1f147775094fd8044f24ed6f2c3de"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de">hw_power_battery_percent</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
 <tr class="memdesc:ga51e1f147775094fd8044f24ed6f2c3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approximate battery state of charge.  <a href="group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de">More...</a><br /></td></tr>
 <tr class="separator:ga51e1f147775094fd8044f24ed6f2c3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga78203066f103a650c10190fb226769c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Power.html#gab125a33e3c37ee32b94d4427503f20d9">hw_power_cap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga78203066f103a650c10190fb226769c9">hw_power_source</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
-<tr class="memdesc:ga78203066f103a650c10190fb226769c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current detected power source(s).  <a href="group__Power.html#ga78203066f103a650c10190fb226769c9">More...</a><br /></td></tr>
-<tr class="separator:ga78203066f103a650c10190fb226769c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafc8b1557582f437dd31c5cefe37ccc0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gafc8b1557582f437dd31c5cefe37ccc0a">hw_power_reset</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
-<tr class="memdesc:gafc8b1557582f437dd31c5cefe37ccc0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the process or hardware.  <a href="group__Power.html#gafc8b1557582f437dd31c5cefe37ccc0a">More...</a><br /></td></tr>
-<tr class="separator:gafc8b1557582f437dd31c5cefe37ccc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325">hw_power_source</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
+<tr class="memdesc:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current detected power source(s).  <a href="group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325">More...</a><br /></td></tr>
+<tr class="separator:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab77dd4816d6c45ac0b32ce9e12a2ed14">hw_power_reset</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power, uint32_t delay_ms)</td></tr>
+<tr class="memdesc:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the process or hardware.  <a href="group__Power.html#gab77dd4816d6c45ac0b32ce9e12a2ed14">More...</a><br /></td></tr>
+<tr class="separator:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Power management interface. </p>
