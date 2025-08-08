@@ -56,7 +56,22 @@ void timer_callback(sys_timer_t *timer) {
     sys_printf("  Fade LED with interval 250ms\n");
     hw_led_fade(led, 250, true);
     break;
+  case 8:
+    sys_printf("  Turning LED off\n");
+    hw_led_set_state(led, false);
+    break;
+  case 9:
+    sys_printf("  Blink LED once with 500ms interval\n");
+    hw_led_blink(led, 500, false);
+    break;
+  case 10:
+    sys_printf("  Fade LED once with 500ms interval\n");
+    hw_led_fade(led, 500, false);
+    break;
   default:
+    sys_printf("  Turning LED off\n");
+    hw_led_set_state(led, false);
+
     // Reset counter
     timer_count = 0;
     break;
@@ -95,8 +110,8 @@ bool core0_task() {
     sys_printf("  LED supports GPIO control\n");
   }
 
-  // Create a timer that will trigger every 2s
-  sys_timer_t timer = sys_timer_init(2000, &led, timer_callback);
+  // Create a timer that will trigger every 5s
+  sys_timer_t timer = sys_timer_init(5000, &led, timer_callback);
   if (!sys_timer_start(&timer)) {
     sys_printf("core 0: Failed to start timer\n");
     hw_led_finalize(&led);

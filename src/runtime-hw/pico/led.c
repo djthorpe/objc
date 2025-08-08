@@ -12,12 +12,13 @@
 
 struct hw_led_ctx {
   sys_timer_t timer;    ///< Timer for fade/blink operations
-  bool repeats;         ///< True if blinking repeats
-  bool state;           ///< Current on/off state during blink
-  uint8_t toggle_count; ///< Number of toggles performed (for one-shot)
-  uint8_t brightness;   ///< Current brightness for fade (0-255)
+  bool repeats;         ///< True if blinking/fading repeats
+  bool state;           ///< Current on/off state
+  uint8_t toggle_count; ///< Reserved / future use
+  uint8_t brightness;   ///< Current brightness (0-255)
   int8_t direction;     ///< Fade direction: +1 up, -1 down
   bool internal_update; ///< True while internally adjusting output
+  bool valid;           ///< Context valid flag
 };
 
 static inline struct hw_led_ctx *hw_led_get_ctx(hw_led_t *led) {
@@ -27,20 +28,7 @@ static inline struct hw_led_ctx *hw_led_get_ctx(hw_led_t *led) {
 // Forward declaration of blink callback
 static void _hw_led_blink_callback(sys_timer_t *timer);
 static void _hw_led_fade_callback(sys_timer_t *timer);
-
-// Internal output helper which bypasses cancelling timers
-static bool _hw_led_output(hw_led_t *led, bool on) {
-  if (led->pwm == NULL) {
-    if (led->gpio == 0xFF && hw_led_status_is_wifi()) {
-      return hw_led_set_state_wifi(on);
-    }
-    sys_assert(led->gpio < hw_gpio_count());
-    gpio_put(led->gpio, on ? 1 : 0);
-    return true;
-  } else {
-    return hw_pwm_start(led->pwm, led->gpio, on ? 100.0f : 0.0f);
-  }
-}
+static bool _hw_led_output(hw_led_t *led, bool on);
 
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
@@ -102,11 +90,13 @@ hw_led_t hw_led_init(uint8_t gpio, hw_pwm_t *pwm) {
   // Initialize the struct
   led.gpio = gpio;
   led.pwm = pwm;
-
-  // Set state to off - we initialize the PWM in here
-  hw_led_set_state(&led, false);
-
-  // Return valid LED structure
+  struct hw_led_ctx *ctx = hw_led_get_ctx(&led);
+  sys_memset(ctx, 0, sizeof(struct hw_led_ctx));
+  ctx->valid = true;
+  ctx->brightness = 0;
+  ctx->direction = 1;
+  ctx->state = false;
+  (void)_hw_led_output(&led, false); // Ensure off
   return led;
 }
 
@@ -131,58 +121,55 @@ bool hw_led_valid(hw_led_t *led) {
   if (led == NULL) {
     return false;
   }
-  if (led->gpio == 0xFF) {
-    // If it's WiFi, then OK
+  struct hw_led_ctx *ctx = hw_led_get_ctx(led);
+  if (ctx == NULL || !ctx->valid) {
+    return false;
+  }
+  if (led->gpio == 0xFF) { // Status LED path
     return hw_led_status_is_wifi();
   }
   if (led->gpio >= hw_gpio_count()) {
-    return false; // Invalid GPIO pin
+    return false;
   }
   if (led->pwm && !hw_pwm_valid(led->pwm)) {
-    return false; // Invalid PWM structure
+    return false;
   }
-  return true; // Valid LED structure
+  return true;
 }
 
 /**
  * @brief Finalize and release an LED.
  */
 void hw_led_finalize(hw_led_t *led) {
-  if (led == NULL || !hw_led_valid(led)) {
-    return; // Nothing to finalize
+  if (led == NULL) {
+    return;
   }
-
-  // Finalize any timers
+  if (!hw_led_valid(led)) {
+    return;
+  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
   if (ctx && sys_timer_valid(&ctx->timer)) {
     sys_timer_finalize(&ctx->timer);
   }
-
-  // Set state to off
-  hw_led_set_state(led, false);
-
-  // If PWM is used, stop it
-  if (led->pwm) {
+  (void)_hw_led_output(led, false);
+  if (led->pwm && hw_pwm_valid(led->pwm)) {
     hw_pwm_stop(led->pwm);
   }
-
-  // Deinitialize the GPIO pin
-  if (led->gpio != 0xFF) {
-    sys_assert(led->gpio < hw_gpio_count());
-    gpio_deinit(led->gpio); // Deinitialize the GPIO pin
+  if (led->gpio != 0xFF && led->gpio < hw_gpio_count()) {
+    gpio_deinit(led->gpio);
   }
-
-  // Clear the LED structure
-  sys_memset(led, 0, sizeof(hw_led_t));
+  if (ctx) {
+    ctx->valid = false;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
 /**
- * @brief Set the LED state.
+ * @brief Set the WiFi-connected LED state.
  */
-bool hw_led_set_state_wifi(bool on) {
+static inline bool _hw_led_set_state_wifi(bool on) {
 #ifdef PICO_CYW43_SUPPORTED
   cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, on ? 1 : 0);
   return true;
@@ -192,6 +179,22 @@ bool hw_led_set_state_wifi(bool on) {
 #endif
 }
 
+/**
+ * @brief Internal output helper which bypasses cancelling timers
+ */
+static bool _hw_led_output(hw_led_t *led, bool on) {
+  if (led->pwm == NULL) {
+    if (led->gpio == 0xFF && hw_led_status_is_wifi()) {
+      return _hw_led_set_state_wifi(on);
+    }
+    sys_assert(led->gpio < hw_gpio_count());
+    gpio_put(led->gpio, on ? 1 : 0);
+    return true;
+  } else {
+    return hw_pwm_start(led->pwm, led->gpio, on ? 100.0f : 0.0f);
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
@@ -199,23 +202,26 @@ bool hw_led_set_state_wifi(bool on) {
  * @brief Return LED capabilities.
  */
 hw_led_cap_t hw_led_capabilities(hw_led_t *led) {
-  sys_assert(led && hw_led_valid(led));
-  hw_led_cap_t capabilities = HW_LED_CAP_BINARY; // Default to binary control
-
+  if (!hw_led_valid(led)) {
+    return HW_LED_CAP_NONE;
+  }
+  hw_led_cap_t caps = HW_LED_CAP_BINARY;
   if (led->pwm && hw_pwm_valid(led->pwm)) {
-    capabilities |= HW_LED_CAP_LINEAR; // Supports PWM control
+    caps |= HW_LED_CAP_LINEAR;
   }
-  if (led->gpio != 0xFF && !hw_led_status_is_wifi()) {
-    capabilities |= HW_LED_CAP_GPIO; // Supports GPIO control
+  if (led->gpio != 0xFF) {
+    caps |= HW_LED_CAP_GPIO;
   }
-  return capabilities;
+  return caps;
 }
 
 /**
  * @brief Set the LED state.
  */
 bool hw_led_set_state(hw_led_t *led, bool on) {
-  sys_assert(led && hw_led_valid(led));
+  if (!hw_led_valid(led)) {
+    return false;
+  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
   bool internal = ctx ? ctx->internal_update : false;
 
@@ -232,9 +238,11 @@ bool hw_led_set_state(hw_led_t *led, bool on) {
   // Binary control
   if (led->pwm == NULL) {
     if (led->gpio == 0xFF && hw_led_status_is_wifi()) {
-      return hw_led_set_state_wifi(on);
+      return _hw_led_set_state_wifi(on);
     }
-    sys_assert(led->gpio < hw_gpio_count());
+    if (led->gpio >= hw_gpio_count()) {
+      return false;
+    }
     gpio_put(led->gpio, on ? 1 : 0);
     return true;
   }
@@ -253,7 +261,9 @@ bool hw_led_set_state(hw_led_t *led, bool on) {
  * @brief Set the LED brightness.
  */
 bool hw_led_set_brightness(hw_led_t *led, uint8_t brightness) {
-  sys_assert(led && hw_led_valid(led));
+  if (!hw_led_valid(led)) {
+    return false;
+  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(led);
   bool internal = ctx ? ctx->internal_update : false;
 
@@ -300,9 +310,14 @@ bool hw_led_blink(hw_led_t *led, uint32_t period_ms, bool repeats) {
   if (period_ms == 0) {
     return false;
   }
-  // Enforce minimum period of 250ms
-  if (period_ms < 250) {
-    period_ms = 250;
+  // Treat period_ms as full ON+OFF cycle; compute half-period toggle interval
+  // Enforce minimum half-period of 100ms (=> 200ms full cycle) for stability
+  if (period_ms < 200) {
+    period_ms = 200; // Clamp
+  }
+  uint32_t half_period = period_ms / 2;
+  if (half_period == 0) {
+    half_period = 100; // Fallback
   }
 
   // Cancel any existing PWM fade/blink IRQ and timer
@@ -323,13 +338,15 @@ bool hw_led_blink(hw_led_t *led, uint32_t period_ms, bool repeats) {
   _hw_led_output(led, true);
   ctx->internal_update = false;
 
-  // Create and start timer (toggle each period_ms)
-  ctx->timer = sys_timer_init(period_ms, led, _hw_led_blink_callback);
-  if (!sys_timer_valid(&ctx->timer)) {
+  // Create and start timer (toggle each half-period)
+  ctx->timer = sys_timer_init(half_period, led, _hw_led_blink_callback);
+  if (ctx->timer.callback == NULL) { // Invalid initialization
     return false;
-  } else {
-    return sys_timer_start(&ctx->timer);
   }
+  if (!sys_timer_start(&ctx->timer)) {
+    return false;
+  }
+  return true;
 }
 
 /**
@@ -379,6 +396,9 @@ bool hw_led_fade(hw_led_t *led, uint32_t period_ms, bool repeats) {
   }
 
   ctx->timer = sys_timer_init(interval, led, _hw_led_fade_callback);
+  if (ctx->timer.callback == NULL) {
+    return false;
+  }
   if (!sys_timer_start(&ctx->timer)) {
     return false;
   }
