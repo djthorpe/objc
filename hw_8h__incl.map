@@ -1,9 +1,10 @@
 <map id="include/runtime&#45;hw/hw.h" name="include/runtime&#45;hw/hw.h">
-<area shape="rect" id="node2" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="591,80,648,107"/>
-<area shape="rect" id="node3" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="472,155,535,181"/>
-<area shape="rect" id="node7" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="385,80,438,107"/>
-<area shape="rect" id="node8" href="$led_8h.html" title="LED control interface. " alt="" coords="241,80,296,107"/>
-<area shape="rect" id="node9" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="127,155,194,181"/>
-<area shape="rect" id="node10" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="513,80,566,107"/>
-<area shape="rect" id="node11" href="$watchdog_8h.html" title="Hardware Watchdog Timer Abstraction Layer. " alt="" coords="5,155,103,181"/>
+<area shape="rect" id="node2" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="352,80,409,107"/>
+<area shape="rect" id="node3" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="416,155,478,181"/>
+<area shape="rect" id="node7" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="484,80,538,107"/>
+<area shape="rect" id="node8" href="$infrared_8h.html" title="Infrared (IR) receiver interface. " alt="" coords="34,155,119,181"/>
+<area shape="rect" id="node9" href="$led_8h.html" title="LED control interface. " alt="" coords="626,80,681,107"/>
+<area shape="rect" id="node10" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="756,155,823,181"/>
+<area shape="rect" id="node11" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="274,80,327,107"/>
+<area shape="rect" id="node12" href="$watchdog_8h.html" title="Hardware Watchdog Timer Abstraction Layer. " alt="" coords="144,155,241,181"/>
 </map>
