@@ -34,11 +34,6 @@ space_continue:
     ; If we get here, timeout occurred - long space
     jmp start           ; Skip this space and wait for next mark
     
-space_timeout:
-    ; Space was long
-    ; Don't push anything, just go back to waiting for next mark
-    jmp start
-    
 end_space:
     mov isr, x          ; Move remaining count to ISR  
     push                ; Push SPACE duration to FIFO
