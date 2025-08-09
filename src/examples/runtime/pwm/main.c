@@ -17,30 +17,33 @@
 // GPIO pin used for PWM output (adjust as needed for your board)
 #define PWM_PIN 25
 
+typedef struct {
+  int duty;
+  bool rising;
+  hw_pwm_t *pwm;
+} pwm_state_t;
+
 void pwm_wrap_callback(uint8_t slice, void *userdata) {
-  hw_pwm_t *pwm = (hw_pwm_t *)userdata;
-  if (!pwm || !hw_pwm_valid(pwm) || pwm->unit != slice) {
+  pwm_state_t *state = (pwm_state_t *)userdata;
+  if (!state || !state->pwm || !hw_pwm_valid(state->pwm) || state->pwm->unit != slice) {
     return; // Ignore if invalid or unexpected slice
   }
 
-  static int duty = 0;
-  static bool rising = true;
-
-  if (rising) {
-    if (++duty >= 100) {
-      duty = 99;
-      rising = false;
+  if (state->rising) {
+    if (++state->duty >= 100) {
+      state->duty = 99;
+      state->rising = false;
     }
   } else {
-    if (--duty <= 0) {
-      duty = 1;
-      rising = true;
+    if (--state->duty <= 0) {
+      state->duty = 1;
+      state->rising = true;
     }
   }
 
   // Update duty cycle (re-uses start API to adjust level)
   // hw_pwm_start updates the channel level and (re)enables the slice
-  hw_pwm_start(pwm, PWM_PIN, (float)duty);
+  hw_pwm_start(state->pwm, PWM_PIN, (float)state->duty);
 }
 
 int main() {
