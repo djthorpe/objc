@@ -2,9 +2,14 @@
  * @file examples/runtime/led/main.c
  * @brief LED control example
  *
- * This example demonstrates how to use the hardware PWM controller to
- * control the brightness of an LED.
+ * This example demonstrates how to use the hardware LED
+ * control functions to manage the state and brightness of an LED.
  *
+ * It runs a timer to periodically change the LED state and brightness.
+ *
+ * It uses the on-board status LED on the Raspberry Pi Pico. If
+ * the LED is not directly connected to a GPIO pin, but through
+ * the Wi-Fi module, it will blink instead of fading.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>

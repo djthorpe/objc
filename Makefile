@@ -17,53 +17,55 @@ else
 endif
 
 .PHONY: all
-all: NXApplication
+all: config NXApplication
 
-# Create the libobjc-gcc runtime library
-.PHONY: libobjc-gcc
-libobjc-gcc: dep-cc dep-cmake
+# Configure
+config: dep-cc dep-cmake submodule
 	@echo
-	@echo make libobjc-gcc
+	@echo configure
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		-D TARGET=${TARGET}
+
+# Create the libruntime-sys runtime library
+.PHONY: runtime-sys
+runtime-sys: config
+	@echo
+	@echo make runtime-sys
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-sys
+
+# Create the libobjc-gcc runtime library
+.PHONY: libobjc-gcc
+libobjc-gcc: runtime-sys
+	@echo
+	@echo make libobjc-gcc
 	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc
 
 # Create the libruntime-pix runtime library
 .PHONY: runtime-pix
-runtime-pix: dep-cc dep-cmake
+runtime-pix: runtime-sys
 	@echo
 	@echo make runtime-pix
-	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
-		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D TARGET=runtime-pix
 	@${CMAKE} --build ${BUILD_DIR} --target runtime-pix
 
 # Create the libruntime-hw runtime library
 .PHONY: runtime-hw
-runtime-hw: dep-cc dep-cmake
+runtime-hw: runtime-sys pioasm
 	@echo
 	@echo make runtime-hw
-	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
-		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D TARGET=runtime-hw
 	@${CMAKE} --build ${BUILD_DIR} --target runtime-hw
-
 
 # Create the libdrivers runtime library
 .PHONY: drivers
-drivers: dep-cc dep-cmake
+drivers: runtime-hw
 	@echo
 	@echo make drivers
-	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
-		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D TARGET=drivers
 	@${CMAKE} --build ${BUILD_DIR} --target drivers
 
 # Create the NXFoundation library
 .PHONY: NXFoundation
-NXFoundation: libobjc-gcc
+NXFoundation: libobjc-gcc runtime-sys
 	@echo
 	@echo make NXFoundation
 	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
@@ -85,7 +87,7 @@ tests: NXFoundation
 
 # Make the examples
 .PHONY: examples
-examples: NXFoundation
+examples: NXApplication
 	@echo
 	@echo make examples
 	@${CMAKE} --build ${BUILD_DIR}/src/examples
@@ -99,12 +101,15 @@ docs: dep-docker
 
 # Cross-compile libraries for Raspberry Pi Pico
 .PHONY: pico
-pico: submodule dep-cmake
+# The Pico cross-compile target now ensures local picotool and pioasm are built first
+# to avoid SDK corruption issues. Set NO_LOCAL_PICOTOOL=1 to skip using locally built tools.
+pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
 	@echo
 	@echo make pico cross-compilation
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
+		$(if $(NO_LOCAL_PICOTOOL),,-D picotool_DIR=${BUILD_DIR}/third_party/picotool) \
 		-D TARGET=armv6m-none-eabi
 	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
 
@@ -117,6 +122,16 @@ picotool: submodule dep-cmake
 	@make -C ${BUILD_DIR}/third_party/picotool
 	@echo Run:
 	@echo   install -s ${BUILD_DIR}/third_party/picotool/picotool ${HOME}/bin
+	@echo
+
+# Create the pioasm binary
+.PHONY: pioasm
+pioasm: submodule dep-cmake
+	@echo
+	@echo make pioasm
+	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev
+	@make -C ${BUILD_DIR}/pioasm
+	@echo Built pioasm at ${BUILD_DIR}/pioasm/pioasm
 	@echo
 
 .PHONY: submodule
