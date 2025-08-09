@@ -101,7 +101,7 @@ docs: dep-docker
 
 # Cross-compile libraries for Raspberry Pi Pico
 .PHONY: pico
-# Pico cross-compile target now ensures local picotool and pioasm are built first
+# The Pico cross-compile target now ensures local picotool and pioasm are built first
 # to avoid SDK corruption issues. Set NO_LOCAL_PICOTOOL=1 to skip using locally built tools.
 pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
 	@echo
