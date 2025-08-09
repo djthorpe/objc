@@ -1,7 +1,6 @@
 set(NAME "runtime_infrared")
 
 add_executable(${NAME}
-    main.c
     hack.c
 )
 target_link_libraries(${NAME} PRIVATE
