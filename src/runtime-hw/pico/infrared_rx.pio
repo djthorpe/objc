@@ -58,7 +58,7 @@ static inline void infrared_rx_pio_init(PIO pio, uint sm, uint offset, uint pin,
 
 static inline uint32_t infrared_rx_to_us(uint initial, uint32_t remaining, float clkdiv) {
     if (remaining > initial) {
-        return 0;
+        return UINT32_MAX; // Indicate overflow or error
     }
     uint32_t elapsed = initial - remaining;
     float sys_clk = (float)clock_get_hz(clk_sys);
