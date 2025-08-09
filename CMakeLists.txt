@@ -39,11 +39,6 @@ add_compile_options(
     "-DSYSTEM_PROCESSOR=\"${PROCESSOR_NAME_LOWER}\""
 )
 
-# Prevent picotool warnings
-if(CMAKE_SYSTEM_NAME STREQUAL "Pico")
-    set(picotool_DIR "${CMAKE_SOURCE_DIR}/third_party/picotool")
-endif()
-
 # Runtime Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")

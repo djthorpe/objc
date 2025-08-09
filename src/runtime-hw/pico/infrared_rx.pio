@@ -1,0 +1,73 @@
+;
+; IR Receiver PIO Program
+; Requires something like a TSOP38238 to be connected to
+; the GPIO pin configured for input.
+; https://www.vishay.com/docs/82491/tsop382.pdf
+;
+
+.program infrared_rx
+
+start:
+    wait 0 pin 0        ; Wait for start of MARK (signal goes low)
+    
+measure_mark:
+    mov x, ~null        ; Load timer with max value
+
+mark_loop:
+    jmp pin end_mark    ; If pin goes high, MARK ended
+    jmp x-- mark_loop   ; Continue counting while pin is low
+    
+end_mark:
+    mov isr, x          ; Move remaining count to ISR
+    push                ; Push MARK duration to FIFO
+    
+measure_space:
+    mov x, ~null        ; Reset timer for SPACE measurement  
+    set y, 15           ; Set a reasonable timeout counter (shorter to prevent overflow)
+    
+space_loop:
+    jmp pin space_continue ; If pin is high, continue measuring space
+    jmp end_space       ; If pin goes low, space ended (next mark)
+    
+space_continue:
+    jmp y-- space_loop  ; Decrement timeout and continue if not zero
+    ; If we get here, timeout occurred - long space
+    jmp start           ; Skip this space and wait for next mark
+    
+space_timeout:
+    ; Space was long
+    ; Don't push anything, just go back to waiting for next mark
+    jmp start
+    
+end_space:
+    mov isr, x          ; Move remaining count to ISR  
+    push                ; Push SPACE duration to FIFO
+    jmp start           ; Wait for next MARK
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+static inline void infrared_rx_pio_init(PIO pio, uint sm, uint offset, uint pin, float clkdiv) {
+    pio_sm_config c = infrared_rx_pio_get_default_config(offset);
+    sm_config_set_clkdiv(&c, clkdiv);
+    sm_config_set_in_pins(&c, pin);
+    sm_config_set_jmp_pin(&c, pin);
+    sm_config_set_in_shift(&c, false, false, 32);
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
+    pio_gpio_init(pio, pin);
+    gpio_set_dir(pin, GPIO_IN);
+    gpio_pull_up(pin);
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+
+static inline uint32_t infrared_rx_to_us(uint initial, uint32_t remaining, float clkdiv) {
+    if (remaining > initial) {
+        return 0;
+    }
+    uint32_t elapsed = initial - remaining;
+    float sys_clk = (float)clock_get_hz(clk_sys);
+    float pio_clk = sys_clk / clkdiv;
+    return (uint32_t)((float)elapsed * 1000000.0f / pio_clk);
+}
+%}
