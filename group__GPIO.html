@@ -274,7 +274,8 @@ Functions</h2></td></tr>
 <p>Get the total number of available <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins available on the hardware platform.</dd></dl>
 <p>Returns the number of logical <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins that can be used in the system. These are usually numbered from 0 to <a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0" title="Get the total number of available GPIO pins. ">hw_gpio_count()</a> - 1. If zero is returned, it indicates that <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> functionality is not available. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a13">examples/runtime/gpio/main.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="gab52795b43f48476be06940bbfe955290"></a>
@@ -396,7 +397,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> structure representing the initialized pin. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The pin number should be valid (0 to <a class="el" href="group__GPIO.html#ga05833c210f2ae683fd2b32d5634c75d0" title="Get the total number of available GPIO pins. ">hw_gpio_count()</a>-1). </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__GPIO.html#gac7525666288cb654655ebdbf8d63167a" title="GPIO mode flags for configuring GPIO pins. ">hw_gpio_mode_t</a> for available mode options. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a14">pico/gpio_runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a15">examples/runtime/gpio/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -474,7 +475,7 @@ Functions</h2></td></tr>
 </dl>
 <p>This function registers a global callback handler that will be invoked whenever a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> interrupt occurs on any pin that has been configured for interrupt detection. Only one callback can be active at a time.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__GPIO.html#ga7fe241ada48d1652491a9cfc6679e7f0" title="GPIO interrupt callback function pointer. ">hw_gpio_callback_t</a> for callback function signature requirements. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a17">pico/gpio_runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a18">examples/runtime/gpio/main.c</a>.</dd>
 </dl>
 </div>
 </div>

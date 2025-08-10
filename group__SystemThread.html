@@ -207,7 +207,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a22">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a5">examples/runtime/watchdog/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a3">pico/multicore/main.c</a>, <a class="el" href="pico_2runloop_2main_8c-example.html#a5">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a7">pico/simplequeue/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a22">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a5">examples/runtime/watchdog/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a3">pico/multicore/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a5">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -230,7 +230,7 @@ Functions</h2></td></tr>
 <p>Get the CPU core number the current thread is running on. </p>
 <dl class="section return"><dt>Returns</dt><dd>The core number (0-based) that the current thread is executing on. Returns 0 if the core cannot be determined or on single-core systems.</dd></dl>
 <p>This function queries the system to determine which CPU core the calling thread is currently scheduled on. Note that threads may migrate between cores, so this value may change over time unless thread affinity is set. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a1">pico/gpio_runloop/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a2">pico/multicore/main.c</a>, <a class="el" href="pico_2runloop_2main_8c-example.html#a1">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a2">pico/simplequeue/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a1">examples/runtime/gpio/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a2">pico/multicore/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a1">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -316,7 +316,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if thread was created on the specified core, false if core unavailable or error</dd></dl>
 <p>Creates a new thread that executes the specified function on a specific CPU core. The thread runs independently and terminates when the function returns. If the specified core is not available or already in use, the function returns false. Core 0 is typically the main/boot core. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="pico_2gpio_runloop_2main_8c-example.html#a13">pico/gpio_runloop/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a8">pico/multicore/main.c</a>, <a class="el" href="pico_2runloop_2main_8c-example.html#a19">pico/runloop/main.c</a>, and <a class="el" href="pico_2simplequeue_2main_8c-example.html#a11">pico/simplequeue/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a14">examples/runtime/gpio/main.c</a>, <a class="el" href="pico_2multicore_2main_8c-example.html#a8">pico/multicore/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a19">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
