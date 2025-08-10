@@ -6,11 +6,14 @@
  *
  * Infrared receiver interface for capturing and processing IR remote control
  * signals. This module provides functions to initialize an IR receiver,
- * configure callbacks for signal events, and process MARK/SPACE timing data.
+ * configure callbacks for signal events, and process MARK/SPACE/TIMEOUT timing
+ * data. The implementation of specific protocols is included in the driver
+ * library.
  *
- * The IR receiver uses PIO (Programmable I/O) to achieve high-precision
- * timing measurements of infrared pulses and spaces. Signal events are
- * delivered via callback functions for real-time processing.
+ * The callback is called with either MARK (high pulse), SPACE (low pulse),
+ * or TIMEOUT (overly long pulse) events. Events above 50ms are marked as
+ * TIMEOUT values, in which case detection of specific IR codes should
+ * be reset.
  *
  * @example examples/runtime/infrared/main.c
  */
@@ -27,8 +30,7 @@
  * @headerfile infrared.h runtime-hw/hw.h
  */
 typedef struct hw_infrared_rx_t {
-  uint8_t gpio;    ///< Infrared GPIO pin number
-  void *user_data; ///< Pointer to user data
+  void *ctx; ///< Context data for the receiver
 } hw_infrared_rx_t;
 
 /**
@@ -47,9 +49,9 @@ typedef enum hw_infrared_event_t {
  * @ingroup Infrared
  * @headerfile infrared.h runtime-hw/hw.h
  */
-typedef void (*hw_infrared_callback_t)(hw_infrared_rx_t *rx,
-                                       hw_infrared_event_t event,
-                                       uint32_t duration_us);
+typedef void (*hw_infrared_rx_callback_t)(hw_infrared_event_t event,
+                                          uint32_t duration_us,
+                                          void *user_data);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -58,13 +60,16 @@ typedef void (*hw_infrared_callback_t)(hw_infrared_rx_t *rx,
  * @brief Initialize a Infrared receiver.
  * @ingroup Infrared
  * @param gpio The GPIO pin number for the Infrared receiver.
+ * @param callback The callback function to be called on IR events.
+ * @param user_data Pointer to user data to be passed to the callback.
  * @return A Infrared receiver structure representing the initialized unit.
  *
  * This function initializes an Infrared receiver on the specified GPIO pin.
  * and with the specified user data.
  */
-hw_infrared_rx_t hw_infrared_rx_init(uint8_t gpio, void *user_data,
-                                     hw_infrared_callback_t callback);
+hw_infrared_rx_t hw_infrared_rx_init(uint8_t gpio,
+                                     hw_infrared_rx_callback_t callback,
+                                     void *user_data);
 
 /**
  * @brief Check if an Infrared receiver is valid.
