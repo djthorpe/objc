@@ -7,8 +7,9 @@ var searchData=
   ['hw_5finfrared_5fevent_5ft',['hw_infrared_event_t',['../group__Infrared.html#gab96427b6559361b932fb7fd76394b77b',1,'infrared.h']]],
   ['hw_5finfrared_5frx_5fcallback_5ft',['hw_infrared_rx_callback_t',['../group__Infrared.html#gafbcfe69d431492a2e26e849faa5dc7fb',1,'infrared.h']]],
   ['hw_5finfrared_5frx_5ft',['hw_infrared_rx_t',['../group__Infrared.html#ga00b138f9a4d493d2a3a0242ef8fb9698',1,'infrared.h']]],
-  ['hw_5fpower_5fcallback_5ft',['hw_power_callback_t',['../group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01',1,'power.h']]],
+  ['hw_5fpower_5fcallback_5ft',['hw_power_callback_t',['../group__Power.html#ga712d06d4424701aa2061e82091624b62',1,'power.h']]],
   ['hw_5fpwm_5fcallback_5ft',['hw_pwm_callback_t',['../group__PWM.html#ga6ac23a9b5a297738666fa8cbd23fc502',1,'pwm.h']]],
   ['hw_5fpwm_5ft',['hw_pwm_t',['../group__PWM.html#ga4aadf9beac1597e1477c5cd80d96fc58',1,'pwm.h']]],
-  ['hw_5fspi_5ft',['hw_spi_t',['../group__SPI.html#ga73bb1ed8fc8d79e3d54eb0551037f318',1,'spi.h']]]
+  ['hw_5fspi_5ft',['hw_spi_t',['../group__SPI.html#ga73bb1ed8fc8d79e3d54eb0551037f318',1,'spi.h']]],
+  ['hw_5fwatchdog_5ft',['hw_watchdog_t',['../group__Watchdog.html#ga58348a93cb04833bde850aa59005ccc5',1,'watchdog.h']]]
 ];

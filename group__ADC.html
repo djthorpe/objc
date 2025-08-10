@@ -92,12 +92,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga06cb59bbb2abfc72c25385d47f64a77c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__adc__t.html">hw_adc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga06cb59bbb2abfc72c25385d47f64a77c">hw_adc_init_temperature</a> ()</td></tr>
 <tr class="memdesc:ga06cb59bbb2abfc72c25385d47f64a77c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an ADC interface on which the temperature sensor is connected.  <a href="#ga06cb59bbb2abfc72c25385d47f64a77c">More...</a><br /></td></tr>
 <tr class="separator:ga06cb59bbb2abfc72c25385d47f64a77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga79b97b4070e30edb84509f5f154820ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__adc__t.html">hw_adc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga79b97b4070e30edb84509f5f154820ec">hw_adc_init_battery</a> ()</td></tr>
-<tr class="memdesc:ga79b97b4070e30edb84509f5f154820ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an ADC interface on which the battery level sensor is connected.  <a href="#ga79b97b4070e30edb84509f5f154820ec">More...</a><br /></td></tr>
-<tr class="separator:ga79b97b4070e30edb84509f5f154820ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8bac09d505244563910f44f9b3e1e5de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga8bac09d505244563910f44f9b3e1e5de">hw_adc_finalize</a> (<a class="el" href="structhw__adc__t.html">hw_adc_t</a> *adc)</td></tr>
 <tr class="memdesc:ga8bac09d505244563910f44f9b3e1e5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release an ADC interface.  <a href="#ga8bac09d505244563910f44f9b3e1e5de">More...</a><br /></td></tr>
 <tr class="separator:ga8bac09d505244563910f44f9b3e1e5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8554ce78904194f3f4c102796c8ce9aa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga8554ce78904194f3f4c102796c8ce9aa">hw_adc_gpio_channel</a> (uint8_t gpio)</td></tr>
+<tr class="memdesc:ga8554ce78904194f3f4c102796c8ce9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ADC channel number for a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#ga8554ce78904194f3f4c102796c8ce9aa">More...</a><br /></td></tr>
+<tr class="separator:ga8554ce78904194f3f4c102796c8ce9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#gadf6eb830b4a8ff3c268d571cb7c4e135">hw_adc_read</a> (<a class="el" href="structhw__adc__t.html">hw_adc_t</a> *adc)</td></tr>
 <tr class="memdesc:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current value from an ADC channel.  <a href="#gadf6eb830b4a8ff3c268d571cb7c4e135">More...</a><br /></td></tr>
 <tr class="separator:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,25 +161,30 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga79b97b4070e30edb84509f5f154820ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga79b97b4070e30edb84509f5f154820ec">&#9670;&nbsp;</a></span>hw_adc_init_battery()</h2>
+<a id="ga8554ce78904194f3f4c102796c8ce9aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8554ce78904194f3f4c102796c8ce9aa">&#9670;&nbsp;</a></span>hw_adc_gpio_channel()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structhw__adc__t.html">hw_adc_t</a> hw_adc_init_battery </td>
+          <td class="memname">uint8_t hw_adc_gpio_channel </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>gpio</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize an ADC interface on which the battery level sensor is connected. </p>
-<dl class="section return"><dt>Returns</dt><dd>An ADC structure representing the initialized interface.</dd></dl>
-<p>This function initializes the ADC interface which is used for measuring the battery level sensor (aka VSYS pin). This is typically used to monitor the battery voltage level.</p>
-<p>If not defined, this function will return an empty ADC structure. </p>
+<p>Get the ADC channel number for a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gpio</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The corresponding ADC channel number, or 0xFF if not found. </dd></dl>
 
 </div>
 </div>

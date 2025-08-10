@@ -52,7 +52,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -64,24 +63,44 @@ $(function() {
 
 <p>Power management interface.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="sys_8h_source.html">runtime-sys/sys.h</a>&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for power.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="power_8h__incl.png" border="0" usemap="#include_2runtime-hw_2power_8h" alt=""/></div>
 <map name="include_2runtime-hw_2power_8h" id="include_2runtime-hw_2power_8h">
+<area shape="rect" id="node2" href="sys_8h.html" title="System management functions. " alt="" coords="481,95,619,121"/>
+<area shape="rect" id="node3" href="runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="513,169,587,196"/>
+<area shape="rect" id="node4" href="date_8h.html" title="Date and Time management functions. " alt="" coords="977,244,1040,271"/>
+<area shape="rect" id="node7" href="env_8h.html" title="Environment information. " alt="" coords="380,169,437,196"/>
+<area shape="rect" id="node8" href="event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="713,169,784,196"/>
+<area shape="rect" id="node9" href="sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="635,244,699,271"/>
+<area shape="rect" id="node11" href="hash_8h.html" title="Methods for hash generation from data. " alt="" coords="453,244,519,271"/>
+<area shape="rect" id="node12" href="hashtable_8h.html" title="A hash table implementation. " alt="" coords="98,169,197,196"/>
+<area shape="rect" id="node13" href="memory_8h.html" title="Memory management. " alt="" coords="189,244,276,271"/>
+<area shape="rect" id="node14" href="printf_8h.html" title="Functions for formatted strings output. " alt="" coords="5,169,73,196"/>
+<area shape="rect" id="node16" href="random_8h.html" title="Random number generation. " alt="" coords="272,169,356,196"/>
+<area shape="rect" id="node17" href="thread_8h.html" title="Thread management and program execution. " alt="" coords="775,244,851,271"/>
+<area shape="rect" id="node18" href="timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="543,244,611,271"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="power_8h__dep__incl.png" border="0" usemap="#include_2runtime-hw_2power_8hdep" alt=""/></div>
+<map name="include_2runtime-hw_2power_8hdep" id="include_2runtime-hw_2power_8hdep">
+<area shape="rect" id="node2" href="hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="188,95,371,121"/>
+<area shape="rect" id="node3" href="drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,169,172,211"/>
+<area shape="rect" id="node5" href="drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,169,363,211"/>
+<area shape="rect" id="node6" href="drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,169,553,211"/>
+<area shape="rect" id="node4" href="drivers_8h.html" title="Drivers header. " alt="" coords="190,259,369,285"/>
 </map>
 </div>
 </div>
 <p><a href="power_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__power__t.html">hw_power_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for power management state.  <a href="structhw__power__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ad0f1ba8cbc1fbc6fca1ac7263cec65b5"><td class="memItemLeft" align="right" valign="top"><a id="ad0f1ba8cbc1fbc6fca1ac7263cec65b5"></a>
@@ -91,9 +110,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">hw_power_callback_t</a>) (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags)</td></tr>
-<tr class="memdesc:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">More...</a><br /></td></tr>
-<tr class="separator:gab4d5c2eec49f4032c27f2a86ef789e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9521b82f77ee816a10a7a2d5e608949d"><td class="memItemLeft" align="right" valign="top"><a id="a9521b82f77ee816a10a7a2d5e608949d"></a>
+typedef struct hw_power_t&#160;</td><td class="memItemRight" valign="bottom"><b>hw_power_t</b></td></tr>
+<tr class="separator:a9521b82f77ee816a10a7a2d5e608949d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga712d06d4424701aa2061e82091624b62"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a>) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value)</td></tr>
+<tr class="memdesc:ga712d06d4424701aa2061e82091624b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#ga712d06d4424701aa2061e82091624b62">More...</a><br /></td></tr>
+<tr class="separator:ga712d06d4424701aa2061e82091624b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -107,24 +129,21 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaefefa637d400623e8306262d8aa113b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__power__t.html">hw_power_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gaefefa637d400623e8306262d8aa113b5">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#gab4d5c2eec49f4032c27f2a86ef789e01">hw_power_callback_t</a> callback)</td></tr>
-<tr class="memdesc:gaefefa637d400623e8306262d8aa113b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="group__Power.html#gaefefa637d400623e8306262d8aa113b5">More...</a><br /></td></tr>
-<tr class="separator:gaefefa637d400623e8306262d8aa113b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad923af18b1a36e77a020cd90ea846bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">hw_power_valid</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
+<tr class="memitem:gae3e1d2015d2819b9660403da4c8fda99"><td class="memItemLeft" align="right" valign="top">hw_power_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gae3e1d2015d2819b9660403da4c8fda99">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a> callback)</td></tr>
+<tr class="memdesc:gae3e1d2015d2819b9660403da4c8fda99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="group__Power.html#gae3e1d2015d2819b9660403da4c8fda99">More...</a><br /></td></tr>
+<tr class="separator:gae3e1d2015d2819b9660403da4c8fda99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad923af18b1a36e77a020cd90ea846bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">hw_power_valid</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:gad923af18b1a36e77a020cd90ea846bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the power handle is initialized and usable.  <a href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">More...</a><br /></td></tr>
 <tr class="separator:gad923af18b1a36e77a020cd90ea846bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadb872d35218fceb877723fa16888633d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gadb872d35218fceb877723fa16888633d">hw_power_finalize</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
+<tr class="memitem:gadb872d35218fceb877723fa16888633d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gadb872d35218fceb877723fa16888633d">hw_power_finalize</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:gadb872d35218fceb877723fa16888633d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release any resources.  <a href="group__Power.html#gadb872d35218fceb877723fa16888633d">More...</a><br /></td></tr>
 <tr class="separator:gadb872d35218fceb877723fa16888633d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga51e1f147775094fd8044f24ed6f2c3de"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de">hw_power_battery_percent</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
+<tr class="memitem:ga51e1f147775094fd8044f24ed6f2c3de"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de">hw_power_battery_percent</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:ga51e1f147775094fd8044f24ed6f2c3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Approximate battery state of charge.  <a href="group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de">More...</a><br /></td></tr>
 <tr class="separator:ga51e1f147775094fd8044f24ed6f2c3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325">hw_power_source</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power)</td></tr>
+<tr class="memitem:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325">hw_power_source</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current detected power source(s).  <a href="group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325">More...</a><br /></td></tr>
 <tr class="separator:ga4e3bc9478c3c41ede5458dc6ba908325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gab77dd4816d6c45ac0b32ce9e12a2ed14">hw_power_reset</a> (<a class="el" href="structhw__power__t.html">hw_power_t</a> *power, uint32_t delay_ms)</td></tr>
-<tr class="memdesc:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the process or hardware.  <a href="group__Power.html#gab77dd4816d6c45ac0b32ce9e12a2ed14">More...</a><br /></td></tr>
-<tr class="separator:gab77dd4816d6c45ac0b32ce9e12a2ed14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Power management interface. </p>

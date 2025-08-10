@@ -99,7 +99,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga03c3073fd8f641e7cea076652bbe11dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cancels and finalizes a timer.  <a href="#ga03c3073fd8f641e7cea076652bbe11dd">More...</a><br /></td></tr>
 <tr class="separator:ga03c3073fd8f641e7cea076652bbe11dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga05a6f524085c458d63d1421908812e71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemTimer.html#ga05a6f524085c458d63d1421908812e71">sys_timer_valid</a> (<a class="el" href="structsys__timer__t.html">sys_timer_t</a> *timer)</td></tr>
-<tr class="memdesc:ga05a6f524085c458d63d1421908812e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a timer is valid and properly configured.  <a href="#ga05a6f524085c458d63d1421908812e71">More...</a><br /></td></tr>
+<tr class="memdesc:ga05a6f524085c458d63d1421908812e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a timer is valid, configured and running.  <a href="#ga05a6f524085c458d63d1421908812e71">More...</a><br /></td></tr>
 <tr class="separator:ga05a6f524085c458d63d1421908812e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -169,7 +169,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true on success, false on failure. This function stops the timer and cleans up any resources associated with it. After calling this function, the timer context becomes invalid and should not be used again. To use a timer with the same configuration, initialize a new timer using <a class="el" href="group__SystemTimer.html#gac1368a749ee9713f5339cfc2b27dbdcd" title="Initializes a new timer context. ">sys_timer_init()</a>. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a8">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a23">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a10">examples/runtime/watchdog/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a11">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a8">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a23">examples/runtime/led/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a11">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -216,7 +216,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="structsys__timer__t.html" title="Timer context structure. ">sys_timer_t</a> instance initialized with the specified parameters.</dd></dl>
 <p>This function returns a <a class="el" href="structsys__timer__t.html" title="Timer context structure. ">sys_timer_t</a> instance for the specified timer configuration, ready for use in starting and stopping the timer. Use <a class="el" href="group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772" title="Starts a timer. ">sys_timer_start()</a> to start the timer and <a class="el" href="group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd" title="Cancels and finalizes a timer. ">sys_timer_finalize()</a> to stop and clean up the timer. If you want to define a one-shot timer, call <a class="el" href="group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd" title="Cancels and finalizes a timer. ">sys_timer_finalize()</a> in your callback function. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a14">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a19">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a12">examples/runtime/watchdog/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a15">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a14">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a19">examples/runtime/led/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a15">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -245,7 +245,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true on success, false on failure.</dd></dl>
 <p>This function starts the timer with the specified interval and callback. If the timer is invalid, or cannot be started, the function returns false. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a16">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a20">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a13">examples/runtime/watchdog/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a16">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a16">clock/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a20">examples/runtime/led/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a16">pico/runloop/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -265,15 +265,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks if a timer is valid and properly configured. </p>
+<p>Checks if a timer is valid, configured and running. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">timer</td><td>The timer context to validate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the timer is valid and can be used, false otherwise.</dd></dl>
-<p>Use this function to verify timer validity before calling <a class="el" href="group__SystemTimer.html#ga0aeeb7a38cc0c6e93ff30bf1ed6f4772" title="Starts a timer. ">sys_timer_start()</a>. A timer is also considered invalid if <a class="el" href="group__SystemTimer.html#ga03c3073fd8f641e7cea076652bbe11dd" title="Cancels and finalizes a timer. ">sys_timer_finalize()</a> has been called on it, or if it was never initialized properly. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the timer is valid and is enabled. </dd></dl>
 
 </div>
 </div>
