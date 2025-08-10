@@ -29,6 +29,7 @@ target_include_directories(${NAME} PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
 )
 target_link_libraries(${NAME} 
+    runtime-sys
     hardware_adc
     hardware_clocks
     hardware_gpio

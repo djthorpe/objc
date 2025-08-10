@@ -5,7 +5,6 @@ add_executable(${NAME}
 )
 target_link_libraries(${NAME} PRIVATE
     runtime-hw
-    runtime-sys
 )
 
 # additional configurations for the Pico SDK
