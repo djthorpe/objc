@@ -59,7 +59,7 @@ static void _hw_infrared_rx_irq_pio_handler(void) {
       // Extract type from MSB and count from lower 31 bits
       // Treat long spaces as timeouts (typical IR timeout is > 50ms)
       bool is_space = (value & 0x80000000) != 0;
-      uint32_t duration_us = _hw_infrared_rx_to_us(0x7FFFFFFF, count);
+      uint32_t duration_us = _hw_infrared_rx_to_us(HW_INFRARED_RX_MAX_COUNT, count);
 
       if (is_space && duration_us > 50000) {
         ctx->callback(HW_INFRARED_EVENT_TIMEOUT, 0, ctx->user_data);
