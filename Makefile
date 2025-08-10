@@ -27,7 +27,8 @@ config: dep-cc dep-cmake submodule
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
-		-D TARGET=${TARGET} 
+		-D TARGET=${TARGET} \
+		-D CMAKE_TOOLCHAIN_FILE=${PWD}/cmake/${TARGET}.cmake
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys
@@ -111,7 +112,8 @@ pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
 		$(if $(NO_LOCAL_PICOTOOL),,-D picotool_DIR=${BUILD_DIR}/third_party/picotool) \
-		-D TARGET=armv6m-none-eabi
+		-D TARGET=armv6m-none-eabi \
+		-D CMAKE_TOOLCHAIN_FILE=${PWD}/cmake/armv6m-none-eabi.cmake
 	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
 
 # Create the picotool binary
@@ -130,7 +132,7 @@ picotool: submodule dep-cmake
 pioasm: submodule dep-cmake
 	@echo
 	@echo make pioasm
-	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev
+	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev -D PIOASM_VERSION_STRING=0.0.0
 	@make -C ${BUILD_DIR}/pioasm -j ${JOBS}
 	@echo Built pioasm at ${BUILD_DIR}/pioasm/pioasm
 	@echo

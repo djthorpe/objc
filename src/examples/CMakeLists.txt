@@ -6,6 +6,7 @@ include_directories(
 )
 
 # Runtime examples
+add_subdirectory(runtime/helloworld)
 add_subdirectory(runtime/watchdog)
 add_subdirectory(runtime/led)
 add_subdirectory(runtime/infrared)

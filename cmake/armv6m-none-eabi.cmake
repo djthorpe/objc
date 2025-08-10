@@ -3,6 +3,11 @@ set(CMAKE_SYSTEM_NAME "Pico")
 set(CMAKE_SYSTEM_PROCESSOR "cortex-m0plus")
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
+# Ensure executables have an ELF suffix so downstream pico tooling (picotool
+# and pico_add_extra_outputs) can infer file type. Without an extension,
+# picotool errors: "filename '<path>' does not have a recognized file type".
+set(CMAKE_EXECUTABLE_SUFFIX ".elf" CACHE STRING "Executable suffix for Pico cross builds" FORCE)
+
 find_program(CMAKE_C_COMPILER NAMES "clang"
     PATHS ENV TOOLCHAIN_PATH
     PATH_SUFFIXES bin
@@ -16,6 +21,14 @@ find_program(CMAKE_OBJC_COMPILER NAMES "clang"
     REQUIRED
 )
 find_program(CMAKE_ASM_COMPILER NAMES "clang"
+    PATHS ENV TOOLCHAIN_PATH
+    PATH_SUFFIXES bin
+    NO_DEFAULT_PATH
+    REQUIRED
+)
+
+# Objcopy (needed by pico SDK build to convert ELF to binary/hex)
+find_program(CMAKE_OBJCOPY NAMES "llvm-objcopy"
     PATHS ENV TOOLCHAIN_PATH
     PATH_SUFFIXES bin
     NO_DEFAULT_PATH

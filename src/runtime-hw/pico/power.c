@@ -148,11 +148,11 @@ static inline uint8_t _hw_power_vbus() {
  * @brief Determine the current power source.
  */
 static hw_power_flag_t _hw_power_source(uint8_t vbus) {
-#ifdef CYW43_WL_GPIO_VBUS_PIN
+#if defined(PICO_CYW43_SUPPORTED) && defined(CYW43_WL_GPIO_VBUS_PIN)
   (void)vbus; // Not used when CYW43 handles VBUS
   return cyw43_arch_gpio_get(CYW43_WL_GPIO_VBUS_PIN) ? HW_POWER_USB
                                                      : HW_POWER_BATTERY;
-#else
+#else /* No CYW43 VBUS path */
   if (vbus != 0xFF) {
     sys_assert(vbus < hw_gpio_count());
     gpio_set_function(vbus, GPIO_FUNC_SIO);
@@ -170,7 +170,8 @@ static float _hw_power_voltage(uint8_t gpio, bool wifi) {
     return 0;
   }
   if (wifi) {
-#if CYW43_USES_VSYS_PIN
+#if defined(PICO_CYW43_SUPPORTED) && defined(CYW43_USES_VSYS_PIN) &&           \
+    defined(CYW43_WL_GPIO_VBUS_PIN)
     cyw43_thread_enter();
     // Make sure cyw43 is awake
     cyw43_arch_gpio_get(CYW43_WL_GPIO_VBUS_PIN);
@@ -209,7 +210,7 @@ static float _hw_power_voltage(uint8_t gpio, bool wifi) {
   vsys /= HW_POWER_SAMPLE_COUNT;
 
   if (wifi) {
-#if CYW43_USES_VSYS_PIN
+#if defined(PICO_CYW43_SUPPORTED) && defined(CYW43_USES_VSYS_PIN)
     cyw43_thread_exit();
 #endif
   }

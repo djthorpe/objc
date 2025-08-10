@@ -7,20 +7,14 @@
 
 int test_hw_03(void) {
   hw_adc_t temp = hw_adc_init_temperature();
-  hw_adc_t battery = hw_adc_init_battery();
-
   for (int i = 0; i < 10; i++) {
     float temp_value = hw_adc_read_temperature(&temp);
-    float battery_value = hw_adc_read_voltage(&battery);
-
-    sys_printf("Temperature: %d C, Battery Voltage: %d V\n",
-               (int)(temp_value * 1000.0f), (int)(battery_value * 1000.0f));
+    sys_printf("Temperature: %d C\n", (int)(temp_value * 1000.0f));
 
     sys_sleep(100); // Sleep for 100 milliseconds between readings
   }
 
   hw_adc_finalize(&temp);
-  hw_adc_finalize(&battery);
   return 0;
 }
 

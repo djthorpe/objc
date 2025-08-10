@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_MODULE_PATH}/${TARGET}.cmake")
+# Expect CMAKE_TOOLCHAIN_FILE to be provided explicitly by build system. If TARGET given
+# and toolchain file not already set (e.g. direct invocation), derive it for convenience.
+if(NOT CMAKE_TOOLCHAIN_FILE AND DEFINED TARGET)
+    set(CMAKE_TOOLCHAIN_FILE "${CMAKE_MODULE_PATH}/${TARGET}.cmake" CACHE PATH "Toolchain file" FORCE)
+endif()
+set(PICO_BOARD_HEADER_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include/boards")
 
 # Define project
 project(objc-runtime 
@@ -39,15 +44,9 @@ add_compile_options(
     "-DSYSTEM_PROCESSOR=\"${PROCESSOR_NAME_LOWER}\""
 )
 
-# For RP2350 with clang, disable software spin locks which aren't supported
-if(CMAKE_SYSTEM_NAME STREQUAL "Pico" AND CMAKE_C_COMPILER_ID STREQUAL "Clang")
-    add_compile_definitions(PICO_USE_SW_SPIN_LOCK=0)
-endif()
-
 # Runtime Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
-add_subdirectory("src/runtime-pix")
 add_subdirectory("src/runtime-hw/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/drivers")
