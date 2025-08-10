@@ -61,7 +61,7 @@ static void _hw_infrared_rx_irq_pio_handler(void) {
       bool is_space = (value & 0x80000000) != 0;
       uint32_t duration_us = _hw_infrared_rx_to_us(HW_INFRARED_RX_MAX_COUNT, count);
 
-      if (is_space && duration_us > 50000) {
+      if (is_space && duration_us > HW_INFRARED_RX_TIMEOUT_US) {
         ctx->callback(HW_INFRARED_EVENT_TIMEOUT, 0, ctx->user_data);
       } else if (is_space) {
         ctx->callback(HW_INFRARED_EVENT_SPACE, duration_us, ctx->user_data);
