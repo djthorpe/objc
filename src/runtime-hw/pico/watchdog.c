@@ -142,7 +142,7 @@ void hw_watchdog_reset(hw_watchdog_t *watchdog, uint32_t delay_ms) {
 
   // Enable the watchdog timer with the specified timeout and allow debug
   // pauses, and stop pinging the timer in hw_poll()
-  watchdog_enable(watchdog->timeout_ms, true);
+  watchdog_enable(delay_ms, true);
   watchdog->disable = true;
 
   // Notify the power management system of the reset
