@@ -103,10 +103,10 @@ typedef struct <a class="el" href="structhw__infrared__rx__t.html">hw_infrared_r
 typedef enum <a class="el" href="group__Infrared.html#ga1b9f69774abe83f2d7d73722d2477aab">hw_infrared_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#gab96427b6559361b932fb7fd76394b77b">hw_infrared_event_t</a></td></tr>
 <tr class="memdesc:gab96427b6559361b932fb7fd76394b77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infrared events. <br /></td></tr>
 <tr class="separator:gab96427b6559361b932fb7fd76394b77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga038f885dff6ad5a003fb84191a64ad33"><td class="memItemLeft" align="right" valign="top">
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#ga038f885dff6ad5a003fb84191a64ad33">hw_infrared_callback_t</a>) (<a class="el" href="structhw__infrared__rx__t.html">hw_infrared_rx_t</a> *rx, <a class="el" href="group__Infrared.html#ga1b9f69774abe83f2d7d73722d2477aab">hw_infrared_event_t</a> event, uint32_t duration_us)</td></tr>
-<tr class="memdesc:ga038f885dff6ad5a003fb84191a64ad33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infrared receiver. <br /></td></tr>
-<tr class="separator:ga038f885dff6ad5a003fb84191a64ad33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbcfe69d431492a2e26e849faa5dc7fb"><td class="memItemLeft" align="right" valign="top">
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#gafbcfe69d431492a2e26e849faa5dc7fb">hw_infrared_rx_callback_t</a>) (<a class="el" href="group__Infrared.html#ga1b9f69774abe83f2d7d73722d2477aab">hw_infrared_event_t</a> event, uint32_t duration_us, void *user_data)</td></tr>
+<tr class="memdesc:gafbcfe69d431492a2e26e849faa5dc7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Infrared receiver. <br /></td></tr>
+<tr class="separator:gafbcfe69d431492a2e26e849faa5dc7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -119,9 +119,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gafb1041c5e8146363aa1afd1eaf93711e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__infrared__rx__t.html">hw_infrared_rx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#gafb1041c5e8146363aa1afd1eaf93711e">hw_infrared_rx_init</a> (uint8_t gpio, void *user_data, <a class="el" href="group__Infrared.html#ga038f885dff6ad5a003fb84191a64ad33">hw_infrared_callback_t</a> callback)</td></tr>
-<tr class="memdesc:gafb1041c5e8146363aa1afd1eaf93711e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a Infrared receiver.  <a href="group__Infrared.html#gafb1041c5e8146363aa1afd1eaf93711e">More...</a><br /></td></tr>
-<tr class="separator:gafb1041c5e8146363aa1afd1eaf93711e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25695a838c59d723cfac337b99ae9431"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__infrared__rx__t.html">hw_infrared_rx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#ga25695a838c59d723cfac337b99ae9431">hw_infrared_rx_init</a> (uint8_t gpio, <a class="el" href="group__Infrared.html#gafbcfe69d431492a2e26e849faa5dc7fb">hw_infrared_rx_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:ga25695a838c59d723cfac337b99ae9431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a Infrared receiver.  <a href="group__Infrared.html#ga25695a838c59d723cfac337b99ae9431">More...</a><br /></td></tr>
+<tr class="separator:ga25695a838c59d723cfac337b99ae9431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadbc99b6ee0d2126b4ebfba45011180d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Infrared.html#gadbc99b6ee0d2126b4ebfba45011180d2">hw_infrared_rx_valid</a> (<a class="el" href="structhw__infrared__rx__t.html">hw_infrared_rx_t</a> *rx)</td></tr>
 <tr class="memdesc:gadbc99b6ee0d2126b4ebfba45011180d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an Infrared receiver is valid.  <a href="group__Infrared.html#gadbc99b6ee0d2126b4ebfba45011180d2">More...</a><br /></td></tr>
 <tr class="separator:gadbc99b6ee0d2126b4ebfba45011180d2"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -31,7 +31,7 @@ var searchData=
   ['hw_5fi2c_5fwrite',['hw_i2c_write',['../group__I2C.html#ga9eab9855e0e724930af0a16b67e83186',1,'i2c.h']]],
   ['hw_5fi2c_5fxfr',['hw_i2c_xfr',['../group__I2C.html#ga5287dc8cc0893d147b727d080da0d629',1,'i2c.h']]],
   ['hw_5finfrared_5frx_5ffinalize',['hw_infrared_rx_finalize',['../group__Infrared.html#ga0d6dfa89c62bc37217fa641f17865c3f',1,'infrared.h']]],
-  ['hw_5finfrared_5frx_5finit',['hw_infrared_rx_init',['../group__Infrared.html#gafb1041c5e8146363aa1afd1eaf93711e',1,'infrared.h']]],
+  ['hw_5finfrared_5frx_5finit',['hw_infrared_rx_init',['../group__Infrared.html#ga25695a838c59d723cfac337b99ae9431',1,'infrared.h']]],
   ['hw_5finfrared_5frx_5fvalid',['hw_infrared_rx_valid',['../group__Infrared.html#gadbc99b6ee0d2126b4ebfba45011180d2',1,'infrared.h']]],
   ['hw_5finit',['hw_init',['../group__Hardware.html#gae58df14f30461cb37e8607aca5522846',1,'hw.h']]],
   ['hw_5fled_5fblink',['hw_led_blink',['../group__LED.html#gae6643676c81c833417795dd4de1b3eeb',1,'led.h']]],
