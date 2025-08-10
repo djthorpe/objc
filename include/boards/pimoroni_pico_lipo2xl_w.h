@@ -13,7 +13,7 @@
 // "boards/pimoroni_pico_lipo2xl_w.h"
 
 // pico_cmake_set PICO_PLATFORM=rp2350
-// pico_cmake_set PICO_CYW43_SUPPORTED = 1
+// pico_cmake_set PICO_CYW43_SUPPORTED=1
 
 #ifndef _BOARDS_PICO2_W_H
 #define _BOARDS_PICO2_W_H
@@ -162,5 +162,7 @@
 #ifndef CYW43_DEFAULT_PIN_WL_CS
 #define CYW43_DEFAULT_PIN_WL_CS 25
 #endif
+
+// (No direct #define PICO_CYW43_SUPPORTED here; supplied via CMake compile definitions hook if set)
 
 #endif

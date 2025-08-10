@@ -14,6 +14,13 @@ pico_sdk_init()
 # Define the project
 project(objc-runtime C CXX ASM)
 
+# Propagate certain board-provided CMake variables as global compile definitions
+# (acts as a hook so that comment-based pico_cmake_set lines in board headers
+# become visible to C/C++ code without adding fallback #defines in headers)
+if(DEFINED PICO_CYW43_SUPPORTED AND PICO_CYW43_SUPPORTED)
+	add_compile_definitions(PICO_CYW43_SUPPORTED=1)
+endif()
+
 # Lowercase and uppercase system name
 string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
