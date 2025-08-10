@@ -34,8 +34,7 @@ static inline uint32_t _hw_infrared_rx_to_us(uint initial, uint32_t remaining);
 const float _hw_infrared_rx_clkdiv = 10.0f;
 
 // Context for each PIO/SM combinations
-hw_infrared_rx_ctx_t _hw_infrared_rx_ctx[NUM_PIOS * NUM_PIO_STATE_MACHINES] = {
-    0};
+hw_infrared_rx_ctx_t _hw_infrared_rx_ctx[NUM_PIOS * NUM_PIO_STATE_MACHINES] = {{0}};
 
 ///////////////////////////////////////////////////////////////////////////////
 // INTERRUPT HANDLER
