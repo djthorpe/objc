@@ -1,9 +1,4 @@
 BUILD_DIR ?= build
-TOOLCHAIN_PATH ?= /usr
-ARCH ?= $(shell arch | tr A-Z a-z | sed 's/amd64/x86_64/' | sed 's/armv7l/arm/' | sed 's/arm64/aarch64/')
-OS ?= $(shell uname -s | tr A-Z a-z)
-PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
-TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
@@ -18,17 +13,16 @@ else
 endif
 
 .PHONY: all
-all: config NXApplication
+all: config runtime-sys runtime-hw
 
 # Configure
-config: dep-cc dep-cmake submodule
+config: dep-cmake submodule
 	@echo
 	@echo configure
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D RUNTIME=gcc \
-		-D TARGET=${TARGET} \
-		-D CMAKE_TOOLCHAIN_FILE=${PWD}/cmake/${TARGET}.cmake
+		-D PICO_BOARD=${PICO_BOARD} \
+		-D RUNTIME=gcc
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys
@@ -89,7 +83,7 @@ tests: NXFoundation
 
 # Make the examples
 .PHONY: examples
-examples: NXApplication
+examples: runtime-sys runtime-hw 
 	@echo
 	@echo make examples
 	@${CMAKE} --build ${BUILD_DIR}/src/examples -j ${JOBS}

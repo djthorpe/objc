@@ -15,9 +15,9 @@ add_subdirectory(runtime/power)
 add_subdirectory(runtime/gpio)
 
 # NXApplication examples
-add_subdirectory(NXApplication/helloworld)
-add_subdirectory(NXApplication/gpio)
-add_subdirectory(NXApplication/timer)
+#add_subdirectory(NXApplication/helloworld)
+#add_subdirectory(NXApplication/gpio)
+#add_subdirectory(NXApplication/timer)
 
 # Unorganized examples - to be organized later!
 add_subdirectory(clock)

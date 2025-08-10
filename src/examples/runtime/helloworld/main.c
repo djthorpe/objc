@@ -14,11 +14,15 @@
  * This function outputs "Hello, World!" to the system console.
  */
 bool core0_task() {
-  do {
-    sys_puts("Sleeping...\n");
-    sys_sleep(100);
-  } while (0);
 
+  int count = 0;
+  do {
+    sys_printf("Loop %d...\n", count);
+    sys_sleep(1000);
+  } while (count++ < 5);
+
+  sys_printf("Ending...\n");
+  sys_sleep(1000);
   return true;
 }
 
@@ -28,6 +32,17 @@ bool core0_task() {
 int main() {
   // Initialize
   sys_init();
+
+  // Print information
+  sys_printf("NAME=%s\n", sys_env_name());
+  sys_printf("SERIAL=%s\n", sys_env_serial());
+  sys_printf("VERSION=%s\n", sys_env_version());
+
+#ifdef PICO_CYW43_SUPPORTED
+  sys_printf("WIFI SUPPORTED\n");
+#else
+  sys_printf("WIFI NOT SUPPORTED\n");
+#endif
 
   // Run the task
   if (core0_task() == false) {

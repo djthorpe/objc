@@ -21,12 +21,6 @@
 // For board detection
 #define PIMORONI_PICO_LIPO2_RP2350
 
-// Force hardware spin locks: software spin locks not supported with current
-// Clang configuration
-#ifndef PICO_USE_SW_SPIN_LOCKS
-#define PICO_USE_SW_SPIN_LOCKS 0
-#endif
-
 // --- BOARD SPECIFIC ---
 #define SPICE_SPI 0
 #define SPICE_TX_MISO_PIN 32
