@@ -4,20 +4,27 @@
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
+// Stub power singleton
+static hw_power_t _hw_power_stub = {0};
+
+///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
  * @brief Initialize power management.
  */
-hw_power_t hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                         hw_power_callback_t callback) {
+hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
+                          hw_power_callback_t callback) {
   // Power management not implemented in stub
   (void)gpio_vsys; // Suppress unused parameter warning
   (void)gpio_vbus; // Suppress unused parameter warning
   (void)callback;  // Suppress unused parameter warning
 
-  hw_power_t power = {0};
-  return power;
+  // Reset stub power handle
+  _hw_power_stub = (hw_power_t){0};
+  return &_hw_power_stub;
 }
 
 /**
