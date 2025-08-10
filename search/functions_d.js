@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pin',['pin',['../interfaceGPIOEvent.html#a4bd65e9b84abb81537ae3a6bd122fc80',1,'GPIOEvent']]],
   ['pix_5fdisplay_5frunloop',['pix_display_runloop',['../group__PixelDisplay.html#gadd3ddd6dbf7714642f2558f572f378c1',1,'display.h']]],
   ['pix_5fdisplay_5fsdl_5ffinalize',['pix_display_sdl_finalize',['../group__PixelDisplay.html#ga61dc2be9f8fe59d849668cdbcedb94fb',1,'display.h']]],
   ['pix_5fexit',['pix_exit',['../group__Pixel.html#gadc7b893668e073d16da25320c3635b31',1,'pix.h']]],
