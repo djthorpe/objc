@@ -4,10 +4,16 @@
  * @defgroup Power Power
  * @ingroup Hardware
  *
- * This file implements power management providing detection of active power
- * source, approximate battery state of charge reporting (0–100%) when
- * supported, the ability to reset the device and optional asynchronous callback
- * notification on power changes.
+ * Power management detection of active power
+ * source, and approximate battery state.
+ *
+ * The power management interface provides battery state of charge reporting
+ * (0–100%) when supported, the ability to reset the device and optional
+ * asynchronous callback notification on power changes.
+ *
+ * In order to be notified of power changes, the user must provide a callback
+ * function when initializing the power management interface, and in the
+ * main event loop, call hw_poll().
  */
 #pragma once
 #include <runtime-sys/sys.h>

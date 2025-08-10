@@ -4,6 +4,7 @@
 #include <pico/cyw43_arch.h>
 #endif
 #include "power.h"
+#include "watchdog.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -37,4 +38,5 @@ void hw_poll(void) {
   cyw43_arch_poll();
 #endif
   hw_power_poll();
+  hw_watchdog_poll();
 }

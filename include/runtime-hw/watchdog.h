@@ -28,19 +28,21 @@ extern "C" {
  * @ingroup Watchdog
  * @headerfile watchdog.h runtime-hw/hw.h
  */
-typedef struct {
-  uint32_t timeout_ms; ///< Watchdog timeout in milliseconds
-} hw_watchdog_t;
+typedef struct hw_watchdog_t hw_watchdog_t;
 
 /**
  * @brief Initialize the watchdog timer subsystem
  * @ingroup Watchdog
  * @param timeout_ms Watchdog timeout in milliseconds
- * @return true if initialization successful, false otherwise
+ * @return Pointer to a hw_watchdog_t handle, or NULL if watchdog is not
+ * supported
  *
  * Performs platform-specific initialization of the watchdog hardware.
+ * Returns NULL if watchdog is not supported or initialization failed.
+ *
+ * In order for the watchdog to function, hw_poll() must be called periodically.
  */
-hw_watchdog_t hw_watchdog_init(uint32_t timeout_ms);
+hw_watchdog_t *hw_watchdog_init();
 
 /**
  * @brief Finalize the watchdog timer subsystem
@@ -59,6 +61,14 @@ void hw_watchdog_finalize(hw_watchdog_t *watchdog);
  * watchdogs are not supported on this platform.
  */
 uint32_t hw_watchdog_maxtimeout(void);
+
+/**
+ * @brief Check if the watchdog is in a valid state
+ * @ingroup Watchdog
+ * @param watchdog Pointer to the watchdog structure
+ * @return true if the watchdog is valid, false otherwise
+ */
+bool hw_watchdog_valid(hw_watchdog_t *watchdog);
 
 /**
  * @brief Check if the watchdog triggered a system reset
@@ -80,31 +90,23 @@ bool hw_watchdog_did_reset(hw_watchdog_t *watchdog);
  * @param enable If true, enables the watchdog timer; if false, disables it.
  *
  * Starts or stops the watchdog countdown timer. Once enabled, the application
- * must call hw_watchdog_ping() periodically to prevent system reset, usually
- * by using a periodic timer.
+ * must call hw_poll() periodically in the event loop to prevent system reset,
+ * no less than the value returned by hw_watchdog_maxtimeout()
  */
 void hw_watchdog_enable(hw_watchdog_t *watchdog, bool enable);
 
 /**
- * @brief Ping the watchdog (reset the timeout counter)
+ * @brief Cause a reset after a delay
  * @ingroup Watchdog
  * @param watchdog Pointer to the watchdog structure
+ * @param delay_ms Delay in milliseconds before the reset occurs
  *
- * Reloads the watchdog timer with the configured timeout value, preventing
- * an imminent reset. This function must be called regularly by the application
- * to demonstrate that the system is operating correctly.
+ * This function configures the watchdog to trigger a system reset after the
+ * specified delay. The delay is clamped to the maximum supported timeout.
+ * The reset can be cancelled by calling hw_watchdog_enable() with any
+ * value.
  */
-void hw_watchdog_ping(hw_watchdog_t *watchdog);
-
-/**
- * @brief Check if a watchdog structure is valid
- * @ingroup Watchdog
- * @param watchdog Pointer to the watchdog structure to validate
- * @return true if the watchdog structure is valid and usable, false otherwise
- */
-static inline bool hw_watchdog_valid(hw_watchdog_t *watchdog) {
-  return watchdog && watchdog->timeout_ms > 0;
-}
+void hw_watchdog_reset(hw_watchdog_t *watchdog, uint32_t delay_ms);
 
 #ifdef __cplusplus
 }

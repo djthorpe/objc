@@ -6,6 +6,21 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
+/**
+ * @brief Handle for watchdog timer state.
+ */
+typedef struct hw_watchdog_t {
+  uint64_t timeout_ms;
+  uint64_t timestamp;
+  bool disable;
+} hw_watchdog_t;
+
+///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
 // Platform-specific constants from Pico SDK
 #if PICO_RP2040
 #define WATCHDOG_XFACTOR                                                       \
@@ -14,23 +29,29 @@
 #define WATCHDOG_XFACTOR 1 // RP2350 decrements once per tick
 #endif
 
+// The watchdog singleton
+static hw_watchdog_t _hw_watchdog = {0};
+
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
  * @brief Initialize the watchdog timer subsystem
  */
-hw_watchdog_t hw_watchdog_init(uint32_t timeout_ms) {
-  sys_assert(timeout_ms > 0);
+hw_watchdog_t *hw_watchdog_init() {
+  hw_watchdog_t *watchdog = &_hw_watchdog;
 
-  // Initialize the watchdog timer with the specified timeout
-  hw_watchdog_t watchdog = {0};
-  if (timeout_ms > hw_watchdog_maxtimeout()) {
-    return watchdog; // Invalid timeout
+  // Finalize the existing watchdog
+  hw_watchdog_finalize(watchdog);
+
+  // Initialize the watchdog timer with the specified timeout,
+  // which is half the maximum timeout
+  uint64_t timeout_ms = hw_watchdog_maxtimeout() >> 1;
+  if (timeout_ms == 0) {
+    return NULL;
+  } else {
+    watchdog->timeout_ms = timeout_ms;
   }
-
-  // Set the timeout in milliseconds
-  watchdog.timeout_ms = timeout_ms;
 
   // Return the initialized watchdog structure
   // but don't enable the watchdog yet
@@ -41,7 +62,9 @@ hw_watchdog_t hw_watchdog_init(uint32_t timeout_ms) {
  * @brief Finalize the watchdog timer subsystem
  */
 void hw_watchdog_finalize(hw_watchdog_t *watchdog) {
-  sys_assert(watchdog && hw_watchdog_valid(watchdog));
+  if (hw_watchdog_valid(watchdog) == false) {
+    return;
+  }
 
   // Disable the watchdog timer
   watchdog_disable();
@@ -61,10 +84,23 @@ uint32_t hw_watchdog_maxtimeout(void) {
 }
 
 /**
+ * @brief Return the maximum supported watchdog timeout
+ */
+bool hw_watchdog_valid(hw_watchdog_t *watchdog) {
+  if (watchdog == NULL) {
+    return false;
+  }
+  if (watchdog->timeout_ms == 0) {
+    return false;
+  }
+  return true;
+}
+
+/**
  * @brief Check if the watchdog triggered a system reset
  */
 bool hw_watchdog_did_reset(hw_watchdog_t *watchdog) {
-  sys_assert(watchdog && hw_watchdog_valid(watchdog));
+  sys_assert(hw_watchdog_valid(watchdog));
 
   // Check if the watchdog caused the last reset
   return watchdog_enable_caused_reboot();
@@ -74,24 +110,59 @@ bool hw_watchdog_did_reset(hw_watchdog_t *watchdog) {
  * @brief Enable or disable the watchdog timer
  */
 void hw_watchdog_enable(hw_watchdog_t *watchdog, bool enable) {
-  sys_assert(watchdog && hw_watchdog_valid(watchdog));
+  sys_assert(hw_watchdog_valid(watchdog));
 
   if (enable) {
     // Enable the watchdog timer with the specified timeout and allow debug
     // pauses
     watchdog_enable(watchdog->timeout_ms, true);
+    watchdog->disable = false;
   } else {
     // Disable the watchdog timer
     watchdog_disable();
+    watchdog->disable = true;
   }
 }
 
 /**
- * @brief Ping the watchdog (reset the timeout counter)
+ * @brief Cause a reset after a delay
  */
-void hw_watchdog_ping(hw_watchdog_t *watchdog) {
-  sys_assert(watchdog && hw_watchdog_valid(watchdog));
+void hw_watchdog_reset(hw_watchdog_t *watchdog, uint32_t delay_ms) {
+  sys_assert(hw_watchdog_valid(watchdog));
+  sys_assert(delay_ms > 0);
 
-  // Reload the watchdog timer with the configured timeout value
+  // Clamp the delay to the maximum supported timeout
+  if (delay_ms > hw_watchdog_maxtimeout()) {
+    delay_ms = hw_watchdog_maxtimeout();
+  }
+
+  // Enable the watchdog timer with the specified timeout and allow debug
+  // pauses, and stop pinging the timer in hw_poll()
+  watchdog_enable(watchdog->timeout_ms, true);
+  watchdog->disable = true;
+}
+
+/**
+ * @brief Poll the watchdog (reset the timeout counter)
+ */
+void hw_watchdog_poll() {
+  hw_watchdog_t *watchdog = &_hw_watchdog;
+  if (hw_watchdog_valid(watchdog) == false) {
+    return;
+  }
+  if (watchdog->disable) {
+    return;
+  }
+
+  // Determine if we should update
+  uint64_t timestamp = sys_date_get_timestamp();
+  if (watchdog->timestamp != 0 &&
+      timestamp < watchdog->timestamp + watchdog->timeout_ms) {
+    return;
+  } else {
+    watchdog->timestamp = timestamp;
+  }
+
+  // Update the watchdog timer
   watchdog_update();
 }

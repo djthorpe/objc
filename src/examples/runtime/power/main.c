@@ -49,10 +49,12 @@ bool core0_task() {
   while (true) {
     // Poll the hardware devices occsionally to update status
     hw_poll();
+
+    // Sleep for a bit
     sys_sleep(100);
   }
 
-  // If we were to reach here, finalize the timer and watchdog
+  // If we were to reach here, finalize the power management
   hw_power_finalize(power);
 
   return true;
