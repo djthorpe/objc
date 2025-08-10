@@ -10,6 +10,7 @@
  * notification on power changes.
  */
 #pragma once
+#include <runtime-sys/sys.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -18,14 +19,8 @@
 
 #define HW_POWER_CTX_SIZE 64 ///< Size (bytes) of the  power context
 
-/**
- * @brief Handle for power management state.
- * @ingroup Power
- * @headerfile power.h runtime-hw/hw.h
- */
-typedef struct {
-  uint8_t ctx[HW_POWER_CTX_SIZE]; ///< Internal context buffer for power state
-} hw_power_t;
+// Opaque power management handle
+typedef struct hw_power_t hw_power_t;
 
 /**
  * @brief Power source capability / status flags.
@@ -51,8 +46,11 @@ typedef enum {
  * @param flags          Bitmask of power source flags that changed since the
  *                       last callback. If HW_POWER_BATTERY flag is set,
  *                       the callback may be invoked on battery level changes.
+ * @param battery_percent  Current battery percentage (0-100), valid if
+ * HW_POWER_BATTERY is set and <battery_percent> is non-zero.
  */
-typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags);
+typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags,
+                                    uint8_t battery_percent);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -65,15 +63,15 @@ typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags);
  * @param gpio_vbus  GPIO (or 0xFF for default) used for VBUS / USB present
  * detect
  * @param callback   Optional callback for asynchronous updates (may be NULL)
- * @return Initialized @ref hw_power_t handle (by value).
+ * @return Pointer to a hw_power_t handle, or NULL
  *
  * GPIO arguments are platform dependent; pass 0xFF to use default signals, or
  * if unavailable. The returned handle is valid if hw_power_valid() subsequently
  * reports true. Supplying a callback enables event driven notification when
  * supported.
  */
-hw_power_t hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                         hw_power_callback_t callback);
+hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
+                          hw_power_callback_t callback);
 
 /**
  * @brief Determine if the power handle is initialized and usable.

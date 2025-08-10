@@ -62,19 +62,6 @@ hw_adc_t hw_adc_init_temperature() {
 }
 
 /**
- * @brief Initialize an ADC interface on which the battery level sensor is
- * connected.
- */
-hw_adc_t hw_adc_init_battery() {
-#ifdef PICO_VSYS_PIN
-  return hw_adc_init_pin(PICO_VSYS_PIN);
-#else
-  hw_adc_t adc = {0};
-  return adc;
-#endif
-}
-
-/**
  * @brief Finalize and release an ADC interface.
  */
 void hw_adc_finalize(hw_adc_t *adc) {
@@ -91,6 +78,20 @@ void hw_adc_finalize(hw_adc_t *adc) {
 
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
+
+/**
+ * @brief Get the ADC channel number for a specific GPIO pin.
+ */
+uint8_t hw_adc_gpio_channel(uint8_t gpio) {
+  sys_assert(gpio < hw_gpio_count());
+
+  // Check if the GPIO pin is within the ADC channel range
+  if (gpio >= ADC_CHANNEL_OFFSET &&
+      gpio < ADC_CHANNEL_OFFSET + NUM_ADC_CHANNELS) {
+    return gpio - ADC_CHANNEL_OFFSET; // Return the corresponding ADC channel
+  }
+  return 0xFF; // Return 0xFF if not a valid ADC GPIO pin
+}
 
 /**
  * @brief Read the current value from an ADC channel.

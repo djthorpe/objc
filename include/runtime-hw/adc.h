@@ -62,20 +62,6 @@ hw_adc_t hw_adc_init_pin(uint8_t pin);
 hw_adc_t hw_adc_init_temperature();
 
 /**
- * @brief Initialize an ADC interface on which the battery level sensor is
- * connected.
- * @ingroup ADC
- * @return An ADC structure representing the initialized interface.
- *
- * This function initializes the ADC interface which is used for measuring the
- * battery level sensor (aka VSYS pin). This is typically used to monitor
- * the battery voltage level.
- *
- * If not defined, this function will return an empty ADC structure.
- */
-hw_adc_t hw_adc_init_battery();
-
-/**
  * @brief Finalize and release an ADC interface.
  * @ingroup ADC
  * @param adc Pointer to the ADC structure to finalize.
@@ -88,6 +74,24 @@ void hw_adc_finalize(hw_adc_t *adc);
 
 ///////////////////////////////////////////////////////////////////////////////
 // METHODS
+
+/**
+ * @brief Get the ADC channel number for a specific GPIO pin.
+ * @ingroup ADC
+ * @param gpio The GPIO pin number.
+ * @return The corresponding ADC channel number, or 0xFF if not found.
+ */
+uint8_t hw_adc_gpio_channel(uint8_t gpio);
+
+/**
+ * @brief Check if an ADC handle is valid and usable.
+ * @ingroup ADC
+ * @param adc Pointer to the ADC structure to validate.
+ * @return True if the ADC handle is valid and can be used; false otherwise.
+ */
+static inline bool hw_adc_valid(hw_adc_t *adc) {
+  return adc && adc->channel < hw_adc_count();
+}
 
 /**
  * @brief Read the current value from an ADC channel.

@@ -7,6 +7,7 @@ TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
+JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += --no-print-directory
 
 # check for RELEASE=1
@@ -33,64 +34,64 @@ config: dep-cc dep-cmake submodule
 runtime-sys: config
 	@echo
 	@echo make runtime-sys
-	@${CMAKE} --build ${BUILD_DIR} --target runtime-sys
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-sys -j ${JOBS}
 
 # Create the libobjc-gcc runtime library
 .PHONY: libobjc-gcc
 libobjc-gcc: runtime-sys
 	@echo
 	@echo make libobjc-gcc
-	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc
+	@${CMAKE} --build ${BUILD_DIR} --target objc-gcc -j ${JOBS}
 
 # Create the libruntime-pix runtime library
 .PHONY: runtime-pix
 runtime-pix: runtime-sys
 	@echo
 	@echo make runtime-pix
-	@${CMAKE} --build ${BUILD_DIR} --target runtime-pix
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-pix -j ${JOBS}
 
 # Create the libruntime-hw runtime library
 .PHONY: runtime-hw
 runtime-hw: runtime-sys pioasm
 	@echo
 	@echo make runtime-hw
-	@${CMAKE} --build ${BUILD_DIR} --target runtime-hw
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-hw -j ${JOBS}
 
 # Create the libdrivers runtime library
 .PHONY: drivers
 drivers: runtime-hw
 	@echo
 	@echo make drivers
-	@${CMAKE} --build ${BUILD_DIR} --target drivers
+	@${CMAKE} --build ${BUILD_DIR} --target drivers -j ${JOBS}
 
 # Create the NXFoundation library
 .PHONY: NXFoundation
 NXFoundation: libobjc-gcc runtime-sys
 	@echo
 	@echo make NXFoundation
-	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation
+	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation -j ${JOBS}
 
 # Create the NXApplication library
 .PHONY: NXApplication
 NXApplication: NXFoundation runtime-hw drivers
 	@echo
 	@echo make NXApplication
-	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
+	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
 
 # Run the tests
 .PHONY: tests
 tests: NXFoundation
 	@echo
 	@echo make tests
-	@${CMAKE} --build ${BUILD_DIR}/src/tests
-	@${CMAKE} --build ${BUILD_DIR} --target test
+	@${CMAKE} --build ${BUILD_DIR}/src/tests -j ${JOBS}
+	@${CMAKE} --build ${BUILD_DIR} --target test -j ${JOBS}
 
 # Make the examples
 .PHONY: examples
 examples: NXApplication
 	@echo
 	@echo make examples
-	@${CMAKE} --build ${BUILD_DIR}/src/examples
+	@${CMAKE} --build ${BUILD_DIR}/src/examples -j ${JOBS}
 
 # Generate the documentation
 .PHONY: docs
@@ -111,7 +112,7 @@ pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
 		-D RUNTIME=gcc \
 		$(if $(NO_LOCAL_PICOTOOL),,-D picotool_DIR=${BUILD_DIR}/third_party/picotool) \
 		-D TARGET=armv6m-none-eabi
-	@${CMAKE} --build ${BUILD_DIR} --target NXApplication
+	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
 
 # Create the picotool binary
 .PHONY: picotool
@@ -119,7 +120,7 @@ picotool: submodule dep-cmake
 	@echo
 	@echo make picotool
 	@PICO_SDK_PATH=../../../third_party/pico-sdk ${CMAKE} -S third_party/picotool -B ${BUILD_DIR}/third_party/picotool -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev 
-	@make -C ${BUILD_DIR}/third_party/picotool
+	@make -C ${BUILD_DIR}/third_party/picotool -j ${JOBS}
 	@echo Run:
 	@echo   install -s ${BUILD_DIR}/third_party/picotool/picotool ${HOME}/bin
 	@echo
@@ -130,7 +131,7 @@ pioasm: submodule dep-cmake
 	@echo
 	@echo make pioasm
 	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev
-	@make -C ${BUILD_DIR}/pioasm
+	@make -C ${BUILD_DIR}/pioasm -j ${JOBS}
 	@echo Built pioasm at ${BUILD_DIR}/pioasm/pioasm
 	@echo
 
