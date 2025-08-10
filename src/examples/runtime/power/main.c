@@ -47,7 +47,7 @@ bool core0_task() {
 
   // Loop and print out the status
   while (true) {
-    // Poll the hardware devices occsionally to update status
+    // Poll the hardware devices occasionally to update status
     hw_poll();
     sys_sleep(100);
   }
