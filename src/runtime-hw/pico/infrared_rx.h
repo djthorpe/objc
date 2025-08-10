@@ -28,13 +28,20 @@ static inline uint32_t _hw_infrared_rx_to_us(uint initial, uint32_t remaining);
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
 
+// This is the max timeout count for IR signals
+#define HW_INFRARED_RX_TIMEOUT_COUNT 0x7FFFFFFF
+
+// This is the timeout duration for IR signals (50ms)
+#define HW_INFRARED_RX_TIMEOUT_US 50000
+
 // Use a sensible default clock divider for IR signals
 // 10.0 gives ~800ns resolution and can measure up to ~3.4s
 // This covers most IR protocols (NEC, RC5, Sony, etc.)
 const float _hw_infrared_rx_clkdiv = 10.0f;
 
 // Context for each PIO/SM combinations
-hw_infrared_rx_ctx_t _hw_infrared_rx_ctx[NUM_PIOS * NUM_PIO_STATE_MACHINES] = {{0}};
+hw_infrared_rx_ctx_t _hw_infrared_rx_ctx[NUM_PIOS * NUM_PIO_STATE_MACHINES] = {
+    {0}};
 
 ///////////////////////////////////////////////////////////////////////////////
 // INTERRUPT HANDLER
@@ -50,8 +57,8 @@ static void _hw_infrared_rx_irq_pio_handler(void) {
     // Clear the FIFO, callback
     while (!pio_sm_is_rx_fifo_empty(ctx->pio, ctx->sm)) {
       uint32_t value = pio_sm_get(ctx->pio, ctx->sm);
-      uint32_t count = value & IR_TIMEOUT_COUNT;
-      if (count == IR_TIMEOUT_COUNT) {
+      uint32_t count = value & HW_INFRARED_RX_TIMEOUT_COUNT;
+      if (count == HW_INFRARED_RX_TIMEOUT_COUNT) {
         ctx->callback(HW_INFRARED_EVENT_TIMEOUT, 0, ctx->user_data);
         continue;
       }
@@ -59,7 +66,8 @@ static void _hw_infrared_rx_irq_pio_handler(void) {
       // Extract type from MSB and count from lower 31 bits
       // Treat long spaces as timeouts (typical IR timeout is > 50ms)
       bool is_space = (value & 0x80000000) != 0;
-      uint32_t duration_us = _hw_infrared_rx_to_us(HW_INFRARED_RX_MAX_COUNT, count);
+      uint32_t duration_us =
+          _hw_infrared_rx_to_us(HW_INFRARED_RX_TIMEOUT_COUNT, count);
 
       if (is_space && duration_us > HW_INFRARED_RX_TIMEOUT_US) {
         ctx->callback(HW_INFRARED_EVENT_TIMEOUT, 0, ctx->user_data);
