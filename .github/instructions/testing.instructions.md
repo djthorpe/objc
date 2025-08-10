@@ -41,7 +41,7 @@ cases in that file.
 To cross-compile the libraries for the pico, this is the command to run:
 
 ```bash
-CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make
+PICO_BOARD=pico CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make
 ```
 
 

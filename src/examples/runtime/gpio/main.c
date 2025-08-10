@@ -1,6 +1,5 @@
 /**
- * @file main.c
- * @brief Pico event queue with GPIO events example
+ * @file examples/runtime/gpio/main.c
  *
  * This example demonstrates how to inject events into a system event queue
  * from GPIO interrupts on the RP2040/RP2050 (Pico) platform.
@@ -14,7 +13,8 @@
 #define GPIO_BOOTSEL 23 // BOOTSEL Button
 #define GPIO_A 12       // Button A
 #define GPIO_B 13       // Button B
-#define GPIO_C 14       // Button C
+#define GPIO_X 14       // Button X
+#define GPIO_Y 15       // Button Y
 
 /////////////////////////////////////////////////////////////////////
 // RUNLOOP
@@ -111,6 +111,12 @@ bool core0_task() {
   // Initialize the event queue with a capacity of 20 events
   sys_event_queue_t queue = sys_event_queue_init(20);
 
+  // Check that GPIO is supported
+  if (hw_gpio_count() == 0) {
+    sys_printf("main: GPIO is not supported\n");
+    return false;
+  }
+
   // Create the task on core 1. If this wasn't an RP2040, we would
   // just use sys_thread_create() instead.
   sys_printf("main: Starting task on core 1...\n");
@@ -122,7 +128,8 @@ bool core0_task() {
   // Initialize a GPIO pin for input
   hw_gpio_init(GPIO_A, HW_GPIO_PULLUP);
   hw_gpio_init(GPIO_B, HW_GPIO_PULLUP);
-  hw_gpio_init(GPIO_C, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_X, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_Y, HW_GPIO_PULLUP);
 
   // The BOOTSEL button is used to signal shutdown
   hw_gpio_init(GPIO_BOOTSEL, HW_GPIO_INPUT);

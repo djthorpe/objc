@@ -8,7 +8,7 @@
  * This module provides functions to initialize GPIO pins, set their modes,
  * and handle interrupts.
  *
- * @example pico/gpio_runloop/main.c
+ * @example examples/runtime/gpio/main.c
  */
 #pragma once
 #include <stdbool.h>
