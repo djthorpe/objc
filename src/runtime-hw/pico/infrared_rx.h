@@ -179,7 +179,7 @@ static inline void _hw_infrared_rx_pio_finalize(void *rx) {
 }
 
 static inline uint32_t _hw_infrared_rx_to_us(uint initial, uint32_t remaining) {
-  if (remaining >= initial) {
+  if (remaining > initial) {
     // Indicate overflow or error
     return UINT32_MAX;
   }
