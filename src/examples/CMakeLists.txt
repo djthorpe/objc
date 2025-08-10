@@ -13,17 +13,17 @@ add_subdirectory(runtime/infrared)
 add_subdirectory(runtime/pwm)
 add_subdirectory(runtime/power)
 add_subdirectory(runtime/gpio)
+add_subdirectory(runtime/clock)
+add_subdirectory(runtime/multicore)
+add_subdirectory(runtime/simplequeue)
+add_subdirectory(runtime/runloop)
 
 # NXApplication examples
 #add_subdirectory(NXApplication/helloworld)
 #add_subdirectory(NXApplication/gpio)
 #add_subdirectory(NXApplication/timer)
 
-# Unorganized examples - to be organized later!
-add_subdirectory(clock)
-add_subdirectory(bme280)
-add_subdirectory(uc8151)
-add_subdirectory(st7789)
-add_subdirectory(pico/multicore)
-add_subdirectory(pico/simplequeue)
-add_subdirectory(pico/runloop)
+# Driver examples
+add_subdirectory(drivers/bme280)
+add_subdirectory(drivers/uc8151)
+add_subdirectory(drivers/st7789)

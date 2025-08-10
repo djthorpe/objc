@@ -5,7 +5,6 @@ add_executable(${NAME}
     hack.c
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-sys
     runtime-hw
 )
 
