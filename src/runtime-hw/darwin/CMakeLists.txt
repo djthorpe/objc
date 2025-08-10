@@ -7,6 +7,7 @@ add_library(${NAME} STATIC
     ../stub/i2c.c
     ../stub/infrared_rx.c
     ../stub/led.c
+    ../stub/power.c
     ../stub/pwm.c
     ../stub/spi.c
     ../stub/watchdog.c

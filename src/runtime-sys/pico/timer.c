@@ -20,9 +20,15 @@ sys_timer_t sys_timer_init(uint32_t interval_ms, void *userdata,
   timer.userdata = 0;
   sys_memset(&timer.ctx, 0, sizeof(timer.ctx)); // Clear the entire union
   if (interval_ms == 0 || callback == NULL) {
+#ifdef DEBUG
+    sys_printf("Invalid timer parameters\n");
+#endif
     return timer; // Return an invalid timer context
   }
   if (sizeof(pico_timer_ctx_t) > SYS_TIMER_CTX_SIZE) {
+#ifdef DEBUG
+    sys_printf("Invalid timer context size\n");
+#endif
     return timer; // Return an invalid timer context
   }
 
@@ -110,7 +116,7 @@ bool sys_timer_finalize(sys_timer_t *timer) {
 }
 
 /**
- * @brief Checks if a timer is valid and properly configured.
+ * @brief Checks if a timer is valid, configured and running.
  */
 bool sys_timer_valid(sys_timer_t *timer) {
   if (timer == NULL) {

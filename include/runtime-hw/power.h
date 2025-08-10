@@ -4,12 +4,22 @@
  * @defgroup Power Power
  * @ingroup Hardware
  *
- * This file implements power management providing detection of active power
- * source, approximate battery state of charge reporting (0–100%) when
- * supported, the ability to reset the device and optional asynchronous callback
- * notification on power changes.
+ * Power management detection of active power
+ * source, and approximate battery state.
+ *
+ * The power management interface provides battery state of charge reporting
+ * (0–100%) when supported, and optional
+ * asynchronous callback notification on power changes.
+ *
+ * In order to be notified of power changes, the user must provide a callback
+ * function when initializing the power management interface, and in the
+ * main event loop, call hw_poll().
+ *
+ * In order to be notified of reset events, the watchdog must be initialized
+ * and the user must call hw_watchdog_reset() to initiate a reset event.
  */
 #pragma once
+#include <runtime-sys/sys.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -18,14 +28,8 @@
 
 #define HW_POWER_CTX_SIZE 64 ///< Size (bytes) of the  power context
 
-/**
- * @brief Handle for power management state.
- * @ingroup Power
- * @headerfile power.h runtime-hw/hw.h
- */
-typedef struct {
-  uint8_t ctx[HW_POWER_CTX_SIZE]; ///< Internal context buffer for power state
-} hw_power_t;
+// Opaque power management handle
+typedef struct hw_power_t hw_power_t;
 
 /**
  * @brief Power source capability / status flags.
@@ -48,11 +52,16 @@ typedef enum {
  * @brief Power status callback prototype.
  * @ingroup Power
  * @param power          Pointer to the associated power handle
- * @param flags          Bitmask of power source flags that changed since the
- *                       last callback. If HW_POWER_BATTERY flag is set,
- *                       the callback may be invoked on battery level changes.
+ * @param flags          Bitmask of power flags that changed since the
+ *  last callback. If HW_POWER_BATTERY flag is set,
+ *   the callback may be invoked on battery level changes.
+ * If HW_POWER_RESET is set, the callback was invoked on a reset event.
+ * @param value  If flags includes HW_POWER_BATTERY then the value is a battery
+ * percentage (1-100) or zero if unknown. If HW_POWER_RESET is set, the value
+ * is the reset delay in milliseconds.
  */
-typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags);
+typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags,
+                                    uint32_t value);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -65,15 +74,15 @@ typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags);
  * @param gpio_vbus  GPIO (or 0xFF for default) used for VBUS / USB present
  * detect
  * @param callback   Optional callback for asynchronous updates (may be NULL)
- * @return Initialized @ref hw_power_t handle (by value).
+ * @return Pointer to a hw_power_t handle, or NULL
  *
  * GPIO arguments are platform dependent; pass 0xFF to use default signals, or
  * if unavailable. The returned handle is valid if hw_power_valid() subsequently
  * reports true. Supplying a callback enables event driven notification when
  * supported.
  */
-hw_power_t hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                         hw_power_callback_t callback);
+hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
+                          hw_power_callback_t callback);
 
 /**
  * @brief Determine if the power handle is initialized and usable.
@@ -110,17 +119,3 @@ uint8_t hw_power_battery_percent(hw_power_t *power);
  * @return Bitmask of @ref hw_power_flag_t flags; HW_POWER_UNKNOWN if unknown.
  */
 hw_power_flag_t hw_power_source(hw_power_t *power);
-
-/**
- * @brief Reset the process or hardware.
- * @ingroup Power
- * @param power Power handle
- * @param delay_ms Delay in milliseconds before the reset
- * @return True if the reset operation was successful; false otherwise.
- *
- * If it's possible to reset the hardware, this function will attempt to do so
- * and return the result. If not, it will return false. The callback will be
- * called with the HW_POWER_RESET flag set, giving the application a chance
- * to react to the reset event.
- */
-bool hw_power_reset(hw_power_t *power, uint32_t delay_ms);

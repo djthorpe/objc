@@ -97,14 +97,10 @@ extern bool sys_timer_start(sys_timer_t *timer);
 extern bool sys_timer_finalize(sys_timer_t *timer);
 
 /**
- * @brief Checks if a timer is valid and properly configured.
+ * @brief Checks if a timer is valid, configured and running.
  * @ingroup SystemTimer
  * @param timer The timer context to validate.
- * @return true if the timer is valid and can be used, false otherwise.
- *
- * Use this function to verify timer validity before calling sys_timer_start().
- * A timer is also considered invalid if sys_timer_finalize() has been
- * called on it, or if it was never initialized properly.
+ * @return true if the timer is valid and is enabled.
  */
 extern bool sys_timer_valid(sys_timer_t *timer);
 

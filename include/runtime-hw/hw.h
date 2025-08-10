@@ -12,6 +12,7 @@
 #include "i2c.h"
 #include "infrared.h"
 #include "led.h"
+#include "power.h"
 #include "pwm.h"
 #include "spi.h"
 #include "watchdog.h"
@@ -36,3 +37,12 @@ extern void hw_init(void);
  * necessary cleanup tasks.
  */
 extern void hw_exit(void);
+
+/**
+ * @brief Occasional polling function for the hardware system.
+ * @ingroup Hardware
+ *
+ * This function should be called periodically to allow the hardware
+ * system to perform any necessary background tasks.
+ */
+extern void hw_poll(void);

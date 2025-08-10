@@ -5,51 +5,16 @@
  * This example demonstrates how to use the hardware watchdog timer to
  * automatically reboot the system if it becomes unresponsive.
  *
- * We configure the watchdog timer with a timeout period, and then
- * periodically "ping" the watchdog to reset the timeout. If the
+ * We create a watchdog timer  and then poll using hw_poll() to
+ * periodically "ping" the watchdog. If the
  * application fails to ping the watchdog within the timeout period,
  * the watchdog will trigger a system reset.
  *
- * After 10 timer invocations, we no longer ping the watchdog,
- * which will cause the system to reboot after the timeout period.
+ * We force a delayed reset after 50 pings. This also forces a callback
+ * with the power management system, to indicate the system will reset.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
-
-/////////////////////////////////////////////////////////////////////
-// TIMER CALLBACK
-
-static int timer_count = 0;
-
-void timer_callback(sys_timer_t *timer) {
-  hw_watchdog_t *watchdog = (hw_watchdog_t *)timer->userdata;
-  sys_assert(watchdog && hw_watchdog_valid(watchdog));
-
-  // Did the watchdog trigger a reset?
-  if (timer_count == 0 && hw_watchdog_did_reset(watchdog)) {
-    sys_printf("core %d: Last reboot was triggered by watchdog!\n",
-               sys_thread_core());
-  }
-
-  // Enable the watchdog
-  if (timer_count == 0) {
-    sys_printf("core %d: Enabling watchdog with max timeout %lu ms\n",
-               sys_thread_core(), hw_watchdog_maxtimeout());
-    hw_watchdog_enable(watchdog, true);
-  }
-
-  // Ping the watchdog to reset the timeout
-  hw_watchdog_ping(watchdog);
-  sys_printf("core %d: Pinged watchdog\n", (int)sys_thread_core());
-
-  // Increment the timer count
-  if (++timer_count >= 10) {
-    // After 10 invocations, cancel the timer
-    sys_printf("core %d: Stopping timer after %d invocations\n",
-               sys_thread_core(), timer_count);
-    sys_timer_finalize(timer);
-  }
-}
 
 /////////////////////////////////////////////////////////////////////
 // CORE 0 TASKS
@@ -57,34 +22,36 @@ void timer_callback(sys_timer_t *timer) {
 /**
  * @brief Function to run on core 0
  *
- * This function creates a queue, timer and watchdog, and processes events from
- * the queue.
+ * This function creates a watchdog and does hw_poll to keep everything
+ * running smoothly.
  */
 bool core0_task() {
-  // Create the watchdog with max timeout
-  // Note the watchdog is not yet enabled, we will enable it later
-  hw_watchdog_t watchdog = hw_watchdog_init(hw_watchdog_maxtimeout());
-  if (!hw_watchdog_valid(&watchdog)) {
+  // Create the watchdog
+  hw_watchdog_t *watchdog = hw_watchdog_init();
+  if (!hw_watchdog_valid(watchdog)) {
     sys_printf("core 0: Failed to initialize watchdog\n");
     return false;
   }
 
-  // Create a timer that will trigger every 1s
-  sys_timer_t timer = sys_timer_init(1000, &watchdog, timer_callback);
-  if (!sys_timer_start(&timer)) {
-    sys_printf("core 0: Failed to start timer\n");
-    hw_watchdog_finalize(&watchdog);
-    return false;
+  // Explain that the last boot was caused by the watchdog resetting
+  if (hw_watchdog_did_reset(watchdog)) {
+    sys_printf("Watchdog triggered a reset\n");
   }
 
   // Run the event processing loop - which is just sleeping for 1s
+  int count = 0;
   do {
-    sys_sleep(1000);
+    sys_printf("Ping the watchdog (%d)\n", count++);
+    hw_poll();
+    sys_sleep(100);
+    if (count == 50) {
+      sys_printf("Resetting the watchdog in 5s\n");
+      hw_watchdog_reset(watchdog, 5000);
+    }
   } while (true);
 
-  // If we were to reach here, finalize the timer and watchdog
-  sys_timer_finalize(&timer);
-  hw_watchdog_finalize(&watchdog);
+  // If we were to reach here, finalize the watchdog
+  hw_watchdog_finalize(watchdog);
 
   return true;
 }
@@ -104,6 +71,7 @@ int main() {
   }
 
   // Run the task
+  sys_printf("Running %s on %s\n", sys_env_name(), sys_env_serial());
   if (core0_task() == false) {
     sys_printf("Main: core 0 task failed\n");
   }

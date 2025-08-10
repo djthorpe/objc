@@ -10,6 +10,7 @@ add_subdirectory(runtime/watchdog)
 add_subdirectory(runtime/led)
 add_subdirectory(runtime/infrared)
 add_subdirectory(runtime/pwm)
+add_subdirectory(runtime/power)
 
 # NXApplication examples
 add_subdirectory(NXApplication/helloworld)

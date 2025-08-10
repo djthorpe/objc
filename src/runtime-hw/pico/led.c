@@ -62,7 +62,6 @@ static inline bool hw_led_status_is_ws2812() {
  */
 hw_led_t hw_led_init(uint8_t gpio, hw_pwm_t *pwm) {
   sys_assert(gpio < hw_gpio_count() || gpio == 0xFF);
-  sys_assert(pwm == NULL || hw_pwm_valid(pwm));
   sys_assert(HW_LED_CTX_SIZE >= sizeof(struct hw_led_ctx));
 
   // If it's WS2812 we don't support it yet
@@ -78,7 +77,7 @@ hw_led_t hw_led_init(uint8_t gpio, hw_pwm_t *pwm) {
   }
 
   // Check GPIO pin validity against the PWM
-  if (gpio != 0xFF && pwm) {
+  if (gpio != 0xFF && hw_pwm_valid(pwm)) {
     uint8_t pwm_unit = hw_pwm_gpio_unit(gpio);
     if (pwm->unit != pwm_unit) {
       return led; // Return invalid LED
@@ -86,7 +85,7 @@ hw_led_t hw_led_init(uint8_t gpio, hw_pwm_t *pwm) {
   }
 
   // Set the GPIO to output mode if not PWM
-  if (gpio != 0xFF && pwm == NULL) {
+  if (gpio != 0xFF && hw_pwm_valid(pwm) == false) {
     sys_assert(gpio < hw_gpio_count());
     gpio_init(gpio);
     gpio_set_dir(gpio, GPIO_OUT);
@@ -94,7 +93,9 @@ hw_led_t hw_led_init(uint8_t gpio, hw_pwm_t *pwm) {
 
   // Initialize the struct
   led.gpio = gpio;
-  led.pwm = pwm;
+  if (hw_pwm_valid(pwm)) {
+    led.pwm = pwm;
+  }
   struct hw_led_ctx *ctx = hw_led_get_ctx(&led);
   sys_memset(ctx, 0, sizeof(struct hw_led_ctx));
   ctx->valid = true;

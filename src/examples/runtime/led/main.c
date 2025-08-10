@@ -54,8 +54,8 @@ void timer_callback(sys_timer_t *timer) {
     hw_led_set_brightness(led, 0); // Set to 0% brightness
     break;
   case 6:
-    sys_printf("  Blink LED with interval 250ms\n");
-    hw_led_blink(led, 250, true);
+    sys_printf("  Blink LED with interval 100ms\n");
+    hw_led_blink(led, 100, true);
     break;
   case 7:
     sys_printf("  Fade LED with interval 250ms\n");
@@ -94,9 +94,12 @@ void timer_callback(sys_timer_t *timer) {
  */
 bool core0_task() {
   // Use the on-board LED with associated PWM
-  hw_pwm_t pwm = hw_pwm_init(hw_pwm_gpio_unit(hw_led_status_gpio()),
-                             NULL); // Initialize PWM unit 0
-  hw_led_t led = hw_led_init(hw_led_status_gpio(), &pwm);
+  hw_pwm_t pwm;
+  uint8_t gpio = hw_led_status_gpio();
+  if (gpio != 0xFF) {
+    pwm = hw_pwm_init(hw_pwm_gpio_unit(gpio), NULL); // Initialize PWM unit 0
+  }
+  hw_led_t led = hw_led_init(gpio, &pwm);
   if (!hw_led_valid(&led)) {
     sys_printf("core 0: Failed to initialize LED\n");
     return false;
