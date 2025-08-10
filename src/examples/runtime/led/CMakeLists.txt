@@ -4,8 +4,8 @@ add_executable(${NAME}
     hack.c
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-sys
     runtime-hw
+    runtime-sys
 )
 
 # additional configurations for the Pico SDK
