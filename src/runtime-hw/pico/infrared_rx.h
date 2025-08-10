@@ -50,8 +50,8 @@ static void _hw_infrared_rx_irq_pio_handler(void) {
     // Clear the FIFO, callback
     while (!pio_sm_is_rx_fifo_empty(ctx->pio, ctx->sm)) {
       uint32_t value = pio_sm_get(ctx->pio, ctx->sm);
-      uint32_t count = value & 0x7FFFFFFF;
-      if (count == 0x7FFFFFFF) {
+      uint32_t count = value & IR_TIMEOUT_COUNT;
+      if (count == IR_TIMEOUT_COUNT) {
         ctx->callback(HW_INFRARED_EVENT_TIMEOUT, 0, ctx->user_data);
         continue;
       }
