@@ -4,14 +4,21 @@
  * @defgroup Watchdog Watchdog
  * @ingroup Hardware
  *
- * Watchdog timer abstraction, which can be used to respond to dead processes
+ * Watchdog timer abstraction, which can be used to respond to dead processes,
+ * and also reset the system programmatically.
  *
  * The watchdog timer is a critical safety mechanism that can automatically
- * restart the system if software becomes unresponsive. Applications must
- * periodically "feed" the watchdog to prevent automatic system reset.
+ * restart the system if software becomes unresponsive.
  *
- * Typically you would use a periodic timer to call hw_watchdog_ping()
- * and keep your fingers crossed that the timer fires on time.
+ * After enabling the watchdog, applications must
+ * periodically "feed" the watchdog to prevent automatic system reset,
+ * by calling hw_poll(), usually from the event loop.
+ *
+ *
+ * The watchdog can also be used to programmatically reset the system
+ * after a delay. After calling hw_watchdog_reset(), the system will
+ * optionally call the hw_power_callback_t callback and then reset after the
+ * specified delay.
  *
  * @example examples/runtime/watchdog/main.c
  */

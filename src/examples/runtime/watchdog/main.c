@@ -5,13 +5,13 @@
  * This example demonstrates how to use the hardware watchdog timer to
  * automatically reboot the system if it becomes unresponsive.
  *
- * We configure the watchdog timer with a timeout period, and then
- * periodically "ping" the watchdog to reset the timeout. If the
+ * We create a watchdog timer  and then poll using hw_poll() to
+ * periodically "ping" the watchdog. If the
  * application fails to ping the watchdog within the timeout period,
  * the watchdog will trigger a system reset.
  *
- * After 10 timer invocations, we no longer ping the watchdog,
- * which will cause the system to reboot after the timeout period.
+ * We force a delayed reset after 50 pings. This also forces a callback
+ * with the power management system, to indicate the system will reset.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>

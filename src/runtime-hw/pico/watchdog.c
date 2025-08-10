@@ -1,3 +1,4 @@
+#include "power.h"
 #include <hardware/platform_defs.h>
 #include <hardware/regs/watchdog.h>
 #include <hardware/watchdog.h>
@@ -73,6 +74,9 @@ void hw_watchdog_finalize(hw_watchdog_t *watchdog) {
   sys_memset(watchdog, 0, sizeof(hw_watchdog_t));
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
+
 /**
  * @brief Return the maximum supported watchdog timeout
  */
@@ -140,12 +144,18 @@ void hw_watchdog_reset(hw_watchdog_t *watchdog, uint32_t delay_ms) {
   // pauses, and stop pinging the timer in hw_poll()
   watchdog_enable(watchdog->timeout_ms, true);
   watchdog->disable = true;
+
+  // Notify the power management system of the reset
+  _hw_power_notify_reset(delay_ms);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
 
 /**
  * @brief Poll the watchdog (reset the timeout counter)
  */
-void hw_watchdog_poll() {
+void _hw_watchdog_poll() {
   hw_watchdog_t *watchdog = &_hw_watchdog;
   if (hw_watchdog_valid(watchdog) == false) {
     return;

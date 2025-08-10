@@ -219,7 +219,7 @@ static float _hw_power_voltage(uint8_t gpio, bool wifi) {
   return vsys * 3 * conversion_factor;
 }
 
-void hw_power_poll() {
+void _hw_power_poll() {
   hw_power_t *power = &_hw_power;
   if (hw_power_valid(power) == false) {
     return;
@@ -256,6 +256,20 @@ void hw_power_poll() {
   }
 }
 
+/**
+ * @brief Notify power management system of reset.
+ */
+void _hw_power_notify_reset(uint32_t delay_ms) {
+  hw_power_t *power = &_hw_power;
+  if (hw_power_valid(power) == false) {
+    return;
+  }
+  if (power->callback == NULL) {
+    return;
+  }
+  power->callback(power, HW_POWER_RESET, delay_ms);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
@@ -288,25 +302,4 @@ uint8_t hw_power_battery_percent(hw_power_t *power) {
 hw_power_flag_t hw_power_source(hw_power_t *power) {
   sys_assert(power);
   return _hw_power_source(power->vbus);
-}
-
-/**
- * @brief Reset the process or hardware.
- */
-bool hw_power_reset(hw_power_t *power, uint32_t delay_ms) {
-  sys_assert(power && hw_power_valid(power));
-
-  // If watchdog isn't supported, then return false
-  uint32_t maxtimeout = hw_watchdog_maxtimeout();
-  if (maxtimeout == 0) {
-    return false;
-  }
-
-  // Clamp to max timeout value
-  if (delay_ms > maxtimeout) {
-    delay_ms = maxtimeout;
-  }
-
-  // TODO: Suppress existing watchdog
-  return false;
 }

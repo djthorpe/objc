@@ -37,6 +37,6 @@ void hw_poll(void) {
 #if PICO_CYW43_SUPPORTED
   cyw43_arch_poll();
 #endif
-  hw_power_poll();
-  hw_watchdog_poll();
+  _hw_power_poll();
+  _hw_watchdog_poll();
 }

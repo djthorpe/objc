@@ -8,12 +8,15 @@
  * source, and approximate battery state.
  *
  * The power management interface provides battery state of charge reporting
- * (0–100%) when supported, the ability to reset the device and optional
+ * (0–100%) when supported, and optional
  * asynchronous callback notification on power changes.
  *
  * In order to be notified of power changes, the user must provide a callback
  * function when initializing the power management interface, and in the
  * main event loop, call hw_poll().
+ *
+ * In order to be notified of reset events, the watchdog must be initialized
+ * and the user must call hw_watchdog_reset() to initiate a reset event.
  */
 #pragma once
 #include <runtime-sys/sys.h>
@@ -49,14 +52,16 @@ typedef enum {
  * @brief Power status callback prototype.
  * @ingroup Power
  * @param power          Pointer to the associated power handle
- * @param flags          Bitmask of power source flags that changed since the
- *                       last callback. If HW_POWER_BATTERY flag is set,
- *                       the callback may be invoked on battery level changes.
- * @param battery_percent  Current battery percentage (0-100), valid if
- * HW_POWER_BATTERY is set and <battery_percent> is non-zero.
+ * @param flags          Bitmask of power flags that changed since the
+ *  last callback. If HW_POWER_BATTERY flag is set,
+ *   the callback may be invoked on battery level changes.
+ * If HW_POWER_RESET is set, the callback was invoked on a reset event.
+ * @param value  If flags includes HW_POWER_BATTERY then the value is a battery
+ * percentage (1-100) or zero if unknown. If HW_POWER_RESET is set, the value
+ * is the reset delay in milliseconds.
  */
 typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags,
-                                    uint8_t battery_percent);
+                                    uint32_t value);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -114,17 +119,3 @@ uint8_t hw_power_battery_percent(hw_power_t *power);
  * @return Bitmask of @ref hw_power_flag_t flags; HW_POWER_UNKNOWN if unknown.
  */
 hw_power_flag_t hw_power_source(hw_power_t *power);
-
-/**
- * @brief Reset the process or hardware.
- * @ingroup Power
- * @param power Power handle
- * @param delay_ms Delay in milliseconds before the reset
- * @return True if the reset operation was successful; false otherwise.
- *
- * If it's possible to reset the hardware, this function will attempt to do so
- * and return the result. If not, it will return false. The callback will be
- * called with the HW_POWER_RESET flag set, giving the application a chance
- * to react to the reset event.
- */
-bool hw_power_reset(hw_power_t *power, uint32_t delay_ms);
