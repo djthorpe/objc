@@ -11,6 +11,7 @@ add_subdirectory(runtime/led)
 add_subdirectory(runtime/infrared)
 add_subdirectory(runtime/pwm)
 add_subdirectory(runtime/power)
+add_subdirectory(runtime/gpio)
 
 # NXApplication examples
 add_subdirectory(NXApplication/helloworld)
@@ -25,4 +26,3 @@ add_subdirectory(st7789)
 add_subdirectory(pico/multicore)
 add_subdirectory(pico/simplequeue)
 add_subdirectory(pico/runloop)
-add_subdirectory(pico/gpio_runloop)

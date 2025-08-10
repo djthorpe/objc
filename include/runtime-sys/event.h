@@ -33,13 +33,7 @@
  * Consumers will be woken up and any further attempts to push events will fail,
  * but existing events can still be popped, until the queue is empty.
  *
- * @example pico/simplequeue/main.c
- * This is a complete example showing how a simple use of an event queue works
- * in a multicore programming context on the Pico platform.
- *
- * @example pico/runloop/main.c
- * This is a complete example showing an example of multiple producers and
- * consumers using the event queue in a runloop style on the Pico platform.
+ * @example examples/runtime/gpio/main.c
  */
 #pragma once
 #include "sync.h"
