@@ -183,10 +183,6 @@ static inline uint32_t _hw_infrared_rx_to_us(uint initial, uint32_t remaining) {
     // Indicate overflow or error
     return UINT32_MAX;
   }
-  if (remaining == initial) {
-    // Edge case - no time elapsed
-    return 0;
-  }
   float pio_clk = (float)clock_get_hz(clk_sys) / _hw_infrared_rx_clkdiv;
   return (uint32_t)((float)(initial - remaining) * 1000000.0f / pio_clk);
 }
