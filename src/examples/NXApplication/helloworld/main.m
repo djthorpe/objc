@@ -34,6 +34,3 @@ int main(int argc, char *argv[]) {
   // Initialize the NXApplication framework
   return NXApplicationMain(argc, argv, [MyAppDelegate class]);
 }
-
-void *stdout = NULL; // Placeholder for standard output
-void *stderr = NULL; // Placeholder for standard error

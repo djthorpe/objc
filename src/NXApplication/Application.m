@@ -1,6 +1,23 @@
+#include "NXTimer+Private.h"
 #include <NXApplication/NXApplication.h>
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
+
+///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
+typedef enum {
+  APP_EVENT_HW_POLL = 1,
+  APP_EVENT_GPIO = 2,
+  APP_EVENT_TIMER = 3
+} app_event_type_t;
+
+typedef struct {
+  app_event_type_t type;
+  void *sender;
+  uint8_t pin;
+  hw_gpio_event_t event;
+} app_event_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
@@ -11,13 +28,14 @@ static id sharedApplication = nil;
 // Define the shared queue for events
 static sys_event_queue_t _app_queue = {0};
 
+// We call hw_poll every 50ms
+#define NSAPPLICATION_HW_POLL_INTERVAL_MS 50
+
 ///////////////////////////////////////////////////////////////////////////////
 // CALLBACKS
 
 static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
                                void *userdata) {
-  (void)userdata; // Unused parameter - NXApplication
-
   // Get the queue
   sys_event_queue_t *queue = &_app_queue;
   objc_assert(queue);
@@ -27,15 +45,20 @@ static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
     return;
   }
 
-  // Create a sys_event_t for the GPIO event
-  // Sender from pin
-  // We also want to include the event type (rising|falling) in the payload
-  const char *payload = sys_malloc(sizeof(uint8_t) * 64);
-  if (payload != NULL) {
-    sys_sprintf((char *)payload, 64, "GPIO %d: %d", (int)pin, (int)event);
-    if (sys_event_queue_try_push(queue, (void *)payload) == false) {
-      sys_free((void *)payload); // Free the payload if it cannot be pushed
-    }
+  // Create a app_event_t for the GPIO event
+  app_event_t *evt = sys_malloc(sizeof(app_event_t));
+  if (evt == NULL) {
+    return;
+  } else {
+    evt->type = APP_EVENT_GPIO; // Set the event type
+    evt->sender = userdata;     // Set the sender
+    evt->pin = pin;             // Set the pin number
+    evt->event = event;         // Set the event type (rising|falling)
+  }
+
+  // Try and push it into the queue
+  if (sys_event_queue_try_push(queue, (void *)evt) == false) {
+    sys_free((void *)evt); // Free the payload if it cannot be pushed
   }
 }
 
@@ -53,14 +76,47 @@ void _app_timer_callback(sys_timer_t *timer) {
     return;
   }
 
-  // Create a sys_event_t for the Timer event
-  // sender=timer->userdata (NXTimer)
-  const char *payload = sys_malloc(sizeof(uint8_t) * 64);
-  if (payload != NULL) {
-    sys_sprintf((char *)payload, 64, "Timer %p", (void *)timer->userdata);
-    if (sys_event_queue_try_push(queue, (void *)payload) == false) {
-      sys_free((void *)payload); // Free the payload if it cannot be pushed
-    }
+  // Create a app_event_t for the GPIO event
+  app_event_t *evt = sys_malloc(sizeof(app_event_t));
+  if (evt == NULL) {
+    return;
+  } else {
+    evt->type = APP_EVENT_TIMER;   // Set the event type
+    evt->sender = timer->userdata; // Set the sender
+  }
+
+  // Try and push it into the queue
+  if (sys_event_queue_try_push(queue, (void *)evt) == false) {
+    sys_free((void *)evt); // Free the payload if it cannot be pushed
+  }
+}
+
+/**
+ * @brief Callback function for hw poll timer events.
+ */
+void _app_poll_callback(sys_timer_t *timer) {
+  objc_assert(timer);
+
+  sys_event_queue_t *queue = &_app_queue;
+  objc_assert(queue);
+
+  // If the queue is not valid, return early
+  if (!sys_event_queue_valid(queue)) {
+    return;
+  }
+
+  // Create a app_event_t for the GPIO event
+  app_event_t *evt = sys_malloc(sizeof(app_event_t));
+  if (evt == NULL) {
+    return;
+  } else {
+    evt->type = APP_EVENT_HW_POLL; // Set the event type
+    evt->sender = timer->userdata; // Set the sender
+  }
+
+  // Try and push it into the queue
+  if (sys_event_queue_try_push(queue, (void *)evt) == false) {
+    sys_free((void *)evt); // Free the payload if it cannot be pushed
   }
 }
 
@@ -84,8 +140,8 @@ void _app_timer_callback(sys_timer_t *timer) {
   _run = NO;
   _exitstatus = 0;
 
-  // Set the GPIO callback for the application, with the application instance as
-  // userdata
+  // Set the GPIO callback for the application, with the application instance
+  // as userdata
   hw_gpio_set_callback(_app_gpio_callback, self);
 
   // Return success
@@ -173,6 +229,14 @@ void _app_timer_callback(sys_timer_t *timer) {
     return -1; // Already running
   }
 
+  // We need to call hw_poll occasionally, so we set up the timer for that
+  // here
+  sys_timer_t timer = sys_timer_init(NSAPPLICATION_HW_POLL_INTERVAL_MS, self,
+                                     _app_poll_callback);
+  if (sys_timer_start(&timer) == false) {
+    return -1; // Failed to start the timer
+  }
+
   // Run the loop until the stop flag is set
   while (true) {
     // Notify the delegate that the application has finished launching
@@ -182,24 +246,44 @@ void _app_timer_callback(sys_timer_t *timer) {
     }
 
     // TODO: Drain the autorelease pool occasionally
-    // In our semantics, we likely have one pool which is used across threads?
-    // or do we have one pool per thread?
+    // In our semantics, we likely have one pool which is used across threads
 
     // Get an event from the queue
     // The queue might be invalid, as it's been shutdown
-    sys_event_t event = sys_event_queue_pop(&_app_queue);
-    if (event == NULL) {
+    app_event_t *app_event = sys_event_queue_pop(&_app_queue);
+    if (app_event == NULL) {
+      // Finalize the timer to prevent any more events
+      sys_timer_finalize(&timer);
+
       // No more events to process
       break;
     }
 
-    // Simulate processing the event
-    sys_printf("core %d: Processing event: %s (queue size=%d)\n",
-               sys_thread_core(), (char *)event,
-               sys_event_queue_size(&_app_queue));
+    // Process based on event
+    switch (app_event->type) {
+    case APP_EVENT_HW_POLL:
+      hw_poll();
+      break;
+    case APP_EVENT_GPIO:
+      // Handle GPIO event
+      sys_printf(
+          "core %d: Processing GPIO event: pin=%u event=%u (queue size=%d)\n",
+          sys_thread_core(), app_event->pin, app_event->event,
+          sys_event_queue_size(&_app_queue));
+      break;
+    case APP_EVENT_TIMER:
+      if (app_event->sender &&
+          [app_event->sender isKindOfClass:[NXTimer class]]) {
+        [app_event->sender timerFired];
+      }
+      break;
+    default:
+      // Unknown event type
+      break;
+    }
 
     // Free the allocated event - release it
-    sys_free(event);
+    sys_free(app_event);
   }
 
   // Reset the flags

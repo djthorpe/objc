@@ -55,7 +55,7 @@ static void _timer_callback(sys_timer_t *timer) {
   // Initialize the timer with the specified interval and repeat flag
   uint32_t ms = NXTimeIntervalMilliseconds(interval);
   _timer = sys_timer_init(ms, self, _timer_callback);
-  if (!sys_timer_valid(&_timer)) {
+  if (!sys_timer_start(&_timer)) {
     [self release];
     return nil;
   } else {
@@ -73,6 +73,14 @@ static void _timer_callback(sys_timer_t *timer) {
  */
 + (NXTimer *)timerWithInterval:(NXTimeInterval)interval repeats:(BOOL)repeats {
   return [[[self alloc] initWithInterval:interval repeats:repeats] autorelease];
+}
+
+/**
+ * @brief Deallocates the timer
+ */
+- (void)dealloc {
+  [self invalidate];
+  [super dealloc];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -160,6 +168,16 @@ static void _timer_callback(sys_timer_t *timer) {
       sys_timer_finalize(&_timer);
     }
     _delegate = nil; // Clear the delegate
+  }
+}
+
+/**
+ * @brief Manually fires the timer.
+ */
+- (void)timerFired {
+  if (_delegate && class_respondsToSelector(object_getClass(_delegate),
+                                            @selector(timerFired:))) {
+    [_delegate timerFired:self];
   }
 }
 

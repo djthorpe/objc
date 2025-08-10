@@ -1,6 +1,7 @@
 set(NAME "multicore")
 add_executable(${NAME}
     main.c
+    hack.c
 )
 target_link_libraries(${NAME} PRIVATE
     runtime-sys

@@ -27,7 +27,7 @@ config: dep-cc dep-cmake submodule
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D RUNTIME=gcc \
-		-D TARGET=${TARGET}
+		-D TARGET=${TARGET} 
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys

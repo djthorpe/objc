@@ -1,6 +1,7 @@
 set(NAME "nxapplication_helloworld")
 add_executable(${NAME}
     main.m
+    hack.c
 )
 target_link_libraries(${NAME} PRIVATE
     objc-gcc

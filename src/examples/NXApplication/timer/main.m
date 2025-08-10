@@ -7,7 +7,9 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-@interface MyAppDelegate : NXObject <ApplicationDelegate, TimerDelegate>
+@interface MyAppDelegate : NXObject <ApplicationDelegate, TimerDelegate> {
+  int count;
+}
 @end
 
 //////////////////////////////////////////////////////////////////////////
@@ -27,7 +29,7 @@
 
 - (void)timerFired:(id)timer {
   // This method will be called every second
-  NXLog(@"Timer fired = %@", timer);
+  NXLog(@"Timer fired: %d", ++count);
 }
 
 - (void)applicationReceivedSignal:(NXApplicationSignal)signal {
@@ -44,6 +46,3 @@ int main(int argc, char *argv[]) {
   // Initialize the NXApplication framework
   return NXApplicationMain(argc, argv, [MyAppDelegate class]);
 }
-
-void *stdout = NULL; // Placeholder for standard output
-void *stderr = NULL; // Placeholder for standard error

@@ -1,6 +1,6 @@
 set(NAME "runtime-sys")
 
-set(PICO_COMPILER "pico_arm_gcc")
+
 set(PICO_TOOLCHAIN_PATH "${TOOLCHAIN_PATH}")
 include(../../../third_party/pico-sdk/pico_sdk_init.cmake)
 pico_sdk_init()

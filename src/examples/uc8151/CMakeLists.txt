@@ -1,6 +1,7 @@
 set(NAME "uc8151")
 add_executable(${NAME}
     main.c
+    hack.c
 )
 target_link_libraries(${NAME} PRIVATE
     runtime-sys

@@ -39,6 +39,11 @@ add_compile_options(
     "-DSYSTEM_PROCESSOR=\"${PROCESSOR_NAME_LOWER}\""
 )
 
+# For RP2350 with clang, disable software spin locks which aren't supported
+if(CMAKE_SYSTEM_NAME STREQUAL "Pico" AND CMAKE_C_COMPILER_ID STREQUAL "Clang")
+    add_compile_definitions(PICO_USE_SW_SPIN_LOCK=0)
+endif()
+
 # Runtime Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
