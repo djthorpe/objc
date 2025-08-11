@@ -1,6 +1,6 @@
 # Test Suite Documentation
 
-This directory contains test coverage for the Objective-C runtime and NXFoundation framework. Tests can be run with `make tests` from the project root directory.
+This directory contains test coverage for the runtime, NXFoundation and NXApplication frameworks. Tests can be run with `make tests` from the project root directory.
 
 The tests are designed to work correctly in both debug and release builds (`RELEASE=1`), with proper handling of assertions and error conditions.
 
@@ -8,10 +8,12 @@ The tests are organized into four main categories:
 
 ## Test Categories
 
+- **Runtime System Tests** (sys_00 through sys_16): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, hash table operations, and environment information.
+- **Objective-C Runtime Tests** (runtime_01 through runtime_37): Tests for the Objective-C runtime system functionality.
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
+- **NXApplication Tests** (NXApplication_01 only): Tests for the NXApplication framework classes and functionality.
+- **Runtime Hardware Interface Tests** (hw_00 through hw_03): Tests for low-level hardware interface functionality.
 - **Pixel Tests** (pix_01): Tests for the pixel and display system functionality.
-- **Runtime Tests** (runtime_01 through runtime_37, excluding runtime_07): Tests for the Objective-C runtime system functionality.
-- **System Tests** (sys_00 through sys_16): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, hash table operations, and environment information.
 
 ---
 
