@@ -6,6 +6,7 @@ int main(void) {
   sys_init();
 
   test_runtime_01();
+  test_runtime_02();
 
   sys_exit();
   return 0;

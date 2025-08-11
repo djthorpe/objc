@@ -19,7 +19,7 @@ endif()
 project(objc-runtime C CXX ASM OBJC)
 
 if(DEFINED PICO_BOARD)
-    # Initialise the Pico SDK (only if Pico SDK was included)
+    # Initialise the Pico SDK
     pico_sdk_init()
 
     # Propagate certain board-provided CMake variables as global compile definitions
@@ -28,6 +28,30 @@ if(DEFINED PICO_BOARD)
     if(DEFINED PICO_CYW43_SUPPORTED AND PICO_CYW43_SUPPORTED)
         add_compile_definitions(PICO_CYW43_SUPPORTED=1)
     endif()
+
+    # Ensure Objective-C compilation uses the same cross-compilation flags as C.
+    # The Pico SDK/toolchain injects target triple, cpu, sysroot, float/dsp flags into C/CXX/ASM
+    # but does not automatically propagate them to the OBJC language. Without these
+    # flags the Objective-C objects are built for the host and become "incompatible"
+    # at link time with the embedded objects from the Pico SDK.
+    foreach(cfg "" DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+        if(cfg STREQUAL "")
+            set(_c_var CMAKE_C_FLAGS)
+            set(_objc_var CMAKE_OBJC_FLAGS)
+        else()
+            string(TOUPPER ${cfg} _ucfg)
+            set(_c_var CMAKE_C_FLAGS_${_ucfg})
+            set(_objc_var CMAKE_OBJC_FLAGS_${_ucfg})
+        endif()
+        if(DEFINED ${_c_var})
+            # Prepend C flags if OBJC variant lacks a target triple (heuristic: --target=)
+            if(NOT DEFINED ${_objc_var} OR NOT ${_objc_var} MATCHES "--target=")
+                set(${_objc_var} "${${_c_var}} ${${_objc_var}}")
+            endif()
+        endif()
+    endforeach()
+    unset(_c_var)
+    unset(_objc_var)
 endif()
 
 # Lowercase and uppercase system name

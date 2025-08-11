@@ -6,10 +6,6 @@ int test_sys_env_serial(void);
 int test_sys_env_name(void);
 int test_sys_env_version(void);
 
-// Hack for pico
-void *stdout = NULL; // Avoid unused variable warning
-void *stderr = NULL; // Avoid unused variable warning
-
 int test_sys_16(void) {
   sys_puts("Running environment function tests...\n");
 

@@ -23,12 +23,22 @@ all: config runtime-sys libobjc-gcc runtime-hw  NXFoundation NXApplication
 config: dep-cmake submodule
 	@echo
 	@echo configure
+	@echo "PICO_BOARD=${PICO_BOARD} PICO_COMPILER=${PICO_COMPILER} TOOLCHAIN_PATH=${TOOLCHAIN_PATH}"
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D PICO_BOARD=${PICO_BOARD} \
+		$(if ${PICO_BOARD},-D PICO_BOARD=${PICO_BOARD}) \
 		-D PICO_COMPILER=${PICO_COMPILER} \
-		-D PICO_TOOLCHAIN_PATH=${TOOLCHAIN_PATH} \
+		-D PICO_TOOLCHAIN_PATH:PATH=${TOOLCHAIN_PATH} \
 		-D RUNTIME=gcc
+	@echo "Configured. Detected compilers:"
+	@grep -E 'CMAKE_(C|CXX)_COMPILER:FILEPATH' ${BUILD_DIR}/CMakeCache.txt || true
+	@if [ -n "${PICO_BOARD}" ]; then \
+	  C_ACTUAL=$$(grep '^CMAKE_C_COMPILER:FILEPATH=' ${BUILD_DIR}/CMakeCache.txt | cut -d= -f2); \
+	  case "$$C_ACTUAL" in \
+	    ${TOOLCHAIN_PATH}/*) echo "Pico toolchain OK: $$C_ACTUAL";; \
+	    *) echo "WARNING: Pico build expected compiler under ${TOOLCHAIN_PATH} but got $$C_ACTUAL";; \
+	  esac; \
+	fi
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys

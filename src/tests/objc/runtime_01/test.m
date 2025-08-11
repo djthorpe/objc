@@ -1,5 +1,4 @@
 #include <objc/objc.h>
-#include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
 int test_runtime_01(void) {
