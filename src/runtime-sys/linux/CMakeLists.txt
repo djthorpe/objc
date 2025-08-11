@@ -27,6 +27,7 @@ add_library(${NAME} STATIC
     ../all/mutex.c
     ../all/panicf.c
     ../all/printf.c
+    ../all/strcmp.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

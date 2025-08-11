@@ -2,7 +2,7 @@ set(NAME "runtime_02")
 
 if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
     add_library(${NAME} STATIC
-        test.m
+        test.c
         TestClass.m
     )
 else()
