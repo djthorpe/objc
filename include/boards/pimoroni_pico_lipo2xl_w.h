@@ -163,6 +163,4 @@
 #define CYW43_DEFAULT_PIN_WL_CS 25
 #endif
 
-// (No direct #define PICO_CYW43_SUPPORTED here; supplied via CMake compile definitions hook if set)
-
 #endif

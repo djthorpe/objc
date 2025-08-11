@@ -2,14 +2,6 @@
 #include <stdint.h>
 #include <tests/tests.h>
 
-// Forward declaration
-int test_sys_00(void);
-
-int main(void) {
-  // Run memory function tests
-  return TestMain("test_sys_00", test_sys_00);
-}
-
 int test_sys_00(void) {
   sys_puts("Test 1: sys_malloc - basic allocation\n");
   {

@@ -25,6 +25,17 @@ endif()
 string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
 
+
+# Compile options
+add_compile_options(
+    "-Wall"
+    "-Wextra"
+    "$<$<CONFIG:DEBUG>:-DDEBUG>"
+    "$<$<CONFIG:RELEASE>:-O3>"
+    "-DSYSTEM_NAME_${SYSTEM_NAME_UPPER}"
+    "-DSYSTEM_NAME=\"${SYSTEM_NAME_LOWER}\""
+)
+
 # Runtime Libraries
 add_subdirectory("src/malloc")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")

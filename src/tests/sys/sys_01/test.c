@@ -10,14 +10,6 @@ size_t helper_test_sys_vsprintf(char *buf, size_t sz, const char *format, ...) {
   return result;
 }
 
-// Forward declaration
-int test_sys_01(void);
-
-int main(void) {
-  // Run sys_printf tests
-  return TestMain("test_sys_01", test_sys_01);
-}
-
 int test_sys_01(void) {
   // Test 1: Output a message to the console
   sys_puts("Test 1: sys_printf basic output\n");
