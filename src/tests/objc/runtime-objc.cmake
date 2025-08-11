@@ -43,7 +43,7 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/runtime_01)
 # so all tests can be run together.
 if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
     add_executable(tests-runtime-objc
-        ${CMAKE_CURRENT_LIST_DIR}/runtime-objc.c
+        ${CMAKE_CURRENT_LIST_DIR}/runtime-objc.m
     )
     target_link_libraries(tests-runtime-objc
         runtime_01

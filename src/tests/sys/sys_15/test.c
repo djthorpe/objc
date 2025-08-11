@@ -10,7 +10,7 @@ static bool test_key_equals(void *keyptr, void *other_keyptr) {
   char *key2 = (char *)other_keyptr;
   if (key1 == NULL || key2 == NULL)
     return false;
-  return strcmp(key1, key2) == 0;
+  return sys_strcmp(key1, key2) == 0;
 }
 
 static uintptr_t hash_string(const char *str) {

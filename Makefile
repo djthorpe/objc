@@ -4,8 +4,10 @@ DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
 JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += --no-print-directory
+
+# Pico variables - also PICO_BOARD
 PICO_COMPILER ?= pico_arm_clang
-PICO_TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Darwin-universal
+TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Darwin-universal
 
 # check for RELEASE=1
 ifdef RELEASE
@@ -15,7 +17,7 @@ else
 endif
 
 .PHONY: all
-all: config runtime-sys runtime-hw
+all: config runtime-sys libobjc-gcc runtime-hw  NXFoundation NXApplication
 
 # Configure
 config: dep-cmake submodule
@@ -25,7 +27,7 @@ config: dep-cmake submodule
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D PICO_BOARD=${PICO_BOARD} \
 		-D PICO_COMPILER=${PICO_COMPILER} \
-		-D PICO_TOOLCHAIN_PATH=${PICO_TOOLCHAIN_PATH} \
+		-D PICO_TOOLCHAIN_PATH=${TOOLCHAIN_PATH} \
 		-D RUNTIME=gcc
 
 # Create the libruntime-sys runtime library
@@ -99,21 +101,6 @@ docs: dep-docker
 	@echo make docs
 	@${DOCKER} run -v .:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
 
-# Cross-compile libraries for Raspberry Pi Pico
-.PHONY: pico
-# The Pico cross-compile target now ensures local picotool and pioasm are built first
-# to avoid SDK corruption issues. Set NO_LOCAL_PICOTOOL=1 to skip using locally built tools.
-pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
-	@echo
-	@echo make pico cross-compilation
-	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
-		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D RUNTIME=gcc \
-		$(if $(NO_LOCAL_PICOTOOL),,-D picotool_DIR=${BUILD_DIR}/third_party/picotool) \
-		-D TARGET=armv6m-none-eabi \
-		-D CMAKE_TOOLCHAIN_FILE=${PWD}/cmake/armv6m-none-eabi.cmake
-	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
-
 # Create the picotool binary
 .PHONY: picotool
 picotool: submodule dep-cmake
@@ -139,16 +126,12 @@ pioasm: submodule dep-cmake
 submodule: dep-git
 	@echo
 	@echo "checking out submodules"
-	@git submodule update --init --recursive
+	@${GIT} submodule update --init --recursive
 
 .PHONY: clean
 clean:
 	@echo "Cleaning build directory"
 	@rm -rf ${BUILD_DIR}
-
-.PHONY: dep-cc
-dep-cc:
-	@test -f "${TOOLCHAIN_PATH}/bin/${CC}" && test -x "${TOOLCHAIN_PATH}/bin/${CC}" || (echo "Missing CC: ${TOOLCHAIN_PATH}/bin/${CC}" && exit 1)
 
 .PHONY: dep-cmake
 dep-cmake:
