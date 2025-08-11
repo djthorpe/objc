@@ -75,7 +75,7 @@ NXApplication: NXFoundation runtime-hw drivers
 
 # Run the tests
 .PHONY: tests
-tests: config runtime-sys runtime-hw
+tests: config runtime-sys runtime-hw libobjc-gcc
 	@echo
 	@echo make tests
 	@${CMAKE} --build ${BUILD_DIR}/src/tests -j ${JOBS}

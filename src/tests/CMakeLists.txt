@@ -7,10 +7,10 @@ include_directories(
 
 # Runtime System Tests
 include(sys/runtime-sys.cmake)
+include(objc/runtime-objc.cmake)
 
 # TODO: Commented out until we can re-introduce these tests
 #include(runtime-hw.cmake)
-#include(runtime-objc.cmake)
 #include(NXFoundation.cmake)
 #include(NXApplication.cmake)
 #include(runtime-pix.cmake)

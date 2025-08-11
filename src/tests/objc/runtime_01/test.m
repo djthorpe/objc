@@ -2,16 +2,6 @@
 #include <runtime-sys/sys.h>
 #include <tests/tests.h>
 
-#ifdef SYSTEM_NAME_PICO
-// HACK
-void *stdout = NULL;
-void *stderr = NULL;
-#endif
-
-int test_runtime_01(void);
-
-int main(void) { return TestMain("test_runtime_01", test_runtime_01); }
-
 int test_runtime_01(void) {
   Object *obj = [[Object alloc] init];
   test_assert(obj != NULL);
