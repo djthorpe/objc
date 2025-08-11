@@ -1,15 +1,17 @@
 set(NAME "sys_13")
-add_executable(${NAME}
-    main.c
-)
-target_link_libraries(${NAME} PRIVATE
+
+if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
+    add_library(${NAME} STATIC
+        test.c
+    )
+else()
+    add_executable(${NAME}
+        main.c
+        test.c
+    )
+    add_test(NAME ${NAME} COMMAND ${NAME})
+endif()
+
+target_link_libraries(${NAME}
     runtime-sys
 )
-add_test(NAME ${NAME} COMMAND ${NAME})
-
-# additional configurations for the Pico SDK
-if(CMAKE_SYSTEM_NAME STREQUAL "Pico")
-pico_add_extra_outputs(${NAME})
-pico_enable_stdio_usb(${NAME} 1)
-pico_enable_stdio_uart(${NAME} 0)
-endif()

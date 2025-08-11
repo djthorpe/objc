@@ -3,3 +3,17 @@
 int test_sys_00(void);
 int test_sys_01(void);
 int test_sys_02(void);
+int test_sys_03(void);
+int test_sys_04(void);
+int test_sys_05(void);
+int test_sys_06(void);
+int test_sys_07(void);
+int test_sys_08(void);
+int test_sys_09(void);
+int test_sys_10(void);
+int test_sys_11(void);
+int test_sys_12(void);
+int test_sys_13(void);
+int test_sys_14(void);
+int test_sys_15(void);
+int test_sys_16(void);
