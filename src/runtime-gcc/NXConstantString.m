@@ -1,5 +1,4 @@
 #include <objc/objc.h>
-#include <stdlib.h>
 #include <string.h>
 
 @implementation NXConstantString
@@ -53,8 +52,8 @@
     if (self->_length != ((NXConstantString *)anObject)->_length) {
       return NO;
     }
-    return (memcmp(self->_data, ((NXConstantString *)anObject)->_data,
-                   self->_length) == 0);
+    return (sys_memcmp(self->_data, ((NXConstantString *)anObject)->_data,
+                       self->_length) == 0);
   }
   return NO;
 }

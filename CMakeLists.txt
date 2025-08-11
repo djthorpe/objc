@@ -10,6 +10,9 @@ if(DEFINED PICO_BOARD)
 
     # Include Pico SDK modules (only when targeting a Pico board)
     include(third_party/pico-sdk/pico_sdk_init.cmake)
+
+    # Test programs should make a static library, not an executable
+    set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 endif()
 
 # Define the project

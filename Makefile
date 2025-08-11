@@ -4,6 +4,8 @@ DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
 JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += --no-print-directory
+PICO_COMPILER ?= pico_arm_clang
+PICO_TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Darwin-universal
 
 # check for RELEASE=1
 ifdef RELEASE
@@ -22,6 +24,8 @@ config: dep-cmake submodule
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
 		-D PICO_BOARD=${PICO_BOARD} \
+		-D PICO_COMPILER=${PICO_COMPILER} \
+		-D PICO_TOOLCHAIN_PATH=${PICO_TOOLCHAIN_PATH} \
 		-D RUNTIME=gcc
 
 # Create the libruntime-sys runtime library
