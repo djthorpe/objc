@@ -1,21 +1,22 @@
 <map id="include/NXApplication/NXTimer.h" name="include/NXApplication/NXTimer.h">
-<area shape="rect" id="node2" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="659,95,879,121"/>
-<area shape="rect" id="node5" href="$sys_8h.html" title="System management functions. " alt="" coords="449,319,587,345"/>
-<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="784,169,876,196"/>
-<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="678,244,753,271"/>
-<area shape="rect" id="node22" href="$malloc_8h.html" title="Memory allocation functions for the Objective&#45;C runtime. " alt="" coords="944,319,1023,345"/>
-<area shape="rect" id="node23" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="868,244,944,271"/>
-<area shape="rect" id="node24" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="858,468,943,495"/>
-<area shape="rect" id="node6" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="347,393,422,420"/>
-<area shape="rect" id="node7" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="136,468,199,495"/>
-<area shape="rect" id="node10" href="$env_8h.html" title="Environment information. " alt="" coords="113,393,171,420"/>
-<area shape="rect" id="node11" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="447,393,517,420"/>
-<area shape="rect" id="node12" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="518,468,582,495"/>
-<area shape="rect" id="node14" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="607,468,672,495"/>
-<area shape="rect" id="node15" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="593,393,691,420"/>
-<area shape="rect" id="node16" href="$memory_8h.html" title="Memory management. " alt="" coords="696,468,783,495"/>
-<area shape="rect" id="node17" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="971,393,1039,420"/>
-<area shape="rect" id="node19" href="$random_8h.html" title="Random number generation. " alt="" coords="5,393,89,420"/>
-<area shape="rect" id="node20" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="275,468,351,495"/>
-<area shape="rect" id="node21" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="375,468,443,495"/>
+<area shape="rect" id="node2" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="755,95,975,121"/>
+<area shape="rect" id="node5" href="$sys_8h.html" title="System management functions. " alt="" coords="513,319,651,345"/>
+<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="899,169,991,196"/>
+<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="779,244,854,271"/>
+<area shape="rect" id="node23" href="$malloc_8h.html" title="Memory allocation functions for the Objective&#45;C runtime. " alt="" coords="1135,319,1213,345"/>
+<area shape="rect" id="node24" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="983,244,1059,271"/>
+<area shape="rect" id="node25" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="978,468,1063,495"/>
+<area shape="rect" id="node6" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="419,393,494,420"/>
+<area shape="rect" id="node7" href="$atomic_8h.html" title="Simple atomic uint32_t API (get, set, increment, decrement). " alt="" coords="153,468,232,495"/>
+<area shape="rect" id="node10" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="256,468,319,495"/>
+<area shape="rect" id="node11" href="$env_8h.html" title="Environment information. " alt="" coords="113,393,171,420"/>
+<area shape="rect" id="node12" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="671,393,741,420"/>
+<area shape="rect" id="node13" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="606,468,670,495"/>
+<area shape="rect" id="node15" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="745,468,811,495"/>
+<area shape="rect" id="node16" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="195,393,294,420"/>
+<area shape="rect" id="node17" href="$memory_8h.html" title="Memory management. " alt="" coords="495,468,581,495"/>
+<area shape="rect" id="node18" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="1091,393,1159,420"/>
+<area shape="rect" id="node20" href="$random_8h.html" title="Random number generation. " alt="" coords="5,393,89,420"/>
+<area shape="rect" id="node21" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="343,468,419,495"/>
+<area shape="rect" id="node22" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="835,468,903,495"/>
 </map>

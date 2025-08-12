@@ -87,6 +87,7 @@ var searchData=
   ['sys_5fsleep',['sys_sleep',['../group__SystemThread.html#gacb5a950a99bad2a938dee8c861e50269',1,'thread.h']]],
   ['sys_5fsprintf',['sys_sprintf',['../group__SystemFormatting.html#ga340ab3d1b3e0cef587d52b580cd59d25',1,'printf.h']]],
   ['sys_5fsprintf_5fex',['sys_sprintf_ex',['../group__SystemFormatting.html#gab90f3e476547c5b1da238633d6725662',1,'printf.h']]],
+  ['sys_5fstrcmp',['sys_strcmp',['../group__SystemMemory.html#ga6fb7fab502c8aa41d1025ca921265fe6',1,'memory.h']]],
   ['sys_5fthread_5fcore',['sys_thread_core',['../group__SystemThread.html#ga4c6d6105e812d597fd8457f1d79290cc',1,'thread.h']]],
   ['sys_5fthread_5fcreate',['sys_thread_create',['../group__SystemThread.html#ga677402551d5d11b4e3ee60391d5a4faf',1,'thread.h']]],
   ['sys_5fthread_5fcreate_5fon_5fcore',['sys_thread_create_on_core',['../group__SystemThread.html#ga1b72ef6424828a90881daa3559864cf4',1,'thread.h']]],

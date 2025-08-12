@@ -232,7 +232,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Initialized event queue structure</dd></dl>
 <p>Creates a new thread-safe event queue with the specified capacity. The queue uses circular buffer semantics - when full, new items will overwrite the oldest items. The returned queue must be finalized with <a class="el" href="group__SystemEvents.html#gab4f27a3c63a3d274f23d4111dc05315a" title="Finalize and cleanup an event queue. ">sys_event_queue_finalize()</a>. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a12">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a4">examples/runtime/infrared/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a18">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a12">examples/runtime/gpio/main.c</a>, and <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a4">examples/runtime/infrared/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -317,7 +317,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Next event, or NULL if queue is shut down</dd></dl>
 <p>Removes and returns the next event from the queue. If the queue is empty, this function blocks until an event becomes available or the queue is shut down. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a3">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a10">examples/runtime/infrared/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a3">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a3">examples/runtime/gpio/main.c</a>, and <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a10">examples/runtime/infrared/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -385,7 +385,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Sets the shutdown flag and wakes up all waiting consumers. After shutdown, push operations may fail and pop operations will return NULL once the queue is empty. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a6">examples/runtime/gpio/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a10">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a6">examples/runtime/gpio/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -414,7 +414,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Current number of events, or 0 on error</dd></dl>
 <p>Returns the current number of events in the queue. This is a snapshot value that may change immediately after the call returns in a multi-threaded environment. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a4">examples/runtime/gpio/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a4">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a4">examples/runtime/gpio/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -521,7 +521,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false if queue is full or error</dd></dl>
 <p>Attempts to add an event to the queue. Returns false if the queue is full, ensuring no existing events are overwritten. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a11">examples/runtime/gpio/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a14">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a11">examples/runtime/gpio/main.c</a>.</dd>
 </dl>
 </div>
 </div>

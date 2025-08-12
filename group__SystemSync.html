@@ -48,6 +48,7 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -68,6 +69,12 @@ Collaboration diagram for Synchronization Primitives:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:atomic_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html">atomic.h</a></td></tr>
+<tr class="memdesc:atomic_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple atomic uint32_t API (get, set, increment, decrement). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__mutex__t.html">sys_mutex_t</a></td></tr>
@@ -508,7 +515,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
 <p>Increments the waitgroup counter by delta. This should be called before starting goroutines that the waitgroup should wait for. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a15">clock/main.c</a>, and <a class="el" href="pico_2multicore_2main_8c-example.html#a7">pico/multicore/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a15">clock/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -537,7 +544,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false on error</dd></dl>
 <p>Decrements the waitgroup counter by 1. This should be called when a goroutine finishes its work. If the counter reaches 0, all threads waiting on sys_waitgroup_wait() will be woken up. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a9">clock/main.c</a>, and <a class="el" href="pico_2multicore_2main_8c-example.html#a5">pico/multicore/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a9">clock/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -565,7 +572,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Blocks until the waitgroup counter reaches 0, then releases all resources associated with the waitgroup and renders it unusable. The waitgroup counter should reach 0 through done() calls from worker threads. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a17">clock/main.c</a>, and <a class="el" href="pico_2multicore_2main_8c-example.html#a9">pico/multicore/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a17">clock/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -588,7 +595,7 @@ Functions</h2></td></tr>
 <p>Initialize a new waitgroup. </p>
 <dl class="section return"><dt>Returns</dt><dd>Initialized waitgroup structure</dd></dl>
 <p>Creates and initializes a new waitgroup for thread synchronization. The waitgroup counter starts at 0. The returned waitgroup must be finalized with <a class="el" href="group__SystemSync.html#gabca9a01a0834ad14251f39c45a1120d6" title="Finalize and cleanup a waitgroup - wait for completion then cleanup. ">sys_waitgroup_finalize()</a> </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a13">clock/main.c</a>, and <a class="el" href="pico_2multicore_2main_8c-example.html#a6">pico/multicore/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a13">clock/main.c</a>.</dd>
 </dl>
 </div>
 </div>

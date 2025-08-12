@@ -86,6 +86,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga77f042ac51dec1bb8b23525569b3f777"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemMemory.html#ga77f042ac51dec1bb8b23525569b3f777">sys_memcmp</a> (const void *ptr1, const void *ptr2, size_t num)</td></tr>
 <tr class="memdesc:ga77f042ac51dec1bb8b23525569b3f777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two memory blocks.  <a href="#ga77f042ac51dec1bb8b23525569b3f777">More...</a><br /></td></tr>
 <tr class="separator:ga77f042ac51dec1bb8b23525569b3f777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fb7fab502c8aa41d1025ca921265fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemMemory.html#ga6fb7fab502c8aa41d1025ca921265fe6">sys_strcmp</a> (const char *str1, const char *str2)</td></tr>
+<tr class="memdesc:ga6fb7fab502c8aa41d1025ca921265fe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two NULL-terminated strings.  <a href="#ga6fb7fab502c8aa41d1025ca921265fe6">More...</a><br /></td></tr>
+<tr class="separator:ga6fb7fab502c8aa41d1025ca921265fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for managing and manipulating memory. </p>
@@ -115,7 +118,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a5">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a12">examples/runtime/infrared/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a7">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a5">examples/runtime/gpio/main.c</a>, and <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a12">examples/runtime/infrared/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -143,7 +146,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the allocated memory, or NULL if the allocation fails. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a7">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a1">examples/runtime/infrared/main.c</a>, and <a class="el" href="pico_2runloop_2main_8c-example.html#a12">pico/runloop/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a7">examples/runtime/gpio/main.c</a>, and <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a1">examples/runtime/infrared/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -324,6 +327,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the memory block, or NULL on error </dd></dl>
+
+</div>
+</div>
+<a id="ga6fb7fab502c8aa41d1025ca921265fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6fb7fab502c8aa41d1025ca921265fe6">&#9670;&nbsp;</a></span>sys_strcmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sys_strcmp </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compare two NULL-terminated strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr1</td><td>First string </td></tr>
+    <tr><td class="paramname">ptr2</td><td>Second string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if equal, negative if ptr1 &lt; ptr2, positive if ptr1 &gt; ptr2 </dd></dl>
 
 </div>
 </div>
