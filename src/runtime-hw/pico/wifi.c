@@ -38,14 +38,13 @@ struct hw_wifi_t {
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
 
-hw_wifi_flags_t _hw_wifi_update_state(hw_wifi_t *wifi);
 #ifdef PICO_CYW43_SUPPORTED
-uint32_t _hw_wifi_country_code(const char *country_code);
-#endif
-#ifdef PICO_CYW43_SUPPORTED
+static hw_wifi_flags_t _hw_wifi_update_state(hw_wifi_t *wifi);
+static uint32_t _hw_wifi_country_code(const char *country_code);
 static int _hw_wifi_scan_callback(void *env,
                                   const cyw43_ev_scan_result_t *result);
 #endif
+
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
 
