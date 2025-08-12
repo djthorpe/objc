@@ -20,7 +20,6 @@
 
 #ifndef ADC_CHANNEL_OFFSET
 #warning                                                                       \
-    "ADC_CHANNEL_OFFSET not defined for this platform; defaulting to 26. Define PICO_RP2350A or PICO_RP2350B in board header if needed."
 #define ADC_CHANNEL_OFFSET 26
 #endif
 
