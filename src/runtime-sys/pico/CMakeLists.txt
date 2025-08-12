@@ -11,7 +11,6 @@ add_library(${NAME} STATIC
     puts.c
     random.c
     sys.c
-    timegm.c
     timer.c
     thread.c
     waitgroup.c

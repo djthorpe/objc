@@ -6,6 +6,11 @@
 #include "power.h"
 #include "watchdog.h"
 
+#if PICO_CYW43_SUPPORTED
+// internal Wi‑Fi poll hook implemented in wifi.c
+void _hw_wifi_poll(void);
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
@@ -36,6 +41,7 @@ void hw_exit(void) {
 void hw_poll(void) {
 #if PICO_CYW43_SUPPORTED
   cyw43_arch_poll();
+  _hw_wifi_poll();
 #endif
   _hw_power_poll();
   _hw_watchdog_poll();
