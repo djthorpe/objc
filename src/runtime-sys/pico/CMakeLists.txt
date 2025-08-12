@@ -33,6 +33,7 @@ target_include_directories(${NAME} PUBLIC
 )
 target_link_libraries(${NAME} 
     pico_stdlib
+    pico_atomic
     pico_rand
     pico_time
     pico_mbedtls

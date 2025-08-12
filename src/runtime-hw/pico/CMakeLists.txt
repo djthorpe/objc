@@ -22,6 +22,7 @@ add_library(${NAME} STATIC
     spi.c
     watchdog.c
     ${CMAKE_CURRENT_BINARY_DIR}/infrared_rx.pio.h
+    wifi.c
 )
 target_include_directories(${NAME} PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
@@ -47,4 +48,6 @@ if (PICO_CYW43_SUPPORTED)
     target_link_libraries(${NAME} 
         pico_cyw43_arch_lwip_poll 
     )
+    #add_compile_definitions(CYW43_PRINTF=sys_printf)
+    #add_compile_definitions(CYW43_CONFIG_FILE="<runtime-sys/sys.h>")
 endif()

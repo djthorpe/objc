@@ -22,13 +22,6 @@ if(DEFINED PICO_BOARD)
     # Initialise the Pico SDK
     pico_sdk_init()
 
-    # Propagate certain board-provided CMake variables as global compile definitions
-    # (acts as a hook so that comment-based pico_cmake_set lines in board headers
-    # become visible to C/C++ code without adding fallback #defines in headers)
-    if(DEFINED PICO_CYW43_SUPPORTED AND PICO_CYW43_SUPPORTED)
-        add_compile_definitions(PICO_CYW43_SUPPORTED=1)
-    endif()
-
     # Ensure Objective-C compilation uses the same cross-compilation flags as C.
     # The Pico SDK/toolchain injects target triple, cpu, sysroot, float/dsp flags into C/CXX/ASM
     # but does not automatically propagate them to the OBJC language. Without these

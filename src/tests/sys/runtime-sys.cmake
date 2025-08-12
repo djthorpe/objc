@@ -17,6 +17,7 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sys_13)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sys_14)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sys_15)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sys_16)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/sys_17)
 
 # On the Pico, we combine the tests into a single executable which 
 # so all tests can be run together.
@@ -42,6 +43,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
         sys_14
         sys_15
         sys_16
+    sys_17
     )
     pico_add_extra_outputs(tests-runtime-sys)
     pico_enable_stdio_usb(tests-runtime-sys 1)

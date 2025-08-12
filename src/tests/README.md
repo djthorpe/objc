@@ -8,7 +8,7 @@ The tests are organized into four main categories:
 
 ## Test Categories
 
-- **Runtime System Tests** (sys_00 through sys_16): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, hash table operations, and environment information.
+- **Runtime System Tests** (sys_00 through sys_17): Tests for low-level system functionality including memory management, I/O operations, threading, synchronization primitives, event queues, cross-core communication, hash table operations, environment information, and atomic operations.
 - **Objective-C Runtime Tests** (runtime_01 through runtime_37): Tests for the Objective-C runtime system functionality.
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
 - **NXApplication Tests** (NXApplication_01 only): Tests for the NXApplication framework classes and functionality.
@@ -120,3 +120,4 @@ The tests are organized into four main categories:
 | sys_14 | Dual-Core Event Queue with Timers | Tests dual-core event queue consumption with timer-driven event production, cross-core event mixing, high-load scenarios with atomic counters, and timer-based coordination. |
 | sys_15 | Hash Table Operations | Tests comprehensive hash table functionality including basic operations (init, put, get by key/value), collision handling with linear probing, automatic chaining/growth, deletion operations, iteration, edge cases with replacement callbacks, and count/capacity tracking across chained tables. |
 | sys_16 | Environment Information | Tests environment information functions including `sys_env_serial()`, `sys_env_name()`, and `sys_env_version()` with validation of non-null return values, non-empty strings, and consistency across multiple calls. |
+| sys_17 | Atomic Operations | Tests `sys_atomic_*` API for initialization, get/set semantics, and atomic increment/decrement returning the post-operation value using a uint32_t counter. |
