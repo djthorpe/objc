@@ -174,7 +174,7 @@ bool hw_wifi_scan(hw_wifi_t *wifi, hw_wifi_callback_t callback,
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
-uint32_t _hw_wifi_country_code(const char *country_code) {
+static uint32_t _hw_wifi_country_code(const char *country_code) {
 #ifdef PICO_CYW43_SUPPORTED
   if (country_code == NULL || strlen(country_code) != 2) {
     return 0;
