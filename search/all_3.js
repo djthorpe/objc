@@ -2,7 +2,7 @@ var searchData=
 [
   ['callback',['callback',['../structsys__timer__t.html#a3c4e39bfba48dca6f0a9973f11329602',1,'sys_timer_t::callback()'],['../structpix__display__t.html#a68fc3d29c0aa890b82cbe18f1bad5fc1',1,'pix_display_t::callback()']]],
   ['capacity',['capacity',['../structsys__event__queue__t.html#ac04a37b0761ef48521520d6a0f778ddc',1,'sys_event_queue_t::capacity()'],['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXMap.html#aade1a65e9718f40e184ab698116943b7',1,'NXMap::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
-  ['channel',['channel',['../structhw__adc__t.html#ac054ceffabaa7224f345e0c104958f5a',1,'hw_adc_t']]],
+  ['channel',['channel',['../structhw__adc__t.html#ac054ceffabaa7224f345e0c104958f5a',1,'hw_adc_t::channel()'],['../structhw__wifi__network__t.html#acec98a2687f6a386616b64f52db3578c',1,'hw_wifi_network_t::channel()']]],
   ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02',1,'Class():&#160;runtime.h']]],
   ['class_5fconformsto',['class_conformsTo',['../group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
   ['class_5fgetinstancesize',['class_getInstanceSize',['../group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],

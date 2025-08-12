@@ -48,6 +48,8 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">WiFi<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Hardware.html">Hardware Interfaces</a></div></div>  </div>
@@ -66,21 +68,94 @@ Collaboration diagram for WiFi:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes a discovered Wi‑Fi network (scan result).  <a href="structhw__wifi__network__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga186ec64c4394d990746204cb13e16069"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a> { <br />
+&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4">hw_wifi_auth_open</a> = 0x0001, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336">hw_wifi_auth_wep</a> = 0x0002, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247">hw_wifi_auth_wpa_tkip</a> = 0x0004, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89">hw_wifi_auth_wpa_aes</a> = 0x0008, 
+<br />
+&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa">hw_wifi_auth_wpa2_tkip</a> = 0x0010, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61">hw_wifi_auth_wpa2_aes</a> = 0x0020, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47">hw_wifi_auth_wpa3_sae</a> = 0x0040, 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16">hw_wifi_auth_enterprise</a> = 0x0080
+<br />
+ }<tr class="memdesc:ga186ec64c4394d990746204cb13e16069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication and cipher modes for Wi‑Fi networks.  <a href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga186ec64c4394d990746204cb13e16069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga77ccb9817d142e5d9a91bba33772b8dd"><td class="memItemLeft" align="right" valign="top">hw_wifi_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga77ccb9817d142e5d9a91bba33772b8dd">hw_wifi_init</a> ()</td></tr>
-<tr class="memdesc:ga77ccb9817d142e5d9a91bba33772b8dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize Wi-Fi management.  <a href="#ga77ccb9817d142e5d9a91bba33772b8dd">More...</a><br /></td></tr>
-<tr class="separator:ga77ccb9817d142e5d9a91bba33772b8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga338e2de9dc48468643d50f0bcc54b776"><td class="memItemLeft" align="right" valign="top">hw_wifi_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga338e2de9dc48468643d50f0bcc54b776">hw_wifi_init</a> (const char *country_code)</td></tr>
+<tr class="memdesc:ga338e2de9dc48468643d50f0bcc54b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize Wi-Fi management.  <a href="#ga338e2de9dc48468643d50f0bcc54b776">More...</a><br /></td></tr>
+<tr class="separator:ga338e2de9dc48468643d50f0bcc54b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga02cf34d87668e0464f65452a5e5a2e90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga02cf34d87668e0464f65452a5e5a2e90">hw_wifi_valid</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:ga02cf34d87668e0464f65452a5e5a2e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the Wi-Fi handle is initialized and usable.  <a href="#ga02cf34d87668e0464f65452a5e5a2e90">More...</a><br /></td></tr>
 <tr class="separator:ga02cf34d87668e0464f65452a5e5a2e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga873a9cac260543ba7005a040857b79ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga873a9cac260543ba7005a040857b79ed">hw_wifi_finalize</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:ga873a9cac260543ba7005a040857b79ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release any resources.  <a href="#ga873a9cac260543ba7005a040857b79ed">More...</a><br /></td></tr>
 <tr class="separator:ga873a9cac260543ba7005a040857b79ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1d8e379ee26c754fecdea9004f434c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gae1d8e379ee26c754fecdea9004f434c0">hw_wifi_scan</a> (hw_wifi_t *wifi, <a class="el" href="wifi_8h.html#aae376cfc6354f98d65ac126c76c2969d">hw_wifi_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:gae1d8e379ee26c754fecdea9004f434c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous scan for nearby Wi‑Fi networks.  <a href="#gae1d8e379ee26c754fecdea9004f434c0">More...</a><br /></td></tr>
+<tr class="separator:gae1d8e379ee26c754fecdea9004f434c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Wi-Fi network management interface. </p>
 <p>The Wi-Fi management interface provides discovery of, and connection to networks with authentication. </p>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga186ec64c4394d990746204cb13e16069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga186ec64c4394d990746204cb13e16069">&#9670;&nbsp;</a></span>hw_wifi_auth_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Authentication and cipher modes for Wi‑Fi networks. </p>
+<p>Bitmask describing the advertised/required authentication/cipher modes. Multiple bits may be set if a network supports more than one. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4"></a>hw_wifi_auth_open&#160;</td><td class="fielddoc"><p>Open (no authentication) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336"></a>hw_wifi_auth_wep&#160;</td><td class="fielddoc"><p>WEP (legacy) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247"></a>hw_wifi_auth_wpa_tkip&#160;</td><td class="fielddoc"><p>WPA‑PSK TKIP. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89"></a>hw_wifi_auth_wpa_aes&#160;</td><td class="fielddoc"><p>WPA‑PSK CCMP/AES. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa"></a>hw_wifi_auth_wpa2_tkip&#160;</td><td class="fielddoc"><p>WPA2‑PSK TKIP. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61"></a>hw_wifi_auth_wpa2_aes&#160;</td><td class="fielddoc"><p>WPA2‑PSK CCMP/AES. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47"></a>hw_wifi_auth_wpa3_sae&#160;</td><td class="fielddoc"><p>WPA3‑SAE. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16"></a>hw_wifi_auth_enterprise&#160;</td><td class="fielddoc"><p>802.1X Enterprise (EAP) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00026">26</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;             {</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4">hw_wifi_auth_open</a> = 0x0001,      </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336">hw_wifi_auth_wep</a> = 0x0002,       </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247">hw_wifi_auth_wpa_tkip</a> = 0x0004,  </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89">hw_wifi_auth_wpa_aes</a> = 0x0008,   </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa">hw_wifi_auth_wpa2_tkip</a> = 0x0010, </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61">hw_wifi_auth_wpa2_aes</a> = 0x0020,  </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47">hw_wifi_auth_wpa3_sae</a> = 0x0040,  </div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16">hw_wifi_auth_enterprise</a> = 0x0080 </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;} <a class="code" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a>;</div><div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4">hw_wifi_auth_open</a></div><div class="ttdoc">Open (no authentication) </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00027">wifi.h:27</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47">hw_wifi_auth_wpa3_sae</a></div><div class="ttdoc">WPA3‑SAE. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00033">wifi.h:33</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89">hw_wifi_auth_wpa_aes</a></div><div class="ttdoc">WPA‑PSK CCMP/AES. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00030">wifi.h:30</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336">hw_wifi_auth_wep</a></div><div class="ttdoc">WEP (legacy) </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00028">wifi.h:28</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61">hw_wifi_auth_wpa2_aes</a></div><div class="ttdoc">WPA2‑PSK CCMP/AES. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00032">wifi.h:32</a></div></div>
+<div class="ttc" id="group__WiFi_html_ga186ec64c4394d990746204cb13e16069"><div class="ttname"><a href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a></div><div class="ttdeci">hw_wifi_auth_t</div><div class="ttdoc">Authentication and cipher modes for Wi‑Fi networks. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00026">wifi.h:26</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247">hw_wifi_auth_wpa_tkip</a></div><div class="ttdoc">WPA‑PSK TKIP. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00029">wifi.h:29</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16">hw_wifi_auth_enterprise</a></div><div class="ttdoc">802.1X Enterprise (EAP) </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00034">wifi.h:34</a></div></div>
+<div class="ttc" id="group__WiFi_html_gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa"><div class="ttname"><a href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa">hw_wifi_auth_wpa2_tkip</a></div><div class="ttdoc">WPA2‑PSK TKIP. </div><div class="ttdef"><b>Definition:</b> <a href="wifi_8h_source.html#l00031">wifi.h:31</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga873a9cac260543ba7005a040857b79ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga873a9cac260543ba7005a040857b79ed">&#9670;&nbsp;</a></span>hw_wifi_finalize()</h2>
@@ -109,8 +184,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga77ccb9817d142e5d9a91bba33772b8dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga77ccb9817d142e5d9a91bba33772b8dd">&#9670;&nbsp;</a></span>hw_wifi_init()</h2>
+<a id="ga338e2de9dc48468643d50f0bcc54b776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga338e2de9dc48468643d50f0bcc54b776">&#9670;&nbsp;</a></span>hw_wifi_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,15 +193,72 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">hw_wifi_t* hw_wifi_init </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>country_code</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Initialize Wi-Fi management. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">country_code</td><td>Country code for the Wi-Fi region (e.g., "US", "EU"). If NULL, defaults to "XX" (worldwide). </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Wi-Fi handle or NULL on failure.</dd></dl>
 <p>This function initializes the Wi-Fi management subsystem and returns a handle to the Wi-Fi instance. If initialization fails (for example, if WiFi is not available), it returns NULL. </p>
+
+</div>
+</div>
+<a id="gae1d8e379ee26c754fecdea9004f434c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae1d8e379ee26c754fecdea9004f434c0">&#9670;&nbsp;</a></span>hw_wifi_scan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hw_wifi_scan </td>
+          <td>(</td>
+          <td class="paramtype">hw_wifi_t *&#160;</td>
+          <td class="paramname"><em>wifi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="wifi_8h.html#aae376cfc6354f98d65ac126c76c2969d">hw_wifi_callback_t</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Begin an asynchronous scan for nearby Wi‑Fi networks. </p>
+<p>Starts a non‑blocking scan. The provided <code>callback</code> will be invoked for each result (network != NULL) and once more with network == NULL when the scan completes. The function returns immediately.</p>
+<p>Notes:</p><ul>
+<li>If a scan is already in progress or Wi‑Fi is not up, the function returns false and no callback will be invoked.</li>
+<li>The callback must be lightweight and non‑blocking. Use <code>user_data</code> to carry application state.</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wifi</td><td>Initialized Wi‑Fi handle. </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback to notify progress/completion (must not be NULL). </td></tr>
+    <tr><td class="paramname">user_data</td><td>Opaque user pointer supplied to the callback. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the scan was started, false otherwise. </dd></dl>
 
 </div>
 </div>

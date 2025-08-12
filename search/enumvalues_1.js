@@ -20,5 +20,13 @@ var searchData=
   ['hw_5fpower_5fbattery',['HW_POWER_BATTERY',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a017f5baf1f9614bd776c3de32b9ca992',1,'power.h']]],
   ['hw_5fpower_5freset',['HW_POWER_RESET',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a919a6667678fe87be74b2bd496e0f21f',1,'power.h']]],
   ['hw_5fpower_5funknown',['HW_POWER_UNKNOWN',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4a0ee85aad30995d428e5f7f8cdc65b91f',1,'power.h']]],
-  ['hw_5fpower_5fusb',['HW_POWER_USB',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4ae85fa439c865c2dfd0b88875978e34ee',1,'power.h']]]
+  ['hw_5fpower_5fusb',['HW_POWER_USB',['../group__Power.html#gga146f43ba4b648c7e71a79b792510b4d4ae85fa439c865c2dfd0b88875978e34ee',1,'power.h']]],
+  ['hw_5fwifi_5fauth_5fenterprise',['hw_wifi_auth_enterprise',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fopen',['hw_wifi_auth_open',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwep',['hw_wifi_auth_wep',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwpa2_5faes',['hw_wifi_auth_wpa2_aes',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwpa2_5ftkip',['hw_wifi_auth_wpa2_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwpa3_5fsae',['hw_wifi_auth_wpa3_sae',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwpa_5faes',['hw_wifi_auth_wpa_aes',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89',1,'wifi.h']]],
+  ['hw_5fwifi_5fauth_5fwpa_5ftkip',['hw_wifi_auth_wpa_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247',1,'wifi.h']]]
 ];

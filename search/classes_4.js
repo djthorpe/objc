@@ -7,5 +7,6 @@ var searchData=
   ['hw_5fled_5ft',['hw_led_t',['../structhw__led__t.html',1,'']]],
   ['hw_5fpwm_5fconfig_5ft',['hw_pwm_config_t',['../structhw__pwm__config__t.html',1,'']]],
   ['hw_5fpwm_5ft',['hw_pwm_t',['../structhw__pwm__t.html',1,'']]],
-  ['hw_5fspi_5ft',['hw_spi_t',['../structhw__spi__t.html',1,'']]]
+  ['hw_5fspi_5ft',['hw_spi_t',['../structhw__spi__t.html',1,'']]],
+  ['hw_5fwifi_5fnetwork_5ft',['hw_wifi_network_t',['../structhw__wifi__network__t.html',1,'']]]
 ];
