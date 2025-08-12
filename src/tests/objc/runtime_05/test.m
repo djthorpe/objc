@@ -1,17 +1,7 @@
+#include "../runtime-objc.h"
 #include "Test1.h"
 #include <objc/objc.h>
-#include <runtime-sys/sys.h>
 #include <tests/tests.h>
-
-#ifdef SYSTEM_NAME_PICO
-// HACK
-void *stdout = NULL;
-void *stderr = NULL;
-#endif
-
-int test_runtime_05(void);
-
-int main(void) { return TestMain("test_runtime_05", test_runtime_05); }
 
 int test_runtime_05() {
   // Allocate a test object with a value

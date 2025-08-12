@@ -1,19 +1,22 @@
 set(NAME "runtime_05")
-add_executable(${NAME}
-    main.m
-    Test1.m
-    Test2.m
-)
-target_link_libraries(${NAME} PRIVATE
-    objc-gcc
-    runtime-sys
-    malloc
-)
-add_test(NAME ${NAME} COMMAND ${NAME})
 
-if(CMAKE_SYSTEM_NAME STREQUAL "Pico")
-pico_add_extra_outputs(${NAME})
-pico_enable_stdio_usb(${NAME} 1)
-pico_enable_stdio_uart(${NAME} 0)
+if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
+    add_library(${NAME} STATIC
+        test.m
+        Test1.m
+        Test2.m
+    )
+else()
+    add_executable(${NAME}
+        main.c
+        test.m
+        Test1.m
+        Test2.m
+    )
+    add_test(NAME ${NAME} COMMAND ${NAME})
 endif()
 
+target_link_libraries(${NAME}
+    objc-gcc
+    malloc # we use system-provided malloc for these tests
+)

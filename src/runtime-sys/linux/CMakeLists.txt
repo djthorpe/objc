@@ -5,6 +5,7 @@ find_package(OpenSSL REQUIRED)
 
 add_library(${NAME} STATIC
     abort.c
+    env.c
     exception.c
     sys.c
     timer.c

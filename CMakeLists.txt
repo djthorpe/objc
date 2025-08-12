@@ -60,6 +60,9 @@ endif()
 # SYSTEM_NAME_LINUX // SYSTEM_NAME=linux
 string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
+string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} PROCESSOR_NAME_LOWER)
+
+
 
 # Compile options
 add_compile_options(
@@ -69,6 +72,7 @@ add_compile_options(
     "$<$<CONFIG:RELEASE>:-O3>"
     "-DSYSTEM_NAME_${SYSTEM_NAME_UPPER}"
     "-DSYSTEM_NAME=\"${SYSTEM_NAME_LOWER}\""
+    "-DSYSTEM_PROCESSOR=\"${PROCESSOR_NAME_LOWER}\""    
 )
 
 # Compile options for Objective-C
@@ -85,6 +89,10 @@ add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-hw/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/drivers")
+
+# Objective-C
+add_subdirectory("src/NXFoundation")
+add_subdirectory("src/NXApplication")
 
 # Tests
 include(CTest)

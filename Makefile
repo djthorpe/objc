@@ -17,7 +17,7 @@ else
 endif
 
 .PHONY: all
-all: config runtime-sys libobjc-gcc runtime-hw  NXFoundation NXApplication
+all: NXApplication
 
 # Configure
 config: dep-cmake submodule

@@ -2,7 +2,7 @@ set(NAME "runtime_02")
 
 if(CMAKE_SYSTEM_NAME STREQUAL "PICO")
     add_library(${NAME} STATIC
-        test.c
+        test.m
         TestClass.m
     )
 else()
@@ -16,4 +16,5 @@ endif()
 
 target_link_libraries(${NAME}
     objc-gcc
+    malloc # we use system-provided malloc for these tests
 )

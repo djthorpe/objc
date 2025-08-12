@@ -5,6 +5,7 @@ find_package(OpenSSL REQUIRED)
 
 add_library(${NAME} STATIC
     abort.c
+    env.c
     exception.c
     sys.c
     timer.c
@@ -38,4 +39,6 @@ target_link_libraries(${NAME} PRIVATE
     OpenSSL::SSL
     OpenSSL::Crypto
     pthread
+    "-framework CoreFoundation"
+    "-framework IOKit"
 )
