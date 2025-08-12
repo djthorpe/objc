@@ -75,7 +75,7 @@ hw_wifi_t *hw_wifi_init(const char *country_code) {
 
   // Set up the structure
 #ifdef PICO_CYW43_SUPPORTED
-  // Check to make sure intialized
+  // Check to make sure initialized
   // We always start in station mode, which connects to other
   // Wi-Fi networks as a client, but can change this later
   if (cyw43_is_initialized(&cyw43_state)) {
