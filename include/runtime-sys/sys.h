@@ -22,6 +22,7 @@
  */
 #pragma once
 #include "assert.h"
+#include "atomic.h"
 #include "date.h"
 #include "env.h"
 #include "event.h"

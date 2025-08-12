@@ -11,6 +11,7 @@ add_library(${NAME} STATIC
     ../stub/pwm.c
     ../stub/spi.c
     ../stub/watchdog.c
+    ../stub/wifi.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include

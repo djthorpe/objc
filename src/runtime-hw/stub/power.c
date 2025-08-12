@@ -6,8 +6,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
 
-// Stub power singleton
-static hw_power_t _hw_power_stub = {0};
+// Stub power singleton storage (opaque). We can't instantiate hw_power_t here
+// because it's an incomplete type (opaque in the public header). Use a raw
+// byte buffer to stand in for the handle; size chosen to match
+// HW_POWER_CTX_SIZE so that taking the address yields a stable, unique pointer
+// value.
+static uint8_t _hw_power_stub_storage[HW_POWER_CTX_SIZE];
+static bool _hw_power_stub_initialized = false;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -22,9 +27,9 @@ hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
   (void)gpio_vbus; // Suppress unused parameter warning
   (void)callback;  // Suppress unused parameter warning
 
-  // Reset stub power handle
-  _hw_power_stub = (hw_power_t){0};
-  return &_hw_power_stub;
+  // Mark initialized and return opaque handle pointer
+  _hw_power_stub_initialized = true;
+  return (hw_power_t *)_hw_power_stub_storage; // Opaque, contents unused
 }
 
 /**
@@ -32,8 +37,8 @@ hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
  */
 bool hw_power_valid(hw_power_t *power) {
   sys_assert(power);
-  // Power management not implemented in stub
-  return false; // Always return false since power management is not implemented
+  (void)power;
+  return _hw_power_stub_initialized; // Indicates init was called
 }
 
 /**
@@ -41,7 +46,8 @@ bool hw_power_valid(hw_power_t *power) {
  */
 void hw_power_finalize(hw_power_t *power) {
   sys_assert(power);
-  // Power management not implemented in stub
+  (void)power;
+  _hw_power_stub_initialized = false;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -63,15 +69,4 @@ hw_power_flag_t hw_power_source(hw_power_t *power) {
   sys_assert(power);
   // Power management not implemented in stub
   return HW_POWER_UNKNOWN; // Return unknown as specified in the header
-}
-
-/**
- * @brief Reset the process or hardware.
- */
-bool hw_power_reset(hw_power_t *power, uint32_t delay_ms) {
-  sys_assert(power);
-  (void)delay_ms; // Suppress unused parameter warning
-
-  // Power management not implemented in stub
-  return false; // Return false since reset is not implemented
 }

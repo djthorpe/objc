@@ -1,10 +1,5 @@
 set(NAME "runtime-hw")
 
-set(PICO_COMPILER "pico_arm_gcc")
-set(PICO_TOOLCHAIN_PATH "${TOOLCHAIN_PATH}")
-include(../../../third_party/pico-sdk/pico_sdk_init.cmake)
-pico_sdk_init()
-
 # Generate PIO headers
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/infrared_rx.pio.h
@@ -27,6 +22,7 @@ add_library(${NAME} STATIC
     spi.c
     watchdog.c
     ${CMAKE_CURRENT_BINARY_DIR}/infrared_rx.pio.h
+    wifi.c
 )
 target_include_directories(${NAME} PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
@@ -34,6 +30,7 @@ target_include_directories(${NAME} PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
 )
 target_link_libraries(${NAME} 
+    runtime-sys
     hardware_adc
     hardware_clocks
     hardware_gpio
@@ -51,4 +48,6 @@ if (PICO_CYW43_SUPPORTED)
     target_link_libraries(${NAME} 
         pico_cyw43_arch_lwip_poll 
     )
+    #add_compile_definitions(CYW43_PRINTF=sys_printf)
+    #add_compile_definitions(CYW43_CONFIG_FILE="<runtime-sys/sys.h>")
 endif()

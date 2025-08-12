@@ -5,12 +5,22 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#if defined(PICO_RP2040) || defined(PICO_RP2050A)
-// GPIO 26-29 for RP2040 or RP2350A
+#if defined(PICO_RP2040) || defined(PICO_RP2050A) || defined(PICO_RP2350A)
+// Package with ADC-capable GPIOs starting at 26 (RP2040 / RP2050A / RP2350A)
 #define ADC_CHANNEL_OFFSET 26
 #elif defined(PICO_RP2350B)
-// GPIO 40-47 for RP2350B
+// RP2350B package exposes additional GPIOs; ADC GPIOs start at 40
 #define ADC_CHANNEL_OFFSET 40
+#elif defined(PICO_RP2350)
+// RP2350 (generic) but no package variant macro set by board header:
+// Try to infer: many RP2350 boards without explicit A/B still map ADC like A.
+// Use 26 as safe default; adjust here if a specific board proves different.
+#define ADC_CHANNEL_OFFSET 26
+#endif
+
+#ifndef ADC_CHANNEL_OFFSET
+#warning                                                                       \
+#define ADC_CHANNEL_OFFSET 26
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////

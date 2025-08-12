@@ -1,4 +1,4 @@
-#include <runtime-pix/mono.h>
+#include "mono.h"
 #include <runtime-pix/pix.h>
 #include <runtime-sys/sys.h>
 #include <stddef.h>

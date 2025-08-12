@@ -41,9 +41,8 @@ cases in that file.
 To cross-compile the libraries for the pico, this is the command to run:
 
 ```bash
-PICO_BOARD=pico CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal make
+make clean && PICO_BOARD=pico_w TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal PICO_COMPILER=pico_arm_clang CC=clang RELEASE=1 make
 ```
-
 
 Then the tests can be compiled as before, and loaded onto a Pico with the following command:
 

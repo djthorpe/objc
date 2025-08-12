@@ -79,6 +79,15 @@ extern void *sys_memmove(void *dest, const void *src, size_t size);
  */
 extern int sys_memcmp(const void *ptr1, const void *ptr2, size_t num);
 
+/**
+ * @brief Compare two NULL-terminated strings
+ * @ingroup SystemMemory
+ * @param ptr1 First string
+ * @param ptr2 Second string
+ * @return 0 if equal, negative if ptr1 < ptr2, positive if ptr1 > ptr2
+ */
+extern int sys_strcmp(const char *str1, const char *str2);
+
 #ifdef __cplusplus
 }
 #endif

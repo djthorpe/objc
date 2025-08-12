@@ -10,11 +10,11 @@
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
-#define GPIO_BOOTSEL 23 // BOOTSEL Button
-#define GPIO_A 12       // Button A
-#define GPIO_B 13       // Button B
-#define GPIO_X 14       // Button X
-#define GPIO_Y 15       // Button Y
+#define GPIO_BOOTSEL 30
+#define GPIO_A 12 // Button A
+#define GPIO_B 13 // Button B
+#define GPIO_X 14 // Button X
+#define GPIO_Y 15 // Button Y
 
 /////////////////////////////////////////////////////////////////////
 // RUNLOOP
@@ -126,12 +126,15 @@ bool core0_task() {
   }
 
   // Initialize a GPIO pin for input
+  sys_printf("Defining pull-up GPIO inputs %d, %d, %d, %d\n", GPIO_A, GPIO_B,
+             GPIO_X, GPIO_Y);
   hw_gpio_init(GPIO_A, HW_GPIO_PULLUP);
   hw_gpio_init(GPIO_B, HW_GPIO_PULLUP);
   hw_gpio_init(GPIO_X, HW_GPIO_PULLUP);
   hw_gpio_init(GPIO_Y, HW_GPIO_PULLUP);
 
   // The BOOTSEL button is used to signal shutdown
+  sys_printf("main: Initializing GPIO for BOOTSEL button %d\n", GPIO_BOOTSEL);
   hw_gpio_init(GPIO_BOOTSEL, HW_GPIO_INPUT);
 
   // Set the GPIO callback for injecting events into the queue

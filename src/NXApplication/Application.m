@@ -271,12 +271,13 @@ void _app_poll_callback(sys_timer_t *timer) {
           sys_thread_core(), app_event->pin, app_event->event,
           sys_event_queue_size(&_app_queue));
       break;
-    case APP_EVENT_TIMER:
-      if (app_event->sender &&
-          [app_event->sender isKindOfClass:[NXTimer class]]) {
-        [app_event->sender timerFired];
+    case APP_EVENT_TIMER: {
+      // sender is stored as void* in the event; cast to id before messaging
+      id sender = (id)app_event->sender;
+      if (sender && [sender isKindOfClass:[NXTimer class]]) {
+        [(NXTimer *)sender timerFired];
       }
-      break;
+    } break;
     default:
       // Unknown event type
       break;

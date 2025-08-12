@@ -25,7 +25,8 @@ sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm) {
       break;
     }
     mbedtls_md5_init((mbedtls_md5_context *)hash.ctx.ctx);
-    if (mbedtls_md5_starts_ret((mbedtls_md5_context *)hash.ctx.ctx) == 0) {
+    // Use legacy starts function (mbedtls 2.x)
+    if (mbedtls_md5_starts((mbedtls_md5_context *)hash.ctx.ctx) == 0) {
       hash.size = 16; // MD5 produces a 128-bit hash
       hash.algorithm = algorithm;
     }
@@ -35,8 +36,7 @@ sys_hash_t sys_hash_init(sys_hash_algorithm_t algorithm) {
       break;
     }
     mbedtls_sha256_init((mbedtls_sha256_context *)hash.ctx.ctx);
-    if (mbedtls_sha256_starts_ret((mbedtls_sha256_context *)hash.ctx.ctx, 0) ==
-        0) {
+    if (mbedtls_sha256_starts((mbedtls_sha256_context *)hash.ctx.ctx, 0) == 0) {
       hash.size = 32; // SHA-256 produces a 256-bit hash
       hash.algorithm = algorithm;
     }
@@ -69,11 +69,11 @@ bool sys_hash_update(sys_hash_t *hash, const void *data, size_t size) {
   }
   switch (hash->algorithm) {
   case sys_hash_md5:
-    return mbedtls_md5_update_ret((mbedtls_md5_context *)hash->ctx.ctx, data,
-                                  size) == 0;
+    return mbedtls_md5_update((mbedtls_md5_context *)hash->ctx.ctx, data,
+                              size) == 0;
   case sys_hash_sha256:
-    return mbedtls_sha256_update_ret((mbedtls_sha256_context *)hash->ctx.ctx,
-                                     data, size) == 0;
+    return mbedtls_sha256_update((mbedtls_sha256_context *)hash->ctx.ctx, data,
+                                 size) == 0;
   }
   return false;
 }
@@ -89,15 +89,15 @@ const uint8_t *sys_hash_finalize(sys_hash_t *hash) {
   bool result = false;
   switch (hash->algorithm) {
   case sys_hash_md5:
-    if (mbedtls_md5_finish_ret((mbedtls_md5_context *)hash->ctx.ctx,
-                               hash->hash) == 0) {
+    if (mbedtls_md5_finish((mbedtls_md5_context *)hash->ctx.ctx, hash->hash) ==
+        0) {
       result = true;
     }
     mbedtls_md5_free((mbedtls_md5_context *)hash->ctx.ctx);
     break;
   case sys_hash_sha256:
-    if (mbedtls_sha256_finish_ret((mbedtls_sha256_context *)hash->ctx.ctx,
-                                  hash->hash) == 0) {
+    if (mbedtls_sha256_finish((mbedtls_sha256_context *)hash->ctx.ctx,
+                              hash->hash) == 0) {
       result = true;
     }
     mbedtls_sha256_free((mbedtls_sha256_context *)hash->ctx.ctx);

@@ -5,6 +5,7 @@ find_package(OpenSSL REQUIRED)
 
 add_library(${NAME} STATIC
     abort.c
+    env.c
     exception.c
     sys.c
     timer.c
@@ -27,6 +28,7 @@ add_library(${NAME} STATIC
     ../all/mutex.c
     ../all/panicf.c
     ../all/printf.c
+    ../all/strcmp.c
 )
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
@@ -37,4 +39,6 @@ target_link_libraries(${NAME} PRIVATE
     OpenSSL::SSL
     OpenSSL::Crypto
     pthread
+    "-framework CoreFoundation"
+    "-framework IOKit"
 )

@@ -1,14 +1,13 @@
 BUILD_DIR ?= build
-TOOLCHAIN_PATH ?= /usr
-ARCH ?= $(shell arch | tr A-Z a-z | sed 's/amd64/x86_64/' | sed 's/armv7l/arm/' | sed 's/arm64/aarch64/')
-OS ?= $(shell uname -s | tr A-Z a-z)
-PLATFORM ?= $(shell uname | tr A-Z a-z | sed 's/linux/gnu/' | sed 's/darwin/apple/')
-TARGET ?= ${ARCH}-${OS}-${PLATFORM}
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
 JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += --no-print-directory
+
+# Pico variables - also PICO_BOARD
+PICO_COMPILER ?= pico_arm_clang
+TOOLCHAIN_PATH ?= /opt/LLVM-ET-Arm-19.1.5-Darwin-universal
 
 # check for RELEASE=1
 ifdef RELEASE
@@ -18,16 +17,28 @@ else
 endif
 
 .PHONY: all
-all: config NXApplication
+all: NXApplication
 
 # Configure
-config: dep-cc dep-cmake submodule
+config: dep-cmake submodule
 	@echo
 	@echo configure
+	@echo "PICO_BOARD=${PICO_BOARD} PICO_COMPILER=${PICO_COMPILER} TOOLCHAIN_PATH=${TOOLCHAIN_PATH}"
 	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
 		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D RUNTIME=gcc \
-		-D TARGET=${TARGET} 
+		$(if ${PICO_BOARD},-D PICO_BOARD=${PICO_BOARD}) \
+		-D PICO_COMPILER=${PICO_COMPILER} \
+		-D PICO_TOOLCHAIN_PATH:PATH=${TOOLCHAIN_PATH} \
+		-D RUNTIME=gcc
+	@echo "Configured. Detected compilers:"
+	@grep -E 'CMAKE_(C|CXX)_COMPILER:FILEPATH' ${BUILD_DIR}/CMakeCache.txt || true
+	@if [ -n "${PICO_BOARD}" ]; then \
+	  C_ACTUAL=$$(grep '^CMAKE_C_COMPILER:FILEPATH=' ${BUILD_DIR}/CMakeCache.txt | cut -d= -f2); \
+	  case "$$C_ACTUAL" in \
+	    ${TOOLCHAIN_PATH}/*) echo "Pico toolchain OK: $$C_ACTUAL";; \
+	    *) echo "WARNING: Pico build expected compiler under ${TOOLCHAIN_PATH} but got $$C_ACTUAL";; \
+	  esac; \
+	fi
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys
@@ -80,7 +91,7 @@ NXApplication: NXFoundation runtime-hw drivers
 
 # Run the tests
 .PHONY: tests
-tests: NXFoundation
+tests: config runtime-sys runtime-hw libobjc-gcc
 	@echo
 	@echo make tests
 	@${CMAKE} --build ${BUILD_DIR}/src/tests -j ${JOBS}
@@ -88,7 +99,7 @@ tests: NXFoundation
 
 # Make the examples
 .PHONY: examples
-examples: NXApplication
+examples: runtime-sys runtime-hw 
 	@echo
 	@echo make examples
 	@${CMAKE} --build ${BUILD_DIR}/src/examples -j ${JOBS}
@@ -99,20 +110,6 @@ docs: dep-docker
 	@echo
 	@echo make docs
 	@${DOCKER} run -v .:/data greenbone/doxygen doxygen /data/doxygen/Doxyfile
-
-# Cross-compile libraries for Raspberry Pi Pico
-.PHONY: pico
-# The Pico cross-compile target now ensures local picotool and pioasm are built first
-# to avoid SDK corruption issues. Set NO_LOCAL_PICOTOOL=1 to skip using locally built tools.
-pico: submodule dep-cmake $(if $(NO_LOCAL_PICOTOOL),,picotool pioasm)
-	@echo
-	@echo make pico cross-compilation
-	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
-		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
-		-D RUNTIME=gcc \
-		$(if $(NO_LOCAL_PICOTOOL),,-D picotool_DIR=${BUILD_DIR}/third_party/picotool) \
-		-D TARGET=armv6m-none-eabi
-	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
 
 # Create the picotool binary
 .PHONY: picotool
@@ -130,7 +127,7 @@ picotool: submodule dep-cmake
 pioasm: submodule dep-cmake
 	@echo
 	@echo make pioasm
-	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev
+	@PICO_SDK_PATH=../third_party/pico-sdk ${CMAKE} -S third_party/pico-sdk/tools/pioasm -B ${BUILD_DIR}/pioasm -Wno-dev -D PIOASM_VERSION_STRING=0.0.0
 	@make -C ${BUILD_DIR}/pioasm -j ${JOBS}
 	@echo Built pioasm at ${BUILD_DIR}/pioasm/pioasm
 	@echo
@@ -139,16 +136,12 @@ pioasm: submodule dep-cmake
 submodule: dep-git
 	@echo
 	@echo "checking out submodules"
-	@git submodule update --init --recursive
+	@${GIT} submodule update --init --recursive
 
 .PHONY: clean
 clean:
 	@echo "Cleaning build directory"
 	@rm -rf ${BUILD_DIR}
-
-.PHONY: dep-cc
-dep-cc:
-	@test -f "${TOOLCHAIN_PATH}/bin/${CC}" && test -x "${TOOLCHAIN_PATH}/bin/${CC}" || (echo "Missing CC: ${TOOLCHAIN_PATH}/bin/${CC}" && exit 1)
 
 .PHONY: dep-cmake
 dep-cmake:

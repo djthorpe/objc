@@ -5,8 +5,6 @@
  * This example demonstrates how to use the hardware LED
  * control functions to manage the state and brightness of an LED.
  *
- * It runs a timer to periodically change the LED state and brightness.
- *
  * It uses the on-board status LED on the Raspberry Pi Pico. If
  * the LED is not directly connected to a GPIO pin, but through
  * the Wi-Fi module, it will blink instead of fading.
@@ -17,14 +15,10 @@
 /////////////////////////////////////////////////////////////////////
 // TIMER CALLBACK
 
-static int timer_count = 0;
-
-void timer_callback(sys_timer_t *timer) {
-  hw_led_t *led = (hw_led_t *)timer->userdata;
-  sys_assert(led && hw_led_valid(led));
-
+void led_change(hw_led_t *led) {
+  static int count = 0;
   hw_led_cap_t capabilities = hw_led_capabilities(led);
-  switch (timer_count++) {
+  switch (count++) {
   case 0:
     sys_printf("  Turning LED on\n");
     hw_led_set_state(led, true);
@@ -78,7 +72,7 @@ void timer_callback(sys_timer_t *timer) {
     hw_led_set_state(led, false);
 
     // Reset counter
-    timer_count = 0;
+    count = 0;
     break;
   }
 }
@@ -88,9 +82,6 @@ void timer_callback(sys_timer_t *timer) {
 
 /**
  * @brief Function to run on core 0
- *
- * This function creates a queue, timer and watchdog, and processes events
- * from the queue.
  */
 bool core0_task() {
   // Use the on-board LED with associated PWM
@@ -118,23 +109,14 @@ bool core0_task() {
     sys_printf("  LED supports GPIO control\n");
   }
 
-  // Create a timer that will trigger every 5s
-  sys_timer_t timer = sys_timer_init(5000, &led, timer_callback);
-  if (!sys_timer_start(&timer)) {
-    sys_printf("core 0: Failed to start timer\n");
-    hw_led_finalize(&led);
-    return false;
-  }
-
   // Run the event processing loop - which is just sleeping for 1s
   do {
-    sys_sleep(1000);
+    led_change(&led);
+    sys_sleep(5000);
   } while (true);
 
-  // If we were to reach here, finalize the timer and LED
-  sys_timer_finalize(&timer);
+  // If we were to reach here, finalize the LED
   hw_led_finalize(&led);
-
   return true;
 }
 

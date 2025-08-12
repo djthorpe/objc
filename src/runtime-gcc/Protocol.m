@@ -1,5 +1,4 @@
 #include <objc/objc.h>
-#include <string.h>
 
 @implementation Protocol
 
@@ -37,7 +36,7 @@
     return NO;
   }
   Protocol *otherProtocol = (Protocol *)anObject;
-  return strcmp([self name], [otherProtocol name]) == 0;
+  return sys_strcmp([self name], [otherProtocol name]) == 0;
 }
 
 @end
