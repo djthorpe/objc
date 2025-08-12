@@ -187,7 +187,7 @@ static uint32_t _hw_wifi_country_code(const char *country_code) {
 #endif
 }
 
-hw_wifi_flags_t _hw_wifi_update_state(hw_wifi_t *wifi) {
+static hw_wifi_flags_t _hw_wifi_update_state(hw_wifi_t *wifi) {
   sys_assert(hw_wifi_valid(wifi));
 #ifdef PICO_CYW43_SUPPORTED
   // Get status
