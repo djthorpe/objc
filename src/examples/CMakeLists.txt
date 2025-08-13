@@ -18,6 +18,7 @@ add_subdirectory(runtime/multicore)
 add_subdirectory(runtime/simplequeue)
 add_subdirectory(runtime/runloop)
 add_subdirectory(runtime/wifiscan)
+add_subdirectory(runtime/wificonnect)
 
 # NXApplication examples
 #add_subdirectory(NXApplication/helloworld)

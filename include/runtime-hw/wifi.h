@@ -24,14 +24,14 @@
  * Multiple bits may be set if a network supports more than one.
  */
 typedef enum {
-  hw_wifi_auth_open = 0x0001,      ///< Open (no authentication)
-  hw_wifi_auth_wep = 0x0002,       ///< WEP (legacy)
-  hw_wifi_auth_wpa_tkip = 0x0004,  ///< WPA‑PSK TKIP
-  hw_wifi_auth_wpa_aes = 0x0008,   ///< WPA‑PSK CCMP/AES
-  hw_wifi_auth_wpa2_tkip = 0x0010, ///< WPA2‑PSK TKIP
-  hw_wifi_auth_wpa2_aes = 0x0020,  ///< WPA2‑PSK CCMP/AES
-  hw_wifi_auth_wpa3_sae = 0x0040,  ///< WPA3‑SAE
-  hw_wifi_auth_enterprise = 0x0080 ///< 802.1X Enterprise (EAP)
+  hw_wifi_auth_open = (1 << 0),      ///< Open (no authentication)
+  hw_wifi_auth_wep = (1 << 1),       ///< WEP (legacy)
+  hw_wifi_auth_wpa_tkip = (1 << 2),  ///< WPA‑PSK TKIP
+  hw_wifi_auth_wpa_aes = (1 << 3),   ///< WPA‑PSK CCMP/AES
+  hw_wifi_auth_wpa2_tkip = (1 << 4), ///< WPA2‑PSK TKIP
+  hw_wifi_auth_wpa2_aes = (1 << 5),  ///< WPA2‑PSK CCMP/AES
+  hw_wifi_auth_wpa3_sae = (1 << 6),  ///< WPA3‑SAE
+  hw_wifi_auth_enterprise = (1 << 7) ///< 802.1X Enterprise (EAP)
 } hw_wifi_auth_t;
 
 /**
@@ -50,11 +50,11 @@ typedef enum {
  *   hw_wifi_auth_t for details.
  */
 typedef struct {
-  const char *ssid;    ///< SSID (max 32 bytes) as a NUL‑terminated string
+  char ssid[33];       ///< SSID (max 32 bytes) plus NULL termination
   uint8_t bssid[6];    ///< BSSID (MAC address) in network byte order
+  hw_wifi_auth_t auth; ///< Authentication/cipher info (see hw_wifi_auth_t)
   uint8_t channel;     ///< Primary channel number
   int16_t rssi;        ///< Received signal strength (dBm)
-  hw_wifi_auth_t auth; ///< Authentication/cipher info (see hw_wifi_auth_t)
 } hw_wifi_network_t;
 
 // Opaque Wi‑Fi handle type
@@ -140,3 +140,49 @@ void hw_wifi_finalize(hw_wifi_t *wifi);
  */
 bool hw_wifi_scan(hw_wifi_t *wifi, hw_wifi_callback_t callback,
                   void *user_data);
+
+/**
+ * @brief Begin an asynchronous connection to a Wi‑Fi network.
+ * @ingroup WiFi
+ * @param wifi      Initialized Wi‑Fi handle.
+ * @param network   Target network to connect to (SSID, BSSID, etc).
+ * @param password  NUL‑terminated password string (may be empty for open
+ * networks).
+ * @param callback  Callback to notify progress/completion (must not be NULL).
+ * @param user_data Opaque user pointer supplied to the callback.
+ * @return true if the connection attempt was started, false otherwise.
+ *
+ * Initiates a non‑blocking connection attempt to the specified network using
+ * the provided password. The callback will be invoked to report connection
+ * progress and completion. The function returns immediately.
+ *
+ * The ssid and auth parameters must be filled in by the caller, and the bssid
+ * parameter can optionally be set to the BSSID of the target access point (if
+ * known).
+ *
+ * The @p password must be a NUL‑terminated string (may be empty or NULL for
+ * open networks).
+ *
+ * The callback is invoked with network == NULL when the connection attempt
+ * completes (success or failure).
+ *
+ * Only one connection attempt may be active at a time per Wi‑Fi handle, and
+ * false will be returned if a connection attempt or scanning is already in
+ * progress.
+ */
+bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
+                     const char *password, hw_wifi_callback_t callback,
+                     void *user_data);
+
+/**
+ * @brief Disconnect from a previously-connected Wi‑Fi network.
+ * @ingroup WiFi
+ * @param wifi Initialized Wi‑Fi handle.
+ * @return true if a disconnect was initiated, false if not connected.
+ *
+ * Initiates a disconnect from the current network. The function returns
+ * immediately. If not currently connected, this is a no‑op, and if a connection
+ * attempt or scan is in progress, it will be aborted and false will be
+ * returned.
+ */
+bool hw_wifi_disconnect(hw_wifi_t *wifi);
