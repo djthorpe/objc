@@ -1,7 +1,7 @@
 /**
  * @file examples/runtime/wificonnect/main.c
  *
- * This example demonstrates how to start a Wi‑Fi scan and print results.
+ * This example demonstrates how to connect to and disconnect from a Wi‑Fi network.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
