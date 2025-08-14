@@ -7,7 +7,21 @@
  * Wi-Fi network management interface
  *
  * The Wi-Fi management interface provides discovery of, and connection to
- * networks with authentication.
+ * networks with authentication. The three main methods for connecting,
+ * disconnecting and scanning are asynchronous and call the provided callback
+ * function to update operation status.
+ *
+ * When connecting, the callback will be invoked with the current status of the
+ * connection attempt, including any relevant network information. The callback
+ * will then be called occasionally with updates on the connection status (for
+ * example, the signal strength).
+ *
+ * When scanning, the callback will be invoked with the results of the scan,
+ * including information about any discovered networks. The scan is completed
+ * when the callback is invoked with a NULL network pointer.
+ *
+ * @example examples/runtime/wificonnect/main.c
+ * @example examples/runtime/wifiscan/main.c
  */
 #pragma once
 #include <stdbool.h>
