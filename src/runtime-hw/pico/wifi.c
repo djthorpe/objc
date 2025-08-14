@@ -351,7 +351,7 @@ uint8_t _hw_wifi_get_channel(hw_wifi_t *wifi) {
 static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]) {
   sys_assert(hw_wifi_valid(wifi));
   sys_assert(bssid != NULL);
-  sys_memset(bssid, 0, sizeof(bssid));
+  sys_memset(bssid, 0, 6);
 #ifdef PICO_CYW43_SUPPORTED
   cyw43_wifi_get_bssid(&cyw43_state, bssid);
 #endif
