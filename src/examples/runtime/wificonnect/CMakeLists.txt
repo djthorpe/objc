@@ -1,4 +1,4 @@
-set(NAME "runtime_wifiscan")
+set(NAME "runtime_wificonnect")
 add_executable(${NAME}
     main.c
     hack.c
