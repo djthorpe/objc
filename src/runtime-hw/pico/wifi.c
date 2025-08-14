@@ -89,7 +89,7 @@ static uint8_t _hw_wifi_get_channel(hw_wifi_t *wifi);
 static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]);
 
 /**
- * @brief Get bssid for connected wifi
+ * @brief Get BSSID for connected Wi-Fi
  */
 static uint16_t _hw_wifi_get_rssi(hw_wifi_t *wifi);
 
