@@ -35,6 +35,21 @@ typedef enum {
 } hw_wifi_auth_t;
 
 /**
+ * @brief Callback events.
+ * @ingroup WiFi
+ */
+typedef enum {
+  hw_wifi_event_scan = (1 << 0),         ///< Scan result available
+  hw_wifi_event_joining = (1 << 1),      ///< Joining a network
+  hw_wifi_event_connected = (1 << 2),    ///< Successfully connected
+  hw_wifi_event_disconnected = (1 << 3), ///< Disconnected
+  hw_wifi_event_badauth =
+      (1 << 4), ///< Bad authentication during connection attempt
+  hw_wifi_event_notfound = (1 << 5), ///< Network not found
+  hw_wifi_event_error = (1 << 6)     ///< Other error occurred
+} hw_wifi_event_t;
+
+/**
  * @brief Describes a discovered Wi‑Fi network (scan result).
  * @ingroup WiFi
  *
@@ -60,25 +75,19 @@ typedef struct {
 // Opaque Wi‑Fi handle type
 typedef struct hw_wifi_t hw_wifi_t;
 
-/** @brief Callback invoked for Wi‑Fi operation notifications.
- *
- * This callback is used by non‑blocking Wi‑Fi APIs (for example, scans)
- * to deliver progress (per‑result) and completion notifications.
- *
- * Semantics for scanning:
- * - For each discovered access point, the callback is invoked with
- *   network != NULL containing the scan result.
- * - When the scan completes, the callback is invoked once more with
- *   network == NULL to signal completion.
- *
- * Keep the callback lightweight and non‑blocking.
- *
+/**
+ * @brief Callback invoked for Wi‑Fi operation notifications.
  * @param wifi     The Wi‑Fi handle associated with the operation.
- * @param network  A pointer to the current scan result, or NULL to indicate
- *                 the operation has completed.
+ * @param event    The event type (see hw_wifi_event_t).
+ * @param network  When event is hw_wifi_event_scan, this contains a
+ *                pointer to the current scan result, or NULL to indicate
+ *                the scan operation has completed.
  * @param user_data Opaque user pointer supplied when the operation started.
+ *
+ * This callback is used when connecting or disconnecting from a network,
+ * and when scanning for networks.
  */
-typedef void (*hw_wifi_callback_t)(hw_wifi_t *wifi,
+typedef void (*hw_wifi_callback_t)(hw_wifi_t *wifi, hw_wifi_event_t event,
                                    const hw_wifi_network_t *network,
                                    void *user_data);
 
@@ -90,13 +99,17 @@ typedef void (*hw_wifi_callback_t)(hw_wifi_t *wifi,
  * @ingroup WiFi
  * @param country_code Country code for the Wi-Fi region (e.g., "US", "EU"). If
  * NULL, defaults to "XX" (worldwide).
+ * @param callback Callback to notify progress/completion of connection,
+ * disconnection and scanning asyncronous operations (must not be NULL).
+ * @param user_data Opaque user pointer supplied to the callback.
  * @return Wi-Fi handle or NULL on failure.
  *
  * This function initializes the Wi-Fi management subsystem and returns a
  * handle to the Wi-Fi instance. If initialization fails (for example, if WiFi
  * is not available), it returns NULL.
  */
-hw_wifi_t *hw_wifi_init(const char *country_code);
+hw_wifi_t *hw_wifi_init(const char *country_code, hw_wifi_callback_t callback,
+                        void *user_data);
 
 /**
  * @brief Determine if the Wi-Fi handle is initialized and usable.
@@ -122,24 +135,18 @@ void hw_wifi_finalize(hw_wifi_t *wifi);
 /**
  * @brief Begin an asynchronous scan for nearby Wi‑Fi networks.
  * @ingroup WiFi
+ * @param wifi       Initialized Wi‑Fi handle.
+ * @return true if the scan was started, false otherwise.
  *
  * Starts a non‑blocking scan. The provided @p callback will be invoked for
  * each result (network != NULL) and once more with network == NULL when the
  * scan completes. The function returns immediately.
  *
- * Notes:
- * - If a scan is already in progress or Wi‑Fi is not up, the function returns
- *   false and no callback will be invoked.
- * - The callback must be lightweight and non‑blocking. Use @p user_data to
- *   carry application state.
- *
- * @param wifi       Initialized Wi‑Fi handle.
- * @param callback   Callback to notify progress/completion (must not be NULL).
- * @param user_data  Opaque user pointer supplied to the callback.
- * @return true if the scan was started, false otherwise.
+ * If a operation (connection, disconnection or scanning) is already in progress
+ * or Wi‑Fi is disconnected, the function returns false and no callback will be
+ * invoked.
  */
-bool hw_wifi_scan(hw_wifi_t *wifi, hw_wifi_callback_t callback,
-                  void *user_data);
+bool hw_wifi_scan(hw_wifi_t *wifi);
 
 /**
  * @brief Begin an asynchronous connection to a Wi‑Fi network.
@@ -148,8 +155,6 @@ bool hw_wifi_scan(hw_wifi_t *wifi, hw_wifi_callback_t callback,
  * @param network   Target network to connect to (SSID, BSSID, etc).
  * @param password  NUL‑terminated password string (may be empty for open
  * networks).
- * @param callback  Callback to notify progress/completion (must not be NULL).
- * @param user_data Opaque user pointer supplied to the callback.
  * @return true if the connection attempt was started, false otherwise.
  *
  * Initiates a non‑blocking connection attempt to the specified network using
@@ -163,16 +168,12 @@ bool hw_wifi_scan(hw_wifi_t *wifi, hw_wifi_callback_t callback,
  * The @p password must be a NUL‑terminated string (may be empty or NULL for
  * open networks).
  *
- * The callback is invoked with network == NULL when the connection attempt
- * completes (success or failure).
- *
  * Only one connection attempt may be active at a time per Wi‑Fi handle, and
  * false will be returned if a connection attempt or scanning is already in
  * progress.
  */
 bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
-                     const char *password, hw_wifi_callback_t callback,
-                     void *user_data);
+                     const char *password);
 
 /**
  * @brief Disconnect from a previously-connected Wi‑Fi network.
