@@ -1,5 +1,5 @@
 /**
- * @file examples/runtime/wifiscan/main.c
+ * @file examples/runtime/wificonnect/main.c
  *
  * This example demonstrates how to start a Wi‑Fi scan and print results.
  */
