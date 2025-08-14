@@ -107,6 +107,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#gab1dfef265b5fefd1fbf6a2a45b78ef22">driver_uc8151_finalize</a> (<a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> *uc8151)</td></tr>
 <tr class="memdesc:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a UC8151 display driver.  <a href="#gab1dfef265b5fefd1fbf6a2a45b78ef22">More...</a><br /></td></tr>
 <tr class="separator:gab1dfef265b5fefd1fbf6a2a45b78ef22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1cfa0ad50fc5af270d0fafe3430ce8c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#gaa1cfa0ad50fc5af270d0fafe3430ce8c">driver_uc8151_valid</a> (<a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> *uc8151)</td></tr>
+<tr class="memdesc:gaa1cfa0ad50fc5af270d0fafe3430ce8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a UC8151 driver structure is valid.  <a href="#gaa1cfa0ad50fc5af270d0fafe3430ce8c">More...</a><br /></td></tr>
+<tr class="separator:gaa1cfa0ad50fc5af270d0fafe3430ce8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab31b31571e9eb238826567179cd5561e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__UC8151.html#gab31b31571e9eb238826567179cd5561e">driver_uc8151_set_update_speed</a> (<a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> *uc8151, <a class="el" href="group__UC8151.html#ga368c34642472f91e41a9b9133a1ba767">driver_uc8151_update_speed_t</a> speed)</td></tr>
 <tr class="memdesc:gab31b31571e9eb238826567179cd5561e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the update speed of the UC8151 display.  <a href="#gab31b31571e9eb238826567179cd5561e">More...</a><br /></td></tr>
 <tr class="separator:gab31b31571e9eb238826567179cd5561e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -701,6 +704,47 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the update was initiated successfully, false otherwise. </dd></dl>
 
+</div>
+</div>
+<a id="gaa1cfa0ad50fc5af270d0fafe3430ce8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa1cfa0ad50fc5af270d0fafe3430ce8c">&#9670;&nbsp;</a></span>driver_uc8151_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool driver_uc8151_valid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdriver__uc8151__t.html">driver_uc8151_t</a> *&#160;</td>
+          <td class="paramname"><em>uc8151</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if a UC8151 driver structure is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uc8151</td><td>Pointer to the UC8151 driver structure to validate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the driver structure is valid, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="drivers__uc8151_8h_source.html#l00119">119</a> of file <a class="el" href="drivers__uc8151_8h_source.html">drivers_uc8151.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                                                {</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">return</span> uc8151 &amp;&amp; uc8151-&gt;<a class="code" href="structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede">spi</a> &amp;&amp; <a class="code" href="group__SPI.html#ga619385b5cb3450dbe77417ab9ffd5195">hw_spi_valid</a>(uc8151-&gt;<a class="code" href="structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede">spi</a>) &amp;&amp;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;         uc8151-&gt;<a class="code" href="structdriver__uc8151__t.html#a4565ee2bf8f0b6c860ec51485d0f8b7d">width</a> &gt; 0 &amp;&amp; uc8151-&gt;<a class="code" href="structdriver__uc8151__t.html#a3395689bb1c0971bae255326a848163b">height</a> &gt; 0;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div><div class="ttc" id="structdriver__uc8151__t_html_a3395689bb1c0971bae255326a848163b"><div class="ttname"><a href="structdriver__uc8151__t.html#a3395689bb1c0971bae255326a848163b">driver_uc8151_t::height</a></div><div class="ttdeci">uint16_t height</div><div class="ttdoc">Display height in pixels. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__uc8151_8h_source.html#l00066">drivers_uc8151.h:66</a></div></div>
+<div class="ttc" id="structdriver__uc8151__t_html_a4565ee2bf8f0b6c860ec51485d0f8b7d"><div class="ttname"><a href="structdriver__uc8151__t.html#a4565ee2bf8f0b6c860ec51485d0f8b7d">driver_uc8151_t::width</a></div><div class="ttdeci">uint16_t width</div><div class="ttdoc">Display width in pixels. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__uc8151_8h_source.html#l00065">drivers_uc8151.h:65</a></div></div>
+<div class="ttc" id="structdriver__uc8151__t_html_a44f3aae1e8d0b663f98d384aefc08ede"><div class="ttname"><a href="structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede">driver_uc8151_t::spi</a></div><div class="ttdeci">hw_spi_t * spi</div><div class="ttdoc">Pointer to the SPI interface. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__uc8151_8h_source.html#l00061">drivers_uc8151.h:61</a></div></div>
+<div class="ttc" id="group__SPI_html_ga619385b5cb3450dbe77417ab9ffd5195"><div class="ttname"><a href="group__SPI.html#ga619385b5cb3450dbe77417ab9ffd5195">hw_spi_valid</a></div><div class="ttdeci">static bool hw_spi_valid(hw_spi_t *spi)</div><div class="ttdoc">Get true if the SPI interface is valid. </div><div class="ttdef"><b>Definition:</b> <a href="spi_8h_source.html#l00111">spi.h:111</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

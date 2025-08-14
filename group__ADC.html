@@ -98,6 +98,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga8554ce78904194f3f4c102796c8ce9aa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga8554ce78904194f3f4c102796c8ce9aa">hw_adc_gpio_channel</a> (uint8_t gpio)</td></tr>
 <tr class="memdesc:ga8554ce78904194f3f4c102796c8ce9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ADC channel number for a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#ga8554ce78904194f3f4c102796c8ce9aa">More...</a><br /></td></tr>
 <tr class="separator:ga8554ce78904194f3f4c102796c8ce9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8729869aab1c9a2131e3937760ee9da9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#ga8729869aab1c9a2131e3937760ee9da9">hw_adc_valid</a> (<a class="el" href="structhw__adc__t.html">hw_adc_t</a> *adc)</td></tr>
+<tr class="memdesc:ga8729869aab1c9a2131e3937760ee9da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an ADC handle is valid and usable.  <a href="#ga8729869aab1c9a2131e3937760ee9da9">More...</a><br /></td></tr>
+<tr class="separator:ga8729869aab1c9a2131e3937760ee9da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADC.html#gadf6eb830b4a8ff3c268d571cb7c4e135">hw_adc_read</a> (<a class="el" href="structhw__adc__t.html">hw_adc_t</a> *adc)</td></tr>
 <tr class="memdesc:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current value from an ADC channel.  <a href="#gadf6eb830b4a8ff3c268d571cb7c4e135">More...</a><br /></td></tr>
 <tr class="separator:gadf6eb830b4a8ff3c268d571cb7c4e135"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,6 +317,45 @@ Functions</h2></td></tr>
 <p>This function reads the current value from the specified ADC channel and converts the raw digital value to a voltage measurement.</p>
 <p>The conversion is based on the reference voltage of the ADC (typically 3.3V for most microcontrollers), except for the battery voltage pin which uses a voltage divider to scale the input. </p>
 
+</div>
+</div>
+<a id="ga8729869aab1c9a2131e3937760ee9da9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8729869aab1c9a2131e3937760ee9da9">&#9670;&nbsp;</a></span>hw_adc_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool hw_adc_valid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhw__adc__t.html">hw_adc_t</a> *&#160;</td>
+          <td class="paramname"><em>adc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if an ADC handle is valid and usable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adc</td><td>Pointer to the ADC structure to validate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the ADC handle is valid and can be used; false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="adc_8h_source.html#l00092">92</a> of file <a class="el" href="adc_8h_source.html">adc.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                               {</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> adc &amp;&amp; adc-&gt;<a class="code" href="structhw__adc__t.html#ac054ceffabaa7224f345e0c104958f5a">channel</a> &lt; <a class="code" href="group__ADC.html#gae58a0637466d8b3166247eb1d549a9c6">hw_adc_count</a>();</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div><div class="ttc" id="structhw__adc__t_html_ac054ceffabaa7224f345e0c104958f5a"><div class="ttname"><a href="structhw__adc__t.html#ac054ceffabaa7224f345e0c104958f5a">hw_adc_t::channel</a></div><div class="ttdeci">uint8_t channel</div><div class="ttdoc">ADC channel number (0, 1, etc.) </div><div class="ttdef"><b>Definition:</b> <a href="adc_8h_source.html#l00025">adc.h:25</a></div></div>
+<div class="ttc" id="group__ADC_html_gae58a0637466d8b3166247eb1d549a9c6"><div class="ttname"><a href="group__ADC.html#gae58a0637466d8b3166247eb1d549a9c6">hw_adc_count</a></div><div class="ttdeci">uint8_t hw_adc_count(void)</div><div class="ttdoc">Get the total number of available ADC channels. </div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

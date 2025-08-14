@@ -95,6 +95,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gad9630e5c05482120ad45286949612992"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gad9630e5c05482120ad45286949612992">hw_pwm_count</a> ()</td></tr>
 <tr class="memdesc:gad9630e5c05482120ad45286949612992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of PWM units.  <a href="#gad9630e5c05482120ad45286949612992">More...</a><br /></td></tr>
 <tr class="separator:gad9630e5c05482120ad45286949612992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc571f291464639a81f9771200f47fea"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gacc571f291464639a81f9771200f47fea">hw_pwm_valid</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
+<tr class="memdesc:gacc571f291464639a81f9771200f47fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate the PWM unit.  <a href="#gacc571f291464639a81f9771200f47fea">More...</a><br /></td></tr>
+<tr class="separator:gacc571f291464639a81f9771200f47fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga9055b1ee0b674d9ece4c211a7e6e0345">hw_pwm_finalize</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
 <tr class="memdesc:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a PWM unit.  <a href="#ga9055b1ee0b674d9ece4c211a7e6e0345">More...</a><br /></td></tr>
 <tr class="separator:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -520,6 +523,46 @@ Functions</h2></td></tr>
 <p>This function disables the PWM unit, stopping output generation. The counter value is preserved and will resume from this point when the PWM is restarted.</p>
 <p>The IRQ state is not affected by this function, so if the PWM was configured to generate interrupts, the interrupt handler will still be called when the PWM is restarted. </p>
 
+</div>
+</div>
+<a id="gacc571f291464639a81f9771200f47fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacc571f291464639a81f9771200f47fea">&#9670;&nbsp;</a></span>hw_pwm_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool hw_pwm_valid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *&#160;</td>
+          <td class="paramname"><em>pwm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validate the PWM unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the PWM unit is valid, false otherwise.</dd></dl>
+<p>The result of hw_pwm_init can return an empty PWM structure if the initialization fails. This function checks if the PWM unit is valid. </p>
+
+<p class="definition">Definition at line <a class="el" href="pwm_8h_source.html#l00113">113</a> of file <a class="el" href="pwm_8h_source.html">pwm.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                               {</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span> (pwm == NULL) {</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (pwm-&gt;<a class="code" href="structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4">unit</a> == 0xFF) {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (pwm-&gt;<a class="code" href="structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4">unit</a> &gt;= <a class="code" href="group__PWM.html#gad9630e5c05482120ad45286949612992">hw_pwm_count</a>()) {</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  }</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div><div class="ttc" id="structhw__pwm__t_html_a7181dcbed0ffc068ca9c4952ea8cf7f4"><div class="ttname"><a href="structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4">hw_pwm_t::unit</a></div><div class="ttdeci">uint8_t unit</div><div class="ttdoc">PWM unit number. </div><div class="ttdef"><b>Definition:</b> <a href="pwm_8h_source.html#l00057">pwm.h:57</a></div></div>
+<div class="ttc" id="group__PWM_html_gad9630e5c05482120ad45286949612992"><div class="ttname"><a href="group__PWM.html#gad9630e5c05482120ad45286949612992">hw_pwm_count</a></div><div class="ttdeci">uint8_t hw_pwm_count()</div><div class="ttdoc">Get the number of PWM units. </div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

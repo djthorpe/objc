@@ -98,76 +98,91 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a4f54d14e2d368cd8350003b5d1635453"><td class="memItemLeft" align="right" valign="top"><a id="a4f54d14e2d368cd8350003b5d1635453"></a>
 typedef struct hw_wifi_t&#160;</td><td class="memItemRight" valign="bottom"><b>hw_wifi_t</b></td></tr>
 <tr class="separator:a4f54d14e2d368cd8350003b5d1635453"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae376cfc6354f98d65ac126c76c2969d"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#aae376cfc6354f98d65ac126c76c2969d">hw_wifi_callback_t</a>) (hw_wifi_t *wifi, const <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> *network, void *user_data)</td></tr>
-<tr class="memdesc:aae376cfc6354f98d65ac126c76c2969d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback invoked for Wi‑Fi operation notifications.  <a href="#aae376cfc6354f98d65ac126c76c2969d">More...</a><br /></td></tr>
-<tr class="separator:aae376cfc6354f98d65ac126c76c2969d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f2a0111107c0224398d2bd8580da5a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wifi_8h.html#a11f2a0111107c0224398d2bd8580da5a">hw_wifi_callback_t</a>) (hw_wifi_t *wifi, <a class="el" href="group__WiFi.html#ga04c09a1e040ff56c040349a7ad9b6177">hw_wifi_event_t</a> event, const <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> *network, void *user_data)</td></tr>
+<tr class="memdesc:a11f2a0111107c0224398d2bd8580da5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback invoked for Wi‑Fi operation notifications.  <a href="#a11f2a0111107c0224398d2bd8580da5a">More...</a><br /></td></tr>
+<tr class="separator:a11f2a0111107c0224398d2bd8580da5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga186ec64c4394d990746204cb13e16069"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a> { <br />
-&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4">hw_wifi_auth_open</a> = 0x0001, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336">hw_wifi_auth_wep</a> = 0x0002, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247">hw_wifi_auth_wpa_tkip</a> = 0x0004, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89">hw_wifi_auth_wpa_aes</a> = 0x0008, 
+&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a20923ad134307b59886bb78666733af4">hw_wifi_auth_open</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aed773fe0be532386567740a531bdc336">hw_wifi_auth_wep</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247">hw_wifi_auth_wpa_tkip</a> = (1 &lt;&lt; 2), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89">hw_wifi_auth_wpa_aes</a> = (1 &lt;&lt; 3), 
 <br />
-&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa">hw_wifi_auth_wpa2_tkip</a> = 0x0010, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61">hw_wifi_auth_wpa2_aes</a> = 0x0020, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47">hw_wifi_auth_wpa3_sae</a> = 0x0040, 
-<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16">hw_wifi_auth_enterprise</a> = 0x0080
+&#160;&#160;<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa">hw_wifi_auth_wpa2_tkip</a> = (1 &lt;&lt; 4), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069aaaaebf8d483b7f9dcb6c4ab5d7976c61">hw_wifi_auth_wpa2_aes</a> = (1 &lt;&lt; 5), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47">hw_wifi_auth_wpa3_sae</a> = (1 &lt;&lt; 6), 
+<a class="el" href="group__WiFi.html#gga186ec64c4394d990746204cb13e16069a46868253988168ec7b5fb5de6f494c16">hw_wifi_auth_enterprise</a> = (1 &lt;&lt; 7)
 <br />
  }<tr class="memdesc:ga186ec64c4394d990746204cb13e16069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication and cipher modes for Wi‑Fi networks.  <a href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga186ec64c4394d990746204cb13e16069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04c09a1e040ff56c040349a7ad9b6177"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga04c09a1e040ff56c040349a7ad9b6177">hw_wifi_event_t</a> { <br />
+&#160;&#160;<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a866f7bf072f140d677a5a85f8510c7aa">hw_wifi_event_scan</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177af81b7fb21589631f1bdbda2a8db8082c">hw_wifi_event_joining</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177aafa751a65beb159c06faa4ea8137158d">hw_wifi_event_connected</a> = (1 &lt;&lt; 2), 
+<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177ad16e3939fbbf8f1d2eef0563a2112fd8">hw_wifi_event_disconnected</a> = (1 &lt;&lt; 3), 
+<br />
+&#160;&#160;<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a4d352b0a5828dc47325f8ffb7340ba53">hw_wifi_event_badauth</a>, 
+<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177ae1a0f2ae833421c90665f1075eeab72c">hw_wifi_event_notfound</a> = (1 &lt;&lt; 5), 
+<a class="el" href="group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a401f70c76c79b60000c41c30010102b8">hw_wifi_event_error</a> = (1 &lt;&lt; 6)
+<br />
+ }<tr class="memdesc:ga04c09a1e040ff56c040349a7ad9b6177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback events.  <a href="group__WiFi.html#ga04c09a1e040ff56c040349a7ad9b6177">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga04c09a1e040ff56c040349a7ad9b6177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga338e2de9dc48468643d50f0bcc54b776"><td class="memItemLeft" align="right" valign="top">hw_wifi_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga338e2de9dc48468643d50f0bcc54b776">hw_wifi_init</a> (const char *country_code)</td></tr>
-<tr class="memdesc:ga338e2de9dc48468643d50f0bcc54b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize Wi-Fi management.  <a href="group__WiFi.html#ga338e2de9dc48468643d50f0bcc54b776">More...</a><br /></td></tr>
-<tr class="separator:ga338e2de9dc48468643d50f0bcc54b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a186a8bca91c5d0213b177f8cfcb4a0"><td class="memItemLeft" align="right" valign="top">hw_wifi_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga6a186a8bca91c5d0213b177f8cfcb4a0">hw_wifi_init</a> (const char *country_code, <a class="el" href="wifi_8h.html#a11f2a0111107c0224398d2bd8580da5a">hw_wifi_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:ga6a186a8bca91c5d0213b177f8cfcb4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize Wi-Fi management.  <a href="group__WiFi.html#ga6a186a8bca91c5d0213b177f8cfcb4a0">More...</a><br /></td></tr>
+<tr class="separator:ga6a186a8bca91c5d0213b177f8cfcb4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga02cf34d87668e0464f65452a5e5a2e90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga02cf34d87668e0464f65452a5e5a2e90">hw_wifi_valid</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:ga02cf34d87668e0464f65452a5e5a2e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the Wi-Fi handle is initialized and usable.  <a href="group__WiFi.html#ga02cf34d87668e0464f65452a5e5a2e90">More...</a><br /></td></tr>
 <tr class="separator:ga02cf34d87668e0464f65452a5e5a2e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga873a9cac260543ba7005a040857b79ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga873a9cac260543ba7005a040857b79ed">hw_wifi_finalize</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:ga873a9cac260543ba7005a040857b79ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release any resources.  <a href="group__WiFi.html#ga873a9cac260543ba7005a040857b79ed">More...</a><br /></td></tr>
 <tr class="separator:ga873a9cac260543ba7005a040857b79ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae1d8e379ee26c754fecdea9004f434c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gae1d8e379ee26c754fecdea9004f434c0">hw_wifi_scan</a> (hw_wifi_t *wifi, <a class="el" href="wifi_8h.html#aae376cfc6354f98d65ac126c76c2969d">hw_wifi_callback_t</a> callback, void *user_data)</td></tr>
-<tr class="memdesc:gae1d8e379ee26c754fecdea9004f434c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous scan for nearby Wi‑Fi networks.  <a href="group__WiFi.html#gae1d8e379ee26c754fecdea9004f434c0">More...</a><br /></td></tr>
-<tr class="separator:gae1d8e379ee26c754fecdea9004f434c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa616604419bc58296287f50edd1a26f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gaa616604419bc58296287f50edd1a26f1">hw_wifi_scan</a> (hw_wifi_t *wifi)</td></tr>
+<tr class="memdesc:gaa616604419bc58296287f50edd1a26f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous scan for nearby Wi‑Fi networks.  <a href="group__WiFi.html#gaa616604419bc58296287f50edd1a26f1">More...</a><br /></td></tr>
+<tr class="separator:gaa616604419bc58296287f50edd1a26f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3">hw_wifi_connect</a> (hw_wifi_t *wifi, <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> network, const char *password)</td></tr>
+<tr class="memdesc:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to a Wi‑Fi network.  <a href="group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3">More...</a><br /></td></tr>
+<tr class="separator:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a">hw_wifi_disconnect</a> (hw_wifi_t *wifi)</td></tr>
+<tr class="memdesc:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from a previously-connected Wi‑Fi network.  <a href="group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a">More...</a><br /></td></tr>
+<tr class="separator:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wi-Fi management interface. </p>
 
 <p class="definition">Definition in file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="aae376cfc6354f98d65ac126c76c2969d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae376cfc6354f98d65ac126c76c2969d">&#9670;&nbsp;</a></span>hw_wifi_callback_t</h2>
+<a id="a11f2a0111107c0224398d2bd8580da5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f2a0111107c0224398d2bd8580da5a">&#9670;&nbsp;</a></span>hw_wifi_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* hw_wifi_callback_t) (hw_wifi_t *wifi, const <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> *network, void *user_data)</td>
+          <td class="memname">typedef void(* hw_wifi_callback_t) (hw_wifi_t *wifi, <a class="el" href="group__WiFi.html#ga04c09a1e040ff56c040349a7ad9b6177">hw_wifi_event_t</a> event, const <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> *network, void *user_data)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Callback invoked for Wi‑Fi operation notifications. </p>
-<p>This callback is used by non‑blocking Wi‑Fi APIs (for example, scans) to deliver progress (per‑result) and completion notifications.</p>
-<p>Semantics for scanning:</p><ul>
-<li>For each discovered access point, the callback is invoked with network != NULL containing the scan result.</li>
-<li>When the scan completes, the callback is invoked once more with network == NULL to signal completion.</li>
-</ul>
-<p>Keep the callback lightweight and non‑blocking.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wifi</td><td>The Wi‑Fi handle associated with the operation. </td></tr>
-    <tr><td class="paramname">network</td><td>A pointer to the current scan result, or NULL to indicate the operation has completed. </td></tr>
-    <tr><td class="paramname">user_data</td><td>Opaque user pointer supplied when the operation started. </td></tr>
+    <tr><td class="paramname">event</td><td>The event type (see hw_wifi_event_t). </td></tr>
+    <tr><td class="paramname">network</td><td>When event is hw_wifi_event_scan, this contains a pointer to the current scan result, or NULL to indicate the scan operation has completed. </td></tr>
+    <tr><td class="paramname">user_data</td><td>Opaque user pointer supplied when the operation started.</td></tr>
   </table>
   </dd>
 </dl>
+<p>This callback is used when connecting or disconnecting from a network, and when scanning for networks. </p>
 
-<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00081">81</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00090">90</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
 
 </div>
 </div>

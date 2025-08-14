@@ -98,6 +98,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga9d586c3953ed927f6b2ff8130d2e10ba">driver_bme280_finalize</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
 <tr class="memdesc:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a BME280 sensor driver.  <a href="#ga9d586c3953ed927f6b2ff8130d2e10ba">More...</a><br /></td></tr>
 <tr class="separator:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga205dc55eb205ac4efffce7cc33ceea6a">driver_bme280_valid</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
+<tr class="memdesc:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the BME280 interface is valid.  <a href="#ga205dc55eb205ac4efffce7cc33ceea6a">More...</a><br /></td></tr>
+<tr class="separator:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa0c164f47501aa36d89c885ff573b577"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577">driver_bme280_set_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280, <a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> mode)</td></tr>
 <tr class="memdesc:gaa0c164f47501aa36d89c885ff573b577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operating mode of the BME280 sensor.  <a href="#gaa0c164f47501aa36d89c885ff573b577">More...</a><br /></td></tr>
 <tr class="separator:gaa0c164f47501aa36d89c885ff573b577"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -594,6 +597,41 @@ In forced mode, measurements should be read before the sensor returns to sleep. 
 <dd>
 <a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be" title="BME280 sensor modes. ">driver_bme280_mode_t</a> for available operating modes. </dd></dl>
 
+</div>
+</div>
+<a id="ga205dc55eb205ac4efffce7cc33ceea6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga205dc55eb205ac4efffce7cc33ceea6a">&#9670;&nbsp;</a></span>driver_bme280_valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool driver_bme280_valid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
+          <td class="paramname"><em>bme280</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get true if the BME280 interface is valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the BME280 interface is valid, false otherwise.</dd></dl>
+<p>The result of driver_bme280_init can return an empty structure if the initialization fails. This function checks if the BME280 interface is valid. </p>
+
+<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00107">107</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                                {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> bme280 &amp;&amp; bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">i2c</a> &amp;&amp; <a class="code" href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a>(bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">i2c</a>) &amp;&amp; bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc">address</a>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="group__I2C_html_ga21d0e83a5852f4eb79f9fd310b76b7ba"><div class="ttname"><a href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a></div><div class="ttdeci">static bool hw_i2c_valid(hw_i2c_t *i2c)</div><div class="ttdoc">Get true if the I2C interface is valid. </div><div class="ttdef"><b>Definition:</b> <a href="i2c_8h_source.html#l00100">i2c.h:100</a></div></div>
+<div class="ttc" id="structdriver__bme280__t_html_a1acb79ed0f52d966926a6923a07cd5fe"><div class="ttname"><a href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">driver_bme280_t::i2c</a></div><div class="ttdeci">hw_i2c_t * i2c</div><div class="ttdoc">Pointer to the I2C interface used for communication. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00029">drivers_bme280.h:29</a></div></div>
+<div class="ttc" id="structdriver__bme280__t_html_a4dc5a745328e038d140880531e3387bc"><div class="ttname"><a href="structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc">driver_bme280_t::address</a></div><div class="ttdeci">uint8_t address</div><div class="ttdoc">I2C address of the BME280 sensor. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00030">drivers_bme280.h:30</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

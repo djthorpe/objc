@@ -61,14 +61,18 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a312d360847bfc54acda7a05d75b47b38"><td class="memItemLeft" align="right" valign="top"><a id="a312d360847bfc54acda7a05d75b47b38"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#a312d360847bfc54acda7a05d75b47b38">ssid</a></td></tr>
-<tr class="memdesc:a312d360847bfc54acda7a05d75b47b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">SSID (max 32 bytes) as a NUL‑terminated string. <br /></td></tr>
-<tr class="separator:a312d360847bfc54acda7a05d75b47b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1cb5a815947514fdb83bf34ef900ad7"><td class="memItemLeft" align="right" valign="top"><a id="ad1cb5a815947514fdb83bf34ef900ad7"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#ad1cb5a815947514fdb83bf34ef900ad7">ssid</a> [33]</td></tr>
+<tr class="memdesc:ad1cb5a815947514fdb83bf34ef900ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">SSID (max 32 bytes) plus NULL termination. <br /></td></tr>
+<tr class="separator:ad1cb5a815947514fdb83bf34ef900ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ebe0dbbb58937ce4768c8820a51df44"><td class="memItemLeft" align="right" valign="top"><a id="a1ebe0dbbb58937ce4768c8820a51df44"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#a1ebe0dbbb58937ce4768c8820a51df44">bssid</a> [6]</td></tr>
 <tr class="memdesc:a1ebe0dbbb58937ce4768c8820a51df44"><td class="mdescLeft">&#160;</td><td class="mdescRight">BSSID (MAC address) in network byte order. <br /></td></tr>
 <tr class="separator:a1ebe0dbbb58937ce4768c8820a51df44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebd026981430e851a7b2113e2789601"><td class="memItemLeft" align="right" valign="top"><a id="a1ebd026981430e851a7b2113e2789601"></a>
+<a class="el" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#a1ebd026981430e851a7b2113e2789601">auth</a></td></tr>
+<tr class="memdesc:a1ebd026981430e851a7b2113e2789601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication/cipher info (see hw_wifi_auth_t) <br /></td></tr>
+<tr class="separator:a1ebd026981430e851a7b2113e2789601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acec98a2687f6a386616b64f52db3578c"><td class="memItemLeft" align="right" valign="top"><a id="acec98a2687f6a386616b64f52db3578c"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#acec98a2687f6a386616b64f52db3578c">channel</a></td></tr>
 <tr class="memdesc:acec98a2687f6a386616b64f52db3578c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary channel number. <br /></td></tr>
@@ -77,10 +81,6 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#adee66bbc82fb8a65fe86de139480fa3c">rssi</a></td></tr>
 <tr class="memdesc:adee66bbc82fb8a65fe86de139480fa3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Received signal strength (dBm) <br /></td></tr>
 <tr class="separator:adee66bbc82fb8a65fe86de139480fa3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ebd026981430e851a7b2113e2789601"><td class="memItemLeft" align="right" valign="top"><a id="a1ebd026981430e851a7b2113e2789601"></a>
-<a class="el" href="group__WiFi.html#ga186ec64c4394d990746204cb13e16069">hw_wifi_auth_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html#a1ebd026981430e851a7b2113e2789601">auth</a></td></tr>
-<tr class="memdesc:a1ebd026981430e851a7b2113e2789601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication/cipher info (see hw_wifi_auth_t) <br /></td></tr>
-<tr class="separator:a1ebd026981430e851a7b2113e2789601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Describes a discovered Wi‑Fi network (scan result). </p>
@@ -91,7 +91,7 @@ int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <li>The auth field encodes authentication/cipher information; see hw_wifi_auth_t for details. </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00052">52</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00067">67</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-hw/<a class="el" href="wifi_8h_source.html">wifi.h</a></li>
 </ul>

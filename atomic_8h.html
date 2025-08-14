@@ -53,9 +53,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">atomic.h File Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__SystemSync.html">Synchronization Primitives</a></div></div>  </div>
+<div class="title">atomic.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -97,14 +98,39 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__atomic.html">sys_atomic</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsys__atomic__t.html">sys_atomic_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="structsys__atomic__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae8d621e270478c212344479e99cb6cc9"><td class="memItemLeft" align="right" valign="top"><a id="ae8d621e270478c212344479e99cb6cc9"></a>
-typedef struct <a class="el" href="structsys__atomic.html">sys_atomic</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sys_atomic_t</b></td></tr>
-<tr class="separator:ae8d621e270478c212344479e99cb6cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac">sys_atomic_t</a></td></tr>
+<tr class="memdesc:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac">More...</a><br /></td></tr>
+<tr class="separator:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaecd161cca0606398185418a825cb77fa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gaecd161cca0606398185418a825cb77fa">sys_atomic_init</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t initial)</td></tr>
+<tr class="memdesc:gaecd161cca0606398185418a825cb77fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an atomic with an initial value.  <a href="group__SystemSync.html#gaecd161cca0606398185418a825cb77fa">More...</a><br /></td></tr>
+<tr class="separator:gaecd161cca0606398185418a825cb77fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d69b40bd6ec2a3207735d35688aff3e"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga3d69b40bd6ec2a3207735d35688aff3e">sys_atomic_get</a> (const <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a)</td></tr>
+<tr class="memdesc:ga3d69b40bd6ec2a3207735d35688aff3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the current value atomically.  <a href="group__SystemSync.html#ga3d69b40bd6ec2a3207735d35688aff3e">More...</a><br /></td></tr>
+<tr class="separator:ga3d69b40bd6ec2a3207735d35688aff3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64d8af72d3cd29cd67036234d9bb4e8b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga64d8af72d3cd29cd67036234d9bb4e8b">sys_atomic_set</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t v)</td></tr>
+<tr class="memdesc:ga64d8af72d3cd29cd67036234d9bb4e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a new value atomically.  <a href="group__SystemSync.html#ga64d8af72d3cd29cd67036234d9bb4e8b">More...</a><br /></td></tr>
+<tr class="separator:ga64d8af72d3cd29cd67036234d9bb4e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c9907a8805785a213ff1fb7a65c5b98"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga5c9907a8805785a213ff1fb7a65c5b98">sys_atomic_inc</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a)</td></tr>
+<tr class="memdesc:ga5c9907a8805785a213ff1fb7a65c5b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomically increment and return the new value.  <a href="group__SystemSync.html#ga5c9907a8805785a213ff1fb7a65c5b98">More...</a><br /></td></tr>
+<tr class="separator:ga5c9907a8805785a213ff1fb7a65c5b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6925168100ad5dd97061946e70faf590"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga6925168100ad5dd97061946e70faf590">sys_atomic_dec</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a)</td></tr>
+<tr class="memdesc:ga6925168100ad5dd97061946e70faf590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomically decrement and return the new value.  <a href="group__SystemSync.html#ga6925168100ad5dd97061946e70faf590">More...</a><br /></td></tr>
+<tr class="separator:ga6925168100ad5dd97061946e70faf590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7afcef049f7a00a9351a8b990a88cb05"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga7afcef049f7a00a9351a8b990a88cb05">sys_atomic_set_bits</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t mask)</td></tr>
+<tr class="memdesc:ga7afcef049f7a00a9351a8b990a88cb05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomically set bits (OR with mask).  <a href="group__SystemSync.html#ga7afcef049f7a00a9351a8b990a88cb05">More...</a><br /></td></tr>
+<tr class="separator:ga7afcef049f7a00a9351a8b990a88cb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga1a0639b5464bd68b7e3aefcdb900221b">sys_atomic_clear_bits</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t mask)</td></tr>
+<tr class="memdesc:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomically clear bits (AND with ~mask).  <a href="group__SystemSync.html#ga1a0639b5464bd68b7e3aefcdb900221b">More...</a><br /></td></tr>
+<tr class="separator:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple atomic uint32_t API (get, set, increment, decrement). </p>

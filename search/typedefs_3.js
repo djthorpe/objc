@@ -12,5 +12,5 @@ var searchData=
   ['hw_5fpwm_5ft',['hw_pwm_t',['../group__PWM.html#ga4aadf9beac1597e1477c5cd80d96fc58',1,'pwm.h']]],
   ['hw_5fspi_5ft',['hw_spi_t',['../group__SPI.html#ga73bb1ed8fc8d79e3d54eb0551037f318',1,'spi.h']]],
   ['hw_5fwatchdog_5ft',['hw_watchdog_t',['../group__Watchdog.html#ga58348a93cb04833bde850aa59005ccc5',1,'watchdog.h']]],
-  ['hw_5fwifi_5fcallback_5ft',['hw_wifi_callback_t',['../wifi_8h.html#aae376cfc6354f98d65ac126c76c2969d',1,'wifi.h']]]
+  ['hw_5fwifi_5fcallback_5ft',['hw_wifi_callback_t',['../wifi_8h.html#a11f2a0111107c0224398d2bd8580da5a',1,'wifi.h']]]
 ];

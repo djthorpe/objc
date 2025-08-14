@@ -28,5 +28,12 @@ var searchData=
   ['hw_5fwifi_5fauth_5fwpa2_5ftkip',['hw_wifi_auth_wpa2_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a889f8d8864618fa074b9b3d9555d74aa',1,'wifi.h']]],
   ['hw_5fwifi_5fauth_5fwpa3_5fsae',['hw_wifi_auth_wpa3_sae',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069ab32b644e9708049954e837d76b5e7e47',1,'wifi.h']]],
   ['hw_5fwifi_5fauth_5fwpa_5faes',['hw_wifi_auth_wpa_aes',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89',1,'wifi.h']]],
-  ['hw_5fwifi_5fauth_5fwpa_5ftkip',['hw_wifi_auth_wpa_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247',1,'wifi.h']]]
+  ['hw_5fwifi_5fauth_5fwpa_5ftkip',['hw_wifi_auth_wpa_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fbadauth',['hw_wifi_event_badauth',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a4d352b0a5828dc47325f8ffb7340ba53',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fconnected',['hw_wifi_event_connected',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177aafa751a65beb159c06faa4ea8137158d',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fdisconnected',['hw_wifi_event_disconnected',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177ad16e3939fbbf8f1d2eef0563a2112fd8',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5ferror',['hw_wifi_event_error',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a401f70c76c79b60000c41c30010102b8',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fjoining',['hw_wifi_event_joining',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177af81b7fb21589631f1bdbda2a8db8082c',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fnotfound',['hw_wifi_event_notfound',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177ae1a0f2ae833421c90665f1075eeab72c',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5fscan',['hw_wifi_event_scan',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a866f7bf072f140d677a5a85f8510c7aa',1,'wifi.h']]]
 ];

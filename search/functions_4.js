@@ -22,6 +22,7 @@ var searchData=
   ['driver_5fbme280_5fread_5ftemperature',['driver_bme280_read_temperature',['../group__BME280.html#gaf608792aab543f8dea4bf762e7fc2bfa',1,'drivers_bme280.h']]],
   ['driver_5fbme280_5freset',['driver_bme280_reset',['../group__BME280.html#gae4a15c2cfc249ab949d785d4728c8c0d',1,'drivers_bme280.h']]],
   ['driver_5fbme280_5fset_5fmode',['driver_bme280_set_mode',['../group__BME280.html#gaa0c164f47501aa36d89c885ff573b577',1,'drivers_bme280.h']]],
+  ['driver_5fbme280_5fvalid',['driver_bme280_valid',['../group__BME280.html#ga205dc55eb205ac4efffce7cc33ceea6a',1,'drivers_bme280.h']]],
   ['driver_5fst7789_5ffill',['driver_st7789_fill',['../group__ST7789.html#ga1a7a6204066d6e485934549886834701',1,'drivers_st7789.h']]],
   ['driver_5fst7789_5ffinalize',['driver_st7789_finalize',['../group__ST7789.html#gae440ece151cdd34169254482f95822f5',1,'drivers_st7789.h']]],
   ['driver_5fst7789_5finit',['driver_st7789_init',['../group__ST7789.html#ga7172d376db09ea1daa1666bf6ed7bc47',1,'drivers_st7789.h']]],
@@ -45,5 +46,6 @@ var searchData=
   ['driver_5fuc8151_5fset_5frotation',['driver_uc8151_set_rotation',['../group__UC8151.html#ga46b94107e3a77d35b29781657cafc96d',1,'drivers_uc8151.h']]],
   ['driver_5fuc8151_5fset_5fupdate_5fspeed',['driver_uc8151_set_update_speed',['../group__UC8151.html#gab31b31571e9eb238826567179cd5561e',1,'drivers_uc8151.h']]],
   ['driver_5fuc8151_5fupdate',['driver_uc8151_update',['../group__UC8151.html#ga26ca81f0eb1dc49f654a112e33c6978e',1,'drivers_uc8151.h']]],
+  ['driver_5fuc8151_5fvalid',['driver_uc8151_valid',['../group__UC8151.html#gaa1cfa0ad50fc5af270d0fafe3430ce8c',1,'drivers_uc8151.h']]],
   ['dump',['dump',['../interfaceNXData.html#a3494f5d004da7bb9d2e15e6f7e8aaef8',1,'NXData::dump()'],['../interfaceNXZone.html#ac50e848e08510c5309b4bcda0e38495e',1,'NXZone::dump()']]]
 ];

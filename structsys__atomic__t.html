@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: sys_atomic Struct Reference</title>
+<title>objc: sys_atomic_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -50,19 +50,26 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">sys_atomic Struct Reference</div>  </div>
+<div class="title">sys_atomic_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__SystemSync.html">Synchronization Primitives</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Underlying atomic uint32_t value.  
+ <a href="structsys__atomic__t.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="atomic_8h_source.html">runtime-sys/sys.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a0d70dc8585f85212f23205b6a53491f4"><td class="memItemLeft" align="right" valign="top"><a id="a0d70dc8585f85212f23205b6a53491f4"></a>
+<tr class="memitem:a742338d49bbccb6b57062669942e2a27"><td class="memItemLeft" align="right" valign="top"><a id="a742338d49bbccb6b57062669942e2a27"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
-<tr class="separator:a0d70dc8585f85212f23205b6a53491f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a742338d49bbccb6b57062669942e2a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00021">21</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="textblock"><p>Underlying atomic uint32_t value. </p>
+<p>Do not access the value directly; use the sys_atomic_* APIs. in order to maintain thread safety. </p>
+
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00027">27</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-sys/<a class="el" href="atomic_8h_source.html">atomic.h</a></li>
 </ul>
