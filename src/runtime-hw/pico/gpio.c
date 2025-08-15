@@ -55,7 +55,13 @@ void hw_gpio_finalize(hw_gpio_t *gpio) {
 /**
  * @brief Get the total number of available GPIO pins.
  */
-uint8_t hw_gpio_count(void) { return NUM_BANK0_GPIOS; }
+uint8_t hw_gpio_count(void) {
+  int max = NUM_BANK0_GPIOS;
+  if (max > HW_GPIO_MAX_COUNT) {
+    max = HW_GPIO_MAX_COUNT;
+  }
+  return max;
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS

@@ -21,9 +21,9 @@ add_subdirectory(runtime/wifiscan)
 add_subdirectory(runtime/wificonnect)
 
 # NXApplication examples
-#add_subdirectory(NXApplication/helloworld)
-#add_subdirectory(NXApplication/gpio)
-#add_subdirectory(NXApplication/timer)
+add_subdirectory(NXApplication/helloworld)
+add_subdirectory(NXApplication/gpio)
+add_subdirectory(NXApplication/timer)
 
 # Driver examples
 add_subdirectory(drivers/bme280)

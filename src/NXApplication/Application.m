@@ -1,3 +1,4 @@
+#include "GPIO+Private.h"
 #include "NXTimer+Private.h"
 #include <NXApplication/NXApplication.h>
 #include <runtime-hw/hw.h>
@@ -265,11 +266,7 @@ void _app_poll_callback(sys_timer_t *timer) {
       hw_poll();
       break;
     case APP_EVENT_GPIO:
-      // Handle GPIO event
-      sys_printf(
-          "core %d: Processing GPIO event: pin=%u event=%u (queue size=%d)\n",
-          sys_thread_core(), app_event->pin, app_event->event,
-          sys_event_queue_size(&_app_queue));
+      _gpio_callback(app_event->pin, app_event->event);
       break;
     case APP_EVENT_TIMER: {
       // sender is stored as void* in the event; cast to id before messaging

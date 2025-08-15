@@ -18,6 +18,14 @@
 // TYPES
 
 /**
+ * @brief Maximum number of GPIO pins.
+ * @ingroup GPIO
+ *
+ * The maximum number of GPIO pins that is supported in this runtime.
+ */
+#define HW_GPIO_MAX_COUNT 50
+
+/**
  * @brief GPIO mode flags for configuring GPIO pins.
  * @ingroup GPIO
  */
@@ -83,6 +91,9 @@ typedef void (*hw_gpio_callback_t)(uint8_t pin, hw_gpio_event_t event,
  * Returns the number of logical GPIO pins that can be used in the system.
  * These are usually numbered from 0 to hw_gpio_count() - 1.
  * If zero is returned, it indicates that GPIO functionality is not available.
+ *
+ * It will never return more than HW_GPIO_MAX_COUNT as this is a hard
+ * limit on the number of supported GPIO pins.
  */
 uint8_t hw_gpio_count(void);
 
