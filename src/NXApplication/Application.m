@@ -256,6 +256,9 @@ void _app_poll_callback(sys_timer_t *timer) {
       // Finalize the timer to prevent any more events
       sys_timer_finalize(&timer);
 
+      // Finalize the GPIO subsystem
+      [GPIO finalize];
+
       // No more events to process
       break;
     }
@@ -270,9 +273,12 @@ void _app_poll_callback(sys_timer_t *timer) {
       break;
     case APP_EVENT_TIMER: {
       // sender is stored as void* in the event; cast to id before messaging
-      id sender = (id)app_event->sender;
+      id sender = (id<RetainProtocol>)app_event->sender;
       if (sender && [sender isKindOfClass:[NXTimer class]]) {
+        // We retain the sender to ensure it stays alive during the callback
+        [sender retain];
         [(NXTimer *)sender timerFired];
+        [sender release];
       }
     } break;
     default:
