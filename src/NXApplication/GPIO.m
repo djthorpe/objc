@@ -70,7 +70,11 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 - (void)dealloc {
   sys_assert(self == _gpio[_pin.pin]);
   hw_gpio_finalize(&_pin);
-  _gpio[_pin.pin] = nil; // Clear the static GPIO instance
+  if (self == _gpio[_pin.pin]) {
+    sys_assert(self == _gpio[_pin.pin]);
+    _gpio[_pin.pin] = nil; // Clear the static GPIO instance
+  }
+  hw_gpio_finalize(&_pin);
   [super dealloc];
 }
 
