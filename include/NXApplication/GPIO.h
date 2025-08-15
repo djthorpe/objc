@@ -5,6 +5,7 @@
  * @example examples/NXApplication/gpio/main.m
  */
 #pragma once
+#include <runtime-hw/hw.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // CLASS DEFINITIONS
@@ -20,7 +21,8 @@
  */
 @interface GPIO : NXObject {
 @private
-  void *_data; ///< Pointer to the GPIO data
+  hw_gpio_t _pin;       ///< Pointer to the GPIO data
+  hw_gpio_mode_t _mode; ///< GPIO mode at time of initialization
 }
 
 /**
@@ -91,6 +93,37 @@
  * @return The total number of GPIO pins. Returns 0 if GPIO is not available.
  */
 + (uint8_t)count;
+
+/**
+ * @brief Returns the pin number.
+ */
+- (uint8_t)pin;
+/**
+ * @brief Returns true if the GPIO pin is configured as an input.
+ */
+- (bool)isInput;
+
+/**
+ * @brief Returns true if the GPIO pin is configured as an output.
+ */
+- (bool)isOutput;
+
+/**
+ * @brief Sets the delegate for GPIO events.
+ * @param delegate The delegate to set.
+ *
+ * This delegate will be notified of GPIO events, such as input changes.
+ * The delegate is not retained by the GPIO instance, so it must be
+ * retained by the caller. If called with nil, the current delegate will
+ * be removed.
+ */
++ (void)setDelegate:(id<GPIODelegate>)delegate;
+
+/**
+ * @brief Returns the current delegate for GPIO events.
+ * @return The current GPIO delegate, or nil if not set.
+ */
++ (id<GPIODelegate>)delegate;
 
 /**
  * @brief Returns the state of the GPIO pin.

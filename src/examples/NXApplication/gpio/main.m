@@ -8,14 +8,14 @@
  */
 #include <NXApplication/NXApplication.h>
 
-#define GPIO_BOOTSEL 23 // BOOTSEL Button
+#define GPIO_BOOTSEL 30 // BOOTSEL Button
 #define GPIO_A 12       // Button A
 #define GPIO_B 13       // Button B
 #define GPIO_C 14       // Button C
 
 //////////////////////////////////////////////////////////////////////////
 
-@interface MyAppDelegate : NXObject <ApplicationDelegate>
+@interface MyAppDelegate : NXObject <ApplicationDelegate, GPIODelegate>
 @end
 
 //////////////////////////////////////////////////////////////////////////
@@ -30,11 +30,32 @@
     return;
   }
 
+  // Set GPIO delegate
+  [GPIO setDelegate:self];
+
   // Initialize a GPIO pin for input
   [GPIO pullupWithPin:GPIO_A];
   [GPIO pullupWithPin:GPIO_B];
   [GPIO pullupWithPin:GPIO_C];
   [GPIO inputWithPin:GPIO_BOOTSEL];
+}
+
+- (void)gpio:(GPIO *)gpio changed:(GPIOEvent)event {
+  // Handle GPIO events
+  switch (event) {
+  case GPIOEventRising:
+    NXLog(@"GPIO pin %d rising edge detected", [gpio pin]);
+    break;
+  case GPIOEventFalling:
+    NXLog(@"GPIO pin %d falling edge detected", [gpio pin]);
+    break;
+  case GPIOEventChanged:
+    NXLog(@"GPIO pin %d state change (rising & falling)", [gpio pin]);
+    break;
+  default:
+    NXLog(@"Unknown GPIO event for pin %d", [gpio pin]);
+    break;
+  }
 }
 
 @end
