@@ -17,6 +17,12 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event);
 @interface GPIO (Private)
 
 /**
+ * @brief Finalize all shared GPIO instances and clear the static table.
+ * Call before application shutdown or when re-initializing GPIO.
+ */
++ (void)finalize;
+
+/**
  * @brief Calls the delegate's gpio:changed: method. If GPIO is subclassed,
  * the subclass's implementation will be called instead.
  */

@@ -27,7 +27,10 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   // Get the GPIO instance for the pin
   GPIO *gpio = _gpio[pin];
   if (gpio) {
+    // Retain to protect against concurrent dealloc while handling callback
+    [gpio retain];
     [gpio changed:(GPIOEvent)event];
+    [gpio release];
   }
 }
 
@@ -68,13 +71,15 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 }
 
 - (void)dealloc {
-  sys_assert(self == _gpio[_pin.pin]);
+  // Finalize hardware pin once
   hw_gpio_finalize(&_pin);
-  if (self == _gpio[_pin.pin]) {
-    sys_assert(self == _gpio[_pin.pin]);
-    _gpio[_pin.pin] = nil; // Clear the static GPIO instance
+
+  // Safely clear the shared slot if it points to this instance
+  @synchronized([GPIO class]) {
+    if (_pin.pin < HW_GPIO_MAX_COUNT && _gpio[_pin.pin] == self) {
+      _gpio[_pin.pin] = nil;
+    }
   }
-  hw_gpio_finalize(&_pin);
   [super dealloc];
 }
 
@@ -87,7 +92,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     return nil; // Invalid pin number
   }
 
-  // Get or create static instance of GPIO pin
+  // Get or create shared instance of GPIO pin (lives until +reset or program
+  // end)
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
@@ -108,7 +114,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     return nil; // Invalid pin number
   }
 
-  // Get or create static instance of GPIO pin
+  // Get or create shared instance of GPIO pin (lives until +reset or program
+  // end)
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
@@ -129,7 +136,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     return nil; // Invalid pin number
   }
 
-  // Get or create static instance of GPIO pin
+  // Get or create shared instance of GPIO pin (lives until +reset or program
+  // end)
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
@@ -150,7 +158,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     return nil; // Invalid pin number
   }
 
-  // Get or create static instance of GPIO pin
+  // Get or create shared instance of GPIO pin (lives until +reset or program
+  // end)
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
@@ -159,6 +168,26 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 
     // Return retained instance
     return _gpio[pin];
+  }
+}
+
+/**
+ * @brief Finalize all shared GPIO instances and clear the static table.
+ * Call before application shutdown or when re-initializing GPIO.
+ */
++ (void)finalize {
+  // Remove the GPIO delegate
+  [self setDelegate:nil];
+
+  // Release all shared GPIO instances
+  @synchronized(self) {
+    for (uint32_t i = 0; i < HW_GPIO_MAX_COUNT; i++) {
+      GPIO *gpio = _gpio[i];
+      if (gpio) {
+        _gpio[i] = nil;
+        [gpio release];
+      }
+    }
   }
 }
 
