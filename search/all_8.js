@@ -37,6 +37,7 @@ var searchData=
   ['hw_5fgpio_5fi2c',['HW_GPIO_I2C',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa677ad28492c29c4c27468224ba1cf31b',1,'gpio.h']]],
   ['hw_5fgpio_5finit',['hw_gpio_init',['../group__GPIO.html#gabecec555c0a6d624d2e9a3588e96bbe7',1,'gpio.h']]],
   ['hw_5fgpio_5finput',['HW_GPIO_INPUT',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa4a98e38e3047a30d9109c1809612e135',1,'gpio.h']]],
+  ['hw_5fgpio_5fmax_5fcount',['HW_GPIO_MAX_COUNT',['../group__GPIO.html#ga966246ab0ff5ed7f60f159b4211b0f0c',1,'gpio.h']]],
   ['hw_5fgpio_5fmode_5ft',['hw_gpio_mode_t',['../group__GPIO.html#gac7525666288cb654655ebdbf8d63167a',1,'gpio.h']]],
   ['hw_5fgpio_5fnone',['HW_GPIO_NONE',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aa048c1ab72ee1c6b02e116e8e9799af01',1,'gpio.h']]],
   ['hw_5fgpio_5foutput',['HW_GPIO_OUTPUT',['../group__GPIO.html#ggac7525666288cb654655ebdbf8d63167aaef0e16d7f4a1d9e15bfd05d0cc43869c',1,'gpio.h']]],

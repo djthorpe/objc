@@ -71,6 +71,9 @@ Collaboration diagram for Application Framework:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
+<tr class="memitem:GPIOTypes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GPIOTypes_8h.html">GPIOTypes.h</a></td></tr>
+<tr class="memdesc:GPIOTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> input types for handling <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:NXApplicationTypes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NXApplicationTypes_8h.html">NXApplicationTypes.h</a></td></tr>
 <tr class="memdesc:NXApplicationTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework typesApplication-related classes and types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -89,12 +92,21 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolApplicationDelegate-p.html">&lt;ApplicationDelegate&gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A protocol that defines the methods for an application delegate.  <a href="protocolApplicationDelegate-p.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolGPIODelegate-p.html">&lt;GPIODelegate&gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A protocol that defines the methods for a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> delegate.  <a href="protocolGPIODelegate-p.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocolTimerDelegate-p.html">&lt;TimerDelegate&gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A protocol that defines the methods for a timer delegate.  <a href="protocolTimerDelegate-p.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:gad70ed3944974a78efe39eda4b518a8fb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a> { <a class="el" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> = HW_GPIO_RISING, 
+<a class="el" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a> = HW_GPIO_FALLING, 
+<a class="el" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a>
+ }<tr class="memdesc:gad70ed3944974a78efe39eda4b518a8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> input types for handling <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events.  <a href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:gad70ed3944974a78efe39eda4b518a8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a>, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a>, 
@@ -112,6 +124,39 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Application-related classes and types, including application lifecycle, event handling, display and frames, and hardware interfaces. </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gad70ed3944974a78efe39eda4b518a8fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad70ed3944974a78efe39eda4b518a8fb">&#9670;&nbsp;</a></span>GPIOEvent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> input types for handling <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36"></a>GPIOEventRising&#160;</td><td class="fielddoc"><p>Rising edge detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152"></a>GPIOEventFalling&#160;</td><td class="fielddoc"><p>Falling edge detected. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc"></a>GPIOEventChanged&#160;</td><td class="fielddoc"><p>Both edges detected. </p>
+</td></tr>
+</table>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2NXApplication_2gpio_2main_8m-example.html#a4">examples/NXApplication/gpio/main.m</a>.</dd>
+</dl>
+<p class="definition">Definition at line <a class="el" href="GPIOTypes_8h_source.html#l00016">16</a> of file <a class="el" href="GPIOTypes_8h_source.html">GPIOTypes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;             {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a>,   </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a>, </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a> =</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> | <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a>, </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a>;</div><div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a></div><div class="ttdoc">Falling edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00018">GPIOTypes.h:18</a></div></div>
+<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a></div><div class="ttdoc">Rising edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00017">GPIOTypes.h:17</a></div></div>
+<div class="ttc" id="group__GPIO_html_gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3"><div class="ttname"><a href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a></div><div class="ttdoc">GPIO pin falling edge interrupt. </div><div class="ttdef"><b>Definition:</b> <a href="gpio_8h_source.html#l00052">gpio.h:52</a></div></div>
+<div class="ttc" id="group__GPIO_html_gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67"><div class="ttname"><a href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a></div><div class="ttdoc">GPIO pin rising edge interrupt. </div><div class="ttdef"><b>Definition:</b> <a href="gpio_8h_source.html#l00051">gpio.h:51</a></div></div>
+<div class="ttc" id="group__Application_html_gad70ed3944974a78efe39eda4b518a8fb"><div class="ttname"><a href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a></div><div class="ttdeci">GPIOEvent</div><div class="ttdoc">GPIO input types for handling GPIO events. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00016">GPIOTypes.h:16</a></div></div>
+<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a></div><div class="ttdoc">Both edges detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00019">GPIOTypes.h:19</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="gaf744a07ee475ab59cd80c6fd7daf98b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf744a07ee475ab59cd80c6fd7daf98b5">&#9670;&nbsp;</a></span>NXApplicationSignal</h2>
 
@@ -202,7 +247,7 @@ Functions</h2></td></tr>
 Command-line arguments are processed according to application configuration. </dd>
 <dd>
 The return value should be used as the program's exit status.</dd></dl>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv, MyAppDelegateClass);</div><div class="line">}</div></div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2NXApplication_2gpio_2main_8m-example.html#a3">examples/NXApplication/gpio/main.m</a>, <a class="el" href="examples_2NXApplication_2helloworld_2main_8m-example.html#a2">examples/NXApplication/helloworld/main.m</a>, and <a class="el" href="examples_2NXApplication_2timer_2main_8m-example.html#a5">examples/NXApplication/timer/main.m</a>.</dd>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv, MyAppDelegateClass);</div><div class="line">}</div></div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2NXApplication_2gpio_2main_8m-example.html#a8">examples/NXApplication/gpio/main.m</a>, <a class="el" href="examples_2NXApplication_2helloworld_2main_8m-example.html#a2">examples/NXApplication/helloworld/main.m</a>, and <a class="el" href="examples_2NXApplication_2timer_2main_8m-example.html#a5">examples/NXApplication/timer/main.m</a>.</dd>
 </dl>
 </div>
 </div>

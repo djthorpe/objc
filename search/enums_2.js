@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['nxapplicationsignal',['NXApplicationSignal',['../group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5',1,'NXApplicationTypes.h']]],
-  ['nxcomparisonresult',['NXComparisonResult',['../group__Foundation.html#gad8cd3aa20b406ea96f21007d88380a1d',1,'NXComparisonResult.h']]],
-  ['nxendian',['NXEndian',['../group__Foundation.html#ga64a1cc18eff9f4a79f16c2bf56d7ad23',1,'NXArch.h']]],
-  ['nxhashalgorithm',['NXHashAlgorithm',['../group__Foundation.html#ga2a28eb8cf223fe2036c2b4da8734c2cb',1,'NXData.h']]]
+  ['hw_5fgpio_5fevent_5ft',['hw_gpio_event_t',['../group__GPIO.html#ga7b48f29b91217a86a1da7e718156eafb',1,'gpio.h']]],
+  ['hw_5fgpio_5fmode_5ft',['hw_gpio_mode_t',['../group__GPIO.html#gac7525666288cb654655ebdbf8d63167a',1,'gpio.h']]],
+  ['hw_5finfrared_5fevent_5ft',['hw_infrared_event_t',['../group__Infrared.html#ga1b9f69774abe83f2d7d73722d2477aab',1,'infrared.h']]],
+  ['hw_5fled_5fcap_5ft',['hw_led_cap_t',['../group__LED.html#gac58a71ec207383491bdb61c7f91a6e28',1,'led.h']]],
+  ['hw_5fpower_5fflag_5ft',['hw_power_flag_t',['../group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4',1,'power.h']]],
+  ['hw_5fwifi_5fauth_5ft',['hw_wifi_auth_t',['../group__WiFi.html#ga186ec64c4394d990746204cb13e16069',1,'wifi.h']]],
+  ['hw_5fwifi_5fevent_5ft',['hw_wifi_event_t',['../group__WiFi.html#ga04c09a1e040ff56c040349a7ad9b6177',1,'wifi.h']]]
 ];

@@ -1,0 +1,27 @@
+<map id="include/NXApplication/GPIO.h" name="include/NXApplication/GPIO.h">
+<area shape="rect" id="node2" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="421,95,551,121"/>
+<area shape="rect" id="node3" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="680,319,737,345"/>
+<area shape="rect" id="node4" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="685,393,748,420"/>
+<area shape="rect" id="node8" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="762,319,815,345"/>
+<area shape="rect" id="node9" href="$infrared_8h.html" title="Infrared (IR) receiver interface. " alt="" coords="218,393,303,420"/>
+<area shape="rect" id="node10" href="$led_8h.html" title="LED control interface. " alt="" coords="124,319,179,345"/>
+<area shape="rect" id="node11" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="26,393,93,420"/>
+<area shape="rect" id="node12" href="$power_8h.html" title="Power management interface. " alt="" coords="1064,169,1137,196"/>
+<area shape="rect" id="node28" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="549,319,602,345"/>
+<area shape="rect" id="node29" href="$watchdog_8h.html" title="Hardware Watchdog Timer Abstraction Layer. " alt="" coords="328,393,425,420"/>
+<area shape="rect" id="node30" href="$wifi_8h.html" title="Wi&#45;Fi management interface. " alt="" coords="501,393,559,420"/>
+<area shape="rect" id="node13" href="$sys_8h.html" title="System management functions. " alt="" coords="1303,244,1442,271"/>
+<area shape="rect" id="node14" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="1373,319,1447,345"/>
+<area shape="rect" id="node15" href="$atomic_8h.html" title="Simple atomic uint32_t API (get, set, increment, decrement). " alt="" coords="1165,393,1244,420"/>
+<area shape="rect" id="node16" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="824,393,887,420"/>
+<area shape="rect" id="node17" href="$env_8h.html" title="Environment information. " alt="" coords="1472,319,1529,345"/>
+<area shape="rect" id="node18" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="1677,319,1748,345"/>
+<area shape="rect" id="node19" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="1654,393,1718,420"/>
+<area shape="rect" id="node20" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="1268,393,1333,420"/>
+<area shape="rect" id="node21" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="1554,319,1653,345"/>
+<area shape="rect" id="node22" href="$memory_8h.html" title="Memory management. " alt="" coords="1793,393,1880,420"/>
+<area shape="rect" id="node23" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="2060,319,2128,345"/>
+<area shape="rect" id="node25" href="$random_8h.html" title="Random number generation. " alt="" coords="1213,319,1297,345"/>
+<area shape="rect" id="node26" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="1013,393,1089,420"/>
+<area shape="rect" id="node27" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="1409,393,1477,420"/>
+</map>
