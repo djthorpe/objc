@@ -54,27 +54,47 @@ $(function() {
   <div class="summary">
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">NXApplicationTypes.h File Reference<div class="ingroups"><a class="el" href="group__objc.html">Objective-C Runtime</a> &raquo; <a class="el" href="group__Application.html">Application Framework</a></div></div>  </div>
+<div class="title">NXApplicationTypes.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework typesApplication-related classes and types.  
+<p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework types.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="NXApplicationTypes_8h__dep__incl.png" border="0" usemap="#include_2Application_2NXApplicationTypes_8hdep" alt=""/></div>
+<map name="include_2Application_2NXApplicationTypes_8hdep" id="include_2Application_2NXApplicationTypes_8hdep">
+<area shape="rect" id="node2" href="Application_8h.html" title="Application framework header. " alt="" coords="15,95,162,136"/>
+</map>
+</div>
+</div>
 <p><a href="NXApplicationTypes_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
+<tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <br />
+&#160;&#160;<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a>, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a>, 
-<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2)
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2), 
+<br />
+&#160;&#160;<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6">NXApplicationPowerSourceUSB</a> = (1 &lt;&lt; 3), 
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79">NXApplicationPowerSourceBattery</a>
+<br />
  }<tr class="memdesc:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> signal types for handling system events.  <a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a> { <a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f">NXApplicationCapabilityNone</a> = 0, 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6">NXApplicationCapabilityMulticore</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6">NXApplicationCapabilityPower</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435">NXApplicationCapabilityWatchdog</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> capabilities.  <a href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework types</p>
+<div class="textblock"><p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework types. </p>
 <p>Application-related classes and types. </p>
 
 <p class="definition">Definition in file <a class="el" href="NXApplicationTypes_8h_source.html">NXApplicationTypes.h</a>.</p>

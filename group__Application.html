@@ -48,7 +48,6 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#files">Files</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -69,15 +68,6 @@ Collaboration diagram for Application Framework:</div>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:GPIOTypes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GPIOTypes_8h.html">GPIOTypes.h</a></td></tr>
-<tr class="memdesc:GPIOTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> input types for handling <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:NXApplicationTypes_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="NXApplicationTypes_8h.html">NXApplicationTypes.h</a></td></tr>
-<tr class="memdesc:NXApplicationTypes_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> framework typesApplication-related classes and types. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceGPIO.html">GPIO</a></td></tr>
@@ -110,19 +100,31 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:gad70ed3944974a78efe39eda4b518a8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> input types for handling <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events.  <a href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:gad70ed3944974a78efe39eda4b518a8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
+<tr class="memitem:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a> { <br />
+&#160;&#160;<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a>, 
 <a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a>, 
-<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2)
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2), 
+<br />
+&#160;&#160;<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6">NXApplicationPowerSourceUSB</a> = (1 &lt;&lt; 3), 
+<a class="el" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79">NXApplicationPowerSourceBattery</a>
+<br />
  }<tr class="memdesc:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> signal types for handling system events.  <a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:gaf744a07ee475ab59cd80c6fd7daf98b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a> { <a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f">NXApplicationCapabilityNone</a> = 0, 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6">NXApplicationCapabilityMulticore</a> = (1 &lt;&lt; 0), 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6">NXApplicationCapabilityPower</a> = (1 &lt;&lt; 1), 
+<a class="el" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435">NXApplicationCapabilityWatchdog</a> = (1 &lt;&lt; 2)
+ }<tr class="memdesc:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> capabilities.  <a href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gabc34bf0215facc5913444e51c006ca97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a> (int argc, char *argv[], <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> delegate)</td></tr>
-<tr class="memdesc:gabc34bf0215facc5913444e51c006ca97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point for NXApplication-based programs.  <a href="#gabc34bf0215facc5913444e51c006ca97">More...</a><br /></td></tr>
-<tr class="separator:gabc34bf0215facc5913444e51c006ca97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga68f0f8805c546cc9b4a14588f6e218b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Application.html#ga68f0f8805c546cc9b4a14588f6e218b1">NXApplicationMain</a> (int argc, char *argv[], <a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a> delegate, <a class="el" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a> capabilities)</td></tr>
+<tr class="memdesc:ga68f0f8805c546cc9b4a14588f6e218b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point for NXApplication-based programs.  <a href="#ga68f0f8805c546cc9b4a14588f6e218b1">More...</a><br /></td></tr>
+<tr class="separator:ga68f0f8805c546cc9b4a14588f6e218b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Application-related classes and types, including application lifecycle, event handling, display and frames, and hardware interfaces. </p>
@@ -150,13 +152,49 @@ Functions</h2></td></tr>
 </table>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Application_2gpio_2main_8m-example.html#a4">examples/Application/gpio/main.m</a>.</dd>
 </dl>
-<p class="definition">Definition at line <a class="el" href="GPIOTypes_8h_source.html#l00016">16</a> of file <a class="el" href="GPIOTypes_8h_source.html">GPIOTypes.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;             {</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a>,   </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a>, </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a> =</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> | <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a>, </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a>;</div><div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a></div><div class="ttdoc">Falling edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00018">GPIOTypes.h:18</a></div></div>
-<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a></div><div class="ttdoc">Rising edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00017">GPIOTypes.h:17</a></div></div>
+<p class="definition">Definition at line <a class="el" href="GPIOTypes_8h_source.html#l00015">15</a> of file <a class="el" href="GPIOTypes_8h_source.html">GPIOTypes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;             {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a>,   </div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a> = <a class="code" href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a>, </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a> =</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a> | <a class="code" href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a>, </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;} <a class="code" href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a>;</div><div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152">GPIOEventFalling</a></div><div class="ttdoc">Falling edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00017">GPIOTypes.h:17</a></div></div>
+<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36">GPIOEventRising</a></div><div class="ttdoc">Rising edge detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00016">GPIOTypes.h:16</a></div></div>
 <div class="ttc" id="group__GPIO_html_gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3"><div class="ttname"><a href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba89f1a577e0ce39d523e6f543749054d3">HW_GPIO_FALLING</a></div><div class="ttdoc">GPIO pin falling edge interrupt. </div><div class="ttdef"><b>Definition:</b> <a href="gpio_8h_source.html#l00052">gpio.h:52</a></div></div>
 <div class="ttc" id="group__GPIO_html_gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67"><div class="ttname"><a href="group__GPIO.html#gga7b48f29b91217a86a1da7e718156eafba96d13ce59359b2e3eabeef75cd542e67">HW_GPIO_RISING</a></div><div class="ttdoc">GPIO pin rising edge interrupt. </div><div class="ttdef"><b>Definition:</b> <a href="gpio_8h_source.html#l00051">gpio.h:51</a></div></div>
-<div class="ttc" id="group__Application_html_gad70ed3944974a78efe39eda4b518a8fb"><div class="ttname"><a href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a></div><div class="ttdeci">GPIOEvent</div><div class="ttdoc">GPIO input types for handling GPIO events. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00016">GPIOTypes.h:16</a></div></div>
-<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a></div><div class="ttdoc">Both edges detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00019">GPIOTypes.h:19</a></div></div>
+<div class="ttc" id="group__Application_html_gad70ed3944974a78efe39eda4b518a8fb"><div class="ttname"><a href="group__Application.html#gad70ed3944974a78efe39eda4b518a8fb">GPIOEvent</a></div><div class="ttdeci">GPIOEvent</div><div class="ttdoc">GPIO input types for handling GPIO events. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00015">GPIOTypes.h:15</a></div></div>
+<div class="ttc" id="group__Application_html_ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc"><div class="ttname"><a href="group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc">GPIOEventChanged</a></div><div class="ttdoc">Both edges detected. </div><div class="ttdef"><b>Definition:</b> <a href="GPIOTypes_8h_source.html#l00018">GPIOTypes.h:18</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga1b6bd8c7afe07923a34c7e0d07f6d3f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">&#9670;&nbsp;</a></span>NXApplicationCapability</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> capabilities. </p>
+<p>Define capabilities to enable in the application. These are passed to NXApplicationMain which then enables the corresponding features.</p>
+<p>NXApplicationCapabilityMulticore enables the use of multiple CPU cores to process tasks concurrently. NXApplicationCapabilityPower enables power management features, which means additional signals are passed to the application for power-related events, such as power source and battery changes.</p>
+<p>NXApplicationCapabilityWatchdog enables the use of a watchdog timer to monitor the application's health, and resets the device if it becomes unresponsive. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f"></a>NXApplicationCapabilityNone&#160;</td><td class="fielddoc"><p>No capability. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6"></a>NXApplicationCapabilityMulticore&#160;</td><td class="fielddoc"><p>Enable Multicore capability. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6"></a>NXApplicationCapabilityPower&#160;</td><td class="fielddoc"><p>Enable Power management. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435"></a>NXApplicationCapabilityWatchdog&#160;</td><td class="fielddoc"><p>Enable Watchdog. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="NXApplicationTypes_8h_source.html#l00058">58</a> of file <a class="el" href="NXApplicationTypes_8h_source.html">NXApplicationTypes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;             {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f">NXApplicationCapabilityNone</a> = 0,             </div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6">NXApplicationCapabilityMulticore</a> = (1 &lt;&lt; 0), </div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6">NXApplicationCapabilityPower</a> = (1 &lt;&lt; 1),     </div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435">NXApplicationCapabilityWatchdog</a> = (1 &lt;&lt; 2),  </div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a>;</div><div class="ttc" id="group__Application_html_gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6"><div class="ttname"><a href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6">NXApplicationCapabilityMulticore</a></div><div class="ttdoc">Enable Multicore capability. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00060">NXApplicationTypes.h:60</a></div></div>
+<div class="ttc" id="group__Application_html_gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6"><div class="ttname"><a href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6">NXApplicationCapabilityPower</a></div><div class="ttdoc">Enable Power management. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00061">NXApplicationTypes.h:61</a></div></div>
+<div class="ttc" id="group__Application_html_ga1b6bd8c7afe07923a34c7e0d07f6d3f3"><div class="ttname"><a href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a></div><div class="ttdeci">NXApplicationCapability</div><div class="ttdoc">Application capabilities. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00058">NXApplicationTypes.h:58</a></div></div>
+<div class="ttc" id="group__Application_html_gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435"><div class="ttname"><a href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435">NXApplicationCapabilityWatchdog</a></div><div class="ttdoc">Enable Watchdog. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00062">NXApplicationTypes.h:62</a></div></div>
+<div class="ttc" id="group__Application_html_gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f"><div class="ttname"><a href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f">NXApplicationCapabilityNone</a></div><div class="ttdoc">No capability. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00059">NXApplicationTypes.h:59</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -173,6 +211,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a> signal types for handling system events. </p>
+<p>This enum defines the various signals that the application delegate can receive related to system events.</p>
+<p>NXApplicationSignalInt indicates that the application is being interrupted, usually by the user pressing Ctrl+C. NXApplicationSignalQuit indicates that the application is being asked to quit, typically by the user sending a SIGQUIT signal. NXApplicationSignalTerm indicates that the application is being terminated, typically by the user sending a SIGTERM signal. When the watchdog is enabled, it may also indicate that the application manually triggered a restart.</p>
+<p>NXApplicationSignalPowerSourceUSB indicates that the power source has changed to USB. NXApplicationSignalPowerSourceBattery indicates that either the power source has changed to battery, or the battery level has changed. The battery level can be monitored using the appropriate APIs. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff"></a>NXApplicationSignalNone&#160;</td><td class="fielddoc"><p>No signal. </p>
 </td></tr>
@@ -182,20 +223,26 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668"></a>NXApplicationSignalQuit&#160;</td><td class="fielddoc"><p>Quit signal (SIGQUIT equivalent) </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6"></a>NXApplicationPowerSourceUSB&#160;</td><td class="fielddoc"><p>Power source changed to USB. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79"></a>NXApplicationPowerSourceBattery&#160;</td><td class="fielddoc"><p>Power source changed to battery, or battery level changed. </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="NXApplicationTypes_8h_source.html#l00014">14</a> of file <a class="el" href="NXApplicationTypes_8h_source.html">NXApplicationTypes.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;             {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, </div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a> =</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      (1 &lt;&lt; 0), </div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a> =</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      (1 &lt;&lt; 1), </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2), </div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a>;</div><div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a></div><div class="ttdoc">Quit signal (SIGQUIT equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00020">NXApplicationTypes.h:20</a></div></div>
-<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a></div><div class="ttdoc">Termination signal (SIGTERM equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00016">NXApplicationTypes.h:16</a></div></div>
-<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a></div><div class="ttdoc">No signal. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00015">NXApplicationTypes.h:15</a></div></div>
-<div class="ttc" id="group__Application_html_gaf744a07ee475ab59cd80c6fd7daf98b5"><div class="ttname"><a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a></div><div class="ttdeci">NXApplicationSignal</div><div class="ttdoc">Application signal types for handling system events. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00014">NXApplicationTypes.h:14</a></div></div>
-<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a></div><div class="ttdoc">Interrupt signal (SIGINT/Ctrl+C equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00018">NXApplicationTypes.h:18</a></div></div>
+<p class="definition">Definition at line <a class="el" href="NXApplicationTypes_8h_source.html#l00029">29</a> of file <a class="el" href="NXApplicationTypes_8h_source.html">NXApplicationTypes.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;             {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a> = 0, </div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a> =</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      (1 &lt;&lt; 0), </div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a> =</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      (1 &lt;&lt; 1), </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a> = (1 &lt;&lt; 2),     </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6">NXApplicationPowerSourceUSB</a> = (1 &lt;&lt; 3), </div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79">NXApplicationPowerSourceBattery</a> =</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      (1 &lt;&lt; 4), </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <a class="code" href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a>;</div><div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6">NXApplicationPowerSourceUSB</a></div><div class="ttdoc">Power source changed to USB. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00036">NXApplicationTypes.h:36</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668">NXApplicationSignalQuit</a></div><div class="ttdoc">Quit signal (SIGQUIT equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00035">NXApplicationTypes.h:35</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79">NXApplicationPowerSourceBattery</a></div><div class="ttdoc">Power source changed to battery, or battery level changed. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00037">NXApplicationTypes.h:37</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde">NXApplicationSignalTerm</a></div><div class="ttdoc">Termination signal (SIGTERM equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00031">NXApplicationTypes.h:31</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff">NXApplicationSignalNone</a></div><div class="ttdoc">No signal. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00030">NXApplicationTypes.h:30</a></div></div>
+<div class="ttc" id="group__Application_html_gaf744a07ee475ab59cd80c6fd7daf98b5"><div class="ttname"><a href="group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5">NXApplicationSignal</a></div><div class="ttdeci">NXApplicationSignal</div><div class="ttdoc">Application signal types for handling system events. </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00029">NXApplicationTypes.h:29</a></div></div>
+<div class="ttc" id="group__Application_html_ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685"><div class="ttname"><a href="group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685">NXApplicationSignalInt</a></div><div class="ttdoc">Interrupt signal (SIGINT/Ctrl+C equivalent) </div><div class="ttdef"><b>Definition:</b> <a href="NXApplicationTypes_8h_source.html#l00033">NXApplicationTypes.h:33</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gabc34bf0215facc5913444e51c006ca97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabc34bf0215facc5913444e51c006ca97">&#9670;&nbsp;</a></span>NXApplicationMain()</h2>
+<a id="ga68f0f8805c546cc9b4a14588f6e218b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga68f0f8805c546cc9b4a14588f6e218b1">&#9670;&nbsp;</a></span>NXApplicationMain()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +263,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="group__objc.html#ga6404e728cf4fd26bbb2d79a9ba21aa02">Class</a>&#160;</td>
-          <td class="paramname"><em>delegate</em>&#160;</td>
+          <td class="paramname"><em>delegate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__Application.html#ga1b6bd8c7afe07923a34c7e0d07f6d3f3">NXApplicationCapability</a>&#160;</td>
+          <td class="paramname"><em>capabilities</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -232,6 +285,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">argc</td><td>The number of command-line arguments passed to the program. </td></tr>
     <tr><td class="paramname">argv</td><td>An array of command-line argument strings. </td></tr>
     <tr><td class="paramname">delegate</td><td>The class to use as the application delegate. </td></tr>
+    <tr><td class="paramname">capabilities</td><td>The capabilities to enable for the application. </td></tr>
   </table>
   </dd>
 </dl>
@@ -244,13 +298,13 @@ Functions</h2></td></tr>
 <li>Main event loop execution</li>
 <li>Cleanup and resource deallocation on exit</li>
 </ul>
-<p>This function should be called from your program's main() function, typically by simply returning the result of <a class="el" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97" title="Main entry point for NXApplication-based programs. ">NXApplicationMain()</a>.</p>
+<p>This function should be called from your program's main() function, typically by simply returning the result of <a class="el" href="group__Application.html#ga68f0f8805c546cc9b4a14588f6e218b1" title="Main entry point for NXApplication-based programs. ">NXApplicationMain()</a>.</p>
 <dl class="section note"><dt>Note</dt><dd>This function does not return until the application terminates. </dd>
 <dd>
 Command-line arguments are processed according to application configuration. </dd>
 <dd>
 The return value should be used as the program's exit status.</dd></dl>
-<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#gabc34bf0215facc5913444e51c006ca97">NXApplicationMain</a>(argc, argv, MyAppDelegateClass);</div><div class="line">}</div></div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Application_2gpio_2main_8m-example.html#a8">examples/Application/gpio/main.m</a>, <a class="el" href="examples_2Application_2helloworld_2main_8m-example.html#a2">examples/Application/helloworld/main.m</a>, and <a class="el" href="examples_2Application_2timer_2main_8m-example.html#a5">examples/Application/timer/main.m</a>.</dd>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]) {</div><div class="line">    <span class="keywordflow">return</span> <a class="code" href="group__Application.html#ga68f0f8805c546cc9b4a14588f6e218b1">NXApplicationMain</a>(argc, argv, MyAppDelegateClass,</div><div class="line"><a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6">NXApplicationCapabilityMulticore</a> | <a class="code" href="group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6">NXApplicationCapabilityPower</a>);</div><div class="line">}</div></div><!-- fragment --> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Application_2blink_2main_8m-example.html#a7">examples/Application/blink/main.m</a>, <a class="el" href="examples_2Application_2gpio_2main_8m-example.html#a8">examples/Application/gpio/main.m</a>, <a class="el" href="examples_2Application_2helloworld_2main_8m-example.html#a2">examples/Application/helloworld/main.m</a>, and <a class="el" href="examples_2Application_2timer_2main_8m-example.html#a5">examples/Application/timer/main.m</a>.</dd>
 </dl>
 </div>
 </div>

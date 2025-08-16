@@ -1,5 +1,11 @@
 var searchData=
 [
+  ['nxapplicationcapabilitymulticore',['NXApplicationCapabilityMulticore',['../group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a2ae8e762781430dbf9ae443eb39778c6',1,'NXApplicationTypes.h']]],
+  ['nxapplicationcapabilitynone',['NXApplicationCapabilityNone',['../group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3a1fd5ad4cdffb4bb48deccff6d74b9f7f',1,'NXApplicationTypes.h']]],
+  ['nxapplicationcapabilitypower',['NXApplicationCapabilityPower',['../group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab434e921ca4d48ab9af03e94fe5277c6',1,'NXApplicationTypes.h']]],
+  ['nxapplicationcapabilitywatchdog',['NXApplicationCapabilityWatchdog',['../group__Application.html#gga1b6bd8c7afe07923a34c7e0d07f6d3f3ab24cb62dcff1fddae96459adfeded435',1,'NXApplicationTypes.h']]],
+  ['nxapplicationpowersourcebattery',['NXApplicationPowerSourceBattery',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a6b73503e6e32f37f973f5ade4668cb79',1,'NXApplicationTypes.h']]],
+  ['nxapplicationpowersourceusb',['NXApplicationPowerSourceUSB',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a47cb5e90cf60191f92330476505084b6',1,'NXApplicationTypes.h']]],
   ['nxapplicationsignalint',['NXApplicationSignalInt',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a2ee6d97070a0a763f55408842f9a7685',1,'NXApplicationTypes.h']]],
   ['nxapplicationsignalnone',['NXApplicationSignalNone',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5af27249c73fb6d0d277f8ebd478623eff',1,'NXApplicationTypes.h']]],
   ['nxapplicationsignalquit',['NXApplicationSignalQuit',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668',1,'NXApplicationTypes.h']]],
