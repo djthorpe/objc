@@ -21,8 +21,7 @@
  */
 @interface GPIO : NXObject {
 @private
-  hw_gpio_t _pin;       ///< Pointer to the GPIO data
-  hw_gpio_mode_t _mode; ///< GPIO mode at time of initialization
+  hw_gpio_t _pin; ///< Pointer to the GPIO data
 }
 
 /**
@@ -98,6 +97,7 @@
  * @brief Returns the pin number.
  */
 - (uint8_t)pin;
+
 /**
  * @brief Returns true if the GPIO pin is configured as an input.
  */

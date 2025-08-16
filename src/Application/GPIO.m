@@ -61,8 +61,6 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     // Invalid pin initialization
     [self release];
     return nil;
-  } else {
-    _mode = hw_gpio_get_mode(&_pin);
   }
 
   // Return success
@@ -97,6 +95,10 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
       _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_INPUT];
+    } else if ([gpio mode] != HW_GPIO_INPUT) {
+      sys_printf("GPIO pin %d is being reconfigured as input\n", pin);
+      [gpio setMode:HW_GPIO_INPUT];
+      return gpio;
     }
 
     // Return retained instance
@@ -119,6 +121,10 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
       _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_PULLUP];
+    } else if ([gpio mode] != HW_GPIO_PULLUP) {
+      sys_printf("GPIO pin %d is being reconfigured as pull-up\n", pin);
+      [gpio setMode:HW_GPIO_PULLUP];
+      return gpio;
     }
 
     // Return retained instance
@@ -141,6 +147,10 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
       _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_PULLDOWN];
+    } else if ([gpio mode] != HW_GPIO_PULLDOWN) {
+      sys_printf("GPIO pin %d is being reconfigured as pull-down\n", pin);
+      [gpio setMode:HW_GPIO_PULLDOWN];
+      return gpio;
     }
 
     // Return retained instance
@@ -163,6 +173,10 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
       _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_OUTPUT];
+    } else if ([gpio mode] != HW_GPIO_OUTPUT) {
+      sys_printf("GPIO pin %d is being reconfigured as output\n", pin);
+      [gpio setMode:HW_GPIO_OUTPUT];
+      return gpio;
     }
 
     // Return retained instance
@@ -210,22 +224,37 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 }
 
 /**
+ * @brief Returns the pin mode.
+ */
+- (hw_gpio_mode_t)mode {
+  sys_assert(hw_gpio_valid(&_pin));
+  return hw_gpio_get_mode(&_pin);
+}
+
+/**
+ * @brief Sets the pin mode.
+ */
+- (void)setMode:(hw_gpio_mode_t)mode {
+  sys_assert(hw_gpio_valid(&_pin));
+  hw_gpio_set_mode(&_pin, mode);
+}
+
+/**
  * @brief Returns true if the GPIO pin is configured as an input.
  */
 - (bool)isInput {
-  return _mode == HW_GPIO_INPUT || _mode == HW_GPIO_PULLUP ||
-         _mode == HW_GPIO_PULLDOWN;
+  hw_gpio_mode_t mode = [self mode];
+  return mode == HW_GPIO_INPUT || mode == HW_GPIO_PULLUP ||
+         mode == HW_GPIO_PULLDOWN;
 }
 
 /**
  * @brief Returns true if the GPIO pin is configured as an output.
  */
 - (bool)isOutput {
-  return _mode == HW_GPIO_OUTPUT;
+  hw_gpio_mode_t mode = [self mode];
+  return mode == HW_GPIO_OUTPUT;
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// METHODS
 
 + (void)setDelegate:(id<GPIODelegate>)delegate {
   @synchronized(self) {
@@ -258,6 +287,9 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   objc_assert(hw_gpio_valid(&_pin));
   hw_gpio_set(&_pin, state);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// METHODS
 
 /**
  * @brief Calls the delegate's gpio:changed: method. If GPIO is subclassed,

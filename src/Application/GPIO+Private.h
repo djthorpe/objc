@@ -28,4 +28,16 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event);
  */
 - (void)changed:(GPIOEvent)event;
 
+/**
+ * @brief Returns the pin's current mode.
+ * @return The pin's current mode.
+ */
+- (hw_gpio_mode_t)mode;
+
+/**
+ * @brief Sets the pin mode.
+ * @param mode The new mode to set.
+ */
+- (void)setMode:(hw_gpio_mode_t)mode;
+
 @end

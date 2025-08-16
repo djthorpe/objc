@@ -66,6 +66,7 @@ int NXApplicationMain(int argc, char *argv[], Class delegate);
 
 // Class Definitions
 #include "GPIO.h"
+#include "LED.h"
 #include "NXApplication.h"
 #include "NXTimer.h"
 
