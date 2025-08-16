@@ -1,8 +1,9 @@
 <map id="include/runtime&#45;gcc/objc/assert.h" name="include/runtime&#45;gcc/objc/assert.h">
-<area shape="rect" id="node2" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="258,95,409,136"/>
-<area shape="rect" id="node3" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="177,184,322,225"/>
-<area shape="rect" id="node7" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="346,184,491,225"/>
+<area shape="rect" id="node2" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="343,95,494,136"/>
+<area shape="rect" id="node3" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="262,184,407,225"/>
+<area shape="rect" id="node8" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="431,184,577,225"/>
 <area shape="rect" id="node4" href="$Application_8h.html" title="Application framework header. " alt="" coords="5,273,152,315"/>
 <area shape="rect" id="node5" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="176,273,323,315"/>
 <area shape="rect" id="node6" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="347,273,493,315"/>
+<area shape="rect" id="node7" href="$Network_8h.html" title="Network framework header. " alt="" coords="518,281,717,307"/>
 </map>

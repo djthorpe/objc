@@ -1,13 +1,17 @@
 var searchData=
 [
+  ['scan',['scan',['../interfaceNXWireless.html#a52cdef931d89e1368ff8ac99ad79e863',1,'NXWireless']]],
+  ['scandidcomplete',['scanDidComplete',['../protocolWirelessDelegate-p.html#a64f7dab48587ec0b101d7ee9d93c346a',1,'WirelessDelegate-p']]],
+  ['scandiddiscovernetwork_3a',['scanDidDiscoverNetwork:',['../protocolWirelessDelegate-p.html#a222d7d60f91071113698de9171e77e71',1,'WirelessDelegate-p']]],
   ['sel_5fgetname',['sel_getName',['../group__objc.html#ga359230f72face8b5990d70523f5d3ec5',1,'runtime.h']]],
   ['setbrightness_3a',['setBrightness:',['../interfaceLED.html#aea514da501314a4637f6880a24c25048',1,'LED']]],
-  ['setdelegate_3a',['setDelegate:',['../interfaceGPIO.html#a2f0b3a24ac90c9a4dd9dfb039e859656',1,'GPIO::setDelegate:()'],['../interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b',1,'NXTimer::setDelegate:()']]],
+  ['setdelegate_3a',['setDelegate:',['../interfaceGPIO.html#a2f0b3a24ac90c9a4dd9dfb039e859656',1,'GPIO::setDelegate:()'],['../interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b',1,'NXTimer::setDelegate:()'],['../interfaceNXWireless.html#a0f6c03526de436aa9d9fa89feb2474d3',1,'NXWireless::setDelegate:()']]],
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
   ['setobject_3aforkey_3a',['setObject:forKey:',['../interfaceNXMap.html#a785f068025907a812fc2ed79c9db43d6',1,'NXMap']]],
   ['setstate_3a',['setState:',['../interfaceGPIO.html#a8ec6226af6503f4e7066b889e169a890',1,'GPIO::setState:()'],['../interfaceLED.html#a393913854bb0ff951b5626c17cc8f7f5',1,'LED::setState:()']]],
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceApplication.html#a0ed5bc4e87ba981941621cfaca79deb7',1,'Application']]],
+  ['sharedinstance',['sharedInstance',['../interfaceNXWireless.html#a71194df882457160a544214e2d156ce7',1,'NXWireless']]],
   ['size',['size',['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
   ['state',['state',['../interfaceGPIO.html#a3105f3f6dbe6735a2d9e7af4d66af2b7',1,'GPIO']]],

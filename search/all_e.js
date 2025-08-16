@@ -3,6 +3,8 @@ var searchData=
   ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../group__Foundation.html#gaaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
   ['nanoseconds',['nanoseconds',['../structsys__date__t.html#a11efe5ff6677a4198f7cb0e08bde904e',1,'sys_date_t']]],
+  ['network_20framework',['Network Framework',['../group__Network.html',1,'']]],
+  ['network_2eh',['Network.h',['../Network_8h.html',1,'']]],
   ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
   ['nil',['Nil',['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
   ['no',['NO',['../group__objc.html#ga996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
@@ -81,6 +83,10 @@ var searchData=
   ['nxtimer',['NXTimer',['../interfaceNXTimer.html',1,'']]],
   ['nxtimer_2eh',['NXTimer.h',['../NXTimer_8h.html',1,'']]],
   ['nxunknownendian',['NXUnknownEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]],
+  ['nxwireless',['NXWireless',['../interfaceNXWireless.html',1,'']]],
+  ['nxwireless_2eh',['NXWireless.h',['../NXWireless_8h.html',1,'']]],
+  ['nxwirelessnetwork',['NXWirelessNetwork',['../interfaceNXWirelessNetwork.html',1,'']]],
+  ['nxwirelessnetwork_2eh',['NXWirelessNetwork.h',['../NXWirelessNetwork_8h.html',1,'']]],
   ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]
 ];

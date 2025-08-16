@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['scan',['scan',['../interfaceNXWireless.html#a52cdef931d89e1368ff8ac99ad79e863',1,'NXWireless']]],
+  ['scandidcomplete',['scanDidComplete',['../protocolWirelessDelegate-p.html#a64f7dab48587ec0b101d7ee9d93c346a',1,'WirelessDelegate-p']]],
+  ['scandiddiscovernetwork_3a',['scanDidDiscoverNetwork:',['../protocolWirelessDelegate-p.html#a222d7d60f91071113698de9171e77e71',1,'WirelessDelegate-p']]],
   ['sck',['sck',['../structhw__spi__t.html#a83f2b2c34df2357ab3588ee7ecdc9881',1,'hw_spi_t']]],
   ['scl',['scl',['../structhw__i2c__t.html#a7850e8573777809b441bd93a698d9b82',1,'hw_i2c_t']]],
   ['sda',['sda',['../structhw__i2c__t.html#a4e5beaff2eb2abbf612b7ba9be4e1452',1,'hw_i2c_t']]],
@@ -10,12 +13,13 @@ var searchData=
   ['set',['set',['../structpix__frame__t.html#a47889f8bd6ba7db33796e65be3e69ef3',1,'pix_frame_t']]],
   ['set_5frect',['set_rect',['../structpix__frame__t.html#a6da1898282b2c185b97f21daaffc8f40',1,'pix_frame_t']]],
   ['setbrightness_3a',['setBrightness:',['../interfaceLED.html#aea514da501314a4637f6880a24c25048',1,'LED']]],
-  ['setdelegate_3a',['setDelegate:',['../interfaceGPIO.html#a2f0b3a24ac90c9a4dd9dfb039e859656',1,'GPIO::setDelegate:()'],['../interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b',1,'NXTimer::setDelegate:()']]],
+  ['setdelegate_3a',['setDelegate:',['../interfaceGPIO.html#a2f0b3a24ac90c9a4dd9dfb039e859656',1,'GPIO::setDelegate:()'],['../interfaceNXTimer.html#a0daaeca0afbe86f37e3d0828f0bdf11b',1,'NXTimer::setDelegate:()'],['../interfaceNXWireless.html#a0f6c03526de436aa9d9fa89feb2474d3',1,'NXWireless::setDelegate:()']]],
   ['sethours_3aminutes_3aseconds_3ananoseconds_3a',['setHours:minutes:seconds:nanoseconds:',['../interfaceNXDate.html#a85555a7b31e57ea4389f29feb86b828b',1,'NXDate']]],
   ['setobject_3aforkey_3a',['setObject:forKey:',['../interfaceNXMap.html#a785f068025907a812fc2ed79c9db43d6',1,'NXMap']]],
   ['setstate_3a',['setState:',['../interfaceGPIO.html#a8ec6226af6503f4e7066b889e169a890',1,'GPIO::setState:()'],['../interfaceLED.html#a393913854bb0ff951b5626c17cc8f7f5',1,'LED::setState:()']]],
   ['setyear_3amonth_3aday_3a',['setYear:month:day:',['../interfaceNXDate.html#a1a53e5afd35875885937f39130865d4b',1,'NXDate']]],
   ['sharedapplication',['sharedApplication',['../interfaceApplication.html#a0ed5bc4e87ba981941621cfaca79deb7',1,'Application']]],
+  ['sharedinstance',['sharedInstance',['../interfaceNXWireless.html#a71194df882457160a544214e2d156ce7',1,'NXWireless']]],
   ['shutdown',['shutdown',['../structsys__event__queue__t.html#a08dae73e62089119c2125fc1cba093a5',1,'sys_event_queue_t']]],
   ['size',['size',['../structsys__hash__t.html#a23a4936ac2b8f5cde697d140e901bcfb',1,'sys_hash_t::size()'],['../structpix__frame__t.html#a57164f929c2e7ae122778465ca4149aa',1,'pix_frame_t::size()'],['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData::size()']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],

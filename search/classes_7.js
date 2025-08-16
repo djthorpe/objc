@@ -13,5 +13,7 @@ var searchData=
   ['nxstring',['NXString',['../interfaceNXString.html',1,'']]],
   ['nxthread',['NXThread',['../interfaceNXThread.html',1,'']]],
   ['nxtimer',['NXTimer',['../interfaceNXTimer.html',1,'']]],
+  ['nxwireless',['NXWireless',['../interfaceNXWireless.html',1,'']]],
+  ['nxwirelessnetwork',['NXWirelessNetwork',['../interfaceNXWirelessNetwork.html',1,'']]],
   ['nxzone',['NXZone',['../interfaceNXZone.html',1,'']]]
 ];
