@@ -17,10 +17,9 @@
 
   // Initialize PWM
   uint8_t gpio = hw_led_status_gpio();
-  hw_pwm_t pwm;
   if (gpio != 0xFF) {
-    pwm = hw_pwm_init(hw_pwm_gpio_unit(gpio), NULL); // Initialize PWM
-    if (!hw_pwm_valid(&pwm)) {
+    _pwm = hw_pwm_init(hw_pwm_gpio_unit(gpio), NULL); // Initialize PWM
+    if (!hw_pwm_valid(&_pwm)) {
 #ifdef DEBUG
       sys_printf("Failed to initialize PWM\n");
 #endif
@@ -30,7 +29,7 @@
   }
 
   // Initialize LED
-  _led = hw_led_init(gpio, &pwm);
+  _led = hw_led_init(gpio, &_pwm);
   if (!hw_led_valid(&_led)) {
 #ifdef DEBUG
     sys_printf("Failed to initialize LED\n");
@@ -106,6 +105,8 @@
   static LED *status = nil;
   @synchronized(self) {
     if (status == nil) {
+      // TODO: Retained static instance - will cause memory issue when shutting
+      // down
       status = [[LED alloc] init];
     }
     return status;
