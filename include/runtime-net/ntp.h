@@ -1,8 +1,8 @@
 /**
  * @file ntp.h
  * @brief Network Time Protocol (NTP) interface
- * @defgroup NTP Network Time Protocol
- * @ingroup Network
+ * @defgroup RuntimeNTP Network Time Protocol
+ * @ingroup RuntimeNet
  *
  * Network Time Protocol (NTP) client to synchronize system time.
  *
@@ -20,7 +20,7 @@
 
 /**
  * @brief Opaque NTP manager handle.
- * @ingroup NTP
+ * @ingroup RuntimeNTP
  *
  * The handle identifies the singleton NTP manager. It is valid after
  * net_ntp_init() succeeds and remains valid until net_ntp_finalize() is
@@ -30,7 +30,7 @@ typedef struct net_ntp_t net_ntp_t;
 
 /**
  * @brief Callback invoked when system time should be updated.
- * @ingroup NTP
+ * @ingroup RuntimeNTP
  * @param date Pointer to the updated UTC time. Valid only for the duration of
  * the callback.
  */
@@ -41,7 +41,7 @@ typedef void (*net_ntp_callback_t)(const sys_date_t *date);
 
 /**
  * @brief Initialize (or re-initialize) the NTP manager.
- * @ingroup NTP
+ * @ingroup RuntimeNTP
  * @param callback Optional callback invoked on successful time updates.
  * @return A pointer to the NTP manager handle (singleton), or NULL on error.
  */
@@ -49,7 +49,7 @@ net_ntp_t *net_ntp_init(net_ntp_callback_t callback);
 
 /**
  * @brief Determine if the NTP handle is checking for time updates.
- * @ingroup NTP
+ * @ingroup RuntimeNTP
  * @param ntp The NTP manager handle.
  * @return true if initialized; false otherwise.
  *
@@ -60,7 +60,7 @@ bool net_ntp_valid(net_ntp_t *ntp);
 
 /**
  * @brief Release NTP resources
- * @ingroup NTP
+ * @ingroup RuntimeNTP
  * @param ntp The NTP manager handle.
  */
 void net_ntp_finalize(net_ntp_t *ntp);

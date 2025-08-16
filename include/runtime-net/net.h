@@ -1,7 +1,7 @@
 /**
  * @file net.h
  * @brief Network interface abstraction layer
- * @defgroup Network Network Interfaces
+ * @defgroup RuntimeNet Network Interfaces
  * @ingroup System
  *
  * Managing network resources, protocols, and low-level operations.
