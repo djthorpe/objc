@@ -313,8 +313,9 @@ size_t _sys_printf_put(struct sys_printf_state *state, char spec, va_list *va) {
         }
         return total_chars; // Return actual characters written
       }
+    } else {
+      sys_panicf("Unsupported format specifier: %c", spec);
     }
-    sys_panicf("Unsupported format specifier: %c", spec);
     return 0;
   }
 }

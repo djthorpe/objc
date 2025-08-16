@@ -1,4 +1,4 @@
-#include "NXFoundation+format.h"
+#include "NXString+format.h"
 #include "NXString+unicode.h"
 #include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
@@ -112,16 +112,15 @@
 
   // Get the length of the formatted string using shared format handler
   const char *cFormat = [format cStr];
-  _length =
-      sys_vsprintf_ex(NULL, 0, cFormat, args, _nxfoundation_format_handler);
+  _length = sys_vsprintf_ex(NULL, 0, cFormat, args, _nxstring_format_handler);
   if (_length > 0) {
     // Allocate memory for the string
     objc_assert(_zone);
     _data = [_zone allocWithSize:_length + 1];
     if (_data) {
       sys_vsprintf_ex(_data, _length + 1, cFormat, argsCopy,
-                      _nxfoundation_format_handler); // Format the string into
-                                                     // the allocated memory
+                      _nxstring_format_handler); // Format the string into
+                                                 // the allocated memory
       _value = _data;     // Set the value to the allocated data
       _cap = _length + 1; // Set capacity to length + null terminator
     } else {
@@ -501,7 +500,7 @@
   // Get the length of the formatted string using shared format handler
   const char *cFormat = [format cStr];
   size_t length =
-      sys_vsprintf_ex(NULL, 0, cFormat, args, _nxfoundation_format_handler);
+      sys_vsprintf_ex(NULL, 0, cFormat, args, _nxstring_format_handler);
 
   if (length == 0) {
     va_end(argsCopy);
@@ -520,7 +519,7 @@
   // Format the string directly into the allocated memory at the end of current
   // string using shared format handler
   sys_vsprintf_ex(_data + _length, length + 1, cFormat, argsCopy,
-                  _nxfoundation_format_handler);
+                  _nxstring_format_handler);
   _length += length; // Update length
 
   va_end(argsCopy);

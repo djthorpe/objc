@@ -35,6 +35,7 @@
  * - `%%X`: Uppercase hexadecimal integer
  * - `%%t`: NXTimeInterval (Objective-C time interval)
  * - `%%p`: Pointer address
+ * - `%%q`: JSON-quoted Objective-C object
  * - `%%`: Literal percent sign
  *
  *

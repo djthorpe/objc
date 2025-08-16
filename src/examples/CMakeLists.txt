@@ -20,13 +20,16 @@ add_subdirectory(runtime/runloop)
 add_subdirectory(runtime/wifiscan)
 add_subdirectory(runtime/wificonnect)
 
+# Driver examples
+add_subdirectory(drivers/bme280)
+add_subdirectory(drivers/uc8151)
+add_subdirectory(drivers/st7789)
+
 # Application examples
 add_subdirectory(Application/helloworld)
 add_subdirectory(Application/gpio)
 add_subdirectory(Application/timer)
 add_subdirectory(Application/blink)
 
-# Driver examples
-add_subdirectory(drivers/bme280)
-add_subdirectory(drivers/uc8151)
-add_subdirectory(drivers/st7789)
+# Network examples
+add_subdirectory(Network/scan)
