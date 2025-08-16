@@ -63,6 +63,7 @@ bool net_ntp_valid(net_ntp_t *ntp) {
   }
   if (ntp->state == -1 || ntp->timestamp == 0) {
     return false;
+  }
   return sntp_enabled() ? true : false;
 }
 

@@ -51,9 +51,8 @@ int main() {
 
   // Initialize Wi‑Fi (use default country)
   hw_wifi_t *wifi = hw_wifi_init(NULL, wifi_callback, NULL);
-  if (!hw_wifi_valid(wifi)) {
+  if (hw_wifi_valid(wifi) == false) {
     sys_printf("WiFi not available\n");
-    goto done;
   }
 
   // Initialize NTP
@@ -111,7 +110,6 @@ int main() {
     }
   }
 
-done:
   net_ntp_finalize(ntp);
   hw_wifi_finalize(wifi);
   hw_exit();
