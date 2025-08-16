@@ -1,5 +1,5 @@
 /**
- * @file examples/runtime/wificonnect/main.c
+ * @file examples/runtime/ntp/main.c
  *
  * This example demonstrates how to connect to and disconnect from a Wi‑Fi
  * network.
