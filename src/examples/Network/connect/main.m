@@ -1,6 +1,7 @@
 /**
  * @file examples/Network/connect/main.m
- * @brief Example showing how to scan for Wi-Fi networks
+ * @file examples/Network/connect/main.m
+ * @brief Example showing how to connect to Wi-Fi networks
  */
 #include <Application/Application.h>
 #include <Network/Network.h>
