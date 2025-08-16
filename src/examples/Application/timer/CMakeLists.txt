@@ -1,4 +1,4 @@
-set(NAME "application_timer")
+set(NAME "timer.app")
 add_executable(${NAME}
     main.m
     hack.c

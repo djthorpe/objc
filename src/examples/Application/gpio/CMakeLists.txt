@@ -1,4 +1,4 @@
-set(NAME "application_gpio")
+set(NAME "gpio.app")
 add_executable(${NAME}
     main.m
     hack.c

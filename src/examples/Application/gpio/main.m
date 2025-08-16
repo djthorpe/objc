@@ -40,7 +40,7 @@
   [GPIO inputWithPin:GPIO_BOOTSEL];
 }
 
-- (void)gpio:(GPIO *)gpio changed:(GPIOEvent)event {
+- (void)gpio:(id)gpio changed:(GPIOEvent)event {
   // Handle GPIO events
   switch (event) {
   case GPIOEventRising:

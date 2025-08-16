@@ -28,6 +28,8 @@
 }
 
 - (void)timerFired:(id)timer {
+  (void)timer;
+
   // This method will be called every second
   NXLog(@"Timer fired: %d", ++count);
 }

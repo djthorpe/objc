@@ -1,4 +1,4 @@
-set(NAME "application_helloworld")
+set(NAME "helloworld.app")
 add_executable(${NAME}
     main.m
     hack.c
