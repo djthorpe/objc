@@ -1,7 +1,6 @@
 /**
  * @file NXApplicationTypes.h
  * @brief Application framework types
- * @ingroup Application
  *
  * Application-related classes and types.
  */

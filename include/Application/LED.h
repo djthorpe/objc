@@ -1,6 +1,8 @@
 /**
  * @file LED.h
  * @brief Defines a class for controlling Light Emitting Diodes (LEDs).
+ *
+ * @example examples/Application/blink/main.m
  */
 #pragma once
 #include <runtime-hw/hw.h>
@@ -25,6 +27,7 @@
 @interface LED : NXObject {
 @private
   hw_led_t _led; ///< Pointer to the LED data
+  hw_pwm_t _pwm; ///< Pointer to the PWM data
 }
 
 /**

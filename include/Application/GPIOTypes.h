@@ -2,7 +2,6 @@
 /**
  * @file GPIOTypes.h
  * @brief GPIO input types for handling GPIO events.
- * @ingroup Application
  *
  * GPIO-related types.
  */

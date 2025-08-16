@@ -51,7 +51,19 @@
   case 1:
     NXLog(@"LED: OFF");
     [_led setState:NO];
+    break;
+  case 2:
+    NXLog(@"LED: 0%% brightness");
+    [_led setBrightness:0x00];
+    break;
+  case 3:
+    NXLog(@"LED: 100%% brightness");
+    [_led setBrightness:0xFF];
+    break;
   default:
+    NXLog(@"LED: OFF");
+    [_led setState:NO];
+
     // Reset counter
     count = 0;
   }
@@ -61,8 +73,11 @@
   // Handle the received signal
   NXLog(@"Application received signal: %d", (int)signal);
 
+  // Release the retained resources
   [_timer release];
   [_led release];
+
+  // Terminate the application
   [[Application sharedApplication] terminateWithExitStatus:0];
 }
 
