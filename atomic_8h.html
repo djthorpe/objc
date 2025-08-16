@@ -53,8 +53,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">atomic.h File Reference</div>  </div>
 </div><!--header-->
@@ -107,14 +107,11 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="structsys__atomic__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac">sys_atomic_t</a></td></tr>
-<tr class="memdesc:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac">More...</a><br /></td></tr>
-<tr class="separator:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga359458f60536f54351efe0b0df462dae"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga359458f60536f54351efe0b0df462dae">__attribute__</a> ((aligned(4)))</td></tr>
+<tr class="memdesc:ga359458f60536f54351efe0b0df462dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="group__SystemSync.html#ga359458f60536f54351efe0b0df462dae">More...</a><br /></td></tr>
+<tr class="separator:ga359458f60536f54351efe0b0df462dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaecd161cca0606398185418a825cb77fa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gaecd161cca0606398185418a825cb77fa">sys_atomic_init</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t initial)</td></tr>
 <tr class="memdesc:gaecd161cca0606398185418a825cb77fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an atomic with an initial value.  <a href="group__SystemSync.html#gaecd161cca0606398185418a825cb77fa">More...</a><br /></td></tr>
 <tr class="separator:gaecd161cca0606398185418a825cb77fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +133,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga1a0639b5464bd68b7e3aefcdb900221b">sys_atomic_clear_bits</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t mask)</td></tr>
 <tr class="memdesc:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomically clear bits (AND with ~mask).  <a href="group__SystemSync.html#ga1a0639b5464bd68b7e3aefcdb900221b">More...</a><br /></td></tr>
 <tr class="separator:ga1a0639b5464bd68b7e3aefcdb900221b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae7f66047e6e39ba2bb6af8b95f00d1dd"><td class="memItemLeft" align="right" valign="top"><a id="ae7f66047e6e39ba2bb6af8b95f00d1dd"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
+<tr class="separator:ae7f66047e6e39ba2bb6af8b95f00d1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple atomic uint32_t API (get, set, increment, decrement). </p>

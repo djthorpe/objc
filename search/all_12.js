@@ -47,7 +47,7 @@ var searchData=
   ['sys_5fatomic_5finit',['sys_atomic_init',['../group__SystemSync.html#gaecd161cca0606398185418a825cb77fa',1,'atomic.h']]],
   ['sys_5fatomic_5fset',['sys_atomic_set',['../group__SystemSync.html#ga64d8af72d3cd29cd67036234d9bb4e8b',1,'atomic.h']]],
   ['sys_5fatomic_5fset_5fbits',['sys_atomic_set_bits',['../group__SystemSync.html#ga7afcef049f7a00a9351a8b990a88cb05',1,'atomic.h']]],
-  ['sys_5fatomic_5ft',['sys_atomic_t',['../structsys__atomic__t.html',1,'sys_atomic_t'],['../group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac',1,'sys_atomic_t():&#160;atomic.h']]],
+  ['sys_5fatomic_5ft',['sys_atomic_t',['../structsys__atomic__t.html',1,'']]],
   ['sys_5fcond_5fbroadcast',['sys_cond_broadcast',['../group__SystemSync.html#gad2f90e7a405742e4b0b01e9379a5b001',1,'sync.h']]],
   ['sys_5fcond_5fctx_5fsize',['SYS_COND_CTX_SIZE',['../group__SystemSync.html#gaef6857b229197d7e63114185f19d35f8',1,'sync.h']]],
   ['sys_5fcond_5ffinalize',['sys_cond_finalize',['../group__SystemSync.html#ga024d585a2ba4843ecef30a71a3b56aa7',1,'sync.h']]],

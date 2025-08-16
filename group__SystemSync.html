@@ -50,7 +50,6 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Synchronization Primitives<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a></div></div>  </div>
@@ -99,14 +98,11 @@ Macros</h2></td></tr>
 <tr class="memdesc:ga673237ae11d9cdc3f4ae46b767de6254"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer size for platform-specific waitgroup context dataAdjust based on platform requirements. <br /></td></tr>
 <tr class="separator:ga673237ae11d9cdc3f4ae46b767de6254"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gad6b3dda60a9133d9a15a7ca8d3502fac">sys_atomic_t</a></td></tr>
-<tr class="memdesc:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="#gad6b3dda60a9133d9a15a7ca8d3502fac">More...</a><br /></td></tr>
-<tr class="separator:gad6b3dda60a9133d9a15a7ca8d3502fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga359458f60536f54351efe0b0df462dae"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#ga359458f60536f54351efe0b0df462dae">__attribute__</a> ((aligned(4)))</td></tr>
+<tr class="memdesc:ga359458f60536f54351efe0b0df462dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying atomic uint32_t value.  <a href="#ga359458f60536f54351efe0b0df462dae">More...</a><br /></td></tr>
+<tr class="separator:ga359458f60536f54351efe0b0df462dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaecd161cca0606398185418a825cb77fa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemSync.html#gaecd161cca0606398185418a825cb77fa">sys_atomic_init</a> (<a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> *a, uint32_t initial)</td></tr>
 <tr class="memdesc:gaecd161cca0606398185418a825cb77fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an atomic with an initial value.  <a href="#gaecd161cca0606398185418a825cb77fa">More...</a><br /></td></tr>
 <tr class="separator:gaecd161cca0606398185418a825cb77fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,15 +175,19 @@ Functions</h2></td></tr>
 <p>Three main synchronization primitives are provided. A mutual exclusion type (or "mutex") is used to protect shared resources from concurrent access. You will need one mutex for each shared resource that requires protection against concurrent access. You should always lock the mutex before accessing the shared resource, and unlock it after you are done.</p>
 <p>Condition variables allow threads to wait for certain conditions to be met before proceeding. One thread can signal a condition variable, and other threads can wait on it. This is useful for implementing producer/consumer patterns, where one thread produces data and another thread consumes it.</p>
 <p>Waitgroups allow one thread to wait for a collection of threads to finish executing. This is useful for synchronizing the completion of multiple threads before proceeding. You can add threads to a waitgroup, and then wait for all of them to complete. This is useful for ensuring that all threads have finished their work before proceeding. </p>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="gad6b3dda60a9133d9a15a7ca8d3502fac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad6b3dda60a9133d9a15a7ca8d3502fac">&#9670;&nbsp;</a></span>sys_atomic_t</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga359458f60536f54351efe0b0df462dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga359458f60536f54351efe0b0df462dae">&#9670;&nbsp;</a></span>__attribute__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a>  <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a></td>
+          <td class="memname">struct <a class="el" href="structsys__atomic__t.html">sys_atomic_t</a> __attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(aligned(4))&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -197,7 +197,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
 <a id="ga1a0639b5464bd68b7e3aefcdb900221b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1a0639b5464bd68b7e3aefcdb900221b">&#9670;&nbsp;</a></span>sys_atomic_clear_bits()</h2>
 
@@ -242,8 +241,8 @@ Functions</h2></td></tr>
 </dl>
 <p>Performs a relaxed fetch-and with the complement of mask; no ordering is implied. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00124">124</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                                                         {</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  (void)__atomic_fetch_and(&amp;a-&gt;value, ~mask, __ATOMIC_RELAXED);</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00132">132</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                                                         {</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  (void)__atomic_fetch_and(&amp;a-&gt;value, ~mask, __ATOMIC_RELAXED);</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ga6925168100ad5dd97061946e70faf590"></a>
@@ -280,8 +279,8 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The decremented value after the operation.</dd></dl>
 <p>This uses relaxed ordering and wraps modulo 2^32. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00097">97</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                       {</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">return</span> __atomic_sub_fetch(&amp;a-&gt;value, 1, __ATOMIC_RELAXED);</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00105">105</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                                       {</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> __atomic_sub_fetch(&amp;a-&gt;value, 1, __ATOMIC_RELAXED);</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ga3d69b40bd6ec2a3207735d35688aff3e"></a>
@@ -318,8 +317,8 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The current 32-bit value.</dd></dl>
 <p>This is a relaxed load; it does not establish synchronization with other memory operations. If you need acquire semantics, introduce an explicit fence in the caller. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00057">57</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                             {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">return</span> __atomic_load_n(&amp;a-&gt;value, __ATOMIC_RELAXED);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00065">65</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                             {</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> __atomic_load_n(&amp;a-&gt;value, __ATOMIC_RELAXED);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ga5c9907a8805785a213ff1fb7a65c5b98"></a>
@@ -356,8 +355,8 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The incremented value after the operation.</dd></dl>
 <p>This uses relaxed ordering and wraps modulo 2^32. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00084">84</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                       {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> __atomic_add_fetch(&amp;a-&gt;value, 1, __ATOMIC_RELAXED);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00092">92</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                       {</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> __atomic_add_fetch(&amp;a-&gt;value, 1, __ATOMIC_RELAXED);</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="gaecd161cca0606398185418a825cb77fa"></a>
@@ -404,8 +403,8 @@ Functions</h2></td></tr>
 </dl>
 <p>This performs a relaxed store; it does not impose ordering with other memory operations. Use only as an initialization step before the atomic is shared with other threads. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00042">42</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                      {</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  __atomic_store_n(&amp;a-&gt;value, initial, __ATOMIC_RELAXED);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00050">50</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                                      {</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  __atomic_store_n(&amp;a-&gt;value, initial, __ATOMIC_RELAXED);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ga64d8af72d3cd29cd67036234d9bb4e8b"></a>
@@ -452,8 +451,8 @@ Functions</h2></td></tr>
 </dl>
 <p>This is a relaxed store; it does not order or publish other writes. If you need release semantics, introduce an explicit fence in the caller. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00071">71</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                               {</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  __atomic_store_n(&amp;a-&gt;value, v, __ATOMIC_RELAXED);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00079">79</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                               {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  __atomic_store_n(&amp;a-&gt;value, v, __ATOMIC_RELAXED);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ga7afcef049f7a00a9351a8b990a88cb05"></a>
@@ -500,8 +499,8 @@ Functions</h2></td></tr>
 </dl>
 <p>Performs a relaxed fetch-or; no ordering is implied. </p>
 
-<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00110">110</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                                                       {</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  (void)__atomic_fetch_or(&amp;a-&gt;value, mask, __ATOMIC_RELAXED);</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="atomic_8h_source.html#l00118">118</a> of file <a class="el" href="atomic_8h_source.html">atomic.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                                                       {</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  (void)__atomic_fetch_or(&amp;a-&gt;value, mask, __ATOMIC_RELAXED);</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="gad2f90e7a405742e4b0b01e9379a5b001"></a>
