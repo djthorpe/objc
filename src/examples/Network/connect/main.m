@@ -27,7 +27,7 @@
 
   // Connect to the network
   if ([[NXWireless sharedInstance] connect:net
-                              withPassword:@"anchovy073"] == NO) {
+                              withPassword:@"PASSWORD"] == NO) {
     NXLog(@"Failed to initiate connection to network: %@", net);
   }
 }

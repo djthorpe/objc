@@ -64,7 +64,7 @@ bool sys_date_get_now(sys_date_t *date) {
 /**
  * @brief Sets the current system time.
  */
-bool sys_date_set_now(sys_date_t *date) {
+bool sys_date_set_now(const sys_date_t *date) {
   if (date == NULL) {
     return false;
   }

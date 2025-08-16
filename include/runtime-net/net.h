@@ -1,0 +1,22 @@
+/**
+ * @file net.h
+ * @brief Network interface abstraction layer
+ * @defgroup Network Network Interfaces
+ * @ingroup System
+ *
+ * Managing network resources, protocols, and low-level operations.
+ */
+#pragma once
+#include "ntp.h"
+
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
+
+/**
+ * @brief Occasional polling function for the network system.
+ * @ingroup Network
+ *
+ * This function should be called periodically to allow the network
+ * system to perform any necessary background tasks.
+ */
+extern void net_poll(void);
