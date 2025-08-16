@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 /**
- * @brief Shared custom format handler for NXFoundation that supports %@ for
+ * @brief Shared custom format handler for Foundation that supports %@ for
  * objects and %t for time intervals.
  * @param format The format specifier character (e.g., '@' for '%@', 't' for
  * '%t').

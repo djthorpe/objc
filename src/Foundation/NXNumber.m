@@ -6,7 +6,7 @@
 #include "NXNumberUnsignedInt32.h"
 #include "NXNumberUnsignedInt64.h"
 #include "NXNumberZero.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////

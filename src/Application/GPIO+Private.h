@@ -3,7 +3,7 @@
  * @brief GPIO class private header.
  */
 #pragma once
-#include <NXApplication/NXApplication.h>
+#include <Application/Application.h>
 #include <runtime-hw/hw.h>
 
 /**

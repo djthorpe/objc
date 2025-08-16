@@ -1,5 +1,5 @@
 #include "Application+Private.h"
-#include <NXApplication/NXApplication.h>
+#include <Application/Application.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////

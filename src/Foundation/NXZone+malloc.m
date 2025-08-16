@@ -1,4 +1,4 @@
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 
 void *__zone_malloc(size_t size) {

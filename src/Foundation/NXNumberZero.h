@@ -5,18 +5,18 @@
  */
 #pragma once
 
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 /**
  * @brief A class for managing a singleton zero value that can represent
  * zero for any numeric type.
+ * @headerfile NXNumberZero.h Foundation/Foundation.h
  *
  * NXNumberZero is a singleton class that provides a memory-efficient
  * representation of zero that can be converted to any numeric type.
  * This avoids the need to create separate zero instances for each
  * number class type.
  *
- * \headerfile NXNumberZero.h NXFoundation/NXFoundation.h
  */
 @interface NXNumberZero : NXNumber
 

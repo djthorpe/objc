@@ -1,4 +1,4 @@
-set(NAME "NXFoundation")
+set(NAME "Foundation")
 
 add_library(${NAME} STATIC
     NXArch.m

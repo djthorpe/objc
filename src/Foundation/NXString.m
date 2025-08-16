@@ -1,6 +1,6 @@
 #include "NXFoundation+format.h"
 #include "NXString+unicode.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 #include <string.h>
 

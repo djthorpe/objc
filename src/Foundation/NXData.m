@@ -1,5 +1,5 @@
 #include "NXString+unicode.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 @implementation NXData
 

@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 /**
  * @brief NXNumber subclass for storing 16-bit signed integer values.

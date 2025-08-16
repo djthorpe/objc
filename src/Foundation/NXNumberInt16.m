@@ -1,5 +1,5 @@
 #include "NXNumberInt16.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE

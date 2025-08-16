@@ -1,5 +1,5 @@
 #include "NXNumberBool.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES

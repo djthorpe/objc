@@ -180,7 +180,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 
   // Release all shared GPIO instances
   @synchronized(self) {
-    for (uint32_t i = 0; i < HW_GPIO_MAX_COUNT; i++) {
+    uint32_t i;
+    for (i = 0; i < HW_GPIO_MAX_COUNT; i++) {
       GPIO *gpio = _gpio[i];
       if (gpio) {
         _gpio[i] = nil;

@@ -4,7 +4,7 @@
  * values.
  */
 #pragma once
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 /**
  * @brief A class for managing and manipulating 64-bit integer values.

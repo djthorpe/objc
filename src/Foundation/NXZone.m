@@ -1,5 +1,5 @@
 #include "NXZone+arena.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 #include <string.h>
 

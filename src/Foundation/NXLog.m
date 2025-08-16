@@ -1,12 +1,12 @@
 #include "NXFoundation+format.h"
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // SHARED FORMAT HANDLER
 
 /**
- * @brief Shared custom handler for NXFoundation that supports %@ for objects
+ * @brief Shared custom handler for Foundation that supports %@ for objects
  * and %t for time intervals
  */
 const char *_nxfoundation_format_handler(char format, va_list *va) {

@@ -4,7 +4,7 @@
  * unsigned integers values.
  */
 #pragma once
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 /**
  * @brief NXNumber subclass for storing 16-bit unsigned integer values.

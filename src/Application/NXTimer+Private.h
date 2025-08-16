@@ -3,7 +3,6 @@
  * @brief Timer class private header.
  */
 #pragma once
-#include <NXApplication/NXApplication.h>
 
 /**
  * @brief Category for private methods of the Timer class.
