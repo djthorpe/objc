@@ -79,7 +79,7 @@ var searchData=
   ['hw_5fwatchdog_5fmaxtimeout',['hw_watchdog_maxtimeout',['../group__Watchdog.html#ga245259fd46ac4252e9e7f575b865f521',1,'watchdog.h']]],
   ['hw_5fwatchdog_5freset',['hw_watchdog_reset',['../group__Watchdog.html#ga52cd020a7fe184b7b37bcc7f1e020dfd',1,'watchdog.h']]],
   ['hw_5fwatchdog_5fvalid',['hw_watchdog_valid',['../group__Watchdog.html#gac0a1313d13fb40ce020ab4b0051ae402',1,'watchdog.h']]],
-  ['hw_5fwifi_5fconnect',['hw_wifi_connect',['../group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3',1,'wifi.h']]],
+  ['hw_5fwifi_5fconnect',['hw_wifi_connect',['../group__WiFi.html#ga769d83c1785403dd28982fb3b8df54a3',1,'wifi.h']]],
   ['hw_5fwifi_5fdisconnect',['hw_wifi_disconnect',['../group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a',1,'wifi.h']]],
   ['hw_5fwifi_5ffinalize',['hw_wifi_finalize',['../group__WiFi.html#ga873a9cac260543ba7005a040857b79ed',1,'wifi.h']]],
   ['hw_5fwifi_5finit',['hw_wifi_init',['../group__WiFi.html#ga6a186a8bca91c5d0213b177f8cfcb4a0',1,'wifi.h']]],

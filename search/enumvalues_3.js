@@ -15,5 +15,8 @@ var searchData=
   ['nxcomparisondescending',['NXComparisonDescending',['../group__Foundation.html#ggad8cd3aa20b406ea96f21007d88380a1da66687acb8fd9cd54d041e236fc26ae67',1,'NXComparisonResult.h']]],
   ['nxcomparisonsame',['NXComparisonSame',['../group__Foundation.html#ggad8cd3aa20b406ea96f21007d88380a1da4926f4a1faf77b1057dcd5e81d85cf85',1,'NXComparisonResult.h']]],
   ['nxlittleendian',['NXLittleEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ae3ec7d49809ce50a2421b245165d5974',1,'NXArch.h']]],
-  ['nxunknownendian',['NXUnknownEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]]
+  ['nxunknownendian',['NXUnknownEndian',['../group__Foundation.html#gga64a1cc18eff9f4a79f16c2bf56d7ad23ab98eafd373ae0f9229dba6efe3f241f4',1,'NXArch.h']]],
+  ['nxwirelesserrorbadauth',['NXWirelessErrorBadAuth',['../group__Network.html#gga206f695b20513c023a14469a028a62e1a29d8e283d599b5e05b3f3b862523eb6f',1,'NXWirelessError.h']]],
+  ['nxwirelesserrorgeneral',['NXWirelessErrorGeneral',['../group__Network.html#gga206f695b20513c023a14469a028a62e1a72c1438d1b71b5b94f2a964a8b17c417',1,'NXWirelessError.h']]],
+  ['nxwirelesserrornotfound',['NXWirelessErrorNotFound',['../group__Network.html#gga206f695b20513c023a14469a028a62e1a6fc9066ab97fce8b85219d6f6ef5555e',1,'NXWirelessError.h']]]
 ];

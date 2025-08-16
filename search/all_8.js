@@ -141,7 +141,7 @@ var searchData=
   ['hw_5fwifi_5fauth_5fwpa_5faes',['hw_wifi_auth_wpa_aes',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a2a6eb325d38688c049b5e7cc51328e89',1,'wifi.h']]],
   ['hw_5fwifi_5fauth_5fwpa_5ftkip',['hw_wifi_auth_wpa_tkip',['../group__WiFi.html#gga186ec64c4394d990746204cb13e16069a5daad33cf7695612e154f956b2d1d247',1,'wifi.h']]],
   ['hw_5fwifi_5fcallback_5ft',['hw_wifi_callback_t',['../wifi_8h.html#a11f2a0111107c0224398d2bd8580da5a',1,'wifi.h']]],
-  ['hw_5fwifi_5fconnect',['hw_wifi_connect',['../group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3',1,'wifi.h']]],
+  ['hw_5fwifi_5fconnect',['hw_wifi_connect',['../group__WiFi.html#ga769d83c1785403dd28982fb3b8df54a3',1,'wifi.h']]],
   ['hw_5fwifi_5fdisconnect',['hw_wifi_disconnect',['../group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a',1,'wifi.h']]],
   ['hw_5fwifi_5fevent_5fbadauth',['hw_wifi_event_badauth',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177a4d352b0a5828dc47325f8ffb7340ba53',1,'wifi.h']]],
   ['hw_5fwifi_5fevent_5fconnected',['hw_wifi_event_connected',['../group__WiFi.html#gga04c09a1e040ff56c040349a7ad9b6177aafa751a65beb159c06faa4ea8137158d',1,'wifi.h']]],

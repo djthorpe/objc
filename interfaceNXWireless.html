@@ -96,9 +96,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a3c1aec628b0def2204bcde888f1b1e06"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a3c1aec628b0def2204bcde888f1b1e06">connect:</a></td></tr>
 <tr class="memdesc:a3c1aec628b0def2204bcde888f1b1e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to a Wi‑Fi network.  <a href="#a3c1aec628b0def2204bcde888f1b1e06">More...</a><br /></td></tr>
 <tr class="separator:a3c1aec628b0def2204bcde888f1b1e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#afe5aec0e2976969b63c3b96ddea4fa6e">connect:password:</a></td></tr>
-<tr class="memdesc:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection with an explicit password.  <a href="#afe5aec0e2976969b63c3b96ddea4fa6e">More...</a><br /></td></tr>
-<tr class="separator:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717862b6179eff6f7ec8c05974d181d5"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a717862b6179eff6f7ec8c05974d181d5">connect:withPassword:</a></td></tr>
+<tr class="memdesc:a717862b6179eff6f7ec8c05974d181d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection with an explicit password.  <a href="#a717862b6179eff6f7ec8c05974d181d5">More...</a><br /></td></tr>
+<tr class="separator:a717862b6179eff6f7ec8c05974d181d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76585f97749d195c27c0fb5a5e7bf747"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747">disconnect</a></td></tr>
 <tr class="memdesc:a76585f97749d195c27c0fb5a5e7bf747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from the current Wi‑Fi network.  <a href="#a76585f97749d195c27c0fb5a5e7bf747">More...</a><br /></td></tr>
 <tr class="separator:a76585f97749d195c27c0fb5a5e7bf747"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,8 +236,8 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
-<a id="afe5aec0e2976969b63c3b96ddea4fa6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe5aec0e2976969b63c3b96ddea4fa6e">&#9670;&nbsp;</a></span>connect:password:()</h2>
+<a id="a717862b6179eff6f7ec8c05974d181d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a717862b6179eff6f7ec8c05974d181d5">&#9670;&nbsp;</a></span>connect:withPassword:()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,9 +249,9 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
           <td class="paramname"><em>network</em></td>
         </tr>
         <tr>
-          <td class="paramkey">password:</td>
+          <td class="paramkey">withPassword:</td>
           <td></td>
-          <td class="paramtype">(const char *)&#160;</td>
+          <td class="paramtype">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolNXConstantStringProtocol-p.html">NXConstantStringProtocol</a> &gt;)&#160;</td>
           <td class="paramname"><em>password</em>&#160;</td>
         </tr>
         <tr>
@@ -266,7 +266,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">network</td><td>The target network descriptor (SSID/BSSID/etc.). </td></tr>
-    <tr><td class="paramname">password</td><td>NUL‑terminated password string (may be empty for open networks). </td></tr>
+    <tr><td class="paramname">password</td><td>NULL‑terminated password string (may be empty for open networks). </td></tr>
   </table>
   </dd>
 </dl>

@@ -85,9 +85,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga62b0339fed56194169264525925e5989"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#ga62b0339fed56194169264525925e5989">sys_date_get_now</a> (<a class="el" href="structsys__date__t.html">sys_date_t</a> *date)</td></tr>
 <tr class="memdesc:ga62b0339fed56194169264525925e5989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current system time.  <a href="#ga62b0339fed56194169264525925e5989">More...</a><br /></td></tr>
 <tr class="separator:ga62b0339fed56194169264525925e5989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0dd21dab01d370bb6780f994d2dbcb99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#ga0dd21dab01d370bb6780f994d2dbcb99">sys_date_set_now</a> (<a class="el" href="structsys__date__t.html">sys_date_t</a> *date)</td></tr>
-<tr class="memdesc:ga0dd21dab01d370bb6780f994d2dbcb99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current system time.  <a href="#ga0dd21dab01d370bb6780f994d2dbcb99">More...</a><br /></td></tr>
-<tr class="separator:ga0dd21dab01d370bb6780f994d2dbcb99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2db3a570535771518ab4308e34e99351"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#ga2db3a570535771518ab4308e34e99351">sys_date_set_now</a> (const <a class="el" href="structsys__date__t.html">sys_date_t</a> *date)</td></tr>
+<tr class="memdesc:ga2db3a570535771518ab4308e34e99351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current system time.  <a href="#ga2db3a570535771518ab4308e34e99351">More...</a><br /></td></tr>
+<tr class="separator:ga2db3a570535771518ab4308e34e99351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3282fd1dac6057e1fe0953ebf4581f64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SystemDate.html#ga3282fd1dac6057e1fe0953ebf4581f64">sys_date_get_time_utc</a> (<a class="el" href="structsys__date__t.html">sys_date_t</a> *date, uint8_t *hours, uint8_t *minutes, uint8_t *seconds)</td></tr>
 <tr class="memdesc:ga3282fd1dac6057e1fe0953ebf4581f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts time components from a <a class="el" href="structsys__date__t.html" title="Represents a system date and time structure. ">sys_date_t</a> structure.  <a href="#ga3282fd1dac6057e1fe0953ebf4581f64">More...</a><br /></td></tr>
 <tr class="separator:ga3282fd1dac6057e1fe0953ebf4581f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
 <p>Methods for manipulating time and date. </p>
 <p>The structure <a class="el" href="structsys__date__t.html" title="Represents a system date and time structure. ">sys_date_t</a> represents a point in time with nanosecond precision, including timezone offset. It provides functions to get and set the current date and time, as well as to manipulate and format date and time values.</p>
 <p>The calculation of current timezone offset is not considered in this implementation, since that requires a lot of additional complexity around daylight saving time, leap seconds, and other factors that affect timekeeping.</p>
-<p>In addition, setting the system time is not supported on all platforms due to security and permission restrictions. However, on the Pico platform, it is possible to set the system time using the <a class="el" href="group__SystemDate.html#ga0dd21dab01d370bb6780f994d2dbcb99" title="Sets the current system time. ">sys_date_set_now()</a> function, and the current time can be retrieved using <a class="el" href="group__SystemDate.html#ga62b0339fed56194169264525925e5989" title="Gets the current system time. ">sys_date_get_now()</a>, which offsets the time set with the number of seconds since the Pico was booted. </p>
+<p>In addition, setting the system time is not supported on all platforms due to security and permission restrictions. However, on the Pico platform, it is possible to set the system time using the <a class="el" href="group__SystemDate.html#ga2db3a570535771518ab4308e34e99351" title="Sets the current system time. ">sys_date_set_now()</a> function, and the current time can be retrieved using <a class="el" href="group__SystemDate.html#ga62b0339fed56194169264525925e5989" title="Gets the current system time. ">sys_date_get_now()</a>, which offsets the time set with the number of seconds since the Pico was booted. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gad0e2b399d7b34c3360cd8c9d5e2f5b4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad0e2b399d7b34c3360cd8c9d5e2f5b4e">&#9670;&nbsp;</a></span>sys_date_t</h2>
@@ -504,8 +504,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga0dd21dab01d370bb6780f994d2dbcb99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0dd21dab01d370bb6780f994d2dbcb99">&#9670;&nbsp;</a></span>sys_date_set_now()</h2>
+<a id="ga2db3a570535771518ab4308e34e99351"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2db3a570535771518ab4308e34e99351">&#9670;&nbsp;</a></span>sys_date_set_now()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -513,7 +513,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool sys_date_set_now </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structsys__date__t.html">sys_date_t</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structsys__date__t.html">sys_date_t</a> *&#160;</td>
           <td class="paramname"><em>date</em></td><td>)</td>
           <td></td>
         </tr>

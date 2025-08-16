@@ -53,6 +53,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -99,6 +100,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes a discovered Wi‑Fi network (scan result).  <a href="structhw__wifi__network__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aeaf0684f560b733174813b1c738c3dcf"><td class="memItemLeft" align="right" valign="top"><a id="aeaf0684f560b733174813b1c738c3dcf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HW_WIFI_SSID_MAX_LENGTH</b>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:aeaf0684f560b733174813b1c738c3dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -153,9 +160,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa616604419bc58296287f50edd1a26f1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gaa616604419bc58296287f50edd1a26f1">hw_wifi_scan</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:gaa616604419bc58296287f50edd1a26f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous scan for nearby Wi‑Fi networks.  <a href="group__WiFi.html#gaa616604419bc58296287f50edd1a26f1">More...</a><br /></td></tr>
 <tr class="separator:gaa616604419bc58296287f50edd1a26f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3">hw_wifi_connect</a> (hw_wifi_t *wifi, <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> network, const char *password)</td></tr>
-<tr class="memdesc:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to a Wi‑Fi network.  <a href="group__WiFi.html#ga0b89fefbd1b9f1937dc4f82f0cfb1ab3">More...</a><br /></td></tr>
-<tr class="separator:ga0b89fefbd1b9f1937dc4f82f0cfb1ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga769d83c1785403dd28982fb3b8df54a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#ga769d83c1785403dd28982fb3b8df54a3">hw_wifi_connect</a> (hw_wifi_t *wifi, const <a class="el" href="structhw__wifi__network__t.html">hw_wifi_network_t</a> *network, const char *password)</td></tr>
+<tr class="memdesc:ga769d83c1785403dd28982fb3b8df54a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to a Wi‑Fi network.  <a href="group__WiFi.html#ga769d83c1785403dd28982fb3b8df54a3">More...</a><br /></td></tr>
+<tr class="separator:ga769d83c1785403dd28982fb3b8df54a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a">hw_wifi_disconnect</a> (hw_wifi_t *wifi)</td></tr>
 <tr class="memdesc:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from a previously-connected Wi‑Fi network.  <a href="group__WiFi.html#gabe230d1a31e949c9ba8b9db81399dc8a">More...</a><br /></td></tr>
 <tr class="separator:gabe230d1a31e949c9ba8b9db81399dc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,7 +196,7 @@ Functions</h2></td></tr>
 </dl>
 <p>This callback is used when connecting or disconnecting from a network, and when scanning for networks. </p>
 
-<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00104">104</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="wifi_8h_source.html#l00110">110</a> of file <a class="el" href="wifi_8h_source.html">wifi.h</a>.</p>
 
 </div>
 </div>

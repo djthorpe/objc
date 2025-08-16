@@ -21,6 +21,7 @@ var searchData=
   ['nxtimeinterval_2eh',['NXTimeInterval.h',['../NXTimeInterval_8h.html',1,'']]],
   ['nxtimer_2eh',['NXTimer.h',['../NXTimer_8h.html',1,'']]],
   ['nxwireless_2eh',['NXWireless.h',['../NXWireless_8h.html',1,'']]],
+  ['nxwirelesserror_2eh',['NXWirelessError.h',['../NXWirelessError_8h.html',1,'']]],
   ['nxwirelessnetwork_2eh',['NXWirelessNetwork.h',['../NXWirelessNetwork_8h.html',1,'']]],
   ['nxzone_2eh',['NXZone.h',['../NXZone_8h.html',1,'']]]
 ];

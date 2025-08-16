@@ -67,6 +67,18 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a64f7dab48587ec0b101d7ee9d93c346a"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#a64f7dab48587ec0b101d7ee9d93c346a">scanDidComplete</a></td></tr>
 <tr class="memdesc:a64f7dab48587ec0b101d7ee9d93c346a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called once when the current scan completes (successfully or not).  <a href="#a64f7dab48587ec0b101d7ee9d93c346a">More...</a><br /></td></tr>
 <tr class="separator:a64f7dab48587ec0b101d7ee9d93c346a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#ab138bf9c11fe0d7c8bbf16bcdb0775b6">connectDidStart:</a></td></tr>
+<tr class="memdesc:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a connection attempt starts.  <a href="#ab138bf9c11fe0d7c8bbf16bcdb0775b6">More...</a><br /></td></tr>
+<tr class="separator:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae2380c1604bcf2d2e11b9664301b53"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#aaae2380c1604bcf2d2e11b9664301b53">connect:withError:</a></td></tr>
+<tr class="memdesc:aaae2380c1604bcf2d2e11b9664301b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called if the connection fails.  <a href="#aaae2380c1604bcf2d2e11b9664301b53">More...</a><br /></td></tr>
+<tr class="separator:aaae2380c1604bcf2d2e11b9664301b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6a237546ed999c54163b34371f2c28"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#a0e6a237546ed999c54163b34371f2c28">connected:</a></td></tr>
+<tr class="memdesc:a0e6a237546ed999c54163b34371f2c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a connection is established.  <a href="#a0e6a237546ed999c54163b34371f2c28">More...</a><br /></td></tr>
+<tr class="separator:a0e6a237546ed999c54163b34371f2c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d982faf9d990759f60a7f59c924fafc"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#a2d982faf9d990759f60a7f59c924fafc">disconnected:</a></td></tr>
+<tr class="memdesc:a2d982faf9d990759f60a7f59c924fafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after disconnecting from a network.  <a href="#a2d982faf9d990759f60a7f59c924fafc">More...</a><br /></td></tr>
+<tr class="separator:a2d982faf9d990759f60a7f59c924fafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> for receiving wireless scan events. </p>
@@ -75,11 +87,161 @@ Instance Methods</h2></td></tr>
 </dl>
 <p class="definition">Definition at line <a class="el" href="WirelessDelegate_09Protocol_8h_source.html#l00024">24</a> of file <a class="el" href="WirelessDelegate_09Protocol_8h_source.html">WirelessDelegate+Protocol.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="aaae2380c1604bcf2d2e11b9664301b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaae2380c1604bcf2d2e11b9664301b53">&#9670;&nbsp;</a></span>connect:withError:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) connect: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withError:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group__Network.html#ga206f695b20513c023a14469a028a62e1">NXWirelessError</a>)&#160;</td>
+          <td class="paramname"><em>error</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called if the connection fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The target network. </td></tr>
+    <tr><td class="paramname">error</td><td>The error code describing the failure. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab138bf9c11fe0d7c8bbf16bcdb0775b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab138bf9c11fe0d7c8bbf16bcdb0775b6">&#9670;&nbsp;</a></span>connectDidStart:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) connectDidStart: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when a connection attempt starts. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The target network. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0e6a237546ed999c54163b34371f2c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e6a237546ed999c54163b34371f2c28">&#9670;&nbsp;</a></span>connected:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) connected: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when a connection is established. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The connected network. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d982faf9d990759f60a7f59c924fafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d982faf9d990759f60a7f59c924fafc">&#9670;&nbsp;</a></span>disconnected:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) disconnected: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called after disconnecting from a network. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The network that was disconnected. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a64f7dab48587ec0b101d7ee9d93c346a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64f7dab48587ec0b101d7ee9d93c346a">&#9670;&nbsp;</a></span>scanDidComplete()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">- (void) scanDidComplete </td>
@@ -88,6 +250,11 @@ Instance Methods</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Called once when the current scan completes (successfully or not). </p>
@@ -100,6 +267,9 @@ Instance Methods</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">- (void) scanDidDiscoverNetwork: </td>
@@ -109,6 +279,11 @@ Instance Methods</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Called when a wireless network is discovered during a scan. </p>

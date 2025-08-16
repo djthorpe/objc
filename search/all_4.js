@@ -14,6 +14,7 @@ var searchData=
   ['delegate',['delegate',['../interfaceGPIO.html#a35b7756b9a012a1c802b6f3cdcd1c0cc',1,'GPIO::delegate()'],['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application::delegate()'],['../interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023',1,'NXTimer::delegate()'],['../interfaceNXWireless.html#a21447e9a0998d219a5596ff61bb5b661',1,'NXWireless::delegate()']]],
   ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
   ['disconnect',['disconnect',['../interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747',1,'NXWireless']]],
+  ['disconnected_3a',['disconnected:',['../protocolWirelessDelegate-p.html#a2d982faf9d990759f60a7f59c924fafc',1,'WirelessDelegate-p']]],
   ['display_2eh',['display.h',['../display_8h.html',1,'']]],
   ['divider',['divider',['../structhw__pwm__config__t.html#ac22872bf90335f126ef232cd59d4f46a',1,'hw_pwm_config_t']]],
   ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
