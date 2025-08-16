@@ -24,6 +24,7 @@ add_subdirectory(runtime/wificonnect)
 add_subdirectory(Application/helloworld)
 add_subdirectory(Application/gpio)
 add_subdirectory(Application/timer)
+add_subdirectory(Application/blink)
 
 # Driver examples
 add_subdirectory(drivers/bme280)

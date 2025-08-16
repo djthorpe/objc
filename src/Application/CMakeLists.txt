@@ -4,6 +4,7 @@ add_library(${NAME} STATIC
     Application.m
     ApplicationMain.m
     GPIO.m
+    LED.m
     NXTimer.m
 )
 target_include_directories(${NAME} PRIVATE

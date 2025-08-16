@@ -28,14 +28,12 @@
 }
 
 /**
- * @brief Returns the on-board status LED, which may be simple on/off or able to
- *        display different brightness or colors.
- * @return The current status LED. Returns nil if the status LED is not
- * available.
- */
-/**
- * @brief Get the on-board status LED instance.
+ * @brief Returns the on-board status LED.
  * @return An LED instance if the board exposes a status LED; nil otherwise.
+ *
+ * Returns an instance of the on-board status LED, which may be simple on/off or
+ * able to display different brightness or colors.
+ *
  */
 + (LED *)status;
 
