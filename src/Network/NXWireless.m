@@ -126,11 +126,27 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// METHODS
+// PUBLIC METHODS
 
 - (BOOL)scan {
   return hw_wifi_scan(_wifi);
 }
+
+- (BOOL)connect:(NXWirelessNetwork *)network {
+  // TODO: In future, we can store some passwords and use those if needed
+  return hw_wifi_connect(_wifi, network, NULL);
+}
+
+- (BOOL)connect:(NXWirelessNetwork *)network password:(const char *)password {
+  return hw_wifi_connect(_wifi, network, password);
+}
+
+- (BOOL)disconnect {
+  return hw_wifi_disconnect(_wifi);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
 
 - (void)scanDidDiscoverNetwork:(NXWirelessNetwork *)network {
   if (_delegate && object_respondsToSelector(_delegate, @selector
