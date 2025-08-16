@@ -17,5 +17,9 @@
  * specific Wi-Fi network, including its SSID, signal strength, and
  * security type.
  */
-@interface NXWirelessNetwork : NXObject
+@interface NXWirelessNetwork : NXObject {
+@private
+  const hw_wifi_network_t *_network; ///< The wireless network information
+}
+
 @end

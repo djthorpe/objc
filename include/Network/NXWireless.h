@@ -24,9 +24,10 @@
  * only one instance managing the wireless connection at any given time.
  */
 @interface NXWireless : NXObject {
-@protected
+@private
   id<WirelessDelegate> _delegate; ///< The wireless delegate
   hw_wifi_t *_wifi;               ///< The underlying Wi-Fi handle
+  hw_wifi_network_t *_network;    ///< The current network information
 }
 
 /**

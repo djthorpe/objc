@@ -1,3 +1,5 @@
+#include "NXWireless+Private.h"
+#include "NXWirelessNetwork+Private.h"
 #include <Network/Network.h>
 #include <runtime-sys/sys.h>
 
@@ -12,12 +14,42 @@ static id sharedInstance = nil;
 
 static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
                            const hw_wifi_network_t *network, void *user_data) {
+  NXWireless *sender = (NXWireless *)user_data;
   sys_assert(wifi);
-  sys_assert(user_data);
-  (void)event;
-  (void)network;
-  //  NXWireless *sender = (NXWireless *)user_data;
-  sys_printf("Wi-Fi event received");
+  sys_assert(sender);
+  sys_assert(event);
+
+  switch (event) {
+  case hw_wifi_event_scan:
+    if (network) {
+      NXWirelessNetwork *networkInfo =
+          [[NXWirelessNetwork alloc] initWithNetwork:network];
+      if (networkInfo) {
+        [sender scanDidDiscoverNetwork:[networkInfo autorelease]];
+      }
+    } else {
+      [sender scanDidComplete];
+    }
+    break;
+  case hw_wifi_event_joining:
+    sys_printf("Wi-Fi joining event received\n");
+    break;
+  case hw_wifi_event_connected:
+    sys_printf("Wi-Fi connected event received\n");
+    break;
+  case hw_wifi_event_disconnected:
+    sys_printf("Wi-Fi disconnected event received\n");
+    break;
+  case hw_wifi_event_badauth:
+    sys_printf("Wi-Fi bad authentication event received\n");
+    break;
+  case hw_wifi_event_notfound:
+    sys_printf("Wi-Fi not found event received\n");
+    break;
+  case hw_wifi_event_error:
+    sys_printf("Wi-Fi error event received\n");
+    break;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -51,7 +83,9 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
     _wifi = NULL;
 
     // Reset the shared instance to nil
-    sharedInstance = nil;
+    if (self == sharedInstance) {
+      sharedInstance = nil;
+    }
   }
 
   // Call superclass dealloc
@@ -61,11 +95,10 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 + (id)sharedInstance {
   @synchronized([self class]) {
     if (sharedInstance == nil) {
-      // TODO: Should this be autoreleased?
       sharedInstance = [[self alloc] init];
     }
+    return sharedInstance;
   }
-  return sharedInstance;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -97,6 +130,20 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 
 - (BOOL)scan {
   return hw_wifi_scan(_wifi);
+}
+
+- (void)scanDidDiscoverNetwork:(NXWirelessNetwork *)network {
+  if (_delegate && object_respondsToSelector(_delegate, @selector
+                                             (scanDidDiscoverNetwork:))) {
+    [_delegate scanDidDiscoverNetwork:network];
+  }
+}
+
+- (void)scanDidComplete {
+  if (_delegate &&
+      object_respondsToSelector(_delegate, @selector(scanDidComplete))) {
+    [_delegate scanDidComplete];
+  }
 }
 
 @end

@@ -22,6 +22,7 @@ add_library(${NAME} STATIC
     NXMap+hash.c
     NXObject.m
     NXString.m
+    NXString+format.m
     NXTimeInterval.m
     NXThread.m
     NXZone.m
