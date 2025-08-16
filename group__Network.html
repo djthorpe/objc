@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: Network Framework</title>
+<title>objc: Network Interfaces</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -48,25 +48,35 @@ $(function() {
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Network Framework<div class="ingroups"><a class="el" href="group__objc.html">Objective-C Runtime</a></div></div>  </div>
+<div class="title">Network Interfaces<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &#124; <a class="el" href="group__objc.html">Objective-C Runtime</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Network-related classes and types, including WiFi adapter management, connection management, data transmission and network protocols.  
+<p>Managing network resources, protocols, and low-level operations.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
-Collaboration diagram for Network Framework:</div>
+Collaboration diagram for Network Interfaces:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__Network.png" border="0" alt="" usemap="#group____Network"/>
 <map name="group____Network" id="group____Network">
-<area shape="rect" id="node1" href="group__objc.html" title="Objective&#45;C runtime, providing class introspection, protocols and resolution of selectors to the meth..." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node1" href="group__NTP.html" title="Network Time Protocol (NTP) client to synchronize system time. " alt="" coords="404,31,575,57"/>
+<area shape="rect" id="node2" href="group__objc.html" title="Objective&#45;C runtime, providing class introspection, protocols and resolution of selectors to the meth..." alt="" coords="5,5,161,32"/>
+<area shape="rect" id="node3" href="group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="19,56,148,83"/>
 </map>
 </td></tr></table></center>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__NTP"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__NTP.html">Network Time Protocol</a></td></tr>
+<tr class="memdesc:group__NTP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Network Time <a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> (NTP) client to synchronize system time. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXWireless.html">NXWireless</a></td></tr>
@@ -87,9 +97,16 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:ga206f695b20513c023a14469a028a62e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wireless connection error codes.  <a href="group__Network.html#ga206f695b20513c023a14469a028a62e1">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga206f695b20513c023a14469a028a62e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga9883190af01c5e1e4d8d990d9c2493a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Network.html#ga9883190af01c5e1e4d8d990d9c2493a4">net_poll</a> (void)</td></tr>
+<tr class="memdesc:ga9883190af01c5e1e4d8d990d9c2493a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Occasional polling function for the network system.  <a href="#ga9883190af01c5e1e4d8d990d9c2493a4">More...</a><br /></td></tr>
+<tr class="separator:ga9883190af01c5e1e4d8d990d9c2493a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Network-related classes and types, including WiFi adapter management, connection management, data transmission and network protocols. </p>
+<p>Managing network resources, protocols, and low-level operations. </p>
+<p>Network-related classes and types, including WiFi adapter management, connection management, data transmission and network protocols.</p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga206f695b20513c023a14469a028a62e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga206f695b20513c023a14469a028a62e1">&#9670;&nbsp;</a></span>NXWirelessError</h2>
@@ -119,6 +136,29 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="group__Network_html_gga206f695b20513c023a14469a028a62e1a29d8e283d599b5e05b3f3b862523eb6f"><div class="ttname"><a href="group__Network.html#gga206f695b20513c023a14469a028a62e1a29d8e283d599b5e05b3f3b862523eb6f">NXWirelessErrorBadAuth</a></div><div class="ttdoc">Authentication failed (bad credentials) </div><div class="ttdef"><b>Definition:</b> <a href="NXWirelessError_8h_source.html#l00017">NXWirelessError.h:17</a></div></div>
 <div class="ttc" id="group__Network_html_gga206f695b20513c023a14469a028a62e1a72c1438d1b71b5b94f2a964a8b17c417"><div class="ttname"><a href="group__Network.html#gga206f695b20513c023a14469a028a62e1a72c1438d1b71b5b94f2a964a8b17c417">NXWirelessErrorGeneral</a></div><div class="ttdoc">General or unspecified error. </div><div class="ttdef"><b>Definition:</b> <a href="NXWirelessError_8h_source.html#l00020">NXWirelessError.h:20</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga9883190af01c5e1e4d8d990d9c2493a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9883190af01c5e1e4d8d990d9c2493a4">&#9670;&nbsp;</a></span>net_poll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void net_poll </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Occasional polling function for the network system. </p>
+<p>This function should be called periodically to allow the network system to perform any necessary background tasks. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a22">examples/runtime/ntp/main.c</a>.</dd>
+</dl>
 </div>
 </div>
 </div><!-- contents -->

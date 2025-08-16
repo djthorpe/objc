@@ -266,7 +266,7 @@ Functions</h2></td></tr>
 <p>The ssid and auth parameters must be filled in by the caller, and the bssid parameter can optionally be set to the BSSID of the target access point (if known).</p>
 <p>The <code>password</code> must be a NUL‑terminated string (may be empty or NULL for open networks).</p>
 <p>Only one connection attempt may be active at a time per Wi‑Fi handle, and false will be returned if a connection attempt or scanning is already in progress. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a18">examples/runtime/wificonnect/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a20">examples/runtime/ntp/main.c</a>, and <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a18">examples/runtime/wificonnect/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -295,7 +295,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if a disconnect was initiated, false if not connected.</dd></dl>
 <p>Initiates a disconnect from the current network. The function returns immediately. If not currently connected, this is a no‑op, and if a connection attempt or scan is in progress, it will be aborted and false will be returned. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a21">examples/runtime/wificonnect/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a25">examples/runtime/ntp/main.c</a>, and <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a21">examples/runtime/wificonnect/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -323,7 +323,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Safe to call on an already finalized; in that case it is a no‑op. After finalization, <a class="el" href="group__WiFi.html#ga02cf34d87668e0464f65452a5e5a2e90" title="Determine if the Wi-Fi handle is initialized and usable. ">hw_wifi_valid()</a> returns false. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a22">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a15">examples/runtime/wifiscan/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a27">examples/runtime/ntp/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a22">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a15">examples/runtime/wifiscan/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -370,7 +370,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Wi-Fi handle or NULL on failure.</dd></dl>
 <p>This function initializes the Wi-Fi management subsystem and returns a handle to the Wi-Fi instance. If initialization fails (for example, if WiFi is not available), it returns NULL. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a16">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a10">examples/runtime/wifiscan/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a16">examples/runtime/ntp/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a16">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a10">examples/runtime/wifiscan/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -428,7 +428,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if initialized and not finalized; false otherwise. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a17">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a11">examples/runtime/wifiscan/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a17">examples/runtime/ntp/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a17">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a11">examples/runtime/wifiscan/main.c</a>.</dd>
 </dl>
 </div>
 </div>

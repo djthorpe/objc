@@ -13,4 +13,5 @@
 <area shape="rect" id="node13" href="$group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="205,563,369,589"/>
 <area shape="rect" id="node14" href="$group__SystemHashTable.html" title="Methods for hash table creation, insertion, deletion, and lookup. " alt="" coords="237,613,337,640"/>
 <area shape="rect" id="node15" href="$group__SystemEnv.html" title="System methods for reading information about the environment. " alt="" coords="234,664,339,691"/>
+<area shape="rect" id="node16" href="$group__Network.html" title="Managing network resources, protocols, and low&#45;level operations. " alt="" coords="213,715,360,741"/>
 </map>

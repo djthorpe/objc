@@ -77,6 +77,7 @@ Collaboration diagram for System Runtime:</div>
 <area shape="rect" id="node13" href="group__SystemMemory.html" title="Functions for managing and manipulating memory. " alt="" coords="205,563,369,589"/>
 <area shape="rect" id="node14" href="group__SystemHashTable.html" title="Methods for hash table creation, insertion, deletion, and lookup. " alt="" coords="237,613,337,640"/>
 <area shape="rect" id="node15" href="group__SystemEnv.html" title="System methods for reading information about the environment. " alt="" coords="234,664,339,691"/>
+<area shape="rect" id="node16" href="group__Network.html" title="Managing network resources, protocols, and low&#45;level operations. " alt="" coords="213,715,360,741"/>
 </map>
 </td></tr></table></center>
 </div>
@@ -121,6 +122,9 @@ Modules</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__Hardware"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Hardware.html">Hardware Interfaces</a></td></tr>
 <tr class="memdesc:group__Hardware"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managing hardware resources, peripherals, and low-level operations. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__Network"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Network.html">Network Interfaces</a></td></tr>
+<tr class="memdesc:group__Network"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managing network resources, protocols, and low-level operations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__Drivers"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Drivers.html">Hardware Devices</a></td></tr>
 <tr class="memdesc:group__Drivers"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drivers for external hardware devices. <br /></td></tr>
@@ -195,7 +199,7 @@ Functions</h2></td></tr>
 
 <p>Cleans up the system on shutdown. </p>
 <p>This function should be called at the end of the program to perform any necessary cleanup tasks, such as releasing resources and shutting down subsystems. It prepares the system for termination. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a18">clock/main.c</a>, <a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a22">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a18">examples/runtime/infrared/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a21">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a14">examples/runtime/watchdog/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a24">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a17">examples/runtime/wifiscan/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a18">clock/main.c</a>, <a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a22">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a18">examples/runtime/infrared/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a21">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a29">examples/runtime/ntp/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a14">examples/runtime/watchdog/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a24">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a17">examples/runtime/wifiscan/main.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -217,7 +221,7 @@ Functions</h2></td></tr>
 
 <p>Initializes the system on startup. </p>
 <p>This function must be called at the start of the program to initialize the system environment, including standard input/output streams and any necessary subsystems. It prepares the system for normal operation. It may include platform-specific initialization steps. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a12">clock/main.c</a>, <a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a19">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a15">examples/runtime/infrared/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a18">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a8">examples/runtime/watchdog/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a14">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a8">examples/runtime/wifiscan/main.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="clock_2main_8c-example.html#a12">clock/main.c</a>, <a class="el" href="examples_2runtime_2gpio_2main_8c-example.html#a19">examples/runtime/gpio/main.c</a>, <a class="el" href="examples_2runtime_2infrared_2main_8c-example.html#a15">examples/runtime/infrared/main.c</a>, <a class="el" href="examples_2runtime_2led_2main_8c-example.html#a18">examples/runtime/led/main.c</a>, <a class="el" href="examples_2runtime_2ntp_2main_8c-example.html#a14">examples/runtime/ntp/main.c</a>, <a class="el" href="examples_2runtime_2watchdog_2main_8c-example.html#a8">examples/runtime/watchdog/main.c</a>, <a class="el" href="examples_2runtime_2wificonnect_2main_8c-example.html#a14">examples/runtime/wificonnect/main.c</a>, and <a class="el" href="examples_2runtime_2wifiscan_2main_8c-example.html#a8">examples/runtime/wifiscan/main.c</a>.</dd>
 </dl>
 </div>
 </div>
