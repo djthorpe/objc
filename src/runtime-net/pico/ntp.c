@@ -71,6 +71,9 @@ bool net_ntp_valid(net_ntp_t *ntp) {
  * @brief Finalize and release any resources.
  */
 void net_ntp_finalize(net_ntp_t *ntp) {
+  if (ntp == NULL) {
+    return;
+  }
   if (ntp->callback == NULL) {
     return;
   }
