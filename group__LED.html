@@ -90,7 +90,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga9ec405198f2a522ab4611684a395e60d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an LED unit.  <a href="#ga9ec405198f2a522ab4611684a395e60d">More...</a><br /></td></tr>
 <tr class="separator:ga9ec405198f2a522ab4611684a395e60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga76653c7cfabf5234b1796d674f5ef7b1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#ga76653c7cfabf5234b1796d674f5ef7b1">hw_led_status_gpio</a> ()</td></tr>
-<tr class="memdesc:ga76653c7cfabf5234b1796d674f5ef7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for the on-board status LED.  <a href="#ga76653c7cfabf5234b1796d674f5ef7b1">More...</a><br /></td></tr>
+<tr class="memdesc:ga76653c7cfabf5234b1796d674f5ef7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the GPIO pin number for the on-board status LED.  <a href="#ga76653c7cfabf5234b1796d674f5ef7b1">More...</a><br /></td></tr>
 <tr class="separator:ga76653c7cfabf5234b1796d674f5ef7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9d5a43c3dc353f285dbf737588ff1bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LED.html#gad9d5a43c3dc353f285dbf737588ff1bc">hw_led_finalize</a> (<a class="el" href="structhw__led__t.html">hw_led_t</a> *led)</td></tr>
 <tr class="memdesc:gad9d5a43c3dc353f285dbf737588ff1bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release an LED.  <a href="#gad9d5a43c3dc353f285dbf737588ff1bc">More...</a><br /></td></tr>
@@ -138,7 +138,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ggac58a71ec207383491bdb61c7f91a6e28a216927b46077a86278f9bcd4979dfbbd"></a>HW_LED_CAP_LINEAR&#160;</td><td class="fielddoc"><p>Supports linear brightness control via PWM. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggac58a71ec207383491bdb61c7f91a6e28ab793c2d4fc7ffe42bb66490c15b68a96"></a>HW_LED_CAP_GPIO&#160;</td><td class="fielddoc"><p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin control. </p>
+<tr><td class="fieldname"><a id="ggac58a71ec207383491bdb61c7f91a6e28ab793c2d4fc7ffe42bb66490c15b68a96"></a>HW_LED_CAP_GPIO&#160;</td><td class="fielddoc"><p>GPIO pin control. </p>
 </td></tr>
 </table>
 
@@ -230,7 +230,7 @@ Functions</h2></td></tr>
 <p>Notes:</p><ul>
 <li>HW_LED_CAP_BINARY implies on/off control (present for every valid LED).</li>
 <li>HW_LED_CAP_LINEAR implies brightness (0..255) via PWM.</li>
-<li>HW_LED_CAP_GPIO indicates a directly drivable <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> (as distinct from a virtual / module-managed status LED). </li>
+<li>HW_LED_CAP_GPIO indicates a directly drivable GPIO (as distinct from a virtual / module-managed status LED). </li>
 </ul>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a1">examples/runtime/led/main.c</a>.</dd>
 </dl>
@@ -311,7 +311,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function disables the LED unit. If a PWM structure was used, it will stop the PWM output and release the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin associated with the LED. </p>
+<p>This function disables the LED unit. If a PWM structure was used, it will stop the PWM output and release the GPIO pin associated with the LED. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a17">examples/runtime/led/main.c</a>.</dd>
 </dl>
 </div>
@@ -345,14 +345,14 @@ Functions</h2></td></tr>
 <p>Initialize an LED unit. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for the LED. </td></tr>
+    <tr><td class="paramname">gpio</td><td>The GPIO pin number for the LED. </td></tr>
     <tr><td class="paramname">pwm</td><td>Optional pointer to a PWM structure for linear control. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A LED structure representing the initialized unit.</dd></dl>
-<p>This function initializes an LED unit. If linear control is supported (non-NULL PWM pointer associated with the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin), it will set up the PWM channel for the LED.</p>
-<p>If the pin number is 0xFF then it assumes the platform on-board status LED is being initialized (which may be implemented via a Wi‑Fi / radio module rather than a raw <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>). If the PWM structure is NULL, the LED will be controlled in a simple on/off manner (binary) without PWM. </p>
+<p>This function initializes an LED unit. If linear control is supported (non-NULL PWM pointer associated with the GPIO pin), it will set up the PWM channel for the LED.</p>
+<p>If the pin number is 0xFF then it assumes the platform on-board status LED is being initialized (which may be implemented via a Wi‑Fi / radio module rather than a raw GPIO). If the PWM structure is NULL, the LED will be controlled in a simple on/off manner (binary) without PWM. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a12">examples/runtime/led/main.c</a>.</dd>
 </dl>
 </div>
@@ -452,8 +452,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for the on-board status LED. </p>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number used for the status LED, or 0xFF if not available: for example, if the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> is controlled through the Wi-Fi subsystem. </dd></dl>
+<p>Return the GPIO pin number for the on-board status LED. </p>
+<dl class="section return"><dt>Returns</dt><dd>The GPIO pin number used for the status LED, or 0xFF if not available: for example, if the GPIO is controlled through the Wi-Fi subsystem. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a9">examples/runtime/led/main.c</a>.</dd>
 </dl>
 </div>

@@ -1,13 +1,10 @@
 <map id="include/runtime&#45;hw/gpio.h" name="include/runtime&#45;hw/gpio.h">
-<area shape="rect" id="node2" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="228,95,376,136"/>
-<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="379,184,561,211"/>
-<area shape="rect" id="node11" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="452,95,600,136"/>
-<area shape="rect" id="node12" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="624,95,772,136"/>
+<area shape="rect" id="node2" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="37,95,185,136"/>
+<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="188,184,371,211"/>
+<area shape="rect" id="node8" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="261,95,409,136"/>
+<area shape="rect" id="node9" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="433,95,581,136"/>
 <area shape="rect" id="node4" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,259,172,300"/>
 <area shape="rect" id="node6" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,259,363,300"/>
 <area shape="rect" id="node7" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,259,553,300"/>
-<area shape="rect" id="node8" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="578,259,743,300"/>
-<area shape="rect" id="node9" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="767,259,933,300"/>
-<area shape="rect" id="node5" href="$drivers_8h.html" title="Drivers header. " alt="" coords="190,355,369,382"/>
-<area shape="rect" id="node10" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="753,348,947,389"/>
+<area shape="rect" id="node5" href="$drivers_8h.html" title="Drivers header. " alt="" coords="190,348,369,375"/>
 </map>

@@ -1,8 +1,0 @@
-<map id="NXMap" name="NXMap">
-<area shape="rect" id="node2" href="$interfaceNXObject.html" title="The base class for objects in the NXFoundation framework. " alt="" coords="96,155,179,181"/>
-<area shape="rect" id="node3" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="43,80,107,107"/>
-<area shape="rect" id="node4" href="$protocolObjectProtocol-p.html" title="Protocol for objects. " alt="" coords="5,5,144,32"/>
-<area shape="rect" id="node5" href="$protocolRetainProtocol-p.html" title="Protocol for retaining and releasing objects. " alt="" coords="131,80,269,107"/>
-<area shape="rect" id="node6" href="$protocolJSONProtocol-p.html" title="A protocol that defines JSON methods for an Object. " alt="" coords="203,155,333,181"/>
-<area shape="rect" id="node7" href="$protocolCollectionProtocol-p.html" title="A protocol that defines collection methods for an Object. " alt="" coords="357,155,520,181"/>
-</map>

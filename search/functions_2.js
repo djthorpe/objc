@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['base64string',['base64String',['../interfaceNXData.html#ad4213bc61f2571ce0f886cae3d2ec101',1,'NXData']]],
-  ['boolvalue',['boolValue',['../interfaceNXNumber.html#afdb83b0383b30ab9e7df1edf8c3aa212',1,'NXNumber']]],
-  ['bytes',['bytes',['../interfaceNXData.html#a91df11b0b8d03ad6e447137e91c8d886',1,'NXData::bytes()'],['../interfaceNXString.html#a58f928cc59a56e54cc247ab2535b0707',1,'NXString::bytes()']]],
-  ['bytesfree',['bytesFree',['../interfaceNXZone.html#a960a9feaacf84515efae6c2f855421a4',1,'NXZone']]],
-  ['bytestotal',['bytesTotal',['../interfaceNXZone.html#ae47539252f6f96845d6c38c0a319db82',1,'NXZone']]],
-  ['bytesused',['bytesUsed',['../interfaceNXZone.html#a0b72d68fb1f91683c8825cb4db6bae1a',1,'NXZone']]]
+  ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()']]],
+  ['class_5fconformsto',['class_conformsTo',['../group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
+  ['class_5fgetinstancesize',['class_getInstanceSize',['../group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],
+  ['class_5fgetname',['class_getName',['../group__objc.html#ga07ce1ddc081be789fbb88d8a0beeded0',1,'runtime.h']]],
+  ['class_5fgetsuperclass',['class_getSuperclass',['../group__objc.html#ga08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
+  ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../group__objc.html#ga1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
+  ['class_5frespondstoselector',['class_respondsToSelector',['../group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
+  ['conformsto_3a',['conformsTo:',['../protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df',1,'ObjectProtocol-p::conformsTo:()'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
+  ['cstr',['cStr',['../protocolNXConstantStringProtocol-p.html#a84effffa6870fb756eb604fa16b52d76',1,'NXConstantStringProtocol-p::cStr()'],['../interfaceNXConstantString.html#a0268f6065de529f52473ad4aa67cb158',1,'NXConstantString::cStr()']]]
 ];

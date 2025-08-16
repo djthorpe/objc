@@ -1,7 +1,0 @@
-<map id="include/runtime&#45;gcc/objc/objc.h" name="include/runtime&#45;gcc/objc/objc.h">
-<area shape="rect" id="node2" href="$NXFoundation_8h.html" title="Foundation framework header. " alt="" coords="230,95,394,136"/>
-<area shape="rect" id="node4" href="$NXApplication_8h.html" title="Application framework header. " alt="" coords="384,184,549,225"/>
-<area shape="rect" id="node6" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="487,95,651,136"/>
-<area shape="rect" id="node3" href="$Application_8h.html" title="The main application class for NXApplication. " alt="" coords="5,184,171,225"/>
-<area shape="rect" id="node5" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="195,184,360,225"/>
-</map>

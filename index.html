@@ -62,7 +62,7 @@ $(function() {
 <ul>
 <li><b>Build system</b> <code>make</code> and <code>cmake</code> - for the build system</li>
 <li><b>Compiler</b> <code>clang</code> or <code>gcc</code> - for compiling the runtime (<code>clang</code> is not supported on Apple Silicon). You can use the environment variable <code>CC</code> to specify the compiler, e.g. <code>CC=clang</code> or <code>CC=gcc</code>.</li>
-<li><b>Library Dependencies</b> <code>openssl</code> for Linux and Darwin - for the hash functions, which are used in the runtime and NXFoundation framework.</li>
+<li><b>Library Dependencies</b> <code>openssl</code> for Linux and Darwin - for the hash functions, which are used in the runtime and Foundation framework.</li>
 <li><b>Documentation</b> <code>docker</code> is needed for generating the documentation from the source code.</li>
 <li><b>Cross-Compilation</b> For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <a href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases">https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases</a>. Install this to the <code>/opt</code> directory. You can use the environment variable <code>TOOLCHAIN_PATH</code> to specify the path to the toolchain, e.g. <code>TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal</code>.</li>
 </ul>
@@ -71,10 +71,10 @@ $(function() {
 <ul>
 <li><code>objc-gcc</code> - the Objective C runtime library using the ancient GCC ABI</li>
 <li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).</li>
-<li><code>runtime-hw</code> - hardware interfaces like SPI, I2C, <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.</li>
+<li><code>runtime-hw</code> - hardware interfaces like SPI, I2C, GPIO. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.</li>
 <li><code>drivers</code> and <code>runtime-pix</code> have a long way to go but should provide hardware driver and display support eventually.</li>
-<li><code>NXFoundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
-<li><code>NXApplicatiom</code> - the application framework, which provides a runloop and handles input, display, power and sensors.</li>
+<li><code>Foundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
+<li><code>Application</code> - the application framework, which provides a runloop and handles input, display, power and sensors.</li>
 </ul>
 <p>A lot of this code is in development still. See the "examples" or documentation on what's been implemented so far.</p>
 <p>Download the source code from GitHub:</p>
@@ -90,7 +90,7 @@ $(function() {
 <li>/opt/objc/lib/armv6m-none-eabi/libFoundation.a</li>
 <li>/opt/objc/include/objc</li>
 <li>/opt/objc/include/sys</li>
-<li>/opt/objc/include/NXFoundation</li>
+<li>/opt/objc/include/Foundation</li>
 <li>/opt/objc/doc/...</li>
 </ul>
 <p>These can subsequently be used to make your executables!</p>
@@ -105,64 +105,64 @@ $(function() {
 <li>[X] Resolving super classes and meta classes for message lookup</li>
 <li>[X] Calling methods in super classes - implement <code>[super init]</code> for example</li>
 <li>[X] Calling methods in categories</li>
-<li>[X] Memory management - alloc, dealloc, memory arenas - require malloc in an <code><a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></code></li>
-<li>[X] Printf support - <code>vsprintf</code> - printf-like function which can be used by NXLog, <a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a> and sys_panicf</li>
-<li>[X] Memory management - retain, release - reference counting for objects through <a class="el" href="interfaceNXZone.html" title="A class for managing memory zones. ">NXZone</a></li>
-<li>[X] Date and Time - <code><a class="el" href="interfaceNXDate.html" title="A class for representing and manipulating dates. ">NXDate</a></code> - mutable date and time</li>
-<li>[X] <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with booleans</li>
-<li>[X] <code><a class="el" href="interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. ">NXNull</a></code> - singleton for null objects that can be inserted into collections</li>
+<li>[X] Memory management - alloc, dealloc, memory arenas - require malloc in an <code>NXZone</code></li>
+<li>[X] Printf support - <code>vsprintf</code> - printf-like function which can be used by NXLog, NXString and sys_panicf</li>
+<li>[X] Memory management - retain, release - reference counting for objects through NXZone</li>
+<li>[X] Date and Time - <code>NXDate</code> - mutable date and time</li>
+<li>[X] <code>NXNumber</code> with booleans</li>
+<li>[X] <code>NXNull</code> - singleton for null objects that can be inserted into collections</li>
 <li>[X] Protocols and <code>conformsTo:</code></li>
-<li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt16</code> and <code>NXNumberUnsignedInt16</code></li>
-<li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt32</code> and <code>NXNumberUnsignedInt32</code></li>
-<li>[X] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberInt64</code> and <code>NXNumberUnsignedInt64</code></li>
+<li>[X] Number - <code>NXNumber</code> with <code>NXNumberInt16</code> and <code>NXNumberUnsignedInt16</code></li>
+<li>[X] Number - <code>NXNumber</code> with <code>NXNumberInt32</code> and <code>NXNumberUnsignedInt32</code></li>
+<li>[X] Number - <code>NXNumber</code> with <code>NXNumberInt64</code> and <code>NXNumberUnsignedInt64</code></li>
 <li>[X] Fix linking categories in static libraries (see test NXFoundation_05)</li>
-<li>[X] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - mutable strings - append, appendFormat</li>
-<li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
-<li>[X] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - mutable binary data with Base64/hex encoding and append operations</li>
+<li>[X] <code>NXString</code> - mutable strings - append, appendFormat</li>
+<li>[X] <code>NXArray</code> - ordered collections of objects, with methods for adding, removing, and accessing objects</li>
+<li>[X] <code>NXData</code> - mutable binary data with Base64/hex encoding and append operations</li>
 <li>[X] Hash functions - MD5 and SHA-256 hash computation through <code>sys_hash_*</code> API</li>
 <li>[X] Pico toolchain - integrate with Pico SDK</li>
 <li>[X] printf - <code>%@</code> format specifier for logging objects and <code>[<a class="el" href="interfaceObject.html" title="The root class of all Objective-C classes. ">Object</a> description]</code></li>
 <li>[X] printf - <code>T</code> format specifier for time intervals</li>
-<li>[X] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - string methods - join</li>
+<li>[X] <code>NXArray</code> - string methods - join</li>
 <li>[X] Robust sys_hash functions which hash some void* data against an arbitrary key, and a hashing function that can be used</li>
-<li>[X] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
-<li>[X] <code><a class="el" href="interfaceNXMap.html" title="The NXMap class. ">NXMap</a></code> - arbitary key sizes</li>
+<li>[X] <code>NXMap</code> - unordered collections with string-keys (what about <code>NXDictionary</code>?)</li>
+<li>[X] <code>NXMap</code> - arbitary key sizes</li>
 <li>[X] clang compatibility</li>
 <li>[X] runtime-hw SPI support</li>
 <li>[X] runtime-hw watchdog support</li>
-<li>[X] runtime-hw PWM support - make tying to a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin a function, focus on slices</li>
+<li>[X] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices</li>
+<li>[X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.</li>
+<li>[X] runtime-hw Power support - measure voltage on VSYS to get age and also whether connected to USB or battery</li>
+<li>[X] <code>GPIO</code> uses static instances, and <code>&lt;GPIODelegate&gt;</code> protocol to handle GPIO events which are pushed from the runloop</li>
+<li>[ ] <code>NXApplication</code> and <code>NXRunLoop</code> running on both cores</li>
 <li>[ ] runtime-hw LED support</li>
-<li>[ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.</li>
-<li>[ ] runtime-hw Power support - measure voltage on VSYS to get age and also whether connected to USB or battery</li>
-<li>[ ] <code><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a></code> uses static instances, and <code>&lt;<a class="el" href="protocolGPIODelegate-p.html" title="A protocol that defines the methods for a GPIO delegate. ">GPIODelegate</a>&gt;</code> protocol to handle <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events which are pushed from the runloop</li>
 <li>[ ] <code>Power</code> class and <code>&lt;PowerDelegate&gt;</code> for managing power, watchdog and resets, uptime, etc.</li>
-<li>[ ] <code>NXInputManager</code> - input manager for handling keyboard, mouse, <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> and other input devices with single click, double click and so forth.</li>
+<li>[ ] <code>NXInputManager</code> - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.</li>
 <li>[ ] <code>NXSensorManager</code> - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.</li>
 <li>[ ] <code>@synchronized</code> support - use fixed-size table to store locks for objects, no allocations</li>
-<li>[ ] <a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a> - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
+<li>[ ] NXNumber - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
 <li>[ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications</li>
 <li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning, parsing and tokenizing</li>
 <li>[ ] <code>NXURL</code> class - URL/filepath parsing and manipulation</li>
 <li>[ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data</li>
-<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
-<li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:</li>
-<li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> filterWithFunction: filteredArrayWithFunction:</li>
+<li>[ ] <code>NXData</code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
+<li>[ ] <code>NXArray</code> sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:</li>
+<li>[ ] <code>NXArray</code> filterWithFunction: filteredArrayWithFunction:</li>
 <li>[ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on</li>
 <li>[ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed</li>
-<li>[ ] <code>NXRange</code> and <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - substringWithRange and substringWithRange:options:</li>
-<li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - rangeOfSubstring and rangeOfSubstring:options:</li>
-<li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - <code>subarrayWithRange:</code> and <code>subarrayWithRange:options:</code></li>
-<li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - array methods - componentsSeparatedByString and componentsSeparatedByByte</li>
-<li>[ ] <code>NXApplication</code> and <code>NXRunLoop</code></li>
+<li>[ ] <code>NXRange</code> and <code>NXString</code> - substringWithRange and substringWithRange:options:</li>
+<li>[ ] <code>NXString</code> - rangeOfSubstring and rangeOfSubstring:options:</li>
+<li>[ ] <code>NXArray</code> - <code>subarrayWithRange:</code> and <code>subarrayWithRange:options:</code></li>
+<li>[ ] <code>NXString</code> - array methods - componentsSeparatedByString and componentsSeparatedByByte</li>
 <li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
-<li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
+<li>[ ] Number - <code>NXNumber</code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
 <li>[ ] More efficient method implementation lookup</li>
 <li>[ ] <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
 <li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
 <li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>) and lots of tests</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
 <li>[ ] Exception handling?</li>
-<li>[ ] Raspberry Pi support - <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>, SPI, I2C, PWM, ADC, etc.</li>
+<li>[ ] Raspberry Pi support - GPIO, SPI, I2C, PWM, ADC, etc.</li>
 </ul>
 <h2>References</h2>
 <p>Here are some references that may be useful for understanding the Objective C runtime and its implementation:</p>

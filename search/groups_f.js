@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['uc8151',['UC8151',['../group__UC8151.html',1,'']]]
+  ['watchdog',['Watchdog',['../group__Watchdog.html',1,'']]],
+  ['wifi',['WiFi',['../group__WiFi.html',1,'']]]
 ];

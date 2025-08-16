@@ -277,7 +277,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function properly shuts down the ST7789 display driver, turning off the backlight, releasing <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> resources, and clearing the driver structure. After calling this function, the driver structure should not be used.</p>
+<p>This function properly shuts down the ST7789 display driver, turning off the backlight, releasing GPIO resources, and clearing the driver structure. After calling this function, the driver structure should not be used.</p>
 <dl class="section note"><dt>Note</dt><dd>This function is safe to call multiple times on the same driver. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__ST7789.html#ga7172d376db09ea1daa1666bf6ed7bc47" title="Initialize a ST7789 display driver using the SPI interface. ">driver_st7789_init()</a> for initialization. </dd></dl>
 
@@ -343,9 +343,9 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">spi</td><td>Pointer to an initialized SPI interface for display communication. </td></tr>
-    <tr><td class="paramname">dc_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for Data/Command control. </td></tr>
-    <tr><td class="paramname">reset_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for display reset (optional, use HW_GPIO_INVALID if not used). </td></tr>
-    <tr><td class="paramname">backlight_pin</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number for backlight control (optional, use HW_GPIO_INVALID if not used). </td></tr>
+    <tr><td class="paramname">dc_pin</td><td>GPIO pin number for Data/Command control. </td></tr>
+    <tr><td class="paramname">reset_pin</td><td>GPIO pin number for display reset (optional, use HW_GPIO_INVALID if not used). </td></tr>
+    <tr><td class="paramname">backlight_pin</td><td>GPIO pin number for backlight control (optional, use HW_GPIO_INVALID if not used). </td></tr>
     <tr><td class="paramname">width</td><td>Display width in pixels. </td></tr>
     <tr><td class="paramname">height</td><td>Display height in pixels. </td></tr>
     <tr><td class="paramname">round</td><td>Whether the display is round (affects drawing operations). </td></tr>
