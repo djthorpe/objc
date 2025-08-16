@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['networktimedelegate_2dp',['NetworkTimeDelegate-p',['../protocolNetworkTimeDelegate-p.html',1,'']]],
   ['nxarray',['NXArray',['../interfaceNXArray.html',1,'']]],
   ['nxautoreleasepool',['NXAutoreleasePool',['../interfaceNXAutoreleasePool.html',1,'']]],
   ['nxconstantstring',['NXConstantString',['../interfaceNXConstantString.html',1,'']]],
@@ -7,6 +8,7 @@ var searchData=
   ['nxdata',['NXData',['../interfaceNXData.html',1,'']]],
   ['nxdate',['NXDate',['../interfaceNXDate.html',1,'']]],
   ['nxmap',['NXMap',['../interfaceNXMap.html',1,'']]],
+  ['nxnetworktime',['NXNetworkTime',['../interfaceNXNetworkTime.html',1,'']]],
   ['nxnull',['NXNull',['../interfaceNXNull.html',1,'']]],
   ['nxnumber',['NXNumber',['../interfaceNXNumber.html',1,'']]],
   ['nxobject',['NXObject',['../interfaceNXObject.html',1,'']]],

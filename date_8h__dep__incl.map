@@ -1,24 +1,24 @@
 <map id="include/runtime&#45;sys/date.h" name="include/runtime&#45;sys/date.h">
-<area shape="rect" id="node2" href="$sys_8h.html" title="System management functions. " alt="" coords="1364,95,1515,136"/>
-<area shape="rect" id="node22" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="1564,95,1715,136"/>
-<area shape="rect" id="node3" href="$power_8h.html" title="Power management interface. " alt="" coords="1077,273,1225,315"/>
-<area shape="rect" id="node16" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="1364,184,1515,225"/>
-<area shape="rect" id="node20" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="1508,363,1653,404"/>
-<area shape="rect" id="node21" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="1143,184,1288,225"/>
-<area shape="rect" id="node4" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="821,370,1004,397"/>
-<area shape="rect" id="node5" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="733,452,900,493"/>
-<area shape="rect" id="node7" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="924,452,1091,493"/>
-<area shape="rect" id="node8" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="371,452,537,493"/>
-<area shape="rect" id="node9" href="$Application_8h.html" title="Application framework header. " alt="" coords="1338,452,1485,493"/>
-<area shape="rect" id="node10" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="199,452,346,493"/>
-<area shape="rect" id="node11" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="29,452,175,493"/>
-<area shape="rect" id="node13" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="562,452,709,493"/>
-<area shape="rect" id="node14" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1509,452,1655,493"/>
-<area shape="rect" id="node15" href="$Network_8h.html" title="Network framework header. " alt="" coords="1115,459,1313,486"/>
-<area shape="rect" id="node6" href="$drivers_8h.html" title="Drivers header. " alt="" coords="727,549,906,575"/>
-<area shape="rect" id="node12" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="5,541,199,583"/>
-<area shape="rect" id="node17" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="1364,273,1515,315"/>
-<area shape="rect" id="node18" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="1339,363,1484,404"/>
-<area shape="rect" id="node19" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="1679,452,1826,493"/>
-<area shape="rect" id="node23" href="$net_8h.html" title="Network interface abstraction layer. " alt="" coords="1591,184,1741,225"/>
+<area shape="rect" id="node2" href="$sys_8h.html" title="System management functions. " alt="" coords="1121,95,1271,136"/>
+<area shape="rect" id="node22" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="1351,95,1502,136"/>
+<area shape="rect" id="node3" href="$power_8h.html" title="Power management interface. " alt="" coords="787,273,935,315"/>
+<area shape="rect" id="node16" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="1234,184,1385,225"/>
+<area shape="rect" id="node20" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="1123,363,1269,404"/>
+<area shape="rect" id="node21" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="1013,184,1158,225"/>
+<area shape="rect" id="node4" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="719,370,902,397"/>
+<area shape="rect" id="node5" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="709,452,875,493"/>
+<area shape="rect" id="node7" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="899,452,1066,493"/>
+<area shape="rect" id="node8" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="518,452,685,493"/>
+<area shape="rect" id="node9" href="$Application_8h.html" title="Application framework header. " alt="" coords="1261,452,1408,493"/>
+<area shape="rect" id="node10" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="5,452,152,493"/>
+<area shape="rect" id="node11" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="176,452,323,493"/>
+<area shape="rect" id="node13" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="347,452,493,493"/>
+<area shape="rect" id="node14" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1091,452,1237,493"/>
+<area shape="rect" id="node15" href="$Network_8h.html" title="Network framework header. " alt="" coords="1603,459,1802,486"/>
+<area shape="rect" id="node6" href="$drivers_8h.html" title="Drivers header. " alt="" coords="703,549,881,575"/>
+<area shape="rect" id="node12" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="153,541,346,583"/>
+<area shape="rect" id="node17" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="1234,273,1385,315"/>
+<area shape="rect" id="node18" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="1293,363,1438,404"/>
+<area shape="rect" id="node19" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="1432,452,1579,493"/>
+<area shape="rect" id="node23" href="$net_8h.html" title="Network interface abstraction layer. " alt="" coords="1471,273,1622,315"/>
 </map>
