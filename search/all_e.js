@@ -14,7 +14,7 @@ var searchData=
   ['network_2eh',['Network.h',['../Network_8h.html',1,'']]],
   ['networktimedelegate_2bprotocol_2eh',['NetworkTimeDelegate+Protocol.h',['../NetworkTimeDelegate_09Protocol_8h.html',1,'']]],
   ['networktimedelegate_2dp',['NetworkTimeDelegate-p',['../protocolNetworkTimeDelegate-p.html',1,'']]],
-  ['networktimedidupdate_3a',['networkTimeDidUpdate:',['../protocolNetworkTimeDelegate-p.html#a266dc587697c5a3f597fefbed25ee938',1,'NetworkTimeDelegate-p']]],
+  ['networktimedidupdate_3a',['networkTimeDidUpdate:',['../protocolNetworkTimeDelegate-p.html#a47cfcbd82dab5c5085cfe17726906888',1,'NetworkTimeDelegate-p']]],
   ['networkwithname_3a',['networkWithName:',['../interfaceNXWirelessNetwork.html#ada49b28b162dc2f8f9d5e22ce567dc65',1,'NXWirelessNetwork']]],
   ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
   ['nil',['Nil',['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
