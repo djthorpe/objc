@@ -25,7 +25,7 @@ Several static libraries are currently built:
 - `runtime-hw` - hardware interfaces like SPI, I2C, GPIO. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.
 - `drivers` and `runtime-pix` have a long way to go but should provide hardware driver and display support eventually.
 - `Foundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
-- `Applicatiom` - the application framework, which provides a runloop and handles input, display, power and sensors.
+- `Application` - the application framework, which provides a runloop and handles input, display, power and sensors.
 
 A lot of this code is in development still. See the "examples" or documentation on what's been implemented so far.
 
@@ -120,10 +120,11 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] runtime-hw SPI support
 - [X] runtime-hw watchdog support
 - [X] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices
+- [X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
+- [X] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
+- [X] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
+- [ ] `NXApplication` and `NXRunLoop` running on both cores
 - [ ] runtime-hw LED support
-- [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
-- [ ] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
-- [ ] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
 - [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
 - [ ] `NXInputManager` - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.
 - [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
@@ -142,7 +143,6 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `NXString` - rangeOfSubstring and rangeOfSubstring:options:
 - [ ] `NXArray` - `subarrayWithRange:` and `subarrayWithRange:options:`
 - [ ] `NXString` - array methods - componentsSeparatedByString and componentsSeparatedByByte
-- [ ] `NXApplication` and `NXRunLoop`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] More efficient method implementation lookup

@@ -241,6 +241,7 @@ void _app_poll_callback(sys_timer_t *timer) {
   // Run the loop until the stop flag is set
   while (true) {
     // Notify the delegate that the application has finished launching
+    // TODO: Only do this on the main thread
     if (_run == NO && _delegate != nil) {
       [_delegate applicationDidFinishLaunching:self];
       _run = YES; // Set the run flag to true
@@ -257,6 +258,7 @@ void _app_poll_callback(sys_timer_t *timer) {
       sys_timer_finalize(&timer);
 
       // Finalize the GPIO subsystem
+      // TODO: Only do this on the main thread
       [GPIO finalize];
 
       // No more events to process
@@ -288,6 +290,11 @@ void _app_poll_callback(sys_timer_t *timer) {
 
     // Free the allocated event - release it
     sys_free(app_event);
+
+    // Drain the autorelease pool
+    // TODO: Only do this on the main thread, and maybe less often than once per
+    // loop iteration
+    [[NXAutoreleasePool currentPool] drain];
   }
 
   // Reset the flags

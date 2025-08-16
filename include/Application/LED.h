@@ -76,7 +76,7 @@
  * @param repeats  YES to continue blinking until stopped; NO for one cycle.
  * @return YES if the blink was started; NO if unsupported or busy.
  */
-- (BOOL)blinkWithDuration:(NSTimeInterval)duration repeats:(BOOL)repeats;
+- (BOOL)blinkWithDuration:(NXTimeInterval)duration repeats:(BOOL)repeats;
 
 /**
  * @brief Fade the LED brightness up/down.
@@ -84,6 +84,6 @@
  * @param repeats  YES to continue fading until stopped; NO for one cycle.
  * @return YES if the fade was started; NO if unsupported or busy.
  */
-- (BOOL)fadeWithDuration:(NSTimeInterval)duration repeats:(BOOL)repeats;
+- (BOOL)fadeWithDuration:(NXTimeInterval)duration repeats:(BOOL)repeats;
 
 @end

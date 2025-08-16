@@ -194,7 +194,7 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 
   // Release all shared GPIO instances
   @synchronized(self) {
-    uint32_t i;
+    uint8_t i;
     for (i = 0; i < HW_GPIO_MAX_COUNT; i++) {
       GPIO *gpio = _gpio[i];
       if (gpio) {
