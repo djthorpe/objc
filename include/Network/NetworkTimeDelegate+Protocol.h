@@ -28,6 +28,6 @@
  * @brief Called when a network time update is received.
  * @param time The updated network time.
  */
-- (void)networkTimeDidUpdate:(NSDate *)time;
+- (void)networkTimeDidUpdate:(NXDate *)time;
 
 @end
