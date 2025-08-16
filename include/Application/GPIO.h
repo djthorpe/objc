@@ -2,6 +2,7 @@
  * @file GPIO.h
  * @brief Defines a class for controlling General Purpose Input/Output (GPIO)
  * pins.
+ *
  * @example examples/Application/gpio/main.m
  */
 #pragma once

@@ -67,9 +67,8 @@ static void _app_gpio_callback(uint8_t pin, hw_gpio_event_t event,
  * @brief Callback function for application timer events.
  */
 void _app_timer_callback(sys_timer_t *timer) {
-  objc_assert(timer);
-
   sys_event_queue_t *queue = &_app_queue;
+  objc_assert(timer);
   objc_assert(queue);
 
   // If the queue is not valid, return early

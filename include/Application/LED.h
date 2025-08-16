@@ -1,6 +1,8 @@
 /**
  * @file LED.h
  * @brief Defines a class for controlling Light Emitting Diodes (LEDs).
+ *
+ * @example examples/Application/blink/main.m
  */
 #pragma once
 #include <runtime-hw/hw.h>
@@ -25,17 +27,16 @@
 @interface LED : NXObject {
 @private
   hw_led_t _led; ///< Pointer to the LED data
+  hw_pwm_t _pwm; ///< Pointer to the PWM data
 }
 
 /**
- * @brief Returns the on-board status LED, which may be simple on/off or able to
- *        display different brightness or colors.
- * @return The current status LED. Returns nil if the status LED is not
- * available.
- */
-/**
- * @brief Get the on-board status LED instance.
+ * @brief Returns the on-board status LED.
  * @return An LED instance if the board exposes a status LED; nil otherwise.
+ *
+ * Returns an instance of the on-board status LED, which may be simple on/off or
+ * able to display different brightness or colors.
+ *
  */
 + (LED *)status;
 

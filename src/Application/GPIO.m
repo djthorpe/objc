@@ -1,7 +1,6 @@
 #include "GPIO+Private.h"
 #include <Application/Application.h>
 #include <runtime-hw/hw.h>
-#include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES

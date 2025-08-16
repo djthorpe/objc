@@ -52,16 +52,17 @@ static void _timer_callback(sys_timer_t *timer) {
     return nil;
   }
 
-  // Initialize the timer with the specified interval and repeat flag
-  uint32_t ms = NXTimeIntervalMilliseconds(interval);
-  _timer = sys_timer_init(ms, self, _timer_callback);
-  if (!sys_timer_start(&_timer)) {
+  // Validate interval
+  if (interval <= 0) {
     [self release];
     return nil;
-  } else {
-    _repeats = repeats;
-    _interval = interval;
   }
+
+  // Initialize the timer with the specified interval and repeat flag
+  int32_t ms = NXTimeIntervalMilliseconds(interval);
+  _timer = sys_timer_init(ms, self, _timer_callback);
+  _repeats = repeats;
+  _interval = interval;
 
   // Return success
   return self;
@@ -101,10 +102,14 @@ static void _timer_callback(sys_timer_t *timer) {
     if (_delegate == delegate) {
       return; // No change
     }
-    if (_delegate == nil && sys_timer_valid(&_timer)) {
+    if (_delegate == nil && delegate != nil) {
       // Start the timer if it was not running
-      sys_timer_start(&_timer);
+      if (sys_timer_start(&_timer) == false) {
+        NXLog(@"Failed to start timer");
+      }
+      sys_assert(sys_timer_valid(&_timer));
     }
+
     // Set the new delegate
     _delegate = delegate;
   }

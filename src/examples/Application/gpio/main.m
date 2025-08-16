@@ -64,5 +64,6 @@
 
 int main(int argc, char *argv[]) {
   // Initialize the NXApplication framework
-  return NXApplicationMain(argc, argv, [MyAppDelegate class]);
+  return NXApplicationMain(argc, argv, [MyAppDelegate class],
+                           NXApplicationCapabilityNone);
 }
