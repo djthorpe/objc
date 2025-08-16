@@ -17,7 +17,7 @@ else
 endif
 
 .PHONY: all
-all: NXApplication
+all: Application
 
 # Configure
 config: dep-cmake submodule
@@ -75,19 +75,19 @@ drivers: runtime-hw
 	@echo make drivers
 	@${CMAKE} --build ${BUILD_DIR} --target drivers -j ${JOBS}
 
-# Create the NXFoundation library
-.PHONY: NXFoundation
-NXFoundation: libobjc-gcc runtime-sys
+# Create the Foundation library
+.PHONY: Foundation
+Foundation: libobjc-gcc runtime-sys
 	@echo
-	@echo make NXFoundation
-	@${CMAKE} --build ${BUILD_DIR} --target NXFoundation -j ${JOBS}
+	@echo make Foundation
+	@${CMAKE} --build ${BUILD_DIR} --target Foundation -j ${JOBS}
 
-# Create the NXApplication library
-.PHONY: NXApplication
-NXApplication: NXFoundation runtime-hw drivers
+# Create the Application library
+.PHONY: Application
+Application: Foundation runtime-hw drivers
 	@echo
-	@echo make NXApplication
-	@${CMAKE} --build ${BUILD_DIR} --target NXApplication -j ${JOBS}
+	@echo make Application
+	@${CMAKE} --build ${BUILD_DIR} --target Application -j ${JOBS}
 
 # Run the tests
 .PHONY: tests

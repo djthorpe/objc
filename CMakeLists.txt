@@ -84,8 +84,8 @@ add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/drivers")
 
 # Objective-C
-add_subdirectory("src/NXFoundation")
-add_subdirectory("src/NXApplication")
+add_subdirectory("src/Foundation")
+add_subdirectory("src/Application")
 
 # Tests
 include(CTest)
