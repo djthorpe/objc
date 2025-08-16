@@ -11,6 +11,7 @@
  * @example examples/Application/helloworld/main.m
  */
 #pragma once
+#include "NXApplicationTypes.h"
 #include <Foundation/Foundation.h>
 #include <runtime-hw/hw.h>
 
@@ -20,6 +21,7 @@
  * @param argc The number of command-line arguments passed to the program.
  * @param argv An array of command-line argument strings.
  * @param delegate The class to use as the application delegate.
+ * @param capabilities The capabilities to enable for the application.
  * @return The exit status of the application (0 for success, non-zero for
  * error).
  *
@@ -44,11 +46,13 @@
  *
  * @code
  * int main(int argc, char *argv[]) {
- *     return NXApplicationMain(argc, argv, MyAppDelegateClass);
+ *     return NXApplicationMain(argc, argv, MyAppDelegateClass,
+ * NXApplicationCapabilityMulticore | NXApplicationCapabilityPower);
  * }
  * @endcode
  */
-int NXApplicationMain(int argc, char *argv[], Class delegate);
+int NXApplicationMain(int argc, char *argv[], Class delegate,
+                      NXApplicationCapability capabilities);
 
 #if __OBJC__
 

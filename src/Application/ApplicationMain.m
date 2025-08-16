@@ -12,9 +12,12 @@ static void _app_handle_signal(sys_env_signal_t signal);
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
-int NXApplicationMain(int argc, char *argv[], Class delegate) {
-  (void)argc; // Unused parameter
-  (void)argv; // Unused parameter
+int NXApplicationMain(int argc, char *argv[], Class delegate,
+                      NXApplicationCapability capabilities) {
+  (void)argc;         // Unused parameter
+  (void)argv;         // Unused parameter
+  (void)capabilities; // Unused parameter
+
   sys_init();
   hw_init();
 
