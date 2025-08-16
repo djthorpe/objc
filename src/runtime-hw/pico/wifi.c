@@ -36,16 +36,13 @@ struct hw_wifi_t {
 ///////////////////////////////////////////////////////////////////////////////
 // FORWARD DECLARATIONS
 
+#ifdef PICO_CYW43_SUPPORTED
 /**
  * @brief Return true if the link is up
  */
 static inline bool _hw_wifi_up(hw_wifi_t *wifi) {
   (void)wifi;
-#ifdef PICO_CYW43_SUPPORTED
   return cyw43_tcpip_link_status(&cyw43_state, CYW43_ITF_STA) == CYW43_LINK_UP;
-#else
-  return false;
-#endif
 }
 
 /**
@@ -72,11 +69,13 @@ static inline void _hw_wifi_set_busy(hw_wifi_t *wifi, hw_wifi_state_t state,
  */
 static uint32_t _hw_wifi_country_code(const char *country_code);
 
+#ifdef PICO_CYW43_SUPPORTED
 /**
  * @brief Forward declare the scanning callback
  */
 static int _hw_wifi_scan_callback(void *env,
                                   const cyw43_ev_scan_result_t *result);
+#endif
 
 /**
  * @brief Get channel for connected wifi
@@ -92,6 +91,7 @@ static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]);
  * @brief Get BSSID for connected Wi-Fi
  */
 static int16_t _hw_wifi_get_rssi(hw_wifi_t *wifi);
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
@@ -184,13 +184,13 @@ bool hw_wifi_scan(hw_wifi_t *wifi) {
   sys_assert(hw_wifi_valid(wifi));
   bool success = false;
 
+#ifdef PICO_CYW43_SUPPORTED
   // If we're already leaving, joining or scanning, don't init a new scan
   if (_hw_wifi_get_busy(wifi, hw_wifi_flag_leaving | hw_wifi_flag_joining |
                                   hw_wifi_flag_scanning)) {
     return false;
   }
 
-#ifdef PICO_CYW43_SUPPORTED
   if (_hw_wifi_up(wifi) == false) {
     // Bring Wi‑Fi up in STA mode
     cyw43_wifi_set_up(&cyw43_state, CYW43_ITF_STA, true,
@@ -254,6 +254,7 @@ bool hw_wifi_disconnect(hw_wifi_t *wifi) {
  */
 bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
                      const char *password) {
+  (void)password;
   sys_assert(hw_wifi_valid(wifi));
   sys_assert(network);
   bool success = false;
@@ -324,26 +325,20 @@ bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
-static uint32_t _hw_wifi_country_code(const char *country_code) {
 #ifdef PICO_CYW43_SUPPORTED
+static uint32_t _hw_wifi_country_code(const char *country_code) {
   if (country_code == NULL || strlen(country_code) != 2) {
     return 0;
   } else {
     return CYW43_COUNTRY(country_code[0], country_code[1], 0);
   }
-#else
-  (void)country_code;
-  return 0;
-#endif
 }
 
 uint8_t _hw_wifi_get_channel(hw_wifi_t *wifi) {
   sys_assert(hw_wifi_valid(wifi));
   uint32_t channel = 0;
-#ifdef PICO_CYW43_SUPPORTED
   cyw43_ioctl(&cyw43_state, CYW43_IOCTL_GET_CHANNEL, sizeof(channel),
               (uint8_t *)&channel, CYW43_ITF_STA);
-#endif
   return (uint8_t)channel;
 }
 
@@ -354,9 +349,7 @@ static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]) {
   sys_assert(hw_wifi_valid(wifi));
   sys_assert(bssid != NULL);
   sys_memset(bssid, 0, 6);
-#ifdef PICO_CYW43_SUPPORTED
   cyw43_wifi_get_bssid(&cyw43_state, bssid);
-#endif
 }
 
 /**
@@ -371,7 +364,6 @@ static int16_t _hw_wifi_get_rssi(hw_wifi_t *wifi) {
   return 0;
 }
 
-#ifdef PICO_CYW43_SUPPORTED
 static int _hw_wifi_scan_callback(void *ctx,
                                   const cyw43_ev_scan_result_t *result) {
   static hw_wifi_network_t network = {0};
@@ -432,9 +424,7 @@ static int _hw_wifi_scan_callback(void *ctx,
   // Continue scanning
   return 0;
 }
-#endif
 
-#ifdef PICO_CYW43_SUPPORTED
 void _hw_wifi_poll(void) {
   // Only act on our singleton
   hw_wifi_t *wifi = &_hw_wifi;

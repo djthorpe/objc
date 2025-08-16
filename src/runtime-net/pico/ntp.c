@@ -1,9 +1,9 @@
-#include <lwip/apps/sntp.h>
 #include <runtime-net/net.h>
 #include <runtime-sys/sys.h>
 
 #ifdef PICO_CYW43_SUPPORTED
 #include "cyw43.h"
+#include <lwip/apps/sntp.h>
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,11 @@ bool net_ntp_valid(net_ntp_t *ntp) {
   if (ntp->state == -1 || ntp->timestamp == 0) {
     return false;
   }
+#ifdef PICO_CYW43_SUPPORTED
   return sntp_enabled() ? true : false;
+#else
+  return false;
+#endif
 }
 
 /**
@@ -89,14 +93,18 @@ void net_ntp_finalize(net_ntp_t *ntp) {
 // PRIVATE FUNCTIONS
 
 void _net_ntp_set_enabled(void) {
+#ifdef PICO_CYW43_SUPPORTED
   // Start SNTP
   sntp_setoperatingmode(SNTP_OPMODE_POLL);
   sntp_init();
+#endif
 }
 
 void _net_ntp_set_disabled(void) {
+#ifdef PICO_CYW43_SUPPORTED
   // Stop SNTP
   sntp_stop();
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////

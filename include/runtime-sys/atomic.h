@@ -12,6 +12,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+// Some embedded targets (e.g., ARMv6-M / RP2040) have no lock-free atomics.
+// Clang then warns that builtins may not be lock-free (-Watomic-alignment).
+// We accept the fallback and suppress the warning locally.
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Watomic-alignment"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,7 +34,7 @@ extern "C" {
  */
 typedef struct sys_atomic_t {
   uint32_t value;
-} sys_atomic_t;
+} sys_atomic_t __attribute__((aligned(4)));
 
 /**
  * @brief Initialize an atomic with an initial value.
@@ -124,6 +132,10 @@ static inline void sys_atomic_set_bits(sys_atomic_t *a, uint32_t mask) {
 static inline void sys_atomic_clear_bits(sys_atomic_t *a, uint32_t mask) {
   (void)__atomic_fetch_and(&a->value, ~mask, __ATOMIC_RELAXED);
 }
+
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
 
 #ifdef __cplusplus
 }
