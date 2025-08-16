@@ -260,14 +260,14 @@ Functions</h2></td></tr>
 <p>Initialize power management. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio_vsys</td><td>GPIO (or 0xFF for default) used for VSYS / battery sense (platform specific) </td></tr>
-    <tr><td class="paramname">gpio_vbus</td><td>GPIO (or 0xFF for default) used for VBUS / USB present detect </td></tr>
+    <tr><td class="paramname">gpio_vsys</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> (or 0xFF for default) used for VSYS / battery sense (platform specific) </td></tr>
+    <tr><td class="paramname">gpio_vbus</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> (or 0xFF for default) used for VBUS / USB present detect </td></tr>
     <tr><td class="paramname">callback</td><td>Optional callback for asynchronous updates (may be NULL) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to a hw_power_t handle, or NULL</dd></dl>
-<p>GPIO arguments are platform dependent; pass 0xFF to use default signals, or if unavailable. The returned handle is valid if <a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd" title="Determine if the power handle is initialized and usable. ">hw_power_valid()</a> subsequently reports true. Supplying a callback enables event driven notification when supported. </p>
+<p><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> arguments are platform dependent; pass 0xFF to use default signals, or if unavailable. The returned handle is valid if <a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd" title="Determine if the power handle is initialized and usable. ">hw_power_valid()</a> subsequently reports true. Supplying a callback enables event driven notification when supported. </p>
 
 </div>
 </div>

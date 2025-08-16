@@ -245,14 +245,14 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">adapter</td><td>The I2C adapter number to use (0 to <a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04" title="Get the total number of available I2C adapters. ">hw_i2c_count()</a>-1). </td></tr>
-    <tr><td class="paramname">sda</td><td>The GPIO pin number to use for I2C data (SDA). </td></tr>
-    <tr><td class="paramname">scl</td><td>The GPIO pin number to use for I2C clock (SCL). </td></tr>
+    <tr><td class="paramname">sda</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for I2C data (SDA). </td></tr>
+    <tr><td class="paramname">scl</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for I2C clock (SCL). </td></tr>
     <tr><td class="paramname">baudrate</td><td>The desired I2C baud rate (e.g., 100000 for 100kHz). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An I2C structure representing the initialized interface.</dd></dl>
-<p>This function initializes an I2C interface using the specified adapter and GPIO pins for SDA and SCL lines. The adapter number should be valid and the specified pins should be capable of I2C functionality.</p>
+<p>This function initializes an I2C interface using the specified adapter and <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins for SDA and SCL lines. The adapter number should be valid and the specified pins should be capable of I2C functionality.</p>
 <dl class="section note"><dt>Note</dt><dd>The specified pins must support I2C functionality. </dd>
 <dd>
 Pin assignments are platform-dependent. </dd></dl>

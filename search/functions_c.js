@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
+  ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
+  ['nullvalue',['nullValue',['../interfaceNXNull.html#a1d719e2a79fbb1e83140be93c359b917',1,'NXNull']]],
+  ['numberwithbool_3a',['numberWithBool:',['../interfaceNXNumber.html#ad31141fabac9793fcf015df9cea49132',1,'NXNumber']]],
+  ['numberwithint16_3a',['numberWithInt16:',['../interfaceNXNumber.html#ad8e17f2470a31608697c21ae4642aeb7',1,'NXNumber']]],
+  ['numberwithint32_3a',['numberWithInt32:',['../interfaceNXNumber.html#a9891073f5a70425d74c11ba0cae2e10a',1,'NXNumber']]],
+  ['numberwithint64_3a',['numberWithInt64:',['../interfaceNXNumber.html#a970d91a0c04c7f96dd9861b6baf13258',1,'NXNumber']]],
+  ['numberwithunsignedint16_3a',['numberWithUnsignedInt16:',['../interfaceNXNumber.html#abeba3c92ca22cce5c3ce2fd1982c8294',1,'NXNumber']]],
+  ['numberwithunsignedint32_3a',['numberWithUnsignedInt32:',['../interfaceNXNumber.html#a138cbfffeab84815f061005037029f7c',1,'NXNumber']]],
+  ['numberwithunsignedint64_3a',['numberWithUnsignedInt64:',['../interfaceNXNumber.html#a84283d5fd779f493afcce5c2d74b3381',1,'NXNumber']]],
+  ['nxapplicationmain',['NXApplicationMain',['../group__Application.html#gabc34bf0215facc5913444e51c006ca97',1,'Application.h']]],
+  ['nxarchbits',['NXArchBits',['../group__Foundation.html#ga9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
+  ['nxarchendian',['NXArchEndian',['../group__Foundation.html#ga1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],
+  ['nxarchnumcores',['NXArchNumCores',['../group__Foundation.html#gae5ebb9b55da9e716c8d6c78437096a3b',1,'NXArch.h']]],
+  ['nxarchos',['NXArchOS',['../group__Foundation.html#ga7d911103836e6622e16f1906e298f693',1,'NXArch.h']]],
+  ['nxarchprocessor',['NXArchProcessor',['../group__Foundation.html#ga3dc5737bad94fc1a29d3ea389781a022',1,'NXArch.h']]],
+  ['nxrandint32',['NXRandInt32',['../group__Foundation.html#ga3c5ce4190cd3e1aad68bb62c2ae70878',1,'NXNumber.h']]],
+  ['nxrandunsignedint32',['NXRandUnsignedInt32',['../group__Foundation.html#gaa883ed827a2c8aec90e77fec9036c430',1,'NXNumber.h']]],
+  ['nxtimeintervaldescription',['NXTimeIntervalDescription',['../group__Foundation.html#ga49e3c3c4b120058925a19cb3b503bdf4',1,'NXTimeInterval.h']]],
+  ['nxtimeintervalmilliseconds',['NXTimeIntervalMilliseconds',['../group__Foundation.html#ga9d50f8ca5b9c94686168145bd2c10b09',1,'NXTimeInterval.h']]],
+  ['nxtimeintervaltimestamp',['NXTimeIntervalTimestamp',['../group__Foundation.html#gad1757f6168dd13629e4eda3ca5083e7e',1,'NXTimeInterval.h']]]
+];

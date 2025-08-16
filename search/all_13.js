@@ -1,8 +1,25 @@
 var searchData=
 [
-  ['uc8151',['UC8151',['../group__UC8151.html',1,'']]],
-  ['unit',['unit',['../structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4',1,'hw_pwm_t']]],
-  ['unlock',['unlock',['../structpix__display__t.html#a49414fc1c96b542865869e89da5d9b52',1,'pix_display_t']]],
-  ['update_5fspeed',['update_speed',['../structdriver__uc8151__t.html#a5326a745e6bc22fbc9426f0844027180',1,'driver_uc8151_t']]],
-  ['userdata',['userdata',['../structsys__timer__t.html#a16b6a6f37eaf8af57de54c0e8ba53755',1,'sys_timer_t::userdata()'],['../structpix__display__t.html#ad6fbb94c2033ea4888c2a60fe4e199eb',1,'pix_display_t::userdata()']]]
+  ['threading',['Threading',['../group__SystemThread.html',1,'']]],
+  ['timers',['Timers',['../group__SystemTimer.html',1,'']]],
+  ['table',['table',['../structsys__hashtable__iterator.html#ac1d4d45e5f23e46a0c2d20cbb9391bb0',1,'sys_hashtable_iterator']]],
+  ['tail',['tail',['../structsys__event__queue__t.html#a626ef4b99797174041d55e64ef62cc6a',1,'sys_event_queue_t']]],
+  ['terminate',['terminate',['../interfaceApplication.html#a5974dc3b4e119641d425ad88723d4489',1,'Application']]],
+  ['terminatewithexitstatus_3a',['terminateWithExitStatus:',['../interfaceApplication.html#a1f8b5bda9baed18aa00b8731c64dd92f',1,'Application']]],
+  ['thread_2eh',['thread.h',['../thread_8h.html',1,'']]],
+  ['time_5fms',['time_ms',['../structpix__display__t.html#a920bf770f5d9863d13c7f2e8cfca495a',1,'pix_display_t']]],
+  ['timeout_5fms',['timeout_ms',['../structdriver__bme280__t.html#a3e6cb40e28be9591c95c62bdb955a888',1,'driver_bme280_t']]],
+  ['timer_2eh',['timer.h',['../timer_8h.html',1,'']]],
+  ['timerdelegate_2bprotocol_2eh',['TimerDelegate+Protocol.h',['../TimerDelegate_09Protocol_8h.html',1,'']]],
+  ['timerdelegate_2dp',['TimerDelegate-p',['../protocolTimerDelegate-p.html',1,'']]],
+  ['timerfired_3a',['timerFired:',['../protocolTimerDelegate-p.html#a306584326680feb5aedf0f1e6e11e628',1,'TimerDelegate-p']]],
+  ['timerwithinterval_3arepeats_3a',['timerWithInterval:repeats:',['../interfaceNXTimer.html#a3f6f1cbdb3a709571da468d495cfb79e',1,'NXTimer']]],
+  ['tolowercase',['toLowercase',['../interfaceNXString.html#aeeecc1e2a683aae2a7b25476deee8167',1,'NXString']]],
+  ['touppercase',['toUppercase',['../interfaceNXString.html#a5837f08e476b546a89e26767571ed0f4',1,'NXString']]],
+  ['trimprefix_3asuffix_3a',['trimPrefix:suffix:',['../interfaceNXString.html#a0f2fd67750213341bccd2f22a94fd324',1,'NXString']]],
+  ['trimwhitespace',['trimWhitespace',['../interfaceNXString.html#a3eb033a2797d7c94ae51e030b94f0648',1,'NXString']]],
+  ['truevalue',['trueValue',['../interfaceNXNumber.html#a09d785a02139d2620348ef839ef88dad',1,'NXNumber']]],
+  ['tx',['tx',['../structhw__spi__t.html#afc987ce3998d6b522fc334125973cd36',1,'hw_spi_t']]],
+  ['types_2eh',['types.h',['../types_8h.html',1,'']]],
+  ['tzoffset',['tzoffset',['../structsys__date__t.html#a358069a870fd96acf25a6458d471c9c4',1,'sys_date_t']]]
 ];

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['sys_5fenv_5fsignal_5ft',['sys_env_signal_t',['../group__SystemEnv.html#ga33ec5a65e8cd1818422d292b9095b7ec',1,'env.h']]],
-  ['sys_5fhash_5falgorithm_5ft',['sys_hash_algorithm_t',['../group__SystemHashing.html#ga3d01ed00e5a4f0a1c2ea0bbf5233e899',1,'hash.h']]]
+  ['nxapplicationsignal',['NXApplicationSignal',['../group__Application.html#gaf744a07ee475ab59cd80c6fd7daf98b5',1,'NXApplicationTypes.h']]],
+  ['nxcomparisonresult',['NXComparisonResult',['../group__Foundation.html#gad8cd3aa20b406ea96f21007d88380a1d',1,'NXComparisonResult.h']]],
+  ['nxendian',['NXEndian',['../group__Foundation.html#ga64a1cc18eff9f4a79f16c2bf56d7ad23',1,'NXArch.h']]],
+  ['nxhashalgorithm',['NXHashAlgorithm',['../group__Foundation.html#ga2a28eb8cf223fe2036c2b4da8734c2cb',1,'NXData.h']]]
 ];

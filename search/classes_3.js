@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['object',['Object',['../interfaceObject.html',1,'']]],
-  ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]]
+  ['gpio',['GPIO',['../interfaceGPIO.html',1,'']]],
+  ['gpiodelegate_2dp',['GPIODelegate-p',['../protocolGPIODelegate-p.html',1,'']]]
 ];

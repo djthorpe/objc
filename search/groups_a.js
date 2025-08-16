@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['pixels',['Pixels',['../group__Pixel.html',1,'']]],
-  ['pixel_20displays',['Pixel Displays',['../group__PixelDisplay.html',1,'']]],
-  ['pixel_20frames',['Pixel Frames',['../group__PixelFrame.html',1,'']]],
-  ['power',['Power',['../group__Power.html',1,'']]],
-  ['pwm',['PWM',['../group__PWM.html',1,'']]]
+  ['objective_2dc_20runtime',['Objective-C Runtime',['../group__objc.html',1,'']]]
 ];

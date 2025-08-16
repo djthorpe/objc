@@ -102,7 +102,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a PWM unit.  <a href="#ga9055b1ee0b674d9ece4c211a7e6e0345">More...</a><br /></td></tr>
 <tr class="separator:ga9055b1ee0b674d9ece4c211a7e6e0345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga77b11f9964d179c54f3abcf23365b7ab"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga77b11f9964d179c54f3abcf23365b7ab">hw_pwm_gpio_unit</a> (uint8_t gpio)</td></tr>
-<tr class="memdesc:ga77b11f9964d179c54f3abcf23365b7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM unit for a GPIO pin.  <a href="#ga77b11f9964d179c54f3abcf23365b7ab">More...</a><br /></td></tr>
+<tr class="memdesc:ga77b11f9964d179c54f3abcf23365b7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM unit for a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#ga77b11f9964d179c54f3abcf23365b7ab">More...</a><br /></td></tr>
 <tr class="separator:ga77b11f9964d179c54f3abcf23365b7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__pwm__config__t.html">hw_pwm_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">hw_pwm_get_config</a> (float freq)</td></tr>
 <tr class="memdesc:ga03bc0e9e59b53e7ca4fff6d8a8c0e50a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get PWM configuration.  <a href="#ga03bc0e9e59b53e7ca4fff6d8a8c0e50a">More...</a><br /></td></tr>
@@ -114,7 +114,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply configuration to a PWM unit.  <a href="#ga7b08376ac8e6ae95c950419fc4b8cfc5">More...</a><br /></td></tr>
 <tr class="separator:ga7b08376ac8e6ae95c950419fc4b8cfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gaa48ab7f0c9e993f987cb26a4e5632517">hw_pwm_start</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm, uint8_t gpio, float duty_percent)</td></tr>
-<tr class="memdesc:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start PWM output on a specific GPIO pin.  <a href="#gaa48ab7f0c9e993f987cb26a4e5632517">More...</a><br /></td></tr>
+<tr class="memdesc:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start PWM output on a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin.  <a href="#gaa48ab7f0c9e993f987cb26a4e5632517">More...</a><br /></td></tr>
 <tr class="separator:gaa48ab7f0c9e993f987cb26a4e5632517"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9c7aadc7493e00ce39d899f709142cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__PWM.html#gad9c7aadc7493e00ce39d899f709142cc">hw_pwm_stop</a> (<a class="el" href="structhw__pwm__t.html">hw_pwm_t</a> *pwm)</td></tr>
 <tr class="memdesc:gad9c7aadc7493e00ce39d899f709142cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop PWM output.  <a href="#gad9c7aadc7493e00ce39d899f709142cc">More...</a><br /></td></tr>
@@ -129,8 +129,8 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Pulse Width Modulation (PWM) interface for hardware platforms. </p>
 <p>This module provides functions to initialize PWM units, configure frequency and duty cycle, and control PWM output.</p>
-<p>The PWM implementation supports multiple units (slices), each with one or more GPIO outputs. On the Raspberry Pi Pico, there are 8 PWM units on the RP2040 and 12 PWM units on the RP2350.</p>
-<p>Interrupts can be configured to trigger on PWM wrap events, allowing for precise timing and control in applications such as motor control, LED dimming, and audio generation.</p>
+<p>The PWM implementation supports multiple units (slices), each with one or more <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> outputs. On the Raspberry Pi Pico, there are 8 PWM units on the RP2040 and 12 PWM units on the RP2350.</p>
+<p>Interrupts can be configured to trigger on PWM wrap events, allowing for precise timing and control in applications such as motor control, <a class="el" href="interfaceLED.html" title="The LED class. ">LED</a> dimming, and audio generation.</p>
 <p>There is one global PWM callback, which is called when a PWM wrap interrupt occurs on any unit. The callback is executed in interrupt context, so it should be kept short and avoid blocking operations.</p>
 <p>The frequency of the PWM output is platform-dependent, but on the Pico this can range from approximately 8 Hz to 60 MHz. The value that is set in the PWM configuration is not necessarily the exact frequency, but rather the closest achievable frequency based on the hardware capabilities.</p>
 <p>Similarly the duty cycle (the ratio of HIGH vs LOW for each PWM period) is set as a percentage (0-100) of the PWM period. The actual duty cycle may not be exact due to hardware limitations, but it will be as close as possible to the requested value. </p>
@@ -207,7 +207,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This function disables the PWM unit, resets its configuration, and releases any associated GPIO pins. After calling this function, the PWM unit should not be used until re-initialized. </p>
+<p>This function disables the PWM unit, resets its configuration, and releases any associated <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins. After calling this function, the PWM unit should not be used until re-initialized. </p>
 
 </div>
 </div>
@@ -282,15 +282,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the PWM unit for a GPIO pin. </p>
+<p>Get the PWM unit for a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gpio</td><td>The GPIO pin number. </td></tr>
+    <tr><td class="paramname">gpio</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The PWM unit number associated with the GPIO pin</dd></dl>
-<p>This function retrieves the PWM unit number associated with a GPIO pin. The GPIO pin must be less than the total number of GPIO pins available. </p>
+<dl class="section return"><dt>Returns</dt><dd>The PWM unit number associated with the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin</dd></dl>
+<p>This function retrieves the PWM unit number associated with a <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin must be less than the total number of <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins available. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a11">examples/runtime/led/main.c</a>.</dd>
 </dl>
 </div>
@@ -330,7 +330,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A PWM structure representing the initialized unit.</dd></dl>
-<p>This function initializes the PWM unit and channel(s) the GPIO pin belongs to and initializes the unit with default settings. The PWM unit is not started and is set to the disabled state. </p>
+<p>This function initializes the PWM unit and channel(s) the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin belongs to and initializes the unit with default settings. The PWM unit is not started and is set to the disabled state. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2runtime_2led_2main_8c-example.html#a10">examples/runtime/led/main.c</a>.</dd>
 </dl>
 </div>
@@ -482,17 +482,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Start PWM output on a specific GPIO pin. </p>
+<p>Start PWM output on a specific <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pwm</td><td>Pointer to the PWM structure. </td></tr>
-    <tr><td class="paramname">gpio</td><td>GPIO pin number to attach. </td></tr>
+    <tr><td class="paramname">gpio</td><td><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to attach. </td></tr>
     <tr><td class="paramname">duty_percent</td><td>Duty cycle as a percentage, between 0 and 100. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the PWM was started successfully, false if the GPIO pin is invalid.</dd></dl>
-<p>This function attaches the specified GPIO pin to the PWM channel, starts the PWM output, sets the duty cycle for the specified PWM channel.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the PWM was started successfully, false if the <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin is invalid.</dd></dl>
+<p>This function attaches the specified <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin to the PWM channel, starts the PWM output, sets the duty cycle for the specified PWM channel.</p>
 <p>If the duty_percent is less than or equal to 0, the PWM output will always be low. If the duty_percent is 100 or greater, the PWM output will always be high. If the duty_percent is between 0 and 100, the PWM output will toggle between high and low at the specified frequency, with the duty cycle determining the proportion of time the output is high. </p>
 
 </div>

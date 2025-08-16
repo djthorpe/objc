@@ -221,17 +221,17 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">adapter</td><td>The SPI adapter number to use (0 to <a class="el" href="group__SPI.html#gad66e843c835a0a8163d713651c5526a9" title="Get the total number of available SPI adapters. ">hw_spi_count()</a>-1). </td></tr>
-    <tr><td class="paramname">sck</td><td>The GPIO pin number to use for SPI Clock (SCK). </td></tr>
-    <tr><td class="paramname">tx</td><td>The GPIO pin number to use for SPI Master Out Slave In (MOSI). </td></tr>
-    <tr><td class="paramname">rx</td><td>The GPIO pin number to use for SPI Master In Slave Out (MISO). </td></tr>
-    <tr><td class="paramname">cs</td><td>The GPIO pin number to use for SPI Chip Select (CS). </td></tr>
+    <tr><td class="paramname">sck</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for SPI Clock (SCK). </td></tr>
+    <tr><td class="paramname">tx</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for SPI Master Out Slave In (MOSI). </td></tr>
+    <tr><td class="paramname">rx</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for SPI Master In Slave Out (MISO). </td></tr>
+    <tr><td class="paramname">cs</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for SPI Chip Select (CS). </td></tr>
     <tr><td class="paramname">cs_active_low</td><td>True if the Chip Select (CS) pin is active low, false otherwise. </td></tr>
     <tr><td class="paramname">baudrate</td><td>The desired SPI baud rate (e.g., 100000 for 100kHz). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A SPI structure representing the initialized interface.</dd></dl>
-<p>This function initializes a SPI interface using the specified adapter and GPIO pins for MOSI, MISO, and SCK lines. The adapter number should be valid and the specified pins should be capable of SPI functionality.</p>
+<p>This function initializes a SPI interface using the specified adapter and <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins for MOSI, MISO, and SCK lines. The adapter number should be valid and the specified pins should be capable of SPI functionality.</p>
 <p>If the CS value is set to 0, it will not be used for reading or writing.</p>
 <dl class="section note"><dt>Note</dt><dd>The specified pins must support SPI functionality. </dd>
 <dd>

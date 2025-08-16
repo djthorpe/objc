@@ -1,4 +1,11 @@
 var searchData=
 [
-  ['value',['value',['../structsys__hashtable__entry__t.html#a5227dcf38b3aefcfd347baab9d002d26',1,'sys_hashtable_entry_t']]]
+  ['uc8151',['UC8151',['../group__UC8151.html',1,'']]],
+  ['unit',['unit',['../structhw__pwm__t.html#a7181dcbed0ffc068ca9c4952ea8cf7f4',1,'hw_pwm_t']]],
+  ['unlock',['unlock',['../structpix__display__t.html#a49414fc1c96b542865869e89da5d9b52',1,'pix_display_t']]],
+  ['unsignedint16value',['unsignedInt16Value',['../interfaceNXNumber.html#a260a7e75de90d9e5b575504dee5a344a',1,'NXNumber']]],
+  ['unsignedint32value',['unsignedInt32Value',['../interfaceNXNumber.html#a27011b5a99c56bfefee102cf7ff53ec9',1,'NXNumber']]],
+  ['unsignedint64value',['unsignedInt64Value',['../interfaceNXNumber.html#ac1dc60d6c166ab4dcb7a982763035de4',1,'NXNumber']]],
+  ['update_5fspeed',['update_speed',['../structdriver__uc8151__t.html#a5326a745e6bc22fbc9426f0844027180',1,'driver_uc8151_t']]],
+  ['userdata',['userdata',['../structsys__timer__t.html#a16b6a6f37eaf8af57de54c0e8ba53755',1,'sys_timer_t::userdata()'],['../structpix__display__t.html#ad6fbb94c2033ea4888c2a60fe4e199eb',1,'pix_display_t::userdata()']]]
 ];

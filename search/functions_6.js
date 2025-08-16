@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['length',['length',['../protocolNXConstantStringProtocol-p.html#aad2fbd9b7c96ff2381d5e479ec191b40',1,'NXConstantStringProtocol-p::length()'],['../interfaceNXConstantString.html#ac008e5f6fa7b441d551761de3c0ac14e',1,'NXConstantString::length()']]]
+  ['gpio_3achanged_3a',['gpio:changed:',['../protocolGPIODelegate-p.html#a223098089dd7b318f4a2ae93e021e6a0',1,'GPIODelegate-p']]]
 ];
