@@ -14,6 +14,7 @@ var searchData=
   ['sharedinstance',['sharedInstance',['../interfaceNXWireless.html#a71194df882457160a544214e2d156ce7',1,'NXWireless']]],
   ['size',['size',['../interfaceNXData.html#afe752b246ca4ec3c57eb92db6ecb8422',1,'NXData']]],
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
+  ['ssid',['ssid',['../interfaceNXWirelessNetwork.html#a8856d7b54f018d66386900a4c47a2456',1,'NXWirelessNetwork']]],
   ['state',['state',['../interfaceGPIO.html#a3105f3f6dbe6735a2d9e7af4d66af2b7',1,'GPIO']]],
   ['status',['status',['../interfaceLED.html#a696123a4595b324d160dc6f66904a350',1,'LED']]],
   ['stringwithcapacity_3a',['stringWithCapacity:',['../interfaceNXString.html#ac74475849c328fd46525a6be18a916fb',1,'NXString']]],

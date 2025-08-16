@@ -1,6 +1,7 @@
 var searchData=
 [
   ['capacity',['capacity',['../interfaceNXArray.html#a782643fda576f75b1bd9e853338ae9b4',1,'NXArray::capacity()'],['../interfaceNXData.html#ab5e7d95030ee119ed831bde2d2bfee44',1,'NXData::capacity()'],['../interfaceNXMap.html#aade1a65e9718f40e184ab698116943b7',1,'NXMap::capacity()'],['../interfaceNXString.html#a3bcf23a50bea6cb88d991b5196037230',1,'NXString::capacity()']]],
+  ['channel',['channel',['../interfaceNXWirelessNetwork.html#a4b34b25aab94d34092c861699ff4b8b5',1,'NXWirelessNetwork']]],
   ['class',['class',['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()'],['../interfaceObject.html#a9d9bab8aca5c711e23828285042f207b',1,'Object::class()']]],
   ['class_5fconformsto',['class_conformsTo',['../group__objc.html#gaa6a738aa79634e5b251dc817ffd19c7b',1,'runtime.h']]],
   ['class_5fgetinstancesize',['class_getInstanceSize',['../group__objc.html#ga0a072d3c3465223f1540b23b6304b0c3',1,'runtime.h']]],
@@ -10,6 +11,8 @@ var searchData=
   ['class_5frespondstoselector',['class_respondsToSelector',['../group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
   ['compare_3a',['compare:',['../interfaceNXDate.html#adf30381f387f21fbeb6f7fad51f077a1',1,'NXDate::compare:()'],['../interfaceNXString.html#af5014b9b35f1ce101b204e3f6af5d0f0',1,'NXString::compare:()']]],
   ['conformsto_3a',['conformsTo:',['../protocolObjectProtocol-p.html#a1d2cf5c8b18a1e5021427eb6b33e21df',1,'ObjectProtocol-p::conformsTo:()'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceObject.html#a8933d0f25d908db0309a701b0f06a825',1,'Object::conformsTo:(Protocol *aProtocolObject)'],['../interfaceProtocol.html#a701d08b6e101e40950d20b53a4f7c16a',1,'Protocol::conformsTo:()']]],
+  ['connect_3a',['connect:',['../interfaceNXWireless.html#a3c1aec628b0def2204bcde888f1b1e06',1,'NXWireless']]],
+  ['connect_3apassword_3a',['connect:password:',['../interfaceNXWireless.html#afe5aec0e2976969b63c3b96ddea4fa6e',1,'NXWireless']]],
   ['containsobject_3a',['containsObject:',['../protocolCollectionProtocol-p.html#ab5da6b8ce9987eff807856d5b66283d5',1,'CollectionProtocol-p::containsObject:()'],['../interfaceNXArray.html#a678c21d8e6dc8d74e6b90e3c9309129f',1,'NXArray::containsObject:()']]],
   ['containsstring_3a',['containsString:',['../interfaceNXString.html#a87abf6b4ab5c3cf25502964a6a4bf084',1,'NXString']]],
   ['count',['count',['../protocolCollectionProtocol-p.html#ad324c20c667623d5db39bb92bb2b64a3',1,'CollectionProtocol-p::count()'],['../interfaceNXArray.html#a646cc48310aa5bc75ca8acd44e13b56c',1,'NXArray::count()'],['../interfaceNXMap.html#a4296185de245e0997de1152baf6bb650',1,'NXMap::count()'],['../interfaceGPIO.html#a62a67445716b99160972e3f2ac60c99f',1,'GPIO::count()']]],

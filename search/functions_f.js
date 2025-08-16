@@ -7,5 +7,6 @@ var searchData=
   ['removeobjectforkey_3a',['removeObjectForKey:',['../interfaceNXMap.html#aa61a5aa67a7d62c61eb28d3f570709f1',1,'NXMap']]],
   ['repeats',['repeats',['../interfaceNXTimer.html#ac001625c338668044c95172792fe6769',1,'NXTimer']]],
   ['respondstoselector_3a',['respondsToSelector:',['../protocolObjectProtocol-p.html#adaee135bb8aaf2eb10c0a9654154ae20',1,'ObjectProtocol-p']]],
-  ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]]
+  ['retain',['retain',['../interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3',1,'NXObject::retain()'],['../protocolRetainProtocol-p.html#a381e1572840e1642398bbc12f50a9b26',1,'RetainProtocol-p::retain()']]],
+  ['rssi',['rssi',['../interfaceNXWirelessNetwork.html#a2a2b7135f045af1a02b49006a5c272ba',1,'NXWirelessNetwork']]]
 ];

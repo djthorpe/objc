@@ -25,7 +25,7 @@ var searchData=
   ['sleepfortimeinterval_3a',['sleepForTimeInterval:',['../interfaceNXThread.html#a5536b821231ba7ac200e79b746ebd952',1,'NXThread']]],
   ['spi',['spi',['../structdriver__st7789__t.html#a5dc65ca1d7c547e35ccae0db4094cb13',1,'driver_st7789_t::spi()'],['../structdriver__uc8151__t.html#a44f3aae1e8d0b663f98d384aefc08ede',1,'driver_uc8151_t::spi()'],['../group__SPI.html',1,'(Global Namespace)']]],
   ['spi_2eh',['spi.h',['../spi_8h.html',1,'']]],
-  ['ssid',['ssid',['../structhw__wifi__network__t.html#ad1cb5a815947514fdb83bf34ef900ad7',1,'hw_wifi_network_t']]],
+  ['ssid',['ssid',['../structhw__wifi__network__t.html#ad1cb5a815947514fdb83bf34ef900ad7',1,'hw_wifi_network_t::ssid()'],['../interfaceNXWirelessNetwork.html#a8856d7b54f018d66386900a4c47a2456',1,'NXWirelessNetwork::ssid()']]],
   ['st7789',['ST7789',['../group__ST7789.html',1,'']]],
   ['state',['state',['../interfaceGPIO.html#a3105f3f6dbe6735a2d9e7af4d66af2b7',1,'GPIO']]],
   ['status',['status',['../interfaceLED.html#a696123a4595b324d160dc6f66904a350',1,'LED']]],

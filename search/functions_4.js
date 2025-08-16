@@ -10,6 +10,7 @@ var searchData=
   ['defaultzone',['defaultZone',['../interfaceNXZone.html#ad5f817f5c094f3be72387fb5143bbe3e',1,'NXZone']]],
   ['delegate',['delegate',['../interfaceGPIO.html#a35b7756b9a012a1c802b6f3cdcd1c0cc',1,'GPIO::delegate()'],['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application::delegate()'],['../interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023',1,'NXTimer::delegate()'],['../interfaceNXWireless.html#a21447e9a0998d219a5596ff61bb5b661',1,'NXWireless::delegate()']]],
   ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
+  ['disconnect',['disconnect',['../interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747',1,'NXWireless']]],
   ['drain',['drain',['../interfaceNXAutoreleasePool.html#afc426a5eb599cf4183c416127346573f',1,'NXAutoreleasePool']]],
   ['driver_5fbme280_5fcalculate_5faltitude',['driver_bme280_calculate_altitude',['../group__BME280.html#gac8c12d391f07c6eedce45886f027a0e5',1,'drivers_bme280.h']]],
   ['driver_5fbme280_5fcalculate_5fsea_5flevel_5fpressure',['driver_bme280_calculate_sea_level_pressure',['../group__BME280.html#gad0b6004c094660e9cf94b85e5abe24d7',1,'drivers_bme280.h']]],

@@ -5,6 +5,7 @@ var searchData=
   ['nanoseconds',['nanoseconds',['../structsys__date__t.html#a11efe5ff6677a4198f7cb0e08bde904e',1,'sys_date_t']]],
   ['network_20framework',['Network Framework',['../group__Network.html',1,'']]],
   ['network_2eh',['Network.h',['../Network_8h.html',1,'']]],
+  ['networkwithname_3a',['networkWithName:',['../interfaceNXWirelessNetwork.html#ada49b28b162dc2f8f9d5e22ce567dc65',1,'NXWirelessNetwork']]],
   ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
   ['nil',['Nil',['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
   ['no',['NO',['../group__objc.html#ga996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],

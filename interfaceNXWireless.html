@@ -49,8 +49,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Instance Methods</a> &#124;
-<a href="#pub-static-methods">Class Methods</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a>  </div>
+<a href="#pub-static-methods">Class Methods</a>  </div>
   <div class="headertitle">
 <div class="title">NXWireless Class Reference<div class="ingroups"><a class="el" href="group__objc.html">Objective-C Runtime</a> &raquo; <a class="el" href="group__Network.html">Network Framework</a></div></div>  </div>
 </div><!--header-->
@@ -94,6 +93,15 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a52cdef931d89e1368ff8ac99ad79e863"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a52cdef931d89e1368ff8ac99ad79e863">scan</a></td></tr>
 <tr class="memdesc:a52cdef931d89e1368ff8ac99ad79e863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a scan for available Wi-Fi networks.  <a href="#a52cdef931d89e1368ff8ac99ad79e863">More...</a><br /></td></tr>
 <tr class="separator:a52cdef931d89e1368ff8ac99ad79e863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1aec628b0def2204bcde888f1b1e06"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a3c1aec628b0def2204bcde888f1b1e06">connect:</a></td></tr>
+<tr class="memdesc:a3c1aec628b0def2204bcde888f1b1e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to a Wi‑Fi network.  <a href="#a3c1aec628b0def2204bcde888f1b1e06">More...</a><br /></td></tr>
+<tr class="separator:a3c1aec628b0def2204bcde888f1b1e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#afe5aec0e2976969b63c3b96ddea4fa6e">connect:password:</a></td></tr>
+<tr class="memdesc:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection with an explicit password.  <a href="#afe5aec0e2976969b63c3b96ddea4fa6e">More...</a><br /></td></tr>
+<tr class="separator:afe5aec0e2976969b63c3b96ddea4fa6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76585f97749d195c27c0fb5a5e7bf747"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747">disconnect</a></td></tr>
+<tr class="memdesc:a76585f97749d195c27c0fb5a5e7bf747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from the current Wi‑Fi network.  <a href="#a76585f97749d195c27c0fb5a5e7bf747">More...</a><br /></td></tr>
+<tr class="separator:a76585f97749d195c27c0fb5a5e7bf747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfaceNXObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfaceNXObject')"><img src="closed.png" alt="-"/>&#160;Instance Methods inherited from <a class="el" href="interfaceNXObject.html">NXObject</a></td></tr>
 <tr class="memitem:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">retain</a></td></tr>
 <tr class="memdesc:ac6b807f7a7e6d628f7450aa9f67418b3 inherit pub_methods_interfaceNXObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increases the retain count of the receiver.  <a href="interfaceNXObject.html#ac6b807f7a7e6d628f7450aa9f67418b3">More...</a><br /></td></tr>
@@ -168,16 +176,8 @@ Class Methods</h2></td></tr>
 <tr class="memdesc:ae33e542e3f1da1a933e7625f46cde85a inherit pub_static_methods_interfaceObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string that represents the class.  <a href="interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a">More...</a><br /></td></tr>
 <tr class="separator:ae33e542e3f1da1a933e7625f46cde85a inherit pub_static_methods_interfaceObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a3f80fc75de22bcdc10317e6d22248a35"><td class="memItemLeft" align="right" valign="top"><a id="a3f80fc75de22bcdc10317e6d22248a35"></a>
-<a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&lt; <a class="el" href="protocolWirelessDelegate-p.html">WirelessDelegate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXWireless.html#a3f80fc75de22bcdc10317e6d22248a35">_delegate</a></td></tr>
-<tr class="memdesc:a3f80fc75de22bcdc10317e6d22248a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">The wireless delegate. <br /></td></tr>
-<tr class="separator:a3f80fc75de22bcdc10317e6d22248a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a532c7f72633000b32cb4180002f01ac6"><td class="memItemLeft" align="right" valign="top"><a id="a532c7f72633000b32cb4180002f01ac6"></a>
-hw_wifi_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXWireless.html#a532c7f72633000b32cb4180002f01ac6">_wifi</a></td></tr>
-<tr class="memdesc:a532c7f72633000b32cb4180002f01ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying Wi-Fi handle. <br /></td></tr>
-<tr class="separator:a532c7f72633000b32cb4180002f01ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_interfaceNXObject"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_interfaceNXObject')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="interfaceNXObject.html">NXObject</a></td></tr>
 <tr class="memitem:ae3dcd2daeccbd8e10e9baa60e1b94b2e inherit pro_attribs_interfaceNXObject"><td class="memItemLeft" align="right" valign="top"><a id="ae3dcd2daeccbd8e10e9baa60e1b94b2e"></a>
 <a class="el" href="group__objc.html#ga0332efe4206b49a80b5028908f36de0c">id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceNXObject.html#ae3dcd2daeccbd8e10e9baa60e1b94b2e">_zone</a></td></tr>
@@ -206,8 +206,75 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </ul>
 <p>The <a class="el" href="interfaceNXWireless.html" title="A class for managing wireless connections. ">NXWireless</a> class is designed to be a singleton, ensuring that there is only one instance managing the wireless connection at any given time. </p>
 
-<p class="definition">Definition at line <a class="el" href="NXWireless_8h_source.html#l00026">26</a> of file <a class="el" href="NXWireless_8h_source.html">NXWireless.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NXWireless_8h_source.html#l00028">28</a> of file <a class="el" href="NXWireless_8h_source.html">NXWireless.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
+<a id="a3c1aec628b0def2204bcde888f1b1e06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1aec628b0def2204bcde888f1b1e06">&#9670;&nbsp;</a></span>connect:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) connect: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Begin an asynchronous connection to a Wi‑Fi network. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The target network descriptor (SSID/BSSID/etc.). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the connection attempt was started; NO if another operation is in progress or parameters are invalid.</dd></dl>
+<p>This variant is intended for open networks or cases where credentials are already known to the platform. The call returns immediately; completion or failure will occur asynchronously. </p>
+
+</div>
+</div>
+<a id="afe5aec0e2976969b63c3b96ddea4fa6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe5aec0e2976969b63c3b96ddea4fa6e">&#9670;&nbsp;</a></span>connect:password:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) <a class="el" href="interfaceNXWireless.html#a3c1aec628b0def2204bcde888f1b1e06">connect:</a> </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">password:</td>
+          <td></td>
+          <td class="paramtype">(const char *)&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Begin an asynchronous connection with an explicit password. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The target network descriptor (SSID/BSSID/etc.). </td></tr>
+    <tr><td class="paramname">password</td><td>NUL‑terminated password string (may be empty for open networks). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the connection attempt was started; NO otherwise.</dd></dl>
+<p>The call returns immediately; the outcome will be determined asynchronously. </p>
+
+</div>
+</div>
 <a id="a21447e9a0998d219a5596ff61bb5b661"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21447e9a0998d219a5596ff61bb5b661">&#9670;&nbsp;</a></span>delegate()</h2>
 
@@ -227,6 +294,27 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <dl class="section return"><dt>Returns</dt><dd>The current wireless delegate, or nil if no delegate is set.</dd></dl>
 <p>This method returns the object that serves as the wireless delegate.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceNXWireless.html#a0f6c03526de436aa9d9fa89feb2474d3" title="Sets the wireless delegate. ">- setDelegate:</a> for setting the wireless <a class="el" href="interfaceNXWireless.html#a21447e9a0998d219a5596ff61bb5b661" title="Gets the current wireless delegate. ">- delegate</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a76585f97749d195c27c0fb5a5e7bf747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76585f97749d195c27c0fb5a5e7bf747">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) disconnect </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disconnect from the current Wi‑Fi network. </p>
+<dl class="section return"><dt>Returns</dt><dd>YES if a disconnect was initiated; NO if not connected or another operation prevents it.</dd></dl>
+<p>The operation is asynchronous; the interface will transition to a disconnected state shortly after the request. </p>
 
 </div>
 </div>
