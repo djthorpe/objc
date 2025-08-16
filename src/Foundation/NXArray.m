@@ -1,0 +1,600 @@
+#include <Foundation/Foundation.h>
+#include <runtime-sys/sys.h>
+#include <stdarg.h>
+
+@implementation NXArray
+
+///////////////////////////////////////////////////////////////////////////////
+// LIFECYCLE
+
+/**
+ * @brief Initializes a new empty array
+ */
+- (id)init {
+  self = [super init];
+  if (self) {
+    _data = NULL;
+    _length = 0;
+    _cap = 0;
+  }
+  return self;
+}
+
+/**
+ * @brief Initializes a new NXArray instance with the specified capacity.
+ */
+- (id)initWithCapacity:(size_t)capacity {
+  self = [self init];
+  if (!self) {
+    return nil;
+  }
+
+  // Just return self if capacity is zero
+  if (capacity == 0) {
+    return self;
+  }
+
+  // Allocate memory for the array data
+  _data = sys_malloc(capacity * sizeof(void *));
+  if (_data == 0) {
+    [self release];
+    self = nil;
+    return nil;
+  } else {
+    _cap = capacity;
+  }
+
+  // Initialize all elements to NULL
+  sys_memset(_data, 0, capacity * sizeof(void *));
+
+  // Return self
+  return self;
+}
+
+/**
+ * @brief Internal helper method to initialize with va_list.
+ */
+- (id)_initWithFirstObject:(id<RetainProtocol>)firstObject
+                 arguments:(va_list)args {
+  self = [self init];
+  if (!self) {
+    return nil;
+  }
+
+  // If no first object, return empty array
+  if (firstObject == nil) {
+    return self;
+  }
+
+  // Count objects first to determine capacity needed
+  va_list argsCopy;
+  va_copy(argsCopy, args);
+
+  size_t objectCount = 1; // Count the first object
+  id currentObject;
+  while ((currentObject = va_arg(argsCopy, id)) != nil) {
+    objectCount++;
+  }
+  va_end(argsCopy);
+
+  // Do not allow for objectCount == NXNotFound
+  if (objectCount == (size_t)NXNotFound) {
+    [self release];
+    return nil;
+  }
+
+  // Allocate memory for the objects
+  _data = sys_malloc(objectCount * sizeof(void *));
+  if (_data == NULL) {
+    [self release];
+    return nil;
+  }
+
+  // Set capacity and length
+  _cap = objectCount;
+  _length = objectCount;
+
+  // Initialize all elements to NULL first
+  sys_memset(_data, 0, objectCount * sizeof(void *));
+
+  // Now populate the array with the objects
+  _data[0] = [firstObject retain]; // Store and retain the first object
+
+  size_t index = 1;
+  while ((currentObject = va_arg(args, id)) != nil && index < objectCount) {
+    _data[index] = [currentObject retain]; // Store and retain each object
+    index++;
+  }
+
+  return self;
+}
+
+/**
+ * @brief Initializes an array with a variadic list of objects.
+ */
+- (id)initWithObjects:(id<RetainProtocol>)firstObject, ... {
+  va_list args;
+  va_start(args, firstObject);
+  self = [self _initWithFirstObject:firstObject arguments:args];
+  va_end(args);
+  return self;
+}
+
+/**
+ * @brief Deallocates the array and releases all contained objects.
+ */
+- (void)dealloc {
+  // Release all objects in the array
+  if (_data != NULL) {
+    size_t i;
+    for (i = 0; i < _length; i++) {
+      if (_data[i] != NULL) {
+        [(id)_data[i] release];
+      }
+    }
+    // Free the array data
+    sys_free(_data);
+  }
+
+  [super dealloc];
+}
+
+/**
+ * @brief Returns a new empty NXArray instance.
+ */
++ (NXArray *)new {
+  return [[[NXArray alloc] init] autorelease];
+}
+
+/**
+ * @brief Returns a new NXArray instance with the specified capacity.
+ */
++ (NXArray *)arrayWithCapacity:(size_t)capacity {
+  return [[[NXArray alloc] initWithCapacity:capacity] autorelease];
+}
+
+/**
+ * @brief Returns a new NXArray instance with the specified objects.
+ */
++ (NXArray *)arrayWithObjects:(id<RetainProtocol>)firstObject, ... {
+  va_list args;
+  va_start(args, firstObject);
+
+  // Create the array instance using the helper method
+  NXArray *array = [[[NXArray alloc] _initWithFirstObject:firstObject
+                                                arguments:args] autorelease];
+
+  va_end(args);
+
+  return array;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+
+- (BOOL)_setCapacity:(size_t)cap {
+  if (cap < _length) {
+    // Minimum capacity is _length
+    return NO;
+  }
+  if (cap == _cap) {
+    // No change needed
+    return YES;
+  }
+  if (cap == (size_t)NXNotFound) {
+    // Fail if maximum capacity is reached
+    return NO;
+  }
+
+  // Allocate new memory for the larger or smaller capacity
+  void **data = sys_malloc(cap * sizeof(void *));
+  if (data == NULL) {
+    // Allocation failed
+    return NO;
+  }
+
+  // Copy existing data to the new array, release old data
+  if (_data != NULL) {
+    sys_memcpy(data, _data, _length * sizeof(void *));
+    sys_free(_data);
+  }
+
+  // Set the new data pointer and capacity
+  _data = data;
+  _cap = cap;
+
+  // Return success
+  return YES;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC METHODS
+
+/**
+ * @brief Returns the number of elements in the array.
+ */
+- (unsigned int)count {
+  return (unsigned int)_length;
+}
+
+/**
+ * @brief Returns the capacity of the array.
+ */
+- (size_t)capacity {
+  return _cap;
+}
+
+/**
+ * @brief Returns the first object in the array.
+ */
+- (id)firstObject {
+  if (_length == 0) {
+    return nil;
+  }
+  return _data[0];
+}
+
+/**
+ * @brief Returns the last object in the array.
+ */
+- (id)lastObject {
+  if (_length == 0) {
+    return nil;
+  }
+  return _data[_length - 1];
+}
+
+/**
+ * @brief Returns the object at the specified index.
+ */
+- (id)objectAtIndex:(unsigned int)index {
+  objc_assert(index < _length); // Ensure index is within bounds
+  return _data[index];
+}
+
+/**
+ * @brief Return the JSON string representation of the array.
+ */
+- (NXString *)JSONString {
+  NXString *json = [NXString stringWithCapacity:[self JSONBytes] + 1];
+
+  [json appendCString:"["];
+
+  BOOL firstElement = YES;
+  size_t i = 0;
+  for (i = 0; i < _length; i++) {
+    id object = _data[i];
+
+    // Skip nil objects (this shouldn't happen, but be defensive)
+    if (object == nil) {
+      continue;
+    }
+
+    // Add comma if not the first element
+    if (!firstElement) {
+      [json appendCString:", "];
+    }
+    firstElement = NO;
+
+    // If object does not conform to JSONProtocol, use the description
+    if (![object conformsTo:@protocol(JSONProtocol)]) {
+      object = [object description];
+    }
+
+    // Perform the append
+    [json append:[object JSONString]];
+  }
+
+  [json appendCString:"]"];
+  return json;
+}
+
+/**
+ * @brief Returns the appropriate capacity for the JSON representation.
+ */
+- (size_t)JSONBytes {
+  // Estimate the size based on the length and potential escaping
+  size_t cap = 2; // For the brackets []
+  size_t i;
+  for (i = 0; i < _length; i++) {
+    id object = _data[i];
+
+    // Skip nil objects (this shouldn't happen, but be defensive)
+    if (object == nil) {
+      continue;
+    }
+
+    if (![object conformsTo:@protocol(JSONProtocol)]) {
+      object = [object description];
+    }
+    cap += [object JSONBytes] + 2; // +2 for the comma and space
+  }
+  return cap;
+}
+
+/**
+ * @brief Returns YES if the collection contains the specified object.
+ */
+- (BOOL)containsObject:(id)object {
+  objc_assert(object);
+
+  size_t i;
+  for (i = 0; i < _length; i++) {
+    id element = _data[i];
+
+    // Skip nil elements (defensive programming)
+    if (element == nil) {
+      continue;
+    }
+
+    // Check for direct pointer equality first
+    if (element == object) {
+      return YES;
+    }
+
+    // Check if element is a collection and recursively search it
+    if ([element conformsTo:@protocol(CollectionProtocol)]) {
+      if ([element containsObject:object]) {
+        return YES;
+      }
+    }
+  }
+  return NO;
+}
+
+/**
+ * @brief Appends an object to the end of the array.
+ */
+- (BOOL)append:(id<RetainProtocol, ObjectProtocol>)object {
+  objc_assert(object);
+
+  // We cannot insert if we're trying to insert 'self' because
+  // that would create a circular reference
+  if (object == self) {
+    return NO;
+  } else if ([object conformsTo:@protocol(CollectionProtocol)]) {
+    if ([(id<CollectionProtocol>)object containsObject:self]) {
+      return NO; // Prevent inserting collections directly
+    }
+  }
+
+  // Check if we need to grow the capacity
+  if (_length >= _cap) {
+    // Grow capacity by 1.5x to be conservative, with special cases for small
+    // values
+    size_t cap = _cap < 2 ? _cap + 1 : _cap + (_cap >> 1);
+    if ([self _setCapacity:cap] == NO) {
+      return NO; // Failed to increase capacity
+    }
+  }
+
+  // Insert the object at the end
+  objc_assert(_length < _cap); // Ensure we have space
+  _data[_length] = [object retain];
+  _length++;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Inserts an object at the specified index in the array.
+ */
+- (BOOL)insert:(id<RetainProtocol, ObjectProtocol>)object
+       atIndex:(unsigned int)index {
+  objc_assert(object);
+  objc_assert(index <= _length); // Ensure index is within bounds
+
+  // We cannot insert if we're trying to insert 'self' because
+  // that would create a circular reference
+  if (object == self) {
+    return NO;
+  } else if ([object conformsTo:@protocol(CollectionProtocol)]) {
+    if ([(id<CollectionProtocol>)object containsObject:self]) {
+      return NO; // Prevent inserting collections directly
+    }
+  }
+
+  // Check if we need to grow the capacity
+  if (_length >= _cap) {
+    // Grow capacity by 1.5x to be conservative, with special cases for small
+    // values
+    size_t cap = _cap < 2 ? _cap + 1 : _cap + (_cap >> 1);
+    if ([self _setCapacity:cap] == NO) {
+      return NO; // Failed to increase capacity
+    }
+  }
+
+  // Shift all elements from index to the right by one position
+  if (index < _length) {
+    sys_memmove(&_data[index + 1], &_data[index],
+                (_length - index) * sizeof(void *));
+  }
+
+  // Insert the object at the specified index
+  objc_assert(_length < _cap); // Ensure we have space
+  _data[index] = [object retain];
+  _length++;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Returns the index for the specified object.
+ */
+- (unsigned int)indexForObject:(id<ObjectProtocol>)object {
+  objc_assert(object);
+
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id element = (id)_data[i];
+    if ([element isEqual:object]) {
+      return i;
+    }
+  }
+  return NXNotFound;
+}
+
+/**
+ * @brief Removes the first occurrence of the specified object from the array.
+ */
+- (BOOL)remove:(id<RetainProtocol>)object {
+  objc_assert(object);
+
+  // Find the index of the object (cast to ObjectProtocol for indexForObject)
+  unsigned int index = [self indexForObject:(id<ObjectProtocol>)object];
+
+  // If object not found, return NO
+  if (index == NXNotFound) {
+    return NO;
+  }
+
+  // Use removeObjectAtIndex to do the actual removal
+  return [self removeObjectAtIndex:index];
+}
+
+/**
+ * @brief Removes the object at the specified index from the array.
+ */
+- (BOOL)removeObjectAtIndex:(unsigned int)index {
+  objc_assert(index < _length); // Ensure index is within bounds
+
+  // Release the object at the specified index
+  [(id)_data[index] release];
+
+  // Shift all elements down by one position
+  sys_memmove(&_data[index], &_data[index + 1],
+              (_length - index - 1) * sizeof(void *));
+  _length--;
+
+  // Return YES to indicate success
+  return YES;
+}
+
+/**
+ * @brief Removes all objects from the array.
+ */
+- (void)removeAllObjects {
+  // Release all objects in the array
+  if (_data != NULL) {
+    size_t i;
+    for (i = 0; i < _length; i++) {
+      if (_data[i] != NULL) {
+        [(id)_data[i] release];
+      }
+    }
+    // Zero out the data array
+    sys_memset(_data, 0, _cap * sizeof(void *));
+  }
+
+  // Reset length to zero, but preserve capacity
+  _length = 0;
+}
+
+- (BOOL)isEqual:(id)other {
+  if (other == self) {
+    return YES; // Same instance
+  }
+  if (other == nil || ![other isKindOfClass:[NXArray class]]) {
+    return NO; // Not equal if other is nil or not an NXArray
+  }
+
+  // Check if lengths are equal
+  NXArray *otherArray = (NXArray *)other;
+  if (_length != otherArray->_length) {
+    return NO;
+  }
+
+  // Compare each object for equality
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id obj1 = _data[i];
+    if ([obj1 isEqual:[otherArray objectAtIndex:i]] == NO) {
+      return NO;
+    }
+  }
+
+  return YES; // All objects are equal
+}
+
+/**
+ * @brief Returns a string representation of the array, with each object
+ * separated by a delimiter.
+ */
+- (NXString *)stringWithObjectsJoinedByString:
+    (id<NXConstantStringProtocol>)delimiter {
+  objc_assert(delimiter);
+
+  // Special case for empty array
+  if (_length == 0) {
+    return [NXString new]; // Return empty NXString for empty array
+  }
+
+  // Special case for single object
+  if (_length == 1) {
+    // If only one object, return its description
+    id firstObject = _data[0];
+    objc_assert(firstObject);
+    if ([firstObject conformsTo:@protocol(NXConstantStringProtocol)]) {
+      return [NXString stringWithString:firstObject];
+    } else {
+      return [firstObject description];
+    }
+  }
+
+  // Let's count the total length needed
+  size_t delimiterLength = [delimiter length];
+  size_t length = 0;
+  unsigned int i;
+  for (i = 0; i < _length; i++) {
+    id object = _data[i];
+    objc_assert(object);
+    if ([object conformsTo:@protocol(NXConstantStringProtocol)]) {
+      length += [object length];
+    } else {
+      // Use description for non-conforming objects
+      NXString *desc = [object description];
+      length += [desc length];
+    }
+  }
+
+  // Add space for delimiters (n-1 delimiters for n objects)
+  if (_length > 1) {
+    length += (_length - 1) * delimiterLength;
+  }
+
+  // Create a string with capacity for the total length
+  NXString *result = [NXString stringWithCapacity:length];
+  if (result == nil) {
+    return nil; // Failed to allocate string
+  }
+
+  // Append each object to the result string
+  for (i = 0; i < _length; i++) {
+    if (i > 0) {
+      [result append:delimiter]; // Append delimiter between objects
+    }
+
+    id object = _data[i];
+    objc_assert(object);
+    if ([object conformsTo:@protocol(NXConstantStringProtocol)]) {
+      [result append:object];
+    } else {
+      [result append:[object description]];
+    }
+  }
+
+  // Return the final string
+  return result;
+}
+
+/**
+ * @brief Returns a string representation of the array.
+ */
+- (NXString *)description {
+  NXString *joined = [self stringWithObjectsJoinedByString:@", "];
+  return [NXString stringWithFormat:@"@[ %@ ]", joined];
+}
+
+@end

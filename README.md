@@ -12,7 +12,7 @@ You will minimally need the following tools to build the runtime:
 
 - **Build system** `make` and `cmake` - for the build system
 - **Compiler** `clang` or `gcc` - for compiling the runtime (`clang` is not supported on Apple Silicon). You can use the environment variable `CC` to specify the compiler, e.g. `CC=clang` or `CC=gcc`.
-- **Library Dependencies** `openssl` for Linux and Darwin - for the hash functions, which are used in the runtime and NXFoundation framework.
+- **Library Dependencies** `openssl` for Linux and Darwin - for the hash functions, which are used in the runtime and Foundation framework.
 - **Documentation** `docker` is needed for generating the documentation from the source code.
 - **Cross-Compilation** For cross-compilation for embedded systems based on some ARM variant, get the ARM LLVM toolchain: <https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases>. Install this to the `/opt` directory. You can use the environment variable `TOOLCHAIN_PATH` to specify the path to the toolchain, e.g. `TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-universal`.
 
@@ -24,8 +24,8 @@ Several static libraries are currently built:
 - `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).
 - `runtime-hw` - hardware interfaces like SPI, I2C, GPIO. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.
 - `drivers` and `runtime-pix` have a long way to go but should provide hardware driver and display support eventually.
-- `NXFoundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
-- `NXApplicatiom` - the application framework, which provides a runloop and handles input, display, power and sensors.
+- `Foundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
+- `Application` - the application framework, which provides a runloop and handles input, display, power and sensors.
 
 A lot of this code is in development still. See the "examples" or documentation on what's been implemented so far.
 
@@ -70,7 +70,7 @@ PREFIX=/opt/objc make install
 - /opt/objc/lib/armv6m-none-eabi/libFoundation.a
 - /opt/objc/include/objc
 - /opt/objc/include/sys
-- /opt/objc/include/NXFoundation
+- /opt/objc/include/Foundation
 - /opt/objc/doc/...
 
 These can subsequently be used to make your executables!
@@ -120,10 +120,11 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] runtime-hw SPI support
 - [X] runtime-hw watchdog support
 - [X] runtime-hw PWM support - make tying to a GPIO pin a function, focus on slices
+- [X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
+- [X] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
+- [X] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
+- [ ] `NXApplication` and `NXRunLoop` running on both cores
 - [ ] runtime-hw LED support
-- [ ] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
-- [ ] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
-- [ ] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
 - [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
 - [ ] `NXInputManager` - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.
 - [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
@@ -142,7 +143,6 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [ ] `NXString` - rangeOfSubstring and rangeOfSubstring:options:
 - [ ] `NXArray` - `subarrayWithRange:` and `subarrayWithRange:options:`
 - [ ] `NXString` - array methods - componentsSeparatedByString and componentsSeparatedByByte
-- [ ] `NXApplication` and `NXRunLoop`
 - [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
 - [ ] More efficient method implementation lookup

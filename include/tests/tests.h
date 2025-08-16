@@ -86,7 +86,7 @@ static inline int TestHardwareMain(const char *name, int (*test_func)(void)) {
 
 #ifdef __OBJC__
 #ifdef NXApplicationTest
-#include <NXFoundation/NXFoundation.h>
+#include <Foundation/Foundation.h>
 
 /**
  * @brief Application test runner function that initializes the system, runs a
