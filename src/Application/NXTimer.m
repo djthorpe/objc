@@ -91,7 +91,9 @@ static void _timer_callback(sys_timer_t *timer) {
  * @brief Gets the current timer delegate.
  */
 - (id<TimerDelegate>)delegate {
-  return _delegate;
+  @synchronized(self) {
+    return _delegate;
+  }
 }
 
 /**

@@ -86,6 +86,7 @@ add_subdirectory("src/drivers")
 # Objective-C
 add_subdirectory("src/Foundation")
 add_subdirectory("src/Application")
+add_subdirectory("src/Network")
 
 # Tests
 include(CTest)

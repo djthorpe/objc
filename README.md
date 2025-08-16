@@ -123,10 +123,10 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
 - [X] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
 - [X] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
-- [ ] `NXApplication` and `NXRunLoop` running on both cores
 - [ ] runtime-hw LED support
-- [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
 - [ ] `NXInputManager` - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.
+- [ ] `NXApplication` and `NXRunLoop` running on both cores
+- [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
 - [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
 - [ ] NXNumber - `NXNumberByte` and `NXNumberInt8`

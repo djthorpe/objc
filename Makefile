@@ -17,7 +17,7 @@ else
 endif
 
 .PHONY: all
-all: Application
+all: Foundation Application Network
 
 # Configure
 config: dep-cmake submodule
@@ -88,6 +88,13 @@ Application: Foundation runtime-hw drivers
 	@echo
 	@echo make Application
 	@${CMAKE} --build ${BUILD_DIR} --target Application -j ${JOBS}
+
+# Create the Network library
+.PHONY: Network
+Network: Foundation runtime-hw
+	@echo
+	@echo make Network
+	@${CMAKE} --build ${BUILD_DIR} --target Network -j ${JOBS}
 
 # Run the tests
 .PHONY: tests
