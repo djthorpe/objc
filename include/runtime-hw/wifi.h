@@ -28,6 +28,11 @@
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
+#define HW_WIFI_SSID_MAX_LENGTH 32
+
+///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
 /**
@@ -79,7 +84,8 @@ typedef enum {
  *   hw_wifi_auth_t for details.
  */
 typedef struct {
-  char ssid[33];       ///< SSID (max 32 bytes) plus NULL termination
+  char ssid[HW_WIFI_SSID_MAX_LENGTH +
+            1];        ///< SSID (max 32 bytes) plus NULL termination
   uint8_t bssid[6];    ///< BSSID (MAC address) in network byte order
   hw_wifi_auth_t auth; ///< Authentication/cipher info (see hw_wifi_auth_t)
   uint8_t channel;     ///< Primary channel number
@@ -186,7 +192,7 @@ bool hw_wifi_scan(hw_wifi_t *wifi);
  * false will be returned if a connection attempt or scanning is already in
  * progress.
  */
-bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
+bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
                      const char *password);
 
 /**

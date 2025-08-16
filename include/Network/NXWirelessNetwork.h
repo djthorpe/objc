@@ -22,7 +22,7 @@
  */
 @interface NXWirelessNetwork : NXObject {
 @private
-  const hw_wifi_network_t *_network; ///< The wireless network information
+  hw_wifi_network_t _network; ///< The wireless network information
 }
 
 /**

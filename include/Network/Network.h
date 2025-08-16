@@ -18,6 +18,9 @@
 @class NXWireless;
 @class NXWirelessNetwork;
 
+// Import types
+#import "NXWirelessError.h"
+
 // Protocols and Category Definitions
 #include "WirelessDelegate+Protocol.h"
 

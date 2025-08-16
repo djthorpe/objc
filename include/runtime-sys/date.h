@@ -70,7 +70,7 @@ bool sys_date_get_now(sys_date_t *date);
  * This function may fail if the platform does not support setting the system
  * time or if insufficient privileges are available.
  */
-bool sys_date_set_now(sys_date_t *date);
+bool sys_date_set_now(const sys_date_t *date);
 
 /**
  * @brief Extracts time components from a sys_date_t structure.

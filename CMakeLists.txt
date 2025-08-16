@@ -78,9 +78,10 @@ add_compile_options(
 
 # Runtime Libraries
 add_subdirectory("src/malloc")
+add_subdirectory("src/runtime-${RUNTIME}")
 add_subdirectory("src/runtime-sys/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/runtime-hw/${SYSTEM_NAME_LOWER}")
-add_subdirectory("src/runtime-${RUNTIME}")
+add_subdirectory("src/runtime-net/${SYSTEM_NAME_LOWER}")
 add_subdirectory("src/drivers")
 
 # Objective-C

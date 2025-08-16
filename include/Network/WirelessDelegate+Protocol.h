@@ -23,6 +23,7 @@
  */
 @protocol WirelessDelegate
 
+@optional
 /**
  * @brief Called when a wireless network is discovered during a scan.
  * @param network The network information for the discovered access point.
@@ -38,5 +39,30 @@
  * method for the corresponding scan operation.
  */
 - (void)scanDidComplete;
+
+/**
+ * @brief Called when a connection attempt starts.
+ * @param network The target network.
+ */
+- (void)connectDidStart:(NXWirelessNetwork *)network;
+
+/**
+ * @brief Called if the connection fails.
+ * @param network The target network.
+ * @param error   The error code describing the failure.
+ */
+- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error;
+
+/**
+ * @brief Called when a connection is established.
+ * @param network The connected network.
+ */
+- (void)connected:(NXWirelessNetwork *)network;
+
+/**
+ * @brief Called after disconnecting from a network.
+ * @param network The network that was disconnected.
+ */
+- (void)disconnected:(NXWirelessNetwork *)network;
 
 @end

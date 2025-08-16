@@ -15,6 +15,7 @@ add_subdirectory(runtime/power)
 add_subdirectory(runtime/gpio)
 add_subdirectory(runtime/clock)
 add_subdirectory(runtime/multicore)
+add_subdirectory(runtime/ntp)
 add_subdirectory(runtime/simplequeue)
 add_subdirectory(runtime/runloop)
 add_subdirectory(runtime/wifiscan)
@@ -33,3 +34,4 @@ add_subdirectory(Application/blink)
 
 # Network examples
 add_subdirectory(Network/scan)
+add_subdirectory(Network/connect)

@@ -91,3 +91,14 @@
 #define PPP_DEBUG LWIP_DBG_OFF
 #define SLIP_DEBUG LWIP_DBG_OFF
 #define DHCP_DEBUG LWIP_DBG_OFF
+
+///////////////////////////////////////////////////////////////////////////////
+// NTP
+
+#define SNTP_SERVER_DNS 1
+#define SNTP_SERVER_ADDRESS "pool.ntp.org"
+#define SNTP_SET_SYSTEM_TIME net_ntp_set_date
+
+#include <stdint.h>
+
+void net_ntp_set_date(uint32_t sec);

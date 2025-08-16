@@ -37,14 +37,14 @@
  * @brief Called when a wireless network is discovered during a scan.
  */
 - (void)scanDidDiscoverNetwork:(NXWirelessNetwork *)network {
-  NXLog(@"Scan discovered network: %@", network);
+  NXLog(@"Scan: %@", network);
 }
 
 /**
  * @brief Called once when the current scan completes (successfully or not).
  */
 - (void)scanDidComplete {
-  NXLog(@"Scan completed");
+  NXLog(@"Scan completed.");
 }
 
 @end

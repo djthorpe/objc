@@ -91,7 +91,7 @@ static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]);
 /**
  * @brief Get BSSID for connected Wi-Fi
  */
-static uint16_t _hw_wifi_get_rssi(hw_wifi_t *wifi);
+static int16_t _hw_wifi_get_rssi(hw_wifi_t *wifi);
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
@@ -252,9 +252,10 @@ bool hw_wifi_disconnect(hw_wifi_t *wifi) {
 /**
  * @brief Begin an asynchronous connection to a Wi‑Fi network.
  */
-bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
+bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
                      const char *password) {
   sys_assert(hw_wifi_valid(wifi));
+  sys_assert(network);
   bool success = false;
 
 #ifdef PICO_CYW43_SUPPORTED
@@ -275,30 +276,30 @@ bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
 
   // If auth is zero, choose a sensible default
   uint32_t auth = CYW43_AUTH_WPA2_AES_PSK;
-  if (network.auth != 0) {
-    auth = network.auth;
+  if (network->auth != 0) {
+    auth = network->auth;
   }
 
   // Set BSSID to NONE if all elements of network.bssid are zero
   const uint8_t *bssid = NULL;
-  if (sys_memcmp(network.bssid, (const uint8_t[6]){0}, sizeof(network.bssid)) ==
-      0) {
+  if (sys_memcmp(network->bssid, (const uint8_t[6]){0},
+                 sizeof(network->bssid)) == 0) {
     bssid = NULL;
   } else {
-    bssid = network.bssid;
+    bssid = network->bssid;
   }
 
   // Ignore channel
   uint32_t channel = CYW43_CHANNEL_NONE;
 
   // Prepare SSID length (bounded) and password pointer/length (allow NULL)
-  size_t ssid_len = strnlen(network.ssid, sizeof(network.ssid) - 1);
+  size_t ssid_len = strnlen(network->ssid, sizeof(network->ssid) - 1);
   const char *key = (password != NULL) ? password : "";
   size_t key_len = (password != NULL) ? strlen(password) : 0;
 
   // Use the provided SSID and password to join the network
   if (cyw43_wifi_join(&cyw43_state, (uint32_t)ssid_len,
-                      (const uint8_t *)network.ssid, (uint32_t)key_len,
+                      (const uint8_t *)network->ssid, (uint32_t)key_len,
                       (const uint8_t *)key, auth, bssid, channel) == 0) {
     _hw_wifi_set_busy(wifi, hw_wifi_flag_joining, true);
     wifi->state = -1;
@@ -307,8 +308,8 @@ bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
 
   // Set the network information
   if (success) {
-    sys_memcpy(wifi->network.ssid, network.ssid, sizeof(network.ssid));
-    sys_memcpy(wifi->network.bssid, network.bssid, sizeof(network.bssid));
+    sys_memcpy(wifi->network.ssid, network->ssid, sizeof(network->ssid));
+    sys_memcpy(wifi->network.bssid, network->bssid, sizeof(network->bssid));
     wifi->network.channel = channel;
     wifi->network.rssi = 0;
     wifi->network.auth = auth;
@@ -337,6 +338,7 @@ static uint32_t _hw_wifi_country_code(const char *country_code) {
 }
 
 uint8_t _hw_wifi_get_channel(hw_wifi_t *wifi) {
+  sys_assert(hw_wifi_valid(wifi));
   uint32_t channel = 0;
 #ifdef PICO_CYW43_SUPPORTED
   cyw43_ioctl(&cyw43_state, CYW43_IOCTL_GET_CHANNEL, sizeof(channel),
@@ -358,13 +360,13 @@ static void _hw_wifi_get_bssid(hw_wifi_t *wifi, uint8_t bssid[6]) {
 }
 
 /**
- * @brief Get BSSID for connected Wi-Fi
+ * @brief Get signal strength for connected Wi-Fi
  */
-static uint16_t _hw_wifi_get_rssi(hw_wifi_t *wifi) {
+static int16_t _hw_wifi_get_rssi(hw_wifi_t *wifi) {
   sys_assert(hw_wifi_valid(wifi));
-  uint32_t rssi = 0;
+  int32_t rssi = 0;
   if (cyw43_wifi_get_rssi(&cyw43_state, &rssi) == 0) {
-    return (uint16_t)rssi;
+    return (int16_t)rssi;
   }
   return 0;
 }

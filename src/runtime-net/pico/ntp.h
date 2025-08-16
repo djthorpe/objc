@@ -1,0 +1,9 @@
+#pragma once
+
+///////////////////////////////////////////////////////////////////////////////
+// DEFINITIONS
+
+/*
+** Polling function for the NTP service.
+*/
+void _net_ntp_poll(void);

@@ -31,7 +31,7 @@ bool hw_wifi_scan(hw_wifi_t *wifi) {
   return false;
 }
 
-bool hw_wifi_connect(hw_wifi_t *wifi, hw_wifi_network_t network,
+bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
                      const char *password) {
   // Not implemented
   (void)wifi;

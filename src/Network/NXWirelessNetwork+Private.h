@@ -15,4 +15,10 @@
  */
 - (id)initWithNetwork:(const hw_wifi_network_t *)network;
 
+/**
+ * @brief Gets the underlying hw_wifi_network_t context.
+ * @return The hw_wifi_network_t context.
+ */
+- (const hw_wifi_network_t *)context;
+
 @end

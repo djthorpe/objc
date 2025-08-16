@@ -68,6 +68,14 @@ runtime-hw: runtime-sys pioasm
 	@echo make runtime-hw
 	@${CMAKE} --build ${BUILD_DIR} --target runtime-hw -j ${JOBS}
 
+
+# Create the libruntime-net runtime library
+.PHONY: runtime-net
+runtime-net: runtime-sys
+	@echo
+	@echo make runtime-net
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-net -j ${JOBS}
+
 # Create the libdrivers runtime library
 .PHONY: drivers
 drivers: runtime-hw
