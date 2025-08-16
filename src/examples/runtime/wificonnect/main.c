@@ -1,7 +1,8 @@
 /**
  * @file examples/runtime/wificonnect/main.c
  *
- * This example demonstrates how to connect to and disconnect from a Wi‑Fi network.
+ * This example demonstrates how to connect to and disconnect from a Wi‑Fi
+ * network.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
@@ -63,7 +64,7 @@ int main() {
   };
 
   sys_printf("Connecting WiFi\n");
-  if (!hw_wifi_connect(wifi, network, "PASSWORD")) {
+  if (!hw_wifi_connect(wifi, &network, "PASSWORD")) {
     sys_printf("Failed to start WiFi connection\n");
   }
 

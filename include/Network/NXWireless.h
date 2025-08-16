@@ -29,7 +29,7 @@
 @private
   id<WirelessDelegate> _delegate; ///< The wireless delegate
   hw_wifi_t *_wifi;               ///< The underlying Wi-Fi handle
-  hw_wifi_network_t *_network;    ///< The current network information
+  hw_wifi_network_t _network;     ///< The current network information
 }
 
 /**
@@ -90,13 +90,14 @@
 /**
  * @brief Begin an asynchronous connection with an explicit password.
  * @param network  The target network descriptor (SSID/BSSID/etc.).
- * @param password NUL‑terminated password string (may be empty for open
+ * @param password NULL‑terminated password string (may be empty for open
  *                 networks).
  * @return YES if the connection attempt was started; NO otherwise.
  *
  * The call returns immediately; the outcome will be determined asynchronously.
  */
-- (BOOL)connect:(NXWirelessNetwork *)network password:(const char *)password;
+- (BOOL)connect:(NXWirelessNetwork *)network
+    withPassword:(id<NXConstantStringProtocol>)password;
 
 /**
  * @brief Disconnect from the current Wi‑Fi network.

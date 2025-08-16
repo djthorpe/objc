@@ -19,35 +19,54 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
   sys_assert(sender);
   sys_assert(event);
 
+  NXWirelessNetwork *networkInfo = nil;
+  if (network) {
+    networkInfo = [[NXWirelessNetwork alloc] initWithNetwork:network];
+  }
+
   switch (event) {
   case hw_wifi_event_scan:
-    if (network) {
-      NXWirelessNetwork *networkInfo =
-          [[NXWirelessNetwork alloc] initWithNetwork:network];
-      if (networkInfo) {
-        [sender scanDidDiscoverNetwork:[networkInfo autorelease]];
-      }
+    if (network && networkInfo) {
+      [sender scanDidDiscoverNetwork:[networkInfo autorelease]];
     } else {
       [sender scanDidComplete];
     }
     break;
   case hw_wifi_event_joining:
-    sys_printf("Wi-Fi joining event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender connectDidStart:networkInfo];
+    }
     break;
   case hw_wifi_event_connected:
-    sys_printf("Wi-Fi connected event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender connected:networkInfo];
+    }
     break;
   case hw_wifi_event_disconnected:
-    sys_printf("Wi-Fi disconnected event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender disconnected:networkInfo];
+    }
     break;
   case hw_wifi_event_badauth:
-    sys_printf("Wi-Fi bad authentication event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender connect:networkInfo withError:NXWirelessErrorBadAuth];
+    }
     break;
   case hw_wifi_event_notfound:
-    sys_printf("Wi-Fi not found event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender connect:networkInfo withError:NXWirelessErrorNotFound];
+    }
     break;
   case hw_wifi_event_error:
-    sys_printf("Wi-Fi error event received\n");
+    sys_assert(network);
+    if (networkInfo) {
+      [sender connect:networkInfo withError:NXWirelessErrorGeneral];
+    }
     break;
   }
 }
@@ -92,6 +111,9 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
   [super dealloc];
 }
 
+/**
+ * @brief A shared instance of the wireless manager.
+ */
 + (id)sharedInstance {
   @synchronized([self class]) {
     if (sharedInstance == nil) {
@@ -128,19 +150,32 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
+/**
+ * @brief Initiates a scan for available Wi-Fi networks.
+ */
 - (BOOL)scan {
   return hw_wifi_scan(_wifi);
 }
 
+/**
+ * @brief Begin an asynchronous connection to a Wi‑Fi network.
+ */
 - (BOOL)connect:(NXWirelessNetwork *)network {
   // TODO: In future, we can store some passwords and use those if needed
-  return hw_wifi_connect(_wifi, network, NULL);
+  return hw_wifi_connect(_wifi, [network context], NULL);
 }
 
-- (BOOL)connect:(NXWirelessNetwork *)network password:(const char *)password {
-  return hw_wifi_connect(_wifi, network, password);
+/**
+ * @brief Begin an asynchronous connection with an explicit password.
+ */
+- (BOOL)connect:(NXWirelessNetwork *)network
+    withPassword:(id<NXConstantStringProtocol>)password {
+  return hw_wifi_connect(_wifi, [network context], [password cStr]);
 }
 
+/**
+ * @brief Disconnect from the current Wi‑Fi network.
+ */
 - (BOOL)disconnect {
   return hw_wifi_disconnect(_wifi);
 }
@@ -148,6 +183,9 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
+/**
+ * @brief Called when a wireless network is discovered during a scan.
+ */
 - (void)scanDidDiscoverNetwork:(NXWirelessNetwork *)network {
   if (_delegate && object_respondsToSelector(_delegate, @selector
                                              (scanDidDiscoverNetwork:))) {
@@ -155,10 +193,61 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
   }
 }
 
+/**
+ * @brief Called once when the current scan completes (successfully or not).
+ */
 - (void)scanDidComplete {
   if (_delegate &&
       object_respondsToSelector(_delegate, @selector(scanDidComplete))) {
     [_delegate scanDidComplete];
+  }
+}
+
+/**
+ * @brief Called when a connection attempt starts.
+ */
+- (void)connectDidStart:(NXWirelessNetwork *)network {
+  if (_delegate &&
+      object_respondsToSelector(_delegate, @selector(connectDidStart:))) {
+    [_delegate connectDidStart:network];
+  }
+}
+
+/**
+ * @brief Called if the connection fails.
+ */
+- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error {
+  if (_delegate && object_respondsToSelector(_delegate, @selector(connect:
+                                                                withError:))) {
+    [_delegate connect:network withError:error];
+  }
+}
+
+/**
+ * @brief Called when a connection is established.
+ */
+- (void)connected:(NXWirelessNetwork *)network {
+  @synchronized(self) {
+    // Copy the network information
+    sys_memcpy(&_network, [network context], sizeof(hw_wifi_network_t));
+  }
+  if (_delegate &&
+      object_respondsToSelector(_delegate, @selector(connected:))) {
+    [_delegate connected:network];
+  }
+}
+
+/**
+ * @brief Called after disconnecting from a network.
+ */
+- (void)disconnected:(NXWirelessNetwork *)network {
+  if (_delegate &&
+      object_respondsToSelector(_delegate, @selector(disconnected:))) {
+    [_delegate disconnected:network];
+  }
+  @synchronized(self) {
+    // Set all bytes to zero of _network
+    sys_memset(&_network, 0, sizeof(hw_wifi_network_t));
   }
 }
 

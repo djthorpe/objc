@@ -15,4 +15,24 @@
  */
 - (void)scanDidComplete;
 
+/**
+ * @brief Called when a connection attempt starts.
+ */
+- (void)connectDidStart:(NXWirelessNetwork *)network;
+
+/**
+ * @brief Called if the connection fails.
+ */
+- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error;
+
+/**
+ * @brief Called when a connection is established.
+ */
+- (void)connected:(NXWirelessNetwork *)network;
+
+/**
+ * @brief Called after disconnecting from a network.
+ */
+- (void)disconnected:(NXWirelessNetwork *)network;
+
 @end
