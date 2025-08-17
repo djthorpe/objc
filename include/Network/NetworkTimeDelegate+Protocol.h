@@ -18,15 +18,16 @@
  * @ingroup Network
  *
  * Classes conforming to this protocol receive callbacks for network time
- * updates: one invocation per time update. It is up to the delegate to
- * update the system time based on these events.
+ * updates: one invocation per time update. The delegate should return YES
+ * if the system time should be updated.
  */
 @protocol NetworkTimeDelegate
 
 /**
- * @brief Called when a network time update is received.
- * @param time The updated network time.
+ * @brief Called when a network time is received.
+ * @param time The received network time.
+ * @return YES if the system time should be updated, NO otherwise.
  */
-- (void)networkTimeDidUpdate:(NXDate *)time;
+- (BOOL)networkTimeShouldUpdate:(NXDate *)time;
 
 @end

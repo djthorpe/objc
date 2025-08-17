@@ -15,7 +15,7 @@ static id sharedInstance = nil;
 @end
 
 @interface NXNetworkTime ()
-- (void)networkTimeDidUpdate:(NXDate *)date;
+- (BOOL)networkTimeShouldUpdate:(NXDate *)date;
 @end
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -31,10 +31,14 @@ static void _ntp_callback(net_ntp_t *ntp, const sys_date_t *date,
   // TODO: Should push this into the application queue, rather than calling
   // directly.
 
-  // Update the network time
+  // Update the systems time from the network time
   NXDate *now = [NXDate dateWithSystemDate:date];
   if (now) {
-    [sender networkTimeDidUpdate:now];
+    if ([sender networkTimeShouldUpdate:now] == YES) {
+      if (sys_date_set_now(date) == false) {
+        sys_printf("Failed to set system date");
+      }
+    }
   }
 }
 
@@ -116,11 +120,12 @@ static void _ntp_callback(net_ntp_t *ntp, const sys_date_t *date,
 /**
  * @brief Called when a network time update is received.
  */
-- (void)networkTimeDidUpdate:(NXDate *)date {
-  if (_delegate &&
-      object_respondsToSelector(_delegate, @selector(networkTimeDidUpdate:))) {
-    [_delegate networkTimeDidUpdate:date];
+- (BOOL)networkTimeShouldUpdate:(NXDate *)date {
+  if (_delegate && object_respondsToSelector(_delegate, @selector
+                                             (networkTimeShouldUpdate:))) {
+    return [_delegate networkTimeShouldUpdate:date];
   }
+  return YES;
 }
 
 @end

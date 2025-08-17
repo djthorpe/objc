@@ -17,13 +17,23 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-@interface MyAppDelegate
-    : NXObject <ApplicationDelegate, WirelessDelegate, NetworkTimeDelegate>
+@interface MyAppDelegate : NXObject <ApplicationDelegate, WirelessDelegate,
+                                     NetworkTimeDelegate, TimerDelegate> {
+  NXTimer *_timer;
+}
 @end
 
 //////////////////////////////////////////////////////////////////////////
 
 @implementation MyAppDelegate
+
+- (void)dealloc {
+  [_timer release];
+  _timer = nil;
+
+  // Call superclass dealloc
+  [super dealloc];
+}
 
 - (void)applicationDidFinishLaunching:(id)application {
 
@@ -49,6 +59,10 @@
   if ([wifi connect:net withPassword:@WIFI_PASSWORD] == NO) {
     NXLog(@"Failed to initiate connection to network: %@", net);
   }
+
+  // Set up a timer which periodically reports the time
+  _timer = [[NXTimer timerWithInterval:5 * Second repeats:YES] retain];
+  [_timer setDelegate:self];
 }
 
 - (void)applicationReceivedSignal:(NXApplicationSignal)signal {
@@ -103,9 +117,18 @@
 /**
  * @brief Called after NTP time is received.
  */
-- (void)networkTimeDidUpdate:(NXDate *)time {
+- (BOOL)networkTimeShouldUpdate:(NXDate *)time {
   // Handle the network time update
   NXLog(@"Network time updated: %@", time);
+  return YES;
+}
+
+/**
+ * @brief timer fired, print the current time
+ */
+- (void)timerFired:(NXTimer *)timer {
+  NXDate *now = [NXDate date];
+  NXLog(@"Current time: %@", now);
 }
 
 @end
