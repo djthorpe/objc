@@ -119,8 +119,9 @@ void hw_watchdog_enable(hw_watchdog_t *watchdog, bool enable) {
   if (enable) {
     // Enable the watchdog timer with the specified timeout and allow debug
     // pauses
-    watchdog_enable(watchdog->timeout_ms, true);
+    watchdog_enable(watchdog->timeout_ms << 1, true);
     watchdog->disable = false;
+    watchdog->timestamp = 0;
   } else {
     // Disable the watchdog timer
     watchdog_disable();
@@ -157,10 +158,9 @@ void hw_watchdog_reset(hw_watchdog_t *watchdog, uint32_t delay_ms) {
  */
 void _hw_watchdog_poll() {
   hw_watchdog_t *watchdog = &_hw_watchdog;
-  if (hw_watchdog_valid(watchdog) == false) {
-    return;
-  }
-  if (watchdog->disable) {
+
+  // Ignore if not an enabled watchdog
+  if (hw_watchdog_valid(watchdog) == false || watchdog->disable) {
     return;
   }
 
@@ -174,5 +174,8 @@ void _hw_watchdog_poll() {
   }
 
   // Update the watchdog timer
+#ifdef DEBUG
+  sys_printf("Updating watchdog timer\n");
+#endif
   watchdog_update();
 }

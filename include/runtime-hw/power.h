@@ -59,9 +59,10 @@ typedef enum {
  * @param value  If flags includes HW_POWER_BATTERY then the value is a battery
  * percentage (1-100) or zero if unknown. If HW_POWER_RESET is set, the value
  * is the reset delay in milliseconds.
+ * @param user_data     Optional user data pointer passed to the callback.
  */
 typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags,
-                                    uint32_t value);
+                                    uint32_t value, void *user_data);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -82,7 +83,7 @@ typedef void (*hw_power_callback_t)(hw_power_t *power, hw_power_flag_t flags,
  * supported.
  */
 hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                          hw_power_callback_t callback);
+                          hw_power_callback_t callback, void *user_data);
 
 /**
  * @brief Determine if the power handle is initialized and usable.

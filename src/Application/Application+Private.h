@@ -11,6 +11,12 @@
 void _app_timer_callback(sys_timer_t *timer);
 
 /**
+ * @brief Callback function for power management events.
+ */
+void _app_power_callback(hw_power_t *power, hw_power_flag_t flags,
+                         uint32_t value, void *user_data);
+
+/**
  * @brief Category for private methods of the Application class.
  */
 @interface Application (Private)
@@ -20,6 +26,17 @@ void _app_timer_callback(sys_timer_t *timer);
  * @param args An array of command-line arguments as strings.
  */
 - (void)setArgs:(NXArray *)args;
+
+/**
+ * @brief Sets the application's watchdog timer.
+ * @param watchdog The watchdog timer to set.
+ * @param interval The interval for the watchdog timer.
+ *
+ * The application should ping the watchdog with this interval in order
+ * to prevent it from expiring.
+ */
+- (void)setWatchdog:(hw_watchdog_t *)watchdog
+       withInterval:(NXTimeInterval)interval;
 
 /**
  * @brief Handles application signals.

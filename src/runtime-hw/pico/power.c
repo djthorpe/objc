@@ -33,6 +33,7 @@ typedef struct hw_power_t {
   uint8_t battery_percent;
   hw_power_flag_t source;
   hw_power_callback_t callback;
+  void *user_data;
 } hw_power_t;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,7 +54,7 @@ static hw_power_t _hw_power = {0};
  * @brief Initialize power management.
  */
 hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                          hw_power_callback_t callback) {
+                          hw_power_callback_t callback, void *user_data) {
   // Reset the power handle
   hw_power_finalize(&_hw_power);
 
@@ -69,6 +70,7 @@ hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
   _hw_power.vbus = gpio_vbus;
   _hw_power.vsys = gpio_vsys;
   _hw_power.callback = callback;
+  _hw_power.user_data = user_data;
 
   // Set valid
   _hw_power.valid = true;
@@ -253,7 +255,8 @@ void _hw_power_poll() {
 
   // Call the callback
   if (updated) {
-    power->callback(power, power->source, power->battery_percent);
+    power->callback(power, power->source, power->battery_percent,
+                    power->user_data);
   }
 }
 
@@ -268,7 +271,7 @@ void _hw_power_notify_reset(uint32_t delay_ms) {
   if (power->callback == NULL) {
     return;
   }
-  power->callback(power, HW_POWER_RESET, delay_ms);
+  power->callback(power, HW_POWER_RESET, delay_ms, power->user_data);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -11,8 +11,11 @@
 /////////////////////////////////////////////////////////////////////
 // POWER CALLBACK
 
-void power_callback(hw_power_t *power, hw_power_flag_t flags, uint32_t value) {
+void power_callback(hw_power_t *power, hw_power_flag_t flags, uint32_t value,
+                    void *user_data) {
   (void)power;
+  (void)user_data;
+
   if (flags & HW_POWER_BATTERY) {
     sys_printf("CALLBACK: Power source is battery (estimated %u%%)\n", value);
   }
@@ -39,7 +42,7 @@ void power_callback(hw_power_t *power, hw_power_flag_t flags, uint32_t value) {
  */
 bool core0_task() {
   // Create the power management instance
-  hw_power_t *power = hw_power_init(0xFF, 0xFF, power_callback);
+  hw_power_t *power = hw_power_init(0xFF, 0xFF, power_callback, NULL);
   if (!hw_power_valid(power)) {
     sys_printf("Failed to initialize power management\n");
     return false;

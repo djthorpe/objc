@@ -1,5 +1,5 @@
 #include <hardware/adc.h>
-#include <runtime-sys/assert.h>
+#include <runtime-sys/sys.h>
 #if PICO_CYW43_SUPPORTED
 #include <pico/cyw43_arch.h>
 #endif
