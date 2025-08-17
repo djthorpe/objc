@@ -17,7 +17,7 @@ static IMP __objc_msg_lookup(objc_class_t *cls, SEL selector) {
   if (cls == Nil || selector == NULL) {
     return NULL; // Invalid parameters
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("objc_msg_lookup %c[%s %s]\n",
              cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
              sel_getName(selector));
@@ -26,7 +26,7 @@ static IMP __objc_msg_lookup(objc_class_t *cls, SEL selector) {
   // Descend through the classes looking for the method
   // TODO: Also look at the categories of the class
   while (cls != Nil) {
-#ifdef DEBUG
+#ifdef OBJCDEBUG
     sys_printf("  %c[%s %s] types=%s\n",
                cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
                sel_getName(selector), selector->sel_type);
@@ -112,7 +112,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
         receiver->isa->info & objc_class_flag_meta ? '+' : '-',
         receiver->isa->name, sel_getName(selector), selector->sel_type);
   } else {
-#ifdef DEBUG
+#ifdef OBJCDEBUG
     sys_printf("    => IMP @%p\n", imp);
 #endif
   }
@@ -122,7 +122,7 @@ IMP objc_msg_lookup(id receiver, SEL selector) {
   objc_class_t *meta_cls =
       cls->info & objc_class_flag_meta ? cls : cls->metaclass;
   if (!(meta_cls->info & objc_class_flag_initialized)) {
-#ifdef DEBUG
+#ifdef OBJCDEBUG
     sys_printf("  +[%s initialize] \n", cls->name);
 #endif
     // Call the class's initialize method
@@ -161,7 +161,7 @@ BOOL class_respondsToSelector(Class cls, SEL selector) {
     sys_panicf("class_respondsToSelector: SEL is NULL");
     return NO;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("class_respondsToSelector %c[%s %s] types=%s\n",
              cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
              sel_getName(selector), selector->sel_type);
@@ -180,7 +180,7 @@ BOOL object_respondsToSelector(id object, SEL selector) {
     return NO;
   }
   Class cls = object_getClass(object);
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("object_respondsToSelector %c[%s %s] types=%s\n",
              cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
              sel_getName(selector), selector->sel_type);

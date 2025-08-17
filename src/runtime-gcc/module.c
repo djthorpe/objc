@@ -5,8 +5,8 @@
 #include "protocol.h"
 #include "statics.h"
 #include <objc/objc.h>
-#include <stdlib.h>
 #include <runtime-sys/sys.h>
+#include <stdlib.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ static void __objc_module_register(struct objc_module *module) {
   // Replace referenced selectors from names to SEL's
   struct objc_selector *refs = module->symtab->refs;
   if (refs != NULL && module->symtab->sel_ref_cnt > 0) {
-#ifdef DEBUG
+#ifdef OBJCDEBUG
     sys_printf("TODO: Replace selectors @%p (sel_ref_cnt=%ld)\n", refs,
                module->symtab->sel_ref_cnt);
 #endif
@@ -28,7 +28,7 @@ static void __objc_module_register(struct objc_module *module) {
     // SEL pointers
   }
 
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("__objc_module_register %s cls_def_cnt=%d cat_def_cnt=%d\n",
              module->name, module->symtab->cls_def_cnt,
              module->symtab->cat_def_cnt);

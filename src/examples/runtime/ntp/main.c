@@ -8,9 +8,21 @@
 #include <runtime-net/net.h>
 #include <runtime-sys/sys.h>
 
+#ifndef WIFI_SSID
+#error "WIFI_SSID not defined"
+#endif
+
+#ifndef WIFI_PASSWORD
+#error "WIFI_PASSWORD not defined"
+#endif
+
 bool printdate(sys_date_t *date);
 
-static void ntp_callback(const sys_date_t *date) {
+static void ntp_callback(net_ntp_t *ntp, const sys_date_t *date,
+                         void *user_data) {
+  (void)ntp;
+  (void)user_data;
+
   // Set system time
   if (sys_date_set_now(date) == false) {
     sys_printf("Failed to set system time\n");
@@ -21,8 +33,8 @@ static void ntp_callback(const sys_date_t *date) {
 
 static void wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
                           const hw_wifi_network_t *network, void *user_data) {
-  (void)user_data;
   (void)wifi;
+  (void)user_data;
 
   if (event == hw_wifi_event_connected) {
     sys_printf("Connected to a network\n");
@@ -56,7 +68,7 @@ int main() {
   }
 
   // Initialize NTP
-  net_ntp_t *ntp = net_ntp_init(ntp_callback);
+  net_ntp_t *ntp = net_ntp_init(ntp_callback, NULL);
   if (net_ntp_valid(ntp)) {
     sys_printf("NTP initialized\n");
   }

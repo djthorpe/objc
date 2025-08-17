@@ -19,10 +19,18 @@
   (void)application; // Unused parameter
 
   // Initialize the wireless manager
-  [[NXWireless sharedInstance] setDelegate:self];
+  NXWireless *wifi = [NXWireless sharedInstance];
+  if (wifi == nil) {
+    NXLog(@"WiFi not supported on this board");
+    [application terminateWithExitStatus:-1];
+    return;
+  }
+
+  // Set the delegate for wireless events
+  [wifi setDelegate:self];
 
   // Start scanning for Wi-Fi networks
-  [[NXWireless sharedInstance] scan];
+  [wifi scan];
 }
 
 - (void)applicationReceivedSignal:(NXApplicationSignal)signal {

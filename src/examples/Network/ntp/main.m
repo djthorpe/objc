@@ -16,8 +16,8 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-@interface MyAppDelegate : NXObject <ApplicationDelegate, WirelessDelegate> {
-}
+@interface MyAppDelegate
+    : NXObject <ApplicationDelegate, WirelessDelegate, NetworkTimeDelegate>
 @end
 
 //////////////////////////////////////////////////////////////////////////
@@ -25,7 +25,6 @@
 @implementation MyAppDelegate
 
 - (void)applicationDidFinishLaunching:(id)application {
-  (void)application; // Unused parameter
 
   // Initialize the wireless manager
   NXWireless *wifi = [NXWireless sharedInstance];
@@ -36,15 +35,17 @@
   }
 
   // Set the delegate for wireless events
-  [[NXWireless sharedInstance] setDelegate:self];
+  [wifi setDelegate:self];
+
+  // Initialise the network time manager
+  [[NXNetworkTime sharedInstance] setDelegate:self];
 
   // Determine network to connect to
   NXWirelessNetwork *net = [NXWirelessNetwork networkWithName:@WIFI_SSID];
   sys_assert(net);
 
   // Connect to the network
-  if ([[NXWireless sharedInstance] connect:net
-                              withPassword:@WIFI_PASSWORD] == NO) {
+  if ([wifi connect:net withPassword:@WIFI_PASSWORD] == NO) {
     NXLog(@"Failed to initiate connection to network: %@", net);
   }
 }
@@ -67,7 +68,8 @@
 /**
  * @brief Called if the connection fails.
  */
-- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error {
+- (void)connectionFailed:(NXWirelessNetwork *)network
+               withError:(NXWirelessError)error {
   NXLog(@"Connection failed to network: %@, error: %d", network, (int)error);
   switch (error) {
   case NXWirelessErrorBadAuth:
@@ -95,6 +97,14 @@
  */
 - (void)disconnected:(NXWirelessNetwork *)network {
   NXLog(@"Disconnected from network: %@", network);
+}
+
+/**
+ * @brief Called after NTP time is received.
+ */
+- (void)networkTimeDidUpdate:(NXDate *)time {
+  // Handle the network time update
+  NXLog(@"Network time updated: %@", time);
 }
 
 @end

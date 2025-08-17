@@ -16,6 +16,7 @@
  */
 typedef struct net_ntp_t {
   net_ntp_callback_t callback;
+  void *user_data;
   int state;
   uint64_t timestamp;
 } net_ntp_t;
@@ -38,12 +39,13 @@ static net_ntp_t _net_ntp = {0};
 /**
  * @brief Initialize NTP management.
  */
-net_ntp_t *net_ntp_init(net_ntp_callback_t callback) {
+net_ntp_t *net_ntp_init(net_ntp_callback_t callback, void *user_data) {
   // Reset the NTP handle
   net_ntp_finalize(&_net_ntp);
 
   // Set callback
   _net_ntp.callback = callback;
+  _net_ntp.user_data = user_data;
   _net_ntp.state = -1;
   _net_ntp.timestamp = 0;
 
@@ -118,7 +120,7 @@ void net_ntp_set_date(uint32_t sec) {
   };
   net_ntp_t *ntp = &_net_ntp;
   if (net_ntp_valid(ntp)) {
-    ntp->callback(&date);
+    ntp->callback(ntp, &date, ntp->user_data);
   }
 }
 
@@ -149,9 +151,15 @@ void _net_ntp_poll(void) {
     ntp->state = state;
     switch (state) {
     case CYW43_LINK_UP:
+#ifdef DEBUG
+      sys_printf("_net_ntp_set_enabled()\n");
+#endif
       _net_ntp_set_enabled();
       break;
     default:
+#ifdef DEBUG
+      sys_printf("_net_ntp_set_disabled()\n");
+#endif
       _net_ntp_set_disabled();
       break;
     }

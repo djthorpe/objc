@@ -1,11 +1,13 @@
-set(NAME "connect.app")
+set(NAME "ntp.app")
 add_executable(${NAME}
     main.m
     hack.c
 )
+
+# Need to link against the Network library first to ensure net_poll() is pulled in
 target_link_libraries(${NAME} PRIVATE
-    Application
     Network
+    Application
 )
 
 # additional configurations for the Pico SDK

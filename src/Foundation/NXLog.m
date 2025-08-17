@@ -3,6 +3,11 @@
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
+#define NXLOG_BUFFER_SIZE 80
+
+///////////////////////////////////////////////////////////////////////////////
 // PUBLIC METHODS
 
 /**
@@ -10,17 +15,40 @@
  * intervals. Appends a newline and flushes the output.
  */
 size_t NXLog(id<NXConstantStringProtocol> format, ...) {
+  static char buf[NXLOG_BUFFER_SIZE];
+  static int depth = 0;
+  if (++depth > 1) {
+    depth--; // ensure we don't permanently block future logs
+    return 0;
+  }
+
   va_list args;
-
-  // Use shared custom handler for %@ and %t
   va_start(args, format);
-  size_t result = sys_vprintf_ex([format cStr], args, _nxstring_format_handler);
+  const char *cFormat = [format cStr];
+  // First attempt: format directly into the static buffer. The returned len
+  // is the total required length (untruncated). If it fits, we already have
+  // the full string and can print once.
+  size_t len = sys_vsprintf_ex(buf, NXLOG_BUFFER_SIZE, cFormat, args,
+                               _nxstring_format_handler);
+  if (len < NXLOG_BUFFER_SIZE) {
+    sys_puts(buf);
+  } else {
+    // Truncated: reformat using a heap buffer. Copy the va_list first.
+    va_list args_copy;
+    va_copy(args_copy, args);
+    char *buf = (char *)sys_malloc(len + 1);
+    if (buf) {
+      sys_vsprintf_ex(buf, len + 1, cFormat, args_copy,
+                      _nxstring_format_handler);
+      sys_puts(buf);
+      sys_free(buf);
+    } else {
+      // OOM: print the truncated static buffer
+      sys_puts(buf);
+    }
+    va_end(args_copy);
+  }
   va_end(args);
-
-  // Add newline like NSLog (but don't count it in the result)
-  // and flush the output
-  sys_putch('\n');
-  sys_puts(NULL);
-
-  return result;
+  depth--;
+  return len;
 }

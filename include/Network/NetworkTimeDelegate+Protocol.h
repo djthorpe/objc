@@ -23,7 +23,6 @@
  */
 @protocol NetworkTimeDelegate
 
-@required
 /**
  * @brief Called when a network time update is received.
  * @param time The updated network time.

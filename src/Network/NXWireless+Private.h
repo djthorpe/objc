@@ -23,7 +23,8 @@
 /**
  * @brief Called if the connection fails.
  */
-- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error;
+- (void)connectionFailed:(NXWirelessNetwork *)network
+               withError:(NXWirelessError)error;
 
 /**
  * @brief Called when a connection is established.

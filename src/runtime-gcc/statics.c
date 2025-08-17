@@ -1,8 +1,8 @@
 #include "api.h"
 #include "class.h"
 #include <objc/objc.h>
-#include <string.h>
 #include <runtime-sys/sys.h>
+#include <string.h>
 
 #define STATICS_TABLE_SIZE 32
 static struct objc_static_instances_list *statics_table[STATICS_TABLE_SIZE + 1];
@@ -24,7 +24,7 @@ void __objc_statics_register(struct objc_static_instances_list *statics) {
   if (statics == NULL || statics->class_name == NULL) {
     return;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("__objc_statics_register [%s]\n", statics->class_name);
 #endif
   for (int i = 0; i < STATICS_TABLE_SIZE; i++) {

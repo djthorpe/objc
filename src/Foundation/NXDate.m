@@ -1,6 +1,53 @@
 #include <Foundation/Foundation.h>
 #include <runtime-sys/sys.h>
 
+static const char *days_of_week[] = {"Sunday",    "Monday",   "Tuesday",
+                                     "Wednesday", "Thursday", "Friday",
+                                     "Saturday"};
+
+static const char *months_of_year[] = {
+    "January", "February", "March",     "April",   "May",      "June",
+    "July",    "August",   "September", "October", "November", "December"};
+
+/**
+ * @brief Function to read the current date and time and print it.
+ */
+bool printdate(sys_date_t *date) {
+  // Date
+  uint16_t year;
+  uint8_t month, day, weekday;
+  if (!sys_date_get_date_local(date, &year, &month, &day, &weekday)) {
+    sys_printf("Failed to get date components\n");
+    return false;
+  } else {
+    sys_printf("%s %s %02u, %04u", days_of_week[weekday],
+               months_of_year[month - 1], day, year);
+  }
+
+  sys_putch(' ');
+
+  // Time
+  uint8_t hours, minutes, seconds;
+  if (!sys_date_get_time_local(date, &hours, &minutes, &seconds)) {
+    sys_printf("Failed to get time components\n");
+    return false;
+  } else {
+    sys_printf("%02u:%02u:%02u", hours, minutes, seconds);
+  }
+
+  // Timezone offset
+  if (date->tzoffset != 0) {
+    sys_printf(" (UTC%+2d:%02d)", date->tzoffset / 3600,
+               (date->tzoffset % 3600) / 60);
+  } else {
+    sys_printf(" (UTC)");
+  }
+
+  sys_putch('\n');
+
+  return true;
+}
+
 @implementation NXDate
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,6 +90,24 @@
 }
 
 /**
+ * @brief Initialise an instance with a system date
+ */
+- (id)initWithSystemDate:(const sys_date_t *)date {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  if (date == NULL) {
+    [self release];
+    return nil;
+  }
+  // Copy the provided system date and reset cached components
+  _date = *date;
+  _year = 0;
+  return self;
+}
+
+/**
  * @brief Return an instance representing the current time.
  */
 + (NXDate *)date {
@@ -56,6 +121,13 @@
   return [[[NXDate alloc] initWithTimeIntervalSinceNow:interval] autorelease];
 }
 
+/**
+ * @brief Return an instance created from a system date
+ */
++ (NXDate *)dateWithSystemDate:(const sys_date_t *)date {
+  return [[[NXDate alloc] initWithSystemDate:date] autorelease];
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
@@ -65,17 +137,15 @@
  * We use the _year to indicate whether components have been cached.
  */
 - (BOOL)_cacheComponents {
-  if (_year == 0) {
-    if (!sys_date_get_date_utc(&_date, &_year, &_month, &_day, &_weekday)) {
-      _year = 0;
-      return NO;
-    }
-    if (!sys_date_get_time_utc(&_date, &_hours, &_minutes, &_seconds)) {
-      _year = 0;
-      return NO;
-    }
+  if (_year != 0) {
+    return YES; // Components already cached
   }
-  return YES;
+  if (sys_date_get_date_utc(&_date, &_year, &_month, &_day, &_weekday) &&
+      sys_date_get_time_utc(&_date, &_hours, &_minutes, &_seconds)) {
+    return YES;
+  }
+  _year = 0;
+  return NO;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,7 @@
 set(NAME "Network")
 
 add_library(${NAME} STATIC
+    NXNetworkTime.m
     NXWireless.m
     NXWirelessNetwork.m
 )
@@ -10,5 +11,6 @@ target_include_directories(${NAME} PRIVATE
 )
 target_link_libraries(${NAME} PUBLIC
     runtime-hw
+    runtime-net
     Foundation
 )

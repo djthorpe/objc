@@ -34,7 +34,8 @@ typedef struct net_ntp_t net_ntp_t;
  * @param date Pointer to the updated UTC time. Valid only for the duration of
  * the callback.
  */
-typedef void (*net_ntp_callback_t)(const sys_date_t *date);
+typedef void (*net_ntp_callback_t)(net_ntp_t *ntp, const sys_date_t *date,
+                                   void *user_data);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -45,7 +46,7 @@ typedef void (*net_ntp_callback_t)(const sys_date_t *date);
  * @param callback Optional callback invoked on successful time updates.
  * @return A pointer to the NTP manager handle (singleton), or NULL on error.
  */
-net_ntp_t *net_ntp_init(net_ntp_callback_t callback);
+net_ntp_t *net_ntp_init(net_ntp_callback_t callback, void *user_data);
 
 /**
  * @brief Determine if the NTP handle is checking for time updates.
