@@ -104,7 +104,11 @@ int NXApplicationMain(int argc, char *argv[], Class delegate,
     }
   }
 
+  // TODO: Send signal from application when watchdog caused a reset
+
   // Enable power management
+  // TODO: Remove this - it fits in as NXPowerManagement, not
+  // a capability.
   hw_power_t *power = NULL;
   if (capabilities & NXApplicationCapabilityPower) {
     power = hw_power_init(0xFF, 0xFF, _app_power_callback, app);
