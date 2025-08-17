@@ -23,11 +23,7 @@
 #endif
 
 // Example publish target: root topic and fixed message
-static const char MQTT_POWER_TOPIC[] = "picofuse/power";
-static const char MQTT_BATTERY_TOPIC[] = "picofuse/battery";
-static const char MQTT_SSID_TOPIC[] = "picofuse/ssid";
-static const char MQTT_RSSI_TOPIC[] = "picofuse/rssi";
-static const char MQTT_CHANNEL_TOPIC[] = "picofuse/channel";
+static const char MQTT_TOPIC[] = "picofuse";
 
 static void mqtt_connect_cb(net_mqtt_t *mqtt, net_mqtt_status_t status,
                             void *user_data) {
@@ -59,6 +55,17 @@ static void mqtt_connect_cb(net_mqtt_t *mqtt, net_mqtt_status_t status,
   }
 }
 
+static void publish_mqtt_message(net_mqtt_t *mqtt, const char *topic,
+                                 const char *message) {
+  if (net_mqtt_valid(mqtt) == false) {
+    return;
+  }
+  char topic2[80];
+  sys_sprintf(topic2, sizeof(topic2), "%s/%s/%s", MQTT_TOPIC, sys_env_serial(),
+              topic);
+  net_mqtt_publish_str(mqtt, topic2, message);
+}
+
 static void wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
                           const hw_wifi_network_t *network, void *user_data) {
   (void)wifi;
@@ -74,13 +81,13 @@ static void wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 
   if (event == hw_wifi_event_connected && net_mqtt_valid(mqtt)) {
     sys_sprintf(str, sizeof(str), "%u", network->channel);
-    net_mqtt_publish_str(mqtt, MQTT_CHANNEL_TOPIC, str);
+    publish_mqtt_message(mqtt, "channel", str);
 
     sys_sprintf(str, sizeof(str), "%d", network->rssi);
-    net_mqtt_publish_str(mqtt, MQTT_RSSI_TOPIC, str);
+    publish_mqtt_message(mqtt, "rssi", str);
 
     sys_sprintf(str, sizeof(str), "%s", network->ssid);
-    net_mqtt_publish_str(mqtt, MQTT_SSID_TOPIC, str);
+    publish_mqtt_message(mqtt, "ssid", str);
   }
 
   if (event == hw_wifi_event_disconnected) {
@@ -107,24 +114,18 @@ static void power_callback(hw_power_t *pwr, hw_power_flag_t event,
   switch (event) {
   case HW_POWER_USB:
     sys_sprintf(str, sizeof(str), "%u", value);
-    net_mqtt_publish_str(mqtt, MQTT_POWER_TOPIC, "USB");
+    publish_mqtt_message(mqtt, "power", "USB");
     break;
   case HW_POWER_BATTERY:
     sys_sprintf(str, sizeof(str), "%u", value);
-    net_mqtt_publish_str(mqtt, MQTT_POWER_TOPIC, "Battery");
+    publish_mqtt_message(mqtt, "power", "Battery");
+
+    sys_sprintf(str, sizeof(str), "%u", value);
+    publish_mqtt_message(mqtt, "battery", str);
     break;
   default:
     sys_sprintf(str, sizeof(str), "%u", value);
-    net_mqtt_publish_str(mqtt, MQTT_POWER_TOPIC, "Unknown");
-    break;
-  }
-
-  switch (event) {
-  case HW_POWER_BATTERY:
-    sys_sprintf(str, sizeof(str), "%u", value);
-    if (net_mqtt_publish_str(mqtt, MQTT_BATTERY_TOPIC, str) == false) {
-      sys_printf("MQTT: failed to publish battery status\n");
-    }
+    publish_mqtt_message(mqtt, "power", "Unknown");
     break;
   }
 }
@@ -177,6 +178,7 @@ int main(void) {
     sys_sleep(10);
   }
 
+  hw_power_finalize(pwr);
   hw_wifi_finalize(wifi);
   hw_exit();
   sys_exit();
