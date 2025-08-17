@@ -117,6 +117,8 @@ static inline bool _hw_power_vsys_wifi() {
 static inline bool _hw_power_vbus_wifi() {
 #ifdef CYW43_WL_GPIO_VBUS_PIN
   return true;
+#elif defined(PIMORONI_PICO_LIPO2_RP2350)
+  return true;
 #else
   return false;
 #endif
@@ -128,6 +130,8 @@ static inline uint8_t _hw_power_vsys() {
   return PICO_VSYS_PIN;
 #elif defined(PICOLIPO_VBUS_DETECT_PIN)
   return PICOLIPO_VBUS_DETECT_PIN;
+#elif defined(PIMORONI_PICO_LIPO2_RP2350)
+  return 43; // PIMORONI_PICO_LIPO2_RP2350 uses GPIO 43 for VSYS
 #else
   return 0xFF; // Invalid GPIO pin
 #endif

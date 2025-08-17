@@ -11,6 +11,8 @@
 #elif defined(PICO_RP2350B)
 // RP2350B package exposes additional GPIOs; ADC GPIOs start at 40
 #define ADC_CHANNEL_OFFSET 40
+#elif defined(PIMORONI_PICO_LIPO2_RP2350)
+#define ADC_CHANNEL_OFFSET 40
 #elif defined(PICO_RP2350)
 // RP2350 (generic) but no package variant macro set by board header:
 // Try to infer: many RP2350 boards without explicit A/B still map ADC like A.
@@ -19,8 +21,7 @@
 #endif
 
 #ifndef ADC_CHANNEL_OFFSET
-#warning                                                                       \
-#define ADC_CHANNEL_OFFSET 26
+#warning #define ADC_CHANNEL_OFFSET 26
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
