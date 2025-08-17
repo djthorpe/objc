@@ -1,6 +1,7 @@
 set(NAME "runtime-net")
 
 add_library(${NAME} STATIC
+  mqtt.c
   net.c
   ntp.c
 )
@@ -26,6 +27,7 @@ if (PICO_CYW43_SUPPORTED)
   target_compile_definitions(${NAME} PRIVATE PICO_CYW43_SUPPORTED=1)
   target_link_libraries(${NAME} 
     pico_cyw43_arch_lwip_poll 
+    pico_lwip_mqtt
     pico_lwip_sntp
   )
 endif()

@@ -7,6 +7,7 @@
  * Managing network resources, protocols, and low-level operations.
  */
 #pragma once
+#include "mqtt.h"
 #include "ntp.h"
 
 ///////////////////////////////////////////////////////////////////////////////
