@@ -11,6 +11,9 @@ var searchData=
   ['pix_5fsdl_5fdisplay_5finit',['pix_sdl_display_init',['../group__PixelDisplay.html#gafa3adb4bd768a532961e70d592789394',1,'display.h']]],
   ['proto_5fconformsto',['proto_conformsTo',['../group__objc.html#ga6881363f093343fcf8529a4477f97afe',1,'runtime.h']]],
   ['proto_5fgetname',['proto_getName',['../group__objc.html#gaa62343541481469b654863125aec01b9',1,'runtime.h']]],
+  ['publishdata_3atotopic_3aqos_3aretain_3a',['publishData:toTopic:qos:retain:',['../interfaceMQTT.html#ae22f1c46da35d04f2b2ee29657e8ee80',1,'MQTT']]],
+  ['publishjson_3atotopic_3aqos_3aretain_3a',['publishJSON:toTopic:qos:retain:',['../interfaceMQTT.html#a6c05bdf8d3c96d0ce2b9c14fff9f667e',1,'MQTT']]],
+  ['publishstring_3atotopic_3aqos_3aretain_3a',['publishString:toTopic:qos:retain:',['../interfaceMQTT.html#aabd38128216a00ebf99c199581fb3b17',1,'MQTT']]],
   ['pulldownwithpin_3a',['pulldownWithPin:',['../interfaceGPIO.html#acb1fb39cfd09bc4ab14446789e2ef0f9',1,'GPIO']]],
   ['pullupwithpin_3a',['pullupWithPin:',['../interfaceGPIO.html#aacaa177956508023d06fa6360dae9d59',1,'GPIO']]]
 ];

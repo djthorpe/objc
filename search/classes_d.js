@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wirelessdelegate_2dp',['WirelessDelegate-p',['../protocolWirelessDelegate-p.html',1,'']]]
+  ['timerdelegate_2dp',['TimerDelegate-p',['../protocolTimerDelegate-p.html',1,'']]]
 ];

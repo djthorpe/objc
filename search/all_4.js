@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['data',['data',['../structnet__mqtt__message__t.html#a4d849a558669ec782b63a5355af8d59f',1,'net_mqtt_message_t']]],
   ['datawithbytes_3asize_3a',['dataWithBytes:size:',['../interfaceNXData.html#a8f2e0b95748541aa3934d86fbf38a2c7',1,'NXData']]],
   ['datawithcapacity_3a',['dataWithCapacity:',['../interfaceNXData.html#acedebd7588ba090db61c4c950a5faddb',1,'NXData']]],
   ['datawithstring_3a',['dataWithString:',['../interfaceNXData.html#a409dcbd86bc81a83f8e812ccc9b5fd0e',1,'NXData']]],
@@ -11,9 +12,9 @@ var searchData=
   ['dc',['dc',['../structdriver__st7789__t.html#a9895f92369227b9294e4e1ee08249204',1,'driver_st7789_t::dc()'],['../structdriver__uc8151__t.html#aed103854382e45723c118c2faa9f4dbf',1,'driver_uc8151_t::dc()']]],
   ['dealloc',['dealloc',['../interfaceObject.html#adf3fa5ae7a69cf4caf37a8377a0a24b1',1,'Object::dealloc()'],['../interfaceNXZone.html#a2c314408f20b40ae9e8f7225c0719463',1,'NXZone::dealloc()']]],
   ['defaultzone',['defaultZone',['../interfaceNXZone.html#ad5f817f5c094f3be72387fb5143bbe3e',1,'NXZone']]],
-  ['delegate',['delegate',['../interfaceGPIO.html#a35b7756b9a012a1c802b6f3cdcd1c0cc',1,'GPIO::delegate()'],['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application::delegate()'],['../interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023',1,'NXTimer::delegate()'],['../interfaceNXNetworkTime.html#a0691950ae495b25e7fbeaaef643bbd4a',1,'NXNetworkTime::delegate()'],['../interfaceNXWireless.html#a21447e9a0998d219a5596ff61bb5b661',1,'NXWireless::delegate()']]],
+  ['delegate',['delegate',['../interfaceGPIO.html#a35b7756b9a012a1c802b6f3cdcd1c0cc',1,'GPIO::delegate()'],['../interfaceApplication.html#a2f47c20d68c8a31cb5909150f0ceade3',1,'Application::delegate()'],['../interfaceNXTimer.html#a923c6f2f18557570f50b0c3f1b318023',1,'NXTimer::delegate()'],['../interfaceMQTT.html#a83d82c9a39b554b5ecf6b1e8b0caa578',1,'MQTT::delegate()'],['../interfaceNXNetworkTime.html#a0691950ae495b25e7fbeaaef643bbd4a',1,'NXNetworkTime::delegate()'],['../interfaceNXWireless.html#a21447e9a0998d219a5596ff61bb5b661',1,'NXWireless::delegate()']]],
   ['description',['description',['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../categoryObject_07Description_08.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object(Description)::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()'],['../interfaceObject.html#ae33e542e3f1da1a933e7625f46cde85a',1,'Object::description()']]],
-  ['disconnect',['disconnect',['../interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747',1,'NXWireless']]],
+  ['disconnect',['disconnect',['../interfaceMQTT.html#ae46ca314a34a311a776599d5e79cc6c7',1,'MQTT::disconnect()'],['../interfaceNXWireless.html#a76585f97749d195c27c0fb5a5e7bf747',1,'NXWireless::disconnect()']]],
   ['disconnected_3a',['disconnected:',['../protocolWirelessDelegate-p.html#a2d982faf9d990759f60a7f59c924fafc',1,'WirelessDelegate-p']]],
   ['display_2eh',['display.h',['../display_8h.html',1,'']]],
   ['divider',['divider',['../structhw__pwm__config__t.html#ac22872bf90335f126ef232cd59d4f46a',1,'hw_pwm_config_t']]],

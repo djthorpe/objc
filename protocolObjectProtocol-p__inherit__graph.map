@@ -1,23 +1,24 @@
 <map id="&lt;ObjectProtocol&gt;" name="&lt;ObjectProtocol&gt;">
-<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="192,411,256,437"/>
-<area shape="rect" id="node3" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="304,360,440,387"/>
-<area shape="rect" id="node4" href="$interfaceNXObject.html" title="The base class for objects in the Foundation framework. " alt="" coords="331,411,413,437"/>
-<area shape="rect" id="node22" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="335,461,409,488"/>
+<area shape="rect" id="node2" href="$interfaceObject.html" title="The root class of all Objective&#45;C classes. " alt="" coords="192,436,256,463"/>
+<area shape="rect" id="node3" href="$interfaceNXConstantString.html" title="A constant string class. " alt="" coords="304,385,440,412"/>
+<area shape="rect" id="node4" href="$interfaceNXObject.html" title="The base class for objects in the Foundation framework. " alt="" coords="331,436,413,463"/>
+<area shape="rect" id="node23" href="$interfaceProtocol.html" title="Protocol class definition. " alt="" coords="335,487,409,513"/>
 <area shape="rect" id="node5" href="$interfaceApplication.html" title="The main application class that coordinates application&#45;wide functionality. " alt="" coords="517,5,611,32"/>
 <area shape="rect" id="node6" href="$interfaceGPIO.html" title="The GPIO class. " alt="" coords="537,56,591,83"/>
 <area shape="rect" id="node7" href="$interfaceLED.html" title="The LED class. " alt="" coords="541,107,587,133"/>
-<area shape="rect" id="node8" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="526,157,602,184"/>
-<area shape="rect" id="node9" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="491,208,637,235"/>
-<area shape="rect" id="node10" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="528,259,600,285"/>
-<area shape="rect" id="node11" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="528,309,600,336"/>
-<area shape="rect" id="node12" href="$interfaceNXMap.html" title="The NXMap class. " alt="" coords="530,360,598,387"/>
-<area shape="rect" id="node13" href="$interfaceNXNetworkTime.html" title="A class for managing network time synchronization. " alt="" coords="499,411,629,437"/>
-<area shape="rect" id="node14" href="$interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. " alt="" coords="531,461,597,488"/>
-<area shape="rect" id="node15" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="517,512,611,539"/>
-<area shape="rect" id="node16" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="525,563,603,589"/>
-<area shape="rect" id="node17" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="521,613,607,640"/>
-<area shape="rect" id="node18" href="$interfaceNXTimer.html" title="The NXTimer class. " alt="" coords="525,664,603,691"/>
-<area shape="rect" id="node19" href="$interfaceNXWireless.html" title="A class for managing wireless connections. " alt="" coords="515,715,613,741"/>
-<area shape="rect" id="node20" href="$interfaceNXWirelessNetwork.html" title="A class for representing a wireless network. " alt="" coords="488,765,640,792"/>
-<area shape="rect" id="node21" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="527,816,601,843"/>
+<area shape="rect" id="node8" href="$interfaceMQTT.html" title="An MQTT client. " alt="" coords="535,157,593,184"/>
+<area shape="rect" id="node9" href="$interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. " alt="" coords="526,208,602,235"/>
+<area shape="rect" id="node10" href="$interfaceNXAutoreleasePool.html" title="A class for managing autorelease pools. " alt="" coords="491,259,637,285"/>
+<area shape="rect" id="node11" href="$interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. " alt="" coords="528,309,600,336"/>
+<area shape="rect" id="node12" href="$interfaceNXDate.html" title="A class for representing and manipulating dates. " alt="" coords="528,360,600,387"/>
+<area shape="rect" id="node13" href="$interfaceNXMap.html" title="The NXMap class. " alt="" coords="530,411,598,437"/>
+<area shape="rect" id="node14" href="$interfaceNXNetworkTime.html" title="A class for managing network time synchronization. " alt="" coords="499,461,629,488"/>
+<area shape="rect" id="node15" href="$interfaceNXNull.html" title="The NXNull classNXNull represents a null value that can be inserted into collections. " alt="" coords="531,512,597,539"/>
+<area shape="rect" id="node16" href="$interfaceNXNumber.html" title="The base class for NXNumber instances. " alt="" coords="517,563,611,589"/>
+<area shape="rect" id="node17" href="$interfaceNXString.html" title="A class for managing and manipulating string objects. " alt="" coords="525,613,603,640"/>
+<area shape="rect" id="node18" href="$interfaceNXThread.html" title="A class for managing and interacting with threads. " alt="" coords="521,664,607,691"/>
+<area shape="rect" id="node19" href="$interfaceNXTimer.html" title="The NXTimer class. " alt="" coords="525,715,603,741"/>
+<area shape="rect" id="node20" href="$interfaceNXWireless.html" title="A class for managing wireless connections. " alt="" coords="515,765,613,792"/>
+<area shape="rect" id="node21" href="$interfaceNXWirelessNetwork.html" title="A class for representing a wireless network. " alt="" coords="488,816,640,843"/>
+<area shape="rect" id="node22" href="$interfaceNXZone.html" title="A class for managing memory zones. " alt="" coords="527,867,601,893"/>
 </map>

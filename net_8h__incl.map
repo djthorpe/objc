@@ -1,5 +1,5 @@
 <map id="include/runtime&#45;net/net.h" name="include/runtime&#45;net/net.h">
-<area shape="rect" id="node2" href="$mqtt_8h.html" title="MQTT management interface. " alt="" coords="5,169,71,196"/>
-<area shape="rect" id="node5" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="140,95,195,121"/>
-<area shape="rect" id="node6" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="95,169,240,196"/>
+<area shape="rect" id="node2" href="$mqtt_8h.html" title="MQTT management interface. " alt="" coords="213,169,278,196"/>
+<area shape="rect" id="node7" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="89,95,143,121"/>
+<area shape="rect" id="node8" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="43,169,189,196"/>
 </map>

@@ -61,10 +61,12 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>MQTT management interface.  
+<p><a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> management interface.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mqtt.h:</div>
 <div class="dyncontent">
@@ -87,17 +89,23 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque MQTT handle.  <a href="unionnet__mqtt__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> handle.  <a href="unionnet__mqtt__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet__mqtt__message__t.html">net_mqtt_message_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> message descriptor used for publishing.  <a href="structnet__mqtt__message__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:gad994508b2468bd410aa1db5d02375ce0"><td class="memItemLeft" align="right" valign="top">typedef union <a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#gad994508b2468bd410aa1db5d02375ce0">net_mqtt_t</a></td></tr>
-<tr class="memdesc:gad994508b2468bd410aa1db5d02375ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque MQTT handle.  <a href="group__RuntimeMQTT.html#gad994508b2468bd410aa1db5d02375ce0">More...</a><br /></td></tr>
+<tr class="memdesc:gad994508b2468bd410aa1db5d02375ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> handle.  <a href="group__RuntimeMQTT.html#gad994508b2468bd410aa1db5d02375ce0">More...</a><br /></td></tr>
 <tr class="separator:gad994508b2468bd410aa1db5d02375ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf016238c40c8e905130084bb0e1e2089"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#gaf016238c40c8e905130084bb0e1e2089">net_mqtt_connect_callback_t</a>) (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt, <a class="el" href="group__RuntimeMQTT.html#ga63c337ca1b438ad258a37746774dfd05">net_mqtt_status_t</a> status, void *user_data)</td></tr>
 <tr class="memdesc:gaf016238c40c8e905130084bb0e1e2089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback invoked on connection state changes and errors.  <a href="group__RuntimeMQTT.html#gaf016238c40c8e905130084bb0e1e2089">More...</a><br /></td></tr>
 <tr class="separator:gaf016238c40c8e905130084bb0e1e2089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga342e1f7cd96a107195b6ad048b3113ad"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structnet__mqtt__message__t.html">net_mqtt_message_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga342e1f7cd96a107195b6ad048b3113ad">net_mqtt_message_t</a></td></tr>
+<tr class="memdesc:ga342e1f7cd96a107195b6ad048b3113ad"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> message descriptor used for publishing.  <a href="group__RuntimeMQTT.html#ga342e1f7cd96a107195b6ad048b3113ad">More...</a><br /></td></tr>
+<tr class="separator:ga342e1f7cd96a107195b6ad048b3113ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -111,30 +119,39 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__RuntimeMQTT.html#gga63c337ca1b438ad258a37746774dfd05a7fcfcd007b986f4b6a534a7ba2e8cc55">net_mqtt_status_timeout_t</a>, 
 <a class="el" href="group__RuntimeMQTT.html#gga63c337ca1b438ad258a37746774dfd05af52ee6ea41b6f1491c54e07047a2249d">net_mqtt_status_error_t</a>
 <br />
- }<tr class="memdesc:ga63c337ca1b438ad258a37746774dfd05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection/event status flags for MQTT operations.  <a href="group__RuntimeMQTT.html#ga63c337ca1b438ad258a37746774dfd05">More...</a><br /></td></tr>
+ }<tr class="memdesc:ga63c337ca1b438ad258a37746774dfd05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection/event status flags for <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> operations.  <a href="group__RuntimeMQTT.html#ga63c337ca1b438ad258a37746774dfd05">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:ga63c337ca1b438ad258a37746774dfd05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga84e5b6137a3b3f4e399a4eef7d32b13d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga84e5b6137a3b3f4e399a4eef7d32b13d">net_mqtt_init</a> (<a class="el" href="group__RuntimeMQTT.html#gaf016238c40c8e905130084bb0e1e2089">net_mqtt_connect_callback_t</a> connect, void *user_data)</td></tr>
-<tr class="memdesc:ga84e5b6137a3b3f4e399a4eef7d32b13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and initialize an MQTT handle.  <a href="group__RuntimeMQTT.html#ga84e5b6137a3b3f4e399a4eef7d32b13d">More...</a><br /></td></tr>
+<tr class="memdesc:ga84e5b6137a3b3f4e399a4eef7d32b13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and initialize an <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> handle.  <a href="group__RuntimeMQTT.html#ga84e5b6137a3b3f4e399a4eef7d32b13d">More...</a><br /></td></tr>
 <tr class="separator:ga84e5b6137a3b3f4e399a4eef7d32b13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga328d21726350dd2b3573977a6f960d96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga328d21726350dd2b3573977a6f960d96">net_mqtt_valid</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt)</td></tr>
-<tr class="memdesc:ga328d21726350dd2b3573977a6f960d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether an MQTT client is valid and connected.  <a href="group__RuntimeMQTT.html#ga328d21726350dd2b3573977a6f960d96">More...</a><br /></td></tr>
+<tr class="memdesc:ga328d21726350dd2b3573977a6f960d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether an <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> client is valid and connected.  <a href="group__RuntimeMQTT.html#ga328d21726350dd2b3573977a6f960d96">More...</a><br /></td></tr>
 <tr class="separator:ga328d21726350dd2b3573977a6f960d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2b7dfb9bae4c9274cbf817eab8befe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#gac2b7dfb9bae4c9274cbf817eab8befe6">net_mqtt_finalize</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt)</td></tr>
-<tr class="memdesc:gac2b7dfb9bae4c9274cbf817eab8befe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize the MQTT handle and free associated resources.  <a href="group__RuntimeMQTT.html#gac2b7dfb9bae4c9274cbf817eab8befe6">More...</a><br /></td></tr>
+<tr class="memdesc:gac2b7dfb9bae4c9274cbf817eab8befe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize the <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> handle and free associated resources.  <a href="group__RuntimeMQTT.html#gac2b7dfb9bae4c9274cbf817eab8befe6">More...</a><br /></td></tr>
 <tr class="separator:gac2b7dfb9bae4c9274cbf817eab8befe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga392070ed9a7d2cb447e7cda952de3515"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga392070ed9a7d2cb447e7cda952de3515">net_mqtt_connect</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt, const char *hostname, uint16_t port, const char *client_id, const char *user, const char *password, uint16_t keepalive_secs, const char *will_topic, const char *will_message)</td></tr>
-<tr class="memdesc:ga392070ed9a7d2cb447e7cda952de3515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to an MQTT broker.  <a href="group__RuntimeMQTT.html#ga392070ed9a7d2cb447e7cda952de3515">More...</a><br /></td></tr>
+<tr class="memdesc:ga392070ed9a7d2cb447e7cda952de3515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous connection to an <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> broker.  <a href="group__RuntimeMQTT.html#ga392070ed9a7d2cb447e7cda952de3515">More...</a><br /></td></tr>
 <tr class="separator:ga392070ed9a7d2cb447e7cda952de3515"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21dec32402c94760157c9d1f4008cd66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga21dec32402c94760157c9d1f4008cd66">net_mqtt_disconnect</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt)</td></tr>
-<tr class="memdesc:ga21dec32402c94760157c9d1f4008cd66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous disconnect from the MQTT broker.  <a href="group__RuntimeMQTT.html#ga21dec32402c94760157c9d1f4008cd66">More...</a><br /></td></tr>
+<tr class="memdesc:ga21dec32402c94760157c9d1f4008cd66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin an asynchronous disconnect from the <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> broker.  <a href="group__RuntimeMQTT.html#ga21dec32402c94760157c9d1f4008cd66">More...</a><br /></td></tr>
 <tr class="separator:ga21dec32402c94760157c9d1f4008cd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf13d55b1d430f580576ae84125ddeb98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#gaf13d55b1d430f580576ae84125ddeb98">net_mqtt_publish</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt, const <a class="el" href="structnet__mqtt__message__t.html">net_mqtt_message_t</a> *message, uint8_t qos, bool retain)</td></tr>
+<tr class="memdesc:gaf13d55b1d430f580576ae84125ddeb98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish a message to a topic.  <a href="group__RuntimeMQTT.html#gaf13d55b1d430f580576ae84125ddeb98">More...</a><br /></td></tr>
+<tr class="separator:gaf13d55b1d430f580576ae84125ddeb98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga45ecf8a0bdf81c3ca83de4c65bed62dc"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga45ecf8a0bdf81c3ca83de4c65bed62dc">net_mqtt_publish_str</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt, const char *topic, const char *str)</td></tr>
+<tr class="memdesc:ga45ecf8a0bdf81c3ca83de4c65bed62dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish a NULL-terminated string to a topic.  <a href="group__RuntimeMQTT.html#ga45ecf8a0bdf81c3ca83de4c65bed62dc">More...</a><br /></td></tr>
+<tr class="separator:ga45ecf8a0bdf81c3ca83de4c65bed62dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25fc8c4c5e5f8bdeeb6a30ef846de781"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeMQTT.html#ga25fc8c4c5e5f8bdeeb6a30ef846de781">net_mqtt_subscribe</a> (<a class="el" href="unionnet__mqtt__t.html">net_mqtt_t</a> *mqtt, const char *topic, uint8_t qos)</td></tr>
+<tr class="memdesc:ga25fc8c4c5e5f8bdeeb6a30ef846de781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to a topic.  <a href="group__RuntimeMQTT.html#ga25fc8c4c5e5f8bdeeb6a30ef846de781">More...</a><br /></td></tr>
+<tr class="separator:ga25fc8c4c5e5f8bdeeb6a30ef846de781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>MQTT management interface. </p>
+<div class="textblock"><p><a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> management interface. </p>
 
 <p class="definition">Definition in file <a class="el" href="mqtt_8h_source.html">mqtt.h</a>.</p>
 </div></div><!-- contents -->
