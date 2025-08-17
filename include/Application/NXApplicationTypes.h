@@ -36,6 +36,8 @@ typedef enum {
   NXApplicationPowerSourceUSB = (1 << 3), ///< Power source changed to USB
   NXApplicationPowerSourceBattery =
       (1 << 4), ///< Power source changed to battery, or battery level changed
+  NXApplicationWatchdogDidReset =
+      (1 << 5), ///< Application was reset by a watchdog timer
 } NXApplicationSignal;
 
 /**

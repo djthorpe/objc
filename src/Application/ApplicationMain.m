@@ -87,6 +87,32 @@ int NXApplicationMain(int argc, char *argv[], Class delegate,
   sys_env_signalhandler(0, _app_handle_signal);
 #endif
 
+  // Enable the watchdog
+  hw_watchdog_t *watchdog = NULL;
+  if (capabilities & NXApplicationCapabilityWatchdog) {
+    if (hw_watchdog_maxtimeout() > 0) {
+      watchdog = hw_watchdog_init();
+      if (!hw_watchdog_valid(watchdog)) {
+        watchdog = NULL;
+      }
+    }
+    if (watchdog) {
+      sys_printf("Watchdog is enabled\n");
+      hw_watchdog_enable(watchdog, true);
+    } else {
+      sys_printf("Watchdog is not supported or timer interval is too short\n");
+    }
+  }
+
+  // Enable power management
+  hw_power_t *power = NULL;
+  if (capabilities & NXApplicationCapabilityPower) {
+    power = hw_power_init(0xFF, 0xFF, _app_power_callback, app);
+    if (!hw_power_valid(power)) {
+      power = NULL;
+    }
+  }
+
   // Call the run method on the shared application instance
   int returnValue = [app run];
 
@@ -94,6 +120,10 @@ int NXApplicationMain(int argc, char *argv[], Class delegate,
   // Try and clear signal handlers
   sys_env_signalhandler(0, NULL);
 #endif
+
+  // Finalize watchdog and power
+  hw_watchdog_finalize(watchdog);
+  hw_power_finalize(power);
 
   // Release the application delegate, instance, pool and zone
   [app release];

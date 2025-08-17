@@ -155,6 +155,29 @@ void _app_net_poll_callback(sys_timer_t *timer) {
   }
 }
 
+/**
+ * @brief Callback function for power events.
+ */
+void _app_power_callback(hw_power_t *power, hw_power_flag_t flags,
+                         uint32_t value, void *user_data) {
+  (void)power;
+  (void)user_data;
+
+  if (flags & HW_POWER_BATTERY) {
+    sys_printf("CALLBACK: Power source is battery (estimated %u%%)\n", value);
+  }
+  if (flags & HW_POWER_USB) {
+    sys_printf("CALLBACK: Power source is USB (estimated %u%%)\n", value);
+  }
+  if (flags & HW_POWER_UNKNOWN) {
+    sys_printf("CALLBACK: Power source is unknown\n");
+  }
+  if (flags & HW_POWER_RESET) {
+    sys_printf("CALLBACK: Power is about to force a reset after %u ms\n",
+               value);
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
@@ -269,7 +292,8 @@ void _app_net_poll_callback(sys_timer_t *timer) {
   sys_timer_t hw_poll_timer = sys_timer_init(NSAPPLICATION_HW_POLL_INTERVAL_MS,
                                              self, _app_hw_poll_callback);
   if (sys_timer_start(&hw_poll_timer) == false) {
-    return -1; // Failed to start the timer
+    sys_printf("Failed to start hardware poll timer");
+    return -1;
   }
 
   // Same for net_poll occasionally, so we set up the timer for that
@@ -277,7 +301,8 @@ void _app_net_poll_callback(sys_timer_t *timer) {
   sys_timer_t net_poll_timer = sys_timer_init(
       NSAPPLICATION_NET_POLL_INTERVAL_MS, self, _app_net_poll_callback);
   if (sys_timer_start(&net_poll_timer) == false) {
-    return -1; // Failed to start the timer
+    sys_printf("Failed to start network poll timer");
+    return -1;
   }
 
   // Run the loop until the stop flag is set
@@ -343,8 +368,8 @@ void _app_net_poll_callback(sys_timer_t *timer) {
     sys_free(app_event);
 
     // Drain the autorelease pool
-    // TODO: Only do this on the main thread, and maybe less often than once per
-    // loop iteration
+    // TODO: Only do this on the main thread, and maybe less often than once
+    // per loop iteration
     [[NXAutoreleasePool currentPool] drain];
   }
 
