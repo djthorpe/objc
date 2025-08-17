@@ -121,9 +121,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a9521b82f77ee816a10a7a2d5e608949d"><td class="memItemLeft" align="right" valign="top"><a id="a9521b82f77ee816a10a7a2d5e608949d"></a>
 typedef struct hw_power_t&#160;</td><td class="memItemRight" valign="bottom"><b>hw_power_t</b></td></tr>
 <tr class="separator:a9521b82f77ee816a10a7a2d5e608949d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga712d06d4424701aa2061e82091624b62"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a>) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value)</td></tr>
-<tr class="memdesc:ga712d06d4424701aa2061e82091624b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#ga712d06d4424701aa2061e82091624b62">More...</a><br /></td></tr>
-<tr class="separator:ga712d06d4424701aa2061e82091624b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9d76ec63641150f22dba37f8252794a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">hw_power_callback_t</a>) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value, void *user_data)</td></tr>
+<tr class="memdesc:gaa9d76ec63641150f22dba37f8252794a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">More...</a><br /></td></tr>
+<tr class="separator:gaa9d76ec63641150f22dba37f8252794a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -137,9 +137,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae3e1d2015d2819b9660403da4c8fda99"><td class="memItemLeft" align="right" valign="top">hw_power_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gae3e1d2015d2819b9660403da4c8fda99">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a> callback)</td></tr>
-<tr class="memdesc:gae3e1d2015d2819b9660403da4c8fda99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="group__Power.html#gae3e1d2015d2819b9660403da4c8fda99">More...</a><br /></td></tr>
-<tr class="separator:gae3e1d2015d2819b9660403da4c8fda99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae70495ce0a396796348cf825e423bf40"><td class="memItemLeft" align="right" valign="top">hw_power_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gae70495ce0a396796348cf825e423bf40">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">hw_power_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:gae70495ce0a396796348cf825e423bf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="group__Power.html#gae70495ce0a396796348cf825e423bf40">More...</a><br /></td></tr>
+<tr class="separator:gae70495ce0a396796348cf825e423bf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad923af18b1a36e77a020cd90ea846bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">hw_power_valid</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:gad923af18b1a36e77a020cd90ea846bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the power handle is initialized and usable.  <a href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">More...</a><br /></td></tr>
 <tr class="separator:gad923af18b1a36e77a020cd90ea846bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>

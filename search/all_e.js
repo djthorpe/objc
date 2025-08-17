@@ -43,6 +43,7 @@ var searchData=
   ['nxapplicationsignalquit',['NXApplicationSignalQuit',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a96bb1e130bf3db55330e5bf7e41f3668',1,'NXApplicationTypes.h']]],
   ['nxapplicationsignalterm',['NXApplicationSignalTerm',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5a25181c471c063c6251fec028cf9b5cde',1,'NXApplicationTypes.h']]],
   ['nxapplicationtypes_2eh',['NXApplicationTypes.h',['../NXApplicationTypes_8h.html',1,'']]],
+  ['nxapplicationwatchdogdidreset',['NXApplicationWatchdogDidReset',['../group__Application.html#ggaf744a07ee475ab59cd80c6fd7daf98b5aac4223d82021b004eb8d0048716788b7',1,'NXApplicationTypes.h']]],
   ['nxarch_2eh',['NXArch.h',['../NXArch_8h.html',1,'']]],
   ['nxarchbits',['NXArchBits',['../group__Foundation.html#ga9b9cf616a3f4f8700b23e80c1a800e12',1,'NXArch.h']]],
   ['nxarchendian',['NXArchEndian',['../group__Foundation.html#ga1202723bcfd796d7be93b8751fd32089',1,'NXArch.h']]],

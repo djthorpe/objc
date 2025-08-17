@@ -49,7 +49,7 @@ var searchData=
   ['hw_5fpoll',['hw_poll',['../group__Hardware.html#gacc8f746a8168f505939538614abaa846',1,'hw.h']]],
   ['hw_5fpower_5fbattery_5fpercent',['hw_power_battery_percent',['../group__Power.html#ga51e1f147775094fd8044f24ed6f2c3de',1,'power.h']]],
   ['hw_5fpower_5ffinalize',['hw_power_finalize',['../group__Power.html#gadb872d35218fceb877723fa16888633d',1,'power.h']]],
-  ['hw_5fpower_5finit',['hw_power_init',['../group__Power.html#gae3e1d2015d2819b9660403da4c8fda99',1,'power.h']]],
+  ['hw_5fpower_5finit',['hw_power_init',['../group__Power.html#gae70495ce0a396796348cf825e423bf40',1,'power.h']]],
   ['hw_5fpower_5fsource',['hw_power_source',['../group__Power.html#ga4e3bc9478c3c41ede5458dc6ba908325',1,'power.h']]],
   ['hw_5fpower_5fvalid',['hw_power_valid',['../group__Power.html#gad923af18b1a36e77a020cd90ea846bbd',1,'power.h']]],
   ['hw_5fpwm_5fcount',['hw_pwm_count',['../group__PWM.html#gad9630e5c05482120ad45286949612992',1,'pwm.h']]],

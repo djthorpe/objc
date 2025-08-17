@@ -70,9 +70,9 @@ Collaboration diagram for Power:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga712d06d4424701aa2061e82091624b62"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a>) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value)</td></tr>
-<tr class="memdesc:ga712d06d4424701aa2061e82091624b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="#ga712d06d4424701aa2061e82091624b62">More...</a><br /></td></tr>
-<tr class="separator:ga712d06d4424701aa2061e82091624b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9d76ec63641150f22dba37f8252794a"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">hw_power_callback_t</a>) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value, void *user_data)</td></tr>
+<tr class="memdesc:gaa9d76ec63641150f22dba37f8252794a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power status callback prototype.  <a href="#gaa9d76ec63641150f22dba37f8252794a">More...</a><br /></td></tr>
+<tr class="separator:gaa9d76ec63641150f22dba37f8252794a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -86,9 +86,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae3e1d2015d2819b9660403da4c8fda99"><td class="memItemLeft" align="right" valign="top">hw_power_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gae3e1d2015d2819b9660403da4c8fda99">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a> callback)</td></tr>
-<tr class="memdesc:gae3e1d2015d2819b9660403da4c8fda99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="#gae3e1d2015d2819b9660403da4c8fda99">More...</a><br /></td></tr>
-<tr class="separator:gae3e1d2015d2819b9660403da4c8fda99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae70495ce0a396796348cf825e423bf40"><td class="memItemLeft" align="right" valign="top">hw_power_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gae70495ce0a396796348cf825e423bf40">hw_power_init</a> (uint8_t gpio_vsys, uint8_t gpio_vbus, <a class="el" href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">hw_power_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:gae70495ce0a396796348cf825e423bf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize power management.  <a href="#gae70495ce0a396796348cf825e423bf40">More...</a><br /></td></tr>
+<tr class="separator:gae70495ce0a396796348cf825e423bf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad923af18b1a36e77a020cd90ea846bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Power.html#gad923af18b1a36e77a020cd90ea846bbd">hw_power_valid</a> (hw_power_t *power)</td></tr>
 <tr class="memdesc:gad923af18b1a36e77a020cd90ea846bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the power handle is initialized and usable.  <a href="#gad923af18b1a36e77a020cd90ea846bbd">More...</a><br /></td></tr>
 <tr class="separator:gad923af18b1a36e77a020cd90ea846bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,14 +108,14 @@ Functions</h2></td></tr>
 <p>In order to be notified of power changes, the user must provide a callback function when initializing the power management interface, and in the main event loop, call <a class="el" href="group__Hardware.html#gacc8f746a8168f505939538614abaa846" title="Occasional polling function for the hardware system. ">hw_poll()</a>.</p>
 <p>In order to be notified of reset events, the watchdog must be initialized and the user must call <a class="el" href="group__Watchdog.html#ga52cd020a7fe184b7b37bcc7f1e020dfd" title="Cause a reset after a delay. ">hw_watchdog_reset()</a> to initiate a reset event. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga712d06d4424701aa2061e82091624b62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga712d06d4424701aa2061e82091624b62">&#9670;&nbsp;</a></span>hw_power_callback_t</h2>
+<a id="gaa9d76ec63641150f22dba37f8252794a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa9d76ec63641150f22dba37f8252794a">&#9670;&nbsp;</a></span>hw_power_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* hw_power_callback_t) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value)</td>
+          <td class="memname">typedef void(* hw_power_callback_t) (hw_power_t *power, <a class="el" href="group__Power.html#ga146f43ba4b648c7e71a79b792510b4d4">hw_power_flag_t</a> flags, uint32_t value, void *user_data)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -126,11 +126,12 @@ Functions</h2></td></tr>
     <tr><td class="paramname">power</td><td>Pointer to the associated power handle </td></tr>
     <tr><td class="paramname">flags</td><td>Bitmask of power flags that changed since the last callback. If HW_POWER_BATTERY flag is set, the callback may be invoked on battery level changes. If HW_POWER_RESET is set, the callback was invoked on a reset event. </td></tr>
     <tr><td class="paramname">value</td><td>If flags includes HW_POWER_BATTERY then the value is a battery percentage (1-100) or zero if unknown. If HW_POWER_RESET is set, the value is the reset delay in milliseconds. </td></tr>
+    <tr><td class="paramname">user_data</td><td>Optional user data pointer passed to the callback. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="power_8h_source.html#l00063">63</a> of file <a class="el" href="power_8h_source.html">power.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="power_8h_source.html#l00064">64</a> of file <a class="el" href="power_8h_source.html">power.h</a>.</p>
 
 </div>
 </div>
@@ -225,8 +226,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae3e1d2015d2819b9660403da4c8fda99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae3e1d2015d2819b9660403da4c8fda99">&#9670;&nbsp;</a></span>hw_power_init()</h2>
+<a id="gae70495ce0a396796348cf825e423bf40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae70495ce0a396796348cf825e423bf40">&#9670;&nbsp;</a></span>hw_power_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,8 +247,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__Power.html#ga712d06d4424701aa2061e82091624b62">hw_power_callback_t</a>&#160;</td>
-          <td class="paramname"><em>callback</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__Power.html#gaa9d76ec63641150f22dba37f8252794a">hw_power_callback_t</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
