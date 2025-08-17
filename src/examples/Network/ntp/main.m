@@ -1,6 +1,7 @@
 /**
  * @file examples/Network/connect/main.m
- * @file examples/Network/connect/main.m
+ * @file examples/Network/ntp/main.m
+ * @file examples/Network/ntp/main.m
  * @brief Example showing how to connect to Wi-Fi networks
  */
 #include <Application/Application.h>
