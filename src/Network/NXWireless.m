@@ -36,7 +36,9 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
     }
     break;
   case hw_wifi_event_joining:
-    [sender connectDidStart:networkInfo];
+    if (network) {
+      [sender connectDidStart:networkInfo];
+    }
     break;
   case hw_wifi_event_connected:
     [sender connected:networkInfo];
