@@ -14,6 +14,7 @@
 /**
  * @brief A class for managing network time synchronization.
  * @ingroup Network
+ * @headerfile NXNetworkTime.h Network/Network.h
  */
 @interface NXNetworkTime : NXObject {
 @private

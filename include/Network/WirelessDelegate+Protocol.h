@@ -13,8 +13,8 @@
 
 /**
  * @brief Protocol for receiving wireless scan events.
- * @headerfile WirelessDelegate+Protocol.h Network/Network.h
  * @ingroup Network
+ * @headerfile WirelessDelegate+Protocol.h Network/Network.h
  *
  * Classes conforming to this protocol receive callbacks for scan progress:
  * one invocation per network discovered and a final notification on

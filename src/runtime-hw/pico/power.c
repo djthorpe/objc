@@ -39,10 +39,10 @@ typedef struct hw_power_t {
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBALS
 
-#define HW_POWER_SAMPLE_COUNT 3
+#define HW_POWER_SAMPLE_COUNT 10
 #define HW_POWER_MIN_VOLTAGE (3.0f)
 #define HW_POWER_MAX_VOLTAGE (4.2f)
-#define HW_POWER_UPDATE_INTERVAL_MS 2000
+#define HW_POWER_UPDATE_INTERVAL_MS 10000
 
 // The power singleton
 static hw_power_t _hw_power = {0};
@@ -192,7 +192,7 @@ static float _hw_power_voltage(uint8_t gpio, bool wifi) {
   adc_run(true);
 
   // Ignore first values
-  int ignore_count = HW_POWER_SAMPLE_COUNT;
+  int ignore_count = 2;
   while (!adc_fifo_is_empty() && ignore_count-- > 0) {
     (void)adc_fifo_get_blocking();
   }

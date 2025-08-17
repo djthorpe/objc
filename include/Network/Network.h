@@ -16,6 +16,7 @@
 #if __OBJC__
 
 // Forward Declaration of classes
+@class MQTT;
 @class NXWireless;
 @class NXWirelessNetwork;
 @class NXNetworkTime;
@@ -24,6 +25,7 @@
 #import "NXWirelessError.h"
 
 // Protocols and Category Definitions
+#include "MQTTDelegate+Protocol.h"
 #include "NetworkTimeDelegate+Protocol.h"
 #include "WirelessDelegate+Protocol.h"
 
