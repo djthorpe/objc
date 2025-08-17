@@ -1,5 +1,6 @@
 #include <runtime-net/net.h>
 #include <runtime-sys/sys.h>
+#include <stdint.h>
 #include <string.h>
 
 #ifdef PICO_CYW43_SUPPORTED
@@ -29,13 +30,11 @@ typedef struct net_mqtt_impl_t {
   net_mqtt_server_t server;
 } net_mqtt_impl_t;
 
-// Cast helpers
+/**
+ * @brief Cast helper
+ */
 static inline net_mqtt_impl_t *_impl(net_mqtt_t *h) {
   return (net_mqtt_impl_t *)(void *)h;
-}
-
-static inline const net_mqtt_impl_t *_cimpl(const net_mqtt_t *h) {
-  return (const net_mqtt_impl_t *)(const void *)h;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -59,6 +58,16 @@ static void _net_mqtt_do_connect(net_mqtt_impl_t *impl,
  */
 static void _net_mqtt_connection_cb(mqtt_client_t *client, void *arg,
                                     mqtt_connection_status_t status);
+
+/**
+ * @brief Publish callback for MQTT (lwIP mqtt_request_cb_t signature).
+ */
+static void _net_mqtt_publish_cb(void *arg, err_t err);
+
+/**
+ * @brief Subscribe callback for MQTT (lwIP mqtt_request_cb_t signature).
+ */
+static void _net_mqtt_subscribe_cb(void *arg, err_t err);
 
 /**
  * @brief create a server struct
@@ -202,7 +211,9 @@ bool net_mqtt_connect(net_mqtt_t *mqtt, const char *hostname, uint16_t port,
 bool net_mqtt_disconnect(net_mqtt_t *mqtt) {
   net_mqtt_impl_t *impl = _impl(mqtt);
   sys_assert(mqtt && impl->client);
-
+#ifndef PICO_CYW43_SUPPORTED
+  return false;
+#else
   // Disallow if not connected
   if (!mqtt_client_is_connected(impl->client)) {
     return false;
@@ -219,6 +230,71 @@ bool net_mqtt_disconnect(net_mqtt_t *mqtt) {
 
   // Return success
   return true;
+#endif
+}
+
+/**
+ * @brief Publish a message to a topic.
+ */
+bool net_mqtt_publish(net_mqtt_t *mqtt, const net_mqtt_message_t *message,
+                      uint8_t qos, bool retain) {
+  net_mqtt_impl_t *impl = _impl(mqtt);
+  sys_assert(mqtt && impl->client);
+  sys_assert(message && message->topic && message->topic[0] != '\0');
+  sys_assert(message->size == 0 || message->data);
+  sys_assert(qos == 0 || qos == 1 || qos == 2);
+
+#ifndef PICO_CYW43_SUPPORTED
+  return false;
+#else
+  // Disallow if not connected
+  if (!mqtt_client_is_connected(impl->client)) {
+    return false;
+  }
+
+  // Enforce lwIP payload length limit (u16_t)
+  if (message->size > UINT16_MAX) {
+    return false;
+  }
+
+  // Perform the publish
+  err_t err = mqtt_publish(impl->client, message->topic, message->data,
+                           (u16_t)message->size, qos, retain,
+                           _net_mqtt_publish_cb, impl);
+  if (err == ERR_OK) {
+    return true;
+  } else {
+    return false;
+  }
+#endif
+}
+
+/**
+ * @brief Subscribe to a topic.
+ */
+bool net_mqtt_subscribe(net_mqtt_t *mqtt, const char *topic, uint8_t qos) {
+  net_mqtt_impl_t *impl = _impl(mqtt);
+  sys_assert(mqtt && impl->client);
+  sys_assert(topic && topic[0] != '\0');
+  sys_assert(qos == 0 || qos == 1 || qos == 2);
+
+#ifndef PICO_CYW43_SUPPORTED
+  return false;
+#else
+  // Disallow if not connected
+  if (!mqtt_client_is_connected(impl->client)) {
+    return false;
+  }
+
+  // Perform the subscribe
+  err_t err =
+      mqtt_subscribe(impl->client, topic, qos, _net_mqtt_subscribe_cb, impl);
+  if (err == ERR_OK) {
+    return true;
+  } else {
+    return false;
+  }
+#endif
 }
 
 #ifdef PICO_CYW43_SUPPORTED
@@ -263,6 +339,38 @@ static void _net_mqtt_do_connect(net_mqtt_impl_t *impl, const ip_addr_t *addr) {
 
     // Free server information
     _net_mqtt_server_finalize(&impl->server);
+  }
+}
+
+static void _net_mqtt_publish_cb(void *arg, err_t err) {
+  net_mqtt_impl_t *impl = (net_mqtt_impl_t *)arg;
+  sys_assert(impl);
+  switch (err) {
+  case ERR_OK:
+    sys_printf("Message published successfully\n");
+    break;
+  case ERR_TIMEOUT:
+    sys_printf("Message publish timed out\n");
+    break;
+  case ERR_ABRT:
+    sys_printf("Message publish aborted\n");
+    break;
+  }
+}
+
+static void _net_mqtt_subscribe_cb(void *arg, err_t err) {
+  net_mqtt_impl_t *impl = (net_mqtt_impl_t *)arg;
+  sys_assert(impl);
+  switch (err) {
+  case ERR_OK:
+    sys_printf("Topic subscribed successfully\n");
+    break;
+  case ERR_TIMEOUT:
+    sys_printf("Topic subscribe timed out\n");
+    break;
+  case ERR_ABRT:
+    sys_printf("Topic subscribe aborted\n");
+    break;
   }
 }
 
