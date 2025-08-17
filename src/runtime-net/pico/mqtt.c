@@ -119,7 +119,7 @@ bool net_mqtt_valid(net_mqtt_t *mqtt) {
   if (mqtt == NULL || impl->client == NULL) {
     return false;
   }
-  return mqtt_client_is_connected(impl->client) ? true : false;
+  return mqtt_client_is_connected(impl->client);
 }
 
 /**
