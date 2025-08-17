@@ -1,35 +1,36 @@
 <map id="include/Network/Network.h" name="include/Network/Network.h">
-<area shape="rect" id="node2" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="893,80,1076,107"/>
-<area shape="rect" id="node26" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="1643,155,1774,181"/>
-<area shape="rect" id="node37" href="$net_8h.html" title="Network interface abstraction layer. " alt="" coords="1933,80,2069,107"/>
-<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="323,155,415,181"/>
-<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="582,229,657,256"/>
+<area shape="rect" id="node2" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="885,80,1068,107"/>
+<area shape="rect" id="node26" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="1674,155,1805,181"/>
+<area shape="rect" id="node37" href="$net_8h.html" title="Network interface abstraction layer. " alt="" coords="2191,304,2327,331"/>
+<area shape="rect" id="node3" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="293,155,385,181"/>
+<area shape="rect" id="node4" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="555,229,630,256"/>
 <area shape="rect" id="node23" href="$malloc_8h.html" title="Memory allocation functions for the Objective&#45;C runtime. " alt="" coords="5,304,84,331"/>
-<area shape="rect" id="node24" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="255,229,331,256"/>
-<area shape="rect" id="node25" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="343,453,429,480"/>
-<area shape="rect" id="node5" href="$sys_8h.html" title="System management functions. " alt="" coords="726,304,865,331"/>
-<area shape="rect" id="node6" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="758,379,833,405"/>
-<area shape="rect" id="node7" href="$atomic_8h.html" title="Simple atomic uint32_t API (get, set, increment, decrement). " alt="" coords="1280,453,1359,480"/>
-<area shape="rect" id="node10" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="2231,453,2293,480"/>
-<area shape="rect" id="node11" href="$env_8h.html" title="Environment information. " alt="" coords="676,379,733,405"/>
-<area shape="rect" id="node12" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="457,379,528,405"/>
-<area shape="rect" id="node13" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="453,453,517,480"/>
-<area shape="rect" id="node15" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="937,453,1003,480"/>
-<area shape="rect" id="node16" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="553,379,651,405"/>
-<area shape="rect" id="node17" href="$memory_8h.html" title="Memory management. " alt="" coords="232,453,319,480"/>
-<area shape="rect" id="node18" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="85,379,153,405"/>
-<area shape="rect" id="node20" href="$random_8h.html" title="Random number generation. " alt="" coords="857,379,941,405"/>
-<area shape="rect" id="node21" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="1027,453,1103,480"/>
-<area shape="rect" id="node22" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="845,453,913,480"/>
-<area shape="rect" id="node27" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="1305,379,1363,405"/>
-<area shape="rect" id="node28" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="1383,453,1445,480"/>
-<area shape="rect" id="node29" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="1387,379,1441,405"/>
-<area shape="rect" id="node30" href="$infrared_8h.html" title="Infrared (IR) receiver interface. " alt="" coords="1987,453,2073,480"/>
-<area shape="rect" id="node31" href="$led_8h.html" title="LED control interface. " alt="" coords="1836,379,1891,405"/>
-<area shape="rect" id="node32" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="1897,453,1963,480"/>
-<area shape="rect" id="node33" href="$power_8h.html" title="Power management interface. " alt="" coords="1181,229,1255,256"/>
-<area shape="rect" id="node34" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="1515,379,1569,405"/>
-<area shape="rect" id="node35" href="$watchdog_8h.html" title="Hardware Watchdog Timer Abstraction Layer. " alt="" coords="1775,453,1872,480"/>
-<area shape="rect" id="node36" href="$wifi_8h.html" title="Wi&#45;Fi management interface. " alt="" coords="2097,453,2155,480"/>
-<area shape="rect" id="node38" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="2235,379,2289,405"/>
+<area shape="rect" id="node24" href="$mutex_8h.html" title="Object synchronization and locking functions for the Objective&#45;C runtime. " alt="" coords="212,229,288,256"/>
+<area shape="rect" id="node25" href="$runtime_8h.html" title="Defines the core types and functions of the Objective&#45;C runtime. " alt="" coords="421,453,506,480"/>
+<area shape="rect" id="node5" href="$sys_8h.html" title="System management functions. " alt="" coords="702,304,841,331"/>
+<area shape="rect" id="node6" href="$runtime-sys_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="537,379,611,405"/>
+<area shape="rect" id="node7" href="$atomic_8h.html" title="Simple atomic uint32_t API (get, set, increment, decrement). " alt="" coords="1207,453,1285,480"/>
+<area shape="rect" id="node10" href="$date_8h.html" title="Date and Time management functions. " alt="" coords="1835,453,1897,480"/>
+<area shape="rect" id="node11" href="$env_8h.html" title="Environment information. " alt="" coords="956,379,1013,405"/>
+<area shape="rect" id="node12" href="$event_8h.html" title="Defines event queue functionality for producer/consumer patterns. " alt="" coords="809,379,880,405"/>
+<area shape="rect" id="node13" href="$sync_8h.html" title="Synchronization primitives for thread&#45;safe operations. " alt="" coords="725,453,789,480"/>
+<area shape="rect" id="node15" href="$hash_8h.html" title="Methods for hash generation from data. " alt="" coords="864,453,929,480"/>
+<area shape="rect" id="node16" href="$hashtable_8h.html" title="A hash table implementation. " alt="" coords="635,379,734,405"/>
+<area shape="rect" id="node17" href="$memory_8h.html" title="Memory management. " alt="" coords="309,453,396,480"/>
+<area shape="rect" id="node18" href="$printf_8h.html" title="Functions for formatted strings output. " alt="" coords="61,379,129,405"/>
+<area shape="rect" id="node20" href="$random_8h.html" title="Random number generation. " alt="" coords="377,379,461,405"/>
+<area shape="rect" id="node21" href="$thread_8h.html" title="Thread management and program execution. " alt="" coords="1107,453,1183,480"/>
+<area shape="rect" id="node22" href="$timer_8h.html" title="Creating periodic and one&#45;shot timers. " alt="" coords="632,453,700,480"/>
+<area shape="rect" id="node27" href="$adc_8h.html" title="ADC (Analog&#45;to&#45;Digital Converter) interface. " alt="" coords="1355,379,1412,405"/>
+<area shape="rect" id="node28" href="$gpio_8h.html" title="GPIO (General Purpose Input/Output) interface. " alt="" coords="1412,453,1475,480"/>
+<area shape="rect" id="node29" href="$i2c_8h.html" title="I2C (Inter&#45;Integrated Circuit) interface. " alt="" coords="1437,379,1490,405"/>
+<area shape="rect" id="node30" href="$infrared_8h.html" title="Infrared (IR) receiver interface. " alt="" coords="2063,453,2149,480"/>
+<area shape="rect" id="node31" href="$led_8h.html" title="LED control interface. " alt="" coords="1939,379,1993,405"/>
+<area shape="rect" id="node32" href="$pwm_8h.html" title="Pulse Width Modulation (PWM) interface. " alt="" coords="1973,453,2039,480"/>
+<area shape="rect" id="node33" href="$power_8h.html" title="Power management interface. " alt="" coords="1215,229,1288,256"/>
+<area shape="rect" id="node34" href="$spi_8h.html" title="SPI (Serial Peripheral Interface) interface. " alt="" coords="1638,379,1691,405"/>
+<area shape="rect" id="node35" href="$watchdog_8h.html" title="Hardware Watchdog Timer Abstraction Layer. " alt="" coords="2173,453,2271,480"/>
+<area shape="rect" id="node36" href="$wifi_8h.html" title="Wi&#45;Fi management interface. " alt="" coords="1753,453,1811,480"/>
+<area shape="rect" id="node38" href="$mqtt_8h.html" title="MQTT management interface. " alt="" coords="2295,453,2360,480"/>
+<area shape="rect" id="node39" href="$ntp_8h.html" title="Network Time Protocol (NTP) interface. " alt="" coords="2232,379,2287,405"/>
 </map>
