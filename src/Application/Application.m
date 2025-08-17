@@ -301,7 +301,7 @@ void _app_power_callback(hw_power_t *power, hw_power_flag_t flags,
   sys_timer_t net_poll_timer = sys_timer_init(
       NSAPPLICATION_NET_POLL_INTERVAL_MS, self, _app_net_poll_callback);
   if (sys_timer_start(&net_poll_timer) == false) {
-    sys_printf("Failed to start network poll timer");
+    sys_printf("Failed to start network poll timer\n");
     return -1;
   }
 
