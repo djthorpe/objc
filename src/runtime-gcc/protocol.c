@@ -25,7 +25,7 @@ void __objc_protocol_register(objc_protocol_t *p) {
   if (p == NULL || p->name == NULL) {
     return;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("__objc_protocol_register <%s>\n", p->name);
 #endif
   for (int i = 0; i < PROTOCOL_TABLE_SIZE; i++) {
@@ -34,7 +34,9 @@ void __objc_protocol_register(objc_protocol_t *p) {
       return;
     }
     if (strcmp(protocol_table[i]->name, p->name) == 0) {
-      sys_printf("Warning: Duplicate protocol named: %s. Registration skipped.\n", p->name);
+      sys_printf(
+          "Warning: Duplicate protocol named: %s. Registration skipped.\n",
+          p->name);
       return;
     }
   }

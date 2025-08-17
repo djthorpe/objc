@@ -37,6 +37,7 @@ extern "C" {
 /**
  * @brief Represents a system date and time structure.
  * @ingroup SystemDate
+ * @headerfile date.h runtime-sys/sys.h
  *
  * This structure is used to represent time in the system, including
  * the current UTC time with nanosecond precision, and a timezone offset.

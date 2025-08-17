@@ -27,7 +27,7 @@ void __objc_class_register(objc_class_t *p) {
   if (p == NULL || p->name == NULL) {
     return;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("__objc_class_register %c[%s] @%p size=%lu\n",
              p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
@@ -88,7 +88,7 @@ void __objc_class_register_method_list(objc_class_t *cls,
     if (method == NULL || method->name == NULL || method->imp == NULL) {
       continue; // Skip invalid methods
     }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
     sys_printf("    %c[%s %s] types=%s imp=%p\n",
                cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
                method->name, method->types, method->imp);
@@ -125,7 +125,7 @@ void __objc_class_register_methods(objc_class_t *p) {
   // Mark the class as being resolved to prevent circular resolution
   p->info |= objc_class_flag_resolved;
 
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("  __objc_class_register_methods %c[%s] @%p size=%lu\n",
              p->info & objc_class_flag_meta ? '+' : '-', p->name, p, p->size);
 #endif
@@ -169,7 +169,7 @@ Class objc_lookup_class(const char *name) {
   if (cls == Nil) {
     return Nil;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("objc_lookup_class %c[%s] @%p\n",
              cls->info & objc_class_flag_meta ? '+' : '-', name, cls);
 #endif

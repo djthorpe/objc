@@ -116,6 +116,11 @@ hw_wifi_t *hw_wifi_init(const char *country_code, hw_wifi_callback_t callback,
   // Reset the wifi handle
   hw_wifi_finalize(&_hw_wifi);
 
+#ifdef DEBUG
+  sys_printf("hw_wifi_init()\n");
+#endif
+
+#ifdef PICO_CYW43_SUPPORTED
   // Country code check
   if (country_code == NULL) {
     country_code = HW_WIFI_COUNTRY_CODE_DEFAULT;
@@ -125,19 +130,19 @@ hw_wifi_t *hw_wifi_init(const char *country_code, hw_wifi_callback_t callback,
     return NULL;
   }
 
-  // Set up the structure
-#ifdef PICO_CYW43_SUPPORTED
-  // Check to make sure initialized
   if (cyw43_is_initialized(&cyw43_state) == false) {
+#ifdef DEBUG
+    sys_printf("cyw43_is_initialized() == false\n");
+#endif
     return NULL;
   }
-#endif
 
   // Set up the structure
   _hw_wifi.country_code = country_code;
   _hw_wifi.callback = callback;
   _hw_wifi.user_data = user_data;
   sys_atomic_init(&_hw_wifi.flags, 0);
+#endif
 
   // Return the Wi-Fi handle
   return &_hw_wifi;
@@ -188,6 +193,9 @@ bool hw_wifi_scan(hw_wifi_t *wifi) {
   // If we're already leaving, joining or scanning, don't init a new scan
   if (_hw_wifi_get_busy(wifi, hw_wifi_flag_leaving | hw_wifi_flag_joining |
                                   hw_wifi_flag_scanning)) {
+#ifdef DEBUG
+    sys_printf("hw_wifi_scan() already busy\n");
+#endif
     return false;
   }
 
@@ -225,6 +233,9 @@ bool hw_wifi_disconnect(hw_wifi_t *wifi) {
   // If we're already leaving, joining or scanning, don't disconnect
   if (_hw_wifi_get_busy(wifi, hw_wifi_flag_leaving | hw_wifi_flag_joining |
                                   hw_wifi_flag_scanning)) {
+#ifdef DEBUG
+    sys_printf("hw_wifi_disconnect() already busy\n");
+#endif
     return false;
   }
 
@@ -263,6 +274,9 @@ bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
   // If we're already leaving, joining or scanning, return false
   if (_hw_wifi_get_busy(wifi, hw_wifi_flag_leaving | hw_wifi_flag_joining |
                                   hw_wifi_flag_scanning)) {
+#ifdef DEBUG
+    sys_printf("hw_wifi_connect() already busy\n");
+#endif
     return false;
   }
 
@@ -306,6 +320,11 @@ bool hw_wifi_connect(hw_wifi_t *wifi, const hw_wifi_network_t *network,
     wifi->state = -1;
     success = true;
   }
+#ifdef DEBUG
+  if (success == false) {
+    sys_printf("cyw43_wifi_join() failed\n");
+  }
+#endif
 
   // Set the network information
   if (success) {

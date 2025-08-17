@@ -2,6 +2,7 @@
 #include "NXTimer+Private.h"
 #include <Application/Application.h>
 #include <runtime-hw/hw.h>
+#include <runtime-net/net.h>
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9,8 +10,9 @@
 
 typedef enum {
   APP_EVENT_HW_POLL = 1,
-  APP_EVENT_GPIO = 2,
-  APP_EVENT_TIMER = 3
+  APP_EVENT_NET_POLL = 2,
+  APP_EVENT_GPIO = 3,
+  APP_EVENT_TIMER = 4
 } app_event_type_t;
 
 typedef struct {
@@ -29,8 +31,12 @@ static id sharedApplication = nil;
 // Define the shared queue for events
 static sys_event_queue_t _app_queue = {0};
 
-// We call hw_poll every 50ms
+// Optional hook implemented by Network/runtime-net
+extern void net_poll(void) __attribute__((weak));
+
+// We call hw_poll every 50ms and net_poll every 1s
 #define NSAPPLICATION_HW_POLL_INTERVAL_MS 50
+#define NSAPPLICATION_NET_POLL_INTERVAL_MS 1000
 
 ///////////////////////////////////////////////////////////////////////////////
 // CALLBACKS
@@ -94,7 +100,7 @@ void _app_timer_callback(sys_timer_t *timer) {
 /**
  * @brief Callback function for hw poll timer events.
  */
-void _app_poll_callback(sys_timer_t *timer) {
+void _app_hw_poll_callback(sys_timer_t *timer) {
   objc_assert(timer);
 
   sys_event_queue_t *queue = &_app_queue;
@@ -112,6 +118,35 @@ void _app_poll_callback(sys_timer_t *timer) {
   } else {
     evt->type = APP_EVENT_HW_POLL; // Set the event type
     evt->sender = timer->userdata; // Set the sender
+  }
+
+  // Try and push it into the queue
+  if (sys_event_queue_try_push(queue, (void *)evt) == false) {
+    sys_free((void *)evt); // Free the payload if it cannot be pushed
+  }
+}
+
+/**
+ * @brief Callback function for net poll timer events.
+ */
+void _app_net_poll_callback(sys_timer_t *timer) {
+  objc_assert(timer);
+
+  sys_event_queue_t *queue = &_app_queue;
+  objc_assert(queue);
+
+  // If the queue is not valid, return early
+  if (!sys_event_queue_valid(queue)) {
+    return;
+  }
+
+  // Create a app_event_t for the GPIO event
+  app_event_t *evt = sys_malloc(sizeof(app_event_t));
+  if (evt == NULL) {
+    return;
+  } else {
+    evt->type = APP_EVENT_NET_POLL; // Set the event type
+    evt->sender = timer->userdata;  // Set the sender
   }
 
   // Try and push it into the queue
@@ -231,9 +266,17 @@ void _app_poll_callback(sys_timer_t *timer) {
 
   // We need to call hw_poll occasionally, so we set up the timer for that
   // here
-  sys_timer_t timer = sys_timer_init(NSAPPLICATION_HW_POLL_INTERVAL_MS, self,
-                                     _app_poll_callback);
-  if (sys_timer_start(&timer) == false) {
+  sys_timer_t hw_poll_timer = sys_timer_init(NSAPPLICATION_HW_POLL_INTERVAL_MS,
+                                             self, _app_hw_poll_callback);
+  if (sys_timer_start(&hw_poll_timer) == false) {
+    return -1; // Failed to start the timer
+  }
+
+  // Same for net_poll occasionally, so we set up the timer for that
+  // here
+  sys_timer_t net_poll_timer = sys_timer_init(
+      NSAPPLICATION_NET_POLL_INTERVAL_MS, self, _app_net_poll_callback);
+  if (sys_timer_start(&net_poll_timer) == false) {
     return -1; // Failed to start the timer
   }
 
@@ -254,7 +297,10 @@ void _app_poll_callback(sys_timer_t *timer) {
     app_event_t *app_event = sys_event_queue_pop(&_app_queue);
     if (app_event == NULL) {
       // Finalize the timer to prevent any more events
-      sys_timer_finalize(&timer);
+      sys_timer_finalize(&hw_poll_timer);
+
+      // Finalize the net_poll timer
+      sys_timer_finalize(&net_poll_timer);
 
       // Finalize the GPIO subsystem
       // TODO: Only do this on the main thread
@@ -268,6 +314,12 @@ void _app_poll_callback(sys_timer_t *timer) {
     switch (app_event->type) {
     case APP_EVENT_HW_POLL:
       hw_poll();
+      break;
+    case APP_EVENT_NET_POLL:
+      // net_poll is a weak symbol, so we check if it exists before calling
+      if (net_poll) {
+        net_poll();
+      }
       break;
     case APP_EVENT_GPIO:
       _gpio_callback(app_event->pin, app_event->event);

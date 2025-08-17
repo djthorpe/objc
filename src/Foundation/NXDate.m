@@ -43,6 +43,24 @@
 }
 
 /**
+ * @brief Initialise an instance with a system date
+ */
+- (id)initWithSystemDate:(const sys_date_t *)date {
+  self = [super init];
+  if (self == nil) {
+    return nil;
+  }
+  if (date == NULL) {
+    [self release];
+    return nil;
+  }
+  // Copy the provided system date and reset cached components
+  _date = *date;
+  _year = 0;
+  return self;
+}
+
+/**
  * @brief Return an instance representing the current time.
  */
 + (NXDate *)date {
@@ -56,6 +74,13 @@
   return [[[NXDate alloc] initWithTimeIntervalSinceNow:interval] autorelease];
 }
 
+/**
+ * @brief Return an instance created from a system date
+ */
++ (NXDate *)dateWithSystemDate:(const sys_date_t *)date {
+  return [[[NXDate alloc] initWithSystemDate:date] autorelease];
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE METHODS
 
@@ -65,17 +90,15 @@
  * We use the _year to indicate whether components have been cached.
  */
 - (BOOL)_cacheComponents {
-  if (_year == 0) {
-    if (!sys_date_get_date_utc(&_date, &_year, &_month, &_day, &_weekday)) {
-      _year = 0;
-      return NO;
-    }
-    if (!sys_date_get_time_utc(&_date, &_hours, &_minutes, &_seconds)) {
-      _year = 0;
-      return NO;
-    }
+  if (_year != 0) {
+    return YES; // Components already cached
   }
-  return YES;
+  if (sys_date_get_date_utc(&_date, &_year, &_month, &_day, &_weekday) &&
+      sys_date_get_time_utc(&_date, &_hours, &_minutes, &_seconds)) {
+    return YES;
+  }
+  _year = 0;
+  return NO;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

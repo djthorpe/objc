@@ -51,7 +51,8 @@
  * @param network The target network.
  * @param error   The error code describing the failure.
  */
-- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error;
+- (void)connectionFailed:(NXWirelessNetwork *)network
+               withError:(NXWirelessError)error;
 
 /**
  * @brief Called when a connection is established.

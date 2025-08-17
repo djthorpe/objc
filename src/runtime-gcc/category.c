@@ -25,7 +25,7 @@ void __objc_category_register(struct objc_category *category) {
       category->class_name == NULL) {
     return;
   }
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("__objc_category_register [%s+%s]\n", category->class_name,
              category->name);
 #endif
@@ -51,7 +51,7 @@ static void __objc_category_load_category(struct objc_category *category) {
     return;
   }
 
-#ifdef DEBUG
+#ifdef OBJCDEBUG
   sys_printf("  __objc_category_load_category [%s+%s]\n", cls->name,
              category->name);
 #endif

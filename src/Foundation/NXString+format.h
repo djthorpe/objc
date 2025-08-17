@@ -15,5 +15,7 @@
  * - %@ for object descriptions (calls [object description])
  * - %t for NXTimeInterval formatting
  * - %q for JSON string formatting (calls [object JSONString])
+ * - %O prints a non-allocating object identity of the form
+ * "[ClassName @0xPTR]" without calling -description.
  */
 extern const char *_nxstring_format_handler(char format, va_list *va);

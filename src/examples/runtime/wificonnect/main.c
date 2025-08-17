@@ -7,6 +7,14 @@
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
+#ifndef WIFI_SSID
+#error "WIFI_SSID not defined"
+#endif
+
+#ifndef WIFI_PASSWORD
+#error "WIFI_PASSWORD not defined"
+#endif
+
 static void wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
                           const hw_wifi_network_t *network, void *user_data) {
   (void)user_data;
@@ -60,11 +68,11 @@ int main() {
 
   // Start connection
   hw_wifi_network_t network = {
-      .ssid = "SSID",
+      .ssid = WIFI_SSID,
   };
 
   sys_printf("Connecting WiFi\n");
-  if (!hw_wifi_connect(wifi, &network, "PASSWORD")) {
+  if (!hw_wifi_connect(wifi, &network, WIFI_PASSWORD)) {
     sys_printf("Failed to start WiFi connection\n");
   }
 

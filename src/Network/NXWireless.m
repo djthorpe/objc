@@ -24,49 +24,36 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
     networkInfo = [[NXWirelessNetwork alloc] initWithNetwork:network];
   }
 
+  // TODO: Should push this into the application queue, rather than calling
+  // directly
+
   switch (event) {
   case hw_wifi_event_scan:
-    if (network && networkInfo) {
+    if (network) {
       [sender scanDidDiscoverNetwork:[networkInfo autorelease]];
     } else {
       [sender scanDidComplete];
     }
     break;
   case hw_wifi_event_joining:
-    sys_assert(network);
-    if (networkInfo) {
+    if (network) {
       [sender connectDidStart:networkInfo];
     }
     break;
   case hw_wifi_event_connected:
-    sys_assert(network);
-    if (networkInfo) {
-      [sender connected:networkInfo];
-    }
+    [sender connected:networkInfo];
     break;
   case hw_wifi_event_disconnected:
-    sys_assert(network);
-    if (networkInfo) {
-      [sender disconnected:networkInfo];
-    }
+    [sender disconnected:networkInfo];
     break;
   case hw_wifi_event_badauth:
-    sys_assert(network);
-    if (networkInfo) {
-      [sender connect:networkInfo withError:NXWirelessErrorBadAuth];
-    }
+    [sender connectionFailed:networkInfo withError:NXWirelessErrorBadAuth];
     break;
   case hw_wifi_event_notfound:
-    sys_assert(network);
-    if (networkInfo) {
-      [sender connect:networkInfo withError:NXWirelessErrorNotFound];
-    }
+    [sender connectionFailed:networkInfo withError:NXWirelessErrorNotFound];
     break;
   case hw_wifi_event_error:
-    sys_assert(network);
-    if (networkInfo) {
-      [sender connect:networkInfo withError:NXWirelessErrorGeneral];
-    }
+    [sender connectionFailed:networkInfo withError:NXWirelessErrorGeneral];
     break;
   }
 }
@@ -87,6 +74,9 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
   // Initialize the Wi-Fi handle
   _wifi = hw_wifi_init(NULL, _wifi_callback, self);
   if (!hw_wifi_valid(_wifi)) {
+#ifdef DEBUG
+    sys_printf("hw_wifi_init() failed\n");
+#endif
     [self release];
     return nil; // Initialization failed
   }
@@ -216,10 +206,11 @@ static void _wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
 /**
  * @brief Called if the connection fails.
  */
-- (void)connect:(NXWirelessNetwork *)network withError:(NXWirelessError)error {
-  if (_delegate && object_respondsToSelector(_delegate, @selector(connect:
-                                                                withError:))) {
-    [_delegate connect:network withError:error];
+- (void)connectionFailed:(NXWirelessNetwork *)network
+               withError:(NXWirelessError)error {
+  if (_delegate && object_respondsToSelector(_delegate, @selector
+                                             (connectionFailed:withError:))) {
+    [_delegate connectionFailed:network withError:error];
   }
 }
 

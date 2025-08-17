@@ -2,13 +2,9 @@
 #include <runtime-sys/sys.h>
 
 ///////////////////////////////////////////////////////////////////////////////
-// LIFECYCLE
+// PUBLIC HOOK IMPLEMENTATION
 
-/**
- * @brief Occasional polling function for the network system.
- */
 void net_poll(void) {
-  // Call _net_ntp_poll which will stop/start the NTP service
-  // depending on the connection state
+  // Call the NTP poll function to check for updates when WiFi connected
   _net_ntp_poll();
 }

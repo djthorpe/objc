@@ -4,7 +4,7 @@
 void sys_puts(const char *str) {
   if (str != NULL) {
     // Output the string to standard output
-    stdio_puts_raw(str);
+    stdio_puts(str);
   }
   // Flush the output to ensure it appears immediately
   stdio_flush();
@@ -12,5 +12,5 @@ void sys_puts(const char *str) {
 
 void sys_putch(const char ch) {
   // Output the character to standard output
-  stdio_putchar_raw(ch);
+  stdio_putchar(ch);
 }

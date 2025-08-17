@@ -35,3 +35,4 @@ add_subdirectory(Application/blink)
 # Network examples
 add_subdirectory(Network/scan)
 add_subdirectory(Network/connect)
+add_subdirectory(Network/ntp)

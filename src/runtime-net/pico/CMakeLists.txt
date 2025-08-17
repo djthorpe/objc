@@ -12,6 +12,14 @@ target_link_libraries(${NAME}
   runtime-sys
 )
 
+# Always pull in net_poll from this archive when linked, so hooks are active
+if (APPLE)
+  # Mach-O requires leading underscore for -u
+  target_link_options(${NAME} INTERFACE "-Wl,-u,_net_poll")
+else()
+  target_link_options(${NAME} INTERFACE "-Wl,-u,net_poll")
+endif()
+
 # Check if we're building for a board with CYW43 support
 if (PICO_CYW43_SUPPORTED)
   message(STATUS "Board has CYW43 support - enabling CYW43 and lwIP libraries")
