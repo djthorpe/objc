@@ -17,6 +17,7 @@
 /**
  * @brief Opaque type for hash table
  * @ingroup SystemHashTable
+ * @headerfile hashtable.h runtime-sys/sys.h
  *
  * This type represents a hash table that can store key-value pairs.
  */
@@ -25,6 +26,7 @@ typedef struct sys_hashtable sys_hashtable_t;
 /**
  * @brief Iterator state for hash table traversal.
  * @ingroup SystemHashTable
+ * @headerfile hashtable.h runtime-sys/sys.h
  *
  * This structure is used to maintain the state of an iterator while traversing
  * a hash table.
@@ -38,6 +40,7 @@ typedef struct sys_hashtable_iterator {
 /**
  * @brief Hash table entry.
  * @ingroup SystemHashTable
+ * @headerfile hashtable.h runtime-sys/sys.h
  *
  * This structure represents a single entry in the hash table, containing
  * a hash key, value, and pointer to the concrete key implementation.

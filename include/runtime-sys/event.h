@@ -57,6 +57,7 @@ typedef void *sys_event_t;
 /**
  * @brief Event queue structure for producer/consumer patterns.
  * @ingroup SystemEvents
+ * @headerfile event.h runtime-sys/sys.h
  *
  * Thread-safe queue that supports multiple producers and consumers.
  * Producers can always add items (with overflow handling), while consumers

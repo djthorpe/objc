@@ -63,6 +63,7 @@ typedef enum {
 /**
  * @brief Hash context structure.
  * @ingroup SystemHashing
+ * @headerfile hash.h runtime-sys/sys.h
  *
  * Contains the state and result buffer for hash operations.
  */

@@ -41,6 +41,7 @@ extern "C" {
 /**
  * @brief Timer context structure.
  * @ingroup SystemTimer
+ * @headerfile timer.h runtime-sys/sys.h
  *
  * Contains the state and configuration for timer operations.
  */

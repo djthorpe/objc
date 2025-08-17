@@ -62,6 +62,7 @@ extern "C" {
 /**
  * @brief Mutex context structure.
  * @ingroup SystemSync
+ * @headerfile sync.h runtime-sys/sys.h
  *
  * Contains the state and configuration for mutex operations.
  */
@@ -77,6 +78,7 @@ typedef struct {
 /**
  * @brief Condition variable context structure.
  * @ingroup SystemSync
+ * @headerfile sync.h runtime-sys/sys.h
  *
  * Contains the state and configuration for condition variable operations.
  */
@@ -92,6 +94,7 @@ typedef struct {
 /**
  * @brief Waitgroup context structure.
  * @ingroup SystemSync
+ * @headerfile sync.h runtime-sys/sys.h
  *
  * Contains the state and configuration for waitgroup operations.
  * A waitgroup allows one goroutine to wait for a collection of goroutines
