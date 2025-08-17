@@ -61,47 +61,41 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a47cfcbd82dab5c5085cfe17726906888"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolNetworkTimeDelegate-p.html#a47cfcbd82dab5c5085cfe17726906888">networkTimeDidUpdate:</a></td></tr>
-<tr class="memdesc:a47cfcbd82dab5c5085cfe17726906888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a network time update is received.  <a href="#a47cfcbd82dab5c5085cfe17726906888">More...</a><br /></td></tr>
-<tr class="separator:a47cfcbd82dab5c5085cfe17726906888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179aa75da00e42d59654b0c7f82047fe"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolNetworkTimeDelegate-p.html#a179aa75da00e42d59654b0c7f82047fe">networkTimeShouldUpdate:</a></td></tr>
+<tr class="memdesc:a179aa75da00e42d59654b0c7f82047fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a network time is received.  <a href="#a179aa75da00e42d59654b0c7f82047fe">More...</a><br /></td></tr>
+<tr class="separator:a179aa75da00e42d59654b0c7f82047fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> for receiving network time update events. </p>
-<p>Classes conforming to this protocol receive callbacks for network time updates: one invocation per time update. It is up to the delegate to update the system time based on these events. </p>
-
+<p>Classes conforming to this protocol receive callbacks for network time updates: one invocation per time update. The delegate should return YES if the system time should be updated. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Network_2ntp_2main_8m-example.html#_a3">examples/Network/ntp/main.m</a>.</dd>
+</dl>
 <p class="definition">Definition at line <a class="el" href="NetworkTimeDelegate_09Protocol_8h_source.html#l00024">24</a> of file <a class="el" href="NetworkTimeDelegate_09Protocol_8h_source.html">NetworkTimeDelegate+Protocol.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a id="a47cfcbd82dab5c5085cfe17726906888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47cfcbd82dab5c5085cfe17726906888">&#9670;&nbsp;</a></span>networkTimeDidUpdate:()</h2>
+<a id="a179aa75da00e42d59654b0c7f82047fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a179aa75da00e42d59654b0c7f82047fe">&#9670;&nbsp;</a></span>networkTimeShouldUpdate:()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) networkTimeDidUpdate: </td>
+          <td class="memname">- (<a class="el" href="group__objc.html#gab40a1f154aa44511af7f97b88296f7d3">BOOL</a>) networkTimeShouldUpdate: </td>
           <td></td>
           <td class="paramtype">(<a class="el" href="interfaceNXDate.html">NXDate</a> *)&#160;</td>
           <td class="paramname"><em>time</em></td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">required</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Called when a network time update is received. </p>
+<p>Called when a network time is received. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">time</td><td>The updated network time. </td></tr>
+    <tr><td class="paramname">time</td><td>The received network time. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>YES if the system time should be updated, NO otherwise. </dd></dl>
 
 </div>
 </div>

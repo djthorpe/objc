@@ -72,15 +72,15 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga2a54d918f0a6a30390ff7d52dfa942ca"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a></td></tr>
 <tr class="memdesc:ga2a54d918f0a6a30390ff7d52dfa942ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque NTP manager handle.  <a href="#ga2a54d918f0a6a30390ff7d52dfa942ca">More...</a><br /></td></tr>
 <tr class="separator:ga2a54d918f0a6a30390ff7d52dfa942ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga75b70f61701740ecd8cd98eaa5893080"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#ga75b70f61701740ecd8cd98eaa5893080">net_ntp_callback_t</a>) (const <a class="el" href="structsys__date__t.html">sys_date_t</a> *date)</td></tr>
-<tr class="memdesc:ga75b70f61701740ecd8cd98eaa5893080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback invoked when system time should be updated.  <a href="#ga75b70f61701740ecd8cd98eaa5893080">More...</a><br /></td></tr>
-<tr class="separator:ga75b70f61701740ecd8cd98eaa5893080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf135698b449bfe672a50dd936547044"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#gabf135698b449bfe672a50dd936547044">net_ntp_callback_t</a>) (<a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a> *ntp, const <a class="el" href="structsys__date__t.html">sys_date_t</a> *date, void *user_data)</td></tr>
+<tr class="memdesc:gabf135698b449bfe672a50dd936547044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback invoked when system time should be updated.  <a href="#gabf135698b449bfe672a50dd936547044">More...</a><br /></td></tr>
+<tr class="separator:gabf135698b449bfe672a50dd936547044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga6319740302ae0d8d4ab3ceba2c1e1abc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#ga6319740302ae0d8d4ab3ceba2c1e1abc">net_ntp_init</a> (<a class="el" href="group__RuntimeNTP.html#ga75b70f61701740ecd8cd98eaa5893080">net_ntp_callback_t</a> callback)</td></tr>
-<tr class="memdesc:ga6319740302ae0d8d4ab3ceba2c1e1abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize (or re-initialize) the NTP manager.  <a href="#ga6319740302ae0d8d4ab3ceba2c1e1abc">More...</a><br /></td></tr>
-<tr class="separator:ga6319740302ae0d8d4ab3ceba2c1e1abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8dc3d997a1fcc0acd39905497354a34e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#ga8dc3d997a1fcc0acd39905497354a34e">net_ntp_init</a> (<a class="el" href="group__RuntimeNTP.html#gabf135698b449bfe672a50dd936547044">net_ntp_callback_t</a> callback, void *user_data)</td></tr>
+<tr class="memdesc:ga8dc3d997a1fcc0acd39905497354a34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize (or re-initialize) the NTP manager.  <a href="#ga8dc3d997a1fcc0acd39905497354a34e">More...</a><br /></td></tr>
+<tr class="separator:ga8dc3d997a1fcc0acd39905497354a34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga844f84f3dc7473465b5db85c24eaec22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__RuntimeNTP.html#ga844f84f3dc7473465b5db85c24eaec22">net_ntp_valid</a> (<a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a> *ntp)</td></tr>
 <tr class="memdesc:ga844f84f3dc7473465b5db85c24eaec22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if the NTP handle is checking for time updates.  <a href="#ga844f84f3dc7473465b5db85c24eaec22">More...</a><br /></td></tr>
 <tr class="separator:ga844f84f3dc7473465b5db85c24eaec22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,14 +92,14 @@ Functions</h2></td></tr>
 <p>Network Time <a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> (NTP) client to synchronize system time. </p>
 <p>This module retrieves the current UTC time from a time server, and invokes a callback which can then update the system time. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga75b70f61701740ecd8cd98eaa5893080"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga75b70f61701740ecd8cd98eaa5893080">&#9670;&nbsp;</a></span>net_ntp_callback_t</h2>
+<a id="gabf135698b449bfe672a50dd936547044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabf135698b449bfe672a50dd936547044">&#9670;&nbsp;</a></span>net_ntp_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* net_ntp_callback_t) (const <a class="el" href="structsys__date__t.html">sys_date_t</a> *date)</td>
+          <td class="memname">typedef void(* net_ntp_callback_t) (<a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a> *ntp, const <a class="el" href="structsys__date__t.html">sys_date_t</a> *date, void *user_data)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -129,7 +129,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Opaque NTP manager handle. </p>
-<p>The handle identifies the singleton NTP manager. It is valid after <a class="el" href="group__RuntimeNTP.html#ga6319740302ae0d8d4ab3ceba2c1e1abc" title="Initialize (or re-initialize) the NTP manager. ">net_ntp_init()</a> succeeds and remains valid until <a class="el" href="group__RuntimeNTP.html#ga4fa17ebe0fc99f565a09fa9ebdd3c080" title="Release NTP resources. ">net_ntp_finalize()</a> is called. </p>
+<p>The handle identifies the singleton NTP manager. It is valid after <a class="el" href="group__RuntimeNTP.html#ga8dc3d997a1fcc0acd39905497354a34e" title="Initialize (or re-initialize) the NTP manager. ">net_ntp_init()</a> succeeds and remains valid until <a class="el" href="group__RuntimeNTP.html#ga4fa17ebe0fc99f565a09fa9ebdd3c080" title="Release NTP resources. ">net_ntp_finalize()</a> is called. </p>
 
 <p class="definition">Definition at line <a class="el" href="ntp_8h_source.html#l00029">29</a> of file <a class="el" href="ntp_8h_source.html">ntp.h</a>.</p>
 
@@ -163,8 +163,8 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a id="ga6319740302ae0d8d4ab3ceba2c1e1abc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6319740302ae0d8d4ab3ceba2c1e1abc">&#9670;&nbsp;</a></span>net_ntp_init()</h2>
+<a id="ga8dc3d997a1fcc0acd39905497354a34e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8dc3d997a1fcc0acd39905497354a34e">&#9670;&nbsp;</a></span>net_ntp_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -172,9 +172,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__RuntimeNTP.html#ga2a54d918f0a6a30390ff7d52dfa942ca">net_ntp_t</a>* net_ntp_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__RuntimeNTP.html#ga75b70f61701740ecd8cd98eaa5893080">net_ntp_callback_t</a>&#160;</td>
-          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__RuntimeNTP.html#gabf135698b449bfe672a50dd936547044">net_ntp_callback_t</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

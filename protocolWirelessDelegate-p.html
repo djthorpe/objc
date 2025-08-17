@@ -70,9 +70,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#ab138bf9c11fe0d7c8bbf16bcdb0775b6">connectDidStart:</a></td></tr>
 <tr class="memdesc:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a connection attempt starts.  <a href="#ab138bf9c11fe0d7c8bbf16bcdb0775b6">More...</a><br /></td></tr>
 <tr class="separator:ab138bf9c11fe0d7c8bbf16bcdb0775b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaae2380c1604bcf2d2e11b9664301b53"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#aaae2380c1604bcf2d2e11b9664301b53">connect:withError:</a></td></tr>
-<tr class="memdesc:aaae2380c1604bcf2d2e11b9664301b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called if the connection fails.  <a href="#aaae2380c1604bcf2d2e11b9664301b53">More...</a><br /></td></tr>
-<tr class="separator:aaae2380c1604bcf2d2e11b9664301b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d8622fa7407762f7b026c3501ea5e91"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#a4d8622fa7407762f7b026c3501ea5e91">connectionFailed:withError:</a></td></tr>
+<tr class="memdesc:a4d8622fa7407762f7b026c3501ea5e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called if the connection fails.  <a href="#a4d8622fa7407762f7b026c3501ea5e91">More...</a><br /></td></tr>
+<tr class="separator:a4d8622fa7407762f7b026c3501ea5e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e6a237546ed999c54163b34371f2c28"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocolWirelessDelegate-p.html#a0e6a237546ed999c54163b34371f2c28">connected:</a></td></tr>
 <tr class="memdesc:a0e6a237546ed999c54163b34371f2c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a connection is established.  <a href="#a0e6a237546ed999c54163b34371f2c28">More...</a><br /></td></tr>
 <tr class="separator:a0e6a237546ed999c54163b34371f2c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -83,55 +83,10 @@ Instance Methods</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="interfaceProtocol.html" title="Protocol class definition. ">Protocol</a> for receiving wireless scan events. </p>
 <p>Classes conforming to this protocol receive callbacks for scan progress: one invocation per network discovered and a final notification on completion. Implementations should return quickly and avoid heavy work on the callback thread. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Network_2scan_2main_8m-example.html#_a2">examples/Network/scan/main.m</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2Network_2ntp_2main_8m-example.html#_a2">examples/Network/ntp/main.m</a>, and <a class="el" href="examples_2Network_2scan_2main_8m-example.html#_a2">examples/Network/scan/main.m</a>.</dd>
 </dl>
 <p class="definition">Definition at line <a class="el" href="WirelessDelegate_09Protocol_8h_source.html#l00024">24</a> of file <a class="el" href="WirelessDelegate_09Protocol_8h_source.html">WirelessDelegate+Protocol.h</a>.</p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a id="aaae2380c1604bcf2d2e11b9664301b53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaae2380c1604bcf2d2e11b9664301b53">&#9670;&nbsp;</a></span>connect:withError:()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) connect: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
-          <td class="paramname"><em>network</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">withError:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="group__Network.html#ga206f695b20513c023a14469a028a62e1">NXWirelessError</a>)&#160;</td>
-          <td class="paramname"><em>error</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called if the connection fails. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">network</td><td>The target network. </td></tr>
-    <tr><td class="paramname">error</td><td>The error code describing the failure. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ab138bf9c11fe0d7c8bbf16bcdb0775b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab138bf9c11fe0d7c8bbf16bcdb0775b6">&#9670;&nbsp;</a></span>connectDidStart:()</h2>
 
@@ -194,6 +149,51 @@ Instance Methods</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">network</td><td>The connected network. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d8622fa7407762f7b026c3501ea5e91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d8622fa7407762f7b026c3501ea5e91">&#9670;&nbsp;</a></span>connectionFailed:withError:()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) connectionFailed: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interfaceNXWirelessNetwork.html">NXWirelessNetwork</a> *)&#160;</td>
+          <td class="paramname"><em>network</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withError:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="group__Network.html#ga206f695b20513c023a14469a028a62e1">NXWirelessError</a>)&#160;</td>
+          <td class="paramname"><em>error</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">optional</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called if the connection fails. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>The target network. </td></tr>
+    <tr><td class="paramname">error</td><td>The error code describing the failure. </td></tr>
   </table>
   </dd>
 </dl>
