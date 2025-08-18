@@ -242,6 +242,8 @@ bool net_mqtt_disconnect(net_mqtt_t *mqtt) {
 #endif
 }
 
+#define ERR_PENDING 1
+
 /**
  * @brief Publish a message to a topic.
  */
@@ -267,18 +269,17 @@ bool net_mqtt_publish(net_mqtt_t *mqtt, const char *topic, const void *data,
   }
 
   // Perform the publish and wait for the result
-  err_t err = 1;
+  err_t err = ERR_PENDING;
   if (mqtt_publish(impl->client, topic, data, (u16_t)size, qos, qos != 0,
                    _net_mqtt_publish_cb, &err) != ERR_OK) {
     return false;
   }
 
-  // Wait for the publish to complete
-  sys_printf("publish WAIT\n");
+  // Wait for the publish to complete - this blocks!
   do {
     hw_poll();
     sys_sleep(10);
-  } while (err == 1);
+  } while (err == ERR_PENDING);
 
 #ifdef DEBUG
   switch (err) {
@@ -296,6 +297,7 @@ bool net_mqtt_publish(net_mqtt_t *mqtt, const char *topic, const void *data,
     break;
   }
 #endif
+
   // Return success or failure
   return err == ERR_OK;
 #endif
@@ -380,7 +382,6 @@ static void _net_mqtt_do_connect(net_mqtt_impl_t *impl, const ip_addr_t *addr) {
 static void _net_mqtt_publish_cb(void *arg, err_t err) {
   err_t *cb_err = (err_t *)arg;
   sys_assert(cb_err);
-  sys_printf("publish CALLBACK\n");
   *cb_err = err;
 }
 
