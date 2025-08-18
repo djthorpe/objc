@@ -1,6 +1,6 @@
 /**
  * @file InputManager+Protocols.h
- * @brief Defines a protocols for the input manager delegate.
+ * @brief Defines protocols for the input manager delegate.
  *
  * The InputManagerDelegate protocol defines methods that are called by the
  * input manager when key and movement events occur. The InputManagerSource
