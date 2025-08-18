@@ -63,7 +63,7 @@ static void publish_mqtt_message(net_mqtt_t *mqtt, const char *topic,
   char topic2[80];
   sys_sprintf(topic2, sizeof(topic2), "%s/%s/%s", MQTT_TOPIC, sys_env_serial(),
               topic);
-  net_mqtt_publish_str(mqtt, topic2, message);
+  net_mqtt_publish_str(mqtt, topic2, message, 0);
 }
 
 static void wifi_callback(hw_wifi_t *wifi, hw_wifi_event_t event,
@@ -152,12 +152,18 @@ int main(void) {
   }
 
   // Run main loop
-  int i;
-  for (i = 0; i < 100000; i++) {
+  int i = 0;
+  do {
     hw_poll();
     net_poll();
     sys_sleep(10);
-  }
+    if (i++ % 1000 == 0) {
+      char uptime[32];
+      sys_sprintf(uptime, sizeof(uptime), "%lu",
+                  (unsigned long)(sys_date_get_timestamp() / 1000));
+      publish_mqtt_message(&mqtt, "uptime", uptime);
+    }
+  } while (true);
 
   // Cleanup if you add a termination path:
   sys_printf("MQTT disconnecting...\n");

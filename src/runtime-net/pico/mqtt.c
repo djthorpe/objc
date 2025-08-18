@@ -1,3 +1,4 @@
+#include <runtime-hw/hw.h>
 #include <runtime-net/net.h>
 #include <runtime-sys/sys.h>
 #include <stdint.h>
@@ -29,6 +30,14 @@ typedef struct net_mqtt_impl_t {
   void *user_data;
   net_mqtt_server_t server;
 } net_mqtt_impl_t;
+
+/**
+ * @brief Internal waitgroup for blocking operations
+ */
+typedef struct net_mqtt_waitgroup_t {
+  sys_waitgroup_t wg; /**< Waitgroup for blocking operations */
+  err_t err;          /**< Error code for the operation */
+} net_mqtt_waitgroup_t;
 
 /**
  * @brief Cast helper
@@ -233,16 +242,18 @@ bool net_mqtt_disconnect(net_mqtt_t *mqtt) {
 #endif
 }
 
+#define ERR_PENDING 1
+
 /**
  * @brief Publish a message to a topic.
  */
-bool net_mqtt_publish(net_mqtt_t *mqtt, const net_mqtt_message_t *message,
-                      uint8_t qos, bool retain) {
+bool net_mqtt_publish(net_mqtt_t *mqtt, const char *topic, const void *data,
+                      size_t size, uint8_t qos) {
   net_mqtt_impl_t *impl = _impl(mqtt);
   sys_assert(mqtt && impl->client);
-  sys_assert(message && message->topic && message->topic[0] != '\0');
-  sys_assert(message->size == 0 || message->data);
-  sys_assert(qos == 0 || qos == 1 || qos == 2);
+  sys_assert(topic && topic[0] != '\0');
+  sys_assert(size == 0 || data);
+  sys_assert(qos <= 2);
 
 #ifndef PICO_CYW43_SUPPORTED
   return false;
@@ -253,19 +264,42 @@ bool net_mqtt_publish(net_mqtt_t *mqtt, const net_mqtt_message_t *message,
   }
 
   // Enforce lwIP payload length limit (u16_t)
-  if (message->size > UINT16_MAX) {
+  if (size > UINT16_MAX) {
     return false;
   }
 
-  // Perform the publish
-  err_t err = mqtt_publish(impl->client, message->topic, message->data,
-                           (u16_t)message->size, qos, retain,
-                           _net_mqtt_publish_cb, impl);
-  if (err == ERR_OK) {
-    return true;
-  } else {
+  // Perform the publish and wait for the result
+  err_t err = ERR_PENDING;
+  if (mqtt_publish(impl->client, topic, data, (u16_t)size, qos, qos != 0,
+                   _net_mqtt_publish_cb, &err) != ERR_OK) {
     return false;
   }
+
+  // Wait for the publish to complete - this blocks!
+  do {
+    hw_poll();
+    sys_sleep(10);
+  } while (err == ERR_PENDING);
+
+#ifdef DEBUG
+  switch (err) {
+  case ERR_OK:
+    // Publish succeeded
+    sys_printf("net_mqtt_publish: ok\n");
+    break;
+  case ERR_TIMEOUT:
+    // Publish timed out
+    sys_printf("net_mqtt_publish: timeout\n");
+    break;
+  case ERR_ABRT:
+    // Publish aborted
+    sys_printf("net_mqtt_publish: aborted\n");
+    break;
+  }
+#endif
+
+  // Return success or failure
+  return err == ERR_OK;
 #endif
 }
 
@@ -342,20 +376,13 @@ static void _net_mqtt_do_connect(net_mqtt_impl_t *impl, const ip_addr_t *addr) {
   }
 }
 
+/**
+ * @brief Indicate the publish was completed, and return the error result.
+ */
 static void _net_mqtt_publish_cb(void *arg, err_t err) {
-  net_mqtt_impl_t *impl = (net_mqtt_impl_t *)arg;
-  sys_assert(impl);
-  switch (err) {
-  case ERR_OK:
-    sys_printf("Message published successfully\n");
-    break;
-  case ERR_TIMEOUT:
-    sys_printf("Message publish timed out\n");
-    break;
-  case ERR_ABRT:
-    sys_printf("Message publish aborted\n");
-    break;
-  }
+  err_t *cb_err = (err_t *)arg;
+  sys_assert(cb_err);
+  *cb_err = err;
 }
 
 static void _net_mqtt_subscribe_cb(void *arg, err_t err) {
