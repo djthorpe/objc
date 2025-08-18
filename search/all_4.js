@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['data',['data',['../structnet__mqtt__message__t.html#a4d849a558669ec782b63a5355af8d59f',1,'net_mqtt_message_t']]],
   ['datawithbytes_3asize_3a',['dataWithBytes:size:',['../interfaceNXData.html#a8f2e0b95748541aa3934d86fbf38a2c7',1,'NXData']]],
   ['datawithcapacity_3a',['dataWithCapacity:',['../interfaceNXData.html#acedebd7588ba090db61c4c950a5faddb',1,'NXData']]],
   ['datawithstring_3a',['dataWithString:',['../interfaceNXData.html#a409dcbd86bc81a83f8e812ccc9b5fd0e',1,'NXData']]],
