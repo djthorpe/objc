@@ -123,32 +123,55 @@ The documentation is also published [here](https://djthorpe.github.io/objc/).
 - [X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.
 - [X] runtime-hw Power support - measure voltage on VSYS to get %age and also whether connected to USB or battery
 - [X] `GPIO` uses static instances, and `<GPIODelegate>` protocol to handle GPIO events which are pushed from the runloop
-- [ ] runtime-hw LED support
+- [ ] mqtt make it asynchronous for publish, subscribe, unsubscribe and new message
+- [ ] MQTT objective-c client
+- [ ] runtime-hw LED support - blink and fade re-work
 - [ ] `NXInputManager` - input manager for handling keyboard, mouse, GPIO and other input devices with single click, double click and so forth.
+- [ ] Wire GPIO into NXInputManager
 - [ ] `NXApplication` and `NXRunLoop` running on both cores
-- [ ] `Power` class and `<PowerDelegate>` for managing power, watchdog and resets, uptime, etc.
-- [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
+- [ ] Shared instances need to be finalized on exit
+- [ ] `Power` class and `<PowerDelegate>` for managing power, resets, uptime, etc.
 - [ ] `@synchronized` support - use fixed-size table to store locks for objects, no allocations
-- [ ] NXNumber - `NXNumberByte` and `NXNumberInt8`
+- [ ] NXNumber - `NXNumberUnsignedInt8` and `NXNumberInt8`
 - [ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications
-- [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing
-- [ ] `NXURL` class - URL/filepath parsing and manipulation
-- [ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data
-- [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)
+- [ ] `NXScanner`, `ReaderProtocol` - scanning, parsing and tokenizing - needs unicode work
+- [ ] `NXData` - fix hexString encoding and decoding (see test NXFoundation_22)?
 - [ ] `NXArray` sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:
 - [ ] `NXArray` filterWithFunction: filteredArrayWithFunction:
 - [ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on
-- [ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed
+- [ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed. Same for cyw43 and lwip.
 - [ ] `NXRange` and `NXString` - substringWithRange and substringWithRange:options:
 - [ ] `NXString` - rangeOfSubstring and rangeOfSubstring:options:
 - [ ] `NXArray` - `subarrayWithRange:` and `subarrayWithRange:options:`
 - [ ] `NXString` - array methods - componentsSeparatedByString and componentsSeparatedByByte
-- [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] Number - `NXNumber` with `NXNumberFloat` and `NXNumberDouble`
+- [ ] printf - `%f and %lf` format specifier for floats and doubles
 - [ ] More efficient method implementation lookup
+- [ ] `make install` will compile the libraries and install them to a prefix path - third-party repositories can compile against it
+- [ ] `respondsToSelector:` (see test `runtime_14`) and lots of tests - might be working?
+- [ ] USB Support for keyboards & mice and input manager - some way of knowing when USB device inserted and removed
+- [ ] Touchscreen support for Pimironi device
+- [ ] Remote decoding of IR protocols and wire into NXInputManager
+- [ ] runtime-pix with SDL devices to start with
+- [ ] runtime-pix with eInk devices
+- [ ] runtime-pix with LED devices
+- [ ] runtime-pix with Pimironi device
+- [ ] runtime-pix vector drawing
+- [ ] runtime-pix 7x5 fonts
+- [ ] runtime-pix vector fonts
+- [ ] runtime-fs Low-level flash block device
+- [ ] runtime-fs Low-level SD card block device
+- [ ] runtime-fs littlefs filesystem - register block devices, format, etc.
+- [ ] `NXSensorManager` - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.
+- [ ] `NXWirelessManager` - keeps track of wireless networks, connections, disconnections
+- [ ] runtime-pix load/save fonts and images
+- [ ] low-level http client
+- [ ] `NXURL` class - URL/filepath parsing and manipulation
+- [ ] `NXFile` - represents an open file
+- [ ] `NXFileManager` - manages files and directories on a volume
+- [ ] `NXFileDirectory` - represents a directory on a volume
+- [ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data?
 - [ ] `NXCoder` - JSON / Binary marshalling and unmarshalling
-- [ ] `make install` will compile the libraries and install them to a prefix path
-- [ ] `respondsToSelector:` (see test `runtime_14`) and lots of tests
 - [ ] Calling `+[initialise]` for categories
 - [ ] Exception handling?
 - [ ] Raspberry Pi support - GPIO, SPI, I2C, PWM, ADC, etc.
