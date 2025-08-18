@@ -134,32 +134,55 @@ $(function() {
 <li>[X] runtime-hw Power support - callbacks for low battery, battery level, power on/off, etc.</li>
 <li>[X] runtime-hw Power support - measure voltage on VSYS to get age and also whether connected to USB or battery</li>
 <li>[X] <code><a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a></code> uses static instances, and <code>&lt;<a class="el" href="protocolGPIODelegate-p.html" title="A protocol that defines the methods for a GPIO delegate. ">GPIODelegate</a>&gt;</code> protocol to handle <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> events which are pushed from the runloop</li>
-<li>[ ] runtime-hw <a class="el" href="interfaceLED.html" title="The LED class. ">LED</a> support</li>
+<li>[ ] mqtt make it asynchronous for publish, subscribe, unsubscribe and new message</li>
+<li>[ ] <a class="el" href="interfaceMQTT.html" title="An MQTT client. ">MQTT</a> objective-c client</li>
+<li>[ ] runtime-hw <a class="el" href="interfaceLED.html" title="The LED class. ">LED</a> support - blink and fade re-work</li>
 <li>[ ] <code>NXInputManager</code> - input manager for handling keyboard, mouse, <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> and other input devices with single click, double click and so forth.</li>
+<li>[ ] Wire <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> into NXInputManager</li>
 <li>[ ] <code>NXApplication</code> and <code>NXRunLoop</code> running on both cores</li>
-<li>[ ] <code>Power</code> class and <code>&lt;PowerDelegate&gt;</code> for managing power, watchdog and resets, uptime, etc.</li>
-<li>[ ] <code>NXSensorManager</code> - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.</li>
+<li>[ ] Shared instances need to be finalized on exit</li>
+<li>[ ] <code>Power</code> class and <code>&lt;PowerDelegate&gt;</code> for managing power, resets, uptime, etc.</li>
 <li>[ ] <code>@synchronized</code> support - use fixed-size table to store locks for objects, no allocations</li>
-<li>[ ] <a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a> - <code>NXNumberByte</code> and <code>NXNumberInt8</code></li>
+<li>[ ] <a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a> - <code>NXNumberUnsignedInt8</code> and <code>NXNumberInt8</code></li>
 <li>[ ] Make all NX classes thread-safe, so that they can be used in multi-threaded applications</li>
-<li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning, parsing and tokenizing</li>
-<li>[ ] <code>NXURL</code> class - URL/filepath parsing and manipulation</li>
-<li>[ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data</li>
-<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)</li>
+<li>[ ] <code>NXScanner</code>, <code>ReaderProtocol</code> - scanning, parsing and tokenizing - needs unicode work</li>
+<li>[ ] <code><a class="el" href="interfaceNXData.html" title="The NXData classNXData represents a structure for storing binary data. ">NXData</a></code> - fix hexString encoding and decoding (see test NXFoundation_22)?</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> sortWithFunction: sortedArrayWithFunction: reverse: and reversedArray:</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> filterWithFunction: filteredArrayWithFunction:</li>
 <li>[ ] Pico - timer alarm pool should be on both cores, not just core 0, and then use the right pool for the core that the timer is running on</li>
-<li>[ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed</li>
+<li>[ ] Pico - when building RELEASE=1 builds it includes stdout and printf, which is not needed. Same for cyw43 and lwip.</li>
 <li>[ ] <code>NXRange</code> and <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - substringWithRange and substringWithRange:options:</li>
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - rangeOfSubstring and rangeOfSubstring:options:</li>
 <li>[ ] <code><a class="el" href="interfaceNXArray.html" title="The NXArray classNXArray represents an array that can store ordered objects. ">NXArray</a></code> - <code>subarrayWithRange:</code> and <code>subarrayWithRange:options:</code></li>
 <li>[ ] <code><a class="el" href="interfaceNXString.html" title="A class for managing and manipulating string objects. ">NXString</a></code> - array methods - componentsSeparatedByString and componentsSeparatedByByte</li>
-<li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
 <li>[ ] Number - <code><a class="el" href="interfaceNXNumber.html" title="The base class for NXNumber instances. ">NXNumber</a></code> with <code>NXNumberFloat</code> and <code>NXNumberDouble</code></li>
+<li>[ ] printf - <code>f and lf</code> format specifier for floats and doubles</li>
 <li>[ ] More efficient method implementation lookup</li>
+<li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path - third-party repositories can compile against it</li>
+<li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>) and lots of tests - might be working?</li>
+<li>[ ] USB Support for keyboards &amp; mice and input manager - some way of knowing when USB device inserted and removed</li>
+<li>[ ] Touchscreen support for Pimironi device</li>
+<li>[ ] Remote decoding of IR protocols and wire into NXInputManager</li>
+<li>[ ] runtime-pix with SDL devices to start with</li>
+<li>[ ] runtime-pix with eInk devices</li>
+<li>[ ] runtime-pix with <a class="el" href="interfaceLED.html" title="The LED class. ">LED</a> devices</li>
+<li>[ ] runtime-pix with Pimironi device</li>
+<li>[ ] runtime-pix vector drawing</li>
+<li>[ ] runtime-pix 7x5 fonts</li>
+<li>[ ] runtime-pix vector fonts</li>
+<li>[ ] runtime-fs Low-level flash block device</li>
+<li>[ ] runtime-fs Low-level SD card block device</li>
+<li>[ ] runtime-fs littlefs filesystem - register block devices, format, etc.</li>
+<li>[ ] <code>NXSensorManager</code> - sensor manager for handling sensors such as accelerometer, gyroscope, magnetometer, temperature, humidity, pressure, etc.</li>
+<li>[ ] <code>NXWirelessManager</code> - keeps track of wireless networks, connections, disconnections</li>
+<li>[ ] runtime-pix load/save fonts and images</li>
+<li>[ ] low-level http client</li>
+<li>[ ] <code>NXURL</code> class - URL/filepath parsing and manipulation</li>
+<li>[ ] <code>NXFile</code> - represents an open file</li>
+<li>[ ] <code>NXFileManager</code> - manages files and directories on a volume</li>
+<li>[ ] <code>NXFileDirectory</code> - represents a directory on a volume</li>
+<li>[ ] Classes have a unique number so we can do NXCoder to serialize and deserialize objects from binary data?</li>
 <li>[ ] <code>NXCoder</code> - JSON / Binary marshalling and unmarshalling</li>
-<li>[ ] <code>make install</code> will compile the libraries and install them to a prefix path</li>
-<li>[ ] <code>respondsToSelector:</code> (see test <code>runtime_14</code>) and lots of tests</li>
 <li>[ ] Calling <code>+[initialise]</code> for categories</li>
 <li>[ ] Exception handling?</li>
 <li>[ ] Raspberry Pi support - <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>, SPI, I2C, PWM, ADC, etc.</li>
