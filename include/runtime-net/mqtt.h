@@ -73,20 +73,6 @@ typedef void (*net_mqtt_connect_callback_t)(net_mqtt_t *mqtt,
                                             net_mqtt_status_t status,
                                             void *user_data);
 
-/**
- * @brief MQTT message descriptor used for publishing.
- * @ingroup RuntimeMQTT
- *
- * Carries the topic, payload pointer/length, and delivery options.
- * All fields must be provided by the caller; pointers are not copied or
- * retained by the runtime beyond the scope of the publish call.
- */
-typedef struct net_mqtt_message_t {
-  const char *topic; /**< Topic name; non-NULL and non-empty */
-  const void *data;  /**< Payload pointer; may be NULL when size is 0 */
-  size_t size;       /**< Payload length in bytes; <= 65535 */
-} net_mqtt_message_t;
-
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
@@ -175,38 +161,40 @@ bool net_mqtt_disconnect(net_mqtt_t *mqtt);
  * @brief Publish a message to a topic.
  * @ingroup RuntimeMQTT
  *
- * Asynchronously queues a PUBLISH packet on the active connection. The call
- * returns after the message is queued for transmission; it does not block for
- * broker acknowledgements.
+ * Synchronously sends a PUBLISH packet on the active connection. The call
+ * returns after the message is sent.
  *
  * @param mqtt   MQTT handle created by @ref net_mqtt_init and currently
  *               connected (see @ref net_mqtt_valid).
- * @param message Pointer to the message descriptor.
- * @param qos QoS level: 0, 1, or 2
- * @param retain Retain flag
- * @return true if the message was accepted/queued for transmission; false on
- *         immediate failure (invalid parameters, not connected, or resource
- *         exhaustion). Payload size is limited to 65535 bytes.
+ * @param topic  Topic name to publish to. Must be non-NULL and non-empty.
+ * @param data   Pointer to the message payload. Must be non-NULL.
+ * @param size   Size of the message payload in bytes.
+ * @param qos    QoS level: 0, 1, or 2. Messages with QoS 1 or 2 will also
+ *               set retain flag.
+ * @return true if the message was sent; false on failure.
  */
-bool net_mqtt_publish(net_mqtt_t *mqtt, const net_mqtt_message_t *message,
-                      uint8_t qos, bool retain);
+bool net_mqtt_publish(net_mqtt_t *mqtt, const char *topic, const void *data,
+                      size_t size, uint8_t qos);
 
 /**
  * @brief Publish a NULL-terminated string to a topic.
  * @ingroup RuntimeMQTT
+ *
+ * @param mqtt   MQTT handle created by @ref net_mqtt_init and currently
+ *               connected (see @ref net_mqtt_valid).
+ * @param topic  Topic name to publish to. Must be non-NULL and non-empty.
+ * @param str    NULL-terminated string to publish. Must be non-NULL.
+ * @param qos    QoS level: 0, 1, or 2. Messages with QoS 1 or 2 will also
+ *               set retain flag.
+ * @return true if the message was sent; false on failure.
  *
  * Asynchronously queues a PUBLISH packet on the active connection. The call
  * returns after the message is queued for transmission; it does not block for
  * broker acknowledgements.
  */
 static inline bool net_mqtt_publish_str(net_mqtt_t *mqtt, const char *topic,
-                                        const char *str) {
-  net_mqtt_message_t message = {
-      .topic = topic,
-      .data = str,
-      .size = strlen(str),
-  };
-  return net_mqtt_publish(mqtt, &message, 0, false);
+                                        const char *str, uint8_t qos) {
+  return net_mqtt_publish(mqtt, topic, str, strlen(str), qos);
 }
 
 /**
