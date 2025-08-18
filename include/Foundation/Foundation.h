@@ -30,6 +30,7 @@
 #include "NXComparisonResult.h"
 #include "NXLog.h"
 #include "NXNotFound.h"
+#include "NXPoint.h"
 #include "NXTimeInterval.h"
 
 // Protocols and Category Definitions
