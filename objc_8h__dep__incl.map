@@ -1,8 +1,10 @@
 <map id="include/runtime&#45;gcc/objc/objc.h" name="include/runtime&#45;gcc/objc/objc.h">
-<area shape="rect" id="node2" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="262,95,407,136"/>
-<area shape="rect" id="node7" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="431,95,577,136"/>
+<area shape="rect" id="node2" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="445,95,590,136"/>
+<area shape="rect" id="node9" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="614,95,759,136"/>
 <area shape="rect" id="node3" href="$Application_8h.html" title="Application framework header. " alt="" coords="5,184,152,225"/>
 <area shape="rect" id="node4" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="176,184,323,225"/>
-<area shape="rect" id="node5" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="347,184,493,225"/>
-<area shape="rect" id="node6" href="$Network_8h.html" title="Network framework header. " alt="" coords="518,191,717,218"/>
+<area shape="rect" id="node5" href="$NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="347,184,509,225"/>
+<area shape="rect" id="node6" href="$NXInputManager_8h.html" title="The input manager class for handling user input. " alt="" coords="533,184,680,225"/>
+<area shape="rect" id="node7" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="704,184,851,225"/>
+<area shape="rect" id="node8" href="$Network_8h.html" title="Network framework header. " alt="" coords="875,191,1074,218"/>
 </map>
