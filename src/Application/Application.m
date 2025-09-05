@@ -31,7 +31,7 @@ static id sharedApplication = nil;
 // Define the shared queue for events
 static sys_event_queue_t _app_queue = {0};
 
-// Optional hook implemented by Network/runtime-net
+// Optional hook implemented by Network/runtime-net (weak; NULL if absent)
 extern void net_poll(void) __attribute__((weak));
 
 // We call hw_poll every 50ms and net_poll every 1s
@@ -341,7 +341,6 @@ void _app_power_callback(hw_power_t *power, hw_power_flag_t flags,
       hw_poll();
       break;
     case APP_EVENT_NET_POLL:
-      // net_poll is a weak symbol, so we check if it exists before calling
       if (net_poll) {
         net_poll();
       }
