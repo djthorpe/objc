@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${prefix}/@OBJC_LIB_INSTALL_DIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: @OBJC_PKGCONFIG_NAME@
+Description: @OBJC_PKGCONFIG_DESCRIPTION@
+Version: @PROJECT_VERSION@
+Libs: @OBJC_PKGCONFIG_LIBS@
+Cflags: @OBJC_PKGCONFIG_CFLAGS@
