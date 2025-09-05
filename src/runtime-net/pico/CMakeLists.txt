@@ -1,7 +1,7 @@
 set(NAME "runtime-net")
 
 add_library(${NAME} STATIC
-  mqtt.c
+  ../stub/mqtt.c # temporary stub until we have finished mqtt
   net.c
   ntp.c
 )

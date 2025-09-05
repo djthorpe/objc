@@ -8,6 +8,7 @@ include_directories(
 # Runtime System Tests
 include(sys/runtime-sys.cmake)
 include(objc/runtime-objc.cmake)
+include(fs/runtime-fs.cmake)
 
 # TODO: Commented out until we can re-introduce these tests
 #include(runtime-hw.cmake)

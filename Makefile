@@ -105,6 +105,13 @@ drivers: runtime-hw
 	@echo make drivers
 	@${CMAKE} --build ${BUILD_DIR} --target drivers -j ${JOBS}
 
+# Create the libruntime-fs runtime library
+.PHONY: runtime-fs
+runtime-fs: runtime-sys
+	@echo
+	@echo make runtime-fs
+	@${CMAKE} --build ${BUILD_DIR} --target runtime-fs -j ${JOBS}
+
 # Create the Foundation library
 .PHONY: Foundation
 Foundation: libobjc-gcc runtime-sys
@@ -121,7 +128,7 @@ Application: Foundation runtime-hw drivers
 
 # Create the Network library
 .PHONY: Network
-Network: Foundation runtime-hw
+Network: Foundation runtime-hw runtime-net
 	@echo
 	@echo make Network
 	@${CMAKE} --build ${BUILD_DIR} --target Network -j ${JOBS}
@@ -136,7 +143,7 @@ tests: config runtime-sys runtime-hw libobjc-gcc
 
 # Make the examples
 .PHONY: examples
-examples: runtime-sys runtime-hw 
+examples: Foundation Application Network
 	@echo
 	@echo make examples
 	@${CMAKE} --build ${BUILD_DIR}/src/examples -j ${JOBS}
