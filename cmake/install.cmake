@@ -16,7 +16,7 @@ endif()
 
 # pkg-config generation (uses PROJECT_VERSION from top-level project)
 set(OBJC_PKGCONFIG_NAME "picofuse")
-set(OBJC_PKGCONFIG_DESCRIPTION "Objective-C runtime libraries (Foundation, Application, Network, runtime components)")
+set(OBJC_PKGCONFIG_DESCRIPTION "Objective-C runtime libraries (Foundation, Application, Network, Runtime components)")
 set(OBJC_PKGCONFIG_LIBS "-L${CMAKE_INSTALL_PREFIX}/${OBJC_LIB_INSTALL_DIR} -lobjc-gcc -lFoundation -lApplication -lNetwork -lruntime-sys -lruntime-hw -lruntime-net -ldrivers")
 set(OBJC_PKGCONFIG_CFLAGS "-I${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}")
 
