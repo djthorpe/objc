@@ -20,4 +20,4 @@
  * This function should be called periodically to allow the network
  * system to perform any necessary background tasks.
  */
-void net_poll(void);
+extern void net_poll(void);
