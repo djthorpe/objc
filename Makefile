@@ -1,7 +1,13 @@
+# Installation prefix and build directory
 BUILD_DIR ?= build
+PREFIX ?= /opt/picofuse
+
+# Tools
 CMAKE ?= $(shell which cmake 2>/dev/null)
 DOCKER ?= $(shell which docker 2>/dev/null)
 GIT ?= $(shell which git 2>/dev/null)
+
+# Build arguments
 JOBS ?= $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
 MAKEFLAGS += --no-print-directory
 
@@ -20,6 +26,7 @@ endif
 all: Foundation Application Network
 
 # Configure
+.PHONY: config
 config: dep-cmake submodule
 	@echo
 	@echo configure
@@ -39,6 +46,21 @@ config: dep-cmake submodule
 	    *) echo "WARNING: Pico build expected compiler under ${TOOLCHAIN_PATH} but got $$C_ACTUAL";; \
 	  esac; \
 	fi
+
+# Install
+.PHONY: install
+install: Foundation Application picotool
+	@echo
+	@echo install PREFIX=${PREFIX}
+	@${CMAKE} -B ${BUILD_DIR} -Wno-dev \
+		-D CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} \
+		$(if ${PICO_BOARD},-D PICO_BOARD=${PICO_BOARD}) \
+		-D PICO_COMPILER=${PICO_COMPILER} \
+		-D PICO_TOOLCHAIN_PATH:PATH=${TOOLCHAIN_PATH} \
+		-D RUNTIME=gcc \
+		-D CMAKE_INSTALL_PREFIX=${PREFIX}
+	@${CMAKE} --build ${BUILD_DIR} --target install -j ${JOBS}
+	@install -d -m 755 ${PREFIX}/bin && install -m 755 ${BUILD_DIR}/third_party/picotool/picotool ${PREFIX}/bin
 
 # Create the libruntime-sys runtime library
 .PHONY: runtime-sys

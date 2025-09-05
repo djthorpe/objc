@@ -1,5 +1,4 @@
-#include <runtime-hw/hw.h>
-#include <runtime-sys/sys.h>
+#include <runtime-hw/power.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -21,11 +20,12 @@ static bool _hw_power_stub_initialized = false;
  * @brief Initialize power management.
  */
 hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
-                          hw_power_callback_t callback) {
+                          hw_power_callback_t callback, void *user_data) {
   // Power management not implemented in stub
   (void)gpio_vsys; // Suppress unused parameter warning
   (void)gpio_vbus; // Suppress unused parameter warning
   (void)callback;  // Suppress unused parameter warning
+  (void)user_data; // Suppress unused parameter warning
 
   // Mark initialized and return opaque handle pointer
   _hw_power_stub_initialized = true;
@@ -36,16 +36,14 @@ hw_power_t *hw_power_init(uint8_t gpio_vsys, uint8_t gpio_vbus,
  * @brief Determine if the power handle is initialized and usable.
  */
 bool hw_power_valid(hw_power_t *power) {
-  sys_assert(power);
   (void)power;
-  return _hw_power_stub_initialized; // Indicates init was called
+  return _hw_power_stub_initialized;
 }
 
 /**
  * @brief Finalize and release any resources.
  */
 void hw_power_finalize(hw_power_t *power) {
-  sys_assert(power);
   (void)power;
   _hw_power_stub_initialized = false;
 }
@@ -57,16 +55,14 @@ void hw_power_finalize(hw_power_t *power) {
  * @brief Approximate battery state of charge.
  */
 uint8_t hw_power_battery_percent(hw_power_t *power) {
-  sys_assert(power);
-  // Power management not implemented in stub
-  return 100; // Return 100% as specified in the header for unsupported cases
+  (void)power;
+  return 100;
 }
 
 /**
  * @brief Current detected power source(s).
  */
 hw_power_flag_t hw_power_source(hw_power_t *power) {
-  sys_assert(power);
-  // Power management not implemented in stub
-  return HW_POWER_UNKNOWN; // Return unknown as specified in the header
+  (void)power;
+  return HW_POWER_UNKNOWN;
 }

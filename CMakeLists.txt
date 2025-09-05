@@ -3,6 +3,32 @@ cmake_minimum_required(VERSION 3.27)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
+# Derive project version from git (fallback 0.0.0).
+# Allow manual override via -D PROJECT_VERSION=...
+if(NOT DEFINED PROJECT_VERSION)
+    find_package(Git QUIET)
+    if(GIT_FOUND)
+        execute_process(
+            COMMAND ${GIT_EXECUTABLE} describe --tags --dirty --always
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            OUTPUT_VARIABLE _GIT_DESCRIBE
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            ERROR_QUIET)
+        if(_GIT_DESCRIBE MATCHES "^[0-9]+\\.[0-9]+\\.[0-9]+.*")
+            set(PROJECT_VERSION "${_GIT_DESCRIBE}")
+        else()
+            # Attempt to transform e.g. v1.2.3-4-g<hash> -> 1.2.3+4
+            if(_GIT_DESCRIBE MATCHES "v?([0-9]+\\.[0-9]+\\.[0-9]+)-([0-9]+)-g[0-9a-f]+")
+                set(PROJECT_VERSION "${CMAKE_MATCH_1}+${CMAKE_MATCH_2}")
+            endif()
+        endif()
+    endif()
+    if(NOT PROJECT_VERSION)
+        set(PROJECT_VERSION "0.0.0")
+    endif()
+endif()
+
+# Logic if building for a Pico board
 if(DEFINED PICO_BOARD)
     # Point to the shared boards header directory at the root of the objc
     # repository before including pico_sdk_init
@@ -15,11 +41,11 @@ if(DEFINED PICO_BOARD)
     set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 endif()
 
-# Define the project
-project(objc-runtime C CXX ASM OBJC)
+# Define the project (uses PROJECT_VERSION if set above)
+project(objc-runtime VERSION ${PROJECT_VERSION} LANGUAGES C CXX ASM OBJC)
 
+# Initialise the Pico SDK
 if(DEFINED PICO_BOARD)
-    # Initialise the Pico SDK
     pico_sdk_init()
 
     # Ensure Objective-C compilation uses the same cross-compilation flags as C.
@@ -54,8 +80,6 @@ endif()
 string(TOLOWER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_LOWER)
 string(TOUPPER ${CMAKE_SYSTEM_NAME} SYSTEM_NAME_UPPER)
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} PROCESSOR_NAME_LOWER)
-
-
 
 # Compile options
 add_compile_options(
@@ -95,3 +119,7 @@ add_subdirectory("src/tests")
 
 # Examples
 add_subdirectory("src/examples")
+
+# Install target
+include(cmake/install.cmake)
+
