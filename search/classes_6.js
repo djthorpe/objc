@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['jsonprotocol_2dp',['JSONProtocol-p',['../protocolJSONProtocol-p.html',1,'']]]
+  ['inputmanagerdelegate_2dp',['InputManagerDelegate-p',['../protocolInputManagerDelegate-p.html',1,'']]],
+  ['inputmanagersource_2dp',['InputManagerSource-p',['../protocolInputManagerSource-p.html',1,'']]]
 ];

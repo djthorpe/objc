@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['gpio',['GPIO',['../interfaceGPIO.html',1,'']]],
-  ['gpiodelegate_2dp',['GPIODelegate-p',['../protocolGPIODelegate-p.html',1,'']]]
+  ['fs_5ffile_5ft',['fs_file_t',['../structfs__file__t.html',1,'']]]
 ];

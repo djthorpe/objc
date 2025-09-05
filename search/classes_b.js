@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['pix_5fdisplay_5ft',['pix_display_t',['../structpix__display__t.html',1,'']]],
-  ['pix_5fframe_5ft',['pix_frame_t',['../structpix__frame__t.html',1,'']]],
-  ['pix_5fpoint_5ft',['pix_point_t',['../structpix__point__t.html',1,'']]],
-  ['pix_5fsize_5ft',['pix_size_t',['../structpix__size__t.html',1,'']]],
-  ['protocol',['Protocol',['../interfaceProtocol.html',1,'']]]
+  ['object',['Object',['../interfaceObject.html',1,'']]],
+  ['object_28description_29',['Object(Description)',['../categoryObject_07Description_08.html',1,'']]],
+  ['objectprotocol_2dp',['ObjectProtocol-p',['../protocolObjectProtocol-p.html',1,'']]]
 ];
