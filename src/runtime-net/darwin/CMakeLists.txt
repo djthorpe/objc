@@ -11,11 +11,3 @@ target_include_directories(${NAME} PUBLIC
 target_link_libraries(${NAME} 
   runtime-sys
 )
-
-# Always pull in net_poll from this archive when linked, so hooks are active
-if (APPLE)
-  # Mach-O requires leading underscore for -u
-  target_link_options(${NAME} INTERFACE "-Wl,-u,_net_poll")
-else()
-  target_link_options(${NAME} INTERFACE "-Wl,-u,net_poll")
-endif()
