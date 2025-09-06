@@ -18,7 +18,9 @@ size_t fs_vol_size(fs_volume_t *volume, size_t *free) {
   if (free) {
     lfs_ssize_t used = lfs_fs_size(&volume->lfs);
     size_t total_blocks = volume->storage_size / volume->cfg.block_size;
-    *free = (used < 0 || (size_t)used > total_blocks) ? 0 : (total_blocks - (size_t)used) * volume->cfg.block_size;
+    *free = (used < 0 || (size_t)used > total_blocks)
+                ? 0
+                : (total_blocks - (size_t)used) * volume->cfg.block_size;
   }
   return volume->storage_size;
 }
@@ -79,4 +81,15 @@ fs_file_t fs_vol_stat(fs_volume_t *volume, const char *path) {
 
   // Return populated struct
   return result;
+}
+
+/**
+ * @brief Remove a file or (empty) directory.
+ */
+bool fs_vol_delete(fs_volume_t *volume, const char *path) {
+  sys_assert(volume);
+  if (path == NULL || *path == '\0' || sys_strcmp(path, "/") == 0) {
+    return false; // cannot delete root
+  }
+  return lfs_remove(&volume->lfs, path) == 0 ? true : false;
 }
