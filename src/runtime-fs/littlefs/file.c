@@ -25,6 +25,7 @@ static int _lfsbd_file_read(const struct lfs_config *c, lfs_block_t block,
   fs_volume_t *vol = (fs_volume_t *)c->context;
   sys_assert(vol);
   sys_assert(vol->file);
+  sys_assert(buffer);
 
   FILE *fp = (FILE *)vol->storage;
   off_t pos = _fb_offset(c, block, off);
@@ -42,6 +43,7 @@ static int _lfsbd_file_prog(const struct lfs_config *c, lfs_block_t block,
   fs_volume_t *vol = (fs_volume_t *)c->context;
   sys_assert(vol);
   sys_assert(vol->file);
+  sys_assert(buffer);
 
   FILE *fp = (FILE *)vol->storage;
   off_t pos = _fb_offset(c, block, off);
@@ -93,26 +95,31 @@ static int _lfsbd_file_sync(const struct lfs_config *c) {
 // PUBLIC API
 
 /**
- * @brief Initializes a filesystem-based (file-backed) volatile volume.
+ * @brief Initializes a filesystem-based (file-backed) non-volatile volume.
  */
-fs_volume_t *fs_vol_init_file(const char *path, size_t size_bytes) {
+fs_volume_t *fs_vol_init_file(const char *path, size_t size) {
   sys_assert(path);
-  sys_assert(size_bytes > 0);
+  sys_assert(size > 0);
 
   // Establish target size: existing file size (if any) or requested size
   struct stat st;
   bool exists = (stat(path, &st) == 0);
   if (exists) {
+    // Check that the existing file is a regular file
+    if (!S_ISREG(st.st_mode)) {
+      return NULL;
+    }
+    // Use existing file size if non-zero
     if (st.st_size > 0) {
-      size_bytes = (size_t)st.st_size;
+      size = (size_t)st.st_size;
     }
   }
-  if (size_bytes < (LFS_BLOCK_SIZE << 1)) {
-    size_bytes = (LFS_BLOCK_SIZE << 1);
+  if (size < (LFS_BLOCK_SIZE << 1)) {
+    size = (LFS_BLOCK_SIZE << 1);
   }
 
   // Open or create file; keep FILE* open for lifetime
-  size_t blocks = (size_bytes + LFS_BLOCK_SIZE - 1) / LFS_BLOCK_SIZE;
+  size_t blocks = (size + LFS_BLOCK_SIZE - 1) / LFS_BLOCK_SIZE;
   size_t storage_size = blocks * LFS_BLOCK_SIZE;
   FILE *fp = fopen(path, exists ? "r+b" : "w+b");
   if (fp == NULL) {
@@ -125,60 +132,37 @@ fs_volume_t *fs_vol_init_file(const char *path, size_t size_bytes) {
     return NULL;
   }
 
-  // Determine current file size and extend if needed
+  // Extend file if smaller than target size
   off_t current = lseek(fd, 0, SEEK_END);
   if (current < 0) {
     fclose(fp);
     return NULL;
-  }
-  if ((size_t)current < storage_size) {
+  } else if ((size_t)current < storage_size) {
     if (ftruncate(fd, (off_t)storage_size) != 0) {
       fclose(fp);
       return NULL;
     }
-    if (lseek(fd, current, SEEK_SET) >= 0) {
-      uint8_t buf[256];
-      sys_memset(buf, 0xFF, sizeof(buf));
-      size_t remaining = storage_size - (size_t)current;
-      while (remaining) {
-        size_t chunk = remaining < sizeof(buf) ? remaining : sizeof(buf);
-        if (write(fd, buf, chunk) != (ssize_t)chunk) {
-          fclose(fp);
-          return NULL;
-        }
-        remaining -= chunk;
-      }
-    }
   }
-  if (exists == false) {
-    if (lseek(fd, 0, SEEK_SET) >= 0) {
-      uint8_t buf[256];
-      sys_memset(buf, 0xFF, sizeof(buf));
-      size_t remaining = storage_size;
-      while (remaining) {
-        size_t chunk = remaining < sizeof(buf) ? remaining : sizeof(buf);
-        if (write(fd, buf, chunk) != (ssize_t)chunk) {
-          fclose(fp);
-          return NULL;
-        }
-        remaining -= chunk;
-      }
-    }
-  }
-  lseek(fd, 0, SEEK_SET);
 
   // Allocate volume structure only (file acts as storage)
   fs_volume_t *vol = (fs_volume_t *)sys_malloc(sizeof(fs_volume_t));
   if (vol == NULL) {
     fclose(fp);
-    return NULL;
-  }
 
-  // Set up volume structure
-  sys_memset(vol, 0, sizeof(*vol));
-  vol->storage = (void *)fp;
-  vol->storage_size = storage_size;
-  vol->file = true;
+    // If the file was just created, remove it
+    if (!exists) {
+      unlink(path);
+    }
+
+    // Return error
+    return NULL;
+  } else {
+    // Set up volume structure
+    sys_memset(vol, 0, sizeof(fs_volume_t));
+    vol->storage = (void *)fp;
+    vol->storage_size = storage_size;
+    vol->file = true;
+  }
 
   // Set up LittleFS configuration
   struct lfs_config *cfg = &vol->cfg;
@@ -195,15 +179,25 @@ fs_volume_t *fs_vol_init_file(const char *path, size_t size_bytes) {
   cfg->lookahead_size = LFS_LOOKAHEAD_SIZE;
   cfg->block_cycles = 32;
 
+  // If the file didn't exist before, format it
+  if (!exists) {
+    if (lfs_format(&vol->lfs, &vol->cfg) != LFS_ERR_OK) {
+      fclose(fp);
+      sys_free(vol);
+      unlink(path);
+      return NULL;
+    }
+  }
+
   // Try mounting existing content; if fails, format then mount
   int r = lfs_mount(&vol->lfs, &vol->cfg);
   if (r != LFS_ERR_OK) {
-    if (lfs_format(&vol->lfs, &vol->cfg) != LFS_ERR_OK ||
-        lfs_mount(&vol->lfs, &vol->cfg) != LFS_ERR_OK) {
-      fclose(fp);
-      sys_free(vol);
-      return NULL;
+    fclose(fp);
+    sys_free(vol);
+    if (!exists) {
+      unlink(path);
     }
+    return NULL;
   }
 
   // Return success

@@ -1,10 +1,17 @@
 /**
  * @file fs.h
- * @brief File system abstraction layer
- * @defgroup FileSystem File System Interfaces
+ * @brief File system abstraction layer for lightweight embedded & host storage.
+ *
+ * @defgroup FileSystem File System Runtime
  * @ingroup System
  *
- * Managing file system operations, including reading and writing files.
+ * High–level API wrapping an underlying littlefs-based implementation that can
+ * operate either purely in RAM or backed by a host file (persisted across
+ * runs).
+ *
+ * Thread-safety: Functions are NOT thread-safe; the
+ * caller must serialize access to a volume. Returned pointers (paths/names)
+ * reference caller-managed or internal static memory and must not be freed.
  */
 #pragma once
 #include <stdbool.h>
@@ -12,79 +19,123 @@
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// GLOBALS
+
+#define FS_PATH_MAX 255       ///< Maximum length of a single path component
+#define FS_PATH_SEPARATOR '/' ///< Path separator character
+
+///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
-typedef struct fs_volume_t fs_volume_t;
+typedef struct fs_volume_t fs_volume_t; ///< Opaque filesystem volume handle
 
+/**
+ * @brief File and directory metadata.
+ */
 typedef struct {
-  fs_volume_t *volume; // Owning volume
-  bool dir;            // True if directory, false if file
-  const char *path;    // Full path within volume, or NULL if root directory
-  const char *name;    // File name (only for files, not directories)
-  size_t size;         // Size in bytes (for files)
+  fs_volume_t *volume;        ///< Owning volume (set by APIs)
+  bool dir;                   ///< True if directory, false if regular file
+  char path[FS_PATH_MAX + 1]; ///< Full path within volume (never NULL
+                              ///< after success) including leading '/'
+                              ///< and trailing '\0'
+  const char *name; ///< Basename component within the directory, can be NULL if
+                    ///< it's the root directory
+  size_t size;      ///< Size in bytes (regular files only, else 0)
+  void *ctx;        ///< Opaque iterator cursor (do not modify)
 } fs_file_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
- * @brief Initializes a volatile memory-backed file system volume.
- * @ingroup FileSystem
+ * @brief Create a new volatile (RAM) filesystem volume.
  *
- * Create a new in-memory file system volume with the specified size.
- * The actual size will be equal or greater than the requested size.
- * If the volume is already initialized, it will be finalized and replaced.
+ * @param size Requested minimum size in bytes (rounded up to block geometry).
+ * @return Pointer to mounted volume on success, NULL on failure.
+ *
+ * Notes:
+ *  - Contents are lost when fs_vol_finalize() is called or the process exits.
+ *  - The real capacity may be larger than requested due to block rounding.
  */
 extern fs_volume_t *fs_vol_init_memory(size_t size);
 
 /**
- * @brief Initializes a filesystem-based volume.
- * @ingroup FileSystem
+ * @brief Open or create a host file–backed persistent volume.
  *
- * Open an existing, or create a new filesystem-based volume with the specified
- * size. The actual size will be equal or greater than the requested size. If
- * the volume already exists, an attempt will be made to extend the filesystem
- * to the requested size.
+ * Attempts to mount the filesystem stored in @p path. If mounting fails, a
+ * format is performed and a fresh filesystem created. If the file is shorter
+ * than @p size it may be expanded (filling new space with erased pattern 0xFF).
  *
- * If files are not supported on the platform, this function will return NULL.
+ * @param path Host path to the image file (created if absent).
+ * @param size Minimum size in bytes; ignored if existing file is larger.
+ * @return Mounted volume pointer, or NULL on error.
  */
 extern fs_volume_t *fs_vol_init_file(const char *path, size_t size);
 
 /**
- * @brief Cleans up the file system volume.
- * @ingroup FileSystem
+ * @brief Unmount and release all resources for a volume.
  *
- * This function should be called to dismount and release resources
- * associated with the file system volume.
+ * @param volume Volume returned from an init call (may be NULL).
+ *
+ * Safe to call with NULL (no effect). After return the pointer is invalid.
  */
 extern void fs_vol_finalize(fs_volume_t *volume);
 
 /**
- * @brief Determines if the file system volume is valid and usable.
- * @ingroup FileSystem
+ * @brief Return total addressable size of a mounted volume.
  *
- * This function checks if the provided volume handle is initialized
- * and ready for file operations. It returns the size of the volume
- * in bytes if valid, or zero if invalid.
+ * @param volume Volume handle.
+ * @param free Pointer to size_t to receive approximate free space in bytes (may
+ * be NULL).
+ * @return Size in bytes, or 0 if @p volume is NULL/invalid.
  */
-extern size_t fs_vol_size(fs_volume_t *volume);
+extern size_t fs_vol_size(fs_volume_t *volume, size_t *free);
 
 /**
- * @brief Reads a directory and returns the next file entry.
- * @ingroup FileSystem
+ * @brief Iterate directory entries.
  *
- * This function iterates over the entries in the specified
- * directory path within the given volume. It will return false
- * when there are no more entries to read.
+ * @param volume Mounted volume.
+ * @param path Directory path ("/" for root). NULL treated as root.
+ * @param iterator In/out. Provide zeroed struct to start; do NOT alter ctx.
+ * @return true if an entry was produced (fields populated), false when done.
  */
 extern bool fs_vol_readdir(fs_volume_t *volume, const char *path,
                            fs_file_t *iterator);
 
 /**
- * @brief Retrieve information about a specific file or directory.
- * @ingroup FileSystem
- * This function returns a fs_file_t structure with details about
- * the specified path within the volume. If the path does not exist,
- * the returned structure will have name set to NULL.
+ * @brief Lookup file or directory metadata for a path.
+ *
+ * @param volume Mounted volume.
+ * @param path Absolute path within volume (NULL/empty -> root).
+ * @return Populated fs_file_t. If not found, name == NULL.
  */
 extern fs_file_t fs_vol_stat(fs_volume_t *volume, const char *path);
+
+/**
+ * @brief Create a directory.
+ *
+ * @param volume Mounted volume.
+ * @param path New directory path (parents must already exist).
+ * @return true on success or if directory already exists; false on error.
+ */
+extern bool fs_vol_mkdir(fs_volume_t *volume, const char *path);
+
+/**
+ * @brief Remove a file or (empty) directory.
+ *
+ * @param volume Mounted volume.
+ * @param path Path to remove.
+ * @return true on success; false if not found or directory not empty.
+ */
+extern bool fs_vol_delete(fs_volume_t *volume, const char *path);
+
+/**
+ * @brief Move or rename a file/directory.
+ *
+ * @param volume Mounted volume.
+ * @param old_path Existing path.
+ * @param new_path Destination path (must not already exist).
+ * @return true on success, false on error (missing source, conflict, etc.).
+ */
+extern bool fs_vol_move(fs_volume_t *volume, const char *old_path,
+                        const char *new_path);

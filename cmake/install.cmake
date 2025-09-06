@@ -18,7 +18,7 @@ endif()
 set(OBJC_PKGCONFIG_NAME "picofuse")
 set(OBJC_PKGCONFIG_DESCRIPTION "Objective-C runtime libraries (Foundation, Application, Network, Runtime components)")
 set(OBJC_PKGCONFIG_LIBS "-L${CMAKE_INSTALL_PREFIX}/${OBJC_LIB_INSTALL_DIR} -lobjc-gcc -lFoundation -lApplication -lNetwork -lruntime-sys -lruntime-hw -lruntime-net -ldrivers")
-set(OBJC_PKGCONFIG_CFLAGS "-I${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR} -I${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/runtime-${RUNTIME}")
+set(OBJC_PKGCONFIG_CFLAGS "-I${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}")
 
 # Determine pkg-config filename variant
 if(DEFINED PICO_BOARD)

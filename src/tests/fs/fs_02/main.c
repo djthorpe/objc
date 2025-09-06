@@ -14,7 +14,7 @@ int test_fs_02(void) {
 
   // Read the root directory (should be empty)
   sys_printf("Root directory entries:\n");
-  fs_file_t file;
+  fs_file_t file = {0};
   while (fs_vol_readdir(volume, "/", &file)) {
     sys_printf(" - %s\n", file.name);
   }

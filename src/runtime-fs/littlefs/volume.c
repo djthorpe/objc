@@ -8,9 +8,17 @@
 ///////////////////////////////////////////////////////////////////////////////
 // PUBLIC API
 
-size_t fs_vol_size(fs_volume_t *volume) {
+/**
+ * @brief Return total addressable size of a mounted volume.
+ */
+size_t fs_vol_size(fs_volume_t *volume, size_t *free) {
   if (volume == NULL) {
     return 0;
+  }
+  if (free) {
+    lfs_ssize_t used = lfs_fs_size(&volume->lfs);
+    size_t total_blocks = volume->storage_size / volume->cfg.block_size;
+    *free = (used < 0 || (size_t)used > total_blocks) ? 0 : (total_blocks - (size_t)used) * volume->cfg.block_size;
   }
   return volume->storage_size;
 }
@@ -59,10 +67,9 @@ fs_file_t fs_vol_stat(fs_volume_t *volume, const char *path) {
     return result;
   }
 
-  // Populate result. We do not allocate new strings; caller must ensure 'path'
-  // outlives usage.
+  // Populate result
   result.volume = volume;
-  result.path = path;
+  sys_memcpy(result.path, path, FS_PATH_MAX);
   result.size = (info.type == LFS_TYPE_REG) ? info.size : 0;
   result.dir = (info.type == LFS_TYPE_DIR);
 
