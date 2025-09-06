@@ -91,5 +91,5 @@ bool fs_vol_delete(fs_volume_t *volume, const char *path) {
   if (path == NULL || *path == '\0' || sys_strcmp(path, "/") == 0) {
     return false; // cannot delete root
   }
-  return lfs_remove(&volume->lfs, path) == 0 ? true : false;
+  return lfs_remove(&volume->lfs, path) == 0;
 }
