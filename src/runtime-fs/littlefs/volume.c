@@ -17,7 +17,8 @@ size_t fs_vol_size(fs_volume_t *volume, size_t *free) {
   }
   if (free) {
     lfs_ssize_t used = lfs_fs_size(&volume->lfs);
-    *free = (used < 0) ? 0 : (size_t)used * volume->cfg.block_size;
+    size_t total_blocks = volume->storage_size / volume->cfg.block_size;
+    *free = (used < 0 || (size_t)used > total_blocks) ? 0 : (total_blocks - (size_t)used) * volume->cfg.block_size;
   }
   return volume->storage_size;
 }
