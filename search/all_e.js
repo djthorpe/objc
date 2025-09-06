@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
+  ['name',['name',['../structfs__file__t.html#a204a5a1b264251e7ff773e12acefd207',1,'fs_file_t::name()'],['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../group__Foundation.html#gaaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
   ['nanoseconds',['nanoseconds',['../structsys__date__t.html#a11efe5ff6677a4198f7cb0e08bde904e',1,'sys_date_t']]],
   ['net_2eh',['net.h',['../net_8h.html',1,'']]],
@@ -35,7 +35,7 @@ var searchData=
   ['networktimeshouldupdate_3a',['networkTimeShouldUpdate:',['../protocolNetworkTimeDelegate-p.html#a179aa75da00e42d59654b0c7f82047fe',1,'NetworkTimeDelegate-p']]],
   ['networkwithname_3a',['networkWithName:',['../interfaceNXWirelessNetwork.html#ada49b28b162dc2f8f9d5e22ce567dc65',1,'NXWirelessNetwork']]],
   ['new',['new',['../interfaceNXArray.html#a65fd20ec1c91dd5b2677f2c7fefc422b',1,'NXArray::new()'],['../interfaceNXData.html#a0c7cab1f2b78e8b03254c8a39c0076a5',1,'NXData::new()'],['../interfaceNXMap.html#a772024e5d1441683ae63de0aa6cb874c',1,'NXMap::new()'],['../interfaceNXString.html#a345455cb4d8a27ffef4c0ea5c664f5ff',1,'NXString::new()']]],
-  ['nil',['Nil',['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h'],['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h']]],
+  ['nil',['nil',['../group__objc.html#ga7a7ca81d2a85873283b5ec82953b1b25',1,'nil():&#160;runtime.h'],['../group__objc.html#gae3b89c60b6c464ce16be3640106365f7',1,'Nil():&#160;runtime.h']]],
   ['no',['NO',['../group__objc.html#ga996bde01ecac342918f0a2c4e7ce7bd5',1,'runtime.h']]],
   ['not_5fempty',['not_empty',['../structsys__event__queue__t.html#a9935d71c6b1f05fc8f2140df012d2bfb',1,'sys_event_queue_t']]],
   ['ntp_2eh',['ntp.h',['../ntp_8h.html',1,'']]],

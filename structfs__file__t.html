@@ -53,28 +53,43 @@ $(function() {
 <div class="title">fs_file_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>File and directory metadata.  
+ <a href="structfs__file__t.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="fs_8h_source.html">fs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="memItemLeft" align="right" valign="top"><a id="adf5dd3b630d5bb84a2d6431926bb1cfc"></a>
-fs_volume_t *&#160;</td><td class="memItemRight" valign="bottom"><b>volume</b></td></tr>
+<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#adf5dd3b630d5bb84a2d6431926bb1cfc">volume</a></td></tr>
+<tr class="memdesc:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owning volume (set by APIs) <br /></td></tr>
 <tr class="separator:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e80ae0c2ba988599cbd144aa492524f"><td class="memItemLeft" align="right" valign="top"><a id="a9e80ae0c2ba988599cbd144aa492524f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dir</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a9e80ae0c2ba988599cbd144aa492524f">dir</a></td></tr>
+<tr class="memdesc:a9e80ae0c2ba988599cbd144aa492524f"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if directory, false if regular file. <br /></td></tr>
 <tr class="separator:a9e80ae0c2ba988599cbd144aa492524f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed9669fce8c74a1eaf1b107c338d0a81"><td class="memItemLeft" align="right" valign="top"><a id="aed9669fce8c74a1eaf1b107c338d0a81"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>path</b></td></tr>
-<tr class="separator:aed9669fce8c74a1eaf1b107c338d0a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a1da9201fcc27083997d5efaecafb6"><td class="memItemLeft" align="right" valign="top"><a id="ac5a1da9201fcc27083997d5efaecafb6"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#ac5a1da9201fcc27083997d5efaecafb6">path</a> [<a class="el" href="fs_8h.html#a4033ed62493fc82b447f663a6f71cc04">FS_PATH_MAX</a>+1]</td></tr>
+<tr class="memdesc:ac5a1da9201fcc27083997d5efaecafb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Full path within volume (never NULL after success) including leading '/' and trailing '\0'. <br /></td></tr>
+<tr class="separator:ac5a1da9201fcc27083997d5efaecafb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a204a5a1b264251e7ff773e12acefd207"><td class="memItemLeft" align="right" valign="top"><a id="a204a5a1b264251e7ff773e12acefd207"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a204a5a1b264251e7ff773e12acefd207">name</a></td></tr>
+<tr class="memdesc:a204a5a1b264251e7ff773e12acefd207"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basename component within the directory, can be NULL if it's the root directory. <br /></td></tr>
 <tr class="separator:a204a5a1b264251e7ff773e12acefd207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f461c4b1545ac50f91152230dce9d18"><td class="memItemLeft" align="right" valign="top"><a id="a0f461c4b1545ac50f91152230dce9d18"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a0f461c4b1545ac50f91152230dce9d18">size</a></td></tr>
+<tr class="memdesc:a0f461c4b1545ac50f91152230dce9d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes (regular files only, else 0) <br /></td></tr>
 <tr class="separator:a0f461c4b1545ac50f91152230dce9d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56aa3cb6e1bfb958890df9fed03ada32"><td class="memItemLeft" align="right" valign="top"><a id="a56aa3cb6e1bfb958890df9fed03ada32"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a56aa3cb6e1bfb958890df9fed03ada32">ctx</a></td></tr>
+<tr class="memdesc:a56aa3cb6e1bfb958890df9fed03ada32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque iterator cursor (do not modify) <br /></td></tr>
+<tr class="separator:a56aa3cb6e1bfb958890df9fed03ada32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="fs_8h_source.html#l00019">19</a> of file <a class="el" href="fs_8h_source.html">fs.h</a>.</p>
+<div class="textblock"><p>File and directory metadata. </p>
+
+<p class="definition">Definition at line <a class="el" href="fs_8h_source.html#l00035">35</a> of file <a class="el" href="fs_8h_source.html">fs.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-fs/<a class="el" href="fs_8h_source.html">fs.h</a></li>
 </ul>

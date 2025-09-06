@@ -1,6 +1,6 @@
 <map id="System Runtime" name="System Runtime">
 <area shape="rect" id="node1" href="$group__SystemThread.html" title="Managing threads and program execution. " alt="" coords="243,5,330,32"/>
-<area shape="rect" id="node2" href="$group__FileSystem.html" title="Managing file system operations, including reading and writing files. " alt="" coords="203,56,370,83"/>
+<area shape="rect" id="node2" href="$group__FileSystem.html" title="High–level API wrapping an underlying littlefs&#45;based implementation that can operate either purely i..." alt="" coords="209,56,364,83"/>
 <area shape="rect" id="node3" href="$group__SystemFormatting.html" title="Methods for creating and outputting formatted strings. " alt="" coords="219,107,354,133"/>
 <area shape="rect" id="node4" href="$group__RuntimeNet.html" title="Managing network resources, protocols, and low&#45;level operations. " alt="" coords="213,157,360,184"/>
 <area shape="rect" id="node5" href="$group__Drivers.html" title="Drivers for external hardware devices. " alt="" coords="216,208,357,235"/>

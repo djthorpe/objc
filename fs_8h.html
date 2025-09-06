@@ -53,6 +53,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -60,7 +61,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>File system abstraction layer.  
+<p>File system abstraction layer for lightweight embedded &amp; host storage.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
@@ -78,40 +79,402 @@ Include dependency graph for fs.h:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html">fs_file_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">File and directory metadata.  <a href="structfs__file__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a4033ed62493fc82b447f663a6f71cc04"><td class="memItemLeft" align="right" valign="top"><a id="a4033ed62493fc82b447f663a6f71cc04"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a4033ed62493fc82b447f663a6f71cc04">FS_PATH_MAX</a>&#160;&#160;&#160;255</td></tr>
+<tr class="memdesc:a4033ed62493fc82b447f663a6f71cc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum length of a single path component. <br /></td></tr>
+<tr class="separator:a4033ed62493fc82b447f663a6f71cc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48824c44b63d78dd27e80893136553df"><td class="memItemLeft" align="right" valign="top"><a id="a48824c44b63d78dd27e80893136553df"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a48824c44b63d78dd27e80893136553df">FS_PATH_SEPARATOR</a>&#160;&#160;&#160;'/'</td></tr>
+<tr class="memdesc:a48824c44b63d78dd27e80893136553df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path separator character. <br /></td></tr>
+<tr class="separator:a48824c44b63d78dd27e80893136553df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a45a5f7258f4788861f3bd47a262ef5cc"><td class="memItemLeft" align="right" valign="top"><a id="a45a5f7258f4788861f3bd47a262ef5cc"></a>
-typedef struct fs_volume_t&#160;</td><td class="memItemRight" valign="bottom"><b>fs_volume_t</b></td></tr>
+typedef struct <a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a></td></tr>
+<tr class="memdesc:a45a5f7258f4788861f3bd47a262ef5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque filesystem volume handle. <br /></td></tr>
 <tr class="separator:a45a5f7258f4788861f3bd47a262ef5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga4955f68cdc5f4f44dbe213c6b815b692"><td class="memItemLeft" align="right" valign="top">fs_volume_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#ga4955f68cdc5f4f44dbe213c6b815b692">fs_vol_init_memory</a> (size_t size)</td></tr>
-<tr class="memdesc:ga4955f68cdc5f4f44dbe213c6b815b692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a volatile memory-backed file system volume.  <a href="group__FileSystem.html#ga4955f68cdc5f4f44dbe213c6b815b692">More...</a><br /></td></tr>
-<tr class="separator:ga4955f68cdc5f4f44dbe213c6b815b692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf993e269e28281b6dc5d4aad14613e15"><td class="memItemLeft" align="right" valign="top">fs_volume_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#gaf993e269e28281b6dc5d4aad14613e15">fs_vol_init_file</a> (const char *path, size_t size)</td></tr>
-<tr class="memdesc:gaf993e269e28281b6dc5d4aad14613e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a filesystem-based volume.  <a href="group__FileSystem.html#gaf993e269e28281b6dc5d4aad14613e15">More...</a><br /></td></tr>
-<tr class="separator:gaf993e269e28281b6dc5d4aad14613e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5c6228cc0df97ec33e108a0e6af9f27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#gae5c6228cc0df97ec33e108a0e6af9f27">fs_vol_finalize</a> (fs_volume_t *volume)</td></tr>
-<tr class="memdesc:gae5c6228cc0df97ec33e108a0e6af9f27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up the file system volume.  <a href="group__FileSystem.html#gae5c6228cc0df97ec33e108a0e6af9f27">More...</a><br /></td></tr>
-<tr class="separator:gae5c6228cc0df97ec33e108a0e6af9f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga35d7146c6786384b06484529328458f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#ga35d7146c6786384b06484529328458f0">fs_vol_size</a> (fs_volume_t *volume)</td></tr>
-<tr class="memdesc:ga35d7146c6786384b06484529328458f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the file system volume is valid and usable.  <a href="group__FileSystem.html#ga35d7146c6786384b06484529328458f0">More...</a><br /></td></tr>
-<tr class="separator:ga35d7146c6786384b06484529328458f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga251ea20e90846cbe658fe00a43043fd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#ga251ea20e90846cbe658fe00a43043fd9">fs_vol_readdir</a> (fs_volume_t *volume, const char *path, <a class="el" href="structfs__file__t.html">fs_file_t</a> *iterator)</td></tr>
-<tr class="memdesc:ga251ea20e90846cbe658fe00a43043fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a directory and returns the next file entry.  <a href="group__FileSystem.html#ga251ea20e90846cbe658fe00a43043fd9">More...</a><br /></td></tr>
-<tr class="separator:ga251ea20e90846cbe658fe00a43043fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab2e4433810a4a90c2ea4367a05334f7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfs__file__t.html">fs_file_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FileSystem.html#gab2e4433810a4a90c2ea4367a05334f7b">fs_vol_stat</a> (fs_volume_t *volume, const char *path)</td></tr>
-<tr class="memdesc:gab2e4433810a4a90c2ea4367a05334f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve information about a specific file or directory.  <a href="group__FileSystem.html#gab2e4433810a4a90c2ea4367a05334f7b">More...</a><br /></td></tr>
-<tr class="separator:gab2e4433810a4a90c2ea4367a05334f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4955f68cdc5f4f44dbe213c6b815b692"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a4955f68cdc5f4f44dbe213c6b815b692">fs_vol_init_memory</a> (size_t size)</td></tr>
+<tr class="memdesc:a4955f68cdc5f4f44dbe213c6b815b692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new volatile (RAM) filesystem volume.  <a href="#a4955f68cdc5f4f44dbe213c6b815b692">More...</a><br /></td></tr>
+<tr class="separator:a4955f68cdc5f4f44dbe213c6b815b692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af993e269e28281b6dc5d4aad14613e15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#af993e269e28281b6dc5d4aad14613e15">fs_vol_init_file</a> (const char *path, size_t size)</td></tr>
+<tr class="memdesc:af993e269e28281b6dc5d4aad14613e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open or create a host file–backed persistent volume.  <a href="#af993e269e28281b6dc5d4aad14613e15">More...</a><br /></td></tr>
+<tr class="separator:af993e269e28281b6dc5d4aad14613e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5c6228cc0df97ec33e108a0e6af9f27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#ae5c6228cc0df97ec33e108a0e6af9f27">fs_vol_finalize</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume)</td></tr>
+<tr class="memdesc:ae5c6228cc0df97ec33e108a0e6af9f27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmount and release all resources for a volume.  <a href="#ae5c6228cc0df97ec33e108a0e6af9f27">More...</a><br /></td></tr>
+<tr class="separator:ae5c6228cc0df97ec33e108a0e6af9f27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9825f51c0c6bed8fe721c33bc2e3cc1a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a9825f51c0c6bed8fe721c33bc2e3cc1a">fs_vol_size</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, size_t *free)</td></tr>
+<tr class="memdesc:a9825f51c0c6bed8fe721c33bc2e3cc1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return total addressable size of a mounted volume.  <a href="#a9825f51c0c6bed8fe721c33bc2e3cc1a">More...</a><br /></td></tr>
+<tr class="separator:a9825f51c0c6bed8fe721c33bc2e3cc1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a251ea20e90846cbe658fe00a43043fd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a251ea20e90846cbe658fe00a43043fd9">fs_vol_readdir</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, const char *path, <a class="el" href="structfs__file__t.html">fs_file_t</a> *iterator)</td></tr>
+<tr class="memdesc:a251ea20e90846cbe658fe00a43043fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterate directory entries.  <a href="#a251ea20e90846cbe658fe00a43043fd9">More...</a><br /></td></tr>
+<tr class="separator:a251ea20e90846cbe658fe00a43043fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e4433810a4a90c2ea4367a05334f7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfs__file__t.html">fs_file_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#ab2e4433810a4a90c2ea4367a05334f7b">fs_vol_stat</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, const char *path)</td></tr>
+<tr class="memdesc:ab2e4433810a4a90c2ea4367a05334f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup file or directory metadata for a path.  <a href="#ab2e4433810a4a90c2ea4367a05334f7b">More...</a><br /></td></tr>
+<tr class="separator:ab2e4433810a4a90c2ea4367a05334f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ada592f98cf8d465c812c6df7deab1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#af4ada592f98cf8d465c812c6df7deab1">fs_vol_mkdir</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, const char *path)</td></tr>
+<tr class="memdesc:af4ada592f98cf8d465c812c6df7deab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a directory.  <a href="#af4ada592f98cf8d465c812c6df7deab1">More...</a><br /></td></tr>
+<tr class="separator:af4ada592f98cf8d465c812c6df7deab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729f1be73d12926d66e22b22ea61fca1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a729f1be73d12926d66e22b22ea61fca1">fs_vol_delete</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, const char *path)</td></tr>
+<tr class="memdesc:a729f1be73d12926d66e22b22ea61fca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a file or (empty) directory.  <a href="#a729f1be73d12926d66e22b22ea61fca1">More...</a><br /></td></tr>
+<tr class="separator:a729f1be73d12926d66e22b22ea61fca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b682f85229798092ed25acae6557f7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fs_8h.html#a2b682f85229798092ed25acae6557f7e">fs_vol_move</a> (<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *volume, const char *old_path, const char *new_path)</td></tr>
+<tr class="memdesc:a2b682f85229798092ed25acae6557f7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move or rename a file/directory.  <a href="#a2b682f85229798092ed25acae6557f7e">More...</a><br /></td></tr>
+<tr class="separator:a2b682f85229798092ed25acae6557f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File system abstraction layer. </p>
+<div class="textblock"><p>File system abstraction layer for lightweight embedded &amp; host storage. </p>
 
 <p class="definition">Definition in file <a class="el" href="fs_8h_source.html">fs.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a729f1be73d12926d66e22b22ea61fca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729f1be73d12926d66e22b22ea61fca1">&#9670;&nbsp;</a></span>fs_vol_delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fs_vol_delete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a file or (empty) directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Mounted volume. </td></tr>
+    <tr><td class="paramname">path</td><td>Path to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success; false if not found or directory not empty. </dd></dl>
+
+</div>
+</div>
+<a id="ae5c6228cc0df97ec33e108a0e6af9f27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5c6228cc0df97ec33e108a0e6af9f27">&#9670;&nbsp;</a></span>fs_vol_finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fs_vol_finalize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unmount and release all resources for a volume. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Volume returned from an init call (may be NULL).</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Safe to call with NULL (no effect). After return the pointer is invalid. </p>
+
+</div>
+</div>
+<a id="af993e269e28281b6dc5d4aad14613e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af993e269e28281b6dc5d4aad14613e15">&#9670;&nbsp;</a></span>fs_vol_init_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a>* fs_vol_init_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open or create a host file–backed persistent volume. </p>
+<p>Attempts to mount the filesystem stored in <code>path</code>. If mounting fails, a format is performed and a fresh filesystem created. If the file is shorter than <code>size</code> it may be expanded (filling new space with erased pattern 0xFF).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Host path to the image file (created if absent). </td></tr>
+    <tr><td class="paramname">size</td><td>Minimum size in bytes; ignored if existing file is larger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Mounted volume pointer, or NULL on error. </dd></dl>
+
+</div>
+</div>
+<a id="a4955f68cdc5f4f44dbe213c6b815b692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4955f68cdc5f4f44dbe213c6b815b692">&#9670;&nbsp;</a></span>fs_vol_init_memory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a>* fs_vol_init_memory </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new volatile (RAM) filesystem volume. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Requested minimum size in bytes (rounded up to block geometry). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to mounted volume on success, NULL on failure.</dd></dl>
+<p>Notes:</p><ul>
+<li>Contents are lost when <a class="el" href="fs_8h.html#ae5c6228cc0df97ec33e108a0e6af9f27" title="Unmount and release all resources for a volume. ">fs_vol_finalize()</a> is called or the process exits.</li>
+<li>The real capacity may be larger than requested due to block rounding. </li>
+</ul>
+
+</div>
+</div>
+<a id="af4ada592f98cf8d465c812c6df7deab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4ada592f98cf8d465c812c6df7deab1">&#9670;&nbsp;</a></span>fs_vol_mkdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fs_vol_mkdir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Mounted volume. </td></tr>
+    <tr><td class="paramname">path</td><td>New directory path (parents must already exist). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success or if directory already exists; false on error. </dd></dl>
+
+</div>
+</div>
+<a id="a2b682f85229798092ed25acae6557f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b682f85229798092ed25acae6557f7e">&#9670;&nbsp;</a></span>fs_vol_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fs_vol_move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>old_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>new_path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move or rename a file/directory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Mounted volume. </td></tr>
+    <tr><td class="paramname">old_path</td><td>Existing path. </td></tr>
+    <tr><td class="paramname">new_path</td><td>Destination path (must not already exist). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, false on error (missing source, conflict, etc.). </dd></dl>
+
+</div>
+</div>
+<a id="a251ea20e90846cbe658fe00a43043fd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a251ea20e90846cbe658fe00a43043fd9">&#9670;&nbsp;</a></span>fs_vol_readdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fs_vol_readdir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structfs__file__t.html">fs_file_t</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iterate directory entries. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Mounted volume. </td></tr>
+    <tr><td class="paramname">path</td><td>Directory path ("/" for root). NULL treated as root. </td></tr>
+    <tr><td class="paramname">iterator</td><td>In/out. Provide zeroed struct to start; do NOT alter ctx. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if an entry was produced (fields populated), false when done. </dd></dl>
+
+</div>
+</div>
+<a id="a9825f51c0c6bed8fe721c33bc2e3cc1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9825f51c0c6bed8fe721c33bc2e3cc1a">&#9670;&nbsp;</a></span>fs_vol_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t fs_vol_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>free</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return total addressable size of a mounted volume. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Volume handle. </td></tr>
+    <tr><td class="paramname">free</td><td>Pointer to size_t to receive approximate free space in bytes (may be NULL). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Size in bytes, or 0 if <code>volume</code> is NULL/invalid. </dd></dl>
+
+</div>
+</div>
+<a id="ab2e4433810a4a90c2ea4367a05334f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e4433810a4a90c2ea4367a05334f7b">&#9670;&nbsp;</a></span>fs_vol_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfs__file__t.html">fs_file_t</a> fs_vol_stat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td>
+          <td class="paramname"><em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lookup file or directory metadata for a path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>Mounted volume. </td></tr>
+    <tr><td class="paramname">path</td><td>Absolute path within volume (NULL/empty -&gt; root). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Populated <a class="el" href="structfs__file__t.html" title="File and directory metadata. ">fs_file_t</a>. If not found, name == NULL. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <!--BEGIN GENERATE_TREEVIEW-->
