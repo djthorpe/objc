@@ -10,18 +10,28 @@
 // TEST
 
 int test_fs_03(void) {
-  size_t size = 1024;
+  size_t size = 1024 * 64;
   const char *path = "/tmp/test_fs_03_volume.img";
 
   // Create a file-backed file system volume
   fs_volume_t *volume = fs_vol_init_file(path, size);
   test_assert(volume);
 
+  // Create some directories
+  int i = 0;
+  char dirpath[FS_PATH_MAX + 1];
+  for (i = 0; i < 5; i++) {
+    snprintf(dirpath, sizeof(dirpath), "dir%d", i);
+    bool ok = fs_vol_mkdir(volume, dirpath);
+    test_assert(ok);
+  }
+
   // Read the root directory (should be empty)
   sys_printf("Root directory entries:\n");
-  fs_file_t file;
+  fs_file_t file = (fs_file_t){0};
   while (fs_vol_readdir(volume, "/", &file)) {
-    sys_printf(" - %s\n", file.name);
+    sys_printf("name='%s' type=%-4s size=%zu path='%s'\n", file.name,
+               file.dir ? "DIR" : "FILE", file.size, file.path);
   }
 
   // Finalize the volume
