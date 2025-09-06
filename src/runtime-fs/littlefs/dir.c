@@ -37,7 +37,7 @@ bool fs_vol_readdir(fs_volume_t *volume, const char *path,
       return false; // allocation failure
     }
 
-    memset(st, 0, sizeof(struct fs_iter_t));
+    sys_memset(st, 0, sizeof(struct fs_iter_t));
     iterator->ctx = st;
   }
 
