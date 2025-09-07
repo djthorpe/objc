@@ -153,7 +153,7 @@ bool fs_vol_readdir(fs_volume_t *volume, const char *path,
  */
 bool fs_vol_mkdir(fs_volume_t *volume, const char *path) {
   sys_assert(volume);
-  if (path == NULL || *path == '\0') {
+  if (path == NULL || *path == '\0' || sys_strcmp(path, "/") == 0) {
     return false; // invalid path - cannot create root directory
   }
 
