@@ -4,7 +4,9 @@ add_library(${NAME} STATIC
     ../littlefs/dir.c
     ../littlefs/mem.c
     ../littlefs/volume.c
-    file.c # Stub
+    ../littlefs/vol_mem.c
+    ../stub/vol_file.c
+    ../stub/vol_flash.c
     ${CMAKE_SOURCE_DIR}/third_party/littlefs/lfs.c
     ${CMAKE_SOURCE_DIR}/third_party/littlefs/lfs_util.c
 )

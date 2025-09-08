@@ -6,12 +6,13 @@
  * @ingroup System
  *
  * High–level API wrapping an underlying littlefs-based implementation that can
- * operate either purely in RAM or backed by a host file (persisted across
- * runs).
+ * operate either purely in RAM, Flash or backed by a host file (persisted
+ * across runs).
  *
  * Thread-safety: Functions are NOT thread-safe; the
- * caller must serialize access to a volume. Returned pointers (paths/names)
- * reference caller-managed or internal static memory and must not be freed.
+ * caller must serialize access to a volume and file. Returned pointers
+ * (paths/names) reference caller-managed or internal static memory and must not
+ * be freed.
  */
 #pragma once
 #include <stdbool.h>
@@ -27,11 +28,17 @@
 ///////////////////////////////////////////////////////////////////////////////
 // TYPES
 
-typedef struct fs_volume_t fs_volume_t; ///< Opaque filesystem volume handle
+/**
+ * @brief Opaque filesystem volume handle.
+ * @ingroup FileSystem
+ * @headerfile runtime-fs/fs.h
+ */
+typedef struct fs_volume_t fs_volume_t;
 
 /**
  * @brief File and directory metadata.
  * @ingroup FileSystem
+ * @headerfile runtime-fs/fs.h
  */
 typedef struct {
   fs_volume_t *volume;        ///< Owning volume (set by APIs)
@@ -42,11 +49,17 @@ typedef struct {
   const char *name; ///< Basename component within the directory, can be NULL if
                     ///< it's the root directory
   size_t size;      ///< Size in bytes (regular files only, else 0)
-  void *ctx;        ///< Opaque iterator cursor (do not modify)
+  size_t pos;       ///< Current file position for read/write (files only)
+  void *ctx;        ///< Opaque context (do not modify)
 } fs_file_t;
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
+
+/**
+ * @{
+ * @name Volume management
+ */
 
 /**
  * @brief Create a new volatile (RAM) filesystem volume.
@@ -117,6 +130,17 @@ extern size_t fs_vol_size(fs_volume_t *volume, size_t *free);
  * @param path Directory path ("/" for root). NULL treated as root.
  * @param iterator In/out. Provide zeroed struct to start; do NOT alter ctx.
  * @return true if an entry was produced (fields populated), false when done.
+ *
+ * On first call, iterator must be zeroed to start iteration.
+ * Successive calls return the next entry until no more are available, at
+ * which point false is returned and iterator->name is set to NULL. The
+ * iterator state is allocated internally and freed when iteration
+ * ends or an error occurs.
+ *
+ * @note The order of entries is not specified and may vary between calls.
+ * @note The special entries "." and ".." are not returned.
+ * @note The iterator must be repeatedly called until it returns false to free
+ * internal resources.
  */
 extern bool fs_vol_readdir(fs_volume_t *volume, const char *path,
                            fs_file_t *iterator);
@@ -162,6 +186,15 @@ extern bool fs_vol_remove(fs_volume_t *volume, const char *path);
  */
 extern bool fs_vol_move(fs_volume_t *volume, const char *old_path,
                         const char *new_path);
+
+/**
+ * @}
+ */
+
+/**
+ * @{
+ * @name File management
+ */
 
 /**
  * @brief Create a new file or truncate an existing file to zero length.
@@ -223,3 +256,7 @@ size_t fs_file_write(fs_file_t *file, const void *buffer, size_t size);
  * @return true on success, false on error.
  */
 bool fs_file_seek(fs_file_t *file, size_t offset);
+
+/**
+ * @}
+ */
