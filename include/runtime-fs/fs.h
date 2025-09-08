@@ -204,7 +204,7 @@ bool fs_file_close(fs_file_t *file);
 size_t fs_file_read(fs_file_t *file, void *buffer, size_t size);
 
 /**
- * @brief Write data from an opened file.
+ * @brief Write data to an opened file.
  * @ingroup FileSystem
  *
  * @param file File to write to.
