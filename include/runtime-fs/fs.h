@@ -76,6 +76,19 @@ extern fs_volume_t *fs_vol_init_memory(size_t size);
 extern fs_volume_t *fs_vol_init_file(const char *path, size_t size);
 
 /**
+ * @brief Open or create a non-volatile flash-backed persistent volume.
+ * @ingroup FileSystem
+ *
+ * Attempts to mount the filesystem stored in flash memory. The location of
+ * the volume in flash memory is implementation-specific. If
+ * mounting fails, a format is performed and a fresh filesystem created.
+ *
+ * @param size Minimum size in bytes; ignored if existing file is larger.
+ * @return Mounted volume pointer, or NULL on error.
+ */
+extern fs_volume_t *fs_vol_init_flash(size_t size);
+
+/**
  * @brief Unmount and release all resources for a volume.
  * @ingroup FileSystem
  *
