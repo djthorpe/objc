@@ -86,10 +86,26 @@ fs_file_t fs_vol_stat(fs_volume_t *volume, const char *path) {
 /**
  * @brief Remove a file or (empty) directory.
  */
-bool fs_vol_delete(fs_volume_t *volume, const char *path) {
+bool fs_vol_remove(fs_volume_t *volume, const char *path) {
   sys_assert(volume);
   if (path == NULL || *path == '\0' || sys_strcmp(path, "/") == 0) {
-    return false; // cannot delete root
+    return false; // cannot remove root
   }
   return lfs_remove(&volume->lfs, path) == 0 ? true : false;
+}
+
+/**
+ * @brief Move or rename a file/directory.
+ */
+bool fs_vol_move(fs_volume_t *volume, const char *old_path,
+                 const char *new_path) {
+  sys_assert(volume);
+  if (old_path == NULL || *old_path == '\0' || sys_strcmp(old_path, "/") == 0 ||
+      new_path == NULL || *new_path == '\0' || sys_strcmp(new_path, "/") == 0) {
+    return false; // cannot move root
+  }
+  if (sys_strcmp(old_path, new_path) == 0) {
+    return true; // no-op
+  }
+  return lfs_rename(&volume->lfs, old_path, new_path) == 0 ? true : false;
 }

@@ -64,7 +64,7 @@ static void delete_tree(fs_volume_t *vol) {
   for (int d = 0; d < STRESS_DEPTH; ++d) {
     for (int i = 0; i < STRESS_DIR_COUNT; i++) {
       make_path(path, sizeof(path), "/", d, i);
-      bool ok = fs_vol_delete(vol, path);
+      bool ok = fs_vol_remove(vol, path);
       test_assert(ok);
     }
   }
