@@ -57,12 +57,12 @@ $(function() {
 <p>File and directory metadata.  
  <a href="structfs__file__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="fs_8h_source.html">fs.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="fs_8h_source.html">runtime-fs/fs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="memItemLeft" align="right" valign="top"><a id="adf5dd3b630d5bb84a2d6431926bb1cfc"></a>
-<a class="el" href="fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#adf5dd3b630d5bb84a2d6431926bb1cfc">volume</a></td></tr>
+<a class="el" href="group__FileSystem.html#ga45a5f7258f4788861f3bd47a262ef5cc">fs_volume_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#adf5dd3b630d5bb84a2d6431926bb1cfc">volume</a></td></tr>
 <tr class="memdesc:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owning volume (set by APIs) <br /></td></tr>
 <tr class="separator:adf5dd3b630d5bb84a2d6431926bb1cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e80ae0c2ba988599cbd144aa492524f"><td class="memItemLeft" align="right" valign="top"><a id="a9e80ae0c2ba988599cbd144aa492524f"></a>
@@ -81,15 +81,19 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a0f461c4b1545ac50f91152230dce9d18">size</a></td></tr>
 <tr class="memdesc:a0f461c4b1545ac50f91152230dce9d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes (regular files only, else 0) <br /></td></tr>
 <tr class="separator:a0f461c4b1545ac50f91152230dce9d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa308516ba5537bf16b5f3e23a49a6060"><td class="memItemLeft" align="right" valign="top"><a id="aa308516ba5537bf16b5f3e23a49a6060"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#aa308516ba5537bf16b5f3e23a49a6060">pos</a></td></tr>
+<tr class="memdesc:aa308516ba5537bf16b5f3e23a49a6060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current file position for read/write (files only) <br /></td></tr>
+<tr class="separator:aa308516ba5537bf16b5f3e23a49a6060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56aa3cb6e1bfb958890df9fed03ada32"><td class="memItemLeft" align="right" valign="top"><a id="a56aa3cb6e1bfb958890df9fed03ada32"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfs__file__t.html#a56aa3cb6e1bfb958890df9fed03ada32">ctx</a></td></tr>
-<tr class="memdesc:a56aa3cb6e1bfb958890df9fed03ada32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque iterator cursor (do not modify) <br /></td></tr>
+<tr class="memdesc:a56aa3cb6e1bfb958890df9fed03ada32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque context (do not modify) <br /></td></tr>
 <tr class="separator:a56aa3cb6e1bfb958890df9fed03ada32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>File and directory metadata. </p>
 
-<p class="definition">Definition at line <a class="el" href="fs_8h_source.html#l00036">36</a> of file <a class="el" href="fs_8h_source.html">fs.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="fs_8h_source.html#l00043">43</a> of file <a class="el" href="fs_8h_source.html">fs.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/runtime-fs/<a class="el" href="fs_8h_source.html">fs.h</a></li>
 </ul>

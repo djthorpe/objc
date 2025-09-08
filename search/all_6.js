@@ -32,5 +32,5 @@ var searchData=
   ['fs_5fvol_5fremove',['fs_vol_remove',['../group__FileSystem.html#ga63c69000689f99e2adf86e24a7d3b71a',1,'fs.h']]],
   ['fs_5fvol_5fsize',['fs_vol_size',['../group__FileSystem.html#ga9825f51c0c6bed8fe721c33bc2e3cc1a',1,'fs.h']]],
   ['fs_5fvol_5fstat',['fs_vol_stat',['../group__FileSystem.html#gab2e4433810a4a90c2ea4367a05334f7b',1,'fs.h']]],
-  ['fs_5fvolume_5ft',['fs_volume_t',['../fs_8h.html#a45a5f7258f4788861f3bd47a262ef5cc',1,'fs.h']]]
+  ['fs_5fvolume_5ft',['fs_volume_t',['../group__FileSystem.html#ga45a5f7258f4788861f3bd47a262ef5cc',1,'fs.h']]]
 ];
