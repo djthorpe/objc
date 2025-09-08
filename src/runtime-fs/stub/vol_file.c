@@ -1,5 +1,8 @@
 #include <runtime-fs/fs.h>
 
+///////////////////////////////////////////////////////////////////////////////
+// PUBLIC API (STUB)
+
 /**
  * @brief Initializes a filesystem-based volume.
  */
