@@ -102,7 +102,7 @@ var searchData=
   ['sys_5fhash_5finit',['sys_hash_init',['../group__SystemHashing.html#ga11ae4ec7ba4ce8204080783ec4820165',1,'hash.h']]],
   ['sys_5fhash_5fmd5',['sys_hash_md5',['../group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a8172ebc0a3d9ccd04fc9e730acf37072',1,'hash.h']]],
   ['sys_5fhash_5fsha256',['sys_hash_sha256',['../group__SystemHashing.html#gga3d01ed00e5a4f0a1c2ea0bbf5233e899a5d6f2701b37a76e969d95dce1b3c52a0',1,'hash.h']]],
-  ['sys_5fhash_5fsize',['SYS_HASH_SIZE',['../group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab',1,'SYS_HASH_SIZE():&#160;hash.h'],['../group__SystemHashing.html#gad03b5376d31a464be04db43aa371413b',1,'sys_hash_size(sys_hash_t *hash):&#160;hash.h']]],
+  ['sys_5fhash_5fsize',['sys_hash_size',['../group__SystemHashing.html#gad03b5376d31a464be04db43aa371413b',1,'sys_hash_size(sys_hash_t *hash):&#160;hash.h'],['../group__SystemHashing.html#ga3700f36a38e34fc20ed338df76692bab',1,'SYS_HASH_SIZE():&#160;hash.h']]],
   ['sys_5fhash_5ft',['sys_hash_t',['../structsys__hash__t.html',1,'']]],
   ['sys_5fhash_5fupdate',['sys_hash_update',['../group__SystemHashing.html#ga64b3413178b06e7e85604dd32f27d1a5',1,'hash.h']]],
   ['sys_5fhashtable_5fcapacity',['sys_hashtable_capacity',['../group__SystemHashTable.html#ga1195ed7b3535c352d01762b90d066674',1,'hashtable.h']]],
