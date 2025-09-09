@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../structfs__file__t.html#a204a5a1b264251e7ff773e12acefd207',1,'fs_file_t::name()'],['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
+  ['name',['name',['../structfs__file__t.html#aebee8cda5e806af9d2c356130ae62bcb',1,'fs_file_t::name()'],['../protocolObjectProtocol-p.html#acaf83f729b39eff35632783144598a29',1,'ObjectProtocol-p::name()'],['../interfaceObject.html#a81428c9198d7756c61b0d4c33969e186',1,'Object::name()'],['../interfaceProtocol.html#aa84d70339ccd220e8ce60dfc335b2c2a',1,'Protocol::name()']]],
   ['nanosecond',['Nanosecond',['../group__Foundation.html#gaaf7a9849a085f5f99a1167524bd0b911',1,'NXTimeInterval.h']]],
   ['nanoseconds',['nanoseconds',['../structsys__date__t.html#a11efe5ff6677a4198f7cb0e08bde904e',1,'sys_date_t']]],
   ['net_2eh',['net.h',['../net_8h.html',1,'']]],
