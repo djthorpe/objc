@@ -72,6 +72,7 @@ $(function() {
 <li><code>objc-gcc</code> - the Objective C runtime library using the ancient GCC ABI</li>
 <li><code>runtime-sys</code> - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).</li>
 <li><code>runtime-hw</code> - hardware interfaces like SPI, I2C, <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a>. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.</li>
+<li><code>runtime-fs</code> - organizing files, directories and volumes which can either be volatile (in-memory) or non-volatile (file-based or in flash)</li>
 <li><code>drivers</code> and <code>runtime-pix</code> have a long way to go but should provide hardware driver and display support eventually.</li>
 <li><code>Foundation</code> - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.</li>
 <li><code><a class="el" href="interfaceApplication.html" title="The main application class that coordinates application-wide functionality. ">Application</a></code> - the application framework, which provides a runloop and handles input, display, power and sensors.</li>
@@ -89,17 +90,18 @@ $(function() {
 <p>For Pico cross-compilation, after building, you can load a specific test onto a Pico W board (example for <code>&lt;test_target&gt;</code>):</p>
 <div class="fragment"><div class="line">cmake --build build --target &lt;test_target&gt; &amp;&amp; picotool load -x build/src/tests/&lt;test_target&gt;/&lt;test_target&gt;.uf2</div></div><!-- fragment --><p>For Linux cross-compilation using Docker (Bookworm):</p>
 <div class="fragment"><div class="line">docker run --rm -i -v $(pwd):/root bookworm-builder bash -c &quot;cd /root &amp;&amp; make clean &amp;&amp; CC=gcc make&quot;</div><div class="line">docker run --rm -i -v $(pwd):/root bookworm-builder bash -c &quot;ctest --output-on-failure --test-dir build --tests-regex &lt;test_target&gt;&quot;</div></div><!-- fragment --><h2>Installing the libraries</h2>
-<p>TODO: the libraries should be installed under a prefix path:</p>
-<div class="fragment"><div class="line">PREFIX=/opt/objc make install</div></div><!-- fragment --><ul>
-<li>/opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a</li>
-<li>/opt/objc/lib/armv6m-none-eabi/libruntime-sys.a</li>
-<li>/opt/objc/lib/armv6m-none-eabi/libFoundation.a</li>
+<p>The libraries should be installed under a prefix path:</p>
+<div class="fragment"><div class="line">PREFIX=/opt/picofuse make install</div></div><!-- fragment --><ul>
+<li>/opt/objc/lib/pkgconfig/picofuse-linux-arm64.pc</li>
+<li>/opt/objc/lib/linux-arm64/libobjc-gcc.a</li>
+<li>/opt/objc/lib/linux-arm64/libruntime-sys.a</li>
+<li>/opt/objc/lib/linux-arm64/libFoundation.a</li>
 <li>/opt/objc/include/objc</li>
 <li>/opt/objc/include/sys</li>
 <li>/opt/objc/include/Foundation</li>
-<li>/opt/objc/doc/...</li>
+<li>/opt/objc/bin/...</li>
 </ul>
-<p>These can subsequently be used to make your executables!</p>
+<p>These can subsequently be used in projects to make executables for any combination of platform.</p>
 <h2>Documentation</h2>
 <p>To build the API documentation, you will need to have <code>docker</code> installed. The documentation is built using <code>doxygen</code> through <code>docker</code> so you don't need to have it installed directly.</p>
 <div class="fragment"><div class="line">make docs</div><div class="line">open docs/index.html </div></div><!-- fragment --><p>The documentation is also published on the <a href="https://djthorpe.github.io/objc/">project documentation site</a>.</p>
