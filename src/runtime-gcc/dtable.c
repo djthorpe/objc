@@ -53,7 +53,7 @@ bool _objc_dtable_exists(Class cls, void *sel_id) {
   uint32_t hash = _objc_dtable_hash_ptr(sel_id);
   for (int i = 0; i < DTABLE_SIZE; i++) {
     uint32_t idx = (hash + (uint32_t)i) & DTABLE_MASK;
-    IMP entry = cls->dtable[idx];
+    void *entry = cls->dtable[idx];
 
     if (entry == sel_id)
       return true;
