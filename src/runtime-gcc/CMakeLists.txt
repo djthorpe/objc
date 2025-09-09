@@ -3,6 +3,7 @@ set(NAME "objc-gcc")
 add_library(${NAME} STATIC
     category.c
     class.c
+    dtable.c
     hash.c
     init.m
     message.c
