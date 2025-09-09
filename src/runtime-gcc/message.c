@@ -17,6 +17,12 @@ static IMP __objc_msg_lookup(objc_class_t *cls, SEL selector) {
   if (cls == Nil || selector == NULL) {
     return NULL; // Invalid parameters
   }
+
+  // TODO: Initialize the dispatch table for the class if it doesn't exist
+  // Consider mutex in multi-threaded environment
+  // TODO: Lookup selector->sel_id in the dispatch table first
+  // If found, return the IMP directly
+
 #ifdef OBJCDEBUG
   sys_printf("objc_msg_lookup %c[%s %s]\n",
              cls->info & objc_class_flag_meta ? '+' : '-', cls->name,
@@ -34,6 +40,9 @@ static IMP __objc_msg_lookup(objc_class_t *cls, SEL selector) {
     struct objc_hashitem *item =
         __objc_hash_lookup(cls, selector->sel_id, selector->sel_type);
     if (item != NULL) {
+      // Consider mutex in multi-threaded environment
+      // TODO: Lookup selector->sel_id in the dispatch table first
+      // If found, return the IMP directly
       return item->imp; // Return the implementation pointer
     }
     cls = cls->superclass;
