@@ -181,7 +181,7 @@ size_t fs_file_read(fs_file_t *file, void *buffer, size_t size) {
   sys_assert(file);
   sys_assert(file->volume);
   if (file->ctx == NULL) {
-    return false; // not open
+    return 0; // not open
   }
   lfs_file_t *lfs_file = (lfs_file_t *)file->ctx;
 
