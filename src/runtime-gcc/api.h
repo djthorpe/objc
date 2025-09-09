@@ -49,8 +49,8 @@ struct objc_class {
   struct objc_ivar_list
       *ivars; // List of instance variables defined in this class
   struct objc_method_list
-      *methods;          // List of instance methods defined in this class
-  struct sarray *dtable; // Dispatch table for instance methods
+      *methods;  // List of instance methods defined in this class
+  void **dtable; // Dispatch table for instance methods
   struct objc_class
       *subclass_list;             // Pointer to the first subclass of this class
   struct objc_class *sibling_cls; // Pointer to sibling classes
