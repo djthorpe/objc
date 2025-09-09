@@ -71,7 +71,7 @@ bool _objc_dtable_add(Class cls, void *sel_id) {
     return false;
   }
 
-  uint32_t hash = _objc_dtable_hash_ptr((void *)sel_id);
+  uint32_t hash = _objc_dtable_hash_ptr(sel_id);
   for (int i = 0; i < DTABLE_SIZE; i++) {
     uint32_t idx = (hash + (uint32_t)i) & DTABLE_MASK;
 
