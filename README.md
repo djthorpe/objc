@@ -23,6 +23,7 @@ Several static libraries are currently built:
 - `objc-gcc` - the Objective C runtime library using the ancient GCC ABI
 - `runtime-sys` - a minimal set of system functions, needed to bind the runtime to the underlying system, on a per-platform basis. Includes cryptographic hash functions (MD5, SHA-256).
 - `runtime-hw` - hardware interfaces like SPI, I2C, GPIO. These are stubs for Linux and Darwin, but I guess some of these interfaces couple be implemented later.
+- `runtime-fs` - organizing files, directories and volumes which can either be volatile (in-memory) or non-volatile (file-based or in flash)
 - `drivers` and `runtime-pix` have a long way to go but should provide hardware driver and display support eventually.
 - `Foundation` - a minimal set of classes, to support memory management and basic types such as string, array, dictionary, date, time and number.
 - `Application` - the application framework, which provides a runloop and handles input, display, power and sensors.
@@ -89,21 +90,22 @@ docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "ctest --output-on-f
 
 ## Installing the libraries
 
-TODO: the libraries should be installed under a prefix path:
+The libraries should be installed under a prefix path:
 
 ```bash
-PREFIX=/opt/objc make install
+PREFIX=/opt/picofuse make install
 ```
 
-- /opt/objc/lib/armv6m-none-eabi/libobjc-gcc.a
-- /opt/objc/lib/armv6m-none-eabi/libruntime-sys.a
-- /opt/objc/lib/armv6m-none-eabi/libFoundation.a
+- /opt/objc/lib/pkgconfig/picofuse-linux-arm64.pc
+- /opt/objc/lib/linux-arm64/libobjc-gcc.a
+- /opt/objc/lib/linux-arm64/libruntime-sys.a
+- /opt/objc/lib/linux-arm64/libFoundation.a
 - /opt/objc/include/objc
 - /opt/objc/include/sys
 - /opt/objc/include/Foundation
-- /opt/objc/doc/...
+- /opt/objc/bin/...
 
-These can subsequently be used to make your executables!
+These can subsequently be used in projects to make executables for any combination of platform.
 
 ## Documentation
 
