@@ -2,6 +2,7 @@ set(NAME "runtime-fs")
 
 add_library(${NAME} STATIC
     ../littlefs/dir.c
+    ../littlefs/file.c
     ../littlefs/mem.c
     ../littlefs/volume.c
     ../littlefs/vol_mem.c

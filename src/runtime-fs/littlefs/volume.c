@@ -71,13 +71,9 @@ fs_file_t fs_vol_stat(fs_volume_t *volume, const char *path) {
 
   // Populate result
   result.volume = volume;
-  sys_memcpy(result.path, path, FS_PATH_MAX);
+  sys_memcpy(result.name, info.name, sizeof(result.name));
   result.size = (info.type == LFS_TYPE_REG) ? info.size : 0;
   result.dir = (info.type == LFS_TYPE_DIR);
-
-  // Derive name pointer: last component after '/'
-  const char *last = strrchr(path, '/');
-  result.name = (last && *(last + 1)) ? last + 1 : path; // skip leading '/'
 
   // Return populated struct
   return result;
