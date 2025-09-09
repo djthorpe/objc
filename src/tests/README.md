@@ -121,3 +121,19 @@ The tests are organized into four main categories:
 | sys_15 | Hash Table Operations | Tests comprehensive hash table functionality including basic operations (init, put, get by key/value), collision handling with linear probing, automatic chaining/growth, deletion operations, iteration, edge cases with replacement callbacks, and count/capacity tracking across chained tables. |
 | sys_16 | Environment Information | Tests environment information functions including `sys_env_serial()`, `sys_env_name()`, and `sys_env_version()` with validation of non-null return values, non-empty strings, and consistency across multiple calls. |
 | sys_17 | Atomic Operations | Tests `sys_atomic_*` API for initialization, get/set semantics, and atomic increment/decrement returning the post-operation value using a uint32_t counter. |
+
+---
+
+## File System Tests
+
+| Test Name | Purpose | Description |
+|-----------|---------|-------------|
+| fs_01 | Volume Init Size | Creates a RAM volume with requested size and verifies actual capacity is >= requested; finalizes volume. |
+| fs_02 | Directory Iteration Basics | Creates directories, iterates root, and validates iterator lifecycle and entry reporting. |
+| fs_03 | File-Backed Volume + Dirs | Opens file-backed volume, creates directories, lists entries, and reports total/free/used sizes. |
+| fs_04 | Dir Create/Delete Stress | Creates and removes many directories on a RAM volume; validates stat, entry counts, and free space deltas. |
+| fs_05 | Basic File I/O | Creates a RAM volume, creates a file, writes known payload, seeks to start, reads back, verifies size and contents. |
+| fs_06 | Append and Partial I/O | Verifies partial writes and reads across multiple calls, EOF behavior (read returns 0), and appending by reopening and seeking to end, with final content check. |
+| fs_07 | Overwrite/Seek/Extend | Large writes across blocks, mid-file overwrite, invalid large seek rejection, seek-beyond-EOF then write to extend file and verify tail/size. |
+| fs_08 | Boundary Interleaved I/O | Partial writes around block boundaries with overlapping regions and interleaved reads; validates overlap resolution and final size. |
+| fs_09 | Rename and Move | Creates files then renames within a directory, moves across directories, and renames a directory containing a file; verifies content and stat results at each step. |

@@ -43,14 +43,11 @@ typedef struct fs_volume_t fs_volume_t;
 typedef struct {
   fs_volume_t *volume;        ///< Owning volume (set by APIs)
   bool dir;                   ///< True if directory, false if regular file
-  char path[FS_PATH_MAX + 1]; ///< Full path within volume (never NULL
-                              ///< after success) including leading '/'
-                              ///< and trailing '\0'
-  const char *name; ///< Basename component within the directory, can be NULL if
-                    ///< it's the root directory
-  size_t size;      ///< Size in bytes (regular files only, else 0)
-  size_t pos;       ///< Current file position for read/write (files only)
-  void *ctx;        ///< Opaque context (do not modify)
+  char name[FS_PATH_MAX + 1]; ///< Filename (never NULL
+                              ///< after success) including trailing '\0'
+  size_t size;                ///< Size in bytes (regular files only, else 0)
+  size_t pos; ///< Current file position for read/write (files only)
+  void *ctx;  ///< Opaque context (do not modify)
 } fs_file_t;
 
 ///////////////////////////////////////////////////////////////////////////////

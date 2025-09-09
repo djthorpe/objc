@@ -69,7 +69,7 @@ bool fs_vol_readdir(fs_volume_t *volume, const char *path,
   // End of directory
   if (res == 0) {
     lfs_dir_close(&volume->lfs, &st->dir);
-    iterator->name = NULL;
+    iterator->name[0] = '\0';
     iterator->dir = false;
     iterator->size = 0;
     iterator->ctx = NULL;
@@ -86,63 +86,7 @@ bool fs_vol_readdir(fs_volume_t *volume, const char *path,
   iterator->volume = volume;
   iterator->dir = (info.type == LFS_TYPE_DIR);
   iterator->size = (info.type == LFS_TYPE_REG) ? info.size : 0;
-
-  // Build full path: normalize base directory path then append entry name.
-  char *dst = iterator->path;
-  const char *src = path;
-  size_t remaining = FS_PATH_MAX; // space left excluding final NUL
-
-  // Copy full path
-  while (remaining && *src) {
-    *dst++ = *src++;
-    remaining--;
-  }
-
-  // If nothing copied or first char wasn't '/', enforce root '/'
-  if (iterator->path[0] != FS_PATH_SEPARATOR) {
-    dst = iterator->path; // reset
-    if (remaining < FS_PATH_MAX) {
-      remaining = FS_PATH_MAX; // treat as fresh since we discard previous copy
-    }
-    *dst++ = FS_PATH_SEPARATOR;
-    remaining--;
-  }
-
-  // Remove trailing slash if not root (dst currently at end)
-  if ((dst - iterator->path) > 1 && *(dst - 1) == FS_PATH_SEPARATOR) {
-    dst--; // drop it
-    remaining++;
-  }
-
-  // Append separator if not root to prepare for entry name
-  bool is_root =
-      ((dst - iterator->path) == 1 && iterator->path[0] == FS_PATH_SEPARATOR);
-  if (!is_root) {
-    if (remaining) {
-      *dst++ = FS_PATH_SEPARATOR;
-      remaining--;
-    }
-  }
-
-  // Set name pointer
-  iterator->name = dst;
-
-  // Append entry name
-  const char *ename = info.name;
-  while (remaining && *ename) {
-    *dst++ = *ename++;
-    remaining--;
-  }
-
-  // If we truncated the name (remaining==0 but ename not end) back up one for
-  // NUL
-  if (remaining == 0) {
-    // Ensure space for NUL
-    dst = iterator->path + FS_PATH_MAX; // last position
-  }
-
-  // NUL terminate
-  *dst = '\0';
+  sys_memcpy(iterator->name, info.name, sizeof(iterator->name));
 
   // Return success
   return true;

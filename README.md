@@ -47,6 +47,23 @@ TOOLCHAIN_PATH=/opt/homebrew RELEASE=1 CC=gcc-15 make
 
 Once you've made the libraries, use the `make tests` target to run the unit tests. There is information about test coverage in the [tests directory](src/tests/README.md).
 
+### Running Tests
+
+On macOS, build and run all tests:
+
+```bash
+TOOLCHAIN_PATH=/opt/homebrew CC=gcc-15 RELEASE=1 make tests
+```
+
+Run an individual test target (replace `<test_target>` with e.g. `fs_09`):
+
+```bash
+cmake --build build --target <test_target>
+ctest --output-on-failure --test-dir build --tests-regex <test_target>
+```
+
+See the [tests README](src/tests/README.md) for a catalog of tests (fs_01..fs_09 and others) and details.
+
 You can target different architectures by setting the `TARGET` environment variable. For a RP2040-based board, you can use the `clang` compiler with the ARM toolchain. The `TARGET` environment variable should be set to the target architecture, such as `armv6m-none-eabi` for the RP2040 Pico board:
 
 ```bash
@@ -56,6 +73,19 @@ CC=clang TARGET=armv6m-none-eabi TOOLCHAIN_PATH=/opt/LLVM-ET-Arm-19.1.5-Darwin-u
 
 See the list of supported targets in the [cmake](https://github.com/djthorpe/objc/tree/main/cmake) directory.
 You can exclude the environment variable `RELEASE=1` to build debugging versions of the libraries.
+
+For Pico cross-compilation, after building, you can load a specific test onto a Pico W board (example for `<test_target>`):
+
+```bash
+cmake --build build --target <test_target> && picotool load -x build/src/tests/<test_target>/<test_target>.uf2
+```
+
+For Linux cross-compilation using Docker (Bookworm):
+
+```bash
+docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "cd /root && make clean && CC=gcc make"
+docker run --rm -i -v $(pwd):/root bookworm-builder bash -c "ctest --output-on-failure --test-dir build --tests-regex <test_target>"
+```
 
 ## Installing the libraries
 
@@ -84,7 +114,7 @@ make docs
 open docs/index.html 
 ```
 
-The documentation is also published [here](https://djthorpe.github.io/objc/).
+The documentation is also published on the [project documentation site](https://djthorpe.github.io/objc/).
 
 ## Current status
 
