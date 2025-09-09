@@ -1,6 +1,6 @@
 set(NAME "fs_05")
 add_executable(${NAME}
-	main.c
+    main.c
 )
 target_link_libraries(${NAME} PRIVATE
 	runtime-fs
