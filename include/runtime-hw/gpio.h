@@ -60,6 +60,7 @@ typedef enum {
 typedef struct hw_gpio_t {
   uint64_t mask; ///< GPIO pin mask for multiple pins
   uint8_t pin;   ///< GPIO logical pin number
+  uint8_t bank;  ///< GPIO bank number
 } hw_gpio_t;
 
 /**
@@ -77,25 +78,27 @@ typedef struct hw_gpio_t {
  * @see hw_gpio_set_callback() for setting up the callback handler.
  * @see hw_gpio_event_t for available event types.
  */
-typedef void (*hw_gpio_callback_t)(uint8_t pin, hw_gpio_event_t event,
-                                   void *userdata);
+typedef void (*hw_gpio_callback_t)(uint8_t bank, uint8_t pin,
+                                   hw_gpio_event_t event, void *userdata);
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
- * @brief Get the total number of available GPIO pins.
+ * @brief Get the total number of available GPIO pins for a given bank.
  * @ingroup GPIO
+ * @param bank The GPIO bank number to query (0-based).
  * @return The number of GPIO pins available on the hardware platform.
  *
  * Returns the number of logical GPIO pins that can be used in the system.
  * These are usually numbered from 0 to hw_gpio_count() - 1.
- * If zero is returned, it indicates that GPIO functionality is not available.
+ * If zero is returned, it indicates that GPIO functionality is not available,
+ * or the specified bank does not exist.
  *
  * It will never return more than HW_GPIO_MAX_COUNT as this is a hard
  * limit on the number of supported GPIO pins.
  */
-uint8_t hw_gpio_count(void);
+uint8_t hw_gpio_count(uint8_t bank);
 
 /**
  * @brief Validate the GPIO pin.
@@ -127,13 +130,14 @@ void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata);
 /**
  * @brief Initialize a GPIO pin with the specified mode.
  * @ingroup GPIO
+ * @param bank The GPIO bank number to which the pin belongs (0-based).
  * @param pin The logical GPIO pin number to initialize.
  * @param mode The GPIO mode configuration (input, output, pull-up, etc.).
  * @return A GPIO structure representing the initialized pin.
  * @note The pin number should be valid (0 to hw_gpio_count()-1).
  * @see hw_gpio_mode_t for available mode options.
  */
-hw_gpio_t hw_gpio_init(uint8_t pin, hw_gpio_mode_t mode);
+hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode);
 
 /**
  * @brief Finalize and release a GPIO pin.
