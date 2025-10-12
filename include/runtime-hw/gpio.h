@@ -23,7 +23,7 @@
  *
  * The maximum number of GPIO pins that is supported in this runtime.
  */
-#define HW_GPIO_MAX_COUNT 50
+#define HW_GPIO_MAX_COUNT 64
 
 /**
  * @brief GPIO mode flags for configuring GPIO pins.

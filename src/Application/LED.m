@@ -55,7 +55,7 @@
   }
 
   // Check pin
-  if (pin >= hw_gpio_count()) {
+  if (pin >= hw_gpio_count(0)) {
     [self release];
     return nil; // Invalid pin number
   }
