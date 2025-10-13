@@ -23,14 +23,17 @@ void *_hw_gpio_userdata = NULL; ///< User data for the GPIO callback
 /**
  * @brief Initialize a GPIO pin with the specified mode.
  */
-hw_gpio_t hw_gpio_init(uint8_t pin, hw_gpio_mode_t mode) {
-  sys_assert(pin < NUM_BANK0_GPIOS && pin < 64);
+hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode) {
+  // Pico only supports bank 0
+  sys_assert(bank == 0 && pin < NUM_BANK0_GPIOS && pin < 64);
+
   gpio_init(pin);
 
   // Initialize the GPIO pin with the specified mode
   hw_gpio_t gpio = {0};
   gpio.mask = (1ULL << pin);
   gpio.pin = pin;
+  gpio.bank = bank;
 
   // Set the GPIO mode
   if (mode > 0) {
@@ -53,9 +56,14 @@ void hw_gpio_finalize(hw_gpio_t *gpio) {
 // PROPERTIES
 
 /**
- * @brief Get the total number of available GPIO pins.
+ * @brief Get the total number of available GPIO pins for a given bank.
  */
-uint8_t hw_gpio_count(void) {
+uint8_t hw_gpio_count(uint8_t bank) {
+  // Pico only supports bank 0
+  if (bank != 0) {
+    return 0;
+  }
+
   int max = NUM_BANK0_GPIOS;
   if (max > HW_GPIO_MAX_COUNT) {
     max = HW_GPIO_MAX_COUNT;
@@ -203,5 +211,6 @@ static void _hw_gpio_callback(uint pin, uint32_t events) {
   if (events & GPIO_IRQ_EDGE_FALL) {
     event |= HW_GPIO_FALLING;
   }
-  _hw_gpio_callback_func(pin, event, _hw_gpio_userdata);
+  // Pico only has bank 0
+  _hw_gpio_callback_func(0, pin, event, _hw_gpio_userdata);
 }

@@ -7,10 +7,11 @@
 // LIFECYCLE
 
 /**
- * @brief Get the total number of available GPIO pins.
+ * @brief Get the total number of available GPIO pins for a given bank.
  */
-uint8_t hw_gpio_count(void) {
+uint8_t hw_gpio_count(uint8_t bank) {
   // GPIO not implemented in stub
+  (void)bank; // Suppress unused parameter warning
   return 0;
 }
 
@@ -26,8 +27,9 @@ void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata) {
 /**
  * @brief Initialize a GPIO pin with the specified mode.
  */
-hw_gpio_t hw_gpio_init(uint8_t pin, hw_gpio_mode_t mode) {
+hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode) {
   // GPIO not implemented in stub
+  (void)bank;
   (void)pin;
   (void)mode;
   hw_gpio_t gpio = {0};

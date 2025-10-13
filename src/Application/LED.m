@@ -55,7 +55,7 @@
   }
 
   // Check pin
-  if (pin >= hw_gpio_count()) {
+  if (pin >= hw_gpio_count(0)) {
     [self release];
     return nil; // Invalid pin number
   }
@@ -150,6 +150,7 @@
  * @brief Blink with duration
  */
 - (BOOL)blinkWithDuration:(NXTimeInterval)duration repeats:(BOOL)repeats {
+  // TODO
   return NO;
 }
 
@@ -157,6 +158,7 @@
  * @brief Fade with duration
  */
 - (BOOL)fadeWithDuration:(NXTimeInterval)duration repeats:(BOOL)repeats {
+  // TODO
   return NO;
 }
 

@@ -121,7 +121,7 @@ Foundation: libobjc-gcc runtime-sys
 
 # Create the Application library
 .PHONY: Application
-Application: Foundation runtime-hw drivers
+Application: Foundation runtime-hw
 	@echo
 	@echo make Application
 	@${CMAKE} --build ${BUILD_DIR} --target Application -j ${JOBS}

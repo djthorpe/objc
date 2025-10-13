@@ -42,20 +42,20 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 /**
  * @brief Initialize a pin with a mode.
  */
-- (id)initPin:(uint8_t)pin mode:(hw_gpio_mode_t)mode {
+- (id)initBank:(uint8_t)bank pin:(uint8_t)pin mode:(hw_gpio_mode_t)mode {
   self = [super init];
   if (self == nil) {
     return nil; // Initialization failed
   }
 
   // Check maximum number of pins
-  if (pin >= hw_gpio_count()) {
+  if (pin >= hw_gpio_count(bank)) {
     [self release];
     return nil;
   }
 
   // Get the pin
-  _pin = hw_gpio_init(pin, mode);
+  _pin = hw_gpio_init(bank, pin, mode);
   if (hw_gpio_valid(&_pin) == false) {
     // Invalid pin initialization
     [self release];
@@ -82,9 +82,9 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 /**
  * @brief Returns a GPIO input instance.
  */
-+ (GPIO *)inputWithPin:(uint8_t)pin {
++ (GPIO *)inputWithBank:(uint8_t)bank pin:(uint8_t)pin {
   // Check input arguments
-  if (pin >= hw_gpio_count() || pin >= HW_GPIO_MAX_COUNT) {
+  if (pin >= hw_gpio_count(bank) || pin >= HW_GPIO_MAX_COUNT) {
     return nil; // Invalid pin number
   }
 
@@ -93,7 +93,7 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
-      _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_INPUT];
+      _gpio[pin] = [[self alloc] initBank:bank pin:pin mode:HW_GPIO_INPUT];
     } else if ([gpio mode] != HW_GPIO_INPUT) {
       sys_printf("GPIO pin %d is being reconfigured as input\n", pin);
       [gpio setMode:HW_GPIO_INPUT];
@@ -106,11 +106,18 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 }
 
 /**
+ * @brief Returns a GPIO input instance.
+ */
++ (GPIO *)inputWithPin:(uint8_t)pin {
+  return [self inputWithBank:0 pin:pin];
+}
+
+/**
  * @brief Returns a GPIO input instance, with pull-up resistor enabled.
  */
-+ (GPIO *)pullupWithPin:(uint8_t)pin {
++ (GPIO *)pullupWithBank:(uint8_t)bank pin:(uint8_t)pin {
   // Check input arguments
-  if (pin >= hw_gpio_count() || pin >= HW_GPIO_MAX_COUNT) {
+  if (pin >= hw_gpio_count(bank) || pin >= HW_GPIO_MAX_COUNT) {
     return nil; // Invalid pin number
   }
 
@@ -119,7 +126,7 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
-      _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_PULLUP];
+      _gpio[pin] = [[self alloc] initBank:bank pin:pin mode:HW_GPIO_PULLUP];
     } else if ([gpio mode] != HW_GPIO_PULLUP) {
       sys_printf("GPIO pin %d is being reconfigured as pull-up\n", pin);
       [gpio setMode:HW_GPIO_PULLUP];
@@ -132,11 +139,18 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 }
 
 /**
+ * @brief Returns a GPIO input instance, with pull-up resistor enabled.
+ */
++ (GPIO *)pullupWithPin:(uint8_t)pin {
+  return [self pullupWithBank:0 pin:pin];
+}
+
+/**
  * @brief Returns a GPIO input instance, with pull-down resistor enabled.
  */
-+ (GPIO *)pulldownWithPin:(uint8_t)pin {
++ (GPIO *)pulldownWithBank:(uint8_t)bank pin:(uint8_t)pin {
   // Check input arguments
-  if (pin >= hw_gpio_count() || pin >= HW_GPIO_MAX_COUNT) {
+  if (pin >= hw_gpio_count(bank) || pin >= HW_GPIO_MAX_COUNT) {
     return nil; // Invalid pin number
   }
 
@@ -145,7 +159,7 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
-      _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_PULLDOWN];
+      _gpio[pin] = [[self alloc] initBank:bank pin:pin mode:HW_GPIO_PULLDOWN];
     } else if ([gpio mode] != HW_GPIO_PULLDOWN) {
       sys_printf("GPIO pin %d is being reconfigured as pull-down\n", pin);
       [gpio setMode:HW_GPIO_PULLDOWN];
@@ -158,11 +172,18 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 }
 
 /**
+ * @brief Returns a GPIO input instance, with pull-down resistor enabled.
+ */
++ (GPIO *)pulldownWithPin:(uint8_t)pin {
+  return [self pulldownWithBank:0 pin:pin];
+}
+
+/**
  * @brief Returns a GPIO output instance.
  */
-+ (GPIO *)outputWithPin:(uint8_t)pin {
++ (GPIO *)outputWithBank:(uint8_t)bank pin:(uint8_t)pin {
   // Check input arguments
-  if (pin >= hw_gpio_count() || pin >= HW_GPIO_MAX_COUNT) {
+  if (pin >= hw_gpio_count(bank) || pin >= HW_GPIO_MAX_COUNT) {
     return nil; // Invalid pin number
   }
 
@@ -171,7 +192,7 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
   @synchronized(self) {
     GPIO *gpio = _gpio[pin];
     if (gpio == nil) {
-      _gpio[pin] = [[self alloc] initPin:pin mode:HW_GPIO_OUTPUT];
+      _gpio[pin] = [[self alloc] initBank:bank pin:pin mode:HW_GPIO_OUTPUT];
     } else if ([gpio mode] != HW_GPIO_OUTPUT) {
       sys_printf("GPIO pin %d is being reconfigured as output\n", pin);
       [gpio setMode:HW_GPIO_OUTPUT];
@@ -181,6 +202,13 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
     // Return retained instance
     return _gpio[pin];
   }
+}
+
+/**
+ * @brief Returns a GPIO output instance.
+ */
++ (GPIO *)outputWithPin:(uint8_t)pin {
+  return [self outputWithBank:0 pin:pin];
 }
 
 /**
@@ -212,7 +240,14 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
  * @return The total number of GPIO pins. Returns 0 if GPIO is not available.
  */
 + (uint8_t)count {
-  return hw_gpio_count();
+  return hw_gpio_count(0);
+}
+
+/**
+ * @brief Returns the bank number.
+ */
+- (uint8_t)bank {
+  return _pin.bank;
 }
 
 /**
@@ -306,7 +341,8 @@ void _gpio_callback(uint8_t pin, hw_gpio_event_t event) {
 // OBJECT PROTOCOLS
 
 - (NXString *)description {
-  return [NXString stringWithFormat:@"(gpio pin=%d)", (int)_pin.pin];
+  return [NXString
+      stringWithFormat:@"(gpio bank=%u pin=%u)", (int)_pin.bank, (int)_pin.pin];
 }
 
 @end

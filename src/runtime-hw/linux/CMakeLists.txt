@@ -2,8 +2,8 @@ set(NAME "runtime-hw")
 
 add_library(${NAME} STATIC
     ../stub/adc.c
-    ../stub/gpio.c
-    ../stub/hw.c
+    gpio.c
+    hw.c
     ../stub/i2c.c
     ../stub/infrared_rx.c
     ../stub/led.c
@@ -16,6 +16,8 @@ add_library(${NAME} STATIC
 target_include_directories(${NAME} PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/../../../include
 )
-target_link_libraries(${NAME} 
+
+# Link libraries
+target_link_libraries(${NAME} PRIVATE
     runtime-sys
 )
