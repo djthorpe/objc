@@ -43,9 +43,9 @@ static void _gpio_stop_event_thread(void);
 // LIFECYCLE
 
 // Mutex initialization
-__attribute__((constructor)) static void _gpio_init(void) {
+void _hw_gpio_init(void) {
 #ifdef DEBUG
-  sys_printf("_gpio_init\n");
+  sys_printf("_hw_gpio_init\n");
 #endif
   _gpio_mutex = sys_mutex_init();
 
@@ -62,9 +62,9 @@ __attribute__((constructor)) static void _gpio_init(void) {
 }
 
 // Mutex finalization
-__attribute__((destructor)) static void _gpio_finalize(void) {
+void _hw_gpio_finalize(void) {
 #ifdef DEBUG
-  sys_printf("_gpio_finalize\n");
+  sys_printf("_hw_gpio_finalize\n");
 #endif
 
   // Stop event thread first

@@ -3,7 +3,7 @@ set(NAME "runtime-hw")
 add_library(${NAME} STATIC
     ../stub/adc.c
     gpio.c
-    ../stub/hw.c
+    hw.c
     ../stub/i2c.c
     ../stub/infrared_rx.c
     ../stub/led.c
