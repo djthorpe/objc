@@ -2,6 +2,7 @@ var searchData=
 [
   ['backlight',['backlight',['../structdriver__st7789__t.html#af5d329563ab61fcce6c722d5383f7c85',1,'driver_st7789_t']]],
   ['backlight_5fbrightness',['backlight_brightness',['../structdriver__st7789__t.html#abce058e5c402b1d2153374119298b905',1,'driver_st7789_t']]],
+  ['bank',['bank',['../structhw__gpio__t.html#a14c7544fe6643a3049d5bcebb96c8e5b',1,'hw_gpio_t']]],
   ['base64string',['base64String',['../interfaceNXData.html#ad4213bc61f2571ce0f886cae3d2ec101',1,'NXData']]],
   ['baudrate',['baudrate',['../structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c',1,'hw_i2c_t::baudrate()'],['../structhw__spi__t.html#aa89c8b0a8741f90f4d17be4007a6aefa',1,'hw_spi_t::baudrate()']]],
   ['binaryonpin_3a',['binaryOnPin:',['../interfaceLED.html#a80ffc47f5dd4f892646113f4d1e63680',1,'LED']]],
