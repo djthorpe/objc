@@ -2,14 +2,15 @@
  * @file examples/runtime/gpio/main.c
  *
  * This example demonstrates how to inject events into a system event queue
- * from GPIO interrupts on the RP2040/RP2050 (Pico) platform.
+ * from GPIO interrupts.
  *
- * We call shutdown after the BOOTSEL button is pressed, and
+ * On the Pico, we call shutdown after the BOOTSEL button is pressed, and
  * the consumers on each core will end when all events have been drained.
  */
 #include <runtime-hw/hw.h>
 #include <runtime-sys/sys.h>
 
+#define GPIO_BANK 0
 #define GPIO_BOOTSEL 30
 #define GPIO_A 12 // Button A
 #define GPIO_B 13 // Button B
@@ -44,9 +45,15 @@ void runloop(sys_event_queue_t *queue) {
 /////////////////////////////////////////////////////////////////////
 // GPIO CALLBACK
 
-void gpio_callback(uint8_t pin, hw_gpio_event_t event, void *userdata) {
+void gpio_callback(uint8_t bank, uint8_t pin, hw_gpio_event_t event,
+                   void *userdata) {
   sys_event_queue_t *queue = (sys_event_queue_t *)userdata;
   int core = sys_thread_core();
+
+  // If not the correct bank, ignore
+  if (bank != GPIO_BANK) {
+    return;
+  }
 
   // Shutdown the queue if we have produced enough events
   if (pin == GPIO_BOOTSEL) {
@@ -112,7 +119,7 @@ bool core0_task() {
   sys_event_queue_t queue = sys_event_queue_init(20);
 
   // Check that GPIO is supported
-  if (hw_gpio_count() == 0) {
+  if (hw_gpio_count(GPIO_BANK) == 0) {
     sys_printf("main: GPIO is not supported\n");
     return false;
   }
@@ -128,14 +135,14 @@ bool core0_task() {
   // Initialize a GPIO pin for input
   sys_printf("Defining pull-up GPIO inputs %d, %d, %d, %d\n", GPIO_A, GPIO_B,
              GPIO_X, GPIO_Y);
-  hw_gpio_init(GPIO_A, HW_GPIO_PULLUP);
-  hw_gpio_init(GPIO_B, HW_GPIO_PULLUP);
-  hw_gpio_init(GPIO_X, HW_GPIO_PULLUP);
-  hw_gpio_init(GPIO_Y, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_BANK, GPIO_A, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_BANK, GPIO_B, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_BANK, GPIO_X, HW_GPIO_PULLUP);
+  hw_gpio_init(GPIO_BANK, GPIO_Y, HW_GPIO_PULLUP);
 
   // The BOOTSEL button is used to signal shutdown
   sys_printf("main: Initializing GPIO for BOOTSEL button %d\n", GPIO_BOOTSEL);
-  hw_gpio_init(GPIO_BOOTSEL, HW_GPIO_INPUT);
+  hw_gpio_init(GPIO_BANK, GPIO_BOOTSEL, HW_GPIO_INPUT);
 
   // Set the GPIO callback for injecting events into the queue
   hw_gpio_set_callback(gpio_callback, &queue);
