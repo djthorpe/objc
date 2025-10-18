@@ -1,9 +1,9 @@
-set(NAME "hw_02")
+set(NAME "envirophat_01")
 add_executable(${NAME}
     main.c
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-hw
+    drivers
     malloc
 )
 add_test(NAME ${NAME} COMMAND ${NAME})

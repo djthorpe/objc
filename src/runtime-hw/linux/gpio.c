@@ -34,6 +34,7 @@ static void *_gpio_callback_userdata = NULL;
 
 static int _gpio_open_chip(uint8_t bank);
 static void _gpio_close_chip(uint8_t bank);
+static int _gpio_request_line(uint8_t bank, uint8_t pin, uint64_t flags);
 static void _gpio_release_line(uint8_t bank, uint8_t pin);
 static void _gpio_remove_from_epoll(int line_fd);
 static void _gpio_start_event_thread(void);
@@ -113,12 +114,11 @@ void hw_gpio_set_callback(hw_gpio_callback_t callback, void *userdata) {
  */
 hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode) {
 #ifdef DEBUG
-  sys_printf("hw_gpio_init: initializing bank=%u pin=%u mode=%d\n", bank, pin,
-             mode);
+  sys_printf("hw_gpio_init: bank=%u pin=%u mode=%d\n", bank, pin, mode);
 #endif
   hw_gpio_t gpio = {0};
 
-  // Validate inputs
+  // Validate bank and pin
   if (bank >= GPIO_MAX_BANKS || pin >= GPIO_MAX_LINES) {
 #ifdef DEBUG
     sys_printf("hw_gpio_init: invalid bank=%u or pin=%u\n", bank, pin);
@@ -133,53 +133,39 @@ hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode) {
 #endif
     return gpio;
   }
-  if (pin >= hw_gpio_count(bank)) {
-#ifdef DEBUG
-    sys_printf("hw_gpio_init: invalid pin=%u for bank=%u\n", pin, bank);
-#endif
-    return gpio;
-  }
-
-  // Validate mode
-  if (mode != HW_GPIO_INPUT && mode != HW_GPIO_PULLUP &&
-      mode != HW_GPIO_PULLDOWN && mode != HW_GPIO_OUTPUT) {
-#ifdef DEBUG
-    sys_printf("hw_gpio_init: invalid mode=%d\n", mode);
-#endif
-    return gpio;
-  }
 
   // Release existing line if any
   _gpio_release_line(bank, pin);
 
-  // Prepare GPIO v2 line request
-  struct gpio_v2_line_request req = {0};
-  req.offsets[0] = pin;
-  req.num_lines = 1;
-  sys_sprintf(req.consumer, sizeof(req.consumer), "hw_gpio");
-
-  // Configure line based on mode
-  uint64_t edge_flags =
+  // Edge detection flags for all input modes
+  const uint64_t edge_flags =
       GPIO_V2_LINE_FLAG_EDGE_RISING | GPIO_V2_LINE_FLAG_EDGE_FALLING;
+
+  int fd = -1;
+  bool is_input_mode = false;
 
   switch (mode) {
   case HW_GPIO_INPUT:
-    req.config.flags = GPIO_V2_LINE_FLAG_INPUT | edge_flags;
+    fd = _gpio_request_line(bank, pin, GPIO_V2_LINE_FLAG_INPUT | edge_flags);
+    is_input_mode = true;
     break;
   case HW_GPIO_PULLUP:
-    req.config.flags =
-        GPIO_V2_LINE_FLAG_INPUT | GPIO_V2_LINE_FLAG_BIAS_PULL_UP | edge_flags;
+    fd = _gpio_request_line(bank, pin,
+                            GPIO_V2_LINE_FLAG_INPUT |
+                                GPIO_V2_LINE_FLAG_BIAS_PULL_UP | edge_flags);
+    is_input_mode = true;
     break;
   case HW_GPIO_PULLDOWN:
-    req.config.flags =
-        GPIO_V2_LINE_FLAG_INPUT | GPIO_V2_LINE_FLAG_BIAS_PULL_DOWN | edge_flags;
+    fd = _gpio_request_line(bank, pin,
+                            GPIO_V2_LINE_FLAG_INPUT |
+                                GPIO_V2_LINE_FLAG_BIAS_PULL_DOWN | edge_flags);
+    is_input_mode = true;
     break;
   case HW_GPIO_OUTPUT:
-    req.config.flags = GPIO_V2_LINE_FLAG_OUTPUT;
-    req.config.num_attrs = 1;
-    req.config.attrs[0].attr.id = GPIO_V2_LINE_ATTR_ID_OUTPUT_VALUES;
-    req.config.attrs[0].attr.values = 0; // Start with low
-    req.config.attrs[0].mask = 1;
+    fd = _gpio_request_line(bank, pin, GPIO_V2_LINE_FLAG_OUTPUT);
+    break;
+  case HW_GPIO_NONE:
+    // Do not request line
     break;
   default:
     // Unsupported mode
@@ -190,46 +176,37 @@ hw_gpio_t hw_gpio_init(uint8_t bank, uint8_t pin, hw_gpio_mode_t mode) {
     return gpio;
   }
 
-  // Request the line
-  sys_mutex_lock(&_gpio_mutex);
-  if (ioctl(chip_fd, GPIO_V2_GET_LINE_IOCTL, &req) < 0) {
-    sys_mutex_unlock(&_gpio_mutex);
-#ifdef DEBUG
-    sys_printf("hw_gpio_init: failed to request line for bank=%u pin=%u\n",
-               bank, pin);
-#endif
-    return gpio;
-  }
-
-  // Store the line file descriptor
-  line_fds[bank][pin] = req.fd;
-
   // Add to epoll for input modes (with edge detection)
-  if (mode != HW_GPIO_OUTPUT && _epoll_fd >= 0) {
-    struct epoll_event ev = {0};
-    ev.events = EPOLLIN;
-    // Pack bank and pin into user data pointer (16-bit value)
-    ev.data.ptr = (void *)(uintptr_t)((bank << 8) | pin);
+  if (is_input_mode && fd >= 0) {
+    int epoll_fd = _epoll_fd; // Read volatile once for consistency
+    if (epoll_fd >= 0) {
+      struct epoll_event ev = {0};
+      ev.events = EPOLLIN;
+      ev.data.ptr = (void *)(uintptr_t)((bank << 8) | pin);
 
-    if (epoll_ctl(_epoll_fd, EPOLL_CTL_ADD, req.fd, &ev) < 0) {
+      if (epoll_ctl(epoll_fd, EPOLL_CTL_ADD, fd, &ev) < 0) {
 #ifdef DEBUG
-      sys_printf("hw_gpio_init: failed to add fd to epoll for bank=%u pin=%u\n",
-                 bank, pin);
+        sys_printf(
+            "hw_gpio_init: failed to add fd to epoll for bank=%u pin=%u\n",
+            bank, pin);
 #endif
+        _gpio_release_line(bank, pin);
+        return gpio;
+      }
     }
   }
 
-  sys_mutex_unlock(&_gpio_mutex);
-
-#ifdef DEBUG
-  sys_printf("hw_gpio_init: initialized bank=%u pin=%u mode=%d fd=%d\n", bank,
-             pin, mode, req.fd);
-#endif
-
-  // Return success
+  // Set GPIO struct values
   gpio.bank = bank;
   gpio.pin = pin;
   gpio.mask = (uint64_t)1 << pin; // Use 64-bit to handle all pin positions
+
+#ifdef DEBUG
+  sys_printf("hw_gpio_init: success bank=%u pin=%u mode=%d fd=%d\n", bank, pin,
+             mode, fd);
+#endif
+
+  // Return success
   return gpio;
 }
 
@@ -248,16 +225,11 @@ void hw_gpio_finalize(hw_gpio_t *gpio) {
  */
 hw_gpio_mode_t hw_gpio_get_mode(hw_gpio_t *gpio) {
   sys_assert(gpio);
-  if (gpio->bank >= GPIO_MAX_BANKS || gpio->pin >= GPIO_MAX_LINES) {
-    return HW_GPIO_NONE;
-  }
+  sys_assert(gpio->mask != 0);
+  sys_assert(gpio->bank < GPIO_MAX_BANKS);
+  sys_assert(gpio->pin < GPIO_MAX_LINES);
 
   sys_mutex_lock(&_gpio_mutex);
-  int line_fd = line_fds[gpio->bank][gpio->pin];
-  if (line_fd < 0) {
-    sys_mutex_unlock(&_gpio_mutex);
-    return HW_GPIO_NONE;
-  }
 
   // Get line info from chip
   int chip_fd = chip_fds[gpio->bank];
@@ -580,10 +552,52 @@ static void _gpio_remove_from_epoll(int line_fd) {
   }
 }
 
-static void _gpio_release_line(uint8_t bank, uint8_t pin) {
-  if (bank >= GPIO_MAX_BANKS || pin >= GPIO_MAX_LINES) {
-    return;
+static int _gpio_request_line(uint8_t bank, uint8_t pin, uint64_t flags) {
+  sys_assert(bank < GPIO_MAX_BANKS);
+  sys_assert(pin < GPIO_MAX_LINES && pin < GPIO_V2_LINES_MAX);
+  sys_assert(flags != 0);
+
+  // Prepare GPIO v2 line request
+  struct gpio_v2_line_request req = {0};
+  req.offsets[0] = pin;
+  req.num_lines = 1;
+  req.config.flags = flags; // Set the flags
+
+  // If output mode, set initial value to low
+  if (flags & GPIO_V2_LINE_FLAG_OUTPUT) {
+    req.config.num_attrs = 1;
+    req.config.attrs[0].attr.id = GPIO_V2_LINE_ATTR_ID_OUTPUT_VALUES;
+    req.config.attrs[0].attr.values = 0; // Start with low
+    req.config.attrs[0].mask = 1;
   }
+
+  sys_sprintf(req.consumer, sizeof(req.consumer), "hw_gpio");
+
+  // Open the chip if not already opened
+  int chip_fd = _gpio_open_chip(bank);
+  if (chip_fd < 0) {
+    return -1;
+  }
+
+  // Request the line
+  sys_mutex_lock(&_gpio_mutex);
+  if (ioctl(chip_fd, GPIO_V2_GET_LINE_IOCTL, &req) < 0) {
+#ifdef DEBUG
+    sys_printf("_gpio_request_line: failed to request line bank=%u pin=%u\n",
+               bank, pin);
+#endif
+    sys_mutex_unlock(&_gpio_mutex);
+    return -1;
+  } else {
+    line_fds[bank][pin] = req.fd;
+    sys_mutex_unlock(&_gpio_mutex);
+  }
+  return req.fd;
+}
+
+static void _gpio_release_line(uint8_t bank, uint8_t pin) {
+  sys_assert(bank < GPIO_MAX_BANKS);
+  sys_assert(pin < GPIO_MAX_LINES && pin < GPIO_V2_LINES_MAX);
 
   sys_mutex_lock(&_gpio_mutex);
   int line_fd = line_fds[bank][pin];

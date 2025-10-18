@@ -17,25 +17,40 @@ uint8_t hw_i2c_count(void) {
 /**
  * @brief Initialize an I2C interface using default pins and adapter.
  */
-hw_i2c_t hw_i2c_init_default(uint32_t baudrate) {
+bool hw_i2c_init_default(hw_i2c_t *adapter, uint32_t baudrate) {
+  sys_assert(adapter);
   // I2C not implemented in stub
   (void)baudrate; // Suppress unused parameter warning
-  hw_i2c_t i2c = {0};
-  return i2c;
+  return false;
 }
 
 /**
  * @brief Initialize an I2C interface with specific adapter and pins.
  */
-hw_i2c_t hw_i2c_init(uint8_t adapter, uint8_t sda, uint8_t scl,
-                     uint32_t baudrate) {
+bool hw_i2c_init(hw_i2c_t *adapter, uint8_t index, uint8_t sda, uint8_t scl,
+                 uint32_t baudrate) {
+  sys_assert(adapter);
   // I2C not implemented in stub
-  (void)adapter;  // Suppress unused parameter warning
+  (void)index;    // Suppress unused parameter warning
   (void)sda;      // Suppress unused parameter warning
   (void)scl;      // Suppress unused parameter warning
   (void)baudrate; // Suppress unused parameter warning
-  hw_i2c_t i2c = {0};
-  return i2c;
+  return false;
+}
+
+/**
+ * @brief Initialize an I2C interface with device path.
+ *
+ * Note: Not supported on platforms without device paths (e.g., Pico).
+ * This function always returns false.
+ * Use hw_i2c_init() instead on embedded platforms.
+ */
+bool hw_i2c_init_device(hw_i2c_t *adapter, const char *device,
+                        uint32_t baudrate) {
+  sys_assert(adapter);
+  (void)device;
+  (void)baudrate;
+  return false;
 }
 
 /**
@@ -45,6 +60,18 @@ void hw_i2c_finalize(hw_i2c_t *i2c) {
   sys_assert(i2c);
   // I2C not implemented in stub
   (void)i2c; // Suppress unused parameter warning
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PROPERTIES
+
+/**
+ * @brief Get true if the I2C interface is valid.
+ */
+bool hw_i2c_valid(hw_i2c_t *i2c) {
+  // I2C not implemented in stub
+  (void)i2c;    // Suppress unused parameter warning
+  return false; // Always return false since I2C is not implemented
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -21,13 +21,12 @@
  * @brief I2C adapter.
  * @ingroup I2C
  * @headerfile i2c.h runtime-hw/hw.h
+ *
+ * Platform-specific I2C interface structure.
+ * The internal implementation is opaque and stored in reserved bytes.
  */
 typedef struct hw_i2c_t {
-  uint8_t adapter;     ///< I2C adapter number (0, 1, etc.)
-  hw_gpio_t sda;       ///< I2C data pin number
-  hw_gpio_t scl;       ///< I2C clock pin number
-  uint32_t baudrate;   ///< I2C baud rate in Hz
-  uint8_t reserved[3]; ///< Reserved for user data
+  uint8_t reserved[32]; ///< Reserved for platform-specific implementation
 } hw_i2c_t;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -36,33 +35,50 @@ typedef struct hw_i2c_t {
 /**
  * @brief Initialize an I2C interface using default pins and adapter.
  * @ingroup I2C
+ * @param adapter The I2C adapter structure
  * @param baudrate The desired I2C baud rate (e.g., 100000 for 100kHz).
- * @return An I2C structure representing the initialized interface.
+ * @return True if the initialization was successful, false otherwise.
  *
  * This function initializes the default I2C interface using platform-specific
  * default pins and adapter settings. This is the simplest way to get I2C
  * functionality without needing to specify pin assignments.
  */
-hw_i2c_t hw_i2c_init_default(uint32_t baudrate);
+bool hw_i2c_init_default(hw_i2c_t *adapter, uint32_t baudrate);
 
 /**
  * @brief Initialize an I2C interface with specific adapter and pins.
  * @ingroup I2C
- * @param adapter The I2C adapter number to use (0 to hw_i2c_count()-1).
+ * @param adapter The I2C adapter structure
+ * @param index The I2C adapter index to use (0 to hw_i2c_count()-1).
  * @param sda The GPIO pin number to use for I2C data (SDA).
  * @param scl The GPIO pin number to use for I2C clock (SCL).
  * @param baudrate The desired I2C baud rate (e.g., 100000 for 100kHz).
- * @return An I2C structure representing the initialized interface.
+ * @return True if the initialization was successful, false otherwise.
  *
  * This function initializes an I2C interface using the specified adapter
- * and GPIO pins for SDA and SCL lines. The adapter number should be valid
+ * and GPIO pins for SDA and SCL lines. The adapter index should be valid
  * and the specified pins should be capable of I2C functionality.
  *
  * @note The specified pins must support I2C functionality.
  * @note Pin assignments are platform-dependent.
  */
-hw_i2c_t hw_i2c_init(uint8_t adapter, uint8_t sda, uint8_t scl,
-                     uint32_t baudrate);
+bool hw_i2c_init(hw_i2c_t *adapter, uint8_t index, uint8_t sda, uint8_t scl,
+                 uint32_t baudrate);
+
+/**
+ * @brief Initialize an I2C interface with device path.
+ * @ingroup I2C
+ * @param adapter The I2C adapter structure
+ * @param device The I2C device path (e.g., "/dev/i2c-0").
+ * @param baudrate The desired I2C baud rate (e.g., 100000 for 100kHz).
+ * @return True if the initialization was successful, false otherwise.
+ *
+ * This function initializes an I2C interface using the specified device path
+ * and baud rate. The device path should be valid and correspond to an I2C
+ * adapter on the system.
+ */
+bool hw_i2c_init_device(hw_i2c_t *adapter, const char *device,
+                        uint32_t baudrate);
 
 /**
  * @brief Finalize and release an I2C interface.
@@ -92,14 +108,13 @@ uint8_t hw_i2c_count(void);
 /**
  * @brief Get true if the I2C interface is valid.
  * @ingroup I2C
+ * @param i2c Pointer to the I2C structure representing the interface.
  * @return True if the I2C interface is valid, false otherwise.
  *
  * The result of hw_i2c_init can return an empty I2C structure if the
  * initialization fails. This function checks if the I2C interface is valid.
  */
-static inline bool hw_i2c_valid(hw_i2c_t *i2c) {
-  return i2c && i2c->baudrate > 0;
-}
+bool hw_i2c_valid(hw_i2c_t *i2c);
 
 ///////////////////////////////////////////////////////////////////////////////
 // METHODS

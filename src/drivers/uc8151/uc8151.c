@@ -450,9 +450,9 @@ driver_uc8151_t driver_uc8151_init(hw_spi_t *spi, uint8_t dc_pin,
   driver_uc8151_t uc8151 = {0};
 
   // Initialize GPIO pins
-  uc8151.dc = hw_gpio_init(dc_pin, HW_GPIO_OUTPUT);
-  uc8151.reset = hw_gpio_init(reset_pin, HW_GPIO_OUTPUT);
-  uc8151.busy = hw_gpio_init(busy_pin, HW_GPIO_INPUT);
+  uc8151.dc = hw_gpio_init(0, dc_pin, HW_GPIO_OUTPUT);
+  uc8151.reset = hw_gpio_init(0, reset_pin, HW_GPIO_OUTPUT);
+  uc8151.busy = hw_gpio_init(0, busy_pin, HW_GPIO_INPUT);
 
   // Check if GPIO initialization was successful
   if (!hw_gpio_valid(&uc8151.dc)) {

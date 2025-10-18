@@ -1,9 +1,9 @@
-set(NAME "hw_02")
+set(NAME "envirophat_02")
 add_executable(${NAME}
     main.c
 )
 target_link_libraries(${NAME} PRIVATE
-    runtime-hw
+    drivers
     malloc
 )
 add_test(NAME ${NAME} COMMAND ${NAME})
@@ -13,4 +13,3 @@ pico_add_extra_outputs(${NAME})
 pico_enable_stdio_usb(${NAME} 1)
 pico_enable_stdio_uart(${NAME} 0)
 endif()
-

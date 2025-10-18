@@ -33,10 +33,21 @@ static const char *get_mode_description(hw_gpio_mode_t mode) {
 // TEST
 
 int test_hw_01(void) {
-  uint8_t pin_count = hw_gpio_count();
+  uint8_t bank = 0;
+  uint8_t pin_count = hw_gpio_count(bank);
+  sys_printf("GPIO Bank %d: %d pins\n", bank, pin_count);
+  if (pin_count == 0) {
+    sys_printf("  No GPIO pins available in this bank.\n");
+    return 0;
+  }
+
   uint8_t pin = 0;
   for (pin = 0; pin < pin_count; pin++) {
-    hw_gpio_t gpio = hw_gpio_init(pin, HW_GPIO_INPUT);
+    hw_gpio_t gpio = hw_gpio_init(bank, pin, HW_GPIO_NONE);
+    if (hw_gpio_valid(&gpio) == false) {
+      sys_printf("  GPIO pin %02d: invalid\n", pin);
+      continue;
+    }
     hw_gpio_mode_t mode = hw_gpio_get_mode(&gpio);
     sys_printf("GPIO pin %02d: %s\n", pin, get_mode_description(mode));
   }
