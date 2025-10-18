@@ -6,6 +6,20 @@
 #include <stdint.h>
 
 ///////////////////////////////////////////////////////////////////////////////
+// TYPES
+
+// Internal structure stored in reserved bytes
+typedef struct {
+  uint8_t adapter;   ///< I2C adapter number (0, 1, etc.)
+  hw_gpio_t sda;     ///< I2C data pin
+  hw_gpio_t scl;     ///< I2C clock pin
+  uint32_t baudrate; ///< I2C baud rate in Hz
+} i2c_internal_t;
+
+// Helper macro to access internal structure from reserved bytes
+#define I2C_INTERNAL(i2c) ((i2c_internal_t *)(i2c)->reserved)
+
+///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
 
 /**
@@ -16,34 +30,64 @@ uint8_t hw_i2c_count(void) { return 2; }
 /**
  * @brief Initialize an I2C interface using default pins and adapter.
  */
-hw_i2c_t hw_i2c_init_default(uint32_t baudrate) {
-  return hw_i2c_init(PICO_DEFAULT_I2C, PICO_DEFAULT_I2C_SDA_PIN,
+bool hw_i2c_init_default(hw_i2c_t *i2c, uint32_t baudrate) {
+  return hw_i2c_init(i2c, PICO_DEFAULT_I2C, PICO_DEFAULT_I2C_SDA_PIN,
                      PICO_DEFAULT_I2C_SCL_PIN, baudrate);
 }
 
 /**
  * @brief Initialize an I2C interface with specific adapter and pins.
  */
-hw_i2c_t hw_i2c_init(uint8_t adapter, uint8_t sda, uint8_t scl,
-                     uint32_t baudrate) {
-  sys_assert(adapter < hw_i2c_count());
+bool hw_i2c_init(hw_i2c_t *i2c, uint8_t index, uint8_t sda, uint8_t scl,
+                 uint32_t baudrate) {
+  sys_assert(i2c);
+  sys_assert(index < hw_i2c_count());
   sys_assert(sda < hw_gpio_count() && scl < hw_gpio_count());
   sys_assert(baudrate > 0);
 
+  // Get internal structure
+  i2c_internal_t *internal = I2C_INTERNAL(i2c);
+  sys_memset(internal, 0, sizeof(i2c_internal_t));
+
+  // Set the adapter
+  internal->adapter = index;
+
   // Set the GPIO pins
-  hw_i2c_t i2c = {0};
-  i2c.adapter = adapter;
-  i2c.sda = hw_gpio_init(sda, HW_GPIO_I2C);
-  sys_assert(i2c.sda.mask > 0);
-  i2c.scl = hw_gpio_init(scl, HW_GPIO_I2C);
-  sys_assert(i2c.scl.mask > 0);
+  internal->sda = hw_gpio_init(sda, HW_GPIO_I2C);
+  if (internal->sda.mask == 0) {
+    return false;
+  }
+
+  internal->scl = hw_gpio_init(scl, HW_GPIO_I2C);
+  if (internal->scl.mask == 0) {
+    hw_gpio_finalize(&internal->sda);
+    return false;
+  }
 
   // Initialize the I2C interface
-  i2c.baudrate = i2c_init(I2C_INSTANCE(i2c.adapter), baudrate);
-  sys_assert(i2c.baudrate != 0);
+  internal->baudrate = i2c_init(I2C_INSTANCE(internal->adapter), baudrate);
+  if (internal->baudrate == 0) {
+    hw_gpio_finalize(&internal->sda);
+    hw_gpio_finalize(&internal->scl);
+    return false;
+  }
 
-  // Return success
-  return i2c;
+  return true;
+}
+
+/**
+ * @brief Initialize an I2C interface with device path.
+ *
+ * Note: Not supported on Pico - device paths are a Linux concept.
+ * This function always returns false.
+ * Use hw_i2c_init() instead on Pico.
+ */
+bool hw_i2c_init_device(hw_i2c_t *i2c, const char *device, uint32_t baudrate) {
+  sys_assert(i2c);
+  (void)device;
+  (void)baudrate;
+  sys_memset(i2c, 0, sizeof(hw_i2c_t));
+  return false;
 }
 
 /**
@@ -51,14 +95,31 @@ hw_i2c_t hw_i2c_init(uint8_t adapter, uint8_t sda, uint8_t scl,
  */
 void hw_i2c_finalize(hw_i2c_t *i2c) {
   sys_assert(i2c);
-  sys_assert(i2c->baudrate > 0);
+
+  i2c_internal_t *internal = I2C_INTERNAL(i2c);
+  if (internal->baudrate == 0) {
+    return; // Already finalized or invalid
+  }
 
   // Deinitialize the I2C interface
-  i2c_deinit(I2C_INSTANCE(i2c->adapter));
+  i2c_deinit(I2C_INSTANCE(internal->adapter));
 
   // Reset the GPIO pins
-  hw_gpio_finalize(&i2c->sda);
-  hw_gpio_finalize(&i2c->scl);
+  hw_gpio_finalize(&internal->sda);
+  hw_gpio_finalize(&internal->scl);
+
+  // Clear the structure
+  sys_memset(internal, 0, sizeof(i2c_internal_t));
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PROPERTIES
+
+/**
+ * @brief Get true if the I2C interface is valid.
+ */
+bool hw_i2c_valid(hw_i2c_t *i2c) {
+  return i2c && I2C_INTERNAL(i2c)->baudrate > 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -73,15 +134,9 @@ void hw_i2c_finalize(hw_i2c_t *i2c) {
  * @brief Detect if an I2C device is present at the specified address.
  */
 bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr) {
-  sys_assert(i2c);
-
-  // Check addresses
-  if (addr < 0x08 || addr > 0x77) {
-    return false;
-  }
-  if (i2c_reserved_addr(addr)) {
-    return false;
-  }
+  sys_assert(hw_i2c_valid(i2c));
+  sys_assert(addr >= 0x08 && addr <= 0x77);
+  sys_assert(!i2c_reserved_addr(addr));
 
   // Perform a zero-length write to check if the device is present
   uint8_t dummy;
@@ -93,12 +148,12 @@ bool hw_i2c_detect(hw_i2c_t *i2c, uint8_t addr) {
  */
 size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
                   uint32_t timeout_ms) {
-  sys_assert(i2c);
+  sys_assert(hw_i2c_valid(i2c));
   sys_assert(addr >= 0x08 && addr <= 0x77);
   sys_assert(!i2c_reserved_addr(addr));
   sys_assert(data || (tx == 0 && rx == 0));
 
-  // Number of bytes transferred
+  i2c_internal_t *internal = I2C_INTERNAL(i2c);
   size_t bytes_transferred = 0;
 
   // Perform writes
@@ -106,11 +161,11 @@ size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
     int ret;
     sys_assert(data);
     if (timeout_ms == 0) {
-      ret = i2c_write_blocking(I2C_INSTANCE(i2c->adapter), addr & 0x7F, data,
-                               tx, false);
+      ret = i2c_write_blocking(I2C_INSTANCE(internal->adapter), addr & 0x7F,
+                               data, tx, false);
     } else {
-      ret = i2c_write_timeout_us(I2C_INSTANCE(i2c->adapter), addr & 0x7F, data,
-                                 tx, false, timeout_ms * 1000);
+      ret = i2c_write_timeout_us(I2C_INSTANCE(internal->adapter), addr & 0x7F,
+                                 data, tx, false, timeout_ms * 1000);
     }
     if (ret == 0 || ret == PICO_ERROR_TIMEOUT || ret == PICO_ERROR_GENERIC) {
       return 0;
@@ -124,10 +179,10 @@ size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
     int ret;
     sys_assert(data);
     if (timeout_ms == 0) {
-      ret = i2c_read_blocking(I2C_INSTANCE(i2c->adapter), addr & 0x7F,
+      ret = i2c_read_blocking(I2C_INSTANCE(internal->adapter), addr & 0x7F,
                               data + tx, rx, false);
     } else {
-      ret = i2c_read_timeout_us(I2C_INSTANCE(i2c->adapter), addr & 0x7F,
+      ret = i2c_read_timeout_us(I2C_INSTANCE(internal->adapter), addr & 0x7F,
                                 data + tx, rx, false, timeout_ms * 1000);
     }
     if (ret == 0 || ret == PICO_ERROR_TIMEOUT || ret == PICO_ERROR_GENERIC) {
@@ -145,7 +200,7 @@ size_t hw_i2c_xfr(hw_i2c_t *i2c, uint8_t addr, void *data, size_t tx, size_t rx,
  */
 size_t hw_i2c_read(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, void *data,
                    size_t len, uint32_t timeout_ms) {
-  sys_assert(i2c);
+  sys_assert(hw_i2c_valid(i2c));
   sys_assert(addr >= 0x08 && addr <= 0x77);
   sys_assert(!i2c_reserved_addr(addr));
   sys_assert(data);
@@ -167,19 +222,21 @@ size_t hw_i2c_read(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, void *data,
  */
 size_t hw_i2c_write(hw_i2c_t *i2c, uint8_t addr, uint8_t reg, const void *data,
                     size_t len, uint32_t timeout_ms) {
-  sys_assert(i2c);
+  sys_assert(hw_i2c_valid(i2c));
   sys_assert(addr >= 0x08 && addr <= 0x77);
   sys_assert(!i2c_reserved_addr(addr));
   sys_assert(data || (len == 0));
 
+  i2c_internal_t *internal = I2C_INTERNAL(i2c);
+
   // Write the register to the bus
   int ret;
   if (timeout_ms == 0) {
-    ret = i2c_write_blocking(I2C_INSTANCE(i2c->adapter), addr & 0x7F, &reg,
+    ret = i2c_write_blocking(I2C_INSTANCE(internal->adapter), addr & 0x7F, &reg,
                              sizeof(uint8_t), true);
   } else {
-    ret = i2c_write_timeout_us(I2C_INSTANCE(i2c->adapter), addr & 0x7F, &reg,
-                               sizeof(uint8_t), true, timeout_ms * 1000);
+    ret = i2c_write_timeout_us(I2C_INSTANCE(internal->adapter), addr & 0x7F,
+                               &reg, sizeof(uint8_t), true, timeout_ms * 1000);
   }
   if (ret == 0 || ret == PICO_ERROR_TIMEOUT || ret == PICO_ERROR_GENERIC) {
     return 0;

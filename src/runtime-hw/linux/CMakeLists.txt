@@ -4,7 +4,7 @@ add_library(${NAME} STATIC
     ../stub/adc.c
     gpio.c
     hw.c
-    ../stub/i2c.c
+    i2c.c
     ../stub/infrared_rx.c
     ../stub/led.c
     ../stub/power.c

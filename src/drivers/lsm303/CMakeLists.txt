@@ -1,8 +1,8 @@
 
-# BME280 Temperature, Pressure, and Humidity Sensor Driver
+# LSM303D Accelerometer/Magnetometer Driver
 # Append source files to the parent DRIVER_SOURCES list
 list(APPEND DRIVER_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/bme280.c
+    ${CMAKE_CURRENT_LIST_DIR}/lsm303.c
 )
 
 # Propagate the updated list to parent scope

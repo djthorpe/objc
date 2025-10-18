@@ -380,18 +380,18 @@ driver_st7789_t driver_st7789_init(hw_spi_t *spi, uint8_t dc_pin,
   driver_st7789_t st7789 = {0};
 
   // Initialize GPIO pins
-  st7789.dc = hw_gpio_init(dc_pin, HW_GPIO_OUTPUT);
+  st7789.dc = hw_gpio_init(0, dc_pin, HW_GPIO_OUTPUT);
 
   // Initialize optional reset pin
   if (reset_pin != 0) {
-    st7789.reset = hw_gpio_init(reset_pin, HW_GPIO_OUTPUT);
+    st7789.reset = hw_gpio_init(0, reset_pin, HW_GPIO_OUTPUT);
   } else {
     st7789.reset = (hw_gpio_t){0}; // Invalid GPIO
   }
 
   // Initialize optional backlight pin
   if (backlight_pin != 0) {
-    st7789.backlight = hw_gpio_init(backlight_pin, HW_GPIO_OUTPUT);
+    st7789.backlight = hw_gpio_init(0, backlight_pin, HW_GPIO_OUTPUT);
   } else {
     st7789.backlight = (hw_gpio_t){0}; // Invalid GPIO
   }
