@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i2c',['i2c',['../structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe',1,'driver_bme280_t::i2c()'],['../group__I2C.html',1,'(Global Namespace)']]],
+  ['i2c',['i2c',['../structdriver__bme280__t.html#af118f103efda1a63f458ad86a2e0113c',1,'driver_bme280_t::i2c()'],['../structdriver__envirophat__t.html#a0fba990179b4421195b1cb5c215dd753',1,'driver_envirophat_t::i2c()'],['../structdriver__lsm303__t.html#a809f994051285f21f462419351d18898',1,'driver_lsm303_t::i2c()'],['../structdriver__tcs3472__t.html#aa2ebf6126378492db07887a8cf03f716',1,'driver_tcs3472_t::i2c()'],['../group__I2C.html',1,'(Global Namespace)']]],
   ['i2c_2eh',['i2c.h',['../i2c_8h.html',1,'']]],
   ['id',['id',['../group__objc.html#ga0332efe4206b49a80b5028908f36de0c',1,'runtime.h']]],
   ['imp',['IMP',['../group__objc.html#gacd98b3996b82623e9e28e3cd4507a575',1,'runtime.h']]],
@@ -25,6 +25,7 @@ var searchData=
   ['int16value',['int16Value',['../interfaceNXNumber.html#a45f7d544fbe3ffc47489072a90ba7621',1,'NXNumber']]],
   ['int32value',['int32Value',['../interfaceNXNumber.html#ae1e38ca9c66330ab50a76321c4f4eb50',1,'NXNumber']]],
   ['int64value',['int64Value',['../interfaceNXNumber.html#aa4675dea0334164edab8d92740c1f4d7',1,'NXNumber']]],
+  ['integration',['integration',['../structdriver__tcs3472__t.html#ad6a7e4b71bd80229da42d0eb2ea53a38',1,'driver_tcs3472_t']]],
   ['interface',['interface',['../structdriver__st7789__t.html#ab19d7dfe3966a085882890d56edf2708',1,'driver_st7789_t']]],
   ['interval',['interval',['../structsys__timer__t.html#afa33d0d4af0ac467a27025cc74da0ef8',1,'sys_timer_t::interval()'],['../interfaceNXTimer.html#a484e6cd2b8d812068f65304b206a51fb',1,'NXTimer::interval()']]],
   ['interval_5fms',['interval_ms',['../structpix__display__t.html#a82f0b7f2fd573a6daa673a9c11856cfb',1,'pix_display_t']]],

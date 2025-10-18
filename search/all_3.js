@@ -10,6 +10,7 @@ var searchData=
   ['class_5fgetsuperclass',['class_getSuperclass',['../group__objc.html#ga08133c439eca8d5e6f93f450c6f3cc6a',1,'runtime.h']]],
   ['class_5fmetaclassrespondstoselector',['class_metaclassRespondsToSelector',['../group__objc.html#ga1e81322cccc6c5d8c80814e5d4c9cabc',1,'runtime.h']]],
   ['class_5frespondstoselector',['class_respondsToSelector',['../group__objc.html#ga2fa7f9d3bdb155fb39a35714304ed104',1,'runtime.h']]],
+  ['clear',['clear',['../structdriver__tcs3472__rgbc__t.html#a90b1c878ef4727363f01b5c76f0c5e6e',1,'driver_tcs3472_rgbc_t']]],
   ['clear_5frect',['clear_rect',['../structpix__frame__t.html#adc36be17154d7d8af3c37d750f5efbe9',1,'pix_frame_t']]],
   ['clientwithhost_3a',['clientWithHost:',['../interfaceMQTT.html#a7b75e00ed400693da734eab709f8962c',1,'MQTT']]],
   ['clientwithhost_3aport_3aclientidentifier_3atimeout_3a',['clientWithHost:port:clientIdentifier:timeout:',['../interfaceMQTT.html#a3af672cc48c0e705754100e1d08a7c11',1,'MQTT']]],

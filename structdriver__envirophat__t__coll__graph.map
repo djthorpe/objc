@@ -1,0 +1,7 @@
+<map id="driver_envirophat_t" name="driver_envirophat_t">
+<area shape="rect" id="node2" href="$structhw__i2c__t.html" title="I2C adapter. " alt="" coords="125,5,203,32"/>
+<area shape="rect" id="node3" href="$structdriver__lsm303__t.html" title="LSM303D driver instance. " alt="" coords="50,95,177,121"/>
+<area shape="rect" id="node5" href="$structdriver__bme280__t.html" title="BME280 driver instance. " alt="" coords="201,95,333,121"/>
+<area shape="rect" id="node6" href="$structdriver__tcs3472__t.html" title="TCS3472 sensor driver structure. " alt="" coords="357,95,488,121"/>
+<area shape="rect" id="node4" href="$structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="512,95,600,121"/>
+</map>

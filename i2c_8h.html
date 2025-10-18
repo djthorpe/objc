@@ -79,19 +79,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="i2c_8h__dep__incl.png" border="0" usemap="#include_2runtime-hw_2i2c_8hdep" alt=""/></div>
 <map name="include_2runtime-hw_2i2c_8hdep" id="include_2runtime-hw_2i2c_8hdep">
-<area shape="rect" id="node2" href="hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="816,95,999,121"/>
-<area shape="rect" id="node3" href="drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,169,172,211"/>
-<area shape="rect" id="node5" href="drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,169,363,211"/>
-<area shape="rect" id="node6" href="drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,169,553,211"/>
-<area shape="rect" id="node7" href="Application_8h.html" title="Application framework header. " alt="" coords="578,169,725,211"/>
-<area shape="rect" id="node8" href="GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="749,169,895,211"/>
-<area shape="rect" id="node9" href="GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="919,169,1066,211"/>
-<area shape="rect" id="node11" href="LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="1090,169,1237,211"/>
-<area shape="rect" id="node12" href="NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1261,169,1407,211"/>
-<area shape="rect" id="node13" href="NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1432,169,1593,211"/>
-<area shape="rect" id="node14" href="Network_8h.html" title="Network framework header. " alt="" coords="1617,177,1816,203"/>
-<area shape="rect" id="node4" href="drivers_8h.html" title="Drivers header. " alt="" coords="190,266,369,293"/>
-<area shape="rect" id="node10" href="GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="896,259,1089,300"/>
+<area shape="rect" id="node2" href="hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="713,95,896,121"/>
+<area shape="rect" id="node3" href="drivers__bme280_8h.html" title="BME280 Temperature, Pressure, and Humidity Sensor Driver. " alt="" coords="5,169,172,211"/>
+<area shape="rect" id="node5" href="drivers__envirophat_8h.html" title="Enviro pHAT sensor interface. " alt="" coords="127,259,293,300"/>
+<area shape="rect" id="node6" href="drivers__lsm303_8h.html" title="LSM303D 3D Accelerometer and Magnetometer Driver. " alt="" coords="248,169,415,211"/>
+<area shape="rect" id="node7" href="drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="420,259,587,300"/>
+<area shape="rect" id="node8" href="drivers__tcs3472_8h.html" title="TCS3472 RGB Color Sensor Driver. " alt="" coords="439,169,605,211"/>
+<area shape="rect" id="node9" href="drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="611,259,777,300"/>
+<area shape="rect" id="node10" href="Application_8h.html" title="Application framework header. " alt="" coords="731,169,878,211"/>
+<area shape="rect" id="node11" href="GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="902,169,1049,211"/>
+<area shape="rect" id="node12" href="GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="1073,169,1219,211"/>
+<area shape="rect" id="node14" href="LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="1243,169,1390,211"/>
+<area shape="rect" id="node15" href="NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1414,169,1561,211"/>
+<area shape="rect" id="node16" href="NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1585,169,1747,211"/>
+<area shape="rect" id="node17" href="Network_8h.html" title="Network framework header. " alt="" coords="1771,177,1969,203"/>
+<area shape="rect" id="node4" href="drivers_8h.html" title="Drivers header. " alt="" coords="267,348,446,375"/>
+<area shape="rect" id="node13" href="GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="1049,259,1243,300"/>
 </map>
 </div>
 </div>
@@ -105,28 +108,30 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaea53482a8ae6c2808940757835f17302"><td class="memItemLeft" align="right" valign="top">
-typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaea53482a8ae6c2808940757835f17302">hw_i2c_t</a></td></tr>
-<tr class="memdesc:gaea53482a8ae6c2808940757835f17302"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C adapter. <br /></td></tr>
+<tr class="memitem:gaea53482a8ae6c2808940757835f17302"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaea53482a8ae6c2808940757835f17302">hw_i2c_t</a></td></tr>
+<tr class="memdesc:gaea53482a8ae6c2808940757835f17302"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C adapter.  <a href="group__I2C.html#gaea53482a8ae6c2808940757835f17302">More...</a><br /></td></tr>
 <tr class="separator:gaea53482a8ae6c2808940757835f17302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56">hw_i2c_init_default</a> (uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface using default pins and adapter.  <a href="group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56">More...</a><br /></td></tr>
-<tr class="separator:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga706f82af0043f4b36cc06efa1e450b5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f">hw_i2c_init</a> (uint8_t adapter, uint8_t sda, uint8_t scl, uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga706f82af0043f4b36cc06efa1e450b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with specific adapter and pins.  <a href="group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f">More...</a><br /></td></tr>
-<tr class="separator:ga706f82af0043f4b36cc06efa1e450b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga29f5b3cf6595a2d68f4ac051d0bbf76f">hw_i2c_init_default</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, uint32_t baudrate)</td></tr>
+<tr class="memdesc:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface using default pins and adapter.  <a href="group__I2C.html#ga29f5b3cf6595a2d68f4ac051d0bbf76f">More...</a><br /></td></tr>
+<tr class="separator:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa37af2bea02f26ae5e6051588e219397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaa37af2bea02f26ae5e6051588e219397">hw_i2c_init</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, uint8_t index, uint8_t sda, uint8_t scl, uint32_t baudrate)</td></tr>
+<tr class="memdesc:gaa37af2bea02f26ae5e6051588e219397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with specific adapter and pins.  <a href="group__I2C.html#gaa37af2bea02f26ae5e6051588e219397">More...</a><br /></td></tr>
+<tr class="separator:gaa37af2bea02f26ae5e6051588e219397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga6895a96cdfa2d8c5ec0bb66997f28d4f">hw_i2c_init_device</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, const char *device, uint32_t baudrate)</td></tr>
+<tr class="memdesc:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with device path.  <a href="group__I2C.html#ga6895a96cdfa2d8c5ec0bb66997f28d4f">More...</a><br /></td></tr>
+<tr class="separator:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf551069998239cb4013124cf4810356b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf551069998239cb4013124cf4810356b">hw_i2c_finalize</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
 <tr class="memdesc:gaf551069998239cb4013124cf4810356b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release an I2C interface.  <a href="group__I2C.html#gaf551069998239cb4013124cf4810356b">More...</a><br /></td></tr>
 <tr class="separator:gaf551069998239cb4013124cf4810356b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab0643e64019f6690bc07eab226b0ee04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">hw_i2c_count</a> (void)</td></tr>
 <tr class="memdesc:gab0643e64019f6690bc07eab226b0ee04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available I2C adapters.  <a href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">More...</a><br /></td></tr>
 <tr class="separator:gab0643e64019f6690bc07eab226b0ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
-<tr class="memdesc:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the I2C interface is valid.  <a href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">More...</a><br /></td></tr>
-<tr class="separator:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga6fc3aac5b8cc5d6d074c974bd250aeca">hw_i2c_valid</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
+<tr class="memdesc:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the I2C interface is valid.  <a href="group__I2C.html#ga6fc3aac5b8cc5d6d074c974bd250aeca">More...</a><br /></td></tr>
+<tr class="separator:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1">hw_i2c_detect</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr)</td></tr>
 <tr class="memdesc:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect if an I2C device is present at the specified address.  <a href="group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1">More...</a><br /></td></tr>
 <tr class="separator:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>

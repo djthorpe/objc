@@ -1,14 +1,17 @@
 <map id="include/runtime&#45;hw/hw.h" name="include/runtime&#45;hw/hw.h">
-<area shape="rect" id="node2" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,80,172,121"/>
-<area shape="rect" id="node4" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,80,363,121"/>
-<area shape="rect" id="node5" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,80,553,121"/>
-<area shape="rect" id="node6" href="$Application_8h.html" title="Application framework header. " alt="" coords="578,80,725,121"/>
-<area shape="rect" id="node7" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="749,80,895,121"/>
-<area shape="rect" id="node8" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="919,80,1066,121"/>
-<area shape="rect" id="node10" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="1090,80,1237,121"/>
-<area shape="rect" id="node11" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1261,80,1407,121"/>
-<area shape="rect" id="node12" href="$NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1432,80,1593,121"/>
-<area shape="rect" id="node13" href="$Network_8h.html" title="Network framework header. " alt="" coords="1617,87,1816,114"/>
-<area shape="rect" id="node3" href="$drivers_8h.html" title="Drivers header. " alt="" coords="190,177,369,203"/>
-<area shape="rect" id="node9" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="896,169,1089,211"/>
+<area shape="rect" id="node2" href="$drivers__bme280_8h.html" title="BME280 Temperature, Pressure, and Humidity Sensor Driver. " alt="" coords="5,80,172,121"/>
+<area shape="rect" id="node4" href="$drivers__envirophat_8h.html" title="Enviro pHAT sensor interface. " alt="" coords="127,169,293,211"/>
+<area shape="rect" id="node5" href="$drivers__lsm303_8h.html" title="LSM303D 3D Accelerometer and Magnetometer Driver. " alt="" coords="248,80,415,121"/>
+<area shape="rect" id="node6" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="420,169,587,211"/>
+<area shape="rect" id="node7" href="$drivers__tcs3472_8h.html" title="TCS3472 RGB Color Sensor Driver. " alt="" coords="439,80,605,121"/>
+<area shape="rect" id="node8" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="611,169,777,211"/>
+<area shape="rect" id="node9" href="$Application_8h.html" title="Application framework header. " alt="" coords="731,80,878,121"/>
+<area shape="rect" id="node10" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="902,80,1049,121"/>
+<area shape="rect" id="node11" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="1073,80,1219,121"/>
+<area shape="rect" id="node13" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="1243,80,1390,121"/>
+<area shape="rect" id="node14" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1414,80,1561,121"/>
+<area shape="rect" id="node15" href="$NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1585,80,1747,121"/>
+<area shape="rect" id="node16" href="$Network_8h.html" title="Network framework header. " alt="" coords="1771,87,1969,114"/>
+<area shape="rect" id="node3" href="$drivers_8h.html" title="Drivers header. " alt="" coords="267,259,446,285"/>
+<area shape="rect" id="node12" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="1049,169,1243,211"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="Hardware Devices" name="Hardware Devices">
-<area shape="rect" id="node2" href="$group__UC8151.html" title="UC8151 e&#45;paper display driver interface for monochrome displays. " alt="" coords="373,5,446,32"/>
-<area shape="rect" id="node3" href="$group__ST7789.html" title="ST7789 TFT LCD display driver interface for color displays. " alt="" coords="374,56,445,83"/>
-<area shape="rect" id="node5" href="$group__BME280.html" title="BME280 sensor interface for reading temperature, humidity, and pressure. " alt="" coords="372,107,447,133"/>
-<area shape="rect" id="node4" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,56,135,83"/>
+<area shape="rect" id="node2" href="$group__LSM303.html" title="Driver for the LSM303D 3&#45;axis accelerometer and 3&#45;axis magnetometer with integrated temperature senso..." alt="" coords="391,5,517,32"/>
+<area shape="rect" id="node3" href="$group__UC8151.html" title="UC8151 e&#45;paper display driver interface for monochrome displays. " alt="" coords="417,56,491,83"/>
+<area shape="rect" id="node4" href="$group__Envirophat.html" title="Enviro pHAT interface for reading temperature, humidity, pressure, light, and color data using the BM..." alt="" coords="403,107,505,133"/>
+<area shape="rect" id="node5" href="$group__TCS3472.html" title="Driver for the TCS3472 RGB color light&#45;to&#45;digital converter with IR blocking filter. " alt="" coords="372,157,536,184"/>
+<area shape="rect" id="node6" href="$group__ST7789.html" title="ST7789 TFT LCD display driver interface for color displays. " alt="" coords="419,208,489,235"/>
+<area shape="rect" id="node8" href="$group__BME280.html" title="Standalone driver for the Bosch BME280 environmental sensor. " alt="" coords="395,259,513,285"/>
+<area shape="rect" id="node7" href="$group__System.html" title="The &quot;system runtime&quot; layer provides low&#45;level functionality specific to the platform. " alt="" coords="5,132,135,159"/>
 </map>

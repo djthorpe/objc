@@ -1,23 +1,26 @@
 <map id="include/runtime&#45;sys/sys.h" name="include/runtime&#45;sys/sys.h">
-<area shape="rect" id="node2" href="$power_8h.html" title="Power management interface. " alt="" coords="1252,95,1400,136"/>
-<area shape="rect" id="node16" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="1525,95,1676,136"/>
-<area shape="rect" id="node21" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="1669,273,1815,315"/>
-<area shape="rect" id="node22" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="1752,95,1897,136"/>
-<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="901,281,1084,307"/>
-<area shape="rect" id="node4" href="$drivers__bme280_8h.html" title="BME280 sensor interface. " alt="" coords="5,363,172,404"/>
-<area shape="rect" id="node6" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="196,363,363,404"/>
-<area shape="rect" id="node7" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="387,363,553,404"/>
-<area shape="rect" id="node8" href="$Application_8h.html" title="Application framework header. " alt="" coords="1499,363,1646,404"/>
-<area shape="rect" id="node9" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="578,363,725,404"/>
-<area shape="rect" id="node10" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="749,363,895,404"/>
-<area shape="rect" id="node12" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="919,363,1066,404"/>
-<area shape="rect" id="node13" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1670,363,1817,404"/>
-<area shape="rect" id="node14" href="$NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1091,363,1252,404"/>
-<area shape="rect" id="node15" href="$Network_8h.html" title="Network framework header. " alt="" coords="1276,370,1475,397"/>
-<area shape="rect" id="node5" href="$drivers_8h.html" title="Drivers header. " alt="" coords="190,459,369,486"/>
-<area shape="rect" id="node11" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="725,452,919,493"/>
-<area shape="rect" id="node17" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="1525,184,1676,225"/>
-<area shape="rect" id="node18" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="1500,273,1645,315"/>
-<area shape="rect" id="node19" href="$NXInputManager_8h.html" title="The input manager class for handling user input. " alt="" coords="1841,363,1987,404"/>
-<area shape="rect" id="node20" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="2011,363,2158,404"/>
+<area shape="rect" id="node2" href="$power_8h.html" title="Power management interface. " alt="" coords="1343,95,1491,136"/>
+<area shape="rect" id="node19" href="$runtime-gcc_2objc_2assert_8h.html" title="Defines a custom assertion macro. " alt="" coords="1652,95,1803,136"/>
+<area shape="rect" id="node24" href="$NXLog_8h.html" title="Defines a logging function for printing formatted messages. " alt="" coords="1796,273,1941,315"/>
+<area shape="rect" id="node25" href="$NXDate_8h.html" title="Defines the NXDate class for date and time manipulation. " alt="" coords="1879,95,2024,136"/>
+<area shape="rect" id="node3" href="$hw_8h.html" title="Hardware interface abstraction layer. " alt="" coords="799,281,981,307"/>
+<area shape="rect" id="node4" href="$drivers__bme280_8h.html" title="BME280 Temperature, Pressure, and Humidity Sensor Driver. " alt="" coords="5,363,172,404"/>
+<area shape="rect" id="node6" href="$drivers__envirophat_8h.html" title="Enviro pHAT sensor interface. " alt="" coords="127,452,293,493"/>
+<area shape="rect" id="node7" href="$drivers__lsm303_8h.html" title="LSM303D 3D Accelerometer and Magnetometer Driver. " alt="" coords="248,363,415,404"/>
+<area shape="rect" id="node8" href="$drivers__st7789_8h.html" title="ST7789 TFT LCD display driver interface. " alt="" coords="420,452,587,493"/>
+<area shape="rect" id="node9" href="$drivers__tcs3472_8h.html" title="TCS3472 RGB Color Sensor Driver. " alt="" coords="439,363,605,404"/>
+<area shape="rect" id="node10" href="$drivers__uc8151_8h.html" title="UC8151 e&#45;paper display driver interface. " alt="" coords="611,452,777,493"/>
+<area shape="rect" id="node11" href="$Application_8h.html" title="Application framework header. " alt="" coords="1823,363,1970,404"/>
+<area shape="rect" id="node12" href="$GPIO_8h.html" title="Defines a class for controlling General Purpose Input/Output (GPIO) pins. " alt="" coords="731,363,878,404"/>
+<area shape="rect" id="node13" href="$GPIOTypes_8h.html" title="GPIO input types for handling GPIO events. " alt="" coords="902,363,1049,404"/>
+<area shape="rect" id="node15" href="$LED_8h.html" title="Defines a class for controlling Light Emitting Diodes (LEDs). " alt="" coords="1073,363,1219,404"/>
+<area shape="rect" id="node16" href="$NXApplication_8h_source.html" title="include/Application\l/NXApplication.h" alt="" coords="1243,363,1390,404"/>
+<area shape="rect" id="node17" href="$NXApplicationMain_8h.html" title="Application framework main entry point. " alt="" coords="1415,363,1576,404"/>
+<area shape="rect" id="node18" href="$Network_8h.html" title="Network framework header. " alt="" coords="1600,370,1799,397"/>
+<area shape="rect" id="node5" href="$drivers_8h.html" title="Drivers header. " alt="" coords="267,541,446,568"/>
+<area shape="rect" id="node14" href="$GPIODelegate_09Protocol_8h.html" title="Defines a protocol for the GPIO delegate. " alt="" coords="879,452,1072,493"/>
+<area shape="rect" id="node20" href="$objc_8h.html" title="Defines the Objective&#45;C runtime. " alt="" coords="1652,184,1803,225"/>
+<area shape="rect" id="node21" href="$Foundation_8h.html" title="Foundation framework header. " alt="" coords="1627,273,1772,315"/>
+<area shape="rect" id="node22" href="$NXInputManager_8h.html" title="The input manager class for handling user input. " alt="" coords="2165,363,2311,404"/>
+<area shape="rect" id="node23" href="$NXTimer_8h.html" title="Defines a class for controlling timers. " alt="" coords="1994,363,2141,404"/>
 </map>

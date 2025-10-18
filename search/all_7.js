@@ -11,5 +11,6 @@ var searchData=
   ['gpioeventchanged',['GPIOEventChanged',['../group__Application.html#ggad70ed3944974a78efe39eda4b518a8fbacbd62b757f19795cf992dd6dc8849dcc',1,'GPIOTypes.h']]],
   ['gpioeventfalling',['GPIOEventFalling',['../group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba2d380ee07b0c2c01e7dc71522c1bf152',1,'GPIOTypes.h']]],
   ['gpioeventrising',['GPIOEventRising',['../group__Application.html#ggad70ed3944974a78efe39eda4b518a8fba11c0492afe777b0be47f458e2105fb36',1,'GPIOTypes.h']]],
-  ['gpiotypes_2eh',['GPIOTypes.h',['../GPIOTypes_8h.html',1,'']]]
+  ['gpiotypes_2eh',['GPIOTypes.h',['../GPIOTypes_8h.html',1,'']]],
+  ['green',['green',['../structdriver__tcs3472__rgbc__t.html#a0bad9ff3b00696528f886cffcdcf32b6',1,'driver_tcs3472_rgbc_t']]]
 ];

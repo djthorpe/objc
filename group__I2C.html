@@ -76,28 +76,30 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gaea53482a8ae6c2808940757835f17302"><td class="memItemLeft" align="right" valign="top"><a id="gaea53482a8ae6c2808940757835f17302"></a>
-typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaea53482a8ae6c2808940757835f17302">hw_i2c_t</a></td></tr>
-<tr class="memdesc:gaea53482a8ae6c2808940757835f17302"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C adapter. <br /></td></tr>
+<tr class="memitem:gaea53482a8ae6c2808940757835f17302"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaea53482a8ae6c2808940757835f17302">hw_i2c_t</a></td></tr>
+<tr class="memdesc:gaea53482a8ae6c2808940757835f17302"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C adapter.  <a href="#gaea53482a8ae6c2808940757835f17302">More...</a><br /></td></tr>
 <tr class="separator:gaea53482a8ae6c2808940757835f17302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga45a8b36dcdf50ff0baccc54e70927e56">hw_i2c_init_default</a> (uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface using default pins and adapter.  <a href="#ga45a8b36dcdf50ff0baccc54e70927e56">More...</a><br /></td></tr>
-<tr class="separator:ga45a8b36dcdf50ff0baccc54e70927e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga706f82af0043f4b36cc06efa1e450b5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f">hw_i2c_init</a> (uint8_t adapter, uint8_t sda, uint8_t scl, uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga706f82af0043f4b36cc06efa1e450b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with specific adapter and pins.  <a href="#ga706f82af0043f4b36cc06efa1e450b5f">More...</a><br /></td></tr>
-<tr class="separator:ga706f82af0043f4b36cc06efa1e450b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga29f5b3cf6595a2d68f4ac051d0bbf76f">hw_i2c_init_default</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, uint32_t baudrate)</td></tr>
+<tr class="memdesc:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface using default pins and adapter.  <a href="#ga29f5b3cf6595a2d68f4ac051d0bbf76f">More...</a><br /></td></tr>
+<tr class="separator:ga29f5b3cf6595a2d68f4ac051d0bbf76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa37af2bea02f26ae5e6051588e219397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaa37af2bea02f26ae5e6051588e219397">hw_i2c_init</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, uint8_t index, uint8_t sda, uint8_t scl, uint32_t baudrate)</td></tr>
+<tr class="memdesc:gaa37af2bea02f26ae5e6051588e219397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with specific adapter and pins.  <a href="#gaa37af2bea02f26ae5e6051588e219397">More...</a><br /></td></tr>
+<tr class="separator:gaa37af2bea02f26ae5e6051588e219397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga6895a96cdfa2d8c5ec0bb66997f28d4f">hw_i2c_init_device</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *adapter, const char *device, uint32_t baudrate)</td></tr>
+<tr class="memdesc:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an I2C interface with device path.  <a href="#ga6895a96cdfa2d8c5ec0bb66997f28d4f">More...</a><br /></td></tr>
+<tr class="separator:ga6895a96cdfa2d8c5ec0bb66997f28d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf551069998239cb4013124cf4810356b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf551069998239cb4013124cf4810356b">hw_i2c_finalize</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
 <tr class="memdesc:gaf551069998239cb4013124cf4810356b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release an I2C interface.  <a href="#gaf551069998239cb4013124cf4810356b">More...</a><br /></td></tr>
 <tr class="separator:gaf551069998239cb4013124cf4810356b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab0643e64019f6690bc07eab226b0ee04"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04">hw_i2c_count</a> (void)</td></tr>
 <tr class="memdesc:gab0643e64019f6690bc07eab226b0ee04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of available I2C adapters.  <a href="#gab0643e64019f6690bc07eab226b0ee04">More...</a><br /></td></tr>
 <tr class="separator:gab0643e64019f6690bc07eab226b0ee04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
-<tr class="memdesc:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the I2C interface is valid.  <a href="#ga21d0e83a5852f4eb79f9fd310b76b7ba">More...</a><br /></td></tr>
-<tr class="separator:ga21d0e83a5852f4eb79f9fd310b76b7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#ga6fc3aac5b8cc5d6d074c974bd250aeca">hw_i2c_valid</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c)</td></tr>
+<tr class="memdesc:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the I2C interface is valid.  <a href="#ga6fc3aac5b8cc5d6d074c974bd250aeca">More...</a><br /></td></tr>
+<tr class="separator:ga6fc3aac5b8cc5d6d074c974bd250aeca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2C.html#gaf591f6d0ae07f7358444cc58157bb3a1">hw_i2c_detect</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr)</td></tr>
 <tr class="memdesc:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect if an I2C device is present at the specified address.  <a href="#gaf591f6d0ae07f7358444cc58157bb3a1">More...</a><br /></td></tr>
 <tr class="separator:gaf591f6d0ae07f7358444cc58157bb3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,6 +116,24 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Inter-Integrated Circuit (I2C) interface. </p>
 <p>This module provides functions to initialize I2C peripherals, and bi-directional data transfer with I2C devicesin master mode. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="gaea53482a8ae6c2808940757835f17302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaea53482a8ae6c2808940757835f17302">&#9670;&nbsp;</a></span>hw_i2c_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>  <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C adapter. </p>
+<p>Platform-specific I2C interface structure. The internal implementation is opaque and stored in reserved bytes. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gab0643e64019f6690bc07eab226b0ee04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gab0643e64019f6690bc07eab226b0ee04">&#9670;&nbsp;</a></span>hw_i2c_count()</h2>
@@ -203,17 +223,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga706f82af0043f4b36cc06efa1e450b5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga706f82af0043f4b36cc06efa1e450b5f">&#9670;&nbsp;</a></span>hw_i2c_init()</h2>
+<a id="gaa37af2bea02f26ae5e6051588e219397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa37af2bea02f26ae5e6051588e219397">&#9670;&nbsp;</a></span>hw_i2c_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> hw_i2c_init </td>
+          <td class="memname">bool hw_i2c_init </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>adapter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -244,33 +270,44 @@ Functions</h2></td></tr>
 <p>Initialize an I2C interface with specific adapter and pins. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">adapter</td><td>The I2C adapter number to use (0 to <a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04" title="Get the total number of available I2C adapters. ">hw_i2c_count()</a>-1). </td></tr>
+    <tr><td class="paramname">adapter</td><td>The I2C adapter structure </td></tr>
+    <tr><td class="paramname">index</td><td>The I2C adapter index to use (0 to <a class="el" href="group__I2C.html#gab0643e64019f6690bc07eab226b0ee04" title="Get the total number of available I2C adapters. ">hw_i2c_count()</a>-1). </td></tr>
     <tr><td class="paramname">sda</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for I2C data (SDA). </td></tr>
     <tr><td class="paramname">scl</td><td>The <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pin number to use for I2C clock (SCL). </td></tr>
     <tr><td class="paramname">baudrate</td><td>The desired I2C baud rate (e.g., 100000 for 100kHz). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An I2C structure representing the initialized interface.</dd></dl>
-<p>This function initializes an I2C interface using the specified adapter and <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins for SDA and SCL lines. The adapter number should be valid and the specified pins should be capable of I2C functionality.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the initialization was successful, false otherwise.</dd></dl>
+<p>This function initializes an I2C interface using the specified adapter and <a class="el" href="interfaceGPIO.html" title="The GPIO class. ">GPIO</a> pins for SDA and SCL lines. The adapter index should be valid and the specified pins should be capable of I2C functionality.</p>
 <dl class="section note"><dt>Note</dt><dd>The specified pins must support I2C functionality. </dd>
 <dd>
 Pin assignments are platform-dependent. </dd></dl>
 
 </div>
 </div>
-<a id="ga45a8b36dcdf50ff0baccc54e70927e56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga45a8b36dcdf50ff0baccc54e70927e56">&#9670;&nbsp;</a></span>hw_i2c_init_default()</h2>
+<a id="ga29f5b3cf6595a2d68f4ac051d0bbf76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga29f5b3cf6595a2d68f4ac051d0bbf76f">&#9670;&nbsp;</a></span>hw_i2c_init_default()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> hw_i2c_init_default </td>
+          <td class="memname">bool hw_i2c_init_default </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>baudrate</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
+          <td class="paramname"><em>adapter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>baudrate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -278,12 +315,59 @@ Pin assignments are platform-dependent. </dd></dl>
 <p>Initialize an I2C interface using default pins and adapter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">adapter</td><td>The I2C adapter structure </td></tr>
     <tr><td class="paramname">baudrate</td><td>The desired I2C baud rate (e.g., 100000 for 100kHz). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An I2C structure representing the initialized interface.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the initialization was successful, false otherwise.</dd></dl>
 <p>This function initializes the default I2C interface using platform-specific default pins and adapter settings. This is the simplest way to get I2C functionality without needing to specify pin assignments. </p>
+
+</div>
+</div>
+<a id="ga6895a96cdfa2d8c5ec0bb66997f28d4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6895a96cdfa2d8c5ec0bb66997f28d4f">&#9670;&nbsp;</a></span>hw_i2c_init_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hw_i2c_init_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
+          <td class="paramname"><em>adapter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>baudrate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize an I2C interface with device path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adapter</td><td>The I2C adapter structure </td></tr>
+    <tr><td class="paramname">device</td><td>The I2C device path (e.g., "/dev/i2c-0"). </td></tr>
+    <tr><td class="paramname">baudrate</td><td>The desired I2C baud rate (e.g., 100000 for 100kHz). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the initialization was successful, false otherwise.</dd></dl>
+<p>This function initializes an I2C interface using the specified device path and baud rate. The device path should be valid and correspond to an I2C adapter on the system. </p>
 
 </div>
 </div>
@@ -353,37 +437,32 @@ Pin assignments are platform-dependent. </dd></dl>
 
 </div>
 </div>
-<a id="ga21d0e83a5852f4eb79f9fd310b76b7ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga21d0e83a5852f4eb79f9fd310b76b7ba">&#9670;&nbsp;</a></span>hw_i2c_valid()</h2>
+<a id="ga6fc3aac5b8cc5d6d074c974bd250aeca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6fc3aac5b8cc5d6d074c974bd250aeca">&#9670;&nbsp;</a></span>hw_i2c_valid()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool hw_i2c_valid </td>
+          <td class="memname">bool hw_i2c_valid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>i2c</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Get true if the I2C interface is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i2c</td><td>Pointer to the I2C structure representing the interface. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the I2C interface is valid, false otherwise.</dd></dl>
 <p>The result of hw_i2c_init can return an empty I2C structure if the initialization fails. This function checks if the I2C interface is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="i2c_8h_source.html#l00100">100</a> of file <a class="el" href="i2c_8h_source.html">i2c.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                               {</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">return</span> i2c &amp;&amp; i2c-&gt;<a class="code" href="structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c">baudrate</a> &gt; 0;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div><div class="ttc" id="structhw__i2c__t_html_ac4b3e6b61389511b32361efdaaa75e3c"><div class="ttname"><a href="structhw__i2c__t.html#ac4b3e6b61389511b32361efdaaa75e3c">hw_i2c_t::baudrate</a></div><div class="ttdeci">uint32_t baudrate</div><div class="ttdoc">I2C baud rate in Hz. </div><div class="ttdef"><b>Definition:</b> <a href="i2c_8h_source.html#l00029">i2c.h:29</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="ga9eab9855e0e724930af0a16b67e83186"></a>

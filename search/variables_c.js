@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['mag_5fscale',['mag_scale',['../structdriver__lsm303__t.html#af360a3337eda5784d024537277436718',1,'driver_lsm303_t']]],
   ['mask',['mask',['../structhw__gpio__t.html#a6d47911d555444dcb42eb8fecc0c6846',1,'hw_gpio_t']]],
   ['millisecond',['Millisecond',['../group__Foundation.html#gae92c8d12ab345aad726d1e06da6f9489',1,'NXTimeInterval.h']]],
   ['minute',['Minute',['../group__Foundation.html#ga1d067ed42a6146a596017dd7cd348b2e',1,'NXTimeInterval.h']]],

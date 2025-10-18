@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['i2c',['i2c',['../structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe',1,'driver_bme280_t']]],
+  ['i2c',['i2c',['../structdriver__bme280__t.html#af118f103efda1a63f458ad86a2e0113c',1,'driver_bme280_t::i2c()'],['../structdriver__envirophat__t.html#a0fba990179b4421195b1cb5c215dd753',1,'driver_envirophat_t::i2c()'],['../structdriver__lsm303__t.html#a809f994051285f21f462419351d18898',1,'driver_lsm303_t::i2c()'],['../structdriver__tcs3472__t.html#aa2ebf6126378492db07887a8cf03f716',1,'driver_tcs3472_t::i2c()']]],
   ['index',['index',['../structsys__hashtable__iterator.html#a2d817bc29107a43c41d33070790b964d',1,'sys_hashtable_iterator']]],
   ['init',['init',['../structsys__mutex__t.html#acaaec752ea29455ef89715a3676dfea4',1,'sys_mutex_t::init()'],['../structsys__cond__t.html#ac258836bbd687b37754300f527119591',1,'sys_cond_t::init()'],['../structsys__waitgroup__t.html#aa99c0b8a94f428e3afb8478b40ac4ca9',1,'sys_waitgroup_t::init()']]],
+  ['integration',['integration',['../structdriver__tcs3472__t.html#ad6a7e4b71bd80229da42d0eb2ea53a38',1,'driver_tcs3472_t']]],
   ['interface',['interface',['../structdriver__st7789__t.html#ab19d7dfe3966a085882890d56edf2708',1,'driver_st7789_t']]],
   ['interval',['interval',['../structsys__timer__t.html#afa33d0d4af0ac467a27025cc74da0ef8',1,'sys_timer_t']]],
   ['interval_5fms',['interval_ms',['../structpix__display__t.html#a82f0b7f2fd573a6daa673a9c11856cfb',1,'pix_display_t']]],

@@ -48,58 +48,44 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">driver_bme280_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Drivers.html">Hardware Devices</a> &raquo; <a class="el" href="group__BME280.html">BME280</a></div></div>  </div>
+<div class="title">driver_bme280_t Struct Reference<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Drivers.html">Hardware Devices</a> &raquo; <a class="el" href="group__BME280.html">BME280 Driver</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>BME280 sensor driver structure.  
+<p>BME280 driver instance.  
  <a href="structdriver__bme280__t.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="drivers__bme280_8h_source.html">drivers/drivers.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for driver_bme280_t:</div>
 <div class="dyncontent">
 <div class="center"><img src="structdriver__bme280__t__coll__graph.png" border="0" usemap="#driver__bme280__t_coll__map" alt="Collaboration graph"/></div>
 <map name="driver__bme280__t_coll__map" id="driver__bme280__t_coll__map">
-<area shape="rect" id="node2" href="structhw__i2c__t.html" title="I2C adapter. " alt="" coords="32,109,111,136"/>
-<area shape="rect" id="node3" href="structhw__gpio__t.html" title="GPIO logical pin structure. " alt="" coords="27,5,115,32"/>
+<area shape="rect" id="node2" href="structhw__i2c__t.html" title="I2C adapter. " alt="" coords="32,5,111,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:ac9c43f75a303e27d3ea80f6228cbf619"><td class="memItemLeft" align="right" valign="top"><a id="ac9c43f75a303e27d3ea80f6228cbf619"></a>
-uint8_t reserved [<a class="el" href="drivers__bme280_8h.html#a66b6d1290b56554429c557bdc5fd45d7">DRIVER_BME280_RESERVED_SIZE</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#ac9c43f75a303e27d3ea80f6228cbf619">__attribute__</a> ((aligned(8)))</td></tr>
-<tr class="memdesc:ac9c43f75a303e27d3ea80f6228cbf619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved for internal use. <br /></td></tr>
-<tr class="separator:ac9c43f75a303e27d3ea80f6228cbf619"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a1acb79ed0f52d966926a6923a07cd5fe"><td class="memItemLeft" align="right" valign="top"><a id="a1acb79ed0f52d966926a6923a07cd5fe"></a>
-<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">i2c</a></td></tr>
-<tr class="memdesc:a1acb79ed0f52d966926a6923a07cd5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the I2C interface used for communication. <br /></td></tr>
-<tr class="separator:a1acb79ed0f52d966926a6923a07cd5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dc5a745328e038d140880531e3387bc"><td class="memItemLeft" align="right" valign="top"><a id="a4dc5a745328e038d140880531e3387bc"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc">address</a></td></tr>
-<tr class="memdesc:a4dc5a745328e038d140880531e3387bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C address of the BME280 sensor. <br /></td></tr>
-<tr class="separator:a4dc5a745328e038d140880531e3387bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e6cb40e28be9591c95c62bdb955a888"><td class="memItemLeft" align="right" valign="top"><a id="a3e6cb40e28be9591c95c62bdb955a888"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#a3e6cb40e28be9591c95c62bdb955a888">timeout_ms</a></td></tr>
-<tr class="memdesc:a3e6cb40e28be9591c95c62bdb955a888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read/write timeout in milliseconds. <br /></td></tr>
-<tr class="separator:a3e6cb40e28be9591c95c62bdb955a888"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a0b7e357f31a396530256d930e87272"><td class="memItemLeft" align="right" valign="top"><a id="a8a0b7e357f31a396530256d930e87272"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#a8a0b7e357f31a396530256d930e87272">_padding</a> [6]</td></tr>
-<tr class="memdesc:a8a0b7e357f31a396530256d930e87272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding to ensure proper alignment. <br /></td></tr>
-<tr class="separator:a8a0b7e357f31a396530256d930e87272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af118f103efda1a63f458ad86a2e0113c"><td class="memItemLeft" align="right" valign="top"><a id="af118f103efda1a63f458ad86a2e0113c"></a>
+<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#af118f103efda1a63f458ad86a2e0113c">i2c</a></td></tr>
+<tr class="memdesc:af118f103efda1a63f458ad86a2e0113c"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C interface. <br /></td></tr>
+<tr class="separator:af118f103efda1a63f458ad86a2e0113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29fb9e84bd98f3f83d64d27b4583001"><td class="memItemLeft" align="right" valign="top"><a id="af29fb9e84bd98f3f83d64d27b4583001"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#af29fb9e84bd98f3f83d64d27b4583001">addr</a></td></tr>
+<tr class="memdesc:af29fb9e84bd98f3f83d64d27b4583001"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C address (0x76 or 0x77) <br /></td></tr>
+<tr class="separator:af29fb9e84bd98f3f83d64d27b4583001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3e1ed61792c6de80b0d4f5f478b0986"><td class="memItemLeft" align="right" valign="top"><a id="aa3e1ed61792c6de80b0d4f5f478b0986"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html#aa3e1ed61792c6de80b0d4f5f478b0986">_reserved</a> [64]</td></tr>
+<tr class="memdesc:aa3e1ed61792c6de80b0d4f5f478b0986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal calibration data. <br /></td></tr>
+<tr class="separator:aa3e1ed61792c6de80b0d4f5f478b0986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>BME280 sensor driver structure. </p>
-<p>This structure contains the configuration and state information for a BME280 sensor instance. The BME280 is a combined digital humidity, pressure and temperature sensor from Bosch Sensortec. </p>
+<div class="textblock"><p>BME280 driver instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00028">28</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00057">57</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/drivers/<a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a></li>
 </ul>

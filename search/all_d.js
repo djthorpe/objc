@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['mag_5fscale',['mag_scale',['../structdriver__lsm303__t.html#af360a3337eda5784d024537277436718',1,'driver_lsm303_t']]],
   ['malloc_2eh',['malloc.h',['../malloc_8h.html',1,'']]],
   ['mapwithcapacity_3a',['mapWithCapacity:',['../interfaceNXMap.html#aa16b371fea0236822d2139e61dd713e6',1,'NXMap']]],
   ['mapwithobjects_3aforkeys_3a',['mapWithObjects:forKeys:',['../interfaceNXMap.html#a420300bb0476e18b70f2192ef56c785d',1,'NXMap']]],

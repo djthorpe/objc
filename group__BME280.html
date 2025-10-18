@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>objc: BME280</title>
+<title>objc: BME280 Driver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -49,18 +49,17 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">BME280<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Drivers.html">Hardware Devices</a></div></div>  </div>
+<div class="title">BME280 Driver<div class="ingroups"><a class="el" href="group__System.html">System Runtime</a> &raquo; <a class="el" href="group__Drivers.html">Hardware Devices</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>BME280 sensor interface for reading temperature, humidity, and pressure.  
+<p>Standalone driver for the Bosch BME280 environmental sensor.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
-Collaboration diagram for BME280:</div>
+Collaboration diagram for BME280 Driver:</div>
 <div class="dyncontent">
 <center><table><tr><td><img src="group__BME280.png" border="0" alt="" usemap="#group____BME280"/>
 <map name="group____BME280" id="group____BME280">
@@ -71,119 +70,148 @@ Collaboration diagram for BME280:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 sensor driver structure.  <a href="structdriver__bme280__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 measurement data.  <a href="structdriver__bme280__data__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gab25d973e7130103a7e4d74d21b679903"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gab25d973e7130103a7e4d74d21b679903">driver_bme280_t</a></td></tr>
-<tr class="memdesc:gab25d973e7130103a7e4d74d21b679903"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 sensor driver structure.  <a href="#gab25d973e7130103a7e4d74d21b679903">More...</a><br /></td></tr>
-<tr class="separator:gab25d973e7130103a7e4d74d21b679903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 driver instance.  <a href="structdriver__bme280__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga3856828f808f6fb5e66458a689bf13be"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> { <a class="el" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65">DRIVER_BME280_MODE_SLEEP</a> = 1, 
-<a class="el" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38">DRIVER_BME280_MODE_FORCED</a>, 
-<a class="el" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e">DRIVER_BME280_MODE_NORMAL</a>
- }<tr class="memdesc:ga3856828f808f6fb5e66458a689bf13be"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 sensor modes.  <a href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">More...</a><br /></td></tr>
+<tr class="memitem:ga34821baec48fab4428f4c2472943620a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a> { <br />
+&#160;&#160;<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa71344945acdec524115eb4dc464d695d">DRIVER_BME280_OVERSAMPLING_NONE</a> = 0, 
+<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa60fda1e56d7cd560da6867ff319c2111">DRIVER_BME280_OVERSAMPLING_1X</a> = 1, 
+<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aac826d816ed1e155d4e521defc72bcee0">DRIVER_BME280_OVERSAMPLING_2X</a> = 2, 
+<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aaf628c4829190824d18e34ab3c06f0012">DRIVER_BME280_OVERSAMPLING_4X</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa319440b9d5f1d37d14bc6e057b8c454f">DRIVER_BME280_OVERSAMPLING_8X</a> = 4, 
+<a class="el" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aade490420cb5695e739a066edfdddba71">DRIVER_BME280_OVERSAMPLING_16X</a> = 5
+<br />
+ }<tr class="memdesc:ga34821baec48fab4428f4c2472943620a"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 oversampling settings.  <a href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">More...</a><br /></td></tr>
 </td></tr>
-<tr class="separator:ga3856828f808f6fb5e66458a689bf13be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga34821baec48fab4428f4c2472943620a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6adbb71f7b27f8463e0bd0e27fff5b63"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a> { <br />
+&#160;&#160;<a class="el" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad78e3abbcf83f0e3fe869babfd673a7c">DRIVER_BME280_FILTER_OFF</a> = 0, 
+<a class="el" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac1ad0b591de185efd683df3e5e755933">DRIVER_BME280_FILTER_2</a> = 1, 
+<a class="el" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac7ca56c4115468818298865ea214f36a">DRIVER_BME280_FILTER_4</a> = 2, 
+<a class="el" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63aa5593c0713d75b5d2a5725aad071c074">DRIVER_BME280_FILTER_8</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad51e3329fa296b2ec08de4281af73949">DRIVER_BME280_FILTER_16</a> = 4
+<br />
+ }<tr class="memdesc:ga6adbb71f7b27f8463e0bd0e27fff5b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">BME280 IIR filter coefficients.  <a href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ga6adbb71f7b27f8463e0bd0e27fff5b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga4865a224e166bd0a4015029e04a85d02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga4865a224e166bd0a4015029e04a85d02">driver_bme280_i2c_init</a> (<a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t address)</td></tr>
-<tr class="memdesc:ga4865a224e166bd0a4015029e04a85d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a BME280 sensor driver using the I2C interface.  <a href="#ga4865a224e166bd0a4015029e04a85d02">More...</a><br /></td></tr>
-<tr class="separator:ga4865a224e166bd0a4015029e04a85d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga9d586c3953ed927f6b2ff8130d2e10ba">driver_bme280_finalize</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and release a BME280 sensor driver.  <a href="#ga9d586c3953ed927f6b2ff8130d2e10ba">More...</a><br /></td></tr>
-<tr class="separator:ga9d586c3953ed927f6b2ff8130d2e10ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga205dc55eb205ac4efffce7cc33ceea6a">driver_bme280_valid</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get true if the BME280 interface is valid.  <a href="#ga205dc55eb205ac4efffce7cc33ceea6a">More...</a><br /></td></tr>
-<tr class="separator:ga205dc55eb205ac4efffce7cc33ceea6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0c164f47501aa36d89c885ff573b577"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577">driver_bme280_set_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280, <a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> mode)</td></tr>
-<tr class="memdesc:gaa0c164f47501aa36d89c885ff573b577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the operating mode of the BME280 sensor.  <a href="#gaa0c164f47501aa36d89c885ff573b577">More...</a><br /></td></tr>
-<tr class="separator:gaa0c164f47501aa36d89c885ff573b577"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e">driver_bme280_get_mode</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current operating mode of the BME280 sensor.  <a href="#gac0961f2d7118d33d4c7b6099c052eb7e">More...</a><br /></td></tr>
-<tr class="separator:gac0961f2d7118d33d4c7b6099c052eb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae4a15c2cfc249ab949d785d4728c8c0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gae4a15c2cfc249ab949d785d4728c8c0d">driver_bme280_reset</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:gae4a15c2cfc249ab949d785d4728c8c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the BME280 sensor to its default state.  <a href="#gae4a15c2cfc249ab949d785d4728c8c0d">More...</a><br /></td></tr>
-<tr class="separator:gae4a15c2cfc249ab949d785d4728c8c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a9376048cba6c83a3bfbb9799d192a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga8a9376048cba6c83a3bfbb9799d192a2">driver_bme280_read_data</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280, float *temperature, float *pressure, float *humidity)</td></tr>
-<tr class="memdesc:ga8a9376048cba6c83a3bfbb9799d192a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read temperature, pressure, and humidity data from the BME280 sensor.  <a href="#ga8a9376048cba6c83a3bfbb9799d192a2">More...</a><br /></td></tr>
-<tr class="separator:ga8a9376048cba6c83a3bfbb9799d192a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf608792aab543f8dea4bf762e7fc2bfa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaf608792aab543f8dea4bf762e7fc2bfa">driver_bme280_read_temperature</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:gaf608792aab543f8dea4bf762e7fc2bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read only temperature from the BME280 sensor.  <a href="#gaf608792aab543f8dea4bf762e7fc2bfa">More...</a><br /></td></tr>
-<tr class="separator:gaf608792aab543f8dea4bf762e7fc2bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga63a955e1a84050e40b5a515df27a82ad"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga63a955e1a84050e40b5a515df27a82ad">driver_bme280_read_pressure</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:ga63a955e1a84050e40b5a515df27a82ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read only pressure from the BME280 sensor.  <a href="#ga63a955e1a84050e40b5a515df27a82ad">More...</a><br /></td></tr>
-<tr class="separator:ga63a955e1a84050e40b5a515df27a82ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga147ad37c45fdf8eb5e19d4bf87ea914a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga147ad37c45fdf8eb5e19d4bf87ea914a">driver_bme280_read_humidity</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *bme280)</td></tr>
-<tr class="memdesc:ga147ad37c45fdf8eb5e19d4bf87ea914a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read only humidity from the BME280 sensor.  <a href="#ga147ad37c45fdf8eb5e19d4bf87ea914a">More...</a><br /></td></tr>
-<tr class="separator:ga147ad37c45fdf8eb5e19d4bf87ea914a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac8c12d391f07c6eedce45886f027a0e5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gac8c12d391f07c6eedce45886f027a0e5">driver_bme280_calculate_altitude</a> (float pressure_pa, float sea_level_pa)</td></tr>
-<tr class="memdesc:gac8c12d391f07c6eedce45886f027a0e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate altitude from pressure measurement.  <a href="#gac8c12d391f07c6eedce45886f027a0e5">More...</a><br /></td></tr>
-<tr class="separator:gac8c12d391f07c6eedce45886f027a0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad0b6004c094660e9cf94b85e5abe24d7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gad0b6004c094660e9cf94b85e5abe24d7">driver_bme280_calculate_sea_level_pressure</a> (float pressure_pa, float altitude_m)</td></tr>
-<tr class="memdesc:gad0b6004c094660e9cf94b85e5abe24d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate sea level pressure from current pressure and altitude.  <a href="#gad0b6004c094660e9cf94b85e5abe24d7">More...</a><br /></td></tr>
-<tr class="separator:gad0b6004c094660e9cf94b85e5abe24d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa5ffa5f4d9cf5e0ab0da6e6f042b6247"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaa5ffa5f4d9cf5e0ab0da6e6f042b6247">driver_bme280_init_i2c</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver, <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr_offset)</td></tr>
+<tr class="memdesc:gaa5ffa5f4d9cf5e0ab0da6e6f042b6247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize BME280 with I2C interface and default settingsInitializes with default settings: 1x oversampling for all sensors, filter off.  <a href="#gaa5ffa5f4d9cf5e0ab0da6e6f042b6247">More...</a><br /></td></tr>
+<tr class="separator:gaa5ffa5f4d9cf5e0ab0da6e6f042b6247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga964db1768e967df5710c58178a05a01a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga964db1768e967df5710c58178a05a01a">driver_bme280_init_i2c_with_config</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver, <a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *i2c, uint8_t addr_offset, <a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a> temp_os, <a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a> press_os, <a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a> hum_os, <a class="el" href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a> filter)</td></tr>
+<tr class="memdesc:ga964db1768e967df5710c58178a05a01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize BME280 with I2C interface and custom settingsAllows configuration of oversampling and filter settings.  <a href="#ga964db1768e967df5710c58178a05a01a">More...</a><br /></td></tr>
+<tr class="separator:ga964db1768e967df5710c58178a05a01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2fa9869edefdfd2f9abda7ca5eedb0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaf2fa9869edefdfd2f9abda7ca5eedb0e">driver_bme280_valid</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver)</td></tr>
+<tr class="memdesc:gaf2fa9869edefdfd2f9abda7ca5eedb0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if driver instance is valid.  <a href="#gaf2fa9869edefdfd2f9abda7ca5eedb0e">More...</a><br /></td></tr>
+<tr class="separator:gaf2fa9869edefdfd2f9abda7ca5eedb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6d7cec045fba0955e74fd0aa909085ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga6d7cec045fba0955e74fd0aa909085ec">driver_bme280_finalize</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver)</td></tr>
+<tr class="memdesc:ga6d7cec045fba0955e74fd0aa909085ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize and power down BME280.  <a href="#ga6d7cec045fba0955e74fd0aa909085ec">More...</a><br /></td></tr>
+<tr class="separator:ga6d7cec045fba0955e74fd0aa909085ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada1e73b28af0ab2ec62702a1bff7d485"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gada1e73b28af0ab2ec62702a1bff7d485">driver_bme280_set_temp_offset</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver, float offset)</td></tr>
+<tr class="memdesc:gada1e73b28af0ab2ec62702a1bff7d485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set temperature offset for calibrationUse this to compensate for self-heating or other temperature offsets.  <a href="#gada1e73b28af0ab2ec62702a1bff7d485">More...</a><br /></td></tr>
+<tr class="separator:gada1e73b28af0ab2ec62702a1bff7d485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5243d992a8735f44f74a2806a83e7b97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga5243d992a8735f44f74a2806a83e7b97">driver_bme280_read_data</a> (<a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *driver, <a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *data)</td></tr>
+<tr class="memdesc:ga5243d992a8735f44f74a2806a83e7b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read all sensor data (temperature, pressure, humidity)Triggers a forced measurement (single shot), waits for completion, and reads all three sensor values in a single transaction.  <a href="#ga5243d992a8735f44f74a2806a83e7b97">More...</a><br /></td></tr>
+<tr class="separator:ga5243d992a8735f44f74a2806a83e7b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2ffb5d0698906f96d86bb05e3062667"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#gaf2ffb5d0698906f96d86bb05e3062667">driver_bme280_calculate_altitude</a> (const <a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *data, float sea_level_pressure)</td></tr>
+<tr class="memdesc:gaf2ffb5d0698906f96d86bb05e3062667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate altitude from pressureUses the international barometric formula.  <a href="#gaf2ffb5d0698906f96d86bb05e3062667">More...</a><br /></td></tr>
+<tr class="separator:gaf2ffb5d0698906f96d86bb05e3062667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04e28514a3f604df793fb00c2219fae3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__BME280.html#ga04e28514a3f604df793fb00c2219fae3">driver_bme280_calculate_sea_level_pressure</a> (const <a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *data, float altitude)</td></tr>
+<tr class="memdesc:ga04e28514a3f604df793fb00c2219fae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate sea level pressure from altitude.  <a href="#ga04e28514a3f604df793fb00c2219fae3">More...</a><br /></td></tr>
+<tr class="separator:ga04e28514a3f604df793fb00c2219fae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>BME280 sensor interface for reading temperature, humidity, and pressure. </p>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="gab25d973e7130103a7e4d74d21b679903"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab25d973e7130103a7e4d74d21b679903">&#9670;&nbsp;</a></span>driver_bme280_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a>  <a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>BME280 sensor driver structure. </p>
-<p>This structure contains the configuration and state information for a BME280 sensor instance. The BME280 is a combined digital humidity, pressure and temperature sensor from Bosch Sensortec. </p>
-
-</div>
-</div>
+<p>Standalone driver for the Bosch BME280 environmental sensor. </p>
+<p>Provides temperature, pressure, and humidity measurements. </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="ga3856828f808f6fb5e66458a689bf13be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3856828f808f6fb5e66458a689bf13be">&#9670;&nbsp;</a></span>driver_bme280_mode_t</h2>
+<a id="ga6adbb71f7b27f8463e0bd0e27fff5b63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6adbb71f7b27f8463e0bd0e27fff5b63">&#9670;&nbsp;</a></span>driver_bme280_filter_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a></td>
+          <td class="memname">enum <a class="el" href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>BME280 sensor modes. </p>
-<p>This enumeration defines the operating modes for the BME280 sensor. </p>
+<p>BME280 IIR filter coefficients. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65"></a>DRIVER_BME280_MODE_SLEEP&#160;</td><td class="fielddoc"><p>Sleep mode. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga6adbb71f7b27f8463e0bd0e27fff5b63ad78e3abbcf83f0e3fe869babfd673a7c"></a>DRIVER_BME280_FILTER_OFF&#160;</td><td class="fielddoc"><p>Filter off. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38"></a>DRIVER_BME280_MODE_FORCED&#160;</td><td class="fielddoc"><p>Forced mode. </p>
+<tr><td class="fieldname"><a id="gga6adbb71f7b27f8463e0bd0e27fff5b63ac1ad0b591de185efd683df3e5e755933"></a>DRIVER_BME280_FILTER_2&#160;</td><td class="fielddoc"><p>Filter coefficient 2. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e"></a>DRIVER_BME280_MODE_NORMAL&#160;</td><td class="fielddoc"><p>Normal mode. </p>
+<tr><td class="fieldname"><a id="gga6adbb71f7b27f8463e0bd0e27fff5b63ac7ca56c4115468818298865ea214f36a"></a>DRIVER_BME280_FILTER_4&#160;</td><td class="fielddoc"><p>Filter coefficient 4. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga6adbb71f7b27f8463e0bd0e27fff5b63aa5593c0713d75b5d2a5725aad071c074"></a>DRIVER_BME280_FILTER_8&#160;</td><td class="fielddoc"><p>Filter coefficient 8. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga6adbb71f7b27f8463e0bd0e27fff5b63ad51e3329fa296b2ec08de4281af73949"></a>DRIVER_BME280_FILTER_16&#160;</td><td class="fielddoc"><p>Filter coefficient 16. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00044">44</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;             {</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65">DRIVER_BME280_MODE_SLEEP</a> = 1, </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38">DRIVER_BME280_MODE_FORCED</a>,    </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e">DRIVER_BME280_MODE_NORMAL</a>     </div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <a class="code" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a>;</div><div class="ttc" id="group__BME280_html_gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65"><div class="ttname"><a href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea1fce00ac1c561cbb82ba68c99e513e65">DRIVER_BME280_MODE_SLEEP</a></div><div class="ttdoc">Sleep mode. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00045">drivers_bme280.h:45</a></div></div>
-<div class="ttc" id="group__BME280_html_gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38"><div class="ttname"><a href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea19d63ffc33cb460350742c2a6d379f38">DRIVER_BME280_MODE_FORCED</a></div><div class="ttdoc">Forced mode. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00046">drivers_bme280.h:46</a></div></div>
-<div class="ttc" id="group__BME280_html_gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e"><div class="ttname"><a href="group__BME280.html#gga3856828f808f6fb5e66458a689bf13bea2426fdf321853987cb1b6e53c8d01b9e">DRIVER_BME280_MODE_NORMAL</a></div><div class="ttdoc">Normal mode. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00047">drivers_bme280.h:47</a></div></div>
-<div class="ttc" id="group__BME280_html_ga3856828f808f6fb5e66458a689bf13be"><div class="ttname"><a href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a></div><div class="ttdeci">driver_bme280_mode_t</div><div class="ttdoc">BME280 sensor modes. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00044">drivers_bme280.h:44</a></div></div>
+<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00035">35</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;             {</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad78e3abbcf83f0e3fe869babfd673a7c">DRIVER_BME280_FILTER_OFF</a> = 0, </div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac1ad0b591de185efd683df3e5e755933">DRIVER_BME280_FILTER_2</a> = 1,   </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac7ca56c4115468818298865ea214f36a">DRIVER_BME280_FILTER_4</a> = 2,   </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63aa5593c0713d75b5d2a5725aad071c074">DRIVER_BME280_FILTER_8</a> = 3,   </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad51e3329fa296b2ec08de4281af73949">DRIVER_BME280_FILTER_16</a> = 4   </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a>;</div><div class="ttc" id="group__BME280_html_gga6adbb71f7b27f8463e0bd0e27fff5b63ac7ca56c4115468818298865ea214f36a"><div class="ttname"><a href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac7ca56c4115468818298865ea214f36a">DRIVER_BME280_FILTER_4</a></div><div class="ttdoc">Filter coefficient 4. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00038">drivers_bme280.h:38</a></div></div>
+<div class="ttc" id="group__BME280_html_gga6adbb71f7b27f8463e0bd0e27fff5b63ad78e3abbcf83f0e3fe869babfd673a7c"><div class="ttname"><a href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad78e3abbcf83f0e3fe869babfd673a7c">DRIVER_BME280_FILTER_OFF</a></div><div class="ttdoc">Filter off. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00036">drivers_bme280.h:36</a></div></div>
+<div class="ttc" id="group__BME280_html_gga6adbb71f7b27f8463e0bd0e27fff5b63ac1ad0b591de185efd683df3e5e755933"><div class="ttname"><a href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ac1ad0b591de185efd683df3e5e755933">DRIVER_BME280_FILTER_2</a></div><div class="ttdoc">Filter coefficient 2. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00037">drivers_bme280.h:37</a></div></div>
+<div class="ttc" id="group__BME280_html_gga6adbb71f7b27f8463e0bd0e27fff5b63aa5593c0713d75b5d2a5725aad071c074"><div class="ttname"><a href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63aa5593c0713d75b5d2a5725aad071c074">DRIVER_BME280_FILTER_8</a></div><div class="ttdoc">Filter coefficient 8. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00039">drivers_bme280.h:39</a></div></div>
+<div class="ttc" id="group__BME280_html_gga6adbb71f7b27f8463e0bd0e27fff5b63ad51e3329fa296b2ec08de4281af73949"><div class="ttname"><a href="group__BME280.html#gga6adbb71f7b27f8463e0bd0e27fff5b63ad51e3329fa296b2ec08de4281af73949">DRIVER_BME280_FILTER_16</a></div><div class="ttdoc">Filter coefficient 16. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00040">drivers_bme280.h:40</a></div></div>
+<div class="ttc" id="group__BME280_html_ga6adbb71f7b27f8463e0bd0e27fff5b63"><div class="ttname"><a href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a></div><div class="ttdeci">driver_bme280_filter_t</div><div class="ttdoc">BME280 IIR filter coefficients. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00035">drivers_bme280.h:35</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga34821baec48fab4428f4c2472943620a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga34821baec48fab4428f4c2472943620a">&#9670;&nbsp;</a></span>driver_bme280_oversampling_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>BME280 oversampling settings. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aa71344945acdec524115eb4dc464d695d"></a>DRIVER_BME280_OVERSAMPLING_NONE&#160;</td><td class="fielddoc"><p>No oversampling (output set to 0) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aa60fda1e56d7cd560da6867ff319c2111"></a>DRIVER_BME280_OVERSAMPLING_1X&#160;</td><td class="fielddoc"><p>Oversampling ×1. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aac826d816ed1e155d4e521defc72bcee0"></a>DRIVER_BME280_OVERSAMPLING_2X&#160;</td><td class="fielddoc"><p>Oversampling ×2. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aaf628c4829190824d18e34ab3c06f0012"></a>DRIVER_BME280_OVERSAMPLING_4X&#160;</td><td class="fielddoc"><p>Oversampling ×4. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aa319440b9d5f1d37d14bc6e057b8c454f"></a>DRIVER_BME280_OVERSAMPLING_8X&#160;</td><td class="fielddoc"><p>Oversampling ×8. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga34821baec48fab4428f4c2472943620aade490420cb5695e739a066edfdddba71"></a>DRIVER_BME280_OVERSAMPLING_16X&#160;</td><td class="fielddoc"><p>Oversampling ×16. </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00022">22</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;             {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa71344945acdec524115eb4dc464d695d">DRIVER_BME280_OVERSAMPLING_NONE</a> = 0, </div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa60fda1e56d7cd560da6867ff319c2111">DRIVER_BME280_OVERSAMPLING_1X</a> = 1,   </div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aac826d816ed1e155d4e521defc72bcee0">DRIVER_BME280_OVERSAMPLING_2X</a> = 2,   </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aaf628c4829190824d18e34ab3c06f0012">DRIVER_BME280_OVERSAMPLING_4X</a> = 3,   </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa319440b9d5f1d37d14bc6e057b8c454f">DRIVER_BME280_OVERSAMPLING_8X</a> = 4,   </div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="group__BME280.html#gga34821baec48fab4428f4c2472943620aade490420cb5695e739a066edfdddba71">DRIVER_BME280_OVERSAMPLING_16X</a> = 5   </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a>;</div><div class="ttc" id="group__BME280_html_ga34821baec48fab4428f4c2472943620a"><div class="ttname"><a href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a></div><div class="ttdeci">driver_bme280_oversampling_t</div><div class="ttdoc">BME280 oversampling settings. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00022">drivers_bme280.h:22</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aade490420cb5695e739a066edfdddba71"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aade490420cb5695e739a066edfdddba71">DRIVER_BME280_OVERSAMPLING_16X</a></div><div class="ttdoc">Oversampling ×16. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00028">drivers_bme280.h:28</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aa319440b9d5f1d37d14bc6e057b8c454f"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa319440b9d5f1d37d14bc6e057b8c454f">DRIVER_BME280_OVERSAMPLING_8X</a></div><div class="ttdoc">Oversampling ×8. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00027">drivers_bme280.h:27</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aaf628c4829190824d18e34ab3c06f0012"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aaf628c4829190824d18e34ab3c06f0012">DRIVER_BME280_OVERSAMPLING_4X</a></div><div class="ttdoc">Oversampling ×4. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00026">drivers_bme280.h:26</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aa71344945acdec524115eb4dc464d695d"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa71344945acdec524115eb4dc464d695d">DRIVER_BME280_OVERSAMPLING_NONE</a></div><div class="ttdoc">No oversampling (output set to 0) </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00023">drivers_bme280.h:23</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aa60fda1e56d7cd560da6867ff319c2111"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aa60fda1e56d7cd560da6867ff319c2111">DRIVER_BME280_OVERSAMPLING_1X</a></div><div class="ttdoc">Oversampling ×1. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00024">drivers_bme280.h:24</a></div></div>
+<div class="ttc" id="group__BME280_html_gga34821baec48fab4428f4c2472943620aac826d816ed1e155d4e521defc72bcee0"><div class="ttname"><a href="group__BME280.html#gga34821baec48fab4428f4c2472943620aac826d816ed1e155d4e521defc72bcee0">DRIVER_BME280_OVERSAMPLING_2X</a></div><div class="ttdoc">Oversampling ×2. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00025">drivers_bme280.h:25</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gac8c12d391f07c6eedce45886f027a0e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac8c12d391f07c6eedce45886f027a0e5">&#9670;&nbsp;</a></span>driver_bme280_calculate_altitude()</h2>
+<a id="gaf2ffb5d0698906f96d86bb05e3062667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf2ffb5d0698906f96d86bb05e3062667">&#9670;&nbsp;</a></span>driver_bme280_calculate_altitude()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,14 +219,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">float driver_bme280_calculate_altitude </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>pressure_pa</em>, </td>
+          <td class="paramtype">const <a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>sea_level_pa</em>&#160;</td>
+          <td class="paramname"><em>sea_level_pressure</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -208,21 +236,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculate altitude from pressure measurement. </p>
+<p>Calculate altitude from pressureUses the international barometric formula. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pressure_pa</td><td>Current pressure in Pascals. </td></tr>
-    <tr><td class="paramname">sea_level_pa</td><td>Sea level pressure in Pascals (default: 101325). </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to measurement data containing pressure </td></tr>
+    <tr><td class="paramname">sea_level_pressure</td><td>Sea level pressure in Pa (default: 101325 Pa) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Altitude in meters.</dd></dl>
-<p>Uses the barometric formula to estimate altitude. Accuracy depends on knowing the current sea level pressure for your location. </p>
+<dl class="section return"><dt>Returns</dt><dd>Altitude in meters </dd></dl>
 
 </div>
 </div>
-<a id="gad0b6004c094660e9cf94b85e5abe24d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad0b6004c094660e9cf94b85e5abe24d7">&#9670;&nbsp;</a></span>driver_bme280_calculate_sea_level_pressure()</h2>
+<a id="ga04e28514a3f604df793fb00c2219fae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga04e28514a3f604df793fb00c2219fae3">&#9670;&nbsp;</a></span>driver_bme280_calculate_sea_level_pressure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,14 +257,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">float driver_bme280_calculate_sea_level_pressure </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>pressure_pa</em>, </td>
+          <td class="paramtype">const <a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>altitude_m</em>&#160;</td>
+          <td class="paramname"><em>altitude</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -247,20 +274,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculate sea level pressure from current pressure and altitude. </p>
+<p>Calculate sea level pressure from altitude. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pressure_pa</td><td>Current pressure in Pascals. </td></tr>
-    <tr><td class="paramname">altitude_m</td><td>Known altitude in meters. </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to measurement data containing pressure </td></tr>
+    <tr><td class="paramname">altitude</td><td>Current altitude in meters </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Estimated sea level pressure in Pascals. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Sea level pressure in Pa </dd></dl>
 
 </div>
 </div>
-<a id="ga9d586c3953ed927f6b2ff8130d2e10ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9d586c3953ed927f6b2ff8130d2e10ba">&#9670;&nbsp;</a></span>driver_bme280_finalize()</h2>
+<a id="ga6d7cec045fba0955e74fd0aa909085ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6d7cec045fba0955e74fd0aa909085ec">&#9670;&nbsp;</a></span>driver_bme280_finalize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,77 +296,37 @@ Functions</h2></td></tr>
           <td class="memname">void driver_bme280_finalize </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
+          <td class="paramname"><em>driver</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finalize and release a BME280 sensor driver. </p>
+<p>Finalize and power down BME280. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure to finalize.</td></tr>
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function releases resources associated with the BME280 sensor driver and puts the sensor into a low-power sleep mode. After calling this function, the BME280 driver should not be used for further operations.</p>
-<p>The function performs cleanup operations including:</p><ul>
-<li>Putting the sensor into sleep mode to reduce power consumption</li>
-<li>Releasing any allocated calibration data</li>
-<li>Clearing the driver structure</li>
-</ul>
-<dl class="section note"><dt>Note</dt><dd>After finalization, the sensor driver should not be used. </dd>
-<dd>
-This function does not finalize the underlying I2C interface. </dd></dl>
 
 </div>
 </div>
-<a id="gac0961f2d7118d33d4c7b6099c052eb7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac0961f2d7118d33d4c7b6099c052eb7e">&#9670;&nbsp;</a></span>driver_bme280_get_mode()</h2>
+<a id="gaa5ffa5f4d9cf5e0ab0da6e6f042b6247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa5ffa5f4d9cf5e0ab0da6e6f042b6247">&#9670;&nbsp;</a></span>driver_bme280_init_i2c()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a> driver_bme280_get_mode </td>
+          <td class="memname">bool driver_bme280_init_i2c </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"><em>driver</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the current operating mode of the BME280 sensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The current operating mode of the sensor, or 0 on error.</dd></dl>
-<p>This function reads the sensor's control register to determine the current operating mode. The returned mode indicates how the sensor is currently configured for measurements and power management.</p>
-<p>Note that in forced mode, the sensor automatically transitions back to sleep mode after completing a measurement cycle, so the returned mode may be DRIVER_BME280_MODE_SLEEP even if forced mode was recently set.</p>
-<dl class="section note"><dt>Note</dt><dd>The bme280 pointer should not be NULL and must be properly initialized. </dd>
-<dd>
-The function returns 0 if an error occurs during communication. </dd>
-<dd>
-In forced mode, the sensor may have already returned to sleep mode when this is called. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__BME280.html#gaa0c164f47501aa36d89c885ff573b577" title="Set the operating mode of the BME280 sensor. ">driver_bme280_set_mode()</a> for setting the operating mode. </dd>
-<dd>
-<a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be" title="BME280 sensor modes. ">driver_bme280_mode_t</a> for available operating modes. </dd></dl>
-
-</div>
-</div>
-<a id="ga4865a224e166bd0a4015029e04a85d02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4865a224e166bd0a4015029e04a85d02">&#9670;&nbsp;</a></span>driver_bme280_i2c_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> driver_bme280_i2c_init </td>
-          <td>(</td>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
           <td class="paramname"><em>i2c</em>, </td>
         </tr>
@@ -347,7 +334,7 @@ In forced mode, the sensor may have already returned to sleep mode when this is 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em>&#160;</td>
+          <td class="paramname"><em>addr_offset</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -357,30 +344,94 @@ In forced mode, the sensor may have already returned to sleep mode when this is 
       </table>
 </div><div class="memdoc">
 
-<p>Initialize a BME280 sensor driver using the I2C interface. </p>
+<p>Initialize BME280 with I2C interface and default settingsInitializes with default settings: 1x oversampling for all sensors, filter off. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i2c</td><td>Pointer to an initialized I2C interface for sensor communication. </td></tr>
-    <tr><td class="paramname">address</td><td>The I2C address of the BME280 sensor (0x76 or 0x77). If set to 0, the default address (0x76) will be used. </td></tr>
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
+    <tr><td class="paramname">i2c</td><td>Pointer to initialized I2C interface </td></tr>
+    <tr><td class="paramname">addr_offset</td><td>Address offset (0 for 0x76, 1 for 0x77) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A BME280 driver structure representing the initialized sensor.</dd></dl>
-<p>This function initializes a BME280 sensor driver for communication over I2C. The BME280 sensor supports two I2C addresses: 0x76 (when SDO pin is connected to GND) and 0x77 (when SDO pin is connected to VDD).</p>
-<p>The function performs initial sensor detection and configuration, including:</p><ul>
-<li>Verifying sensor presence at the specified address</li>
-<li>Reading calibration coefficients from sensor EEPROM</li>
-<li>Setting default measurement configuration</li>
-</ul>
-<dl class="section note"><dt>Note</dt><dd>The i2c pointer must be valid and the I2C interface must be properly initialized. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__I2C.html#ga706f82af0043f4b36cc06efa1e450b5f" title="Initialize an I2C interface with specific adapter and pins. ">hw_i2c_init()</a> for <a class="el" href="group__I2C.html" title="Inter-Integrated Circuit (I2C) interface. ">I2C</a> interface initialization. </dd>
-<dd>
-<a class="el" href="group__BME280.html#ga9d586c3953ed927f6b2ff8130d2e10ba" title="Finalize and release a BME280 sensor driver. ">driver_bme280_finalize()</a> for cleanup and resource release. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if initialization succeeded, false otherwise </dd></dl>
 
 </div>
 </div>
-<a id="ga8a9376048cba6c83a3bfbb9799d192a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8a9376048cba6c83a3bfbb9799d192a2">&#9670;&nbsp;</a></span>driver_bme280_read_data()</h2>
+<a id="ga964db1768e967df5710c58178a05a01a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga964db1768e967df5710c58178a05a01a">&#9670;&nbsp;</a></span>driver_bme280_init_i2c_with_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool driver_bme280_init_i2c_with_config </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
+          <td class="paramname"><em>driver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structhw__i2c__t.html">hw_i2c_t</a> *&#160;</td>
+          <td class="paramname"><em>i2c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a>&#160;</td>
+          <td class="paramname"><em>temp_os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a>&#160;</td>
+          <td class="paramname"><em>press_os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__BME280.html#ga34821baec48fab4428f4c2472943620a">driver_bme280_oversampling_t</a>&#160;</td>
+          <td class="paramname"><em>hum_os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__BME280.html#ga6adbb71f7b27f8463e0bd0e27fff5b63">driver_bme280_filter_t</a>&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize BME280 with I2C interface and custom settingsAllows configuration of oversampling and filter settings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
+    <tr><td class="paramname">i2c</td><td>Pointer to initialized I2C interface </td></tr>
+    <tr><td class="paramname">addr_offset</td><td>Address offset (0 for 0x76, 1 for 0x77) </td></tr>
+    <tr><td class="paramname">temp_os</td><td>Temperature oversampling </td></tr>
+    <tr><td class="paramname">press_os</td><td>Pressure oversampling </td></tr>
+    <tr><td class="paramname">hum_os</td><td>Humidity oversampling </td></tr>
+    <tr><td class="paramname">filter</td><td>IIR filter coefficient </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if initialization succeeded, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="ga5243d992a8735f44f74a2806a83e7b97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5243d992a8735f44f74a2806a83e7b97">&#9670;&nbsp;</a></span>driver_bme280_read_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,25 +440,13 @@ In forced mode, the sensor may have already returned to sleep mode when this is 
           <td class="memname">bool driver_bme280_read_data </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em>, </td>
+          <td class="paramname"><em>driver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>temperature</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>pressure</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>humidity</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structdriver__bme280__data__t.html">driver_bme280_data_t</a> *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -417,154 +456,36 @@ In forced mode, the sensor may have already returned to sleep mode when this is 
       </table>
 </div><div class="memdoc">
 
-<p>Read temperature, pressure, and humidity data from the BME280 sensor. </p>
+<p>Read all sensor data (temperature, pressure, humidity)Triggers a forced measurement (single shot), waits for completion, and reads all three sensor values in a single transaction. </p>
+<p>The sensor returns to sleep mode after the measurement.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-    <tr><td class="paramname">temperature</td><td>Pointer to store temperature in degrees Celsius (can be NULL if not needed). </td></tr>
-    <tr><td class="paramname">pressure</td><td>Pointer to store pressure in Pascals (can be NULL if not needed). </td></tr>
-    <tr><td class="paramname">humidity</td><td>Pointer to store relative humidity in % (can be NULL if not needed). </td></tr>
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
+    <tr><td class="paramname">data</td><td>Pointer to structure to receive measurement data </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if data was successfully read, false on error.</dd></dl>
-<p>This function reads the current sensor values. If the sensor is in SLEEP mode, it will automatically switch to FORCED mode, take a measurement, then return to SLEEP. For NORMAL mode, it reads the most recent measurement. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
 
 </div>
 </div>
-<a id="ga147ad37c45fdf8eb5e19d4bf87ea914a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga147ad37c45fdf8eb5e19d4bf87ea914a">&#9670;&nbsp;</a></span>driver_bme280_read_humidity()</h2>
+<a id="gada1e73b28af0ab2ec62702a1bff7d485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gada1e73b28af0ab2ec62702a1bff7d485">&#9670;&nbsp;</a></span>driver_bme280_set_temp_offset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float driver_bme280_read_humidity </td>
+          <td class="memname">void driver_bme280_set_temp_offset </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read only humidity from the BME280 sensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Relative humidity in %, or NaN on error. </dd></dl>
-
-</div>
-</div>
-<a id="ga63a955e1a84050e40b5a515df27a82ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga63a955e1a84050e40b5a515df27a82ad">&#9670;&nbsp;</a></span>driver_bme280_read_pressure()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float driver_bme280_read_pressure </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read only pressure from the BME280 sensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pressure in Pascals, or NaN on error. </dd></dl>
-
-</div>
-</div>
-<a id="gaf608792aab543f8dea4bf762e7fc2bfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf608792aab543f8dea4bf762e7fc2bfa">&#9670;&nbsp;</a></span>driver_bme280_read_temperature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float driver_bme280_read_temperature </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Read only temperature from the BME280 sensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Temperature in degrees Celsius, or NaN on error. </dd></dl>
-
-</div>
-</div>
-<a id="gae4a15c2cfc249ab949d785d4728c8c0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae4a15c2cfc249ab949d785d4728c8c0d">&#9670;&nbsp;</a></span>driver_bme280_reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool driver_bme280_reset </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reset the BME280 sensor to its default state. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the reset was successful, false on error.</dd></dl>
-<p>This function performs a software reset of the BME280 sensor by writing to the reset register. The reset operation restores the sensor to its power-on default state, which includes:</p>
-<ul>
-<li>All configuration registers are reset to their default values</li>
-<li>The sensor enters sleep mode (lowest power consumption)</li>
-<li>All previous measurement settings are cleared</li>
-<li>Internal state machines are reinitialized</li>
-</ul>
-<p>After a successful reset, the sensor will be in the same state as immediately after power-on. Any previous configuration (sampling rates, filter settings, standby times) will need to be reconfigured. </p>
-
-</div>
-</div>
-<a id="gaa0c164f47501aa36d89c885ff573b577"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa0c164f47501aa36d89c885ff573b577">&#9670;&nbsp;</a></span>driver_bme280_set_mode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool driver_bme280_set_mode </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em>, </td>
+          <td class="paramname"><em>driver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be">driver_bme280_mode_t</a>&#160;</td>
-          <td class="paramname"><em>mode</em>&#160;</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -574,64 +495,43 @@ In forced mode, the sensor may have already returned to sleep mode when this is 
       </table>
 </div><div class="memdoc">
 
-<p>Set the operating mode of the BME280 sensor. </p>
+<p>Set temperature offset for calibrationUse this to compensate for self-heating or other temperature offsets. </p>
+<p>For example, if the sensor reads 33°C but ambient is 22°C, use -11°C offset.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bme280</td><td>Pointer to the BME280 driver structure. </td></tr>
-    <tr><td class="paramname">mode</td><td>The operating mode to set for the sensor. </td></tr>
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
+    <tr><td class="paramname">offset</td><td>Temperature offset in °C (can be negative) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the mode was successfully set, false on error.</dd></dl>
-<p>This function configures the BME280 sensor's operating mode, which determines how the sensor performs measurements and manages power consumption:</p>
-<ul>
-<li><b>SLEEP mode</b>: The sensor is in standby, consuming minimal power. No measurements are performed.</li>
-<li><b>FORCED mode</b>: The sensor performs one measurement cycle of temperature, pressure, and humidity, then returns to sleep mode automatically.</li>
-<li><b>NORMAL mode</b>: The sensor continuously performs measurements at regular intervals according to the configured standby time.</li>
-</ul>
-<p>The function writes to the sensor's control register to change the operating mode. In forced mode, the sensor will automatically return to sleep mode after completing the measurement cycle.</p>
-<dl class="section note"><dt>Note</dt><dd>Mode changes may take some time to take effect depending on the sensor state. </dd>
-<dd>
-In forced mode, measurements should be read before the sensor returns to sleep. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__BME280.html#gac0961f2d7118d33d4c7b6099c052eb7e" title="Get the current operating mode of the BME280 sensor. ">driver_bme280_get_mode()</a> for reading the current operating mode. </dd>
-<dd>
-<a class="el" href="group__BME280.html#ga3856828f808f6fb5e66458a689bf13be" title="BME280 sensor modes. ">driver_bme280_mode_t</a> for available operating modes. </dd></dl>
 
 </div>
 </div>
-<a id="ga205dc55eb205ac4efffce7cc33ceea6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga205dc55eb205ac4efffce7cc33ceea6a">&#9670;&nbsp;</a></span>driver_bme280_valid()</h2>
+<a id="gaf2fa9869edefdfd2f9abda7ca5eedb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf2fa9869edefdfd2f9abda7ca5eedb0e">&#9670;&nbsp;</a></span>driver_bme280_valid()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool driver_bme280_valid </td>
+          <td class="memname">bool driver_bme280_valid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdriver__bme280__t.html">driver_bme280_t</a> *&#160;</td>
-          <td class="paramname"><em>bme280</em></td><td>)</td>
+          <td class="paramname"><em>driver</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Get true if the BME280 interface is valid. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if the BME280 interface is valid, false otherwise.</dd></dl>
-<p>The result of driver_bme280_init can return an empty structure if the initialization fails. This function checks if the BME280 interface is valid. </p>
+<p>Check if driver instance is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">driver</td><td>Pointer to driver structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if valid, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="drivers__bme280_8h_source.html#l00107">107</a> of file <a class="el" href="drivers__bme280_8h_source.html">drivers_bme280.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                                {</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> bme280 &amp;&amp; bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">i2c</a> &amp;&amp; <a class="code" href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a>(bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">i2c</a>) &amp;&amp; bme280-&gt;<a class="code" href="structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc">address</a>;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="ttc" id="group__I2C_html_ga21d0e83a5852f4eb79f9fd310b76b7ba"><div class="ttname"><a href="group__I2C.html#ga21d0e83a5852f4eb79f9fd310b76b7ba">hw_i2c_valid</a></div><div class="ttdeci">static bool hw_i2c_valid(hw_i2c_t *i2c)</div><div class="ttdoc">Get true if the I2C interface is valid. </div><div class="ttdef"><b>Definition:</b> <a href="i2c_8h_source.html#l00100">i2c.h:100</a></div></div>
-<div class="ttc" id="structdriver__bme280__t_html_a1acb79ed0f52d966926a6923a07cd5fe"><div class="ttname"><a href="structdriver__bme280__t.html#a1acb79ed0f52d966926a6923a07cd5fe">driver_bme280_t::i2c</a></div><div class="ttdeci">hw_i2c_t * i2c</div><div class="ttdoc">Pointer to the I2C interface used for communication. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00029">drivers_bme280.h:29</a></div></div>
-<div class="ttc" id="structdriver__bme280__t_html_a4dc5a745328e038d140880531e3387bc"><div class="ttname"><a href="structdriver__bme280__t.html#a4dc5a745328e038d140880531e3387bc">driver_bme280_t::address</a></div><div class="ttdeci">uint8_t address</div><div class="ttdoc">I2C address of the BME280 sensor. </div><div class="ttdef"><b>Definition:</b> <a href="drivers__bme280_8h_source.html#l00030">drivers_bme280.h:30</a></div></div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
