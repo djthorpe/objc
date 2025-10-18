@@ -5,11 +5,11 @@ add_library(${NAME} STATIC
     gpio.c
     hw.c
     i2c.c
+    spi.c
     ../stub/infrared_rx.c
     ../stub/led.c
     ../stub/power.c
     ../stub/pwm.c
-    ../stub/spi.c
     ../stub/watchdog.c
     ../stub/wifi.c
 )

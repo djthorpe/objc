@@ -9,19 +9,26 @@
 /**
  * @brief Initialize a SPI interface using default pins and adapter.
  */
-hw_spi_t hw_spi_init_default(bool cs_active_low, uint32_t baudrate) {
+bool hw_spi_init_default(hw_spi_t *spi, bool cs_active_low, uint32_t baudrate) {
+  sys_assert(spi);
+
   // SPI not implemented in stub
   (void)cs_active_low; // Suppress unused parameter warning
   (void)baudrate;      // Suppress unused parameter warning
-  hw_spi_t spi = {0};
-  return spi;
+
+  // Clear the structure
+  sys_memset(spi, 0, sizeof(hw_spi_t));
+  return false; // Always return false since SPI is not implemented
 }
 
 /**
  * @brief Initialize a SPI interface with specific adapter and pins.
  */
-hw_spi_t hw_spi_init(uint8_t adapter, uint8_t sck, uint8_t tx, uint8_t rx,
-                     uint8_t cs, bool cs_active_low, uint32_t baudrate) {
+bool hw_spi_init(hw_spi_t *spi, uint8_t adapter, uint8_t sck, uint8_t tx,
+                 uint8_t rx, uint8_t cs, bool cs_active_low,
+                 uint32_t baudrate) {
+  sys_assert(spi);
+
   // SPI not implemented in stub
   (void)adapter;       // Suppress unused parameter warning
   (void)sck;           // Suppress unused parameter warning
@@ -30,8 +37,27 @@ hw_spi_t hw_spi_init(uint8_t adapter, uint8_t sck, uint8_t tx, uint8_t rx,
   (void)cs;            // Suppress unused parameter warning
   (void)cs_active_low; // Suppress unused parameter warning
   (void)baudrate;      // Suppress unused parameter warning
-  hw_spi_t spi = {0};
-  return spi;
+
+  // Clear the structure
+  sys_memset(spi, 0, sizeof(hw_spi_t));
+  return false; // Always return false since SPI is not implemented
+}
+
+/**
+ * @brief Initialize a SPI interface using a specific device path.
+ */
+bool hw_spi_init_device(hw_spi_t *spi, const char *path, bool cs_active_low,
+                        uint32_t baudrate) {
+  sys_assert(spi);
+
+  // SPI not implemented in stub
+  (void)path;          // Suppress unused parameter warning
+  (void)cs_active_low; // Suppress unused parameter warning
+  (void)baudrate;      // Suppress unused parameter warning
+
+  // Clear the structure
+  sys_memset(spi, 0, sizeof(hw_spi_t));
+  return false; // Always return false since SPI is not implemented
 }
 
 /**
@@ -45,6 +71,15 @@ void hw_spi_finalize(hw_spi_t *spi) {
 
 ///////////////////////////////////////////////////////////////////////////////
 // PROPERTIES
+
+/**
+ * @brief Get true if the SPI interface is valid.
+ */
+bool hw_spi_valid(hw_spi_t *spi) {
+  (void)spi; // Suppress unused parameter warning
+  // SPI not implemented in stub
+  return false;
+}
 
 /**
  * @brief Get the total number of available SPI adapters.

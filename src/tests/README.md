@@ -12,7 +12,7 @@ The tests are organized into four main categories:
 - **Objective-C Runtime Tests** (runtime_01 through runtime_37): Tests for the Objective-C runtime system functionality.
 - **NXFoundation Tests** (NXFoundation_01 through NXFoundation_24): Tests for the NXFoundation framework classes and functionality.
 - **NXApplication Tests** (NXApplication_01 only): Tests for the NXApplication framework classes and functionality.
-- **Runtime Hardware Interface Tests** (hw_00 through hw_03): Tests for low-level hardware interface functionality.
+- **Runtime Hardware Interface Tests** (hw_00 through hw_04): Tests for low-level hardware interface functionality.
 - **Pixel Tests** (pix_01): Tests for the pixel and display system functionality.
 
 ---
@@ -96,6 +96,17 @@ The tests are organized into four main categories:
 | runtime_35 | Static Variables in Classes | Tests static variables within class implementations. |
 | runtime_36 | Static Functions in Classes | Tests static functions within class implementations. |
 | runtime_37 | Selector Name Access | Tests selector creation and name retrieval with `sel_getName()`. |
+
+---
+
+## Hardware Interface Tests
+
+| Test Name | Purpose | Description |
+|-----------|---------|-------------|
+| hw_01 | GPIO Pin Enumeration | Tests GPIO pin enumeration, mode detection, and validation across available banks. |
+| hw_02 | I2C Bus Scanning | Tests I2C interface initialization and performs comprehensive bus scanning from 0x08 to 0x77. |
+| hw_03 | ADC Temperature Reading | Tests ADC temperature sensor: initialization, repeated readings, and finalization. |
+| hw_04 | SPI Interface Testing | Tests comprehensive SPI functionality: basic initialization (default/adapter/device path), transfer operations (write-only/read-only/combined), register operations, error conditions, NULL pointer handling, and baudrate variations. |
 
 ---
 

@@ -10,6 +10,7 @@
 #include "drivers_bme280.h"
 #include "drivers_envirophat.h"
 #include "drivers_lsm303.h"
+#include "drivers_ssd1677.h"
 #include "drivers_st7789.h"
 #include "drivers_tcs3472.h"
 #include "drivers_uc8151.h"

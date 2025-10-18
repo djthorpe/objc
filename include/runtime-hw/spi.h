@@ -21,16 +21,18 @@
  * @brief SPI adapter.
  * @ingroup SPI
  * @headerfile spi.h runtime-hw/hw.h
+ *
+ * Platform-specific SPI interface structure.
+ * The internal implementation is opaque and stored in reserved bytes.
+ *
+ * Reserved size: 96 bytes (sized to accommodate all platform implementations)
+ * - Linux: requires ~13 bytes (int fd + uint8_t + bool + uint32_t + padding)
+ * - Pico: requires ~80 bytes (5 * hw_gpio_t + uint8_t + bool + uint32_t +
+ * padding)
+ * - Stub: requires 0 bytes (no internal state)
  */
 typedef struct hw_spi_t {
-  uint8_t adapter;     ///< SPI adapter (0, 1, etc.)
-  hw_gpio_t sck;       ///< SPI Clock pin
-  hw_gpio_t tx;        ///< SPI Transmit pin (Master Out Slave In)
-  hw_gpio_t rx;        ///< SPI Receive pin (Master In Slave Out)
-  hw_gpio_t cs;        ///< SPI Chip Select pin
-  bool cs_active;      ///< CS active state (false if active low)
-  uint32_t baudrate;   ///< SPI baud rate in Hz
-  uint8_t reserved[3]; ///< Reserved for user data
+  uint8_t reserved[96]; ///< Reserved for platform-specific implementation
 } hw_spi_t;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,20 +41,22 @@ typedef struct hw_spi_t {
 /**
  * @brief Initialize a SPI interface using default pins and adapter.
  * @ingroup SPI
+ * @param spi The SPI adapter structure
  * @param cs_active_low True if the Chip Select (CS) pin is active low, false
  * otherwise.
  * @param baudrate The desired SPI baud rate (e.g., 100000 for 100kHz).
- * @return A SPI structure representing the initialized interface.
+ * @return True if the initialization was successful, false otherwise.
  *
  * This function initializes the default SPI interface using platform-specific
  * default pins and adapter settings. This is the simplest way to get SPI
  * functionality without needing to specify pin assignments.
  */
-hw_spi_t hw_spi_init_default(bool cs_active_low, uint32_t baudrate);
+bool hw_spi_init_default(hw_spi_t *spi, bool cs_active_low, uint32_t baudrate);
 
 /**
  * @brief Initialize a SPI interface with specific adapter and pins.
  * @ingroup SPI
+ * @param spi The SPI adapter structure
  * @param adapter The SPI adapter number to use (0 to hw_spi_count()-1).
  * @param sck The GPIO pin number to use for SPI Clock (SCK).
  * @param tx The GPIO pin number to use for SPI Master Out Slave In (MOSI).
@@ -61,7 +65,7 @@ hw_spi_t hw_spi_init_default(bool cs_active_low, uint32_t baudrate);
  * @param cs_active_low True if the Chip Select (CS) pin is active low, false
  * otherwise.
  * @param baudrate The desired SPI baud rate (e.g., 100000 for 100kHz).
- * @return A SPI structure representing the initialized interface.
+ * @return True if the initialization was successful, false otherwise.
  *
  * This function initializes a SPI interface using the specified adapter
  * and GPIO pins for MOSI, MISO, and SCK lines. The adapter number should be
@@ -72,8 +76,28 @@ hw_spi_t hw_spi_init_default(bool cs_active_low, uint32_t baudrate);
  * @note The specified pins must support SPI functionality.
  * @note Pin assignments are platform-dependent.
  */
-hw_spi_t hw_spi_init(uint8_t adapter, uint8_t sck, uint8_t tx, uint8_t rx,
-                     uint8_t cs, bool cs_active_low, uint32_t baudrate);
+bool hw_spi_init(hw_spi_t *spi, uint8_t adapter, uint8_t sck, uint8_t tx,
+                 uint8_t rx, uint8_t cs, bool cs_active_low, uint32_t baudrate);
+
+/**
+ * @brief Initialize a SPI interface using a specific device path.
+ * @ingroup SPI
+ * @param spi The SPI adapter structure
+ * @param path The device path (e.g., "/dev/spidev0.0" on Linux).
+ * @param cs_active_low True if the Chip Select (CS) pin is active low, false
+ * otherwise.
+ * @param baudrate The desired SPI baud rate (e.g., 100000 for 100kHz).
+ * @return True if the initialization was successful, false otherwise.
+ *
+ * This function initializes a SPI interface using a platform-specific device
+ * path. On Linux, this allows direct access to specific SPI device files.
+ * On other platforms (e.g., Pico), this function returns false.
+ *
+ * @note This function is primarily intended for Linux systems.
+ * @note On non-Linux platforms, use hw_spi_init_default() or hw_spi_init().
+ */
+bool hw_spi_init_device(hw_spi_t *spi, const char *path, bool cs_active_low,
+                        uint32_t baudrate);
 
 /**
  * @brief Finalize and release a SPI interface.
@@ -103,14 +127,13 @@ uint8_t hw_spi_count(void);
 /**
  * @brief Get true if the SPI interface is valid.
  * @ingroup SPI
+ * @param spi Pointer to the SPI structure representing the interface.
  * @return True if the SPI interface is valid, false otherwise.
  *
  * The result of hw_spi_init can return an empty SPI structure if the
  * initialization fails. This function checks if the SPI interface is valid.
  */
-static inline bool hw_spi_valid(hw_spi_t *spi) {
-  return spi && spi->baudrate > 0;
-}
+bool hw_spi_valid(hw_spi_t *spi);
 
 ///////////////////////////////////////////////////////////////////////////////
 // DATA TRANSFER

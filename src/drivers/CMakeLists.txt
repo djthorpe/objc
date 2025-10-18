@@ -10,6 +10,7 @@ add_subdirectory("st7789") # ST7789 TFT LCD Display Driver
 add_subdirectory("tcs3472") # TCS3472 RGB Color Sensor
 add_subdirectory("lsm303") # LSM303D Accelerometer/Magnetometer
 add_subdirectory("envirophat") # Enviro pHAT Sensor Board
+add_subdirectory("ssd1677") # SSD1677 E-Paper Display Driver
 
 # Create the drivers library with all collected sources
 add_library(${NAME} STATIC ${DRIVER_SOURCES})
