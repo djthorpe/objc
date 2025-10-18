@@ -52,22 +52,6 @@ _Static_assert(sizeof(ssd1677_internal_t) <= sizeof(driver_ssd1677_t),
 #define SSD1677_CMD_DEEP_SLEEP 0x10
 #define SSD1677_CMD_LOAD_LUT 0x32
 
-// LUT Tables (Look-Up Tables for waveform control)
-static const uint8_t lut_1Gray_GC[] = {
-    0x2A, 0x06, 0x15, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x06,
-    0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x06, 0x10, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x14, 0x06, 0x28, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x02, 0x02, 0x0A, 0x00, 0x00, 0x00, 0x08, 0x08, 0x02,
-    0x00, 0x02, 0x02, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x22, 0x22, 0x22, 0x22, 0x22};
-
-static const uint8_t lut_1Gray_A2[] = {0x0E, 0x14, 0x01, 0x0A, 0x06,
-                                       0x04, 0x0A, 0x0A, 0x0F, 0x03,
-                                       0x03, 0x0C, 0x06, 0x0A, 0x00};
-
 ///////////////////////////////////////////////////////////////////////////////
 // PRIVATE FUNCTIONS
 
@@ -77,6 +61,14 @@ static void ssd1677_wake_internal(driver_ssd1677_t *display);
 static void ssd1677_ensure_awake(driver_ssd1677_t *display);
 static void ssd1677_turn_on_display(driver_ssd1677_t *display);
 static void ssd1677_wait_until_idle(driver_ssd1677_t *display);
+
+// Helper functions to reduce code duplication
+static size_t ssd1677_get_buffer_size(ssd1677_internal_t *internal);
+static uint16_t ssd1677_get_y_start_position(ssd1677_internal_t *internal);
+static void ssd1677_reset_ram_counters(driver_ssd1677_t *display, uint16_t x,
+                                       uint16_t y);
+static void ssd1677_send_display_command(driver_ssd1677_t *display,
+                                         uint8_t mode);
 
 /**
  * @brief Send a command to SSD1677
@@ -148,25 +140,6 @@ static void ssd1677_send_data_buffer(driver_ssd1677_t *display,
 }
 
 /**
- * @brief Load Look-Up Table for display waveform
- * @param display Pointer to display structure
- * @param mode Update mode (0 = fast, 1 = full)
- */
-static void ssd1677_load_lut(driver_ssd1677_t *display, uint8_t mode) {
-  sys_assert(display);
-
-  ssd1677_send_command(display, SSD1677_CMD_LOAD_LUT);
-
-  if (mode == 1) {
-    // Full refresh LUT
-    ssd1677_send_data_buffer(display, lut_1Gray_GC, sizeof(lut_1Gray_GC));
-  } else {
-    // Fast refresh LUT
-    ssd1677_send_data_buffer(display, lut_1Gray_A2, sizeof(lut_1Gray_A2));
-  }
-}
-
-/**
  * @brief Set RAM address window
  * @param display Pointer to display structure
  * @param x_start Starting X coordinate
@@ -179,12 +152,16 @@ static void ssd1677_set_memory_area(driver_ssd1677_t *display, uint16_t x_start,
                                     uint16_t y_end) {
   sys_assert(display);
 
+  // Convert pixel coordinates to controller address units (bytes)
+  uint16_t x_start_addr = x_start / 8;
+  uint16_t x_end_addr = x_end / 8;
+
   // Set X range
   ssd1677_send_command(display, SSD1677_CMD_SET_RAM_X_RANGE);
-  ssd1677_send_data(display, x_start & 0xFF);
-  ssd1677_send_data(display, (x_start >> 8) & 0x03);
-  ssd1677_send_data(display, x_end & 0xFF);
-  ssd1677_send_data(display, (x_end >> 8) & 0x03);
+  ssd1677_send_data(display, x_start_addr & 0xFF);
+  ssd1677_send_data(display, (x_start_addr >> 8) & 0x03);
+  ssd1677_send_data(display, x_end_addr & 0xFF);
+  ssd1677_send_data(display, (x_end_addr >> 8) & 0x03);
 
   // Set Y range
   ssd1677_send_command(display, SSD1677_CMD_SET_RAM_Y_RANGE);
@@ -204,15 +181,91 @@ static void ssd1677_set_memory_pointer(driver_ssd1677_t *display, uint16_t x,
                                        uint16_t y) {
   sys_assert(display);
 
+  uint16_t x_addr = x / 8;
+
   // Set X counter (2 bytes per spec Table 8-7)
   ssd1677_send_command(display, SSD1677_CMD_SET_RAM_X_COUNTER);
-  ssd1677_send_data(display, x & 0xFF);        // XAD[7:0]
-  ssd1677_send_data(display, (x >> 8) & 0x03); // XAD[9:8]
+  ssd1677_send_data(display, x_addr & 0xFF);        // XAD[7:0]
+  ssd1677_send_data(display, (x_addr >> 8) & 0x03); // XAD[9:8]
 
   // Set Y counter (2 bytes per spec Table 8-7)
   ssd1677_send_command(display, SSD1677_CMD_SET_RAM_Y_COUNTER);
   ssd1677_send_data(display, y & 0xFF);        // YAD[7:0]
   ssd1677_send_data(display, (y >> 8) & 0x03); // YAD[9:8]
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// HELPER FUNCTIONS
+
+/**
+ * @brief Calculate buffer size for display image data
+ * @param internal Pointer to internal structure
+ * @return Buffer size in bytes
+ */
+static size_t ssd1677_get_buffer_size(ssd1677_internal_t *internal) {
+  uint16_t width_bytes = (internal->width + 7) / 8;
+  return width_bytes * internal->height;
+}
+
+/**
+ * @brief Get Y start position (top of display)
+ * @param internal Pointer to internal structure
+ * @return Y start position
+ */
+static uint16_t ssd1677_get_y_start_position(ssd1677_internal_t *internal) {
+  (void)internal;
+  return 0; // Controller expects Y counter reset to first row before writes
+}
+
+/**
+ * @brief Reset RAM counters to specified position
+ * @param display Pointer to display structure
+ * @param x X coordinate
+ * @param y Y coordinate
+ */
+static void ssd1677_reset_ram_counters(driver_ssd1677_t *display, uint16_t x,
+                                       uint16_t y) {
+  uint16_t x_addr = x / 8;
+
+  // Reset X counter
+  ssd1677_send_command(display, SSD1677_CMD_SET_RAM_X_COUNTER);
+  ssd1677_send_data(display, x_addr & 0xFF);        // X counter low byte
+  ssd1677_send_data(display, (x_addr >> 8) & 0x03); // X counter high byte
+
+  // Reset Y counter
+  ssd1677_send_command(display, SSD1677_CMD_SET_RAM_Y_COUNTER);
+  ssd1677_send_data(display, y & 0xFF);        // Y counter low byte
+  ssd1677_send_data(display, (y >> 8) & 0x03); // Y counter high byte
+}
+
+/**
+ * @brief Send display update command sequence
+ * @param display Pointer to display structure
+ * @param mode Display mode command (0x91, 0xC7, 0xF7, etc.)
+ */
+static void ssd1677_send_display_command(driver_ssd1677_t *display,
+                                         uint8_t mode) {
+  ssd1677_send_command(display, SSD1677_CMD_DISPLAY_UPDATE_CTRL2);
+  ssd1677_send_data(display, mode);
+  ssd1677_send_command(display, SSD1677_CMD_DISPLAY_UPDATE);
+  ssd1677_wait_until_idle(display);
+}
+
+/**
+ * @brief Turn on display with standard update
+ * @param display Pointer to display structure
+ */
+static void ssd1677_turn_on_display(driver_ssd1677_t *display) {
+  sys_assert(display);
+
+  // Ensure display is awake
+  ssd1677_ensure_awake(display);
+
+  // Step 1: Load temperature and waveform settings from OTP (0xB1)
+  ssd1677_send_display_command(display, 0xB1);
+
+  // Step 2: Trigger a full display refresh (0xF7)
+  ssd1677_send_display_command(display, 0xF7);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -363,7 +416,8 @@ static void ssd1677_wake_internal(driver_ssd1677_t *display) {
 
   // Validate height is within SSD1677 limits
   if (internal->height < 300 || internal->height > 680) {
-    sys_printf("WARNING: Display height %d outside range (300-680)\n", internal->height);
+    sys_printf("WARNING: Display height %d outside range (300-680)\n",
+               internal->height);
   }
 
   ssd1677_send_command(display, 0x01);
@@ -371,24 +425,29 @@ static void ssd1677_wake_internal(driver_ssd1677_t *display) {
   ssd1677_send_data(display, (mux_value >> 8) & 0x03);
   ssd1677_send_data(display, 0x00);
 
-  // Data entry mode: Y+,X- (original working mode)
+  // Data entry mode: Y+ then X- (controller default for this panel).
+  // The display expects X to decrement across a row and Y to increment
+  // between rows when streaming data from RAM.
   ssd1677_send_command(display, 0x11);
   ssd1677_send_data(display, 0x01); // Y+,X- mode
 
-  // Calculate RAM ranges based on actual display dimensions
-  uint16_t width_bytes = (internal->width + 7) / 8;
-  uint16_t x_end = width_bytes - 1;
-  uint16_t y_end = internal->height - 1;
+  // Border waveform control - critical for proper display operation
+  ssd1677_send_command(display, 0x3C);
+  ssd1677_send_data(display, 0x05); // Border follows LUT1 with different timing
 
-  // Set RAM X address range (in BYTES)
+  // Calculate X range in controller address units (bytes of 8 pixels)
+  uint16_t width_bytes = (internal->width + 7) / 8;
+  uint16_t x_max = width_bytes - 1; // e.g., 110 bytes -> max address 109
+
+  // Set RAM X address range
   ssd1677_send_command(display, 0x44);
-  ssd1677_send_data(display, 0x00);
-  ssd1677_send_data(display, 0x00);
-  ssd1677_send_data(display, 0x6F);
-  ssd1677_send_data(display, 0x03);
+  ssd1677_send_data(display, 0x00);         // X start low = 0 bytes
+  ssd1677_send_data(display, 0x00);         // X start high = 0
+  ssd1677_send_data(display, x_max & 0xFF); // X end low
+  ssd1677_send_data(display, (x_max >> 8) & 0x03);
 
   // Set RAM Y address range based on actual display height (528 pixels)
-  // Y range should be (height-1) down to 0 for our display size
+  // Start from last row and wrap through 0 as per datasheet examples.
   uint16_t y_max = internal->height - 1; // 527 for 528-pixel display
 
   ssd1677_send_command(display, 0x45);
@@ -402,14 +461,8 @@ static void ssd1677_wake_internal(driver_ssd1677_t *display) {
   ssd1677_send_data(display, 0x64);
   ssd1677_send_data(display, 0x00);
 
-  // Set RAM counters - X=0, Y=height-1 (top of display)
-  ssd1677_send_command(display, 0x4E);
-  ssd1677_send_data(display, 0x00); // X counter low byte = 0
-  ssd1677_send_data(display, 0x00); // X counter high byte = 0
-
-  ssd1677_send_command(display, 0x4F);
-  ssd1677_send_data(display, y_max & 0xFF);
-  ssd1677_send_data(display, (y_max >> 8) & 0x03);
+  // Set RAM counters to start position (X=0, Y=0)
+  ssd1677_reset_ram_counters(display, 0, 0);
 
   // Mark as awake
   internal->is_sleeping = false;
@@ -435,15 +488,17 @@ void driver_ssd1677_clear(driver_ssd1677_t *display) {
   // Ensure display is awake
   ssd1677_ensure_awake(display);
 
-  // Calculate buffer size based on actual display dimensions
-  uint16_t width_bytes = (internal->width + 7) / 8;
-  size_t buffer_size = width_bytes * internal->height;
+  // Reset address window to full screen before streaming data
+  uint16_t x_end = internal->width - 1;
+  uint16_t y_end = internal->height - 1;
+  ssd1677_set_memory_area(display, 0, 0, x_end, y_end);
 
-  // Reset RAM counters - start at top of display (height-1)
-  uint16_t y_start = internal->height - 1; // Start at top (527 for 528 pixels)
-  ssd1677_send_command(display, 0x4F);
-  ssd1677_send_data(display, y_start & 0xFF);        // Y counter low byte
-  ssd1677_send_data(display, (y_start >> 8) & 0x03); // Y counter high byte
+  // Calculate buffer size and get start position
+  size_t buffer_size = ssd1677_get_buffer_size(internal);
+  uint16_t y_start = ssd1677_get_y_start_position(internal);
+
+  // Reset RAM counters to start position
+  ssd1677_reset_ram_counters(display, 0, y_start);
 
   // Create buffer for actual display size
   uint8_t *clear_buffer = sys_malloc(buffer_size);
@@ -457,10 +512,8 @@ void driver_ssd1677_clear(driver_ssd1677_t *display) {
   ssd1677_send_command(display, SSD1677_CMD_WRITE_RAM_BLACK);
   ssd1677_send_data_buffer(display, clear_buffer, buffer_size);
 
-  // Reset counters again for red RAM - start at top
-  ssd1677_send_command(display, 0x4F);
-  ssd1677_send_data(display, y_start & 0xFF);        // Y counter low byte
-  ssd1677_send_data(display, (y_start >> 8) & 0x03); // Y counter high byte
+  // Reset counters again for red RAM
+  ssd1677_reset_ram_counters(display, 0, y_start);
 
   // Write to red RAM
   ssd1677_send_command(display, SSD1677_CMD_WRITE_RAM_RED);
@@ -480,16 +533,20 @@ void driver_ssd1677_update(driver_ssd1677_t *display, const uint8_t *image_data,
   // Ensure display is awake
   ssd1677_ensure_awake(display);
 
-  // Calculate expected image size based on display dimensions
-  uint16_t width_bytes = (internal->width + 7) / 8;
-  size_t expected_size = width_bytes * internal->height;
+  // Reset address window to full screen before streaming data
+  uint16_t x_end = internal->width - 1;
+  uint16_t y_end = internal->height - 1;
+  ssd1677_set_memory_area(display, 0, 0, x_end, y_end);
 
+  // Align the RAM pointer with the refreshed address window
+  ssd1677_set_memory_pointer(display, 0, 0);
 
-  // Reset RAM counters - start at top of display (height-1)
-  uint16_t y_start = internal->height - 1; // Start at top (527 for 528 pixels)
-  ssd1677_send_command(display, 0x4F);
-  ssd1677_send_data(display, y_start & 0xFF);        // Y counter low byte
-  ssd1677_send_data(display, (y_start >> 8) & 0x03); // Y counter high byte
+  // Calculate buffer size and get start position
+  size_t expected_size = ssd1677_get_buffer_size(internal);
+  uint16_t y_start = ssd1677_get_y_start_position(internal);
+
+  // Reset RAM counters to start position
+  ssd1677_reset_ram_counters(display, 0, y_start);
 
   // Write to black RAM (use the provided image data directly)
   ssd1677_send_command(display, SSD1677_CMD_WRITE_RAM_BLACK);
@@ -497,10 +554,8 @@ void driver_ssd1677_update(driver_ssd1677_t *display, const uint8_t *image_data,
 
   // If base image, also write to red RAM for differential updates
   if (is_base_image) {
-    // Reset counters for red RAM - start at top
-    ssd1677_send_command(display, 0x4F);
-    ssd1677_send_data(display, y_start & 0xFF);        // Y counter low byte
-    ssd1677_send_data(display, (y_start >> 8) & 0x03); // Y counter high byte
+    // Reset counters for red RAM
+    ssd1677_reset_ram_counters(display, 0, y_start);
 
     ssd1677_send_command(display, SSD1677_CMD_WRITE_RAM_RED);
     ssd1677_send_data_buffer(display, image_data, expected_size);
@@ -516,6 +571,7 @@ void driver_ssd1677_update_partial(driver_ssd1677_t *display,
                                    uint16_t y_end, bool use_gc_mode) {
   sys_assert(display);
   sys_assert(image_data);
+  (void)use_gc_mode; // Suppress unused parameter warning
 
   // Ensure display is awake
   ssd1677_ensure_awake(display);
@@ -539,25 +595,6 @@ void driver_ssd1677_update_partial(driver_ssd1677_t *display,
 
   // Turn on display (will load OTP LUT and update)
   ssd1677_turn_on_display(display);
-}
-
-static void ssd1677_turn_on_display(driver_ssd1677_t *display) {
-  sys_assert(display);
-
-  // Ensure display is awake
-  ssd1677_ensure_awake(display);
-
-  // Update sequence 1: Load temperature value
-  ssd1677_send_command(display, 0x22);
-  ssd1677_send_data(display, 0xB1);
-  ssd1677_send_command(display, 0x20);
-  ssd1677_wait_until_idle(display);
-
-  // Update sequence 2: Display refresh
-  ssd1677_send_command(display, 0x22);
-  ssd1677_send_data(display, 0xF7);
-  ssd1677_send_command(display, 0x20);
-  ssd1677_wait_until_idle(display);
 }
 
 bool driver_ssd1677_valid(driver_ssd1677_t *display) {
