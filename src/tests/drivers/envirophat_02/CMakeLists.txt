@@ -5,6 +5,7 @@ add_executable(${NAME}
 target_link_libraries(${NAME} PRIVATE
     drivers
     malloc
+    runtime-sys
 )
 add_test(NAME ${NAME} COMMAND ${NAME})
 
